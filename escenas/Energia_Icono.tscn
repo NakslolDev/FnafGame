@@ -1,0 +1,119 @@
+[gd_scene load_steps=21 format=3 uid="uid://o8o073xrlb54"]
+
+[ext_resource type="Script" uid="uid://buo05pdr8jp5k" path="res://scripts/energia_icono.gd" id="1_w60gr"]
+[ext_resource type="Texture2D" uid="uid://c5bfse4jyyysf" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Base.png" id="2_sq720"]
+[ext_resource type="Texture2D" uid="uid://dddceb244u3wc" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 1/1.png" id="3_56hmi"]
+[ext_resource type="Texture2D" uid="uid://dfn8kbmok4tl2" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 1/2.png" id="4_xghys"]
+[ext_resource type="Texture2D" uid="uid://b35snetc2ufc7" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 1/3.png" id="5_pqum8"]
+[ext_resource type="Texture2D" uid="uid://bfxxu7e1cmbpp" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 2/1.png" id="6_24pld"]
+[ext_resource type="Texture2D" uid="uid://dp6wiipqct40t" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 2/2.png" id="7_ruyal"]
+[ext_resource type="Texture2D" uid="uid://i0kowg1oi4hq" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 2/3.png" id="8_ys87y"]
+[ext_resource type="Texture2D" uid="uid://dt84l5krlk2xt" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 3/1.png" id="9_ym467"]
+[ext_resource type="Texture2D" uid="uid://dk6ytqpu07ika" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 3/2.png" id="10_m6umj"]
+[ext_resource type="Texture2D" uid="uid://bg0rgltafb3us" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 3/3.png" id="11_7pob8"]
+[ext_resource type="Texture2D" uid="uid://bbnmnshjv14np" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 4/1.png" id="12_eyv7r"]
+[ext_resource type="Texture2D" uid="uid://bpcfpvcpqxpmi" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 4/2.png" id="13_cdvf6"]
+[ext_resource type="Texture2D" uid="uid://d2hhhjvphldxi" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 4/3.png" id="14_y8plx"]
+[ext_resource type="Texture2D" uid="uid://2q4c80o32pvb" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 5/1.png" id="15_8w05s"]
+[ext_resource type="Texture2D" uid="uid://lnkipllt1fix" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 5/2.png" id="16_wkpyn"]
+[ext_resource type="Texture2D" uid="uid://bloli65osbhd0" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 5/3.png" id="17_djisy"]
+[ext_resource type="Texture2D" uid="uid://cr4nsofpxe83d" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 6/1.png" id="18_7j5ig"]
+[ext_resource type="Texture2D" uid="uid://dc3o0hnuemf0r" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 6/2.png" id="19_t4lkf"]
+[ext_resource type="Texture2D" uid="uid://doqwyrtj58eii" path="res://fnafjuego/Placeholders/UI_Juego/Energia/Paleta 6/3.png" id="20_5tdfp"]
+
+[node name="Energia_Icono" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_w60gr")
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(-563, -467)
+texture = ExtResource("2_sq720")
+
+[node name="Paleta_A" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="Paleta_A"]
+position = Vector2(-563, -467)
+texture = ExtResource("3_56hmi")
+
+[node name="2" type="Sprite2D" parent="Paleta_A"]
+position = Vector2(-563, -467)
+texture = ExtResource("4_xghys")
+
+[node name="3" type="Sprite2D" parent="Paleta_A"]
+position = Vector2(-563, -467)
+texture = ExtResource("5_pqum8")
+
+[node name="Paleta_B" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="Paleta_B"]
+position = Vector2(-563, -467)
+texture = ExtResource("6_24pld")
+
+[node name="2" type="Sprite2D" parent="Paleta_B"]
+position = Vector2(-563, -467)
+texture = ExtResource("7_ruyal")
+
+[node name="3" type="Sprite2D" parent="Paleta_B"]
+position = Vector2(-563, -467)
+texture = ExtResource("8_ys87y")
+
+[node name="Paleta_C" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="Paleta_C"]
+position = Vector2(-563, -467)
+texture = ExtResource("15_8w05s")
+
+[node name="2" type="Sprite2D" parent="Paleta_C"]
+position = Vector2(-563, -467)
+texture = ExtResource("16_wkpyn")
+
+[node name="3" type="Sprite2D" parent="Paleta_C"]
+position = Vector2(-563, -467)
+texture = ExtResource("17_djisy")
+
+[node name="Paleta_D" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="Paleta_D"]
+position = Vector2(-563, -467)
+texture = ExtResource("9_ym467")
+
+[node name="2" type="Sprite2D" parent="Paleta_D"]
+position = Vector2(-563, -467)
+texture = ExtResource("10_m6umj")
+
+[node name="3" type="Sprite2D" parent="Paleta_D"]
+position = Vector2(-563, -467)
+texture = ExtResource("11_7pob8")
+
+[node name="Paleta_E" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="Paleta_E"]
+position = Vector2(-563, -467)
+texture = ExtResource("12_eyv7r")
+
+[node name="2" type="Sprite2D" parent="Paleta_E"]
+position = Vector2(-563, -467)
+texture = ExtResource("13_cdvf6")
+
+[node name="3" type="Sprite2D" parent="Paleta_E"]
+position = Vector2(-563, -467)
+texture = ExtResource("14_y8plx")
+
+[node name="Paleta_F" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="Paleta_F"]
+position = Vector2(-563, -467)
+texture = ExtResource("18_7j5ig")
+
+[node name="2" type="Sprite2D" parent="Paleta_F"]
+position = Vector2(-563, -467)
+texture = ExtResource("19_t4lkf")
+
+[node name="3" type="Sprite2D" parent="Paleta_F"]
+position = Vector2(-563, -467)
+texture = ExtResource("20_5tdfp")
+
+[node name="Timer_obscure" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer_obscure" to="." method="_on_timer_timeout"]

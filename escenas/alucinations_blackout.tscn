@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cenm4urvvqglo"]
+
+[ext_resource type="Script" uid="uid://y7tlkeoaa43y" path="res://scripts/alucinations_blackout.gd" id="1_uy2rd"]
+[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="2_o7obg"]
+[ext_resource type="Texture2D" uid="uid://b6fbywth176v" path="res://fnafjuego/Placeholders/circle gradient.png" id="3_o7obg"]
+[ext_resource type="Texture2D" uid="uid://bq3w704qgux6g" path="res://fnafjuego/Placeholders/Chica.png" id="4_cygb2"]
+
+[node name="Alucinations_blackout" type="Node2D"]
+script = ExtResource("1_uy2rd")
+
+[node name="Chica" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(975, 538)
+scale = Vector2(4.73889, 2.41919)
+texture = ExtResource("4_cygb2")
+
+[node name="Static" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_o7obg")
+
+[node name="Pulse" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_o7obg")
+
+[node name="CircleGradient" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("3_o7obg")

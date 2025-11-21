@@ -1,0 +1,180 @@
+[gd_scene load_steps=25 format=3 uid="uid://cje8cwptwv3lc"]
+
+[ext_resource type="Script" uid="uid://dk4pq1gaarj5u" path="res://scripts/cam_6.gd" id="1_pq0kf"]
+[ext_resource type="Texture2D" uid="uid://15wx353w2giq" path="res://fnafjuego/Placeholders/Camaras/Cam6/Cam.png" id="2_36leg"]
+[ext_resource type="FontFile" uid="uid://db8nupa3kyc5g" path="res://fnafjuego/I-pixel-u.ttf" id="3_36leg"]
+[ext_resource type="Script" uid="uid://88njdr5wo0aj" path="res://scripts/chica_sounds.gd" id="4_e1d0o"]
+[ext_resource type="AudioStream" uid="uid://sioqbpv6nqs0" path="res://fnafjuego/sounds/Chica sounds/Searching_01.wav" id="5_q733t"]
+[ext_resource type="AudioStream" uid="uid://c82wg6lq2cn84" path="res://fnafjuego/sounds/Chica sounds/Searching_02.wav" id="6_481ut"]
+[ext_resource type="AudioStream" uid="uid://bmaitkjesbwvw" path="res://fnafjuego/sounds/Chica sounds/Searching_03.wav" id="7_t8f7o"]
+[ext_resource type="AudioStream" uid="uid://dcgj27f8ceq63" path="res://fnafjuego/sounds/Chica sounds/Searching_04.wav" id="8_g0y0o"]
+[ext_resource type="AudioStream" uid="uid://bblls8s41bkm2" path="res://fnafjuego/sounds/Chica sounds/Searching_05.wav" id="9_grlma"]
+[ext_resource type="AudioStream" uid="uid://ctyyougri8t8v" path="res://fnafjuego/sounds/Chica sounds/Searching_06.wav" id="10_6xasq"]
+[ext_resource type="AudioStream" uid="uid://yojai4mxv8rn" path="res://fnafjuego/sounds/Chica sounds/Searching_07.wav" id="11_7s2au"]
+[ext_resource type="AudioStream" uid="uid://7x1wagcc0lbb" path="res://fnafjuego/sounds/Chica sounds/Searching_08.wav" id="12_68wip"]
+[ext_resource type="AudioStream" uid="uid://74qffnwd1ll3" path="res://fnafjuego/sounds/Chica sounds/Hitting_01.wav" id="13_ycryw"]
+[ext_resource type="AudioStream" uid="uid://dkiva0rthcnoh" path="res://fnafjuego/sounds/Chica sounds/Hitting_02.wav" id="14_7id4w"]
+[ext_resource type="AudioStream" uid="uid://snctfdylbm4x" path="res://fnafjuego/sounds/Chica sounds/Hitting_03.wav" id="15_tufqp"]
+[ext_resource type="AudioStream" uid="uid://dqc5mbbgkg3ex" path="res://fnafjuego/sounds/Chica sounds/Big_Crash.wav" id="16_lpfcb"]
+[ext_resource type="Script" uid="uid://dl67or5n74plj" path="res://scripts/foxy_sounds.gd" id="17_6xasq"]
+[ext_resource type="AudioStream" uid="uid://hw0js168rrah" path="res://fnafjuego/sounds/Foxy sounds/Foxy_01.wav" id="18_7s2au"]
+[ext_resource type="AudioStream" uid="uid://bpym5rmgm5wfd" path="res://fnafjuego/sounds/Foxy sounds/Foxy_02.wav" id="19_68wip"]
+[ext_resource type="AudioStream" uid="uid://b7qmn0ysx7brx" path="res://fnafjuego/sounds/Foxy sounds/Foxy_03.wav" id="20_ycryw"]
+[ext_resource type="AudioStream" uid="uid://dnkdho14lj08b" path="res://fnafjuego/sounds/Foxy sounds/Foxy_04.wav" id="21_7id4w"]
+[ext_resource type="AudioStream" uid="uid://calbktollx0bt" path="res://fnafjuego/sounds/Foxy sounds/Foxy_05.wav" id="22_tufqp"]
+[ext_resource type="Script" uid="uid://botaiuk6ok4xc" path="res://scripts/safe_sounds.gd" id="23_68wip"]
+[ext_resource type="AudioStream" uid="uid://lpnh0o0ikrwi" path="res://fnafjuego/sounds/Tiny click.wav" id="24_ycryw"]
+
+[node name="Cam_6" type="Node2D"]
+script = ExtResource("1_pq0kf")
+
+[node name="Cam" type="Sprite2D" parent="."]
+texture = ExtResource("2_36leg")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -750.0
+offset_top = -540.0
+offset_right = 750.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_36leg")
+theme_override_font_sizes/font_size = 200
+text = "[NO VIDEO]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chica_sounds" type="Node" parent="."]
+script = ExtResource("4_e1d0o")
+
+[node name="change" type="Timer" parent="Chica_sounds"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Searching_1" type="Node" parent="Chica_sounds"]
+
+[node name="Searching01" type="AudioStreamPlayer" parent="Chica_sounds/Searching_1"]
+stream = ExtResource("5_q733t")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Searching02" type="AudioStreamPlayer" parent="Chica_sounds/Searching_1"]
+stream = ExtResource("6_481ut")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Searching03" type="AudioStreamPlayer" parent="Chica_sounds/Searching_1"]
+stream = ExtResource("7_t8f7o")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Searching04" type="AudioStreamPlayer" parent="Chica_sounds/Searching_1"]
+stream = ExtResource("8_g0y0o")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Searching_2" type="Node" parent="Chica_sounds"]
+
+[node name="Searching05" type="AudioStreamPlayer" parent="Chica_sounds/Searching_2"]
+stream = ExtResource("9_grlma")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Searching06" type="AudioStreamPlayer" parent="Chica_sounds/Searching_2"]
+stream = ExtResource("10_6xasq")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Searching07" type="AudioStreamPlayer" parent="Chica_sounds/Searching_2"]
+stream = ExtResource("11_7s2au")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Searching08" type="AudioStreamPlayer" parent="Chica_sounds/Searching_2"]
+stream = ExtResource("12_68wip")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Hitting" type="Node" parent="Chica_sounds"]
+
+[node name="Hitting01" type="AudioStreamPlayer" parent="Chica_sounds/Hitting"]
+stream = ExtResource("13_ycryw")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Hitting02" type="AudioStreamPlayer" parent="Chica_sounds/Hitting"]
+stream = ExtResource("14_7id4w")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Hitting03" type="AudioStreamPlayer" parent="Chica_sounds/Hitting"]
+stream = ExtResource("15_tufqp")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="BigCrash" type="AudioStreamPlayer" parent="Chica_sounds"]
+stream = ExtResource("16_lpfcb")
+volume_db = -25.0
+bus = &"Cam 6 Sounds"
+
+[node name="Foxy_sounds" type="Node" parent="."]
+script = ExtResource("17_6xasq")
+
+[node name="Timer" type="Timer" parent="Foxy_sounds"]
+one_shot = true
+
+[node name="Foxy01" type="AudioStreamPlayer" parent="Foxy_sounds"]
+stream = ExtResource("18_7s2au")
+volume_db = -20.0
+bus = &"Cam 6 Sounds"
+
+[node name="Foxy02" type="AudioStreamPlayer" parent="Foxy_sounds"]
+stream = ExtResource("19_68wip")
+volume_db = -20.0
+bus = &"Cam 6 Sounds"
+
+[node name="Foxy03" type="AudioStreamPlayer" parent="Foxy_sounds"]
+stream = ExtResource("20_ycryw")
+volume_db = -20.0
+bus = &"Cam 6 Sounds"
+
+[node name="Foxy04" type="AudioStreamPlayer" parent="Foxy_sounds"]
+stream = ExtResource("21_7id4w")
+volume_db = -20.0
+bus = &"Cam 6 Sounds"
+
+[node name="Foxy05" type="AudioStreamPlayer" parent="Foxy_sounds"]
+stream = ExtResource("22_tufqp")
+volume_db = -20.0
+bus = &"Cam 6 Sounds"
+
+[node name="Safe_sounds" type="Node" parent="."]
+script = ExtResource("23_68wip")
+
+[node name="Timer" type="Timer" parent="Safe_sounds"]
+
+[node name="safe_tick" type="AudioStreamPlayer" parent="Safe_sounds"]
+stream = ExtResource("24_ycryw")
+volume_db = 20.0
+bus = &"Cam 6 Sounds"
+
+[connection signal="timeout" from="Chica_sounds/change" to="Chica_sounds" method="_on_change_timeout"]
+[connection signal="finished" from="Chica_sounds/Searching_1/Searching01" to="Chica_sounds" method="_on_searching_01_finished"]
+[connection signal="finished" from="Chica_sounds/Searching_1/Searching02" to="Chica_sounds" method="_on_searching_02_finished"]
+[connection signal="finished" from="Chica_sounds/Searching_1/Searching03" to="Chica_sounds" method="_on_searching_03_finished"]
+[connection signal="finished" from="Chica_sounds/Searching_1/Searching04" to="Chica_sounds" method="_on_searching_04_finished"]
+[connection signal="finished" from="Chica_sounds/Searching_2/Searching05" to="Chica_sounds" method="_on_searching_05_finished"]
+[connection signal="finished" from="Chica_sounds/Searching_2/Searching06" to="Chica_sounds" method="_on_searching_06_finished"]
+[connection signal="finished" from="Chica_sounds/Searching_2/Searching07" to="Chica_sounds" method="_on_searching_07_finished"]
+[connection signal="finished" from="Chica_sounds/Searching_2/Searching08" to="Chica_sounds" method="_on_searching_08_finished"]
+[connection signal="finished" from="Chica_sounds/Hitting/Hitting01" to="Chica_sounds" method="_on_hitting_01_finished"]
+[connection signal="finished" from="Chica_sounds/Hitting/Hitting02" to="Chica_sounds" method="_on_hitting_02_finished"]
+[connection signal="finished" from="Chica_sounds/Hitting/Hitting03" to="Chica_sounds" method="_on_hitting_03_finished"]
+[connection signal="finished" from="Chica_sounds/BigCrash" to="Chica_sounds" method="_on_big_crash_finished"]
+[connection signal="timeout" from="Foxy_sounds/Timer" to="Foxy_sounds" method="_on_timer_timeout"]
+[connection signal="finished" from="Foxy_sounds/Foxy01" to="Foxy_sounds" method="_on_foxy_01_finished"]
+[connection signal="finished" from="Foxy_sounds/Foxy02" to="Foxy_sounds" method="_on_foxy_02_finished"]
+[connection signal="finished" from="Foxy_sounds/Foxy03" to="Foxy_sounds" method="_on_foxy_03_finished"]
+[connection signal="finished" from="Foxy_sounds/Foxy04" to="Foxy_sounds" method="_on_foxy_04_finished"]
+[connection signal="finished" from="Foxy_sounds/Foxy05" to="Foxy_sounds" method="_on_foxy_05_finished"]
+[connection signal="timeout" from="Safe_sounds/Timer" to="Safe_sounds" method="_on_timer_timeout"]

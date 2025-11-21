@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://cydpwtyfo5jlj"]
+
+[ext_resource type="Script" uid="uid://domv87h8mbo40" path="res://scripts/area_camera_movement.gd" id="1_ceg3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghe2a"]
+size = Vector2(320, 1080)
+
+[node name="Area Camera Movement" type="Node2D"]
+script = ExtResource("1_ceg3y")
+
+[node name="Izquierda_Suave" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Izquierda_Suave"]
+position = Vector2(-448, 0)
+scale = Vector2(0.8, 1)
+shape = SubResource("RectangleShape2D_ghe2a")
+
+[node name="Izquierda_Fuerte" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Izquierda_Fuerte"]
+position = Vector2(-688, 0)
+scale = Vector2(0.7, 1)
+shape = SubResource("RectangleShape2D_ghe2a")
+
+[node name="Izquierda_Fortisimo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Izquierda_Fortisimo"]
+position = Vector2(-880, 0)
+scale = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_ghe2a")
+
+[node name="Derecha_Suave" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Derecha_Suave"]
+position = Vector2(448, 0)
+scale = Vector2(0.8, 1)
+shape = SubResource("RectangleShape2D_ghe2a")
+
+[node name="Derecha_Fuerte" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Derecha_Fuerte"]
+position = Vector2(688, 0)
+scale = Vector2(0.7, 1)
+shape = SubResource("RectangleShape2D_ghe2a")
+
+[node name="Derecha_Fortisimo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Derecha_Fortisimo"]
+position = Vector2(880, 0)
+scale = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_ghe2a")
+
+[node name="Centro" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Centro"]
+scale = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_ghe2a")
+
+[connection signal="mouse_entered" from="Izquierda_Suave" to="." method="_on_izquierda_suave_mouse_entered"]
+[connection signal="mouse_entered" from="Izquierda_Fuerte" to="." method="_on_izquierda_fuerte_mouse_entered"]
+[connection signal="mouse_entered" from="Izquierda_Fortisimo" to="." method="_on_izquierda_fortisimo_mouse_entered"]
+[connection signal="mouse_entered" from="Derecha_Suave" to="." method="_on_derecha_suave_mouse_entered"]
+[connection signal="mouse_entered" from="Derecha_Fuerte" to="." method="_on_derecha_fuerte_mouse_entered"]
+[connection signal="mouse_entered" from="Derecha_Fortisimo" to="." method="_on_derecha_fortisimo_mouse_entered"]
+[connection signal="mouse_entered" from="Centro" to="." method="_on_centro_mouse_entered"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://mxxfro0701lh"]
+
+[ext_resource type="Script" uid="uid://c6u3k6adme7a5" path="res://scripts/detector_girar.gd" id="1_iw5l3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksrhl"]
+size = Vector2(93, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v31rw"]
+size = Vector2(1044, 1080)
+
+[node name="Detector_Girar" type="Node2D"]
+script = ExtResource("1_iw5l3")
+
+[node name="Area2D_Girar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Girar"]
+position = Vector2(-1153.5, 0)
+shape = SubResource("RectangleShape2D_ksrhl")
+
+[node name="Area2D_Pre_Girar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Pre_Girar"]
+position = Vector2(-522, 0)
+shape = SubResource("RectangleShape2D_v31rw")
+
+[connection signal="mouse_entered" from="Area2D_Girar" to="." method="_on_area_2d_girar_mouse_entered"]
+[connection signal="mouse_entered" from="Area2D_Pre_Girar" to="." method="_on_area_2d_pre_girar_mouse_entered"]

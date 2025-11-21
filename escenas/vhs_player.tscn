@@ -1,0 +1,130 @@
+[gd_scene load_steps=23 format=3 uid="uid://br8x1cwdt7tp1"]
+
+[ext_resource type="Script" uid="uid://b3t2dg6m53hs0" path="res://scripts/vhs_player.gd" id="1_wceyb"]
+[ext_resource type="Texture2D" uid="uid://h85t4ty6p5bp" path="res://fnafjuego/Placeholders/VHS player/Body.png" id="1_y6yom"]
+[ext_resource type="Texture2D" uid="uid://54p75co604tr" path="res://fnafjuego/Placeholders/VHS player/Gyro_01.png" id="2_olhdc"]
+[ext_resource type="Script" uid="uid://bfimj5jyucb6v" path="res://scripts/gyro.gd" id="2_sswn1"]
+[ext_resource type="AudioStream" uid="uid://7tdwrap7126b" path="res://Audios/Scarlet Forest.mp3" id="2_vdoh0"]
+[ext_resource type="AudioStream" uid="uid://dxt8egv0qgphs" path="res://fnafjuego/sounds/VHS/Noche_1.wav" id="3_j8py7"]
+[ext_resource type="Texture2D" uid="uid://be2a1v1q2csp" path="res://fnafjuego/Placeholders/VHS player/Gyro_02.png" id="3_sswn1"]
+[ext_resource type="AudioStream" uid="uid://dortihnjyrhpi" path="res://fnafjuego/sounds/VHS/Noche_2.wav" id="4_suuy0"]
+[ext_resource type="Texture2D" uid="uid://d2p5dtr6hkawq" path="res://fnafjuego/Placeholders/VHS player/Gyro_03.png" id="4_wceyb"]
+[ext_resource type="AudioStream" uid="uid://iirlfmmewyub" path="res://fnafjuego/sounds/VHS/Noche_3.wav" id="5_geslb"]
+[ext_resource type="Texture2D" uid="uid://v5esf27mjd34" path="res://fnafjuego/Placeholders/VHS player/Pause_off.png" id="5_vdoh0"]
+[ext_resource type="AudioStream" uid="uid://dyqo1tc3um1k5" path="res://fnafjuego/sounds/VHS/Noche_4.wav" id="6_tfrbq"]
+[ext_resource type="Texture2D" uid="uid://ck1gg1shgvu3g" path="res://fnafjuego/Placeholders/VHS player/Pause_on.png" id="6_vf6cd"]
+[ext_resource type="AudioStream" uid="uid://b805idfm5g528" path="res://fnafjuego/sounds/VHS/Noche_5.wav" id="7_mfmns"]
+[ext_resource type="Texture2D" uid="uid://dwc0t0hlyj8to" path="res://fnafjuego/Placeholders/VHS player/Play_off.png" id="7_srkak"]
+[ext_resource type="Texture2D" uid="uid://bixf1gsm3evij" path="res://fnafjuego/Placeholders/VHS player/Play_on.png" id="8_35koi"]
+[ext_resource type="AudioStream" uid="uid://dp5vy63jmg6k0" path="res://fnafjuego/sounds/VHS/Noche_6.wav" id="8_eopg5"]
+[ext_resource type="Texture2D" uid="uid://bxwiotixyd74g" path="res://fnafjuego/Placeholders/VHS player/Stop_off.png" id="9_l5tmu"]
+[ext_resource type="Texture2D" uid="uid://wwewxjymlajy" path="res://fnafjuego/Placeholders/VHS player/Stop_on.png" id="10_j8py7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vf6cd"]
+size = Vector2(28, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srkak"]
+size = Vector2(28, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35koi"]
+size = Vector2(28, 30)
+
+[node name="VHS_Player" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_wceyb")
+
+[node name="Audios" type="Node" parent="."]
+
+[node name="ScarletForest" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("2_vdoh0")
+volume_db = -10.0
+bus = &"Musica"
+
+[node name="Noche1" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("3_j8py7")
+bus = &"SFX"
+
+[node name="Noche2" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("4_suuy0")
+bus = &"SFX"
+
+[node name="Noche3" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("5_geslb")
+bus = &"SFX"
+
+[node name="Noche4" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("6_tfrbq")
+bus = &"SFX"
+
+[node name="Noche5" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("7_mfmns")
+bus = &"SFX"
+
+[node name="Noche6" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("8_eopg5")
+bus = &"SFX"
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_y6yom")
+
+[node name="Gyro" type="Node2D" parent="."]
+script = ExtResource("2_sswn1")
+
+[node name="Gyro01" type="Sprite2D" parent="Gyro"]
+texture = ExtResource("2_olhdc")
+
+[node name="Gyro02" type="Sprite2D" parent="Gyro"]
+texture = ExtResource("3_sswn1")
+
+[node name="Gyro03" type="Sprite2D" parent="Gyro"]
+texture = ExtResource("4_wceyb")
+
+[node name="Timer" type="Timer" parent="Gyro"]
+wait_time = 0.1
+
+[node name="Play" type="Node2D" parent="."]
+
+[node name="PlayOff" type="Sprite2D" parent="Play"]
+texture = ExtResource("7_srkak")
+
+[node name="PlayOn" type="Sprite2D" parent="Play"]
+texture = ExtResource("8_35koi")
+
+[node name="Play_Area2D" type="Area2D" parent="Play"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Play/Play_Area2D"]
+position = Vector2(3, -18)
+shape = SubResource("RectangleShape2D_vf6cd")
+
+[node name="Pause" type="Node2D" parent="."]
+
+[node name="PauseOff" type="Sprite2D" parent="Pause"]
+texture = ExtResource("5_vdoh0")
+
+[node name="PauseOn" type="Sprite2D" parent="Pause"]
+texture = ExtResource("6_vf6cd")
+
+[node name="Pause_Area2D" type="Area2D" parent="Pause"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pause/Pause_Area2D"]
+position = Vector2(37, -18)
+shape = SubResource("RectangleShape2D_srkak")
+
+[node name="Stop" type="Node2D" parent="."]
+
+[node name="StopOff" type="Sprite2D" parent="Stop"]
+texture = ExtResource("9_l5tmu")
+
+[node name="StopOn" type="Sprite2D" parent="Stop"]
+texture = ExtResource("10_j8py7")
+
+[node name="Stop_Area2D" type="Area2D" parent="Stop"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stop/Stop_Area2D"]
+position = Vector2(71, -18)
+shape = SubResource("RectangleShape2D_35koi")
+
+[connection signal="timeout" from="Gyro/Timer" to="Gyro" method="_on_timer_timeout"]
+[connection signal="input_event" from="Play/Play_Area2D" to="." method="_on_play_area_2d_input_event"]
+[connection signal="input_event" from="Pause/Pause_Area2D" to="." method="_on_pause_area_2d_input_event"]
+[connection signal="input_event" from="Stop/Stop_Area2D" to="." method="_on_stop_area_2d_input_event"]

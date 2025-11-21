@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckov56uah4qup"]
+
+[ext_resource type="Script" uid="uid://cu8m7y0h8yl2f" path="res://scripts/6_am.gd" id="1_5ea3b"]
+[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_jqnvh"]
+[ext_resource type="FontFile" uid="uid://db8nupa3kyc5g" path="res://fnafjuego/I-pixel-u.ttf" id="3_x61da"]
+[ext_resource type="AudioStream" uid="uid://b80xhtlsaa8gs" path="res://fnafjuego/sounds/Hall of Fame.mp3" id="4_x61da"]
+
+[node name="6_AM" type="Node2D"]
+script = ExtResource("1_5ea3b")
+
+[node name="FondoNegro" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_jqnvh")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("3_x61da")
+theme_override_font_sizes/font_size = 500
+text = "   AM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label2" type="Label" parent="Node2D"]
+offset_left = 119.0
+offset_top = 152.0
+offset_right = 2039.0
+offset_bottom = 1405.0
+theme_override_constants/line_spacing = -150
+theme_override_fonts/font = ExtResource("3_x61da")
+theme_override_font_sizes/font_size = 500
+text = "5    
+6    "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FondoNegro3" type="Sprite2D" parent="."]
+position = Vector2(468, 106)
+scale = Vector2(0.371354, 0.387037)
+texture = ExtResource("1_jqnvh")
+
+[node name="FondoNegro4" type="Sprite2D" parent="."]
+position = Vector2(489, 1064)
+scale = Vector2(0.411139, 0.403778)
+texture = ExtResource("1_jqnvh")
+
+[node name="FondoNegro2" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_jqnvh")
+
+[node name="Timer1" type="Timer" parent="."]
+
+[node name="HallOfFame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x61da")
+volume_db = -10.0
+bus = &"Musica"
+
+[connection signal="timeout" from="Timer1" to="." method="_on_timer_1_timeout"]
+[connection signal="finished" from="HallOfFame" to="." method="_on_hall_of_fame_finished"]

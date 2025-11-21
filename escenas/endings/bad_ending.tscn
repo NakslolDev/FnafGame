@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://12favckrjuy1"]
+
+[ext_resource type="Texture2D" uid="uid://dlkj0s21kiqcl" path="res://fnafjuego/Placeholders/end_screen_Bad.png" id="1_81sge"]
+[ext_resource type="Script" uid="uid://sh6risndd8no" path="res://scripts/ending_screens.gd" id="1_hacqy"]
+[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="2_wh7qu"]
+[ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://scripts/auto_transicion.gd" id="4_4kkc4"]
+
+[node name="Bad_ending" type="Node2D"]
+script = ExtResource("1_hacqy")
+ending = "bad"
+
+[node name="EndScreenBad" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_81sge")
+
+[node name="Transicion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_wh7qu")
+script = ExtResource("4_4kkc4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true

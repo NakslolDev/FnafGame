@@ -1,0 +1,342 @@
+[gd_scene load_steps=15 format=3 uid="uid://bybkv3vaq6qlk"]
+
+[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_38h6d"]
+[ext_resource type="Script" uid="uid://eyxr8a44p7bu" path="res://scripts/custom_night_selecter.gd" id="1_ko47r"]
+[ext_resource type="Script" uid="uid://qvfnvujqjjn6" path="res://scripts/ai_custom_night.gd" id="2_5scaq"]
+[ext_resource type="Texture2D" uid="uid://y4jl6yw3ve77" path="res://fnafjuego/Placeholders/Bonnie.png" id="2_yw64g"]
+[ext_resource type="Texture2D" uid="uid://di1cvtkskokga" path="res://fnafjuego/Placeholders/UI_Menu/Seleccion.png" id="3_6qeii"]
+[ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Themes/Opciones.tres" id="4_uwdoj"]
+[ext_resource type="Texture2D" uid="uid://bq3w704qgux6g" path="res://fnafjuego/Placeholders/Chica.png" id="6_dn2t3"]
+[ext_resource type="Texture2D" uid="uid://sqk0eermckne" path="res://fnafjuego/Placeholders/Freddy.png" id="7_ph6q6"]
+[ext_resource type="Texture2D" uid="uid://dw6nx2gsp8jjq" path="res://fnafjuego/Placeholders/foxy.png" id="8_pfp8p"]
+[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://escenas/Mouse_Custom.tscn" id="9_dn2t3"]
+[ext_resource type="Script" uid="uid://blhhdaef1du3h" path="res://scripts/buttons_cn.gd" id="12_m1vm1"]
+[ext_resource type="AudioStream" uid="uid://dg7vr2tm0134y" path="res://fnafjuego/sounds/menu_click.wav" id="13_ko47r"]
+[ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://scripts/label_idiom.gd" id="14_jtx3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn2t3"]
+size = Vector2(44, 50)
+
+[node name="Custom_Night_Selecter" type="Node2D"]
+script = ExtResource("1_ko47r")
+transicion = 1
+
+[node name="FondoNegro" type="Sprite2D" parent="."]
+texture = ExtResource("1_38h6d")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="all_idk" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -700.0
+offset_top = -247.0
+offset_right = 700.0
+offset_bottom = 434.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 225
+alignment = 2
+
+[node name="selection" type="HBoxContainer" parent="all_idk"]
+layout_mode = 2
+theme_override_constants/separation = 240
+alignment = 1
+
+[node name="Bonnie" type="VBoxContainer" parent="all_idk/selection"]
+layout_mode = 2
+theme_override_constants/separation = 300
+alignment = 1
+script = ExtResource("2_5scaq")
+
+[node name="Timer" type="Timer" parent="all_idk/selection/Bonnie"]
+one_shot = true
+
+[node name="Sprite" type="Control" parent="all_idk/selection/Bonnie"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Bonnie_sprite" type="Sprite2D" parent="all_idk/selection/Bonnie/Sprite"]
+texture = ExtResource("2_yw64g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Bonnie"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Menos" type="Control" parent="all_idk/selection/Bonnie/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos"]
+scale = Vector2(-1, 1.35905)
+texture = ExtResource("3_6qeii")
+
+[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos/menos Area2D"]
+shape = SubResource("RectangleShape2D_dn2t3")
+
+[node name="Nivel_AI" type="Label" parent="all_idk/selection/Bonnie/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_uwdoj")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="Mas" type="Control" parent="all_idk/selection/Bonnie/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas"]
+scale = Vector2(1, 1.37963)
+texture = ExtResource("3_6qeii")
+
+[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas/mas Area2D"]
+shape = SubResource("RectangleShape2D_dn2t3")
+
+[node name="Chica" type="VBoxContainer" parent="all_idk/selection"]
+layout_mode = 2
+theme_override_constants/separation = 300
+alignment = 1
+script = ExtResource("2_5scaq")
+who = 1
+
+[node name="Timer" type="Timer" parent="all_idk/selection/Chica"]
+one_shot = true
+
+[node name="Sprite" type="Control" parent="all_idk/selection/Chica"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Chica_sprite" type="Sprite2D" parent="all_idk/selection/Chica/Sprite"]
+texture = ExtResource("6_dn2t3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Chica"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Menos" type="Control" parent="all_idk/selection/Chica/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Chica/HBoxContainer/Menos"]
+scale = Vector2(-1, 1.35905)
+texture = ExtResource("3_6qeii")
+
+[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Chica/HBoxContainer/Menos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Chica/HBoxContainer/Menos/menos Area2D"]
+shape = SubResource("RectangleShape2D_dn2t3")
+
+[node name="Nivel_AI" type="Label" parent="all_idk/selection/Chica/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme = ExtResource("4_uwdoj")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="Mas" type="Control" parent="all_idk/selection/Chica/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Chica/HBoxContainer/Mas"]
+scale = Vector2(1, 1.37963)
+texture = ExtResource("3_6qeii")
+
+[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Chica/HBoxContainer/Mas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Chica/HBoxContainer/Mas/mas Area2D"]
+shape = SubResource("RectangleShape2D_dn2t3")
+
+[node name="Freddy" type="VBoxContainer" parent="all_idk/selection"]
+layout_mode = 2
+theme_override_constants/separation = 300
+alignment = 1
+script = ExtResource("2_5scaq")
+who = 2
+
+[node name="Timer" type="Timer" parent="all_idk/selection/Freddy"]
+one_shot = true
+
+[node name="Sprite" type="Control" parent="all_idk/selection/Freddy"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Freddy_sprite" type="Sprite2D" parent="all_idk/selection/Freddy/Sprite"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_ph6q6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Freddy"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Menos" type="Control" parent="all_idk/selection/Freddy/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos"]
+scale = Vector2(-1, 1.35905)
+texture = ExtResource("3_6qeii")
+
+[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos/menos Area2D"]
+shape = SubResource("RectangleShape2D_dn2t3")
+
+[node name="Nivel_AI" type="Label" parent="all_idk/selection/Freddy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme = ExtResource("4_uwdoj")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="Mas" type="Control" parent="all_idk/selection/Freddy/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas"]
+scale = Vector2(1, 1.37963)
+texture = ExtResource("3_6qeii")
+
+[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas/mas Area2D"]
+shape = SubResource("RectangleShape2D_dn2t3")
+
+[node name="Foxy" type="VBoxContainer" parent="all_idk/selection"]
+layout_mode = 2
+theme_override_constants/separation = 300
+alignment = 1
+script = ExtResource("2_5scaq")
+who = 3
+
+[node name="Timer" type="Timer" parent="all_idk/selection/Foxy"]
+one_shot = true
+
+[node name="Sprite" type="Control" parent="all_idk/selection/Foxy"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Foxy_sprite" type="Sprite2D" parent="all_idk/selection/Foxy/Sprite"]
+scale = Vector2(1.575, 1.575)
+texture = ExtResource("8_pfp8p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Foxy"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Menos" type="Control" parent="all_idk/selection/Foxy/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos"]
+scale = Vector2(-1, 1.35905)
+texture = ExtResource("3_6qeii")
+
+[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos"]
+
+[node name="Mas" type="Control" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 170.0
+offset_right = 170.0
+size_flags_vertical = 4
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas"]
+scale = Vector2(1, 1.37963)
+texture = ExtResource("3_6qeii")
+
+[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas/mas Area2D"]
+shape = SubResource("RectangleShape2D_dn2t3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D"]
+shape = SubResource("RectangleShape2D_dn2t3")
+
+[node name="Nivel_AI" type="Label" parent="all_idk/selection/Foxy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme = ExtResource("4_uwdoj")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="Buttons_CN" type="HBoxContainer" parent="all_idk"]
+layout_mode = 2
+theme_override_constants/separation = 170
+alignment = 1
+script = ExtResource("12_m1vm1")
+
+[node name="Back" type="HBoxContainer" parent="all_idk/Buttons_CN"]
+layout_mode = 2
+
+[node name="Back_label" type="Label" parent="all_idk/Buttons_CN/Back"]
+layout_mode = 2
+theme = ExtResource("4_uwdoj")
+theme_override_font_sizes/font_size = 60
+text = "Back"
+script = ExtResource("14_jtx3x")
+id = "Back_"
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/Buttons_CN/Back"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("3_6qeii")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN/Back"]
+stream = ExtResource("13_ko47r")
+volume_db = 1.0
+
+[node name="Ready" type="HBoxContainer" parent="all_idk/Buttons_CN"]
+layout_mode = 2
+
+[node name="Ready_label" type="Label" parent="all_idk/Buttons_CN/Ready"]
+layout_mode = 2
+theme = ExtResource("4_uwdoj")
+theme_override_font_sizes/font_size = 60
+text = "Ready"
+script = ExtResource("14_jtx3x")
+id = "Ready_"
+
+[node name="Seleccion" type="Sprite2D" parent="all_idk/Buttons_CN/Ready"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("3_6qeii")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN/Ready"]
+stream = ExtResource("13_ko47r")
+volume_db = 1.0
+
+[node name="Mouse_Custom" parent="." instance=ExtResource("9_dn2t3")]
+
+[node name="Transicion" type="Sprite2D" parent="."]
+texture = ExtResource("1_38h6d")
+
+[connection signal="timeout" from="all_idk/selection/Bonnie/Timer" to="all_idk/selection/Bonnie" method="_on_timer_timeout"]
+[connection signal="input_event" from="all_idk/selection/Bonnie/HBoxContainer/Menos/menos Area2D" to="all_idk/selection/Bonnie" method="_on_menos_area_2d_input_event"]
+[connection signal="input_event" from="all_idk/selection/Bonnie/HBoxContainer/Mas/mas Area2D" to="all_idk/selection/Bonnie" method="_on_mas_area_2d_input_event"]
+[connection signal="timeout" from="all_idk/selection/Chica/Timer" to="all_idk/selection/Chica" method="_on_timer_timeout"]
+[connection signal="input_event" from="all_idk/selection/Chica/HBoxContainer/Menos/menos Area2D" to="all_idk/selection/Chica" method="_on_menos_area_2d_input_event"]
+[connection signal="input_event" from="all_idk/selection/Chica/HBoxContainer/Mas/mas Area2D" to="all_idk/selection/Chica" method="_on_mas_area_2d_input_event"]
+[connection signal="timeout" from="all_idk/selection/Freddy/Timer" to="all_idk/selection/Freddy" method="_on_timer_timeout"]
+[connection signal="input_event" from="all_idk/selection/Freddy/HBoxContainer/Menos/menos Area2D" to="all_idk/selection/Freddy" method="_on_menos_area_2d_input_event"]
+[connection signal="input_event" from="all_idk/selection/Freddy/HBoxContainer/Mas/mas Area2D" to="all_idk/selection/Freddy" method="_on_mas_area_2d_input_event"]
+[connection signal="timeout" from="all_idk/selection/Foxy/Timer" to="all_idk/selection/Foxy" method="_on_timer_timeout"]
+[connection signal="input_event" from="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D" to="all_idk/selection/Foxy" method="_on_menos_area_2d_input_event"]
+[connection signal="input_event" from="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas/mas Area2D" to="all_idk/selection/Foxy" method="_on_mas_area_2d_input_event"]
+[connection signal="mouse_entered" from="all_idk/Buttons_CN/Back" to="all_idk/Buttons_CN" method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="all_idk/Buttons_CN/Back" to="all_idk/Buttons_CN" method="_on_back_mouse_exited"]
+[connection signal="mouse_entered" from="all_idk/Buttons_CN/Ready" to="all_idk/Buttons_CN" method="_on_ready_mouse_entered"]
+[connection signal="mouse_exited" from="all_idk/Buttons_CN/Ready" to="all_idk/Buttons_CN" method="_on_ready_mouse_exited"]

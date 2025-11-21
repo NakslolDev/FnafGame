@@ -1,0 +1,47 @@
+[gd_scene load_steps=12 format=3 uid="uid://dufmutqorrh6m"]
+
+[ext_resource type="Script" uid="uid://bvep6yri8isgc" path="res://scripts/mouse_custom.gd" id="1_pjkeq"]
+[ext_resource type="Texture2D" uid="uid://cavk2ppukx8iw" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom.png" id="2_1ulut"]
+[ext_resource type="Texture2D" uid="uid://d2f2h75m8ujg8" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_2.png" id="2_pjkeq"]
+[ext_resource type="Texture2D" uid="uid://bclxb1vhmx1jd" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_3.png" id="4_e034s"]
+[ext_resource type="Texture2D" uid="uid://4bovd18hravs" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_4.png" id="5_gxaxc"]
+[ext_resource type="Texture2D" uid="uid://bx2tk1gxylui" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_5.png" id="6_06ijc"]
+[ext_resource type="Texture2D" uid="uid://dv6awshp4x1bu" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_cam.png" id="7_4gp6r"]
+[ext_resource type="Texture2D" uid="uid://cod5vfpsl5lhh" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_cam_2.png" id="8_64ql1"]
+[ext_resource type="Texture2D" uid="uid://cif67cr1c4ett" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_cam_3.png" id="9_2fdbv"]
+[ext_resource type="Texture2D" uid="uid://dg6rqeqpxtws8" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_cam_4.png" id="10_blhhq"]
+[ext_resource type="Texture2D" uid="uid://b7ei7lparamc2" path="res://fnafjuego/Placeholders/Mouse/Puntero_Custom_cam_5.png" id="11_3auat"]
+
+[node name="Mouse_Custom" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_pjkeq")
+
+[node name="PunteroCustom" type="Sprite2D" parent="."]
+texture = ExtResource("2_1ulut")
+
+[node name="PunteroCustom2" type="Sprite2D" parent="."]
+texture = ExtResource("2_pjkeq")
+
+[node name="PunteroCustom3" type="Sprite2D" parent="."]
+texture = ExtResource("4_e034s")
+
+[node name="PunteroCustom4" type="Sprite2D" parent="."]
+texture = ExtResource("5_gxaxc")
+
+[node name="PunteroCustom5" type="Sprite2D" parent="."]
+texture = ExtResource("6_06ijc")
+
+[node name="PunteroCustomCam" type="Sprite2D" parent="."]
+texture = ExtResource("7_4gp6r")
+
+[node name="PunteroCustomCam2" type="Sprite2D" parent="."]
+texture = ExtResource("8_64ql1")
+
+[node name="PunteroCustomCam3" type="Sprite2D" parent="."]
+texture = ExtResource("9_2fdbv")
+
+[node name="PunteroCustomCam4" type="Sprite2D" parent="."]
+texture = ExtResource("10_blhhq")
+
+[node name="PunteroCustomCam5" type="Sprite2D" parent="."]
+texture = ExtResource("11_3auat")

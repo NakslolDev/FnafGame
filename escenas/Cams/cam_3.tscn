@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://e44s7ccrwy40"]
+
+[ext_resource type="Script" uid="uid://cjcii5a55wow7" path="res://scripts/cam_3.gd" id="1_duqqs"]
+[ext_resource type="Texture2D" uid="uid://g1gll0ajgra5" path="res://fnafjuego/Placeholders/Camaras/Cam3/Cam.png" id="1_sr4gn"]
+[ext_resource type="Texture2D" uid="uid://c2jobj0ujopgt" path="res://fnafjuego/Placeholders/Camaras/Cam3/Chica_3.1.png" id="2_duqqs"]
+[ext_resource type="Texture2D" uid="uid://dv5d15f86s1sc" path="res://fnafjuego/Placeholders/Camaras/Cam3/Foxy_3.1.png" id="3_2ekhn"]
+[ext_resource type="Texture2D" uid="uid://2bdxakhs6fo" path="res://fnafjuego/Placeholders/Camaras/Cam3/Foxy_3.2.png" id="4_q8tak"]
+[ext_resource type="Texture2D" uid="uid://wxuosiuke68n" path="res://fnafjuego/Placeholders/Camaras/Cam3/Foxy_3.3.png" id="5_m2ffq"]
+[ext_resource type="Texture2D" uid="uid://cfev25tvc1741" path="res://fnafjuego/Placeholders/Camaras/Cam3/Freddy_3.1.png" id="6_2wpey"]
+[ext_resource type="Texture2D" uid="uid://bx4vel1q01ydc" path="res://fnafjuego/Placeholders/Camaras/Cam3/Freddy_3.2.png" id="7_lu52x"]
+
+[node name="Cam_3" type="Node2D"]
+script = ExtResource("1_duqqs")
+
+[node name="Cam" type="Sprite2D" parent="."]
+texture = ExtResource("1_sr4gn")
+
+[node name="Freddy3_1" type="Sprite2D" parent="."]
+position = Vector2(-246, -69)
+texture = ExtResource("6_2wpey")
+
+[node name="Freddy3_2" type="Sprite2D" parent="."]
+texture = ExtResource("7_lu52x")
+
+[node name="Chica3_1" type="Sprite2D" parent="."]
+texture = ExtResource("2_duqqs")
+
+[node name="Foxy3_1" type="Sprite2D" parent="."]
+texture = ExtResource("3_2ekhn")
+
+[node name="Foxy3_2" type="Sprite2D" parent="."]
+texture = ExtResource("4_q8tak")
+
+[node name="Foxy3_3" type="Sprite2D" parent="."]
+texture = ExtResource("5_m2ffq")

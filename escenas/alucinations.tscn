@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3c06jfj5tb32"]
+
+[ext_resource type="Script" uid="uid://pg5qsy5watg1" path="res://scripts/alucinations.gd" id="1_33s1n"]
+[ext_resource type="Texture2D" uid="uid://y4jl6yw3ve77" path="res://fnafjuego/Placeholders/Bonnie.png" id="2_38qcb"]
+[ext_resource type="Texture2D" uid="uid://bq3w704qgux6g" path="res://fnafjuego/Placeholders/Chica.png" id="3_1ij8i"]
+[ext_resource type="Texture2D" uid="uid://dw6nx2gsp8jjq" path="res://fnafjuego/Placeholders/foxy.png" id="4_i65s8"]
+[ext_resource type="Texture2D" uid="uid://sqk0eermckne" path="res://fnafjuego/Placeholders/Freddy.png" id="5_wipdr"]
+
+[node name="Alucinations" type="Node2D"]
+script = ExtResource("1_33s1n")
+
+[node name="Visions" type="Node2D" parent="."]
+position = Vector2(-200, -200)
+
+[node name="Bonnie" type="Sprite2D" parent="Visions"]
+position = Vector2(890, 692)
+scale = Vector2(3.99444, 2.8011)
+texture = ExtResource("2_38qcb")
+
+[node name="Chica" type="Sprite2D" parent="Visions"]
+position = Vector2(944, 782)
+scale = Vector2(3.55278, 3.05303)
+texture = ExtResource("3_1ij8i")
+
+[node name="Foxy" type="Sprite2D" parent="Visions"]
+position = Vector2(922, 660)
+scale = Vector2(5.40321, 5.13275)
+texture = ExtResource("4_i65s8")
+
+[node name="Freddy" type="Sprite2D" parent="Visions"]
+position = Vector2(931, 653)
+scale = Vector2(1.34215, 0.692687)
+texture = ExtResource("5_wipdr")
+
+[node name="Alucination_change" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Alucination_change" to="." method="_on_alucination_change_timeout"]

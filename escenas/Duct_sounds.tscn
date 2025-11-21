@@ -1,0 +1,96 @@
+[gd_scene load_steps=19 format=3 uid="uid://rsyl1634xn7a"]
+
+[ext_resource type="Script" uid="uid://cduq7owpa8xgc" path="res://scripts/ventilation_sounds.gd" id="1_o6sty"]
+[ext_resource type="AudioStream" uid="uid://dj0povg0lk0x7" path="res://fnafjuego/sounds/ventilation sounds/ventilation low 1.mp3" id="2_3anxv"]
+[ext_resource type="AudioStream" uid="uid://b810qssdiothu" path="res://fnafjuego/sounds/ventilation sounds/ventilation low 2.mp3" id="3_jyuv7"]
+[ext_resource type="AudioStream" uid="uid://b0hyqenmyb2w8" path="res://fnafjuego/sounds/ventilation sounds/ventilation low 3.mp3" id="4_sl6oi"]
+[ext_resource type="AudioStream" uid="uid://dpwdcgsw218yc" path="res://fnafjuego/sounds/ventilation sounds/ventilation low 4.mp3" id="5_v0vep"]
+[ext_resource type="AudioStream" uid="uid://c8fnepchiwcs7" path="res://fnafjuego/sounds/ventilation sounds/ventilation low 5.mp3" id="6_ahj82"]
+[ext_resource type="AudioStream" uid="uid://c5ukhclpjpl56" path="res://fnafjuego/sounds/ventilation sounds/ventilation low 6.mp3" id="7_f86rt"]
+[ext_resource type="AudioStream" uid="uid://j4b655rvtgw0" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal.ogg" id="8_3anxv"]
+[ext_resource type="AudioStream" uid="uid://bskefd83uvx33" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-1.ogg" id="9_gqfb2"]
+[ext_resource type="AudioStream" uid="uid://b1vkws6jkxruv" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-2.ogg" id="10_euy7r"]
+[ext_resource type="AudioStream" uid="uid://bcsfaxpoymmci" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-3.ogg" id="11_qn3mh"]
+[ext_resource type="AudioStream" uid="uid://ctyh1rmdhdyfd" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-4.ogg" id="12_2gev0"]
+[ext_resource type="AudioStream" uid="uid://bxl7xf1rprovx" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-5.ogg" id="13_k235o"]
+[ext_resource type="AudioStream" uid="uid://drt75irlpigaf" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-7.ogg" id="15_cd6q1"]
+[ext_resource type="AudioStream" uid="uid://dex3xxmi6ghsb" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-8.ogg" id="16_5qh0x"]
+[ext_resource type="AudioStream" uid="uid://d0md4jlxbaynr" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-9.ogg" id="17_e6i6v"]
+[ext_resource type="AudioStream" uid="uid://cl3q6s8vwth0j" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-10.ogg" id="18_m33bd"]
+[ext_resource type="AudioStream" uid="uid://bk7sjof51ibbj" path="res://fnafjuego/sounds/Foxy sounds/running-on-metal-segmented-11.ogg" id="19_g1xql"]
+
+[node name="Duct_sounds" type="Node"]
+script = ExtResource("1_o6sty")
+
+[node name="VentilationLow1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3anxv")
+bus = &"SFX"
+
+[node name="VentilationLow2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jyuv7")
+bus = &"SFX"
+
+[node name="VentilationLow3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sl6oi")
+bus = &"SFX"
+
+[node name="VentilationLow4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_v0vep")
+bus = &"SFX"
+
+[node name="VentilationLow5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ahj82")
+bus = &"SFX"
+
+[node name="VentilationLow6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_f86rt")
+bus = &"SFX"
+
+[node name="Crawling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3anxv")
+volume_db = -10.0
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_gqfb2")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_euy7r")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_qn3mh")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_2gev0")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_k235o")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_g1xql")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_cd6q1")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_5qh0x")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg9" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_e6i6v")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg10" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_m33bd")
+bus = &"Ducts (reverb)"
+
+[node name="CrawlingSeg11" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_g1xql")
+bus = &"Ducts (reverb)"

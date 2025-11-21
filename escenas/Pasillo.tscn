@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bkhep68tnnnt4"]
+
+[ext_resource type="Script" uid="uid://cap8j6bhy4log" path="res://scripts/pasillo.gd" id="1_2ym3s"]
+[ext_resource type="Texture2D" uid="uid://brlbgygr2u4do" path="res://fnafjuego/Placeholders/Oficina_Fondo_Iluminado.png" id="1_yjku7"]
+[ext_resource type="Texture2D" uid="uid://gnymhtr4hvi0" path="res://fnafjuego/Placeholders/Oficina_Fondo_Oscuro.png" id="2_a1yt4"]
+[ext_resource type="Texture2D" uid="uid://y4jl6yw3ve77" path="res://fnafjuego/Placeholders/Bonnie.png" id="3_1db6b"]
+[ext_resource type="Shader" uid="uid://cy37sjn6e8y4u" path="res://shaders/Pasillo.gdshader" id="4_2ym3s"]
+[ext_resource type="Texture2D" uid="uid://bq3w704qgux6g" path="res://fnafjuego/Placeholders/Chica.png" id="4_4b6uj"]
+[ext_resource type="Script" uid="uid://bh466ev0joavu" path="res://scripts/oficina_fondo_oscuro.gd" id="4_rgj4y"]
+[ext_resource type="Texture2D" uid="uid://dw6nx2gsp8jjq" path="res://fnafjuego/Placeholders/foxy.png" id="5_0deya"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ym3s"]
+shader = ExtResource("4_2ym3s")
+shader_parameter/mouse_pos = Vector2(0, 0)
+shader_parameter/radio = 0.0
+shader_parameter/viewport_size = Vector2(0, 0)
+shader_parameter/fade_range = 380.0
+shader_parameter/shader_enabled = 0.0
+shader_parameter/transparencia = 0.0
+shader_parameter/nivel_transparencia = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1db6b"]
+size = Vector2(1501, 2402)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b6uj"]
+size = Vector2(424, 1231)
+
+[node name="Pasillo" type="Node2D"]
+script = ExtResource("1_2ym3s")
+
+[node name="OficinaFondoIluminado" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_yjku7")
+
+[node name="Animatronicos" type="Node2D" parent="."]
+
+[node name="Bonnie" type="Sprite2D" parent="Animatronicos"]
+position = Vector2(-972, 132)
+scale = Vector2(1.79722, 1.71533)
+texture = ExtResource("3_1db6b")
+
+[node name="Chica" type="Sprite2D" parent="Animatronicos"]
+position = Vector2(-931, 169)
+scale = Vector2(1.97778, 2.2399)
+texture = ExtResource("4_4b6uj")
+
+[node name="Foxy" type="Sprite2D" parent="Animatronicos"]
+position = Vector2(-913, 331)
+scale = Vector2(2.02308, 1.74806)
+texture = ExtResource("5_0deya")
+
+[node name="OficinaFondoOscuro_Alpha" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_a1yt4")
+
+[node name="OficinaFondoOscuro" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2ym3s")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_a1yt4")
+script = ExtResource("4_rgj4y")
+
+[node name="Soft_focus" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soft_focus"]
+position = Vector2(-844.5, 17)
+shape = SubResource("RectangleShape2D_1db6b")
+
+[node name="Hard_focus" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus"]
+position = Vector2(-915, 543.5)
+shape = SubResource("RectangleShape2D_4b6uj")
+
+[connection signal="mouse_entered" from="Soft_focus" to="." method="_on_soft_focus_mouse_entered"]
+[connection signal="mouse_exited" from="Soft_focus" to="." method="_on_soft_focus_mouse_exited"]
+[connection signal="mouse_entered" from="Hard_focus" to="." method="_on_hard_focus_mouse_entered"]
+[connection signal="mouse_exited" from="Hard_focus" to="." method="_on_hard_focus_mouse_exited"]

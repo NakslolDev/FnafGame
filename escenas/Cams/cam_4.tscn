@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://cditugvb64tye"]
+
+[ext_resource type="Script" uid="uid://begqqlud8o7ho" path="res://scripts/cam_4.gd" id="1_yw0hh"]
+[ext_resource type="Texture2D" uid="uid://j65qbulhs66r" path="res://fnafjuego/Placeholders/Camaras/Cam4/Cam.png" id="2_3mrw8"]
+[ext_resource type="Texture2D" uid="uid://1vufwdljtmrw" path="res://fnafjuego/Placeholders/Camaras/Cam4/Freddy_4.png" id="3_vw0r3"]
+[ext_resource type="Texture2D" uid="uid://c8qj3himirb0e" path="res://fnafjuego/Placeholders/Camaras/Cam4/Foxy_4.png" id="4_gh3b2"]
+[ext_resource type="Texture2D" uid="uid://d03kx5k4tq47i" path="res://fnafjuego/Placeholders/Camaras/Cam4/Chica_4.png" id="5_57xvf"]
+
+[node name="Cam_4" type="Node2D"]
+script = ExtResource("1_yw0hh")
+
+[node name="Cam" type="Sprite2D" parent="."]
+texture = ExtResource("2_3mrw8")
+
+[node name="Freddy4" type="Sprite2D" parent="."]
+texture = ExtResource("3_vw0r3")
+
+[node name="Foxy4" type="Sprite2D" parent="."]
+texture = ExtResource("4_gh3b2")
+
+[node name="Chica4" type="Sprite2D" parent="."]
+texture = ExtResource("5_57xvf")

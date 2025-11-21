@@ -1,0 +1,548 @@
+[gd_scene load_steps=66 format=3 uid="uid://d2hwtk3f7idft"]
+
+[ext_resource type="Script" uid="uid://b27147ui1yhfq" path="res://scripts/camaras.gd" id="1_br1gn"]
+[ext_resource type="PackedScene" uid="uid://d15nqwuup3sgy" path="res://escenas/Cams/cam_1.tscn" id="2_2ccee"]
+[ext_resource type="Texture2D" uid="uid://uev7vdkm28n" path="res://fnafjuego/Placeholders/Camaras/UI/Minimapa Botones.png" id="2_af0gv"]
+[ext_resource type="Script" uid="uid://dv1bpnkkcodf8" path="res://scripts/cam.gd" id="2_upipm"]
+[ext_resource type="Shader" uid="uid://dtawjw1d75oyi" path="res://shaders/Persperctive_fnaf.gdshader" id="2_xkbhl"]
+[ext_resource type="Script" uid="uid://cm3tocsp0h603" path="res://scripts/minimapa_botones.gd" id="3_3rjyj"]
+[ext_resource type="Texture2D" uid="uid://miuq4rmbesd7" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/1.png" id="3_6sdql"]
+[ext_resource type="PackedScene" uid="uid://cda5kiiskwlbq" path="res://escenas/Cams/cam_2.tscn" id="4_46w8l"]
+[ext_resource type="Texture2D" uid="uid://b8kksg8pgrfbd" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/2.png" id="4_i8kd1"]
+[ext_resource type="PackedScene" uid="uid://e44s7ccrwy40" path="res://escenas/Cams/cam_3.tscn" id="5_ntgi6"]
+[ext_resource type="Texture2D" uid="uid://cm885rr8vb3u1" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/3.png" id="5_ukvct"]
+[ext_resource type="PackedScene" uid="uid://cditugvb64tye" path="res://escenas/Cams/cam_4.tscn" id="6_2wxea"]
+[ext_resource type="Texture2D" uid="uid://r1j1n4sk26ap" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/4.png" id="6_n2msv"]
+[ext_resource type="PackedScene" uid="uid://e8r6fg31exj6" path="res://escenas/Cams/cam_5.tscn" id="7_3d63n"]
+[ext_resource type="Texture2D" uid="uid://g7mncix7otpf" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/5.png" id="7_4imir"]
+[ext_resource type="Texture2D" uid="uid://nl4w2cy3jyu6" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/6.png" id="8_15j7b"]
+[ext_resource type="PackedScene" uid="uid://cje8cwptwv3lc" path="res://escenas/Cams/cam_6.tscn" id="8_usepc"]
+[ext_resource type="Texture2D" uid="uid://dhu2lp23e5mg5" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/7.png" id="9_3rjyj"]
+[ext_resource type="PackedScene" uid="uid://b2w3hd5l84g7e" path="res://escenas/Cams/cam_7.tscn" id="9_vcu2v"]
+[ext_resource type="Texture2D" uid="uid://ceivimlbelwkw" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/8.png" id="10_2ccee"]
+[ext_resource type="PackedScene" uid="uid://dw5i2anclvxax" path="res://escenas/Cams/cam_8.tscn" id="10_5lr1q"]
+[ext_resource type="Texture2D" uid="uid://d1d1bgpbraa4k" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/9.png" id="11_upipm"]
+[ext_resource type="PackedScene" uid="uid://d2wcktqdpngnk" path="res://escenas/Cams/cam_9.tscn" id="11_xsv31"]
+[ext_resource type="PackedScene" uid="uid://46o0eayqnrk3" path="res://escenas/Cams/cam_10a.tscn" id="12_0mojl"]
+[ext_resource type="Texture2D" uid="uid://d2nm786budn3k" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/10A.png" id="12_46w8l"]
+[ext_resource type="PackedScene" uid="uid://c534eojaodxik" path="res://escenas/Cams/cam_10b.tscn" id="13_b7x0u"]
+[ext_resource type="Texture2D" uid="uid://dd2n0a1jwcmhe" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/10B.png" id="13_ntgi6"]
+[ext_resource type="Texture2D" uid="uid://dgwslp86saoq0" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/11A.png" id="14_2wxea"]
+[ext_resource type="PackedScene" uid="uid://bphrhnj1ljo77" path="res://escenas/Cams/cam_11a.tscn" id="14_i3dc4"]
+[ext_resource type="Texture2D" uid="uid://dx1b86pl4e4d0" path="res://fnafjuego/Placeholders/Camaras/UI/Button Highlight/11B.png" id="15_3d63n"]
+[ext_resource type="PackedScene" uid="uid://citry658ygo8e" path="res://escenas/Cams/cam_11b.tscn" id="15_jjbyy"]
+[ext_resource type="Texture2D" uid="uid://15wx353w2giq" path="res://fnafjuego/Placeholders/Camaras/Cam6/Cam.png" id="16_3onkb"]
+[ext_resource type="Texture2D" uid="uid://bmged7k0u2keg" path="res://fnafjuego/Placeholders/Linterna.png" id="16_tmxn1"]
+[ext_resource type="Texture2D" uid="uid://dxr3lis8dumct" path="res://fnafjuego/Placeholders/Camaras/UI/Minimapa Ductos.png" id="16_usepc"]
+[ext_resource type="FontFile" uid="uid://db8nupa3kyc5g" path="res://fnafjuego/I-pixel-u.ttf" id="17_rgdy6"]
+[ext_resource type="Texture2D" uid="uid://x00bmpxosh4j" path="res://fnafjuego/Placeholders/Camaras/UI/Heater/Duct_Heater_1.png" id="17_vcu2v"]
+[ext_resource type="Texture2D" uid="uid://dn7s42vfuyrjj" path="res://fnafjuego/Placeholders/Camaras/UI/Heater/Duct_Heater_2.png" id="18_5lr1q"]
+[ext_resource type="PackedScene" uid="uid://dr75h62c7rj4b" path="res://escenas/ruido.tscn" id="18_rgdy6"]
+[ext_resource type="AudioStream" uid="uid://fe57sf12hnvk" path="res://fnafjuego/sounds/old-radio-noise.ogg" id="19_8i5k1"]
+[ext_resource type="Texture2D" uid="uid://clrtn72n5idkx" path="res://fnafjuego/Placeholders/Camaras/UI/Heater/Duct_Heater_3.png" id="19_xsv31"]
+[ext_resource type="Texture2D" uid="uid://dtxywvmvm0rr5" path="res://fnafjuego/Placeholders/Camaras/UI/Heater/Duct_Heater_4.png" id="20_0mojl"]
+[ext_resource type="Texture2D" uid="uid://ce4yfi54ra3v" path="res://fnafjuego/Placeholders/Camaras/UI/Heater/Duct_Heater_5.png" id="21_b7x0u"]
+[ext_resource type="Texture2D" uid="uid://wboeosaxwun3" path="res://fnafjuego/Placeholders/Camaras/UI/Heater/Duct_Heater_6.png" id="22_i3dc4"]
+[ext_resource type="Texture2D" uid="uid://46bylhu86kg0" path="res://fnafjuego/Placeholders/Camaras/UI/Heater/Duct_Heater_7.png" id="23_jjbyy"]
+[ext_resource type="Texture2D" uid="uid://btbd0hfwfcuyr" path="res://fnafjuego/Placeholders/Camaras/UI/Heater/Duct_Heater_8.png" id="24_yh74e"]
+[ext_resource type="Texture2D" uid="uid://cvh1a5xy8xof7" path="res://fnafjuego/Placeholders/Camaras/UI/Cam_Selecter.png" id="25_4imir"]
+[ext_resource type="Script" uid="uid://vbujo2ogwuhp" path="res://scripts/selecter.gd" id="25_15j7b"]
+[ext_resource type="Texture2D" uid="uid://cauqss4s2w3lh" path="res://fnafjuego/Placeholders/Camaras/UI/Cam_Selecter_HL.png" id="26_15j7b"]
+[ext_resource type="Texture2D" uid="uid://bvbuftkyhm4fh" path="res://fnafjuego/Placeholders/Camaras/UI/Duct_Selecter.png" id="27_3rjyj"]
+[ext_resource type="Texture2D" uid="uid://k6n1xataelw2" path="res://fnafjuego/Placeholders/Camaras/UI/Duct_Selecter_HL.png" id="28_2ccee"]
+[ext_resource type="Texture2D" uid="uid://bn2wiyk721vj2" path="res://fnafjuego/Placeholders/Camaras/UI/borderlines/Border.png" id="45_0vgwf"]
+[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://escenas/Mouse_Custom.tscn" id="45_yh74e"]
+[ext_resource type="Script" uid="uid://2g42yp6xnc62" path="res://scripts/border.gd" id="46_3onkb"]
+[ext_resource type="Texture2D" uid="uid://qgs48dak58gx" path="res://fnafjuego/Placeholders/Camaras/UI/borderlines/Dot.png" id="46_aeiuf"]
+[ext_resource type="Texture2D" uid="uid://0s18dawvkb8s" path="res://fnafjuego/Placeholders/Camaras/UI/borderlines/Batery Base.png" id="47_3onkb"]
+[ext_resource type="Texture2D" uid="uid://ctqxj0t0v2fri" path="res://fnafjuego/Placeholders/Camaras/UI/borderlines/Batery 1.png" id="48_7y4jm"]
+[ext_resource type="Texture2D" uid="uid://d068jowwbqygn" path="res://fnafjuego/Placeholders/Camaras/UI/borderlines/Batery 2.png" id="49_rgdy6"]
+[ext_resource type="Texture2D" uid="uid://cf02qcdfmepma" path="res://fnafjuego/Placeholders/Camaras/UI/borderlines/Batery 3.png" id="50_8i5k1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vp63"]
+size = Vector2(697, 591)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ccee"]
+size = Vector2(80, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmxn1"]
+size = Vector2(141, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev252"]
+size = Vector2(131, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbjw8"]
+size = Vector2(201, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15j7b"]
+size = Vector2(95, 65)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkbhl"]
+shader = ExtResource("2_xkbhl")
+shader_parameter/zoom = 0.03
+shader_parameter/sharpness = 2.0
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/wrapping_mode = 0
+
+[node name="Camaras" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_br1gn")
+
+[node name="Si_Shader" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Cam" type="Node2D" parent="Si_Shader"]
+position = Vector2(960, 540)
+script = ExtResource("2_upipm")
+velocidad = 200.0
+
+[node name="Cam_1" parent="Si_Shader/Cam" instance=ExtResource("2_2ccee")]
+
+[node name="Cam_2" parent="Si_Shader/Cam" instance=ExtResource("4_46w8l")]
+
+[node name="Cam_3" parent="Si_Shader/Cam" instance=ExtResource("5_ntgi6")]
+
+[node name="Cam_4" parent="Si_Shader/Cam" instance=ExtResource("6_2wxea")]
+
+[node name="Cam_5" parent="Si_Shader/Cam" instance=ExtResource("7_3d63n")]
+
+[node name="Cam_6" parent="Si_Shader/Cam" instance=ExtResource("8_usepc")]
+
+[node name="Cam_7" parent="Si_Shader/Cam" instance=ExtResource("9_vcu2v")]
+
+[node name="Cam_8" parent="Si_Shader/Cam" instance=ExtResource("10_5lr1q")]
+
+[node name="Cam_9" parent="Si_Shader/Cam" instance=ExtResource("11_xsv31")]
+
+[node name="Cam_10A" parent="Si_Shader/Cam" instance=ExtResource("12_0mojl")]
+
+[node name="Cam_10B" parent="Si_Shader/Cam" instance=ExtResource("13_b7x0u")]
+
+[node name="Cam_11A" parent="Si_Shader/Cam" instance=ExtResource("14_i3dc4")]
+
+[node name="Cam_11B" parent="Si_Shader/Cam" instance=ExtResource("15_jjbyy")]
+
+[node name="Timer_movement_Cam_2" type="Timer" parent="Si_Shader/Cam"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Linterna" type="Sprite2D" parent="Si_Shader"]
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tmxn1")
+
+[node name="No_energy" type="Sprite2D" parent="Si_Shader"]
+position = Vector2(960, 540)
+texture = ExtResource("16_3onkb")
+
+[node name="Label" type="Label" parent="Si_Shader/No_energy"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_rgdy6")
+theme_override_font_sizes/font_size = 200
+text = "[NO SIGNAL]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="No_Shader" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Ruido" parent="No_Shader" instance=ExtResource("18_rgdy6")]
+
+[node name="Static" type="AudioStreamPlayer" parent="No_Shader/Ruido"]
+stream = ExtResource("19_8i5k1")
+volume_db = -25.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Area_Minimapa" type="Area2D" parent="No_Shader"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/Area_Minimapa"]
+position = Vector2(1551.5, 764.5)
+shape = SubResource("RectangleShape2D_5vp63")
+
+[node name="MinimapaBotones" type="Sprite2D" parent="No_Shader"]
+texture_filter = 1
+position = Vector2(1571, 783)
+texture = ExtResource("2_af0gv")
+script = ExtResource("3_3rjyj")
+
+[node name="1" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("3_6sdql")
+
+[node name="Area1" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area1"]
+position = Vector2(60, -31)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="2" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("4_i8kd1")
+
+[node name="Area2" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area2"]
+position = Vector2(-116, -213)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="3" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("5_ukvct")
+
+[node name="Area3" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area3"]
+position = Vector2(158, -40)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="4" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("6_n2msv")
+
+[node name="Area4" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area4"]
+position = Vector2(209, -226)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="5" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("7_4imir")
+
+[node name="Area5" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area5"]
+position = Vector2(247, 72)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="6" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("8_15j7b")
+
+[node name="Area6" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area6"]
+position = Vector2(226, 202)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="7" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("9_3rjyj")
+
+[node name="Area7" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area7"]
+position = Vector2(-274, 117)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="8" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("10_2ccee")
+
+[node name="Area8" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area8"]
+position = Vector2(-250, 215)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="9" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("11_upipm")
+
+[node name="Area9" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area9"]
+position = Vector2(-72, 35)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="10A" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("12_46w8l")
+
+[node name="Area10" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area10"]
+position = Vector2(-171, 127)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="10B" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("13_ntgi6")
+
+[node name="Area11" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area11"]
+position = Vector2(-88, 173)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="11A" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("14_2wxea")
+
+[node name="Area12" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area12"]
+position = Vector2(139, 131)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="11B" type="Sprite2D" parent="No_Shader/MinimapaBotones"]
+texture = ExtResource("15_3d63n")
+
+[node name="Area13" type="Area2D" parent="No_Shader/MinimapaBotones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaBotones/Area13"]
+position = Vector2(56, 153)
+shape = SubResource("RectangleShape2D_2ccee")
+
+[node name="Flicker_Timer" type="Timer" parent="No_Shader/MinimapaBotones"]
+wait_time = 0.7
+
+[node name="MinimapaDuctos" type="Sprite2D" parent="No_Shader"]
+texture_filter = 1
+position = Vector2(1571, 783)
+texture = ExtResource("16_usepc")
+
+[node name="1" type="Sprite2D" parent="No_Shader/MinimapaDuctos"]
+texture = ExtResource("17_vcu2v")
+
+[node name="Area1" type="Area2D" parent="No_Shader/MinimapaDuctos"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="No_Shader/MinimapaDuctos/Area1"]
+position = Vector2(-253.191, -143.689)
+scale = Vector2(0.566555, 0.376049)
+polygon = PackedVector2Array(76.2346, 105.542, 76.2344, 41.7208, -162.048, 39.0613, -162.048, -189.632, -204.409, -189.632, -204.409, 81.6093, -73.7952, 81.6093, -73.7952, 105.542)
+
+[node name="2" type="Sprite2D" parent="No_Shader/MinimapaDuctos"]
+texture = ExtResource("18_5lr1q")
+
+[node name="Area2" type="Area2D" parent="No_Shader/MinimapaDuctos"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="No_Shader/MinimapaDuctos/Area2"]
+position = Vector2(28, -6)
+polygon = PackedVector2Array(-353, -101, -338, -101, -338, -92, -329, -92, -329, 152, -353, 152)
+
+[node name="3" type="Sprite2D" parent="No_Shader/MinimapaDuctos"]
+texture = ExtResource("19_xsv31")
+
+[node name="Area3" type="Area2D" parent="No_Shader/MinimapaDuctos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaDuctos/Area3"]
+position = Vector2(-150.5, -2.5)
+shape = SubResource("RectangleShape2D_tmxn1")
+
+[node name="4" type="Sprite2D" parent="No_Shader/MinimapaDuctos"]
+texture = ExtResource("20_0mojl")
+
+[node name="Area4" type="Area2D" parent="No_Shader/MinimapaDuctos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaDuctos/Area4"]
+position = Vector2(106.5, -2.5)
+shape = SubResource("RectangleShape2D_ev252")
+
+[node name="5" type="Sprite2D" parent="No_Shader/MinimapaDuctos"]
+texture = ExtResource("21_b7x0u")
+
+[node name="Area5" type="Area2D" parent="No_Shader/MinimapaDuctos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/MinimapaDuctos/Area5"]
+position = Vector2(-19.5, 144.5)
+shape = SubResource("RectangleShape2D_rbjw8")
+
+[node name="6" type="Sprite2D" parent="No_Shader/MinimapaDuctos"]
+texture = ExtResource("22_i3dc4")
+
+[node name="Area6" type="Area2D" parent="No_Shader/MinimapaDuctos"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="No_Shader/MinimapaDuctos/Area6"]
+polygon = PackedVector2Array(280, 149, 236, 149, 236, 125, 256, 125, 256, -38, 280, -38)
+
+[node name="7" type="Sprite2D" parent="No_Shader/MinimapaDuctos"]
+texture = ExtResource("23_jjbyy")
+
+[node name="Area7" type="Area2D" parent="No_Shader/MinimapaDuctos"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="No_Shader/MinimapaDuctos/Area7"]
+polygon = PackedVector2Array(-268, 143, -244, 143, -244, 207, -253, 207, -253, 216, -268, 216)
+
+[node name="8" type="Sprite2D" parent="No_Shader/MinimapaDuctos"]
+texture = ExtResource("24_yh74e")
+
+[node name="Area8" type="Area2D" parent="No_Shader/MinimapaDuctos"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="No_Shader/MinimapaDuctos/Area8"]
+polygon = PackedVector2Array(-248, 246, -248, 231, -239, 231, -239, 210, -224, 210, -224, 222, -27, 222, -27, 216, -12, 216, -12, 222, 183, 222, 183, 246)
+
+[node name="Selecter" type="Node2D" parent="No_Shader"]
+texture_filter = 1
+script = ExtResource("25_15j7b")
+
+[node name="CamSelecter" type="Sprite2D" parent="No_Shader/Selecter"]
+position = Vector2(1589, 784)
+texture = ExtResource("25_4imir")
+
+[node name="CamSelecterHl" type="Sprite2D" parent="No_Shader/Selecter"]
+position = Vector2(1589, 784)
+texture = ExtResource("26_15j7b")
+
+[node name="DuctSelecter" type="Sprite2D" parent="No_Shader/Selecter"]
+position = Vector2(1589, 784)
+texture = ExtResource("27_3rjyj")
+
+[node name="DuctSelecterHl" type="Sprite2D" parent="No_Shader/Selecter"]
+position = Vector2(1589, 784)
+texture = ExtResource("28_2ccee")
+
+[node name="Area2D" type="Area2D" parent="No_Shader/Selecter"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No_Shader/Selecter/Area2D"]
+position = Vector2(1279.5, 501.5)
+shape = SubResource("RectangleShape2D_15j7b")
+
+[node name="Border" type="Sprite2D" parent="No_Shader"]
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("45_0vgwf")
+script = ExtResource("46_3onkb")
+
+[node name="Dot" type="Sprite2D" parent="No_Shader/Border"]
+texture = ExtResource("46_aeiuf")
+
+[node name="Timer" type="Timer" parent="No_Shader/Border/Dot"]
+wait_time = 1.5
+
+[node name="BateryBase" type="Sprite2D" parent="No_Shader/Border"]
+texture = ExtResource("47_3onkb")
+
+[node name="Batery1" type="Sprite2D" parent="No_Shader/Border/BateryBase"]
+texture = ExtResource("48_7y4jm")
+
+[node name="Batery2" type="Sprite2D" parent="No_Shader/Border/BateryBase"]
+texture = ExtResource("49_rgdy6")
+
+[node name="Batery3" type="Sprite2D" parent="No_Shader/Border/BateryBase"]
+texture = ExtResource("50_8i5k1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="No_Shader/Border"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1202.0
+offset_top = -515.0
+offset_right = -995.0
+offset_bottom = -373.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = -15
+
+[node name="Time" type="Label" parent="No_Shader/Border/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_rgdy6")
+theme_override_font_sizes/font_size = 56
+text = "12 PM"
+horizontal_alignment = 2
+justification_flags = 35
+
+[node name="Day" type="Label" parent="No_Shader/Border/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_rgdy6")
+theme_override_font_sizes/font_size = 32
+text = "monday"
+horizontal_alignment = 2
+
+[node name="Mouse_Custom" parent="No_Shader" instance=ExtResource("45_yh74e")]
+position = Vector2(-166, -60)
+cams = true
+
+[node name="CanvasLayer_Shader" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer_Shader"]
+material = SubResource("ShaderMaterial_xkbhl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_1" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_2" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_3" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_4" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_5" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_6" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_7" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_8" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_9" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_10A" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_10B" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_11A" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_11B" method="_on_camaras_alucinations"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_1" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_2" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_3" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_4" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_5" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_6" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_7" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_8" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_9" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_10A" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_10B" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_11A" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_11B" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cam" to="No_Shader/Ruido" method="_on_cam_cam_act"]
+[connection signal="timeout" from="Si_Shader/Cam/Timer_movement_Cam_2" to="Si_Shader/Cam" method="_on_timer_movement_cam_2_timeout"]
+[connection signal="mouse_entered" from="No_Shader/Area_Minimapa" to="." method="_on_area_minimapa_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/Area_Minimapa" to="." method="_on_area_minimapa_mouse_exited"]
+[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="." method="_on_minimapa_botones_cam_act"]
+[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cam" method="_on_minimapa_botones_cam_act"]
+[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cam/Cam_6" method="_on_minimapa_botones_cam_act"]
+[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="No_Shader/Ruido" method="_on_minimapa_botones_cam_act"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area1" to="No_Shader/MinimapaBotones" method="_on_area_1_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area1" to="No_Shader/MinimapaBotones" method="_on_area_1_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area1" to="No_Shader/MinimapaBotones" method="_on_area_1_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area2" to="No_Shader/MinimapaBotones" method="_on_area_2_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area2" to="No_Shader/MinimapaBotones" method="_on_area_2_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area2" to="No_Shader/MinimapaBotones" method="_on_area_2_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area3" to="No_Shader/MinimapaBotones" method="_on_area_3_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area3" to="No_Shader/MinimapaBotones" method="_on_area_3_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area3" to="No_Shader/MinimapaBotones" method="_on_area_3_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area4" to="No_Shader/MinimapaBotones" method="_on_area_4_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area4" to="No_Shader/MinimapaBotones" method="_on_area_4_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area4" to="No_Shader/MinimapaBotones" method="_on_area_4_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area5" to="No_Shader/MinimapaBotones" method="_on_area_5_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area5" to="No_Shader/MinimapaBotones" method="_on_area_5_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area5" to="No_Shader/MinimapaBotones" method="_on_area_5_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area6" to="No_Shader/MinimapaBotones" method="_on_area_6_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area6" to="No_Shader/MinimapaBotones" method="_on_area_6_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area6" to="No_Shader/MinimapaBotones" method="_on_area_6_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area7" to="No_Shader/MinimapaBotones" method="_on_area_7_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area7" to="No_Shader/MinimapaBotones" method="_on_area_7_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area7" to="No_Shader/MinimapaBotones" method="_on_area_7_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area8" to="No_Shader/MinimapaBotones" method="_on_area_8_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area8" to="No_Shader/MinimapaBotones" method="_on_area_8_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area8" to="No_Shader/MinimapaBotones" method="_on_area_8_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area9" to="No_Shader/MinimapaBotones" method="_on_area_9_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area9" to="No_Shader/MinimapaBotones" method="_on_area_9_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area9" to="No_Shader/MinimapaBotones" method="_on_area_9_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area10" to="No_Shader/MinimapaBotones" method="_on_area_10_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area10" to="No_Shader/MinimapaBotones" method="_on_area_10_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area10" to="No_Shader/MinimapaBotones" method="_on_area_10_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area11" to="No_Shader/MinimapaBotones" method="_on_area_11_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area11" to="No_Shader/MinimapaBotones" method="_on_area_11_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area11" to="No_Shader/MinimapaBotones" method="_on_area_11_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area12" to="No_Shader/MinimapaBotones" method="_on_area_12_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area12" to="No_Shader/MinimapaBotones" method="_on_area_12_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area12" to="No_Shader/MinimapaBotones" method="_on_area_12_mouse_exited"]
+[connection signal="input_event" from="No_Shader/MinimapaBotones/Area13" to="No_Shader/MinimapaBotones" method="_on_area_13_input_event"]
+[connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area13" to="No_Shader/MinimapaBotones" method="_on_area_13_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/MinimapaBotones/Area13" to="No_Shader/MinimapaBotones" method="_on_area_13_mouse_exited"]
+[connection signal="timeout" from="No_Shader/MinimapaBotones/Flicker_Timer" to="No_Shader/MinimapaBotones" method="_on_flicker_timer_timeout"]
+[connection signal="input_event" from="No_Shader/MinimapaDuctos/Area1" to="." method="_on_area_1_input_event"]
+[connection signal="input_event" from="No_Shader/MinimapaDuctos/Area2" to="." method="_on_area_2_input_event"]
+[connection signal="input_event" from="No_Shader/MinimapaDuctos/Area3" to="." method="_on_area_3_input_event"]
+[connection signal="input_event" from="No_Shader/MinimapaDuctos/Area4" to="." method="_on_area_4_input_event"]
+[connection signal="input_event" from="No_Shader/MinimapaDuctos/Area5" to="." method="_on_area_5_input_event"]
+[connection signal="input_event" from="No_Shader/MinimapaDuctos/Area6" to="." method="_on_area_6_input_event"]
+[connection signal="input_event" from="No_Shader/MinimapaDuctos/Area7" to="." method="_on_area_7_input_event"]
+[connection signal="input_event" from="No_Shader/MinimapaDuctos/Area8" to="." method="_on_area_8_input_event"]
+[connection signal="input_event" from="No_Shader/Selecter/Area2D" to="No_Shader/Selecter" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="No_Shader/Selecter/Area2D" to="No_Shader/Selecter" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="No_Shader/Selecter/Area2D" to="No_Shader/Selecter" method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="No_Shader/Border/Dot/Timer" to="No_Shader/Border" method="_on_timer_timeout"]

@@ -1,0 +1,250 @@
+[gd_scene load_steps=16 format=3 uid="uid://clk07ggsfox88"]
+
+[ext_resource type="Script" uid="uid://4fjcgs6njf0t" path="res://scripts/menu_principal.gd" id="1_bdaig"]
+[ext_resource type="Texture2D" uid="uid://nhmibmfhlmwy" path="res://fnafjuego/Placeholders/Menu_Art.png" id="2_gowda"]
+[ext_resource type="Texture2D" uid="uid://iefkvol5c4em" path="res://fnafjuego/Placeholders/UI_Menu/Titulo.png" id="3_gowda"]
+[ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Themes/Opciones.tres" id="4_f576v"]
+[ext_resource type="Script" uid="uid://ronda45c7s6u" path="res://scripts/main_buttons.gd" id="4_ibmv0"]
+[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://escenas/Mouse_Custom.tscn" id="5_tqq4y"]
+[ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://escenas/Freddy_nose.tscn" id="6_2vite"]
+[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="6_7xdok"]
+[ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://scripts/label_idiom.gd" id="6_grgpn"]
+[ext_resource type="Texture2D" uid="uid://di1cvtkskokga" path="res://fnafjuego/Placeholders/UI_Menu/Seleccion.png" id="6_wj5eb"]
+[ext_resource type="AudioStream" uid="uid://dg7vr2tm0134y" path="res://fnafjuego/sounds/menu_click.wav" id="7_wj5eb"]
+[ext_resource type="Script" uid="uid://c4kfoj04ln6g8" path="res://scripts/play_buttons.gd" id="8_grgpn"]
+[ext_resource type="Script" uid="uid://coh84xcfmkrvv" path="res://scripts/stars.gd" id="12_uiyhh"]
+[ext_resource type="Texture2D" uid="uid://dflfp1neyqnuf" path="res://fnafjuego/Placeholders/white_star.png" id="13_6mjmf"]
+[ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://scripts/auto_transicion.gd" id="15_6mjmf"]
+
+[node name="Menu principal" type="Node2D"]
+script = ExtResource("1_bdaig")
+
+[node name="MenuArt" type="Sprite2D" parent="."]
+position = Vector2(-3.71337e-05, 0)
+scale = Vector2(3.00469, 3)
+texture = ExtResource("2_gowda")
+
+[node name="Titulo" type="Sprite2D" parent="."]
+texture = ExtResource("3_gowda")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Main_buttons" type="VBoxContainer" parent="."]
+texture_filter = 1
+offset_left = -772.0
+offset_top = 98.0
+offset_right = -142.0
+offset_bottom = 488.0
+theme_override_constants/separation = 40
+script = ExtResource("4_ibmv0")
+
+[node name="Play" type="HBoxContainer" parent="Main_buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Play_label" type="Label" parent="Main_buttons/Play"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_f576v")
+theme_override_font_sizes/font_size = 60
+text = "Play"
+script = ExtResource("6_grgpn")
+id = "Play_"
+
+[node name="Seleccion" type="Sprite2D" parent="Main_buttons/Play"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("6_wj5eb")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons/Play"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
+
+[node name="Options" type="HBoxContainer" parent="Main_buttons"]
+layout_mode = 2
+
+[node name="Options_label" type="Label" parent="Main_buttons/Options"]
+layout_mode = 2
+theme = ExtResource("4_f576v")
+theme_override_font_sizes/font_size = 60
+text = "Options"
+script = ExtResource("6_grgpn")
+id = "Options_"
+
+[node name="Seleccion" type="Sprite2D" parent="Main_buttons/Options"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("6_wj5eb")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons/Options"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
+
+[node name="Exit" type="HBoxContainer" parent="Main_buttons"]
+layout_mode = 2
+
+[node name="Exit_label" type="Label" parent="Main_buttons/Exit"]
+layout_mode = 2
+theme = ExtResource("4_f576v")
+theme_override_font_sizes/font_size = 60
+text = "Exit"
+script = ExtResource("6_grgpn")
+id = "Exit_"
+
+[node name="Seleccion" type="Sprite2D" parent="Main_buttons/Exit"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("6_wj5eb")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons/Exit"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
+
+[node name="Play_Buttons" type="VBoxContainer" parent="."]
+texture_filter = 1
+offset_left = -772.0
+offset_top = 98.0
+offset_right = -142.0
+offset_bottom = 488.0
+theme_override_constants/separation = 40
+script = ExtResource("8_grgpn")
+
+[node name="Continue" type="HBoxContainer" parent="Play_Buttons"]
+layout_mode = 2
+
+[node name="Continue_label" type="Label" parent="Play_Buttons/Continue"]
+layout_mode = 2
+theme = ExtResource("4_f576v")
+theme_override_font_sizes/font_size = 60
+text = "Continue"
+script = ExtResource("6_grgpn")
+id = "Continue_"
+
+[node name="Get_out_of_jail_card" type="Control" parent="Play_Buttons/Continue"]
+layout_mode = 2
+
+[node name="Night_label" type="Label" parent="Play_Buttons/Continue/Get_out_of_jail_card"]
+modulate = Color(1, 1, 1, 0.7)
+layout_mode = 0
+offset_left = -86.0
+offset_top = 54.0
+offset_right = -4.0
+offset_bottom = 74.0
+theme = ExtResource("4_f576v")
+theme_override_font_sizes/font_size = 20
+text = "Night 1"
+horizontal_alignment = 2
+
+[node name="Seleccion" type="Sprite2D" parent="Play_Buttons/Continue"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("6_wj5eb")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons/Continue"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
+
+[node name="New_Game" type="HBoxContainer" parent="Play_Buttons"]
+layout_mode = 2
+
+[node name="New_Game_label" type="Label" parent="Play_Buttons/New_Game"]
+layout_mode = 2
+theme = ExtResource("4_f576v")
+theme_override_font_sizes/font_size = 60
+text = "New Game"
+script = ExtResource("6_grgpn")
+id = "New_game"
+
+[node name="Seleccion" type="Sprite2D" parent="Play_Buttons/New_Game"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("6_wj5eb")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons/New_Game"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
+
+[node name="Custom_Night" type="HBoxContainer" parent="Play_Buttons"]
+layout_mode = 2
+
+[node name="Custom_Night_label" type="Label" parent="Play_Buttons/Custom_Night"]
+layout_mode = 2
+theme = ExtResource("4_f576v")
+theme_override_font_sizes/font_size = 60
+text = "Custom Night"
+script = ExtResource("6_grgpn")
+id = "Custom_night"
+
+[node name="Seleccion" type="Sprite2D" parent="Play_Buttons/Custom_Night"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("6_wj5eb")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons/Custom_Night"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
+
+[node name="Back" type="HBoxContainer" parent="Play_Buttons"]
+layout_mode = 2
+
+[node name="Back_label" type="Label" parent="Play_Buttons/Back"]
+layout_mode = 2
+theme = ExtResource("4_f576v")
+theme_override_font_sizes/font_size = 60
+text = "Back"
+script = ExtResource("6_grgpn")
+id = "Back_"
+
+[node name="Seleccion" type="Sprite2D" parent="Play_Buttons/Back"]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("6_wj5eb")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons/Back"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
+
+[node name="Mouse_Custom" parent="." instance=ExtResource("5_tqq4y")]
+position = Vector2(0, 2000)
+
+[node name="Freddy nose" parent="." instance=ExtResource("6_2vite")]
+position = Vector2(2853, 506)
+scale = Vector2(7.34, 3.165)
+
+[node name="Stars" type="Node2D" parent="."]
+script = ExtResource("12_uiyhh")
+
+[node name="WhiteStar_ending" type="Sprite2D" parent="Stars"]
+position = Vector2(-300, -440)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("13_6mjmf")
+
+[node name="WhiteStar2_true_ending" type="Sprite2D" parent="Stars"]
+position = Vector2(-150, -440)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("13_6mjmf")
+
+[node name="WhiteStar3_420" type="Sprite2D" parent="Stars"]
+position = Vector2(-225, -350)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("13_6mjmf")
+
+[node name="Transicion" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_7xdok")
+script = ExtResource("15_6mjmf")
+
+[connection signal="mouse_entered" from="Main_buttons/Play" to="Main_buttons" method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="Main_buttons/Play" to="Main_buttons" method="_on_play_mouse_exited"]
+[connection signal="mouse_entered" from="Main_buttons/Options" to="Main_buttons" method="_on_options_mouse_entered"]
+[connection signal="mouse_exited" from="Main_buttons/Options" to="Main_buttons" method="_on_options_mouse_exited"]
+[connection signal="mouse_entered" from="Main_buttons/Exit" to="Main_buttons" method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Main_buttons/Exit" to="Main_buttons" method="_on_exit_mouse_exited"]
+[connection signal="mouse_entered" from="Play_Buttons/Continue" to="Play_Buttons" method="_on_continue_mouse_entered"]
+[connection signal="mouse_exited" from="Play_Buttons/Continue" to="Play_Buttons" method="_on_continue_mouse_exited"]
+[connection signal="mouse_entered" from="Play_Buttons/New_Game" to="Play_Buttons" method="_on_new_game_mouse_entered"]
+[connection signal="mouse_exited" from="Play_Buttons/New_Game" to="Play_Buttons" method="_on_new_game_mouse_exited"]
+[connection signal="mouse_entered" from="Play_Buttons/Custom_Night" to="Play_Buttons" method="_on_custom_night_mouse_entered"]
+[connection signal="mouse_exited" from="Play_Buttons/Custom_Night" to="Play_Buttons" method="_on_custom_night_mouse_exited"]
+[connection signal="mouse_entered" from="Play_Buttons/Back" to="Play_Buttons" method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="Play_Buttons/Back" to="Play_Buttons" method="_on_back_mouse_exited"]

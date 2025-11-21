@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bonrb1xrjljf"]
+
+[ext_resource type="Script" uid="uid://d3dg3tgsptsdf" path="res://scripts/switch_energia.gd" id="1_8vunc"]
+[ext_resource type="Texture2D" uid="uid://bx6jdo5lf5yxl" path="res://fnafjuego/Placeholders/Switch_offn.png" id="2_thdhr"]
+[ext_resource type="Texture2D" uid="uid://b85r6dwh675v2" path="res://fnafjuego/Placeholders/Switch_on.png" id="3_1stgw"]
+[ext_resource type="Script" uid="uid://cokefoipy4xrr" path="res://scripts/area_2d_switch.gd" id="4_thdhr"]
+[ext_resource type="AudioStream" uid="uid://lpnh0o0ikrwi" path="res://fnafjuego/sounds/Tiny click.wav" id="5_1stgw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1stgw"]
+size = Vector2(58, 120)
+
+[node name="Switch_Energia" type="Node2D"]
+script = ExtResource("1_8vunc")
+
+[node name="SwitchOff" type="Sprite2D" parent="."]
+texture = ExtResource("2_thdhr")
+
+[node name="SwitchOn" type="Sprite2D" parent="."]
+texture = ExtResource("3_1stgw")
+
+[node name="Area2D_Switch" type="Area2D" parent="."]
+script = ExtResource("4_thdhr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Switch"]
+position = Vector2(0, 82)
+shape = SubResource("RectangleShape2D_1stgw")
+
+[node name="Tiny_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1stgw")
+volume_db = 5.0
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="Area2D_Switch" to="." method="_on_area_2d_switch_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D_Switch" to="." method="_on_area_2d_switch_mouse_exited"]
