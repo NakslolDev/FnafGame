@@ -1,6 +1,5 @@
 extends RichTextLabel
 
-
 var _text: String
 var letter: int
 var printing := false

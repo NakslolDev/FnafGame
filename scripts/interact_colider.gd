@@ -52,12 +52,13 @@ func _input(event):
 	if not (event.is_action_pressed("interact") and player_in) or not active:
 		return
 	
+	if get_tree().get_root().get_node("Minigame").reading: #uso otro if para que no quede tan largo
+		return
+	
 	if action == "Text":
 		emit_signal("send_id_to_text", id, first_read_end_in, read)
 	else:
 		emit_signal("do_action", action, read)
 		if action.ends_with("w_text"):
 			emit_signal("send_id_to_text", id, first_read_end_in, read)
-	if id == "Empty_safe":
-		print("AHORA CABron")
 	read = true
