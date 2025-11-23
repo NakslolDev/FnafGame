@@ -28,14 +28,14 @@ func _on_boton_izquierda_puerta_cambio(puerta_activada: bool) -> void:
 			Bonnie.door_closed = true
 			Freddy.door_I_closed = true
 			Foxy.door_I_closed = true
-			print("ACTIVADA")
+			#print("ACTIVADA")
 	else:
 		estado = posicion_abierta  # Sube
 		Global.set_energia_consumption("Puerta_I", 0)
 		Bonnie.door_closed = false
 		Freddy.door_I_closed = false
 		Foxy.door_I_closed = false
-		print("DESACTIVADA")
+		#print("DESACTIVADA")
 
 func _on_boton_derecha_puerta_cambio(puerta_activada: bool) -> void:
 	emit_signal("state", puerta_activada)

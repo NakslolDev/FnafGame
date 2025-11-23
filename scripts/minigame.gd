@@ -9,9 +9,12 @@ var reading := false
 var safing := false
 
 @export var interact_nodes: Array[Node]
+@export var player: Node
+@export var pop_text: Node
+@export var pop_safe: Node
 
 func _ready():
-	print(Global.noche)
+	print("noche = ", Global.noche)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Text"), 1.0)
 	if not custom_pos:
@@ -37,36 +40,36 @@ func connect_signals_recursively(node: Node): #De esta forma conecta todo lo de 
 
 func locate_char(entrance: bool):
 	if entrance:
-		$YSort/Character_Minigame.position = Vector2(-512.0, 24.0)
+		player.position = Vector2(-512.0, 24.0)
 	else:
-		$YSort/Character_Minigame.position = Vector2(-990.0, 840.0)
+		player.position = Vector2(-990.0, 840.0)
 
 func _on_interacted_text(id: String, end_in, read):
 	if reading or safing:
 		return
 	reading = true
-	$"Shader&else/Pop_Text".visible = true
-	$YSort/Character_Minigame.freeze = true
-	$"Shader&else/Pop_Text".end_in = end_in
-	$"Shader&else/Pop_Text".pop_up(id, read)
+	pop_text.visible = true
+	player.freeze = true
+	pop_text.end_in = end_in
+	pop_text.pop_up(id, read)
 
 func _on_finished_text():	
 	reading = false
-	$"Shader&else/Pop_Text".visible = false
-	$YSort/Character_Minigame.freeze = false
+	pop_text.visible = false
+	player.freeze = false
 
 func safe():
 	if reading or safing:
 		return
 	safing = true
-	$"Shader&else/Pop_Safe".visible = true
-	$"Shader&else/Pop_Safe".pop_up()
-	$YSort/Character_Minigame.freeze = true
+	pop_safe.visible = true
+	pop_safe.pop_up()
+	player.freeze = true
 
 func _on_done_safing(not_automatic: bool, read: bool, combination := []):
 	safing = false
-	$"Shader&else/Pop_Safe".visible = false
-	$YSort/Character_Minigame.freeze = false
+	pop_safe.visible = false
+	player.freeze = false
 	if Global.noche != 6:
 		_on_interacted_text("Safe_too_soon", 0, false)
 		return # evita cualquier cosa
@@ -78,7 +81,7 @@ func _on_done_safing(not_automatic: bool, read: bool, combination := []):
 			_on_interacted_text("Safe_not_know", 1, read)
 	else:
 		_on_interacted_text("Safe_give_up", 1, read)
-	$Coliders/Safe.act_safeings()
+	act_interact()
 
 func on_action(action: String, read: bool):
 	
@@ -103,29 +106,19 @@ func on_action(action: String, read: bool):
 	
 	elif action == "Pick_key_w_text":
 		Global.inventario["key"] = true
-		$Coliders/Office_dor.act()
-		for location in $Coliders/Key_locations.get_children():
-			location.act()
 	
 	elif action == "Loot_safe_w_text":
 		Global.inventario["files"] = true
-		$Coliders/Safe.act_safeings()
-		$Coliders/Exit.shrink()
 	elif action == "Keep_looting_safe_w_text":
 		Global.inventario["usb_key"] = true
-		$Coliders/Computer.act()
-		$Coliders/Safe.act_safeings()
 	elif action == "loot_empty_safe_w_text":
 		Global.inventario["life_savings"] = true
-		$Coliders/Safe.act_safeings()
 	
 	elif action == "start_computer_w_text":
 		Global.mapa["computer_working"] = true
 	elif action == "get_program_w_text":
 		Global.inventario["exe"] = true
 		Global.mapa["computer_working"] = false
-		$Coliders/Computer.act()
-		$Coliders/Exit.shrink()
 	
 	elif action == "sign_in_w_text":
 		if read:
@@ -134,7 +127,6 @@ func on_action(action: String, read: bool):
 	
 	elif action == "open_door_w_text":
 		Global.mapa["door_office_open"] = true
-		$Coliders/Office_dor.act()
 	
 	act_interact()
 
@@ -143,12 +135,12 @@ func act_interact():
 		_node.act()
 
 func exit():
-	$YSort/Character_Minigame.freeze = true
+	player.freeze = true
 	trans_to_game = false
 	transition_out = true
 
 func begin():
-	$YSort/Character_Minigame.freeze = true
+	player.freeze = true
 	trans_to_game = true
 	transition_out = true
 

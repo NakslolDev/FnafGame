@@ -35,7 +35,6 @@ var inventario :={
 	"chair": false,
 	"files": false,
 	"usb_key": false,
-	"life_savings": false,
 	"exe": false,
 }
 

@@ -123,10 +123,14 @@ shader_parameter/clip_warp = true
 shader_parameter/vignette_intensity = 1.0
 shader_parameter/vignette_opacity = 0.665
 
-[node name="Minigame" type="Node2D" node_paths=PackedStringArray("interact_nodes")]
+[node name="Minigame" type="Node2D" node_paths=PackedStringArray("interact_nodes", "player", "pop_text", "pop_safe")]
 texture_filter = 1
 script = ExtResource("1_afqw0")
-interact_nodes = [NodePath("Coliders/Exit"), NodePath("Coliders/Safe"), NodePath("Coliders/Computer"), NodePath("Coliders/Office_dor")]
+custom_pos = true
+interact_nodes = [NodePath("Coliders/Exit"), NodePath("Coliders/Safe"), NodePath("Coliders/Computer"), NodePath("Coliders/Office_dor"), NodePath("Coliders/Key_locations/Location_key_1"), NodePath("Coliders/Key_locations/Location_key_2"), NodePath("Coliders/Key_locations/Location_key_3")]
+player = NodePath("YSort/Character_Minigame")
+pop_text = NodePath("Shader&else/Pop_Text")
+pop_safe = NodePath("Shader&else/Pop_Safe")
 
 [node name="Black_Background" type="Sprite2D" parent="."]
 position = Vector2(935.5, 141)
@@ -155,7 +159,7 @@ tile_set = SubResource("TileSet_blpan")
 y_sort_enabled = true
 
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
-position = Vector2(-528, 864)
+position = Vector2(-408, 832)
 character = "Unnamed_Guard"
 
 [node name="Chair" parent="YSort" instance=ExtResource("9_lt1rw")]
@@ -269,6 +273,7 @@ visible = false
 position = Vector2(960, 540)
 
 [node name="Black_bars" parent="Shader&else" instance=ExtResource("15_ky55h")]
+visible = false
 offset_right = -1920.0
 offset_bottom = -1080.0
 
@@ -628,11 +633,7 @@ action = "Keep_looting_safe_w_text"
 id = "Keep_looting"
 
 [node name="Safe_unsafe" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
-action = "loot_empty_safe_w_text"
 id = "Empty_safe"
-
-[node name="Not_safe" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
-id = "Emptyer_safe"
 first_read_end_in = 1
 
 [node name="Chickend_safe" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
