@@ -85,9 +85,13 @@ var cam_flipped_discount := 0
 func _input(event):
 	if not activado:
 		return
-	if event.is_action_pressed("Click") and not cam_lights_limit and camara_activa != 6 and Global.energia["Camaras"] == true and (Global.energia_consumption["Total"] < Global.energia_consumption["Max"]):
-		cam_lights = true # si abres las camaras con el raton en el minimapa, te deja iluminar una vez cuando no deveria
-		act_light() # lo voy a dejar, pues ni idea de como solucionarlo y como la luz no te puede joder el sistema, pues como que da igual...
+	if event.is_action_pressed("Click") and not cam_lights_limit:
+		if camara_activa != 6 and Global.energia["Camaras"] == true and (Global.energia_consumption["Total"] < Global.energia_consumption["Max"] or not Global.misc["Auto_cam_lights"]):
+			cam_lights = true # si abres las camaras con el raton en el minimapa, te deja iluminar una vez cuando no deveria
+			act_light() # lo voy a dejar, pues ni idea de como solucionarlo y como la luz no te puede joder el sistema, pues como que da igual...
+		else:
+			$No_Shader/NoCamLights.play()
+			return
 	elif event.is_action_released("Click"):
 		cam_lights = false
 		act_light()
