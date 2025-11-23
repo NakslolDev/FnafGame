@@ -58,4 +58,6 @@ func _input(event):
 		emit_signal("do_action", action, read)
 		if action.ends_with("w_text"):
 			emit_signal("send_id_to_text", id, first_read_end_in, read)
+	if id == "Empty_safe":
+		print("AHORA CABron")
 	read = true
