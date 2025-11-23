@@ -17,6 +17,7 @@ func start_print(id: String):
 		letter = 1
 		skiped = false
 	printing_letters()
+	print("text_lenght: ", _text.length())
 
 func _on_timer_per_letter_timeout() -> void:
 	letter += 1
@@ -62,6 +63,7 @@ func printing_letters():
 		return
 	
 	if find_opend(new_text, "skip"):
+		printing = false
 		$"../..".show_text()
 		skiped = true
 		return
@@ -99,6 +101,8 @@ func find_opend(txt:String, label: String):
 		from = txt.find("[/" + label + "]", from) + ("[/" + label + "]").length()
 
 func sound(space: String):
+	if _text == "":
+		return
 	if space.ends_with(" ") or space.ends_with("]") or letter == 0:
 		return
 	if slow:
@@ -109,7 +113,10 @@ func sound(space: String):
 
 func get_id_num(id_string: String):
 	
-	id_string += "_0" + str(id_num)
+	if id_num <= 9:
+		id_string += "_0" + str(id_num)
+	else:
+		id_string += "_" + str(id_num)
 	
 	if id_num > 1 and get_csv_value(id_string, Global.language).ends_with("(id non existant)"):
 		$"../..".exit()
