@@ -114,18 +114,18 @@ func on_action(action: String, read: int):
 	elif action == "loot_empty_safe_w_text":
 		Global.inventario["life_savings"] = true
 	
-	elif action == "start_computer_w_text":
+	elif action == "Start_computer_w_text":
 		Global.mapa["computer_working"] = true
-	elif action == "get_program_w_text":
+	elif action == "Get_program_w_text":
 		Global.inventario["exe"] = true
 		Global.mapa["computer_working"] = false
 	
-	elif action == "sign_in_w_text":
+	elif action == "Sign_in_w_text":
 		if read == 1:
 			Global.mapa["signed_in"] = true
 			print("Good luck!")
 	
-	elif action == "open_door_w_text":
+	elif action == "Open_door_w_text":
 		Global.mapa["door_office_open"] = true
 	
 	act_interact()

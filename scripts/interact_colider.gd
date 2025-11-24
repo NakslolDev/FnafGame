@@ -1,7 +1,11 @@
 extends Area2D
 
-@export_enum("Text", "Begin_night", "Exit_pizza", "Pick_chair_w_text", "Lay_chair_w_text", "Pick_key_w_text", "Safe", "Loot_safe_w_text", "Keep_looting_safe_w_text", "loot_empty_safe_w_text", "start_computer_w_text", "get_program_w_text", "sign_in_w_text", "open_door_w_text")
+@export_enum("Custom", "Text", "Begin_night", "Exit_pizza", "Safe")
 var action := "Text"
+
+@export_placeholder("'_w_text' for text + action")
+var custom_action: String
+
 @export var id := ""
 var player_in := false
 var active
@@ -57,6 +61,9 @@ func _input(event):
 		return
 	
 	print("Read: ", read, "  End in: ", read_end_in)
+	
+	if action == "Custom":
+		action = custom_action
 	
 	if action == "Text":
 		emit_signal("send_id_to_text", id, read_end_in, read)

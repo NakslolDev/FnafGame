@@ -46,7 +46,6 @@ func printing_letters():
 	else:
 		unskipable = false
 	
-	
 	sound(new_text)
 	
 	if find_opend(new_text, "abs_rainbow"):

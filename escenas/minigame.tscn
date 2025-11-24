@@ -487,13 +487,15 @@ script = ExtResource("15_h0mop")
 [node name="Pick_down" parent="Coliders/Pick_up_chair" instance=ExtResource("10_lt1rw")]
 position = Vector2(-480, 88)
 scale = Vector2(1.7, 1.7)
-action = "Lay_chair_w_text"
+action = "Custom"
+custom_action = "Lay_chair_w_text"
 id = "Lay_chair"
 
 [node name="Pick_up" parent="Coliders/Pick_up_chair" instance=ExtResource("10_lt1rw")]
 position = Vector2(-480, 88)
 scale = Vector2(1.7, 1.7)
 action = "Pick_chair_w_text"
+custom_action = "Pick_chair_w_text"
 id = "Pick_chair"
 
 [node name="Key_locations" type="Node2D" parent="Coliders"]
@@ -509,7 +511,8 @@ id = "Nothing"
 read_end_in = Array[int]([1])
 
 [node name="Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
-action = "Pick_key_w_text"
+action = "Custom"
+custom_action = "Pick_key_w_text"
 id = "Pick_key"
 night_1 = false
 night_2 = false
@@ -551,7 +554,8 @@ id = "Nothing"
 read_end_in = Array[int]([1])
 
 [node name="Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
-action = "Pick_key_w_text"
+action = "Custom"
+custom_action = "Pick_key_w_text"
 id = "Pick_key"
 night_1 = false
 night_2 = false
@@ -593,7 +597,8 @@ id = "Nothing"
 read_end_in = Array[int]([1])
 
 [node name="Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
-action = "Pick_key_w_text"
+action = "Custom"
+custom_action = "Pick_key_w_text"
 id = "Pick_key"
 night_1 = false
 night_2 = false
@@ -633,11 +638,13 @@ script = ExtResource("20_ms56s")
 action = "Safe"
 
 [node name="Safe_internal_organs" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
-action = "Loot_safe_w_text"
+action = "Custom"
+custom_action = "Loot_safe_w_text"
 id = "Loot_safe"
 
 [node name="Safe_more_organs" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
-action = "Keep_looting_safe_w_text"
+action = "Custom"
+custom_action = "Keep_looting_safe_w_text"
 id = "Keep_looting"
 
 [node name="Safe_unsafe" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
@@ -656,7 +663,8 @@ read_end_in = Array[int]([2])
 
 [node name="Start_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
-action = "start_computer_w_text"
+action = "Custom"
+custom_action = "Start_computer_w_text"
 id = "Start_computer"
 read_end_in = Array[int]([3])
 
@@ -671,14 +679,16 @@ read_end_in = Array[int]([2])
 
 [node name="Get_program" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
-action = "get_program_w_text"
+action = "Custom"
+custom_action = "Get_program_w_text"
 id = "Get_program"
 
 [node name="News panel" type="Node2D" parent="Coliders"]
 position = Vector2(-552, 480)
 
 [node name="Extra_night" parent="Coliders/News panel" instance=ExtResource("10_lt1rw")]
-action = "sign_in_w_text"
+action = "Custom"
+custom_action = "Sign_in_w_text"
 id = "sign_in"
 read_end_in = Array[int]([4, 5])
 night_1 = false
@@ -700,7 +710,8 @@ read_end_in = Array[int]([3])
 
 [node name="Door_office_unlocking" parent="Coliders/Office_dor" instance=ExtResource("10_lt1rw")]
 scale = Vector2(2.4103067, 1.6052315)
-action = "open_door_w_text"
+action = "Custom"
+custom_action = "Open_door_w_text"
 id = "Office_door_unlocking"
 
 [node name="Door_office_unlocked" parent="Coliders/Office_dor" instance=ExtResource("10_lt1rw")]
