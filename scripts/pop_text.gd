@@ -2,31 +2,36 @@ extends Control
 
 @export var debuging_text := false
 var id_String: String
-var end_in: int
+var end_in: Array[int]
 var on := false
+var local_read: int
 
-func pop_up(id: String, read: bool):
-	if end_in != 0 and read:
-		$Control/Label_pop_text.id_num = end_in
+@export var txt_label: RichTextLabel
+
+func pop_up(id: String, read: int):
+	local_read = read
+	if end_in != [] and local_read:
+		txt_label.id_num = end_in[local_read-1] #empieza del anterior valor
 	id_String = id
 	$Timer.start()
-	show_text(read)
+	show_text()
 
 
-func show_text(read := false):
-	if end_in != 0 and read == false and $Control/Label_pop_text.id_num == end_in:
+func show_text():
+	print("(PT)  Read: ", local_read, "  End in: ", end_in, "  id_num: ", txt_label.id_num)
+	if not (end_in.size() <= local_read) and txt_label.id_num == end_in[local_read]:
 		exit()
 		return
-	$Control/Label_pop_text.id_num += 1
-	$Control/Label_pop_text.start_print(id_String)
+	txt_label.id_num += 1
+	txt_label.start_print(id_String)
 
 func _input(event: InputEvent) -> void:
-	if $Control/Label_pop_text.unskipable:
+	if txt_label.unskipable:
 		return
 	if on and event.is_action_pressed("interact"):
-		if $Control/Label_pop_text.printing:
-			$Control/Label_pop_text.letter = $Control/Label_pop_text._text.length() - 1 # ese -1 es porque si no se come la etiqueta y hace que la ultima palabra sea mas larga y que salte de linea
-			$Control/Label_pop_text.end_timer()
+		if txt_label.printing:
+			txt_label.letter = txt_label._text.length() - 1 # ese -1 es porque si no se come la etiqueta y hace que la ultima palabra sea mas larga y que salte de linea
+			txt_label.end_timer()
 		else:
 			show_text()
 
@@ -35,5 +40,5 @@ func _on_timer_timeout() -> void:
 
 func exit():
 	on = false
-	$Control/Label_pop_text.id_num = 0
+	txt_label.id_num = 0
 	$"../.."._on_finished_text()

@@ -17,7 +17,7 @@ func start_print(id: String):
 		letter = 1
 		skiped = false
 	printing_letters()
-	print("text_lenght: ", _text.length())
+	#print("text_lenght: ", _text.length())
 
 func _on_timer_per_letter_timeout() -> void:
 	letter += 1

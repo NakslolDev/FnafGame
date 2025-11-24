@@ -1,18 +1,18 @@
-[gd_scene load_steps=32 format=4 uid="uid://cu0m257624re4"]
+[gd_scene load_steps=33 format=4 uid="uid://cu0m257624re4"]
 
-[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://fnafjuego/minijuego assets/Black.png" id="1_1t45r"]
+[ext_resource type="Texture2D" uid="uid://b7p3xkukkgq7x" path="res://fnafjuego/minijuego assets/Black.png" id="1_1t45r"]
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://scripts/minigame.gd" id="1_afqw0"]
 [ext_resource type="Script" uid="uid://d34jixbi2jr6n" path="res://scripts/black_background.gd" id="2_2fbfj"]
 [ext_resource type="PackedScene" uid="uid://cumryt3pxo2wv" path="res://escenas/character_minigame.tscn" id="2_blpan"]
-[ext_resource type="Texture2D" uid="uid://kxm04q67wv3u" path="res://fnafjuego/minijuego assets/White.png" id="3_2fbfj"]
-[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://fnafjuego/minijuego assets/Floor/Floor.png" id="5_ya4yl"]
+[ext_resource type="Texture2D" uid="uid://ccw04xaf4b6s2" path="res://fnafjuego/minijuego assets/White.png" id="3_2fbfj"]
+[ext_resource type="Texture2D" uid="uid://dlj8s82vjltgo" path="res://fnafjuego/minijuego assets/Floor/Floor.png" id="5_ya4yl"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="7_fpa5o"]
 [ext_resource type="PackedScene" uid="uid://b11fiquxgu4wa" path="res://escenas/M_objets/long_table.tscn" id="8_suoqm"]
 [ext_resource type="PackedScene" uid="uid://bo828jywsimiy" path="res://escenas/M_objets/chair.tscn" id="9_lt1rw"]
 [ext_resource type="PackedScene" uid="uid://bj026rljnlsdo" path="res://escenas/M_objets/Round_Table.tscn" id="9_suoqm"]
 [ext_resource type="Script" uid="uid://be0dsq6vfneai" path="res://scripts/table_w_chair.gd" id="10_exafg"]
 [ext_resource type="PackedScene" uid="uid://djqjqcxkcwu8s" path="res://escenas/M_objets/_interact_colider.tscn" id="10_lt1rw"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="11_bgkyw"]
+[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="11_bgkyw"]
 [ext_resource type="Script" uid="uid://qufpg35yap8u" path="res://scripts/transicion.gd" id="12_rvtq8"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://escenas/pop_safe.tscn" id="13_mwja1"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://escenas/pop_text.tscn" id="14_ko2eg"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://escenas/black_bars.tscn" id="15_ky55h"]
 [ext_resource type="Script" uid="uid://psq4enfjnb50" path="res://scripts/minigame_exit.gd" id="18_d47h1"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://scripts/location_key.gd" id="18_l24p3"]
+[ext_resource type="Script" uid="uid://bfkjsera0devi" path="res://scripts/key_locations.gd" id="20_iuvsy"]
 [ext_resource type="Script" uid="uid://bv3ds6app5hqq" path="res://scripts/safe_interacts.gd" id="20_ms56s"]
 [ext_resource type="Script" uid="uid://04ct0qm6oejc" path="res://scripts/computer.gd" id="22_a320n"]
 [ext_resource type="Script" uid="uid://b24som82ucj8a" path="res://scripts/office_door_colliders.gd" id="23_d47h1"]
@@ -127,7 +128,7 @@ shader_parameter/vignette_opacity = 0.665
 texture_filter = 1
 script = ExtResource("1_afqw0")
 custom_pos = true
-interact_nodes = [NodePath("Coliders/Exit"), NodePath("Coliders/Safe"), NodePath("Coliders/Computer"), NodePath("Coliders/Office_dor"), NodePath("Coliders/Key_locations/Location_key_1"), NodePath("Coliders/Key_locations/Location_key_2"), NodePath("Coliders/Key_locations/Location_key_3")]
+interact_nodes = [NodePath("Coliders/Exit"), NodePath("Coliders/Safe"), NodePath("Coliders/Computer"), NodePath("Coliders/Office_dor"), NodePath("Coliders/Key_locations")]
 player = NodePath("YSort/Character_Minigame")
 pop_text = NodePath("Shader&else/Pop_Text")
 pop_safe = NodePath("Shader&else/Pop_Safe")
@@ -159,7 +160,7 @@ tile_set = SubResource("TileSet_blpan")
 y_sort_enabled = true
 
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
-position = Vector2(-408, 832)
+position = Vector2(-528, 64)
 character = "Unnamed_Guard"
 
 [node name="Chair" parent="YSort" instance=ExtResource("9_lt1rw")]
@@ -304,7 +305,7 @@ script = ExtResource("18_d47h1")
 [node name="Exit_false_Night_6" parent="Coliders/Exit" instance=ExtResource("10_lt1rw")]
 position = Vector2(-512, 16)
 scale = Vector2(3.2, 0.799999)
-id = "Exit_false_n6"
+id = "Exit_true_party_n6"
 night_1 = false
 night_2 = false
 night_3 = false
@@ -356,7 +357,7 @@ exiting = false
 position = Vector2(-552, 64)
 scale = Vector2(1.22257, 1.37796)
 id = "Magic_chair"
-first_read_end_in = 1
+read_end_in = Array[int]([1, 2, 3, 4, 7])
 
 [node name="Round_tables" type="Node2D" parent="Coliders"]
 
@@ -444,7 +445,7 @@ id = "Round_table"
 position = Vector2(-1016, 168)
 scale = Vector2(2, 2)
 id = "Best_table"
-first_read_end_in = 3
+read_end_in = Array[int]([3, 4, 5])
 
 [node name="Long_tables" type="Node2D" parent="Coliders"]
 
@@ -472,13 +473,13 @@ id = "Long_table"
 position = Vector2(-1144, 312)
 scale = Vector2(2, 4.5)
 id = "Short_table"
-first_read_end_in = 1
+read_end_in = Array[int]([1])
 
 [node name="Scenario" parent="Coliders" instance=ExtResource("10_lt1rw")]
 position = Vector2(-1016, 408)
 scale = Vector2(12.5, 4.2)
 id = "Scenario"
-first_read_end_in = 4
+read_end_in = Array[int]([4])
 
 [node name="Pick_up_chair" type="Node2D" parent="Coliders"]
 script = ExtResource("15_h0mop")
@@ -496,6 +497,7 @@ action = "Pick_chair_w_text"
 id = "Pick_chair"
 
 [node name="Key_locations" type="Node2D" parent="Coliders"]
+script = ExtResource("20_iuvsy")
 
 [node name="Location_key_1" type="Node2D" parent="Coliders/Key_locations"]
 position = Vector2(-1016, 504)
@@ -504,6 +506,7 @@ metadata/_edit_group_ = true
 
 [node name="nothing" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
 id = "Nothing"
+read_end_in = Array[int]([1])
 
 [node name="Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
 action = "Pick_key_w_text"
@@ -518,6 +521,7 @@ entering = false
 
 [node name="Picked_Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
 id = "Picked_key"
+read_end_in = Array[int]([2])
 night_1 = false
 night_2 = false
 night_3 = false
@@ -528,7 +532,7 @@ entering = false
 
 [node name="No_Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
 id = "No_key"
-first_read_end_in = 1
+read_end_in = Array[int]([1, 3])
 night_1 = false
 night_2 = false
 night_3 = false
@@ -538,12 +542,13 @@ true_night_6 = false
 entering = false
 
 [node name="Location_key_2" type="Node2D" parent="Coliders/Key_locations"]
-position = Vector2(-984, 504)
+position = Vector2(-1048, 504)
 script = ExtResource("18_l24p3")
 metadata/_edit_group_ = true
 
 [node name="nothing" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
 id = "Nothing"
+read_end_in = Array[int]([1])
 
 [node name="Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
 action = "Pick_key_w_text"
@@ -558,6 +563,7 @@ entering = false
 
 [node name="Picked_Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
 id = "Picked_key"
+read_end_in = Array[int]([2])
 night_1 = false
 night_2 = false
 night_3 = false
@@ -568,7 +574,7 @@ entering = false
 
 [node name="No_Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
 id = "No_key"
-first_read_end_in = 1
+read_end_in = Array[int]([1, 3])
 night_1 = false
 night_2 = false
 night_3 = false
@@ -578,12 +584,13 @@ true_night_6 = false
 entering = false
 
 [node name="Location_key_3" type="Node2D" parent="Coliders/Key_locations"]
-position = Vector2(-1048, 504)
+position = Vector2(-984, 504)
 script = ExtResource("18_l24p3")
 metadata/_edit_group_ = true
 
 [node name="nothing" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
 id = "Nothing"
+read_end_in = Array[int]([1])
 
 [node name="Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
 action = "Pick_key_w_text"
@@ -598,6 +605,7 @@ entering = false
 
 [node name="Picked_Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
 id = "Picked_key"
+read_end_in = Array[int]([2])
 night_1 = false
 night_2 = false
 night_3 = false
@@ -608,7 +616,7 @@ entering = false
 
 [node name="No_Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
 id = "No_key"
-first_read_end_in = 1
+read_end_in = Array[int]([1, 3])
 night_1 = false
 night_2 = false
 night_3 = false
@@ -634,7 +642,6 @@ id = "Keep_looting"
 
 [node name="Safe_unsafe" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
 id = "Empty_safe"
-first_read_end_in = 1
 
 [node name="Chickend_safe" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
 id = "Chickend_safe"
@@ -645,13 +652,13 @@ script = ExtResource("22_a320n")
 [node name="Check_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
 id = "Check_computer"
-first_read_end_in = 2
+read_end_in = Array[int]([2])
 
 [node name="Start_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
 action = "start_computer_w_text"
 id = "Start_computer"
-first_read_end_in = 3
+read_end_in = Array[int]([3])
 
 [node name="Done_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
@@ -660,18 +667,20 @@ id = "Done_computer"
 [node name="Corrupted_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
 id = "Stop_computer"
-first_read_end_in = 2
+read_end_in = Array[int]([2])
 
 [node name="Get_program" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
 action = "get_program_w_text"
 id = "Get_program"
 
-[node name="Extra_night" parent="Coliders" instance=ExtResource("10_lt1rw")]
+[node name="News panel" type="Node2D" parent="Coliders"]
 position = Vector2(-552, 480)
+
+[node name="Extra_night" parent="Coliders/News panel" instance=ExtResource("10_lt1rw")]
 action = "sign_in_w_text"
 id = "sign_in"
-first_read_end_in = 4
+read_end_in = Array[int]([4, 5])
 night_1 = false
 night_2 = false
 night_3 = false
@@ -687,7 +696,7 @@ script = ExtResource("23_d47h1")
 position = Vector2(0, 7.6293945e-06)
 scale = Vector2(2.4103067, 1.6052315)
 id = "Office_door_locked"
-first_read_end_in = 3
+read_end_in = Array[int]([3])
 
 [node name="Door_office_unlocking" parent="Coliders/Office_dor" instance=ExtResource("10_lt1rw")]
 scale = Vector2(2.4103067, 1.6052315)

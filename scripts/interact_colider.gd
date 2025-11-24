@@ -6,8 +6,9 @@ var action := "Text"
 var player_in := false
 var active
 
-@export var first_read_end_in := 0
-var read := false
+@export var read_end_in: Array[int]
+
+var read := 0
 
 @export_group("Nights")
 @export var night_1 := true
@@ -22,8 +23,8 @@ var read := false
 @export var entering := true
 @export var exiting := true
 
-signal do_action(action: String, read: bool)
-signal send_id_to_text(id: String, end_in: int, read: bool)
+signal do_action(action: String, read: int)
+signal send_id_to_text(id: String, end_in: Array[int], read: int)
 
 func _ready():
 	check_active()
@@ -55,10 +56,13 @@ func _input(event):
 	if get_tree().get_root().get_node("Minigame").reading: #uso otro if para que no quede tan largo
 		return
 	
+	print("Read: ", read, "  End in: ", read_end_in)
+	
 	if action == "Text":
-		emit_signal("send_id_to_text", id, first_read_end_in, read)
+		emit_signal("send_id_to_text", id, read_end_in, read)
 	else:
 		emit_signal("do_action", action, read)
 		if action.ends_with("w_text"):
-			emit_signal("send_id_to_text", id, first_read_end_in, read)
-	read = true
+			emit_signal("send_id_to_text", id, read_end_in, read)
+	if read < read_end_in.size():
+		read += 1

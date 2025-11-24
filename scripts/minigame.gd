@@ -44,7 +44,7 @@ func locate_char(entrance: bool):
 	else:
 		player.position = Vector2(-990.0, 840.0)
 
-func _on_interacted_text(id: String, end_in, read):
+func _on_interacted_text(id: String, end_in: Array[int], read: int):
 	if reading or safing:
 		return
 	reading = true
@@ -66,24 +66,24 @@ func safe():
 	pop_safe.pop_up()
 	player.freeze = true
 
-func _on_done_safing(not_automatic: bool, read: bool, combination := []):
+func _on_done_safing(not_automatic: bool, read: int, combination := []):
 	safing = false
 	pop_safe.visible = false
 	player.freeze = false
 	if Global.noche != 6:
-		_on_interacted_text("Safe_too_soon", 0, false)
+		_on_interacted_text("Safe_too_soon", [], 0)
 		return # evita cualquier cosa
 	if not not_automatic != false: # llamo al texto manualmente, pues no es con un interact
 		if combination == Global.safe_code:
-			_on_interacted_text("Safe_know", 0, false)
+			_on_interacted_text("Safe_know", [], 0)
 			Global.mapa["safe_open"] = true
 		else:
-			_on_interacted_text("Safe_not_know", 1, read)
+			_on_interacted_text("Safe_not_know", [1], read)
 	else:
-		_on_interacted_text("Safe_give_up", 1, read)
+		_on_interacted_text("Safe_give_up", [1], read)
 	act_interact()
 
-func on_action(action: String, read: bool):
+func on_action(action: String, read: int):
 	
 	if reading or safing:
 		return
@@ -121,7 +121,7 @@ func on_action(action: String, read: bool):
 		Global.mapa["computer_working"] = false
 	
 	elif action == "sign_in_w_text":
-		if read:
+		if read == 1:
 			Global.mapa["signed_in"] = true
 			print("Good luck!")
 	
