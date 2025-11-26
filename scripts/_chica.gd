@@ -7,7 +7,6 @@ var gotcha := 0
 var gotcha_lights := false
 var lock_movement := false
 var door_fail_count := 0 # en el caso de chica, le da igual si tienes la puerta abierta o cerrada, se moverá igual (excepto a donde)
-var door_soft_focus := false
 
 #S, 1, 2, 3, 4, 5, 6, PD, Office
 var position = "S"
@@ -20,6 +19,7 @@ var luces: bool # luces de la oficina
 var camara: int
 var cam_activa: bool
 var watching_cam_6_when_i_am_there_and_it_is_night_5_and_i_am_attempting_to_open_the_safe := false
+var door_soft_focus := false # si estás iluminando
 
 
 signal movement(to: int, from: int)
@@ -73,14 +73,15 @@ func tick():
 	
 	tick_count += 1
 	
-	if tick_count >= tick_count_limit:
-		
-		if watching_cam_6_when_i_am_there_and_it_is_night_5_and_i_am_attempting_to_open_the_safe:
-			print_rich("[color=yellow]still hearing, be pacient")
-			return # no dejo que se mueva si estás en esa camara mientras intenta abrir
-		
-		tick_count = 0
-		movement_oportunity(Global.noche, AI_level)
+	if tick_count < tick_count_limit:
+		return
+	
+	if watching_cam_6_when_i_am_there_and_it_is_night_5_and_i_am_attempting_to_open_the_safe:
+		print_rich("[color=yellow]still hearing, be pacient")
+		return # no dejo que se mueva si estás en esa camara mientras intenta abrir
+	
+	tick_count = 0
+	movement_oportunity(Global.noche, AI_level)
 
 
 func movement_oportunity(_noche: int, AI: int, always_do := false):
