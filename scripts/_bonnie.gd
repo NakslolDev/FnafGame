@@ -41,7 +41,7 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 	
 	if door_closed:
 		door_closed_log = true # Guarda la información
-	elif door_closed_log == true: # Solo se activa el primer tick después de que abrir la puerta.
+	elif door_closed_log: # Solo se activa el primer tick después de que abrir la puerta.
 		@warning_ignore("integer_division")
 		if tick_count > 0 + (AI_level / 2): # Si está a punto de moverse, te deja un poco más de tiempo.
 			@warning_ignore("integer_division")
@@ -50,7 +50,7 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 	
 	if gotcha > 0: # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.
 		if position == "PI":
-			if door_soft_focus == true or (camara == 11 and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
+			if door_soft_focus or (camara == 11 and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
 				print_rich("[color=cyan]GOTCHA!")
 		else: # Gotcha solo devería ser != 0 en la puerta
@@ -82,7 +82,7 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 		print_rich("[color=cyan]Bonnie movement no (still not seen): from ", position)
 		return
 	
-	if lock_movement == true and position == "PI": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
+	if lock_movement and position == "PI": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
 		lock_movement = false
 		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se valla antes
 			print_rich("[color=cyan]Bonnie movement no (locked first try): from ", position)

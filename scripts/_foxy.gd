@@ -1,6 +1,6 @@
 extends Node
 
-var AI_level: int
+var AI_level: int # No voy a volver a comentar lo que ya he comentado en bonnie y en chica...
 var tick_count := 0
 var tick_focus_count := 0
 var animacion_go_back := false

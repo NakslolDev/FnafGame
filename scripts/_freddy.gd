@@ -1,11 +1,10 @@
 extends Node
 
-var AI_level: int
+var AI_level: int # No voy a volver a comentar lo que ya he comentado en bonnie y en chica...
 var tick_count: int
 var lock_movement: bool
 var door_fail_count: int
 var cam_look_count: int
-var cam_stun: int
 var path_to_take: int # esta variable determina que comportamiento va a tomar freddy
 var puerta_atack: bool
 
@@ -34,7 +33,6 @@ func reset():
 	lock_movement = false
 	door_fail_count = 0
 	cam_look_count = 0
-	cam_stun = 0
 	path_to_take = 0
 	puerta_atack = false
 	path = 0
@@ -47,7 +45,6 @@ func reset():
 	camara = 1
 	cam_activa = false
 	cam_light = false
-	print_rich("[color=967B63]Freddy reset...")
 
 
 func tick():
@@ -59,7 +56,7 @@ func tick():
 		
 		if not seen:
 			print_rich("[color=967B63]GOTCHA!")
-		seen = true
+			seen = true
 		
 		if position != "S" and position != "0":
 			cam_look_count += 1
@@ -67,26 +64,20 @@ func tick():
 		if cam_light:
 			if cam_look_count < 20:
 				cam_look_count = 20
-			cam_stun = 20 - AI_level
-			if tick_count > AI_level:
-				tick_count = AI_level
-			print_rich("[color=967B63]Freddy BIG stuned: from ", position)
-		else: # no stunea, solo evita que avance el tick count
+			tick_count = 0 # le resetea los ticks...
+		else: # solo evita que avance el tick count, no lo resetea
 			print_rich("[color=967B63]Freddy stop tick count: from ", position)
 		
 		if cam_look_count >= 30 and position != "S" and position != "0":
-			var ipos = str_to_var(position)
-			if ipos == null: # creamos otra ves ipos
-				ipos = 99999
-			move_back(ipos)
+			move_back() # se mueve hacia atras
 			cam_look_count = 0
 		
 		return
 	
-	elif looking_at_me(false) and seen and cam_look_count > 0: # lo importante es que exista el elif para que no entre en el else y el return
+	elif looking_at_me(false) and seen and cam_look_count > 0: # Si lo has mirado en las camaras y bajas el monitor -> cam stall
 		if cam_look_count > 20:
 			cam_look_count = 20
-		if randf_range(0, 49 - AI_level) < 10: # 1/5 IA 0, 1/3 IA 20... Lo que se traduce en 20 segundos ia 0, 12 en IA 20
+		if randf_range(0, 49 - AI_level) < 10: # 1/5 IA 0, 1/3 IA 20... Lo que se traduce en ~20 segundos ia 0, ~12 en IA 20
 			cam_look_count -= 1 # ahora me he quedado en que está quieto un rato, pero va descendiendo
 			print_rich("[color=967B63]Freddy is awakening... with cam closed: from ", position) # al principio havia hecho que se quedase quieto
 		else:
@@ -94,28 +85,21 @@ func tick():
 		return
 	
 	else:
-		if cam_stun > 0:
-			cam_stun -= 1
 		cam_look_count = 0
-	
-	if cam_stun > 0:
-		return
 	
 	var tick_count_limit: int
 	
-	if Global.debug["cheats"]["ultra_agresive"]:
+	if Global.debug["cheats"]["ultra_agresive"] or puerta_atack:
 		tick_count_limit = 1
 	elif position != "PI" and position != "PD":
 		tick_count_limit = 30
-	elif puerta_atack:
-		tick_count_limit = 1
 	else:
 		tick_count_limit = 15
 	
 	tick_count += 1
 	if tick_count == tick_count_limit:
 		tick_count = 0
-		movement_oportunity(Global.noche, AI_level)
+		movement_oportunity()
 
 func looking_at_me(cam_open_required := true):
 	
@@ -152,13 +136,13 @@ func looking_at_me(cam_open_required := true):
 		return true
 	return false # si falla todas, false
 
-func movement_oportunity(_night, AI):
+func movement_oportunity():
 	
-	var movement_hit := false
-	var ipos = str_to_var(position)
-	if ipos == null:
-		ipos = 99999
-	var rand_MO
+	if lock_movement:
+		if position == "PI" or position == "PD": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
+			puerta_atack = false 
+			lock_movement = false
+			return
 	
 	if path_to_take == 0:
 		path_to_take = randi_range(1,2)
@@ -167,53 +151,45 @@ func movement_oportunity(_night, AI):
 	if (path_to_take == 1 and position != "PI") or (path_to_take == 2 and position != "PD"):
 		door_fail_count = 0
 		puerta_atack = false
-		rand_MO = randi_range(0, 20) # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
-		if AI > rand_MO:
-			movement_hit = true
-	
-	elif (position == "PI" and not door_I_closed) or (position == "PD" and not door_D_closed):
-		rand_MO = randi_range(0, 20) # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
-		if AI > rand_MO:
-			puerta_atack = true
-		
-		if puerta_atack and (cam_activa or girado): # te entra siempre si tienes la cam activa o mires hacia atras
-			movement_hit = true
-		elif puerta_atack:
-			door_fail_count += 1
+		if AI_level > randi_range(0, 20):
+			move()
+			return
 	
 	else:
-		rand_MO = randi_range(0, 20) # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
-		if AI > rand_MO:
+		if AI_level > randi_range(0, 20):
 			puerta_atack = true
 		
-		if puerta_atack:
-			door_fail_count += 1
+		if (position == "PI" and not door_I_closed) or (position == "PD" and not door_D_closed): # La puerta está abierta por donde intenta entrar
+			
+			if puerta_atack and (cam_activa or girado): # te entra siempre si tienes la cam activa o mires hacia atras
+				move()
+				return
+			elif puerta_atack:
+				door_fail_count += 1
+		
+		elif puerta_atack: # si la puerta está cerrada pero te está atacando
+				door_fail_count += 1
+	
 	
 	if puerta_atack:
-		var rand_give_up = randi_range(0, 5000)
-		if door_fail_count * AI / 5.0 > rand_give_up:
+		if door_fail_count * AI_level / 5.0 > randi_range(0, 5000):
 			print_rich("[color=967B63]Freddy gave up: from ", position)
 			puerta_atack = false
-			movement_hit = true # siempre se va cuando se da por vencido
 			if path_to_take == 1:
 				path_to_take = 2
 			else:
-				path_to_take = 1
+				path_to_take = 1 
+			move() # siempre se va cuando se da por vencido
+			return
 	
-	if lock_movement == true:
-		if position == "PI" or position == "PD": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
-			movement_hit = false
-			puerta_atack = false 
-			lock_movement = false
 	
-	if movement_hit:
-		move(ipos, AI)
-	elif position == "PD" or position == "PI" and puerta_atack:
+	if position == "PD" or position == "PI" and puerta_atack:
 		print_rich("[color=967B63]Freddy movement puerta_atack: from ", position)
 	else:
 		print_rich("[color=967B63]Freddy movement no: from ", position)
 
-func move(ipos, AI):
+
+func move():
 	
 	seen = false
 	
@@ -226,12 +202,12 @@ func move(ipos, AI):
 	
 	elif position == "0": # con IA alta, mas probable de no pasar por T1 desde 0
 		if path_to_take == 1:
-			if AI > randi_range(0, 20):
+			if AI_level > randi_range(0, 20):
 				position = "1"
 				path = 1
 			else:
 				position = "T1"
-				path = 0
+				path = 0 # si path es 0, le fuerza a elegir
 		else:
 			position = "T1"
 			path = 0
@@ -247,36 +223,36 @@ func move(ipos, AI):
 			position = "4"
 		path = path_to_take # path to take es o 1 o 2. Es el camino al que se dirige
 	
-	elif ipos < 10: # esto comprueva si está en una posicion numerica. Si position no es un numero, ipos = 99999
+	elif position.is_valid_int(): # esto comprueva si está en una posicion numerica.
 		
 		if path == path_to_take: # si está en el camino correcto, avanza
 			if path == 1:
-				if ipos == 3:
+				if position == "3":
 					position = "PI"
 				else:
-					position = str(ipos + 1)
+					position = str(int(position) + 1)
 			else: # path 2
-				if ipos == 4:
+				if position == "4":
 					position = "PD"
 				else:
-					position = str(ipos + 1)
+					position = str(int(position) + 1)
 		
 		else: # si está en el camino incorrecto
 			if path == 1:
-				if ipos == 3:
+				if position == "3":
 					position = "T2"
 					path = 0
 				else:
-					position = str(ipos + 1)
+					position = str(int(position) + 1)
 			else: # path 2
-				if ipos == 4:
+				if position == "4":
 					position = "T2"
 					path = 0
-				elif ipos == 1: # es más rápido
+				elif position == "1": # es más rápido
 					position = "T1"
 					path = 0
 				else:
-					position = str(ipos + 1)
+					position = str(int(position) + 1)
 	
 	elif position == "PI":
 		if path_to_take == path:
@@ -302,18 +278,19 @@ func move(ipos, AI):
 	print_rich("[color=967B63]Freddy movement yes: from ", last_position, " to ", position)
 	emit_signal("movement", position, path, last_position, last_path)
 
-func move_back(ipos):
+func move_back():
 	
 	tick_count = 0
 	last_position = position
 	last_path = path
+	var ipos = int(position)
 	
 	if position == "T1":
 		position = "0"
 		path = 0
 		path_to_take = 0
 	
-	elif ipos < 10:
+	elif position.is_valid_int() and ipos < 10:
 		
 		if ipos == 1:
 			position = "T1"

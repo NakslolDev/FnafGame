@@ -54,10 +54,10 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 	
 	if position == "PD": # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.
 		if gotcha > 0:
-			if door_soft_focus == true or (camara == 11 and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
+			if door_soft_focus or (camara == 11 and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
 				print_rich("[color=yellow]GOTCHA!")
-		if door_soft_focus == true: # Comprueva si le has mirado con la linterna
+		if door_soft_focus: # Comprueva si le has mirado con la linterna
 			gotcha_lights = true
 	else:
 		gotcha_lights = false
@@ -96,7 +96,7 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 		print_rich("[color=yellow]Chica movement no (still not seen): from ", position)
 		return
 	
-	if lock_movement == true and position == "PI": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
+	if lock_movement and position == "PI": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
 		lock_movement = false
 		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se valla antes
 			print_rich("[color=yellow]Chica movement no (locked first try): from ", position)
@@ -141,7 +141,7 @@ func move():
 	last_position = position
 	var repetir := true
 	
-	while repetir == true: # para que sea menos probable que vuelva a la misma casilla de donde vino, pero no imposible
+	while repetir: # para que sea menos probable que vuelva a la misma casilla de donde vino, pero no imposible
 		
 		position = last_position # vuelves a poner la posicion inicial, si no avanzaría varias veces
 		
