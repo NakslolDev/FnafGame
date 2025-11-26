@@ -22,7 +22,7 @@ var door_closed_log := false 	# Es una variable auxiliar. Como door_closed se ac
 								# Su principal funcion es ayudar a que si abres
 var door_soft_focus := false 	# Controla si estás iluminando su puerta con la linterna. En ese caso, no entrará. También sirve para gotcha.
 
-signal movement(to: int, from: int) # Manda la señal de movimiento. 
+signal movement(to: int, from: int) # La señal de movimiento. 
 
 func reset(): # Reseta todas las variables al inicio de la noche.
 	tick_count = 0
@@ -66,9 +66,12 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 		tick_count_limit = 15
 	
 	tick_count += 1 # cada tick añade uno a tick count
-	if tick_count >= tick_count_limit: # Si llega o supera el límite
-		tick_count = 0 # resetea el contador
-		movement_oportunity() # Y se intenta mover
+	
+	if tick_count < tick_count_limit: # Si llega o supera el límite
+		return
+	
+	tick_count = 0 # resetea el contador
+	movement_oportunity() # Y se intenta mover
 
 
 func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto más nivel de IA, más posibilidades de moverse
@@ -95,7 +98,7 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 			print_rich("[color=cyan]Bonnie movement no (flashlight on door): from ", position)
 	
 	elif not door_closed: # puerta abierta
-		if AI_level > randi_range(0, 20): # siempre acierta en nivel 20
+		if AI_level >= randi_range(0, 20): # siempre acierta en nivel 20
 			move()
 			return
 		
@@ -118,7 +121,7 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 			move()
 			return
 	
-	print_rich("[color=cyan]Bonnie movement no: from ", position)
+	print_rich("[color=cyan]Bonnie movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 
 
 func move(): # decide a donde moverse
