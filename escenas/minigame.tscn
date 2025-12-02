@@ -160,7 +160,7 @@ tile_set = SubResource("TileSet_blpan")
 y_sort_enabled = true
 
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
-position = Vector2(-528, 64)
+position = Vector2(-528, 96)
 character = "Unnamed_Guard"
 
 [node name="Chair" parent="YSort" instance=ExtResource("9_lt1rw")]

@@ -1,7 +1,7 @@
 extends Node
 
-var language := "En"
-var audio_language := "En"
+var language := "En" #Gcontrol
+var audio_language := "En" #Gcontrol
 
 var minigame_text_speed_mult := 1.0
 
@@ -374,7 +374,7 @@ func get_night_info(animatronic: String, night: int, time: int):
 	
 	return get_csv_value(row, column)
 
-func get_csv_value(row_index: int, col_index: int): # Chat GPT...
+func get_csv_value(row_index: int, col_index: int): # Chat GPT... #Gcontrol
 	var path := "res://Data/Night_database.csv"
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:

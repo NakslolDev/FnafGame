@@ -138,11 +138,11 @@ func tick():
 	
 	if gotcha > 0:
 		if room == "lhall" and position == 0:
-			if soft_focus_I == true or door_I_closed:
+			if soft_focus_I or door_I_closed:
 				gotcha = 0
 				print_rich("[color=B5623F]GOTCHA!")
 		elif room == "rhall" and position == 0:
-			if soft_focus_D == true or door_D_closed:
+			if soft_focus_D or door_D_closed:
 				gotcha = 0
 				print_rich("[color=B5623F]GOTCHA!")
 		else:
