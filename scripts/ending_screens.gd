@@ -1,6 +1,6 @@
 extends Node2D
 
-@export_enum("mediocre", "party", "bad", "good")
+@export_enum("mediocre", "party", "bad", "true", "good")
 var ending: String
 
 var transicionando_out := false

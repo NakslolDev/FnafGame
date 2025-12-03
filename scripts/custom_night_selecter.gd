@@ -32,9 +32,12 @@ func transition_to_play(): # como no hay ningun otro caso de transicion, no teng
 
 
 func get_text(id: String):
-	return get_csv_value(id, Global.language)
+	return Global.get_csv_value_id(Global.text_CSV_name, id, Global.language)
 
 func get_csv_value(row_id: String, lang_code: String) -> String:
+	
+	push_error("old function get_csv_value. Use Global function instead")
+	
 	var path := "res://Data/Text_Traducted.csv"
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:

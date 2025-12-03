@@ -44,7 +44,7 @@ var transicionando: bool
 func _ready():
 	bonnie_cam_wait = 0
 	chica_cam_wait = 0
-	Global.reset()
+	Global.reset_night()
 	Global.night_starts()
 	Bonnie.reset()
 	Chica.reset()

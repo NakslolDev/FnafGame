@@ -117,13 +117,16 @@ func get_id_num(id_string: String):
 	else:
 		id_string += "_" + str(id_num)
 	
-	if id_num > 1 and get_csv_value(id_string, Global.language).ends_with("(id non existant)"):
+	if id_num > 1 and Global.get_csv_value_id(Global.text_CSV_name, id_string, Global.language).ends_with("(id non existant)"):
 		$"../..".exit()
 		return ""
 	
-	return get_csv_value(id_string, Global.language)
+	return Global.get_csv_value_id(Global.text_CSV_name, id_string, Global.language)
 
 func get_csv_value(row_id: String, lang_code: String) -> String:
+	
+	push_error("old function get_csv_value. Use Global function instead")
+	
 	var path := "res://Data/Text_Traducted.csv"
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d3ulhnwtxrp15" path="res://scripts/black_bars.gd" id="1_xcvhw"]
 [ext_resource type="FontFile" uid="uid://db8nupa3kyc5g" path="res://fnafjuego/I-pixel-u.ttf" id="2_ge38c"]
 
-[node name="Black_bars" type="Control"]
+[node name="Black_bars" type="Control" node_paths=PackedStringArray("label", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xcvhw")
+label = NodePath("RichTextLabel")
+timer = NodePath("Generic_timer_07")
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 position = Vector2(960, 68)

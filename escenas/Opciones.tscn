@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://bv54uvsb4g8u4"]
 
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_06fgn"]
+[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_06fgn"]
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://scripts/opciones.gd" id="1_afsr0"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://escenas/Mouse_Custom.tscn" id="3_cnt5o"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://scripts/label_idiom.gd" id="4_b7m4e"]
@@ -693,7 +693,7 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_vertical = 1364
+scroll_vertical = 100
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer"]
