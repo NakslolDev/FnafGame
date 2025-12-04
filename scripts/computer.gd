@@ -16,7 +16,7 @@ func act():
 		$Corrupted_computer.scale = Vector2.ONE
 	elif Global.mapa["computer_working"] and not Global.m_entering:
 		$Get_program.scale = Vector2.ONE
-	elif Global.inventario["usb_key"]:
+	elif Global.inventario["safe_usb_key"]:
 		$Start_computer.scale = Vector2.ONE
 	else:
 		$Check_computer.scale = Vector2.ONE

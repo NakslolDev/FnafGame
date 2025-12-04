@@ -14,7 +14,7 @@ func act():
 	if Global.mapa["safe_open"]:
 		if not Global.inventario["files"]:
 			$Safe_internal_organs.scale = Vector2.ONE
-		elif not Global.inventario["usb_key"]:
+		elif not Global.inventario["safe_usb_key"]:
 			$Safe_more_organs.scale = Vector2.ONE
 		else:
 			$Safe_unsafe.scale = Vector2.ONE

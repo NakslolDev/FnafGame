@@ -19,7 +19,7 @@ func sync():
 	$MarginContainer_inventory/VBoxContainer/CheckBox_screwdriver.button_pressed = debug["game_state"]["inventario"]["screwdriver"]
 	$MarginContainer_inventory/VBoxContainer/CheckBox_bateries.button_pressed = debug["game_state"]["inventario"]["bateries"]
 	$MarginContainer_inventory/VBoxContainer/CheckBox_files.button_pressed = debug["game_state"]["inventario"]["files"]
-	$MarginContainer_inventory/VBoxContainer/CheckBox_usb_key.button_pressed = debug["game_state"]["inventario"]["usb_key"]
+	$MarginContainer_inventory/VBoxContainer/CheckBox_usb_key.button_pressed = debug["game_state"]["inventario"]["safe_usb_key"]
 	$MarginContainer_inventory/VBoxContainer/CheckBox_exe.button_pressed = debug["game_state"]["inventario"]["exe"]
 	$MarginContainer_mapa/VBoxContainer/CheckBox_door_office_open.button_pressed = debug["game_state"]["mapa"]["door_office_open"]
 	$MarginContainer_mapa/VBoxContainer/CheckBox_safe_open.button_pressed = debug["game_state"]["mapa"]["safe_open"]
@@ -75,7 +75,7 @@ func _on_check_box_files_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["files"] = toggled_on
 
 func _on_check_box_usb_key_toggled(toggled_on: bool) -> void:
-	debug["game_state"]["inventario"]["usb_key"] = toggled_on
+	debug["game_state"]["inventario"]["safe_usb_key"] = toggled_on
 
 func _on_check_box_exe_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["exe"] = toggled_on

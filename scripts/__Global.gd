@@ -477,8 +477,10 @@ var debug :={
 			"recorder": false,
 			"screwdriver": false,
 			"bateries": false,
+			"pen": false,
 			"files": false,
-			"usb_key": false,
+			"safe_usb_key": false,
+			"dm_usb_key": false,
 			"exe": false,
 		},
 	},
@@ -521,8 +523,10 @@ var inventario :={
 	"screwdriver": false,
 	"bateries": false,
 	"chair": false,
+	"pen": false,
 	"files": false,
-	"usb_key": false,
+	"safe_usb_key": false,
+	"dm_usb_key": false,
 	"exe": false,
 }
 

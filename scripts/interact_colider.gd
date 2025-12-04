@@ -26,6 +26,28 @@ var read := 0
 @export var entering := true
 @export var exiting := true
 
+@export_group("Inventario")
+enum Condition{Omit, Need, Exclude}
+@export var key: Condition = Condition.Omit
+@export var recorder: Condition = Condition.Omit
+@export var screwdriver: Condition = Condition.Omit
+@export var bateries: Condition = Condition.Omit
+@export var chair: Condition = Condition.Omit
+@export var pen: Condition = Condition.Omit
+@export var files: Condition = Condition.Omit
+@export var safe_usb_key: Condition = Condition.Omit
+@export var dm_usb_key: Condition = Condition.Omit
+@export var exe: Condition = Condition.Omit
+
+@export_group("Mapa")
+@export var door_office_open: Condition = Condition.Omit
+@export var safe_open: Condition = Condition.Omit
+@export var safe_opened_by_animatronic: Condition = Condition.Omit
+@export var recorder_planted: Condition = Condition.Omit
+@export var computer_working: Condition = Condition.Omit
+@export var computer_failed: Condition = Condition.Omit
+@export var signed_in: Condition = Condition.Omit
+
 signal do_action(action: String, read: int)
 signal send_id_to_text(id: String, end_in: Array[int], read: int)
 
@@ -46,6 +68,28 @@ func check_active():
 	if not (Global.m_entering and entering) and not (!Global.m_entering and exiting):
 		active = false
 		return
+	
+	for _key in Global.inventario: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
+		var value: Condition = get(_key)
+		if value == Condition.Omit: # sobra, pero para que quede más limpio
+			continue
+		if value == Condition.Need and not Global.inventario[_key]:
+			active = false
+			return
+		if value == Condition.Exclude and Global.inventario[_key]:
+			active = false
+			return
+	
+	for _key in Global.mapa: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
+		var value: Condition = get(_key)
+		if value == Condition.Omit: # sobra, pero para que quede más limpio
+			continue
+		if value == Condition.Need and not Global.mapa[key]:
+			active = false
+			return
+		if value == Condition.Exclude and Global.mapa[key]:
+			active = false
+			return
 
 func _on_body_entered(body: Node2D) -> void:
 	if str(body).begins_with("Character_Minigame"):

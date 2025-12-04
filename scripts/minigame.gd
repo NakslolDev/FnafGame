@@ -110,7 +110,7 @@ func on_action(action: String, read: int):
 	elif action == "Loot_safe_w_text":
 		Global.inventario["files"] = true
 	elif action == "Keep_looting_safe_w_text":
-		Global.inventario["usb_key"] = true
+		Global.inventario["safe_usb_key"] = true
 	elif action == "loot_empty_safe_w_text":
 		Global.inventario["life_savings"] = true
 	
