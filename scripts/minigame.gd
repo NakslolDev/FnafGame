@@ -163,19 +163,18 @@ func manage_end_night():
 			if Global.mapa["signed_in"]:
 				Global.noche += 1
 				Global.guardar_partida()
-				if Global.inventario["key"] and Global.mapa["safe_opened_by_animatronic"]:
-					Global.true_night_6 = true
+			
 			else:
 				get_tree().change_scene_to_file("res://escenas/endings/mediocre_ending.tscn")
 				return
 		
 		elif Global.noche == 6:
 			
-			print("TN6: ", Global.true_night_6, "Invent:", Global.inventario)
+			print("Invent:", Global.inventario)
 			
-			if Global.true_night_6 and Global.inventario["exe"]:
+			if Global.inventario["exe"]:
 				get_tree().change_scene_to_file("res://escenas/endings/good_ending.tscn")
-			elif Global.true_night_6 and Global.inventario["files"]:
+			elif Global.inventario["files"]:
 				get_tree().change_scene_to_file("res://escenas/endings/bad_ending.tscn")
 			else:
 				get_tree().change_scene_to_file("res://escenas/endings/party_ending.tscn")

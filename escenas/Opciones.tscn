@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bv54uvsb4g8u4"]
+[gd_scene load_steps=38 format=3 uid="uid://bv54uvsb4g8u4"]
 
 [ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_06fgn"]
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://scripts/opciones.gd" id="1_afsr0"]
@@ -30,7 +30,6 @@
 [ext_resource type="Script" uid="uid://8kmrqndwl8b7" path="res://scripts/debug_options.gd" id="25_g2osy"]
 [ext_resource type="Script" uid="uid://d2aahotjgr6rd" path="res://scripts/debug_menu_control.gd" id="27_44aji"]
 [ext_resource type="Script" uid="uid://cbem84bjsjy3p" path="res://scripts/game_state_debug.gd" id="28_7fxt8"]
-[ext_resource type="Script" uid="uid://ttlkyi6ys5n1" path="res://scripts/check_box_tn_6.gd" id="29_k4gtp"]
 [ext_resource type="Script" uid="uid://c1ut0k325wep4" path="res://scripts/debug_savefiles.gd" id="30_jkf0a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhe5t"]
@@ -665,7 +664,6 @@ theme = ExtResource("4_ywhyp")
 text = "Cancel"
 
 [node name="Debug_panel" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 560.0
 offset_top = 50.0
@@ -693,7 +691,7 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_vertical = 100
+scroll_vertical = 715
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer"]
@@ -911,14 +909,6 @@ theme = ExtResource("25_e8wk2")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "Night"
-
-[node name="CheckBox_tn6" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Night"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-theme = ExtResource("25_e8wk2")
-theme_override_constants/h_separation = 25
-text = "True night 6"
-script = ExtResource("29_k4gtp")
 
 [node name="CheckBox_force_enter" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer"]
 layout_mode = 2
@@ -1171,8 +1161,6 @@ puntero = "3"
 [connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Sync" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_sync_pressed"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/CheckBox_Override" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_override_toggled"]
 [connection signal="value_changed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Night/SpinBox_night" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_spin_box_night_value_changed"]
-[connection signal="value_changed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Night/SpinBox_night" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Night/CheckBox_tn6" method="_on_spin_box_night_value_changed"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Night/CheckBox_tn6" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_tn_6_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/CheckBox_force_enter" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_force_enter_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/CheckBox_force_exiting" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_force_exiting_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Combination/Force_combination" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_force_combination_toggled"]

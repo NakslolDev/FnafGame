@@ -168,8 +168,6 @@ func guardar_configuration_default():
 			"sfx": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")),
 			}
 	}
-	
-	print(config_default)
 
 func reset_configuration():
 	if config_default == null:
@@ -207,7 +205,6 @@ func guardar_partida():
 	
 	var partida := {
 		"noche": noche,
-		"true_night_6": true_night_6,
 		"safe_code": safe_code,
 		"inventario": inventario,
 		"mapa": mapa,
@@ -241,7 +238,6 @@ func leer_partida():
 	# Cargar variables
 	
 	noche = partida.get("noche", noche)
-	true_night_6 = partida.get("true_night_6", true_night_6)
 	safe_code = partida.get("safe_code", safe_code)
 	_asign_recursive_diccionary(partida.get("inventario"), inventario)
 	_asign_recursive_diccionary(partida.get("mapa"), mapa)
@@ -463,7 +459,6 @@ var debug :={
 	"game_state": {
 		"override": false,
 		"night": 1,
-		"true_night_6": false,
 		"force_enter": false,
 		"force_exit": false,
 		"force_combination": false,
@@ -517,7 +512,6 @@ var finales := {
 
 var noche := 1 # 1-6, 0 es custom night.
 
-var true_night_6 := false # Cambiar <<--
 var safe_code := [2, 7, 3, 5, 3] # el codigo en orden de la caja
 var location_key := 0
 
@@ -566,7 +560,6 @@ func create_new_game():
 	for key in inventario: # no necesito hacer recursividad ni nada raro pues todos los elementos son bool
 		inventario[key] = false
 	noche = 1
-	true_night_6 = false
 	safe_code = [0,0,0,0,0]
 
 
@@ -840,7 +833,6 @@ func chage_game_state_to_debug():
 	if debug["game_state"]["force_combination"]:
 		randomize_safe_code() # Esta funcion tiene ya integrado el force combination
 	noche = debug["game_state"]["night"]
-	true_night_6 = debug["game_state"]["true_night_6"]
 	if debug["game_state"]["force_enter"]:
 		m_entering = true
 	elif debug["game_state"]["force_exit"]:

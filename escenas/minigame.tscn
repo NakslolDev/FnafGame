@@ -311,7 +311,6 @@ night_2 = false
 night_3 = false
 night_4 = false
 night_5 = false
-night_6 = false
 entering = false
 
 [node name="Exit" parent="Coliders/Exit" instance=ExtResource("10_lt1rw")]
@@ -324,7 +323,6 @@ entering = false
 position = Vector2(-512, 16)
 scale = Vector2(3.2, 0.799999)
 id = "Exit_m"
-true_night_6 = false
 exiting = false
 
 [node name="Exit_Deactivated_N6" parent="Coliders/Exit" instance=ExtResource("10_lt1rw")]
@@ -519,7 +517,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="Picked_Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
@@ -530,7 +527,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="No_Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
@@ -541,7 +537,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="Location_key_2" type="Node2D" parent="Coliders/Key_locations"]
@@ -562,7 +557,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="Picked_Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
@@ -573,7 +567,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="No_Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
@@ -584,7 +577,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="Location_key_3" type="Node2D" parent="Coliders/Key_locations"]
@@ -605,7 +597,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="Picked_Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
@@ -616,7 +607,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="No_Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
@@ -627,7 +617,6 @@ night_2 = false
 night_3 = false
 night_5 = false
 night_6 = false
-true_night_6 = false
 entering = false
 
 [node name="Safe" type="Node2D" parent="Coliders"]
@@ -696,7 +685,6 @@ night_2 = false
 night_3 = false
 night_4 = false
 night_6 = false
-true_night_6 = false
 
 [node name="Office_dor" type="Node2D" parent="Coliders"]
 position = Vector2(-488, 864)

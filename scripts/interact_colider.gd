@@ -21,7 +21,6 @@ var read := 0
 @export var night_4 := true
 @export var night_5 := true
 @export var night_6 := true
-@export var true_night_6 := true
 
 @export_group("Time_Stamps")
 @export var entering := true
@@ -34,16 +33,19 @@ func _ready():
 	check_active()
 
 func check_active():
+	
+	active = true
+	
 	if Global.noche == -1:
-		active = true
 		return
-	if (get("night_" + str(Global.noche)) and not Global.true_night_6) or (true_night_6 and Global.true_night_6):
-		if (Global.m_entering and entering) or (not Global.m_entering and exiting):
-			active = true
-		else:
-			active = false
-	else:
+	
+	if not get("night_" + str(Global.noche)):
 		active = false
+		return
+	
+	if not (Global.m_entering and entering) and not (!Global.m_entering and exiting):
+		active = false
+		return
 
 func _on_body_entered(body: Node2D) -> void:
 	if str(body).begins_with("Character_Minigame"):

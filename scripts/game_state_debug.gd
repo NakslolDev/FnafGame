@@ -10,7 +10,6 @@ func sync():
 	debug = Global.debug
 	$CheckBox_Override.button_pressed = debug["game_state"]["override"]
 	$Night/SpinBox_night.value = debug["game_state"]["night"]
-	$Night/CheckBox_tn6.button_pressed = debug["game_state"]["true_night_6"]
 	$CheckBox_force_enter.button_pressed = debug["game_state"]["force_enter"]
 	$CheckBox_force_exiting.button_pressed = debug["game_state"]["force_exit"]
 	$Combination/Force_combination.button_pressed = debug["game_state"]["force_combination"]
@@ -33,7 +32,6 @@ func sync():
 func sync_map_in():
 	debug = Global.debug
 	debug["game_state"]["night"] = Global.noche
-	debug["game_state"]["true_night_6"] = Global.true_night_6
 	for key in Global.mapa:
 		debug["game_state"]["mapa"][key] = Global.mapa[key]
 	for key in Global.inventario:
@@ -60,9 +58,6 @@ func _on_check_box_force_exiting_toggled(toggled_on: bool) -> void:
 
 func _on_spin_box_night_value_changed(value: float) -> void:
 	debug["game_state"]["night"] = value
-
-func _on_check_box_tn_6_toggled(toggled_on: bool) -> void:
-	debug["game_state"]["true_night_6"] = toggled_on
 
 func _on_check_box_office_key_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["key"] = toggled_on
