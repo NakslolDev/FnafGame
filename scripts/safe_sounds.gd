@@ -39,7 +39,7 @@ func end(absolute := false):
 		stop = false
 		stop_num = 0
 		Chica.tick_count = 0
-		Chica.movement_oportunity(Global.noche, Chica.AI_level, true)
+		Chica.movement_oportunity(true)
 	else:
 #		print("Temporal")
 		if stop_num >= 4:
