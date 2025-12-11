@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://scripts/minigame.gd" id="1_afqw0"]
 [ext_resource type="Script" uid="uid://d34jixbi2jr6n" path="res://scripts/black_background.gd" id="2_2fbfj"]
 [ext_resource type="PackedScene" uid="uid://cumryt3pxo2wv" path="res://escenas/character_minigame.tscn" id="2_blpan"]
+[ext_resource type="Script" uid="uid://op64ky6ob2qy" path="res://scripts/minigame_custom_actions.gd" id="2_iuvsy"]
 [ext_resource type="Texture2D" uid="uid://ccw04xaf4b6s2" path="res://fnafjuego/minijuego assets/White.png" id="3_2fbfj"]
 [ext_resource type="Texture2D" uid="uid://dlj8s82vjltgo" path="res://fnafjuego/minijuego assets/Floor/Floor.png" id="5_ya4yl"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="7_fpa5o"]
@@ -18,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://escenas/pop_text.tscn" id="14_ko2eg"]
 [ext_resource type="Script" uid="uid://dnsl5qfsfgjkr" path="res://scripts/pick_up_chair.gd" id="15_h0mop"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://escenas/black_bars.tscn" id="15_ky55h"]
-[ext_resource type="Script" uid="uid://psq4enfjnb50" path="res://scripts/minigame_exit.gd" id="18_d47h1"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://scripts/location_key.gd" id="18_l24p3"]
 [ext_resource type="Script" uid="uid://bfkjsera0devi" path="res://scripts/key_locations.gd" id="20_iuvsy"]
 [ext_resource type="Script" uid="uid://bv3ds6app5hqq" path="res://scripts/safe_interacts.gd" id="20_ms56s"]
@@ -124,14 +124,20 @@ shader_parameter/clip_warp = true
 shader_parameter/vignette_intensity = 1.0
 shader_parameter/vignette_opacity = 0.665
 
-[node name="Minigame" type="Node2D" node_paths=PackedStringArray("interact_nodes", "player", "pop_text", "pop_safe")]
+[node name="Minigame" type="Node2D" node_paths=PackedStringArray("interact_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe")]
 texture_filter = 1
 script = ExtResource("1_afqw0")
 custom_pos = true
 interact_nodes = [NodePath("Coliders/Exit"), NodePath("Coliders/Safe"), NodePath("Coliders/Computer"), NodePath("Coliders/Office_dor"), NodePath("Coliders/Key_locations")]
+custom_action = NodePath("CustomActions")
+coliders_node = NodePath("Coliders")
 player = NodePath("YSort/Character_Minigame")
 pop_text = NodePath("Shader&else/Pop_Text")
 pop_safe = NodePath("Shader&else/Pop_Safe")
+
+[node name="CustomActions" type="Node2D" parent="." node_paths=PackedStringArray("father")]
+script = ExtResource("2_iuvsy")
+father = NodePath("..")
 
 [node name="Black_Background" type="Sprite2D" parent="."]
 position = Vector2(935.5, 141)
@@ -160,8 +166,9 @@ tile_set = SubResource("TileSet_blpan")
 y_sort_enabled = true
 
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
-position = Vector2(-528, 96)
+position = Vector2(-512, 320)
 character = "Unnamed_Guard"
+run_mult = 5.0
 
 [node name="Chair" parent="YSort" instance=ExtResource("9_lt1rw")]
 position = Vector2(-1016, 824)
@@ -300,7 +307,6 @@ transicion = 2.0
 [node name="Coliders" type="Node2D" parent="."]
 
 [node name="Exit" type="Node2D" parent="Coliders"]
-script = ExtResource("18_d47h1")
 
 [node name="Exit_false_Night_6" parent="Coliders/Exit" instance=ExtResource("10_lt1rw")]
 position = Vector2(-512, 16)
@@ -312,6 +318,7 @@ night_3 = false
 night_4 = false
 night_5 = false
 entering = false
+files = 2
 
 [node name="Exit" parent="Coliders/Exit" instance=ExtResource("10_lt1rw")]
 position = Vector2(-512, 16)
@@ -323,6 +330,7 @@ entering = false
 position = Vector2(-512, 16)
 scale = Vector2(3.2, 0.799999)
 id = "Exit_m"
+night_6 = false
 exiting = false
 
 [node name="Exit_Deactivated_N6" parent="Coliders/Exit" instance=ExtResource("10_lt1rw")]
@@ -334,7 +342,6 @@ night_2 = false
 night_3 = false
 night_4 = false
 night_5 = false
-night_6 = false
 exiting = false
 
 [node name="Chair" type="Node2D" parent="Coliders"]

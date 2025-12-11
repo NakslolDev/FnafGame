@@ -522,7 +522,6 @@ var inventario :={
 	"recorder": false,
 	"screwdriver": false,
 	"bateries": false,
-	"chair": false,
 	"pen": false,
 	"files": false,
 	"safe_usb_key": false,

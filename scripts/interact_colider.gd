@@ -32,7 +32,6 @@ enum Condition{Omit, Need, Exclude}
 @export var recorder: Condition = Condition.Omit
 @export var screwdriver: Condition = Condition.Omit
 @export var bateries: Condition = Condition.Omit
-@export var chair: Condition = Condition.Omit
 @export var pen: Condition = Condition.Omit
 @export var files: Condition = Condition.Omit
 @export var safe_usb_key: Condition = Condition.Omit

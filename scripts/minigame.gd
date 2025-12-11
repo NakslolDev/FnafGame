@@ -9,18 +9,21 @@ var reading := false
 var safing := false
 
 @export var interact_nodes: Array[Node]
+@export var custom_action: Node
+@export var coliders_node: Node
 @export var player: Node
 @export var pop_text: Node
 @export var pop_safe: Node
 
 func _ready():
-	print("noche = ", Global.noche)
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Text"), 1.0)
+	
 	if not custom_pos:
 		locate_char(Global.m_entering)
 	
-	connect_signals_recursively($Coliders)
+	connect_signals_recursively(coliders_node)
 	
 	if Global.m_entering == false:
 		$Black_Foregraund.visible = false
@@ -81,9 +84,10 @@ func _on_done_safing(not_automatic: bool, read: int, combination := []):
 			_on_interacted_text("Safe_not_know", [1], read)
 	else:
 		_on_interacted_text("Safe_give_up", [1], read)
-	act_interact()
+	act_interact() # Actualiza los nodos que controlan los coliders de forma manual
+	act_active(coliders_node) # Actualiza recursivamente los propios coliders
 
-func on_action(action: String, read: int):
+func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	
 	if reading or safing:
 		return
@@ -99,40 +103,24 @@ func on_action(action: String, read: int):
 		if not transition_out:
 			begin()
 	
-	elif action.ends_with("chair_w_text"):
-		if not transition_out:
-			$Coliders/Pick_up_chair.switch_up_down(action)
-			$YSort/Table_w_chair.switch_up_down(action)
-	
-	elif action == "Pick_key_w_text":
-		Global.inventario["key"] = true
-	
-	elif action == "Loot_safe_w_text":
-		Global.inventario["files"] = true
-	elif action == "Keep_looting_safe_w_text":
-		Global.inventario["safe_usb_key"] = true
-	elif action == "loot_empty_safe_w_text":
-		Global.inventario["life_savings"] = true
-	
-	elif action == "Start_computer_w_text":
-		Global.mapa["computer_working"] = true
-	elif action == "Get_program_w_text":
-		Global.inventario["exe"] = true
-		Global.mapa["computer_working"] = false
-	
-	elif action == "Sign_in_w_text":
-		if read == 1:
-			Global.mapa["signed_in"] = true
-			print("Good luck!")
-	
-	elif action == "Open_door_w_text":
-		Global.mapa["door_office_open"] = true
+	else:
+		custom_action.do_custom_action(action, read) # Tengo un nodo a parte para las acciones custom, para organizar
 	
 	act_interact()
+	act_active(coliders_node)
 
 func act_interact():
 	for _node in interact_nodes:
-		_node.act()
+		_node.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
+
+func act_active(node: Node):
+	
+	for child in node.get_children():
+		
+		if child is Area2D:
+			child.check_active()
+		else:
+			act_active(child)
 
 func exit():
 	player.freeze = true

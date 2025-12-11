@@ -77,7 +77,7 @@ func move_step():
 	# movimiento deseado
 	var motion = dir * distance
 	if Input.is_action_pressed("Shift"):
-		motion *= 1.5
+		motion *= $"..".run_mult
 	
 	# Intentar movimiento completo
 	var collision = parent.move_and_collide(motion)
