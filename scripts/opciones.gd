@@ -23,20 +23,23 @@ func get_text(id: String):
 
 
 func _on_save_pressed() -> void:
-	pass # Replace with function body.
+	Global.guardar_configuration()
 
 
 func _on_save_exit_pressed() -> void:
-	pass # Replace with function body.
+	Global.guardar_configuration()
+	salir()
 
 
 func _on_exit_pressed() -> void:
-	pass # Replace with function body.
+	salir(false)
 
 
 func _on_undo_pressed() -> void:
-	pass # Replace with function body.
+	Global.leer_configuration()
+	get_tree().change_scene_to_file("res://escenas/Opciones.tscn")
 
 
 func _on_reset_pressed() -> void:
-	pass # Replace with function body.
+	Global.reset_configuration()
+	get_tree().change_scene_to_file("res://escenas/Opciones.tscn")

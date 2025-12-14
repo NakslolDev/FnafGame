@@ -14,7 +14,7 @@ func begin():
 		return
 	playing = true
 	
-	Chica.watching_cam_6_when_i_am_there_and_it_is_night_5_and_i_am_attempting_to_open_the_safe = true
+	Chica.watching_cam_6_when_i_am_there_and_door_is_open_and_i_am_attempting_to_open_the_safe = true
 	
 	if not stop:
 		remain_combination = Global.safe_code.duplicate() # duplicate para no referenciar. Sin argumentos pues no es un array complejo...
@@ -32,7 +32,7 @@ func end(absolute := false):
 	if not playing:
 		return
 	
-	Chica.watching_cam_6_when_i_am_there_and_it_is_night_5_and_i_am_attempting_to_open_the_safe = false
+	Chica.watching_cam_6_when_i_am_there_and_door_is_open_and_i_am_attempting_to_open_the_safe = false
 	if absolute:
 #		print("ABSOLUTE")
 		playing = false

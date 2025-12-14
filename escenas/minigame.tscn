@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cu0m257624re4"]
+[gd_scene load_steps=32 format=4 uid="uid://cu0m257624re4"]
 
 [ext_resource type="Texture2D" uid="uid://b7p3xkukkgq7x" path="res://fnafjuego/minijuego assets/Black.png" id="1_1t45r"]
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://scripts/minigame.gd" id="1_afqw0"]
@@ -14,16 +14,15 @@
 [ext_resource type="Script" uid="uid://be0dsq6vfneai" path="res://scripts/table_w_chair.gd" id="10_exafg"]
 [ext_resource type="PackedScene" uid="uid://djqjqcxkcwu8s" path="res://escenas/M_objets/_interact_colider.tscn" id="10_lt1rw"]
 [ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="11_bgkyw"]
+[ext_resource type="PackedScene" uid="uid://dkw61scyyeb22" path="res://escenas/M_objets/placeholder.tscn" id="12_d47h1"]
 [ext_resource type="Script" uid="uid://qufpg35yap8u" path="res://scripts/transicion.gd" id="12_rvtq8"]
+[ext_resource type="PackedScene" uid="uid://bmc1g8wl35gb0" path="res://escenas/M_objets/placeholder_noclip.tscn" id="13_iuvsy"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://escenas/pop_safe.tscn" id="13_mwja1"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://escenas/pop_text.tscn" id="14_ko2eg"]
 [ext_resource type="Script" uid="uid://dnsl5qfsfgjkr" path="res://scripts/pick_up_chair.gd" id="15_h0mop"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://escenas/black_bars.tscn" id="15_ky55h"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://scripts/location_key.gd" id="18_l24p3"]
-[ext_resource type="Script" uid="uid://bfkjsera0devi" path="res://scripts/key_locations.gd" id="20_iuvsy"]
-[ext_resource type="Script" uid="uid://bv3ds6app5hqq" path="res://scripts/safe_interacts.gd" id="20_ms56s"]
 [ext_resource type="Script" uid="uid://04ct0qm6oejc" path="res://scripts/computer.gd" id="22_a320n"]
-[ext_resource type="Script" uid="uid://b24som82ucj8a" path="res://scripts/office_door_colliders.gd" id="23_d47h1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpa5o"]
 texture = ExtResource("5_ya4yl")
@@ -166,7 +165,7 @@ tile_set = SubResource("TileSet_blpan")
 y_sort_enabled = true
 
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
-position = Vector2(-512, 320)
+position = Vector2(-1080, 568)
 character = "Unnamed_Guard"
 run_mult = 5.0
 
@@ -253,23 +252,27 @@ randomice = false
 [node name="Chair" parent="YSort/Table_w_chair" instance=ExtResource("9_lt1rw")]
 position = Vector2(0, -8)
 
-[node name="Posible_key_1" parent="YSort" instance=ExtResource("9_lt1rw")]
-position = Vector2(-1048, 496)
+[node name="Posible_key_3" parent="YSort" instance=ExtResource("12_d47h1")]
+position = Vector2(-872, 504)
 
-[node name="Posible_key_2" parent="YSort" instance=ExtResource("9_lt1rw")]
-position = Vector2(-1016, 496)
+[node name="Posible_key_2" parent="YSort" instance=ExtResource("12_d47h1")]
+position = Vector2(-912, 504)
 
-[node name="Posible_key_3" parent="YSort" instance=ExtResource("9_lt1rw")]
-position = Vector2(-984, 496)
+[node name="Posible_key_1" parent="YSort" instance=ExtResource("12_d47h1")]
+position = Vector2(-952, 504)
 
-[node name="Safe" parent="YSort" instance=ExtResource("9_lt1rw")]
-position = Vector2(-408, 800)
+[node name="Safe" parent="YSort" instance=ExtResource("12_d47h1")]
+position = Vector2(-408, 808)
 
-[node name="Computer" parent="YSort" instance=ExtResource("9_lt1rw")]
-position = Vector2(-344, 848)
+[node name="Computer" parent="YSort" instance=ExtResource("12_d47h1")]
+position = Vector2(-344, 856)
 
-[node name="Extra_night_list" parent="YSort" instance=ExtResource("9_lt1rw")]
-position = Vector2(-552, 464)
+[node name="Board" parent="YSort" instance=ExtResource("13_iuvsy")]
+position = Vector2(-552, 480)
+
+[node name="DM_machine" parent="YSort" instance=ExtResource("12_d47h1")]
+position = Vector2(-1104, 504)
+scale = Vector2(2, 2)
 
 [node name="Shader&else" type="CanvasLayer" parent="."]
 
@@ -493,21 +496,20 @@ script = ExtResource("15_h0mop")
 position = Vector2(-480, 88)
 scale = Vector2(1.7, 1.7)
 action = "Custom"
-custom_action = "Lay_chair_w_text"
+custom_action = "switch_chair_w_text"
 id = "Lay_chair"
 
 [node name="Pick_up" parent="Coliders/Pick_up_chair" instance=ExtResource("10_lt1rw")]
 position = Vector2(-480, 88)
 scale = Vector2(1.7, 1.7)
-action = "Pick_chair_w_text"
-custom_action = "Pick_chair_w_text"
+action = "Custom"
+custom_action = "switch_chair_w_text"
 id = "Pick_chair"
 
 [node name="Key_locations" type="Node2D" parent="Coliders"]
-script = ExtResource("20_iuvsy")
 
 [node name="Location_key_1" type="Node2D" parent="Coliders/Key_locations"]
-position = Vector2(-1016, 504)
+position = Vector2(-912, 504)
 script = ExtResource("18_l24p3")
 metadata/_edit_group_ = true
 
@@ -547,7 +549,7 @@ night_6 = false
 entering = false
 
 [node name="Location_key_2" type="Node2D" parent="Coliders/Key_locations"]
-position = Vector2(-1048, 504)
+position = Vector2(-952, 504)
 script = ExtResource("18_l24p3")
 metadata/_edit_group_ = true
 
@@ -587,7 +589,7 @@ night_6 = false
 entering = false
 
 [node name="Location_key_3" type="Node2D" parent="Coliders/Key_locations"]
-position = Vector2(-984, 504)
+position = Vector2(-872, 504)
 script = ExtResource("18_l24p3")
 metadata/_edit_group_ = true
 
@@ -628,26 +630,41 @@ entering = false
 
 [node name="Safe" type="Node2D" parent="Coliders"]
 position = Vector2(-408, 808)
-script = ExtResource("20_ms56s")
 
 [node name="Safe_pop_up" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
 action = "Safe"
+safe_open = 2
+safe_opened_by_animatronic = 2
 
 [node name="Safe_internal_organs" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
 action = "Custom"
 custom_action = "Loot_safe_w_text"
 id = "Loot_safe"
+files = 2
+safe_usb_key = 2
+safe_open = 1
+safe_opened_by_animatronic = 2
 
 [node name="Safe_more_organs" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
 action = "Custom"
 custom_action = "Keep_looting_safe_w_text"
 id = "Keep_looting"
+files = 1
+safe_usb_key = 2
+safe_open = 1
+safe_opened_by_animatronic = 2
 
 [node name="Safe_unsafe" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
 id = "Empty_safe"
+files = 1
+safe_usb_key = 1
+safe_open = 1
+safe_opened_by_animatronic = 2
 
 [node name="Chickend_safe" parent="Coliders/Safe" instance=ExtResource("10_lt1rw")]
 id = "Chickend_safe"
+safe_open = 2
+safe_opened_by_animatronic = 1
 
 [node name="Computer" type="Node2D" parent="Coliders"]
 script = ExtResource("22_a320n")
@@ -695,23 +712,41 @@ night_6 = false
 
 [node name="Office_dor" type="Node2D" parent="Coliders"]
 position = Vector2(-488, 864)
-script = ExtResource("23_d47h1")
 
 [node name="Door_office_locked" parent="Coliders/Office_dor" instance=ExtResource("10_lt1rw")]
 position = Vector2(0, 7.6293945e-06)
 scale = Vector2(2.4103067, 1.6052315)
 id = "Office_door_locked"
 read_end_in = Array[int]([3])
+key = 2
+door_office_open = 2
 
 [node name="Door_office_unlocking" parent="Coliders/Office_dor" instance=ExtResource("10_lt1rw")]
 scale = Vector2(2.4103067, 1.6052315)
 action = "Custom"
 custom_action = "Open_door_w_text"
 id = "Office_door_unlocking"
+key = 1
+door_office_open = 2
 
 [node name="Door_office_unlocked" parent="Coliders/Office_dor" instance=ExtResource("10_lt1rw")]
 scale = Vector2(2.4103067, 1.6052315)
 id = "Office_door_unlocked"
+door_office_open = 1
+
+[node name="DM_machine" type="Node2D" parent="Coliders"]
+
+[node name="Interact_Colider" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1104, 504)
+scale = Vector2(1.75, 1.75)
+action = "Custom"
+custom_action = "temporal_award_dm_key_w_text"
+id = "award_key"
+read_end_in = Array[int]([2])
+bonnie = false
+chica = false
+freddy = false
+foxy = false
 
 [node name="Black_Foregraund" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.348)

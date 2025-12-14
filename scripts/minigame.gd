@@ -95,7 +95,7 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	if action == "Safe":
 		safe()
 	
-	if action == "Exit_pizza":
+	elif action == "Exit_pizza":
 		if not transition_out:
 			exit()
 	
@@ -111,7 +111,8 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 
 func act_interact():
 	for _node in interact_nodes:
-		_node.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
+		if _node is Node2D and _node.has_method("act"):
+			_node.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
 
 func act_active(node: Node):
 	

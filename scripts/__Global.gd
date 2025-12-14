@@ -158,10 +158,10 @@ func guardar_configuration_default():
 		"mouse_custom_op": mouse_custom_op,
 		"mouse_custom_punt": mouse_custom_punt,
 		"mouse_cam_see": mouse_cam_see,
-		"linterna_skin": linterna_skin,
-		"energia_skin": energia_skin,
-		"fade": fade,
-		"misc": misc,
+		"linterna_skin": linterna_skin.duplicate(true),
+		"energia_skin": energia_skin.duplicate(true),
+		"fade": fade.duplicate(true),
+		"misc": misc.duplicate(true),
 		"audio": {
 			"master": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")),
 			"musica": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")),
@@ -303,7 +303,7 @@ func _asign_recursive_diccionary(dick_origin: Dictionary, dick_destiny: Dictiona
 		if dick_destiny.get(key) == null:
 			continue # Si hay una configuración en el archivo que no está en el codigo, se ignora
 		
-		if typeof(dick_origin[key]) == TYPE_DICTIONARY:
+		if typeof(dick_origin[key]) == TYPE_DICTIONARY and typeof(dick_destiny[key]) == TYPE_DICTIONARY:
 			_asign_recursive_diccionary(dick_origin[key], dick_destiny[key])
 		else:
 			dick_destiny[key] = dick_origin.get(key)
@@ -539,6 +539,12 @@ var mapa :={
 	"signed_in": false,
 }
 
+var dm :={ # 0 no completado, 1 completado, 2 salvado.
+	"bonnie": 0,
+	"chica": 0,
+	"freddy": 0,
+	"foxy": 0,
+}
 
 #---Funciones Partida---#
 
@@ -810,6 +816,8 @@ signal energia_actualizada # Se manda cuando cambias un switch
 
 var m_entering := true
 
+var just_death_min := "none"
+
 #---Funciones Minigame---#
 
 func minigame_starts():
@@ -820,15 +828,15 @@ func minigame_starts():
 	
 	leer_partida()
 	
-	if noche == 5:
-		if m_entering:
-			randomize_safe_code()
-		elif mapa["door_office_open"]:
-			mapa["safe_opened_by_animatronic"] = true
-	
 	if m_entering:
 		mapa["safe_opened_by_animatronic"] = false
 		mapa["door_office_open"] = false
+		if noche == 5 and m_entering:
+			randomize_safe_code()
+	
+	else:
+		if mapa["door_office_open"] and not mapa["safe_open"]:
+			mapa["safe_opened_by_animatronic"] = true
 
 func chage_game_state_to_debug():
 	if debug["game_state"]["override"] == false: # capa extra de seguridad, por si acaso...

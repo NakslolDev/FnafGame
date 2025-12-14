@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo828jywsimiy"]
+[gd_scene load_steps=4 format=3 uid="uid://bo828jywsimiy"]
 
-[ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://scripts/objetos.gd" id="1_1qkqt"]
 [ext_resource type="Texture2D" uid="uid://dlj8s82vjltgo" path="res://fnafjuego/minijuego assets/Floor/Floor.png" id="2_saqaj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omc0x"]
@@ -86,8 +85,6 @@ sources/0 = SubResource("TileSetAtlasSource_omc0x")
 
 [node name="Chair" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_1qkqt")
-things = false
 
 [node name="Chair" type="TileMapLayer" parent="."]
 position = Vector2(8, 0)

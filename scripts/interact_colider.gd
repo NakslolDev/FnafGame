@@ -26,6 +26,13 @@ var read := 0
 @export var entering := true
 @export var exiting := true
 
+@export_group("Death_minigame")
+@export var none := true
+@export var bonnie := true
+@export var chica := true
+@export var freddy := true
+@export var foxy := true
+
 @export_group("Inventario")
 enum Condition{Omit, Need, Exclude}
 @export var key: Condition = Condition.Omit
@@ -68,6 +75,10 @@ func check_active():
 		active = false
 		return
 	
+	if not get(Global.just_death_min):
+		active = false
+		return
+	
 	for _key in Global.inventario: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
 		var value: Condition = get(_key)
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
@@ -83,10 +94,10 @@ func check_active():
 		var value: Condition = get(_key)
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
-		if value == Condition.Need and not Global.mapa[key]:
+		if value == Condition.Need and not Global.mapa[_key]:
 			active = false
 			return
-		if value == Condition.Exclude and Global.mapa[key]:
+		if value == Condition.Exclude and Global.mapa[_key]:
 			active = false
 			return
 

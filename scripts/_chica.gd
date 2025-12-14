@@ -21,7 +21,7 @@ var door_closed_log := false 	# Es una variable auxiliar. Como door_closed se ac
 								# Su principal funcion es ayudar a que si abres
 var camara: int # En qué camara estás. Sirve para gotcha
 var cam_activa: bool # Si tienes las camaras activadas. Sirbe también para gotcha
-var watching_cam_6_when_i_am_there_and_it_is_night_5_and_i_am_attempting_to_open_the_safe := false # Se explica sola (I is chica)
+var watching_cam_6_when_i_am_there_and_door_is_open_and_i_am_attempting_to_open_the_safe := false # Se explica sola (I is chica)
 var door_soft_focus := false 	# Controla si estás iluminando su puerta con la linterna. En ese caso, no entrará. También sirve para gotcha.
 
 
@@ -81,7 +81,7 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 	if tick_count < tick_count_limit:
 		return
 	
-	if watching_cam_6_when_i_am_there_and_it_is_night_5_and_i_am_attempting_to_open_the_safe:
+	if watching_cam_6_when_i_am_there_and_door_is_open_and_i_am_attempting_to_open_the_safe:
 		print_rich("[color=yellow]still hearing, be pacient")
 		return # no dejo que se mueva si estás en esa camara mientras intenta abrir
 	

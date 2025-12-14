@@ -18,7 +18,7 @@ func pop_up(id: String, read: int):
 
 
 func show_text():
-	print("(PT)  Read: ", local_read, "  End in: ", end_in, "  id_num: ", txt_label.id_num)
+	print("(PT)  Read: ", local_read, "  End in: ", end_in, "  id_num: ", txt_label.id_num, "  ID: ", id_String)
 	if not (end_in.size() <= local_read) and txt_label.id_num == end_in[local_read]:
 		exit()
 		return
