@@ -2,6 +2,10 @@ extends Node2D
 
 @export var father: Node
 
+func _ready():
+	print(Global.inventario)
+	print(Global.mapa)
+
 
 func do_custom_action(action: String, read: int):
 	

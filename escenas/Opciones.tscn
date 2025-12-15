@@ -692,7 +692,7 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_vertical = 100
+scroll_vertical = 1265
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer"]
@@ -874,10 +874,12 @@ text = "Game State (not recomended, might break things)"
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs" node_paths=PackedStringArray("vbox_mapa", "vbox_invent")]
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("28_7fxt8")
+vbox_mapa = NodePath("MarginContainer_mapa/VBoxContainer")
+vbox_invent = NodePath("MarginContainer_inventory/VBoxContainer")
 
 [node name="Sync" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer"]
 layout_mode = 2
@@ -889,7 +891,7 @@ alignment = 0
 layout_mode = 2
 theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
-text = "Override safe file"
+text = "Use debug game state"
 
 [node name="Night" type="HBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer"]
 layout_mode = 2
@@ -965,7 +967,7 @@ theme_override_constants/margin_left = 25
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="CheckBox_office_key" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer"]
+[node name="CheckBox_key" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
@@ -989,17 +991,29 @@ theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
 text = "Bateries"
 
+[node name="CheckBox_pen" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("25_e8wk2")
+theme_override_constants/h_separation = 25
+text = "Pen"
+
 [node name="CheckBox_files" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
 text = "Files"
 
-[node name="CheckBox_usb_key" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer"]
+[node name="CheckBox_safe_usb_key" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
-text = "USB-Key"
+text = "safe USB-Key"
+
+[node name="CheckBox_dm_usb_key" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("25_e8wk2")
+theme_override_constants/h_separation = 25
+text = "death minigames USB-Key"
 
 [node name="CheckBox_exe" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer"]
 layout_mode = 2
@@ -1040,11 +1054,11 @@ theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
 text = "Safe opened by animatronic"
 
-[node name="CheckBox_recorder_planted" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer"]
+[node name="CheckBox_computer_on" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
-text = "Recorder planted"
+text = "Computer on"
 
 [node name="CheckBox_computer_working" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer"]
 layout_mode = 2
@@ -1058,7 +1072,7 @@ theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
 text = "Computer failed"
 
-[node name="CheckBox_signed" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer"]
+[node name="CheckBox_signed_in" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
@@ -1166,20 +1180,22 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/CheckBox_force_exiting" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_force_exiting_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Combination/Force_combination" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_force_combination_toggled"]
 [connection signal="value_changed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Combination/SpinBox_comb" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_spin_box_comb_value_changed"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_office_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_office_key_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_office_key_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_recorder" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_recorder_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_screwdriver" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_screwdriver_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_bateries" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_bateries_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_pen" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_pen_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_files" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_files_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_usb_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_usb_key_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_safe_usb_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_usb_key_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_dm_usb_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_dm_usb_key_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_exe" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_exe_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_door_office_open" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_door_office_open_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_safe_open" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_safe_open_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_safe_opened_by_animatronic" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_safe_opened_by_animatronic_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_recorder_planted" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_recorder_planted_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_computer_on" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_computer_on_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_computer_working" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_computer_working_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_computer_failed_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_signed" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_signed_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_signed_in" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_signed_toggled"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer/save_progress" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" method="_on_save_all_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer/delete_config" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" method="_on_delete_config_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer/delete_partida" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" method="_on_delete_partida_pressed"]

@@ -2,6 +2,9 @@ extends VBoxContainer
 
 var debug := Global.debug 
 
+@export var vbox_mapa: Node
+@export var vbox_invent: Node
+
 func _ready():
 	sync()
 	_on_force_combination_toggled(debug["game_state"]["force_combination"])
@@ -14,19 +17,23 @@ func sync():
 	$CheckBox_force_exiting.button_pressed = debug["game_state"]["force_exit"]
 	$Combination/Force_combination.button_pressed = debug["game_state"]["force_combination"]
 	$Combination/SpinBox_comb.value = debug["game_state"]["combination"]
-	$MarginContainer_inventory/VBoxContainer/CheckBox_office_key.button_pressed = debug["game_state"]["inventario"]["key"]
-	$MarginContainer_inventory/VBoxContainer/CheckBox_recorder.button_pressed = debug["game_state"]["inventario"]["recorder"]
-	$MarginContainer_inventory/VBoxContainer/CheckBox_screwdriver.button_pressed = debug["game_state"]["inventario"]["screwdriver"]
-	$MarginContainer_inventory/VBoxContainer/CheckBox_bateries.button_pressed = debug["game_state"]["inventario"]["bateries"]
-	$MarginContainer_inventory/VBoxContainer/CheckBox_files.button_pressed = debug["game_state"]["inventario"]["files"]
-	$MarginContainer_inventory/VBoxContainer/CheckBox_usb_key.button_pressed = debug["game_state"]["inventario"]["safe_usb_key"]
-	$MarginContainer_inventory/VBoxContainer/CheckBox_exe.button_pressed = debug["game_state"]["inventario"]["exe"]
-	$MarginContainer_mapa/VBoxContainer/CheckBox_door_office_open.button_pressed = debug["game_state"]["mapa"]["door_office_open"]
-	$MarginContainer_mapa/VBoxContainer/CheckBox_safe_open.button_pressed = debug["game_state"]["mapa"]["safe_open"]
-	$MarginContainer_mapa/VBoxContainer/CheckBox_safe_opened_by_animatronic.button_pressed = debug["game_state"]["mapa"]["safe_opened_by_animatronic"]
-	$MarginContainer_mapa/VBoxContainer/CheckBox_computer_working.button_pressed = debug["game_state"]["mapa"]["computer_working"]
-	$MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed.button_pressed = debug["game_state"]["mapa"]["computer_failed"]
-	$MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed.button_pressed = debug["game_state"]["mapa"]["signed_in"]
+	
+	
+	
+	for key in vbox_invent.get_children():
+		var prefix := "CheckBox_"
+		var key_id := key.name
+		if key_id.begins_with(prefix):
+			key_id = key_id.substr(prefix.length())
+		key.button_pressed = debug["game_state"]["inventario"][key_id]
+	
+	for key in vbox_mapa.get_children():
+		var prefix := "CheckBox_"
+		var key_id := key.name
+		if key_id.begins_with(prefix):
+			key_id = key_id.substr(prefix.length())
+		key.button_pressed = debug["game_state"]["mapa"][key_id]
+	
 
 func sync_map_in():
 	debug = Global.debug
@@ -70,11 +77,17 @@ func _on_check_box_screwdriver_toggled(toggled_on: bool) -> void:
 func _on_check_box_bateries_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["bateries"] = toggled_on
 
+func _on_check_box_pen_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["inventario"]["pen"] = toggled_on
+
 func _on_check_box_files_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["files"] = toggled_on
 
 func _on_check_box_usb_key_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["safe_usb_key"] = toggled_on
+
+func _on_check_box_dm_usb_key_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["inventario"]["dm_usb_key"] = toggled_on
 
 func _on_check_box_exe_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["exe"] = toggled_on
@@ -87,6 +100,9 @@ func _on_check_box_safe_open_toggled(toggled_on: bool) -> void:
 
 func _on_check_box_safe_opened_by_animatronic_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["mapa"]["safe_opened_by_animatronic"] = toggled_on
+
+func _on_check_box_computer_on_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["mapa"]["computer_on"] = toggled_on
 
 func _on_check_box_computer_working_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["mapa"]["computer_working"] = toggled_on
