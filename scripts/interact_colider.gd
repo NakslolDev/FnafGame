@@ -49,7 +49,7 @@ enum Condition{Omit, Need, Exclude}
 @export var door_office_open: Condition = Condition.Omit
 @export var safe_open: Condition = Condition.Omit
 @export var safe_opened_by_animatronic: Condition = Condition.Omit
-@export var recorder_planted: Condition = Condition.Omit
+@export var computer_on: Condition = Condition.Omit
 @export var computer_working: Condition = Condition.Omit
 @export var computer_failed: Condition = Condition.Omit
 @export var signed_in: Condition = Condition.Omit
@@ -113,7 +113,7 @@ func _input(event):
 	if not (event.is_action_pressed("interact") and player_in) or not active:
 		return
 	
-	if get_tree().get_root().get_node("Minigame").reading: #uso otro if para que no quede tan largo
+	if get_tree().get_root().get_node("Minigame").reading or get_tree().get_root().get_node("Minigame").safing: #uso otro if para que no quede tan largo
 		return
 	
 	print("Read: ", read, "  End in: ", read_end_in)
@@ -129,3 +129,4 @@ func _input(event):
 			emit_signal("send_id_to_text", id, read_end_in, read)
 	if read < read_end_in.size():
 		read += 1
+	

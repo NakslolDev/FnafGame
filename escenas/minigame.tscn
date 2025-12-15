@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cu0m257624re4"]
+[gd_scene load_steps=31 format=4 uid="uid://cu0m257624re4"]
 
 [ext_resource type="Texture2D" uid="uid://b7p3xkukkgq7x" path="res://fnafjuego/minijuego assets/Black.png" id="1_1t45r"]
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://scripts/minigame.gd" id="1_afqw0"]
@@ -22,7 +22,6 @@
 [ext_resource type="Script" uid="uid://dnsl5qfsfgjkr" path="res://scripts/pick_up_chair.gd" id="15_h0mop"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://escenas/black_bars.tscn" id="15_ky55h"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://scripts/location_key.gd" id="18_l24p3"]
-[ext_resource type="Script" uid="uid://04ct0qm6oejc" path="res://scripts/computer.gd" id="22_a320n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpa5o"]
 texture = ExtResource("5_ya4yl")
@@ -165,7 +164,7 @@ tile_set = SubResource("TileSet_blpan")
 y_sort_enabled = true
 
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
-position = Vector2(-1080, 568)
+position = Vector2(-368, 864)
 character = "Unnamed_Guard"
 run_mult = 5.0
 
@@ -667,34 +666,106 @@ safe_open = 2
 safe_opened_by_animatronic = 1
 
 [node name="Computer" type="Node2D" parent="Coliders"]
-script = ExtResource("22_a320n")
 
 [node name="Check_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
 id = "Check_computer"
 read_end_in = Array[int]([2])
+computer_on = 2
+computer_working = 2
+computer_failed = 2
+
+[node name="Check_computer_safe_key" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
+position = Vector2(-344, 856)
+id = "Check_computer_sf"
+read_end_in = Array[int]([2])
+safe_usb_key = 1
+dm_usb_key = 2
+computer_on = 2
+computer_working = 2
+computer_failed = 2
+
+[node name="Check_computer_dm_key" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
+position = Vector2(-344, 856)
+id = "Check_computer_dm"
+read_end_in = Array[int]([2])
+safe_usb_key = 2
+dm_usb_key = 1
+computer_on = 2
+computer_working = 2
+computer_failed = 2
 
 [node name="Start_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
-action = "Custom"
 custom_action = "Start_computer_w_text"
 id = "Start_computer"
-read_end_in = Array[int]([3])
+safe_usb_key = 1
+dm_usb_key = 1
+computer_on = 2
+computer_working = 2
+computer_failed = 2
+
+[node name="Start_download" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
+position = Vector2(-344, 856)
+action = "Custom"
+custom_action = "Start_download_w_text"
+id = "Start_download"
+read_end_in = Array[int]([2])
+exiting = false
+exe = 2
+computer_on = 1
+computer_working = 2
+computer_failed = 2
+
+[node name="Start_download_on_exit" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
+position = Vector2(-344, 856)
+id = "Start_download_late"
+read_end_in = Array[int]([2])
+entering = false
+exe = 2
+computer_on = 1
+computer_working = 2
+computer_failed = 2
+
+[node name="Stop_download" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
+position = Vector2(-344, 856)
+action = "Custom"
+custom_action = "Stop_download_w_text"
+id = "Stop_download"
+read_end_in = Array[int]([2])
+exiting = false
+exe = 2
+computer_on = 1
+computer_working = 1
+computer_failed = 2
 
 [node name="Done_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
 id = "Done_computer"
+entering = false
+exe = 1
+computer_on = 1
 
 [node name="Corrupted_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
-id = "Stop_computer"
+id = "Corrupted_computer"
 read_end_in = Array[int]([2])
+entering = false
+exe = 2
+computer_on = 1
+computer_working = 1
+computer_failed = 1
 
 [node name="Get_program" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
 action = "Custom"
 custom_action = "Get_program_w_text"
 id = "Get_program"
+entering = false
+exe = 2
+computer_on = 1
+computer_working = 1
+computer_failed = 2
 
 [node name="News panel" type="Node2D" parent="Coliders"]
 position = Vector2(-552, 480)
@@ -737,12 +808,11 @@ door_office_open = 1
 [node name="DM_machine" type="Node2D" parent="Coliders"]
 
 [node name="Interact_Colider" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1104, 504)
+position = Vector2(-1104.0001, 503.99997)
 scale = Vector2(1.75, 1.75)
 action = "Custom"
 custom_action = "temporal_award_dm_key_w_text"
 id = "award_key"
-read_end_in = Array[int]([2])
 bonnie = false
 chica = false
 freddy = false

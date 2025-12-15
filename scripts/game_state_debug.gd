@@ -24,7 +24,6 @@ func sync():
 	$MarginContainer_mapa/VBoxContainer/CheckBox_door_office_open.button_pressed = debug["game_state"]["mapa"]["door_office_open"]
 	$MarginContainer_mapa/VBoxContainer/CheckBox_safe_open.button_pressed = debug["game_state"]["mapa"]["safe_open"]
 	$MarginContainer_mapa/VBoxContainer/CheckBox_safe_opened_by_animatronic.button_pressed = debug["game_state"]["mapa"]["safe_opened_by_animatronic"]
-	$MarginContainer_mapa/VBoxContainer/CheckBox_recorder_planted.button_pressed = debug["game_state"]["mapa"]["recorder_planted"]
 	$MarginContainer_mapa/VBoxContainer/CheckBox_computer_working.button_pressed = debug["game_state"]["mapa"]["computer_working"]
 	$MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed.button_pressed = debug["game_state"]["mapa"]["computer_failed"]
 	$MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed.button_pressed = debug["game_state"]["mapa"]["signed_in"]
@@ -88,9 +87,6 @@ func _on_check_box_safe_open_toggled(toggled_on: bool) -> void:
 
 func _on_check_box_safe_opened_by_animatronic_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["mapa"]["safe_opened_by_animatronic"] = toggled_on
-
-func _on_check_box_recorder_planted_toggled(toggled_on: bool) -> void:
-	debug["game_state"]["mapa"]["recorder_planted"] = toggled_on
 
 func _on_check_box_computer_working_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["mapa"]["computer_working"] = toggled_on

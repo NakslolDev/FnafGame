@@ -432,70 +432,6 @@ var misc := {
 }
 
 
-#---Debug---#
-
-
-#-Variables
-
-var debug :={
-	"debug_mode": false,
-	"prevent_save": false,
-	"cheats": {
-		"invencibility": false,
-		"instawin": false,
-		"timeless": false,
-		"ultra_agresive": false,
-		"infinite_light": false,
-		"lights_consume": false,
-		"animatronic_map": false,
-		"see_light_batery": false,
-		"see_insanity": false,
-		"see_time_always": false,
-		"tick_count": false,
-		"max_consumption": 3,
-		"tick_rate": 5,
-		"night_duration": 5,
-	},
-	"game_state": {
-		"override": false,
-		"night": 1,
-		"force_enter": false,
-		"force_exit": false,
-		"force_combination": false,
-		"combination": 11111,
-		"mapa": {
-			"door_office_open": false,
-			"safe_open": false,
-			"safe_opened_by_animatronic": false,
-			"recorder_planted": false,
-			"computer_working": false,
-			"computer_failed": false,
-			"signed_in": false,
-		},
-		"inventario": {
-			"key": false,
-			"recorder": false,
-			"screwdriver": false,
-			"bateries": false,
-			"pen": false,
-			"files": false,
-			"safe_usb_key": false,
-			"dm_usb_key": false,
-			"exe": false,
-		},
-	},
-}
-
-var idle_debug := debug.duplicate(true)
-
-#-Funciones
-
-func reset_debug():
-	debug = idle_debug
-	leer_progreso()
-	leer_partida()
-
-
 #---Variables Progreso---#
 
 
@@ -529,11 +465,12 @@ var inventario :={
 	"exe": false,
 }
 
+
 var mapa :={
 	"door_office_open": false,
 	"safe_open": false,
 	"safe_opened_by_animatronic": false,
-	"recorder_planted": false,
+	"computer_on": false,
 	"computer_working": false,
 	"computer_failed": false,
 	"signed_in": false,
@@ -852,6 +789,53 @@ func chage_game_state_to_debug():
 		mapa[key] = debug["game_state"]["mapa"][key]
 	for key in debug["game_state"]["inventario"]:
 		inventario[key] = debug["game_state"]["inventario"][key]
+
+
+#---Debug---#
+
+
+#-Variables
+
+var debug :={
+	"debug_mode": false,
+	"prevent_save": false,
+	"cheats": {
+		"invencibility": false,
+		"instawin": false,
+		"timeless": false,
+		"ultra_agresive": false,
+		"infinite_light": false,
+		"lights_consume": false,
+		"animatronic_map": false,
+		"see_light_batery": false,
+		"see_insanity": false,
+		"see_time_always": false,
+		"tick_count": false,
+		"max_consumption": 3,
+		"tick_rate": 5,
+		"night_duration": 5,
+	},
+	"game_state": {
+		"override": false,
+		"night": 1,
+		"force_enter": false,
+		"force_exit": false,
+		"force_combination": false,
+		"combination": 11111,
+		"mapa": mapa.duplicate(true),
+		"inventario": inventario.duplicate(true),
+		"dm": dm.duplicate(true),
+	},
+}
+
+var idle_debug := debug.duplicate(true)
+
+#-Funciones
+
+func reset_debug():
+	debug = idle_debug
+	leer_progreso()
+	leer_partida()
 
 
 #---Ready---#

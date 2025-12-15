@@ -41,7 +41,13 @@ func keep_looting_safe(_read):
 
 
 func start_computer(_read):
+	Global.mapa["computer_on"] = true
+
+func start_download(_read):
 	Global.mapa["computer_working"] = true
+
+func stop_download(_read):
+	Global.mapa["computer_on"] = true
 
 func get_program(_read):
 	Global.inventario["exe"] = true
@@ -56,3 +62,7 @@ func sign_in(read):
 
 func temporal_award_dm_key(_read):
 	Global.inventario["dm_usb_key"] = true
+	Global.dm["bonnie"] = 1
+	Global.dm["chica"] = 1
+	Global.dm["freddy"] = 1
+	Global.dm["foxy"] = 1
