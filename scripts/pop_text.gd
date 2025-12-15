@@ -40,5 +40,6 @@ func _on_timer_timeout() -> void:
 
 func exit():
 	on = false
+	$Timer.stop()
 	txt_label.id_num = 0
 	$"../.."._on_finished_text()
