@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cy4q5pbjdsj20"]
 
-[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_63cx6"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_63cx6"]
 [ext_resource type="Script" uid="uid://d3ulhnwtxrp15" path="res://scripts/black_bars.gd" id="1_xcvhw"]
-[ext_resource type="FontFile" uid="uid://db8nupa3kyc5g" path="res://fnafjuego/I-pixel-u.ttf" id="2_ge38c"]
+[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://fnafjuego/I-pixel-u.ttf" id="2_ge38c"]
 
 [node name="Black_bars" type="Control" node_paths=PackedStringArray("label", "timer")]
 layout_mode = 3

@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var menu := false
 @export var cams := false
 @export_range(0.0, 1.0, 0.01)
 var opacidad: float = 1.0
@@ -17,8 +18,6 @@ func _ready():
 		Global.mouse_custom_punt = puntero
 	else:
 		puntero = Global.mouse_custom_punt
-		
-	$".".modulate.a = opacidad
 	
 	$PunteroCustomCam.modulate.a = 0.0
 	$PunteroCustomCam2.modulate.a = 0.0
@@ -57,7 +56,10 @@ func _ready():
 
 func _process(_delta):
 	if not override_alpha:
-		modulate.a = Global.mouse_custom_op
+		if menu and Global.mouse_custom_op < 0.15:
+			modulate.a = 1.0
+		else:
+			modulate.a = Global.mouse_custom_op
 	global_position = get_global_mouse_position()
 
 func _on_button_pressed() -> void:

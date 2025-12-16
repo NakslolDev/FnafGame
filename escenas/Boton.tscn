@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://depuj23yjh7gx" path="res://scripts/boton.gd" id="1_0dpeo"]
 [ext_resource type="Script" uid="uid://bb4256acvhna2" path="res://scripts/area_boton.gd" id="2_rwcrt"]
-[ext_resource type="Texture2D" uid="uid://d2d1g6qle1erh" path="res://fnafjuego/Placeholders/Oficina_Boton_Rojo.png" id="2_u33ia"]
-[ext_resource type="Texture2D" uid="uid://d0jxsemqh31w5" path="res://fnafjuego/Placeholders/Oficina_Boton_Verde.png" id="3_rwcrt"]
-[ext_resource type="Texture2D" uid="uid://dyof262xoptg4" path="res://fnafjuego/Placeholders/Oficina_Boton_No_Energia.png" id="4_rwcrt"]
-[ext_resource type="AudioStream" uid="uid://d1oxpe2v1uwkm" path="res://fnafjuego/sounds/Button_on.wav" id="6_b3rwc"]
-[ext_resource type="AudioStream" uid="uid://dkd63hnd8y3y8" path="res://fnafjuego/sounds/Button_off.wav" id="7_u8i2q"]
+[ext_resource type="Texture2D" uid="uid://c1furmqgyt38p" path="res://fnafjuego/Placeholders/Oficina_Boton_Rojo.png" id="2_u33ia"]
+[ext_resource type="Texture2D" uid="uid://fl8rjvk4yh4t" path="res://fnafjuego/Placeholders/Oficina_Boton_Verde.png" id="3_rwcrt"]
+[ext_resource type="Texture2D" uid="uid://dg1rc62wry1iy" path="res://fnafjuego/Placeholders/Oficina_Boton_No_Energia.png" id="4_rwcrt"]
+[ext_resource type="AudioStream" uid="uid://cy0qyemnslhcv" path="res://fnafjuego/sounds/Button_on.wav" id="6_b3rwc"]
+[ext_resource type="AudioStream" uid="uid://crvpdt5unjsew" path="res://fnafjuego/sounds/Button_off.wav" id="7_u8i2q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcv1s"]
 size = Vector2(61.5, 92)

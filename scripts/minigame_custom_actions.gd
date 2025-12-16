@@ -2,13 +2,14 @@ extends Node2D
 
 @export var father: Node
 
-func _ready():
-	print(Global.inventario)
-	print(Global.mapa)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Click"):
+		print(Global.inventario)
+		print(Global.mapa)
 
 
 func do_custom_action(action: String, read: int):
-	
+	print("HELLLO: ", action)
 	if action.ends_with("_w_text"):
 		action = action.substr(0, action.length() - "_w_text".length())
 	action = action.to_lower()
@@ -51,7 +52,7 @@ func start_download(_read):
 	Global.mapa["computer_working"] = true
 
 func stop_download(_read):
-	Global.mapa["computer_on"] = true
+	Global.mapa["computer_working"] = false
 
 func get_program(_read):
 	Global.inventario["exe"] = true

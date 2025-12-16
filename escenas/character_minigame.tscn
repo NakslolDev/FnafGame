@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://de7uh84b4365x" path="res://scripts/character_minigame.gd" id="1_5ryae"]
 [ext_resource type="Script" uid="uid://cfxrs5edynyr" path="res://scripts/skins.gd" id="2_10j8s"]
-[ext_resource type="Texture2D" uid="uid://ccw04xaf4b6s2" path="res://fnafjuego/minijuego assets/White.png" id="3_fxfjq"]
+[ext_resource type="Texture2D" uid="uid://kxm04q67wv3u" path="res://fnafjuego/minijuego assets/White.png" id="3_fxfjq"]
 [ext_resource type="Script" uid="uid://b7iv4c1uc27g7" path="res://scripts/legs.gd" id="4_10j8s"]
-[ext_resource type="Texture2D" uid="uid://dxx6pklaeycqv" path="res://fnafjuego/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
+[ext_resource type="Texture2D" uid="uid://dp13mjs62dded" path="res://fnafjuego/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10j8s"]
 size = Vector2(12, 9)

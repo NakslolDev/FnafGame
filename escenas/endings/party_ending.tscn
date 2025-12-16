@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cocvy1jdh65sa"]
 
 [ext_resource type="Script" uid="uid://sh6risndd8no" path="res://scripts/ending_screens.gd" id="1_m75c7"]
-[ext_resource type="Texture2D" uid="uid://dqlhbwpk5pu1u" path="res://fnafjuego/Placeholders/end_screen_Party.png" id="1_v827l"]
-[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="2_qwnve"]
+[ext_resource type="Texture2D" uid="uid://du66u6vxy8n6k" path="res://fnafjuego/Placeholders/end_screen_Party.png" id="1_v827l"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="2_qwnve"]
 [ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://scripts/auto_transicion.gd" id="4_itqlp"]
 
 [node name="party_ending" type="Node2D"]

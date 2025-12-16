@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbxe832owyn3x"]
 
 [ext_resource type="Script" uid="uid://cwxpbnpsbvyhn" path="res://scripts/jumpscare_chica.gd" id="1_0fia5"]
-[ext_resource type="Texture2D" uid="uid://c7spgy1r08ymi" path="res://fnafjuego/Placeholders/Camaras/Chica.png" id="2_bx2u6"]
-[ext_resource type="AudioStream" uid="uid://dgjn3m2t5wnim" path="res://fnafjuego/sounds/small fart - sound effect.mp3" id="3_4wsyc"]
+[ext_resource type="Texture2D" uid="uid://dpu0m5dl5fi64" path="res://fnafjuego/Placeholders/Camaras/Chica.png" id="2_bx2u6"]
+[ext_resource type="AudioStream" uid="uid://dcsim6yk7ri65" path="res://fnafjuego/sounds/small fart - sound effect.mp3" id="3_4wsyc"]
 
 [node name="Jumpscare_Chica" type="Node2D"]
 script = ExtResource("1_0fia5")

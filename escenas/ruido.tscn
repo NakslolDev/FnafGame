@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr75h62c7rj4b"]
 
-[ext_resource type="Texture2D" uid="uid://dkovusqvncq64" path="res://fnafjuego/Placeholders/Camaras/tv-snow-noise-video.jpg" id="1_aa78m"]
+[ext_resource type="Texture2D" uid="uid://m6owme8ffsl2" path="res://fnafjuego/Placeholders/Camaras/tv-snow-noise-video.jpg" id="1_aa78m"]
 [ext_resource type="Script" uid="uid://dts5focbe0rul" path="res://scripts/ruido.gd" id="1_ifnnf"]
 
 [node name="Ruido" type="Node2D"]

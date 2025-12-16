@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://b5xqa4eh847iv"]
 
 [ext_resource type="Script" uid="uid://bowug2p2pk4qk" path="res://scripts/linterna.gd" id="1_cdu3y"]
-[ext_resource type="Texture2D" uid="uid://bmged7k0u2keg" path="res://fnafjuego/Placeholders/Linterna.png" id="2_b2cok"]
+[ext_resource type="Texture2D" uid="uid://bttp7ke2h52qu" path="res://fnafjuego/Placeholders/Linterna.png" id="2_b2cok"]
 [ext_resource type="Script" uid="uid://kgl87e831f7j" path="res://scripts/timer_descargar.gd" id="3_b2cok"]
 [ext_resource type="Script" uid="uid://kqbp5qq017xk" path="res://scripts/timer_recargar.gd" id="4_4vkxa"]
-[ext_resource type="AudioStream" uid="uid://dx827jf3w4f0f" path="res://fnafjuego/sounds/Linterna_Press.mp3" id="5_75v57"]
-[ext_resource type="AudioStream" uid="uid://u0y3icqfc74e" path="res://fnafjuego/sounds/Linterna_Release.mp3" id="6_4cvca"]
+[ext_resource type="AudioStream" uid="uid://y1kt5vwb2put" path="res://fnafjuego/sounds/Linterna_Press.mp3" id="5_75v57"]
+[ext_resource type="AudioStream" uid="uid://c4uqxtjy5yw0" path="res://fnafjuego/sounds/Linterna_Release.mp3" id="6_4cvca"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4vkxa"]
 

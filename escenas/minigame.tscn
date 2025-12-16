@@ -1,19 +1,19 @@
 [gd_scene load_steps=31 format=4 uid="uid://cu0m257624re4"]
 
-[ext_resource type="Texture2D" uid="uid://b7p3xkukkgq7x" path="res://fnafjuego/minijuego assets/Black.png" id="1_1t45r"]
+[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://fnafjuego/minijuego assets/Black.png" id="1_1t45r"]
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://scripts/minigame.gd" id="1_afqw0"]
 [ext_resource type="Script" uid="uid://d34jixbi2jr6n" path="res://scripts/black_background.gd" id="2_2fbfj"]
 [ext_resource type="PackedScene" uid="uid://cumryt3pxo2wv" path="res://escenas/character_minigame.tscn" id="2_blpan"]
 [ext_resource type="Script" uid="uid://op64ky6ob2qy" path="res://scripts/minigame_custom_actions.gd" id="2_iuvsy"]
-[ext_resource type="Texture2D" uid="uid://ccw04xaf4b6s2" path="res://fnafjuego/minijuego assets/White.png" id="3_2fbfj"]
-[ext_resource type="Texture2D" uid="uid://dlj8s82vjltgo" path="res://fnafjuego/minijuego assets/Floor/Floor.png" id="5_ya4yl"]
+[ext_resource type="Texture2D" uid="uid://kxm04q67wv3u" path="res://fnafjuego/minijuego assets/White.png" id="3_2fbfj"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://fnafjuego/minijuego assets/Floor/Floor.png" id="5_ya4yl"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="7_fpa5o"]
 [ext_resource type="PackedScene" uid="uid://b11fiquxgu4wa" path="res://escenas/M_objets/long_table.tscn" id="8_suoqm"]
 [ext_resource type="PackedScene" uid="uid://bo828jywsimiy" path="res://escenas/M_objets/chair.tscn" id="9_lt1rw"]
 [ext_resource type="PackedScene" uid="uid://bj026rljnlsdo" path="res://escenas/M_objets/Round_Table.tscn" id="9_suoqm"]
 [ext_resource type="Script" uid="uid://be0dsq6vfneai" path="res://scripts/table_w_chair.gd" id="10_exafg"]
 [ext_resource type="PackedScene" uid="uid://djqjqcxkcwu8s" path="res://escenas/M_objets/_interact_colider.tscn" id="10_lt1rw"]
-[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="11_bgkyw"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="11_bgkyw"]
 [ext_resource type="PackedScene" uid="uid://dkw61scyyeb22" path="res://escenas/M_objets/placeholder.tscn" id="12_d47h1"]
 [ext_resource type="Script" uid="uid://qufpg35yap8u" path="res://scripts/transicion.gd" id="12_rvtq8"]
 [ext_resource type="PackedScene" uid="uid://bmc1g8wl35gb0" path="res://escenas/M_objets/placeholder_noclip.tscn" id="13_iuvsy"]
@@ -125,7 +125,6 @@ shader_parameter/vignette_opacity = 0.665
 [node name="Minigame" type="Node2D" node_paths=PackedStringArray("interact_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe")]
 texture_filter = 1
 script = ExtResource("1_afqw0")
-custom_pos = true
 interact_nodes = [NodePath("Coliders/Exit"), NodePath("Coliders/Safe"), NodePath("Coliders/Computer"), NodePath("Coliders/Office_dor"), NodePath("Coliders/Key_locations")]
 custom_action = NodePath("CustomActions")
 coliders_node = NodePath("Coliders")
@@ -166,7 +165,6 @@ y_sort_enabled = true
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
 position = Vector2(-368, 864)
 character = "Unnamed_Guard"
-run_mult = 5.0
 
 [node name="Chair" parent="YSort" instance=ExtResource("9_lt1rw")]
 position = Vector2(-1016, 824)
@@ -697,6 +695,7 @@ computer_failed = 2
 
 [node name="Start_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
+action = "Custom"
 custom_action = "Start_computer_w_text"
 id = "Start_computer"
 safe_usb_key = 1

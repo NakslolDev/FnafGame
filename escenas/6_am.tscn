@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckov56uah4qup"]
 
 [ext_resource type="Script" uid="uid://cu8m7y0h8yl2f" path="res://scripts/6_am.gd" id="1_5ea3b"]
-[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_jqnvh"]
-[ext_resource type="FontFile" uid="uid://db8nupa3kyc5g" path="res://fnafjuego/I-pixel-u.ttf" id="3_x61da"]
-[ext_resource type="AudioStream" uid="uid://b80xhtlsaa8gs" path="res://fnafjuego/sounds/Hall of Fame.mp3" id="4_x61da"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_jqnvh"]
+[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://fnafjuego/I-pixel-u.ttf" id="3_x61da"]
+[ext_resource type="AudioStream" uid="uid://dhclanw636w3" path="res://fnafjuego/sounds/Hall of Fame.mp3" id="4_x61da"]
 
 [node name="6_AM" type="Node2D"]
 script = ExtResource("1_5ea3b")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://yfdfcy54h2iy"]
 
 [ext_resource type="Script" uid="uid://c4f5vtlccwm3" path="res://scripts/jumpscare_freddy.gd" id="1_060h1"]
-[ext_resource type="AudioStream" uid="uid://dgjn3m2t5wnim" path="res://fnafjuego/sounds/small fart - sound effect.mp3" id="2_060h1"]
-[ext_resource type="Texture2D" uid="uid://sqk0eermckne" path="res://fnafjuego/Placeholders/Freddy.png" id="2_61b5c"]
+[ext_resource type="AudioStream" uid="uid://dcsim6yk7ri65" path="res://fnafjuego/sounds/small fart - sound effect.mp3" id="2_060h1"]
+[ext_resource type="Texture2D" uid="uid://bio080u7emcc2" path="res://fnafjuego/Placeholders/Freddy.png" id="2_61b5c"]
 
 [node name="Jumpscare_Freddy" type="Node2D"]
 script = ExtResource("1_060h1")

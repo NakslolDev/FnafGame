@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3c06jfj5tb32"]
 
 [ext_resource type="Script" uid="uid://pg5qsy5watg1" path="res://scripts/alucinations.gd" id="1_33s1n"]
-[ext_resource type="Texture2D" uid="uid://y4jl6yw3ve77" path="res://fnafjuego/Placeholders/Bonnie.png" id="2_38qcb"]
-[ext_resource type="Texture2D" uid="uid://bq3w704qgux6g" path="res://fnafjuego/Placeholders/Chica.png" id="3_1ij8i"]
-[ext_resource type="Texture2D" uid="uid://dw6nx2gsp8jjq" path="res://fnafjuego/Placeholders/foxy.png" id="4_i65s8"]
-[ext_resource type="Texture2D" uid="uid://sqk0eermckne" path="res://fnafjuego/Placeholders/Freddy.png" id="5_wipdr"]
+[ext_resource type="Texture2D" uid="uid://sejpr02h60n5" path="res://fnafjuego/Placeholders/Bonnie.png" id="2_38qcb"]
+[ext_resource type="Texture2D" uid="uid://l1s7u736357m" path="res://fnafjuego/Placeholders/Chica.png" id="3_1ij8i"]
+[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://fnafjuego/Placeholders/foxy.png" id="4_i65s8"]
+[ext_resource type="Texture2D" uid="uid://bio080u7emcc2" path="res://fnafjuego/Placeholders/Freddy.png" id="5_wipdr"]
 
 [node name="Alucinations" type="Node2D"]
 script = ExtResource("1_33s1n")

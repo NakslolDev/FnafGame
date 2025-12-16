@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dw5i2anclvxax"]
 
-[ext_resource type="Texture2D" uid="uid://c6e5g3m0w7vhb" path="res://fnafjuego/Placeholders/Camaras/Cam8/Cam.png" id="1_e1fva"]
+[ext_resource type="Texture2D" uid="uid://csbjr2anpklvv" path="res://fnafjuego/Placeholders/Camaras/Cam8/Cam.png" id="1_e1fva"]
 [ext_resource type="Script" uid="uid://cbv2u8qfi36bp" path="res://scripts/cam_8.gd" id="1_iiq1y"]
-[ext_resource type="Texture2D" uid="uid://b1j2sgvqkcsfs" path="res://fnafjuego/Placeholders/Camaras/Cam8/Bonnie_8.png" id="2_iiq1y"]
-[ext_resource type="Texture2D" uid="uid://bmn3h2q2eeb65" path="res://fnafjuego/Placeholders/Camaras/Cam8/Foxy_8.png" id="3_rq024"]
+[ext_resource type="Texture2D" uid="uid://m8qliv7b3yp0" path="res://fnafjuego/Placeholders/Camaras/Cam8/Bonnie_8.png" id="2_iiq1y"]
+[ext_resource type="Texture2D" uid="uid://b06sx3ttofb1m" path="res://fnafjuego/Placeholders/Camaras/Cam8/Foxy_8.png" id="3_rq024"]
 
 [node name="Cam_8" type="Node2D"]
 script = ExtResource("1_iiq1y")

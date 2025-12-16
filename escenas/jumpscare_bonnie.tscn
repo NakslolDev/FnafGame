@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbjiygcxok8xd"]
 
-[ext_resource type="Texture2D" uid="uid://y4jl6yw3ve77" path="res://fnafjuego/Placeholders/Bonnie.png" id="1_6ybcq"]
+[ext_resource type="Texture2D" uid="uid://sejpr02h60n5" path="res://fnafjuego/Placeholders/Bonnie.png" id="1_6ybcq"]
 [ext_resource type="Script" uid="uid://cg6eu5dfndmeb" path="res://scripts/jumpscare_bonnie.gd" id="1_grvaq"]
-[ext_resource type="AudioStream" uid="uid://dgjn3m2t5wnim" path="res://fnafjuego/sounds/small fart - sound effect.mp3" id="3_11bk8"]
+[ext_resource type="AudioStream" uid="uid://dcsim6yk7ri65" path="res://fnafjuego/sounds/small fart - sound effect.mp3" id="3_11bk8"]
 
 [node name="Jumpscare_Bonnie" type="Node2D"]
 script = ExtResource("1_grvaq")

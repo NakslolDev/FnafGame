@@ -759,7 +759,7 @@ var just_death_min := "none"
 
 func minigame_starts():
 	
-	if debug["game_state"]["override"]:
+	if debug["game_state"]["override"] and m_entering:
 		chage_game_state_to_debug()
 		return
 	
@@ -768,7 +768,7 @@ func minigame_starts():
 	if m_entering:
 		mapa["safe_opened_by_animatronic"] = false
 		mapa["door_office_open"] = false
-		if noche == 5 and m_entering:
+		if noche == 5:
 			randomize_safe_code()
 	
 	else:

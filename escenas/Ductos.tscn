@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bo3fa6mc0i5nu"]
 
 [ext_resource type="Script" uid="uid://8nysrngfedn" path="res://scripts/ductos.gd" id="1_sysxk"]
-[ext_resource type="Texture2D" uid="uid://46rt8lbwtuat" path="res://fnafjuego/Placeholders/Oficina_Ventilacion_Iluminado.png" id="2_ab0ic"]
+[ext_resource type="Texture2D" uid="uid://xm371okco0oy" path="res://fnafjuego/Placeholders/Oficina_Ventilacion_Iluminado.png" id="2_ab0ic"]
 [ext_resource type="Shader" uid="uid://cy37sjn6e8y4u" path="res://shaders/Pasillo.gdshader" id="3_cxujm"]
-[ext_resource type="Texture2D" uid="uid://dw6nx2gsp8jjq" path="res://fnafjuego/Placeholders/foxy.png" id="3_og8rt"]
-[ext_resource type="Texture2D" uid="uid://bhdxq4h6beev5" path="res://fnafjuego/Placeholders/Oficina_Ventilacion_Oscuro.png" id="4_c2dxv"]
+[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://fnafjuego/Placeholders/foxy.png" id="3_og8rt"]
+[ext_resource type="Texture2D" uid="uid://vwwaob3tpnxq" path="res://fnafjuego/Placeholders/Oficina_Ventilacion_Oscuro.png" id="4_c2dxv"]
 [ext_resource type="Script" uid="uid://s3m41odryu66" path="res://scripts/ductos_fondo_oscuro.gd" id="5_2e03e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ab0ic"]

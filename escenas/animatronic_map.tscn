@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bq8slaploxj1p"]
 
 [ext_resource type="Script" uid="uid://lihv3siwy1fs" path="res://scripts/animatronic_map.gd" id="1_h6hd8"]
-[ext_resource type="Texture2D" uid="uid://dxr3lis8dumct" path="res://fnafjuego/Placeholders/Camaras/UI/Minimapa Ductos.png" id="1_ljng8"]
-[ext_resource type="Texture2D" uid="uid://dbvg6gk3h5syn" path="res://fnafjuego/Placeholders/Camaras/Bonnie_Icon.png" id="3_f37ft"]
-[ext_resource type="Texture2D" uid="uid://dys6ntxla233o" path="res://fnafjuego/Placeholders/Camaras/Chica_Icon.png" id="4_ipxkm"]
-[ext_resource type="Texture2D" uid="uid://dm3j3v0bjm6rl" path="res://fnafjuego/Placeholders/Camaras/Foxy_Icon.png" id="5_1bthv"]
-[ext_resource type="Texture2D" uid="uid://ckdpyv6d3u4r" path="res://fnafjuego/Placeholders/Camaras/Freddy_Icon.png" id="6_p30fh"]
+[ext_resource type="Texture2D" uid="uid://7ri231ls1otd" path="res://fnafjuego/Placeholders/Camaras/UI/Minimapa Ductos.png" id="1_ljng8"]
+[ext_resource type="Texture2D" uid="uid://dpm7dtuqooc7s" path="res://fnafjuego/Placeholders/Camaras/Bonnie_Icon.png" id="3_f37ft"]
+[ext_resource type="Texture2D" uid="uid://5iynxhn6w537" path="res://fnafjuego/Placeholders/Camaras/Chica_Icon.png" id="4_ipxkm"]
+[ext_resource type="Texture2D" uid="uid://bepi0anfi43h" path="res://fnafjuego/Placeholders/Camaras/Foxy_Icon.png" id="5_1bthv"]
+[ext_resource type="Texture2D" uid="uid://bq62vigxep5rq" path="res://fnafjuego/Placeholders/Camaras/Freddy_Icon.png" id="6_p30fh"]
 
 [node name="Animatronic_Map" type="Node2D"]
 texture_filter = 1

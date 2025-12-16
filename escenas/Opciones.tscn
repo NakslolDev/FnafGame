@@ -1,6 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://bv54uvsb4g8u4"]
+[gd_scene load_steps=36 format=3 uid="uid://bv54uvsb4g8u4"]
 
-[ext_resource type="Texture2D" uid="uid://dbdfbq61gcthm" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_06fgn"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://fnafjuego/Placeholders/Fondo_Negro.png" id="1_06fgn"]
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://scripts/opciones.gd" id="1_afsr0"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://escenas/Mouse_Custom.tscn" id="3_cnt5o"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://scripts/label_idiom.gd" id="4_b7m4e"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://d1x3tqyqdtr4l" path="res://scripts/button_mouse.gd" id="5_iclv0"]
 [ext_resource type="Script" uid="uid://yasa6bbnwc3v" path="res://scripts/button_mouse_cam.gd" id="5_lyevh"]
 [ext_resource type="Script" uid="uid://w6fehj22prqw" path="res://scripts/h_slider_mouse.gd" id="5_x7g3o"]
-[ext_resource type="Script" uid="uid://br41jjmjd4llf" path="res://scripts/panel_advertencia_opacidad.gd" id="6_bhe5t"]
 [ext_resource type="Script" uid="uid://dxkmlcj62gawi" path="res://scripts/volume.gd" id="6_nc8ta"]
 [ext_resource type="Script" uid="uid://beclleyj317ex" path="res://scripts/button_UI_select.gd" id="6_rjkuq"]
 [ext_resource type="Script" uid="uid://cchmx0dss7sui" path="res://scripts/fade_out_options.gd" id="7_7oung"]
@@ -38,17 +37,6 @@
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_581ms"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7g3o"]
-bg_color = Color(0, 0, 0, 0.917)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_detail = 1
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjkuq"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndx3k"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -65,6 +53,8 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjkuq"]
 
 [node name="Opciones" type="Control"]
 layout_mode = 3
@@ -202,6 +192,15 @@ layout_mode = 2
 max_value = 1.0
 step = 0.01
 script = ExtResource("5_x7g3o")
+
+[node name="TooLittleOp" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op"]
+layout_mode = 2
+theme = ExtResource("4_ywhyp")
+theme_override_colors/font_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
+text = "(full opacity while in menu)"
+horizontal_alignment = 1
+script = ExtResource("4_b7m4e")
+id = "Too_little_op"
 
 [node name="Sound" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound"]
 layout_mode = 2
@@ -605,64 +604,6 @@ text = "Reset to default"
 script = ExtResource("13_jjl70")
 id = "reset_to_default"
 
-[node name="Warning_Op" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-offset_left = 360.0
-offset_top = 300.0
-offset_right = 1560.0
-offset_bottom = 780.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x7g3o")
-script = ExtResource("6_bhe5t")
-
-[node name="Input_eater" type="Panel" parent="Warning_Op"]
-layout_mode = 0
-offset_left = -500.0
-offset_top = -300.0
-offset_right = 1420.0
-offset_bottom = 780.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_rjkuq")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Warning_Op"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 62
-alignment = 1
-
-[node name="Label" type="Label" parent="Warning_Op/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_ywhyp")
-theme_override_font_sizes/font_size = 70
-text = "Warning!
-You are about to set the
-mouse opacity too low..."
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Warning_Op/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 320
-alignment = 1
-
-[node name="Button_IK" type="Button" parent="Warning_Op/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("4_ywhyp")
-text = "I know what
-I'm doing"
-
-[node name="Button_Cancel" type="Button" parent="Warning_Op/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("4_ywhyp")
-text = "Cancel"
-
 [node name="Debug_panel" type="Panel" parent="."]
 visible = false
 layout_mode = 0
@@ -692,7 +633,6 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_vertical = 1265
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer"]
@@ -1120,13 +1060,13 @@ alignment = 0
 
 [node name="Mouse_Custom" parent="." instance=ExtResource("3_cnt5o")]
 position = Vector2(-5, -5)
+menu = true
 opacidad = 0.7
 puntero = "3"
 
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" to="Mouse_Custom" method="_on_button_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_cam" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_cam" method="_on_pressed"]
-[connection signal="Warning_Op" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op/HSlider" to="Warning_Op" method="_on_h_slider_warning_op"]
 [connection signal="drag_ended" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op/HSlider" method="_on_drag_ended"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Master_Volume/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Master_Volume/HSlider" method="_on_value_changed"]
@@ -1150,10 +1090,6 @@ puntero = "3"
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Reset" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Warning_Op/VBoxContainer/HBoxContainer/Button_IK" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op/HSlider" method="_on_button_ik_pressed"]
-[connection signal="pressed" from="Warning_Op/VBoxContainer/HBoxContainer/Button_IK" to="Warning_Op" method="_on_button_ik_pressed"]
-[connection signal="pressed" from="Warning_Op/VBoxContainer/HBoxContainer/Button_Cancel" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op/HSlider" method="_on_button_cancel_pressed"]
-[connection signal="pressed" from="Warning_Op/VBoxContainer/HBoxContainer/Button_Cancel" to="Warning_Op" method="_on_button_cancel_pressed"]
 [connection signal="button_hide" from="Debug_panel" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Debug_menu" method="_on_debug_panel_button_hide"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/Exit_debug" to="Debug_panel" method="_on_exit_debug_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/Close" to="Debug_panel" method="_on_close_pressed"]
