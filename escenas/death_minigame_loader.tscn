@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ii2utfbiuaa"]
+
+[ext_resource type="Script" uid="uid://duhwlbghb2f4l" path="res://scripts/death_minigame_loader.gd" id="1_82wdj"]
+
+[node name="Death_minigame_loader" type="Node2D"]
+script = ExtResource("1_82wdj")

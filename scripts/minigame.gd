@@ -15,13 +15,22 @@ var safing := false
 @export var pop_text: Node
 @export var pop_safe: Node
 
+const posiciones_inicio := {
+	"entrar": Vector2(-512.0, 24.0),
+	"salir": Vector2(-990.0, 840.0),
+	"bonnie": Vector2(-1111.0, 355.0), # Cambiar cuando el escenario se pueda subir
+	"chica": Vector2(-987.0, 357.0), # Cambiar cuando el escenario se pueda subir
+	"freddy": Vector2(-1042.0, 357.0), # Cambiar cuando el escenario se pueda subir
+	"foxy": Vector2(-1039.0, 523.0),
+}
+
 func _ready():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Text"), 1.0)
 	
 	if not custom_pos:
-		locate_char(Global.m_entering)
+		locate_char(Global.m_entering, Global.just_death_min)
 	
 	connect_signals_recursively(coliders_node)
 	
@@ -41,11 +50,20 @@ func connect_signals_recursively(node: Node): #De esta forma conecta todo lo de 
 		connect_signals_recursively(child)
 
 
-func locate_char(entrance: bool):
-	if entrance:
-		player.position = Vector2(-512.0, 24.0)
-	else:
-		player.position = Vector2(-990.0, 840.0)
+func locate_char(entrance: bool, animatronic: String):
+	if animatronic == "none":
+		if entrance:
+			player.position = posiciones_inicio["entrar"]
+		else:
+			player.position = posiciones_inicio["salir"]
+	elif animatronic.ends_with("bonnie"): # tanto kbonnie como sbonnie van al mismo sitio. Lo mismo aplica para los demas
+		player.position = posiciones_inicio["bonnie"]
+	elif animatronic.ends_with("chica"):
+		player.position = posiciones_inicio["chica"]
+	elif animatronic.ends_with("freddy"):
+		player.position = posiciones_inicio["freddy"]
+	elif animatronic.ends_with("foxy"):
+		player.position = posiciones_inicio["foxy"]
 
 func _on_interacted_text(id: String, end_in: Array[int], read: int):
 	if reading or safing:
@@ -135,6 +153,7 @@ func begin():
 
 func done_trans():
 	Global.escena_previa = "Minigame"
+	Global.just_death_min = "none" # Da igual lo que pase, que se ha de reiniciar
 	if trans_to_game:
 		get_tree().change_scene_to_file("res://escenas/Main_Game.tscn")
 	else:
@@ -189,4 +208,6 @@ func _input(event):
 		$ESC_Timer.stop()  # Se cancela si suelta antes de tiempo
 
 func _on_esc_timer_timeout() -> void:
+	Global.escena_previa = "Minigame"
+	Global.just_death_min = "none" # Da igual lo que pase, que se ha de reiniciar
 	get_tree().change_scene_to_file("res://escenas/Menu_Principal.tscn")

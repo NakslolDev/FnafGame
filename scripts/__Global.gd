@@ -12,6 +12,7 @@ const progreso_rout: String = "progreso.json"
 
 var escena_previa: String
 var dead_scene_type := 0
+var killed_by := "none" # bonnie, chica, freddy, foxy. none es cuando no te ha matado nadie
 
 
 #---Control Functions---#
@@ -480,6 +481,7 @@ var mapa :={
 	"signed_in": false,
 }
 
+
 var dm :={ # 0 no completado, 1 completado, 2 salvado.
 	"bonnie": 0,
 	"chica": 0,
@@ -566,6 +568,7 @@ var energia := { # swithces
 
 
 func reset_night():
+	killed_by = "none"
 	insanity = 0
 	time_hour = 0
 	time_minute = 0
@@ -770,10 +773,16 @@ func minigame_starts():
 	leer_partida()
 	
 	if m_entering:
-		mapa["safe_opened_by_animatronic"] = false
-		mapa["door_office_open"] = false
-		if noche == 5:
-			randomize_safe_code()
+		if just_death_min == "none":
+			mapa["safe_opened_by_animatronic"] = false
+			mapa["door_office_open"] = false
+			mapa["computer_on"] = false
+			mapa["computer_working"] = false
+			mapa["computer_failed"] = false
+			if noche == 5:
+				randomize_safe_code()
+		else:
+			mapa["computer_failed"] = false
 	
 	else:
 		if mapa["door_office_open"] and not mapa["safe_open"]:
@@ -853,3 +862,9 @@ func _ready():
 	guardar_configuration_default()
 	
 	leer_configuration()
+
+#What to do next:
+#-Make a one time debug override
+#-Keep testing death minigames
+#-Adapt minigame to all this. Probably nothing need to change, but revisar.
+#-Make the machine work

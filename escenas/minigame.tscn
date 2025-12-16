@@ -163,7 +163,7 @@ tile_set = SubResource("TileSet_blpan")
 y_sort_enabled = true
 
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
-position = Vector2(-368, 864)
+position = Vector2(-1039, 523)
 character = "Unnamed_Guard"
 run_mult = 5.0
 
@@ -344,10 +344,6 @@ night_3 = false
 night_4 = false
 night_5 = false
 exiting = false
-bonnie = false
-chica = false
-freddy = false
-foxy = false
 
 [node name="Chair" type="Node2D" parent="Coliders"]
 
@@ -817,21 +813,60 @@ scale = Vector2(1.75, 1.75)
 action = "Custom"
 custom_action = "temporal_award_dm_key_w_text"
 id = "award_key"
-bonnie = false
-chica = false
-freddy = false
-foxy = false
 death_minigames = 2
 
 [node name="Activated" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
 position = Vector2(-1104.0001, 503.99997)
 scale = Vector2(1.75, 1.75)
 id = "Magic_chair"
-bonnie = false
-chica = false
-freddy = false
-foxy = false
 death_minigames = 1
+
+[node name="Prueba dm" type="Node2D" parent="Coliders"]
+
+[node name="completed1" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1170, 401)
+id = "pruebadm1"
+none = false
+sbonnie = false
+schica = false
+sfreddy = false
+sfoxy = false
+
+[node name="completed2" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1208, 401)
+id = "pruebadm2"
+none = false
+kbonnie = false
+kchica = false
+kfreddy = false
+kfoxy = false
+
+[node name="completed3" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1253, 401)
+id = "pruebadm3"
+kbonnie = false
+kchica = false
+kfreddy = false
+kfoxy = false
+sbonnie = false
+schica = false
+sfreddy = false
+sfoxy = false
+
+[node name="completed4" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1296, 400)
+id = "pruebadm4"
+bonnie = 2
+
+[node name="completed5" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1334, 400)
+id = "pruebadm5"
+bonnie = 3
+
+[node name="completed6" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1373, 398)
+id = "pruebadm6"
+bonnie = 1
 
 [node name="Black_Foregraund" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.348)

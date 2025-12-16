@@ -61,10 +61,10 @@ func _on_spin_box_max_consumption_value_changed(value: float) -> void:
 	debug["cheats"]["max_consumption"] = value
 
 func _on_spin_boxt_night_duration_value_changed(value: float) -> void:
-	debug["cheats"]["tick_rate"] = value
+	debug["cheats"]["night_duration"] = value
 
 func _on_spin_boxt_tick_rate_value_changed(value: float) -> void:
-	debug["cheats"]["night_duration"] = value
+	debug["cheats"]["tick_rate"] = value
 
 func _on_check_box_instant_win_toggled(toggled_on: bool) -> void:
 	debug["cheats"]["instawin"] = toggled_on

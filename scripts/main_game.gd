@@ -196,18 +196,49 @@ func change_tick_rate(new_tick: float):
 	$Linterna.tick_rate = new_tick
 
 func game_over(win: bool):
-	#if win and Global.noche != 0 and Global.noche != 6:
-		#Global.noche += 1 
-	# esto no va aqui...
 	
 	if win:
 		Global.escena_previa = "Main_game"
 		get_tree().change_scene_to_file("res://escenas/6_am.tscn")
 	else:
-		Global.escena_previa = "Main_game"
-		get_tree().change_scene_to_file("res://escenas/Dead_Scene.tscn")
+		
+		if go_to_death_minigame():
+			Global.escena_previa = "Main_game"
+			get_tree().change_scene_to_file("res://escenas/death_minigame_loader.tscn")
+		else:
+			Global.escena_previa = "Main_game"
+			get_tree().change_scene_to_file("res://escenas/Dead_Scene.tscn")
+
+
+func go_to_death_minigame() -> bool:
+	
+	if Global.noche == 0: # custom night
+		return false
+	
+	if not Global.mapa["death_minigames"]: # si death minigames esta desactivado
+		return false
+	
+	if Global.killed_by == "bonnie":
+		if Global.dm["bonnie"] == 0:
+			return true
+	
+	elif Global.killed_by == "chica":
+		if Global.dm["bonnie"] != 0 and Global.dm["chica"] == 0:
+			return true
+	
+	elif Global.killed_by == "freddy":
+		if Global.dm["bonnie"] != 0 and Global.dm["chica"] != 0 and Global.dm["freddy"] == 0:
+			return true
+	
+	elif Global.killed_by == "foxy":
+		if Global.dm["bonnie"] != 0 and Global.dm["chica"] != 0 and Global.dm["freddy"] != 0 and Global.dm["foxy"] == 0:
+			return true
+	
+	return false
+
 
 func _on_jumpscare_bonnie_jumpscare_end() -> void:
+	Global.killed_by = "bonnie"
 	if randi_range(0, 5) != 0:
 		Global.dead_scene_type = 1
 	else:
@@ -216,6 +247,7 @@ func _on_jumpscare_bonnie_jumpscare_end() -> void:
 	print("YOU GOT REPRODUCED")
 
 func _on_jumpscare_chica_jumpscare_end() -> void:
+	Global.killed_by = "chica"
 	if randi_range(0, 5) != 0:
 		Global.dead_scene_type = 2
 	else:
@@ -224,6 +256,7 @@ func _on_jumpscare_chica_jumpscare_end() -> void:
 	print("YOU GOT CHICKEND")
 
 func _on_jumpscare_freddy_jumpscare_end() -> void:
+	Global.killed_by = "freddy"
 	if randi_range(0, 5) != 0:
 		Global.dead_scene_type = 3
 	else:
@@ -232,6 +265,7 @@ func _on_jumpscare_freddy_jumpscare_end() -> void:
 	print("YOU GOT FREDDYED")
 
 func _on_jumpscare_foxy_jumpscare_end() -> void:
+	Global.killed_by = "foxy"
 	if randi_range(0, 5) != 0:
 		Global.dead_scene_type = 4
 	else:
