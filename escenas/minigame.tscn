@@ -739,13 +739,6 @@ computer_on = 1
 computer_working = 1
 computer_failed = 2
 
-[node name="Done_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
-position = Vector2(-344, 856)
-id = "Done_computer"
-entering = false
-exe = 1
-computer_on = 1
-
 [node name="Corrupted_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
 position = Vector2(-344, 856)
 id = "Corrupted_computer"
@@ -766,6 +759,13 @@ exe = 2
 computer_on = 1
 computer_working = 1
 computer_failed = 2
+
+[node name="Done_computer" parent="Coliders/Computer" instance=ExtResource("10_lt1rw")]
+position = Vector2(-344, 856)
+id = "Done_computer"
+entering = false
+exe = 1
+computer_on = 1
 
 [node name="News panel" type="Node2D" parent="Coliders"]
 position = Vector2(-552, 480)
