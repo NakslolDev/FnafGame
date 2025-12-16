@@ -67,6 +67,7 @@ func sign_in(read):
 
 func temporal_award_dm_key(_read):
 	Global.inventario["dm_usb_key"] = true
+	Global.mapa["death_minigames"] = true
 	Global.dm["bonnie"] = 1
 	Global.dm["chica"] = 1
 	Global.dm["freddy"] = 1

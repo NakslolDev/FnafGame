@@ -95,6 +95,9 @@ func _on_check_box_exe_toggled(toggled_on: bool) -> void:
 func _on_check_box_door_office_open_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["mapa"]["door_office_open"] = toggled_on
 
+func _on_check_box_death_minigames_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["mapa"]["death_minigames"] = toggled_on
+
 func _on_check_box_safe_open_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["mapa"]["safe_open"] = toggled_on
 

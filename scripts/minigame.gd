@@ -142,36 +142,36 @@ func done_trans():
 
 func manage_end_night():
 	
-	if Global.noche != 0 and Global.noche < 5:
-		Global.noche += 1
-		Global.guardar_partida()
 	
-	else:
+	if Global.inventario["exe"]:
+		get_tree().change_scene_to_file("res://escenas/endings/good_ending.tscn") # final bueno. Luego habra que cambiar la logica...
+		return
+	elif Global.inventario["files"]:
+		get_tree().change_scene_to_file("res://escenas/endings/bad_ending.tscn") # Final malo. La idea es que se active siempre que salgas, da igual en que noche estes
+		return # El return es porque no tiene que hacer nada mas. Tampoco guardar partida. El progreso se guarda en otro lado
+	
+	elif Global.noche != 0 and Global.noche < 5: # Si es una noche normal, 1-4, suma 1 a la noche
+		Global.noche += 1
+	
+	else: 
 		
-		if Global.noche == 5:
+		if Global.noche == 5: # Noche 5
 			if Global.mapa["signed_in"]:
 				Global.noche += 1
-				Global.guardar_partida()
 			
 			else:
-				get_tree().change_scene_to_file("res://escenas/endings/mediocre_ending.tscn")
+				get_tree().change_scene_to_file("res://escenas/endings/mediocre_ending.tscn") # Final mediocre
 				return
 		
 		elif Global.noche == 6:
-			
-			print("Invent:", Global.inventario)
-			
-			if Global.inventario["exe"]:
-				get_tree().change_scene_to_file("res://escenas/endings/good_ending.tscn")
-			elif Global.inventario["files"]:
-				get_tree().change_scene_to_file("res://escenas/endings/bad_ending.tscn")
-			else:
-				get_tree().change_scene_to_file("res://escenas/endings/party_ending.tscn")
+			get_tree().change_scene_to_file("res://escenas/endings/party_ending.tscn") # Final de la noche 6. No tienes ni files ni exe
 			return
 	
 	if not is_inside_tree():
 		push_warning("manage_end_night(): el nodo ya no está en el árbol")
 		return
+	
+	Global.guardar_partida() # guarda la partida.
 	
 	if Global.misc["When_win_go_to"] == "shift":
 		Global.m_entering = true

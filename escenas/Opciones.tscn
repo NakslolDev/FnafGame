@@ -982,6 +982,12 @@ theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25
 text = "Office door open"
 
+[node name="CheckBox_Death_minigames" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("25_e8wk2")
+theme_override_constants/h_separation = 25
+text = "Death minigames"
+
 [node name="CheckBox_safe_open" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("25_e8wk2")
@@ -1126,6 +1132,7 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_dm_usb_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_dm_usb_key_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_exe" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_exe_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_door_office_open" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_door_office_open_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_Death_minigames" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_death_minigames_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_safe_open" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_safe_open_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_safe_opened_by_animatronic" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_safe_opened_by_animatronic_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_computer_on" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_computer_on_toggled"]

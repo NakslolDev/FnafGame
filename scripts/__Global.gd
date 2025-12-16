@@ -208,6 +208,7 @@ func guardar_partida():
 		"safe_code": safe_code,
 		"inventario": inventario,
 		"mapa": mapa,
+		"dm": dm,
 	}
 	
 	var path := "user://" + partida_rout
@@ -241,6 +242,7 @@ func leer_partida():
 	safe_code = partida.get("safe_code", safe_code)
 	_asign_recursive_diccionary(partida.get("inventario"), inventario)
 	_asign_recursive_diccionary(partida.get("mapa"), mapa)
+	_asign_recursive_diccionary(partida.get("dm"), dm)
 	
 	print("Partida cargada")
 
@@ -453,6 +455,7 @@ var noche := 1 # 1-6, 0 es custom night.
 var safe_code := [2, 7, 3, 5, 3] # el codigo en orden de la caja
 var location_key := 0
 
+
 var inventario :={
 	"key": false,
 	"recorder": false,
@@ -468,6 +471,7 @@ var inventario :={
 
 var mapa :={
 	"door_office_open": false,
+	"death_minigames": false,
 	"safe_open": false,
 	"safe_opened_by_animatronic": false,
 	"computer_on": false,
@@ -753,7 +757,7 @@ signal energia_actualizada # Se manda cuando cambias un switch
 
 var m_entering := true
 
-var just_death_min := "none"
+var just_death_min := "none" #none, kbonnie, kchica, kfreddy, kfoxy. sbonnie...
 
 #---Funciones Minigame---#
 

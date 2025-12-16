@@ -26,12 +26,17 @@ var read := 0
 @export var entering := true
 @export var exiting := true
 
-@export_group("Death_minigame")
+@export_group("From_Death_minigame")
 @export var none := true
-@export var bonnie := true
-@export var chica := true
-@export var freddy := true
-@export var foxy := true
+@export var kbonnie := true
+@export var kchica := true
+@export var kfreddy := true
+@export var kfoxy := true
+@export var sbonnie := true
+@export var schica := true
+@export var sfreddy := true
+@export var sfoxy := true
+
 
 @export_group("Inventario")
 enum Condition{Omit, Need, Exclude}
@@ -47,12 +52,22 @@ enum Condition{Omit, Need, Exclude}
 
 @export_group("Mapa")
 @export var door_office_open: Condition = Condition.Omit
+@export var death_minigames: Condition = Condition.Omit
 @export var safe_open: Condition = Condition.Omit
 @export var safe_opened_by_animatronic: Condition = Condition.Omit
 @export var computer_on: Condition = Condition.Omit
 @export var computer_working: Condition = Condition.Omit
 @export var computer_failed: Condition = Condition.Omit
 @export var signed_in: Condition = Condition.Omit
+
+@export_group("Death_minigame_state")
+enum dmState{Omit, None, Complete, Saved}
+@export var bonnie: dmState = dmState.Omit
+@export var chica: dmState = dmState.Omit
+@export var freddy: dmState = dmState.Omit
+@export var foxy: dmState = dmState.Omit
+
+
 
 signal do_action(action: String, read: int)
 signal send_id_to_text(id: String, end_in: Array[int], read: int)
@@ -98,6 +113,20 @@ func check_active():
 			active = false
 			return
 		if value == Condition.Exclude and Global.mapa[_key]:
+			active = false
+			return
+	
+	for _key in Global.dm: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
+		var value: dmState = get(_key)
+		if value == dmState.Omit: # sobra, pero para que quede más limpio
+			continue
+		if value == dmState.None and Global.dm[_key] != 0:
+			active = false
+			return
+		if value == dmState.Complete and Global.dm[_key] != 1:
+			active = false
+			return
+		if value == dmState.Saved and Global.dm[_key] != 2:
 			active = false
 			return
 

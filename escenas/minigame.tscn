@@ -165,6 +165,7 @@ y_sort_enabled = true
 [node name="Character_Minigame" parent="YSort" instance=ExtResource("2_blpan")]
 position = Vector2(-368, 864)
 character = "Unnamed_Guard"
+run_mult = 5.0
 
 [node name="Chair" parent="YSort" instance=ExtResource("9_lt1rw")]
 position = Vector2(-1016, 824)
@@ -343,6 +344,10 @@ night_3 = false
 night_4 = false
 night_5 = false
 exiting = false
+bonnie = false
+chica = false
+freddy = false
+foxy = false
 
 [node name="Chair" type="Node2D" parent="Coliders"]
 
@@ -806,7 +811,7 @@ door_office_open = 1
 
 [node name="DM_machine" type="Node2D" parent="Coliders"]
 
-[node name="Interact_Colider" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
+[node name="Activate_death_min" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
 position = Vector2(-1104.0001, 503.99997)
 scale = Vector2(1.75, 1.75)
 action = "Custom"
@@ -816,6 +821,17 @@ bonnie = false
 chica = false
 freddy = false
 foxy = false
+death_minigames = 2
+
+[node name="Activated" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1104.0001, 503.99997)
+scale = Vector2(1.75, 1.75)
+id = "Magic_chair"
+bonnie = false
+chica = false
+freddy = false
+foxy = false
+death_minigames = 1
 
 [node name="Black_Foregraund" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.348)
