@@ -125,6 +125,7 @@ shader_parameter/vignette_opacity = 0.665
 [node name="Minigame" type="Node2D" node_paths=PackedStringArray("interact_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe")]
 texture_filter = 1
 script = ExtResource("1_afqw0")
+custom_pos = true
 interact_nodes = [NodePath("Coliders/Exit"), NodePath("Coliders/Safe"), NodePath("Coliders/Computer"), NodePath("Coliders/Office_dor"), NodePath("Coliders/Key_locations")]
 custom_action = NodePath("CustomActions")
 coliders_node = NodePath("Coliders")
@@ -511,120 +512,111 @@ position = Vector2(-912, 504)
 script = ExtResource("18_l24p3")
 metadata/_edit_group_ = true
 
-[node name="nothing" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
+[node name="Nothing" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
 id = "Nothing"
 read_end_in = Array[int]([1])
+night_1 = false
+night_2 = false
+night_3 = false
+exiting = false
+key = 2
 
-[node name="Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
+[node name="Key" type="Node2D" parent="Coliders/Key_locations/Location_key_1"]
+
+[node name="Key" parent="Coliders/Key_locations/Location_key_1/Key" instance=ExtResource("10_lt1rw")]
 action = "Custom"
 custom_action = "Pick_key_w_text"
 id = "Pick_key"
 night_1 = false
 night_2 = false
 night_3 = false
-night_5 = false
-night_6 = false
 entering = false
+key = 2
 
-[node name="Picked_Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
-id = "Picked_key"
-read_end_in = Array[int]([2])
-night_1 = false
-night_2 = false
-night_3 = false
-night_5 = false
-night_6 = false
-entering = false
+[node name="Nokey" type="Node2D" parent="Coliders/Key_locations/Location_key_1"]
 
-[node name="No_Key" parent="Coliders/Key_locations/Location_key_1" instance=ExtResource("10_lt1rw")]
+[node name="No_key" parent="Coliders/Key_locations/Location_key_1/Nokey" instance=ExtResource("10_lt1rw")]
 id = "No_key"
-read_end_in = Array[int]([1, 3])
+read_end_in = Array[int]([1])
 night_1 = false
 night_2 = false
 night_3 = false
-night_5 = false
-night_6 = false
 entering = false
+key = 2
 
 [node name="Location_key_2" type="Node2D" parent="Coliders/Key_locations"]
-position = Vector2(-952, 504)
-script = ExtResource("18_l24p3")
-metadata/_edit_group_ = true
-
-[node name="nothing" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
-id = "Nothing"
-read_end_in = Array[int]([1])
-
-[node name="Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
-action = "Custom"
-custom_action = "Pick_key_w_text"
-id = "Pick_key"
-night_1 = false
-night_2 = false
-night_3 = false
-night_5 = false
-night_6 = false
-entering = false
-
-[node name="Picked_Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
-id = "Picked_key"
-read_end_in = Array[int]([2])
-night_1 = false
-night_2 = false
-night_3 = false
-night_5 = false
-night_6 = false
-entering = false
-
-[node name="No_Key" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
-id = "No_key"
-read_end_in = Array[int]([1, 3])
-night_1 = false
-night_2 = false
-night_3 = false
-night_5 = false
-night_6 = false
-entering = false
-
-[node name="Location_key_3" type="Node2D" parent="Coliders/Key_locations"]
 position = Vector2(-872, 504)
 script = ExtResource("18_l24p3")
 metadata/_edit_group_ = true
 
-[node name="nothing" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
+[node name="Nothing" parent="Coliders/Key_locations/Location_key_2" instance=ExtResource("10_lt1rw")]
 id = "Nothing"
 read_end_in = Array[int]([1])
+night_1 = false
+night_2 = false
+night_3 = false
+exiting = false
+key = 2
 
-[node name="Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
+[node name="Key" type="Node2D" parent="Coliders/Key_locations/Location_key_2"]
+
+[node name="Key" parent="Coliders/Key_locations/Location_key_2/Key" instance=ExtResource("10_lt1rw")]
 action = "Custom"
 custom_action = "Pick_key_w_text"
 id = "Pick_key"
 night_1 = false
 night_2 = false
 night_3 = false
-night_5 = false
-night_6 = false
 entering = false
+key = 2
 
-[node name="Picked_Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
-id = "Picked_key"
-read_end_in = Array[int]([2])
-night_1 = false
-night_2 = false
-night_3 = false
-night_5 = false
-night_6 = false
-entering = false
+[node name="Nokey" type="Node2D" parent="Coliders/Key_locations/Location_key_2"]
 
-[node name="No_Key" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
+[node name="No_key" parent="Coliders/Key_locations/Location_key_2/Nokey" instance=ExtResource("10_lt1rw")]
 id = "No_key"
-read_end_in = Array[int]([1, 3])
+read_end_in = Array[int]([1])
 night_1 = false
 night_2 = false
 night_3 = false
-night_5 = false
-night_6 = false
 entering = false
+key = 2
+
+[node name="Location_key_3" type="Node2D" parent="Coliders/Key_locations"]
+position = Vector2(-952, 504)
+script = ExtResource("18_l24p3")
+metadata/_edit_group_ = true
+
+[node name="Nothing" parent="Coliders/Key_locations/Location_key_3" instance=ExtResource("10_lt1rw")]
+id = "Nothing"
+read_end_in = Array[int]([1])
+night_1 = false
+night_2 = false
+night_3 = false
+exiting = false
+key = 2
+
+[node name="Key" type="Node2D" parent="Coliders/Key_locations/Location_key_3"]
+
+[node name="Key" parent="Coliders/Key_locations/Location_key_3/Key" instance=ExtResource("10_lt1rw")]
+action = "Custom"
+custom_action = "Pick_key_w_text"
+id = "Pick_key"
+night_1 = false
+night_2 = false
+night_3 = false
+entering = false
+key = 2
+
+[node name="Nokey" type="Node2D" parent="Coliders/Key_locations/Location_key_3"]
+
+[node name="No_key" parent="Coliders/Key_locations/Location_key_3/Nokey" instance=ExtResource("10_lt1rw")]
+id = "No_key"
+read_end_in = Array[int]([1])
+night_1 = false
+night_2 = false
+night_3 = false
+entering = false
+key = 2
 
 [node name="Safe" type="Node2D" parent="Coliders"]
 position = Vector2(-408, 808)
@@ -808,65 +800,25 @@ door_office_open = 1
 [node name="DM_machine" type="Node2D" parent="Coliders"]
 
 [node name="Activate_death_min" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1104.0001, 503.99997)
+position = Vector2(-1104.0001, 504)
 scale = Vector2(1.75, 1.75)
 action = "Custom"
-custom_action = "temporal_award_dm_key_w_text"
-id = "award_key"
+custom_action = "Activate_dm_machine_w_text"
+id = "activate_dm_machine"
+read_end_in = Array[int]([1, 3])
 death_minigames = 2
 
-[node name="Activated" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1104.0001, 503.99997)
+[node name="Claim_dm_usb" parent="Coliders/DM_machine" instance=ExtResource("10_lt1rw")]
+position = Vector2(-1104.0001, 504)
 scale = Vector2(1.75, 1.75)
-id = "Magic_chair"
+action = "Custom"
+custom_action = "Claim_dm_usb_w_text"
+id = "claim_dm_usb"
+sbonnie = false
+schica = false
+sfreddy = false
+sfoxy = false
 death_minigames = 1
-
-[node name="Prueba dm" type="Node2D" parent="Coliders"]
-
-[node name="completed1" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1170, 401)
-id = "pruebadm1"
-none = false
-sbonnie = false
-schica = false
-sfreddy = false
-sfoxy = false
-
-[node name="completed2" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1208, 401)
-id = "pruebadm2"
-none = false
-kbonnie = false
-kchica = false
-kfreddy = false
-kfoxy = false
-
-[node name="completed3" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1253, 401)
-id = "pruebadm3"
-kbonnie = false
-kchica = false
-kfreddy = false
-kfoxy = false
-sbonnie = false
-schica = false
-sfreddy = false
-sfoxy = false
-
-[node name="completed4" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1296, 400)
-id = "pruebadm4"
-bonnie = 2
-
-[node name="completed5" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1334, 400)
-id = "pruebadm5"
-bonnie = 3
-
-[node name="completed6" parent="Coliders/Prueba dm" instance=ExtResource("10_lt1rw")]
-position = Vector2(-1373, 398)
-id = "pruebadm6"
-bonnie = 1
 
 [node name="Black_Foregraund" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.348)

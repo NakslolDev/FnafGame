@@ -33,16 +33,12 @@ func act_selected(just_selected := false):
 	$Back/Seleccion.visible = false
 	
 	if selected == 1:
-		$Continue/Menu_Click.play()
 		$Continue/Seleccion.visible = true
 	if selected == 2:
-		$New_Game/Menu_Click.play()
 		$New_Game/Seleccion.visible = true
 	if selected == 3:
-		$Custom_Night/Menu_Click.play()
 		$Custom_Night/Seleccion.visible = true
 	if selected == 4:
-		$Back/Menu_Click.play()
 		$Back/Seleccion.visible = true
 
 func _input(event: InputEvent) -> void:
@@ -88,36 +84,44 @@ func back():
 
 
 func _on_continue_mouse_entered() -> void:
-	selected = 1
 	hard_selected = 1
-	act_selected(true)
+	if selected != 1:
+		selected = 1
+		$Menu_Click.play()
+		act_selected(true)
 
 func _on_continue_mouse_exited() -> void:
 	if selected == 1:
 		hard_selected = 0
 
 func _on_new_game_mouse_entered() -> void:
-	selected = 2
 	hard_selected = 2
-	act_selected(true)
+	if selected != 2:
+		selected = 2
+		$Menu_Click.play()
+		act_selected(true)
 
 func _on_new_game_mouse_exited() -> void:
 	if selected == 2:
 		hard_selected = 0
 
 func _on_custom_night_mouse_entered() -> void:
-	selected = 3
 	hard_selected = 3
-	act_selected(true)
+	if selected != 3:
+		selected = 3
+		$Menu_Click.play()
+		act_selected(true)
 
 func _on_custom_night_mouse_exited() -> void:
 	if selected == 3:
 		hard_selected = 0
 
 func _on_back_mouse_entered() -> void:
-	selected = 4
 	hard_selected = 4
-	act_selected(true)
+	if selected != 4:
+		selected = 4
+		$Menu_Click.play()
+		act_selected(true)
 
 func _on_back_mouse_exited() -> void:
 	if selected == 4:

@@ -219,19 +219,19 @@ func go_to_death_minigame() -> bool:
 		return false
 	
 	if Global.killed_by == "bonnie":
-		if Global.dm["bonnie"] == 0:
+		if Global.dm["bonnie"] == Global.Estado.STANDBY:
 			return true
 	
 	elif Global.killed_by == "chica":
-		if Global.dm["bonnie"] != 0 and Global.dm["chica"] == 0:
+		if Global.dm["bonnie"] != Global.Estado.STANDBY and Global.dm["chica"] == Global.Estado.STANDBY:
 			return true
 	
 	elif Global.killed_by == "freddy":
-		if Global.dm["bonnie"] != 0 and Global.dm["chica"] != 0 and Global.dm["freddy"] == 0:
+		if Global.dm["bonnie"] != Global.Estado.STANDBY and Global.dm["chica"] != Global.Estado.STANDBY and Global.dm["freddy"] == Global.Estado.STANDBY:
 			return true
 	
 	elif Global.killed_by == "foxy":
-		if Global.dm["bonnie"] != 0 and Global.dm["chica"] != 0 and Global.dm["freddy"] != 0 and Global.dm["foxy"] == 0:
+		if Global.dm["bonnie"] != Global.Estado.STANDBY and Global.dm["chica"] != Global.Estado.STANDBY and Global.dm["freddy"] != Global.Estado.STANDBY and Global.dm["foxy"] == Global.Estado.STANDBY:
 			return true
 	
 	return false

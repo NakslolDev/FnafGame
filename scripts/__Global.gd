@@ -6,9 +6,11 @@ extends Node
 const text_CSV_name: String = "Text_translated.csv"
 const AI_CSV_name: String = "Night_database.csv"
 
+const user_root: String = "user://"
 const configuration_rout: String = "config.json"
 const partida_rout: String = "partida.json"
 const progreso_rout: String = "progreso.json"
+const debug_partida_rout: String = "deb-partida.json"
 
 var escena_previa: String
 var dead_scene_type := 0
@@ -24,7 +26,7 @@ func get_csv_value_int(csv:String, row_index: int, col_index: int): # Devuelve e
 	var path := "res://Data/" + csv
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		push_error("No se pudo abrir el archivo CSV: " + path)
+		push_warning("No se pudo abrir el archivo CSV: " + path)
 		return null
 	
 	var table: Array = []
@@ -50,7 +52,7 @@ func get_csv_value_id(csv:String, row_id: String, col_id: String) -> String: # D
 	var path := "res://Data/" + csv
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		push_error("No se pudo abrir el archivo CSV: " + path)
+		push_warning("No se pudo abrir el archivo CSV: " + path)
 		return "Something went wrong... (CSV not found)"
 	
 	# Leer la cabecera para encontrar el índice del idioma
@@ -101,7 +103,7 @@ func guardar_configuration():
 	if configuration["mouse_custom_op"] < 0.5:
 		configuration["mouse_custom_op"] = 0.5
 	
-	var path := "user://" + configuration_rout
+	var path := user_root + configuration_rout
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	
 	if file:
@@ -109,11 +111,11 @@ func guardar_configuration():
 		file.close()
 		print("Configuración guardada")
 	else:
-		print("Configuración fallida")
+		push_warning("Configuración fallida")
 
 func leer_configuration():
 	
-	var path := "user://" + configuration_rout
+	var path := user_root + configuration_rout
 	if not FileAccess.file_exists(path):
 		print("No existe el archivo de configuración.")
 		return
@@ -124,7 +126,7 @@ func leer_configuration():
 	
 	var configuration = JSON.parse_string(text)
 	if configuration == null:
-		print("Error al leer JSON.")
+		push_warning("Error al leer JSON.")
 		return
 	
 	# Cargar variables
@@ -172,7 +174,7 @@ func guardar_configuration_default():
 
 func reset_configuration():
 	if config_default == null:
-		push_warning("There is no defualt configuration")
+		print("There is no defualt configuration")
 		return
 	language = config_default.get("language", language)
 	audio_language = config_default.get("audio_language", audio_language)
@@ -194,12 +196,44 @@ func reset_configuration():
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), audio["sfx"])
 
 func delete_config_file():
-	var path := "user://" + configuration_rout
+	var path := user_root + configuration_rout
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 
 
-func guardar_partida():
+func guardar_partida(use_debug_game_state_istead_of_normal := false):
+	
+	if debug["game_state"]["override"]:
+		
+		var devpartida: Dictionary
+		
+		if use_debug_game_state_istead_of_normal:
+			devpartida = {
+				"noche": debug["game_state"]["night"],
+				"safe_code": debug["game_state"]["combination"],
+				"inventario": debug["game_state"]["inventario"],
+				"mapa": debug["game_state"]["mapa"],
+				"dm": debug["game_state"]["dm"],
+			}
+		else:
+			sync_debug_to_current()
+			devpartida = {
+				"noche": noche,
+				"safe_code": safe_code,
+				"inventario": inventario,
+				"mapa": mapa,
+				"dm": dm,
+			}
+		
+		var devpath := user_root + debug_partida_rout
+		var devfile := FileAccess.open(devpath, FileAccess.WRITE)
+		
+		if devfile:
+			devfile.store_string(JSON.stringify(devpartida)) # "\t" = formato legible
+			print("Debug partida guardada")
+			devfile.close()
+		else:
+			push_warning("Debug partida fallida")
 	
 	if debug["prevent_save"]:
 		return
@@ -212,18 +246,114 @@ func guardar_partida():
 		"dm": dm,
 	}
 	
-	var path := "user://" + partida_rout
+	var path := user_root + partida_rout
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	
 	if file:
 		file.store_string(JSON.stringify(partida)) # "\t" = formato legible
-		file.close()
+		print("Partida guardada")
+	else:
+		push_warning("Partida fallida")
+	file.close()
+
+func guardar_death_minigames():
+	
+	if debug["game_state"]["override"]:
+		
+		var devpath := user_root + debug_partida_rout
+		
+		if not FileAccess.file_exists(devpath):
+			print("No existe el archivo de partida.")
+			return
+		
+		var devfile = FileAccess.open(devpath, FileAccess.READ)
+		var devtext = devfile.get_as_text()
+		devfile.close()
+		
+		var devpartida = JSON.parse_string(devtext) # Cargamos los archivos de partida
+		if devpartida == null:
+			push_warning("Error al leer JSON.")
+			return
+		
+		devpartida["dm"] = debug["game_state"]["dm"]
+		devpartida["mapa"]["death_minigames"] = true
+		
+		devfile = FileAccess.open(devpath, FileAccess.WRITE)
+		
+		if devfile:
+			devfile.store_string(JSON.stringify(devpartida)) # "\t" = formato legible
+			print("Partida guardada")
+			devfile.close()
+		else:
+			push_warning("Partida fallida")
+	
+	if debug["prevent_save"]:
+		return
+	
+	var path := user_root + partida_rout
+	
+	if not FileAccess.file_exists(path):
+		print("No existe el archivo de partida.")
+		return
+	
+	var file = FileAccess.open(path, FileAccess.READ)
+	var text = file.get_as_text()
+	file.close()
+	
+	var partida = JSON.parse_string(text) # Cargamos los archivos de partida
+	if partida == null:
+		print("Error al leer JSON.")
+		return
+	
+	partida["dm"] = dm
+	
+	file = FileAccess.open(path, FileAccess.WRITE)
+	
+	if file:
+		file.store_string(JSON.stringify(partida)) # "\t" = formato legible
 		print("Partida guardada")
 	else:
 		print("Partida fallida")
+	file.close()
 
 func leer_partida():
-	var path := "user://" + partida_rout
+	
+	if debug["game_state"]["override"]:
+		
+		#-Carga debug-
+		
+		var devpath := user_root + debug_partida_rout
+		
+		if FileAccess.file_exists(devpath):
+			
+			var devfile = FileAccess.open(devpath, FileAccess.READ)
+			var devtext = devfile.get_as_text()
+			devfile.close()
+			
+			var devpartida = JSON.parse_string(devtext)
+			if devpartida == null:
+				push_warning("Error al leer JSON.")
+				return
+			
+			# Cargar variables
+			
+			noche = devpartida.get("noche", noche)
+			safe_code = devpartida.get("safe_code", safe_code)
+			_asign_recursive_diccionary(devpartida.get("inventario"), inventario)
+			_asign_recursive_diccionary(devpartida.get("mapa"), mapa)
+			_asign_recursive_diccionary(devpartida.get("dm"), dm)
+			
+			sync_debug_to_current()
+			
+			print("Debug partida cargada")
+			return
+		
+		print("No existe el archivo de partida debug. Leyendo partida normal")
+	
+	#--Carga normal--
+	
+	var path := user_root + partida_rout
+	
 	if not FileAccess.file_exists(path):
 		print("No existe el archivo de partida.")
 		return
@@ -248,10 +378,21 @@ func leer_partida():
 	print("Partida cargada")
 
 func eliminar_partida():
-	var path := "user://" + partida_rout
+	var path := user_root + partida_rout
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 
+func eliminar_debug_partida():
+	var path := user_root + debug_partida_rout
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(path)
+
+func sync_debug_to_current():
+	debug["game_state"]["night"] = noche
+	debug["game_state"]["combination"] = safe_code
+	_asign_recursive_diccionary(inventario, debug["game_state"]["inventario"])
+	_asign_recursive_diccionary(mapa, debug["game_state"]["mapa"])
+	_asign_recursive_diccionary(dm, debug["game_state"]["dm"])
 
 func guardar_progreso():
 	if debug["prevent_save"]:
@@ -262,7 +403,7 @@ func guardar_progreso():
 		"finales": finales,
 	}
 	
-	var path := "user://" + progreso_rout
+	var path := user_root + progreso_rout
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	
 	if file:
@@ -270,10 +411,10 @@ func guardar_progreso():
 		file.close()
 		print("Progreso guardado")
 	else:
-		print("Progreso fallido")
+		push_warning("Progreso fallido")
 
 func leer_progreso():
-	var path := "user://" + progreso_rout
+	var path := user_root + progreso_rout
 	if not FileAccess.file_exists(path):
 		print("No existe el archivo de progreso.")
 		return
@@ -284,7 +425,7 @@ func leer_progreso():
 	
 	var progreso = JSON.parse_string(text)
 	if progreso == null:
-		print("Error al leer JSON.")
+		push_warning("Error al leer JSON.")
 		return
 	
 	custom_night = progreso.get("custom_night", custom_night)
@@ -293,7 +434,7 @@ func leer_progreso():
 	print("Progreso cargado")
 
 func eliminar_progreso():
-	var path := "user://" + progreso_rout
+	var path := user_root + progreso_rout
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 
@@ -303,13 +444,26 @@ func _asign_recursive_diccionary(dick_origin: Dictionary, dick_destiny: Dictiona
 	
 	for key in dick_origin:
 		
-		if dick_destiny.get(key) == null:
+		if not dick_destiny.has(key):
 			continue # Si hay una configuración en el archivo que no está en el codigo, se ignora
 		
-		if typeof(dick_origin[key]) == TYPE_DICTIONARY and typeof(dick_destiny[key]) == TYPE_DICTIONARY:
-			_asign_recursive_diccionary(dick_origin[key], dick_destiny[key])
+		var origin_value = dick_origin[key]
+		var destiny_value = dick_destiny[key]
+
+		if typeof(origin_value) == TYPE_DICTIONARY and typeof(destiny_value) == TYPE_DICTIONARY:
+			_asign_recursive_diccionary(origin_value, destiny_value)
 		else:
-			dick_destiny[key] = dick_origin.get(key)
+			match typeof(destiny_value):
+				TYPE_INT:
+					dick_destiny[key] = int(origin_value)
+				TYPE_FLOAT:
+					dick_destiny[key] = float(origin_value)
+				TYPE_BOOL:
+					dick_destiny[key] = bool(origin_value)
+				TYPE_STRING:
+					dick_destiny[key] = str(origin_value)
+				_:
+					dick_destiny[key] = origin_value
 
 
 #---Configuration---#
@@ -457,7 +611,7 @@ var safe_code := [2, 7, 3, 5, 3] # el codigo en orden de la caja
 var location_key := 0
 
 
-var inventario :={
+var inventario: Dictionary[String, bool] = {
 	"key": false,
 	"recorder": false,
 	"screwdriver": false,
@@ -470,7 +624,7 @@ var inventario :={
 }
 
 
-var mapa :={
+var mapa: Dictionary[String, bool] = {
 	"door_office_open": false,
 	"death_minigames": false,
 	"safe_open": false,
@@ -482,11 +636,13 @@ var mapa :={
 }
 
 
-var dm :={ # 0 no completado, 1 completado, 2 salvado.
-	"bonnie": 0,
-	"chica": 0,
-	"freddy": 0,
-	"foxy": 0,
+enum Estado { STANDBY, COMPLETADO, SALVADO }
+
+var dm: Dictionary[String, Estado] = {
+	"bonnie": Estado.STANDBY,
+	"chica": Estado.STANDBY,
+	"freddy": Estado.STANDBY,
+	"foxy": Estado.STANDBY,
 }
 
 #---Funciones Partida---#
@@ -511,8 +667,11 @@ func create_new_game():
 		mapa[key] = false
 	for key in inventario: # no necesito hacer recursividad ni nada raro pues todos los elementos son bool
 		inventario[key] = false
+	for key in dm: # no necesito hacer recursividad ni nada raro pues todos los elementos son int
+		dm[key] = Estado.STANDBY
 	noche = 1
 	safe_code = [0,0,0,0,0]
+	guardar_partida()
 
 
 #---Variables Noche---#
@@ -590,7 +749,7 @@ func night_starts():
 	if noche == 0:
 		return
 	
-	if noche == 4:
+	if noche >= 4 and not inventario["key"]:
 		location_key = randi_range(1,3)
 	
 	mapa["computer_failed"] = false
@@ -766,46 +925,27 @@ var just_death_min := "none" #none, kbonnie, kchica, kfreddy, kfoxy. sbonnie...
 
 func minigame_starts():
 	
-	if debug["game_state"]["override"] and m_entering:
-		chage_game_state_to_debug()
-		return
-	
-	leer_partida()
+	if just_death_min == "none":
+		leer_partida() # En esta funcion es donde se maneja el debug
 	
 	if m_entering:
+		
 		if just_death_min == "none":
 			mapa["safe_opened_by_animatronic"] = false
 			mapa["door_office_open"] = false
 			mapa["computer_on"] = false
 			mapa["computer_working"] = false
-			mapa["computer_failed"] = false
 			if noche == 5:
 				randomize_safe_code()
-		else:
-			mapa["computer_failed"] = false
+		
+		mapa["computer_failed"] = false # A partir de aqui se ejecuta siempre al entrar
 	
 	else:
 		if mapa["door_office_open"] and not mapa["safe_open"]:
 			mapa["safe_opened_by_animatronic"] = true
 
-func chage_game_state_to_debug():
-	if debug["game_state"]["override"] == false: # capa extra de seguridad, por si acaso...
-		return
-	if debug["game_state"]["force_combination"]:
-		randomize_safe_code() # Esta funcion tiene ya integrado el force combination
-	noche = debug["game_state"]["night"]
-	if debug["game_state"]["force_enter"]:
-		m_entering = true
-	elif debug["game_state"]["force_exit"]:
-		m_entering = false
-	for key in mapa:
-		mapa[key] = debug["game_state"]["mapa"][key]
-	for key in debug["game_state"]["inventario"]:
-		inventario[key] = debug["game_state"]["inventario"][key]
-
 
 #---Debug---#
-
 
 #-Variables
 
@@ -834,26 +974,29 @@ var debug :={
 		"force_enter": false,
 		"force_exit": false,
 		"force_combination": false,
-		"combination": 11111,
+		"combination": [0,0,0,0,0],
 		"mapa": mapa.duplicate(true),
 		"inventario": inventario.duplicate(true),
 		"dm": dm.duplicate(true),
 	},
 }
 
-var idle_debug := debug.duplicate(true)
+@onready var idle_debug := debug.duplicate(true)
 
 #-Funciones
 
 func reset_debug():
-	debug = idle_debug
+	debug = idle_debug.duplicate(true)
 	leer_progreso()
 	leer_partida()
+	eliminar_debug_partida()
 
 
 #---Ready---#
 
 func _ready():
+	
+	eliminar_debug_partida() # De existir, elimina el archivo
 	
 	leer_progreso()
 	
@@ -863,8 +1006,13 @@ func _ready():
 	
 	leer_configuration()
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Inventario"):
+		print(Global.inventario)
+		print(Global.mapa)
+		print(Global.dm)
+
 #What to do next:
-#-Make a one time debug override
-#-Keep testing death minigames
-#-Adapt minigame to all this. Probably nothing need to change, but revisar.
+#-Adapt minigame to all this. Probably nothing need to change, but revisar
 #-Make the machine work

@@ -828,6 +828,7 @@ text = "Syncronice"
 alignment = 0
 
 [node name="CheckBox_Override" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme = ExtResource("25_e8wk2")
 theme_override_constants/h_separation = 25

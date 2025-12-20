@@ -38,6 +38,10 @@ offset_bottom = 488.0
 theme_override_constants/separation = 40
 script = ExtResource("4_ibmv0")
 
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
+
 [node name="Play" type="HBoxContainer" parent="Main_buttons"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -56,10 +60,6 @@ texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("6_wj5eb")
 
-[node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons/Play"]
-stream = ExtResource("7_wj5eb")
-volume_db = 1.0
-
 [node name="Options" type="HBoxContainer" parent="Main_buttons"]
 layout_mode = 2
 
@@ -75,10 +75,6 @@ id = "Options_"
 texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("6_wj5eb")
-
-[node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons/Options"]
-stream = ExtResource("7_wj5eb")
-volume_db = 1.0
 
 [node name="Exit" type="HBoxContainer" parent="Main_buttons"]
 layout_mode = 2
@@ -96,10 +92,6 @@ texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("6_wj5eb")
 
-[node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons/Exit"]
-stream = ExtResource("7_wj5eb")
-volume_db = 1.0
-
 [node name="Play_Buttons" type="VBoxContainer" parent="."]
 texture_filter = 1
 offset_left = -772.0
@@ -108,6 +100,10 @@ offset_right = -142.0
 offset_bottom = 488.0
 theme_override_constants/separation = 40
 script = ExtResource("8_grgpn")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons"]
+stream = ExtResource("7_wj5eb")
+volume_db = 1.0
 
 [node name="Continue" type="HBoxContainer" parent="Play_Buttons"]
 layout_mode = 2
@@ -140,10 +136,6 @@ texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("6_wj5eb")
 
-[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons/Continue"]
-stream = ExtResource("7_wj5eb")
-volume_db = 1.0
-
 [node name="New_Game" type="HBoxContainer" parent="Play_Buttons"]
 layout_mode = 2
 
@@ -159,10 +151,6 @@ id = "New_game"
 texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("6_wj5eb")
-
-[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons/New_Game"]
-stream = ExtResource("7_wj5eb")
-volume_db = 1.0
 
 [node name="Custom_Night" type="HBoxContainer" parent="Play_Buttons"]
 layout_mode = 2
@@ -180,10 +168,6 @@ texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("6_wj5eb")
 
-[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons/Custom_Night"]
-stream = ExtResource("7_wj5eb")
-volume_db = 1.0
-
 [node name="Back" type="HBoxContainer" parent="Play_Buttons"]
 layout_mode = 2
 
@@ -199,10 +183,6 @@ id = "Back_"
 texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("6_wj5eb")
-
-[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons/Back"]
-stream = ExtResource("7_wj5eb")
-volume_db = 1.0
 
 [node name="Mouse_Custom" parent="." instance=ExtResource("5_tqq4y")]
 position = Vector2(0, 2000)

@@ -16,7 +16,11 @@ func sync():
 	$CheckBox_force_enter.button_pressed = debug["game_state"]["force_enter"]
 	$CheckBox_force_exiting.button_pressed = debug["game_state"]["force_exit"]
 	$Combination/Force_combination.button_pressed = debug["game_state"]["force_combination"]
-	$Combination/SpinBox_comb.value = debug["game_state"]["combination"]
+	
+	var scomb := ""
+	for d in debug["game_state"]["combination"]:
+		scomb += str(d)
+	$Combination/SpinBox_comb.value = int(scomb)
 	
 	
 	
@@ -123,4 +127,7 @@ func _on_force_combination_toggled(toggled_on: bool) -> void:
 	$Combination/inventario.visible = toggled_on
 
 func _on_spin_box_comb_value_changed(value: float) -> void:
-	debug["game_state"]["combination"] = value
+	var result := []
+	for c in str(value):
+		result.append(int(c))
+	debug["game_state"]["combination"] = result

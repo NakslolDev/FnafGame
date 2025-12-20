@@ -4,7 +4,7 @@ signal button_hide
 
 func _input(event):
 	if visible and event.is_action_released("Esc"):
-		visible = false
+		_on_close_pressed()
 
 
 func _on_debug_menu_pressed() -> void:
@@ -19,3 +19,5 @@ func _on_exit_debug_pressed() -> void:
 
 func _on_close_pressed() -> void:
 	visible = false
+	if Global.debug["game_state"]["override"]:
+		Global.guardar_partida(true)

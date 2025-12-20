@@ -7,30 +7,32 @@ func _ready() -> void:
 	print("Enter -> complete | Space -> Save | Esc to exit")
 
 func _input(event: InputEvent) -> void:
-	var decision: int
+	var decision: Global.Estado
 	if event.is_action_pressed("Enter"):
-		decision = 1
+		decision = Global.Estado.COMPLETADO
 	elif event.is_action_pressed("Space"):
-		decision = 2
+		decision = Global.Estado.SALVADO
 	elif event.is_action_pressed("Esc"):
-		decision = 0
+		decision = Global.Estado.STANDBY
 	else:
 		return
 	Global.dm[animatronic] = decision
 	exit(decision)
+	print(event, " | ", decision)
 
 
-func exit(decision: int):
+func exit(decision: Global.Estado):
 	
 	Global.escena_previa = "death_minigame"
 	
-	if decision == 0:
+	if decision == Global.Estado.STANDBY:
 		get_tree().change_scene_to_file("res://escenas/Dead_Scene.tscn")
 	
 	else:
-		if decision == 1:
+		Global.guardar_death_minigames() # Es importante guardar aqui.
+		if decision == Global.Estado.COMPLETADO:
 			Global.just_death_min = "k" + animatronic
-		if decision == 2:
+		if decision == Global.Estado.SALVADO:
 			Global.just_death_min = "s" + animatronic
 		Global.m_entering = true
 		Global.minigame_starts()

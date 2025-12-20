@@ -120,13 +120,13 @@ func check_active():
 		var value: dmState = get(_key)
 		if value == dmState.Omit: # sobra, pero para que quede más limpio
 			continue
-		if value == dmState.None and Global.dm[_key] != 0:
+		if value == dmState.None and Global.dm[_key] != Global.Estado.STANDBY:
 			active = false
 			return
-		if value == dmState.Complete and Global.dm[_key] != 1:
+		if value == dmState.Complete and Global.dm[_key] != Global.Estado.COMPLETADO:
 			active = false
 			return
-		if value == dmState.Saved and Global.dm[_key] != 2:
+		if value == dmState.Saved and Global.dm[_key] != Global.Estado.SALVADO:
 			active = false
 			return
 

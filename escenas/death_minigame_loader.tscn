@@ -4,3 +4,20 @@
 
 [node name="Death_minigame_loader" type="Node2D"]
 script = ExtResource("1_82wdj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 623.0
+offset_top = 576.0
+offset_right = 1291.0
+offset_bottom = 894.0
+theme_override_font_sizes/font_size = 50
+text = "ENTER: Complete
+Space: Save
+Esc: Cancel"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 541.0
+offset_top = 168.0
+offset_right = 1209.0
+offset_bottom = 381.0
+theme_override_font_sizes/font_size = 50

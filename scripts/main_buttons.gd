@@ -14,13 +14,10 @@ func act_selected():
 	$Exit/Seleccion.modulate.a = 0.0
 	
 	if selected == 1:
-		$Play/Menu_Click.play()
 		$Play/Seleccion.modulate.a = 1.0
 	if selected == 2:
-		$Options/Menu_Click.play()
 		$Options/Seleccion.modulate.a = 1.0
 	if selected == 3:
-		$Exit/Menu_Click.play()
 		$Exit/Seleccion.modulate.a = 1.0
 
 func _input(event: InputEvent) -> void:
@@ -57,27 +54,33 @@ func exit():
 	get_tree().quit()
 
 func _on_play_mouse_entered() -> void:
-	selected = 1
 	hard_selected = 1
-	act_selected()
+	if selected != 1:
+		selected = 1
+		$Menu_Click.play()
+		act_selected()
 
 func _on_play_mouse_exited() -> void:
 	if selected == 1:
 		hard_selected = 0
 
 func _on_options_mouse_entered() -> void:
-	selected = 2
 	hard_selected = 2
-	act_selected()
+	if selected != 2:
+		selected = 2
+		$Menu_Click.play()
+		act_selected()
 
 func _on_options_mouse_exited() -> void:
 	if selected == 2:
 		hard_selected = 0
 
 func _on_exit_mouse_entered() -> void:
-	selected = 3
 	hard_selected = 3
-	act_selected()
+	if selected != 3:
+		selected = 3
+		$Menu_Click.play()
+		act_selected()
 
 func _on_exit_mouse_exited() -> void:
 	if selected == 3:

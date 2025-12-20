@@ -2,11 +2,6 @@ extends Node2D
 
 @export var father: Node
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Click"):
-		print(Global.inventario)
-		print(Global.mapa)
-
 
 func do_custom_action(action: String, read: int):
 	print("HELLLO: ", action)
@@ -65,10 +60,9 @@ func sign_in(read):
 		print("Good luck!")
 
 
-func temporal_award_dm_key(_read):
+func activate_dm_machine(read):
+	if read == 2:
+		Global.mapa["death_minigames"] = true
+
+func claim_dm_usb(_read):
 	Global.inventario["dm_usb_key"] = true
-	Global.mapa["death_minigames"] = true
-	Global.dm["bonnie"] = 1
-	Global.dm["chica"] = 1
-	Global.dm["freddy"] = 1
-	Global.dm["foxy"] = 1
