@@ -2,7 +2,7 @@ extends Node2D
 
 @export var light_out_custom := false
 @export_range(0.0, 1.0, 0.01)
-var oscuridad: float
+var oscuridad := 0.2
 
 func _ready():
 	$Oficina_lights_out_Alpha.modulate.a = oscuridad

@@ -39,7 +39,7 @@ func set_camaras_activadas(value):
 
 @export var transicion := 5
 var transicionando: bool
-@onready var transicion_loc = $True_No_Shader/Transicion
+@export var transicion_loc: Node
 
 func _ready():
 	bonnie_cam_wait = 0

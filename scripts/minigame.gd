@@ -14,6 +14,7 @@ var safing := false
 @export var player: Node
 @export var pop_text: Node
 @export var pop_safe: Node
+@export var transicion: Node
 
 const posiciones_inicio := {
 	"entrar": Vector2(-512.0, 24.0),
@@ -29,6 +30,9 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Text"), 1.0)
 	
+	if Global.just_death_min == "none":
+		player.freeze = true
+	
 	if not custom_pos:
 		locate_char(Global.m_entering, Global.just_death_min)
 	
@@ -36,8 +40,6 @@ func _ready():
 	
 	if Global.m_entering == false:
 		$Black_Foregraund.visible = false
-
-
 
 func connect_signals_recursively(node: Node): #De esta forma conecta todo lo de dentro de coliders, aunque no sean hijos directos. Esto me permite organizar mejor
 	for child in node.get_children():
@@ -64,6 +66,9 @@ func locate_char(entrance: bool, animatronic: String):
 		player.position = posiciones_inicio["freddy"]
 	elif animatronic.ends_with("foxy"):
 		player.position = posiciones_inicio["foxy"]
+
+func _on_intro_done() -> void:
+	player.freeze = false
 
 func _on_interacted_text(id: String, end_in: Array[int], read: int):
 	if reading or safing:
@@ -116,10 +121,12 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	elif action == "Exit_pizza":
 		if not transition_out:
 			exit()
+			begin_trans()
 	
 	elif action == "Begin_night":
 		if not transition_out:
 			begin()
+			begin_trans()
 	
 	else:
 		custom_action.do_custom_action(action, read) # Tengo un nodo a parte para las acciones custom, para organizar
@@ -151,7 +158,10 @@ func begin():
 	trans_to_game = true
 	transition_out = true
 
-func done_trans():
+func begin_trans():
+	transicion.out()
+
+func _on_transicion_done_out() -> void:
 	Global.escena_previa = "Minigame"
 	Global.just_death_min = "none" # Da igual lo que pase, que se ha de reiniciar
 	if trans_to_game:

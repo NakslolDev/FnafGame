@@ -1012,7 +1012,3 @@ func _input(event: InputEvent) -> void:
 		print(Global.inventario)
 		print(Global.mapa)
 		print(Global.dm)
-
-#What to do next:
-#-Adapt minigame to all this. Probably nothing need to change, but revisar
-#-Make the machine work

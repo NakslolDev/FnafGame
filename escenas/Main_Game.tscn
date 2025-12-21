@@ -70,8 +70,9 @@ size = Vector2(1050, 115)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei8qt"]
 size = Vector2(1264.5, 19)
 
-[node name="Main_Game" type="Node2D"]
+[node name="Main_Game" type="Node2D" node_paths=PackedStringArray("transicion_loc")]
 script = ExtResource("1_4obry")
+transicion_loc = NodePath("True_No_Shader/Transicion")
 
 [node name="Control" type="Node2D" parent="."]
 
@@ -175,7 +176,6 @@ mouse_filter = 2
 
 [node name="Lights_Out" type="Node2D" parent="."]
 script = ExtResource("16_0773g")
-oscuridad = 0.2
 
 [node name="Oficina_lights_out_Alpha" type="Sprite2D" parent="Lights_Out"]
 texture = ExtResource("16_jhk02")
