@@ -2,7 +2,7 @@ extends Node2D
 
 @export var custom_pos := false
 
-var transition_out := false
+var transitioning_out := false
 var trans_to_game: bool
 
 var reading := false
@@ -15,6 +15,7 @@ var safing := false
 @export var pop_text: Node
 @export var pop_safe: Node
 @export var transicion: Node
+@export var shiftCompleted: Node
 
 const posiciones_inicio := {
 	"entrar": Vector2(-512.0, 24.0),
@@ -119,12 +120,12 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 		safe()
 	
 	elif action == "Exit_pizza":
-		if not transition_out:
+		if not transitioning_out:
 			exit()
 			begin_trans()
 	
 	elif action == "Begin_night":
-		if not transition_out:
+		if not transitioning_out:
 			begin()
 			begin_trans()
 	
@@ -151,12 +152,12 @@ func act_active(node: Node):
 func exit():
 	player.freeze = true
 	trans_to_game = false
-	transition_out = true
+	transitioning_out = true
 
 func begin():
 	player.freeze = true
 	trans_to_game = true
-	transition_out = true
+	transitioning_out = true
 
 func begin_trans():
 	transicion.out()
@@ -167,7 +168,10 @@ func _on_transicion_done_out() -> void:
 	if trans_to_game:
 		get_tree().change_scene_to_file("res://escenas/Main_Game.tscn")
 	else:
-		manage_end_night()
+		shiftCompleted.start_animation()
+
+func _on_shift_completed_done() -> void:
+	manage_end_night()
 
 func manage_end_night():
 	

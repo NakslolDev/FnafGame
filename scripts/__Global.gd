@@ -928,6 +928,12 @@ func minigame_starts():
 	if just_death_min == "none":
 		leer_partida() # En esta funcion es donde se maneja el debug
 	
+	if debug["game_state"]["override"]: # esto es lo unico de debug que tengo que manejar aqui
+		if debug["game_state"]["force_enter"]:
+			m_entering = true
+		elif debug["game_state"]["force_exit"]:
+			m_entering = false
+	
 	if m_entering:
 		
 		if just_death_min == "none":

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c3mo0c2uhwf7e"]
 
 [ext_resource type="Script" uid="uid://cdbwqc1dnxi7h" path="res://scripts/door.gd" id="1_3d5ah"]
-[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://fnafjuego/minijuego assets/Floor/Floor.png" id="1_db312"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://fnafjuego/minijuego assets/TextureAtlas/TextureAtlas.png" id="1_db312"]
 [ext_resource type="Script" uid="uid://bh2mfln1a6k66" path="res://scripts/door_sprites.gd" id="2_u23nu"]
 [ext_resource type="Script" uid="uid://dd0iaewx3xthf" path="res://scripts/door_coliders.gd" id="4_5vqfm"]
 [ext_resource type="Texture2D" uid="uid://bat2k5kbg8hvt" path="res://icon.svg" id="4_a5xgn"]

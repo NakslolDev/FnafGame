@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bj026rljnlsdo"]
 
 [ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://scripts/objetos.gd" id="1_r5vk6"]
-[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://fnafjuego/minijuego assets/Floor/Floor.png" id="2_tqpfq"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://fnafjuego/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_tqpfq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omc0x"]
 resource_name = "tileset"
