@@ -1,14 +1,14 @@
-extends Node2D
+extends Node
 
 @export var custom_pos := false
 
-var transitioning_out := false
+var transitioning := false
 var trans_to_game: bool
 
 var reading := false
 var safing := false
 
-@export var interact_nodes: Array[Node]
+@export var manual_act_nodes: Array[Node]
 @export var custom_action: Node
 @export var coliders_node: Node
 @export var player: Node
@@ -70,9 +70,10 @@ func locate_char(entrance: bool, animatronic: String):
 
 func _on_intro_done() -> void:
 	player.freeze = false
+	transitioning = false
 
 func _on_interacted_text(id: String, end_in: Array[int], read: int):
-	if reading or safing:
+	if reading or safing or transitioning:
 		return
 	reading = true
 	pop_text.visible = true
@@ -86,7 +87,7 @@ func _on_finished_text():
 	player.freeze = false
 
 func safe():
-	if reading or safing:
+	if reading or safing or transitioning:
 		return
 	safing = true
 	pop_safe.visible = true
@@ -113,21 +114,19 @@ func _on_done_safing(not_automatic: bool, read: int, combination := []):
 
 func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	
-	if reading or safing:
+	if reading or safing or transitioning:
 		return
 	
 	if action == "Safe":
 		safe()
 	
 	elif action == "Exit_pizza":
-		if not transitioning_out:
-			exit()
-			begin_trans()
+		exit()
+		begin_trans()
 	
 	elif action == "Begin_night":
-		if not transitioning_out:
-			begin()
-			begin_trans()
+		begin()
+		begin_trans()
 	
 	else:
 		custom_action.do_custom_action(action, read) # Tengo un nodo a parte para las acciones custom, para organizar
@@ -136,9 +135,18 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	act_active(coliders_node)
 
 func act_interact():
-	for _node in interact_nodes:
-		if _node is Node2D and _node.has_method("act"):
-			_node.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
+	for child in manual_act_nodes:
+		if child is Node2D and child.has_method("act"):
+			child.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
+		else:
+			recursive_act_interact(child)
+
+func recursive_act_interact(node: Node):
+	for child in node.get_children():
+		if child is Node2D and child.has_method("act"):
+			child.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
+		else:
+			recursive_act_interact(child)
 
 func act_active(node: Node):
 	
@@ -152,12 +160,10 @@ func act_active(node: Node):
 func exit():
 	player.freeze = true
 	trans_to_game = false
-	transitioning_out = true
 
 func begin():
 	player.freeze = true
 	trans_to_game = true
-	transitioning_out = true
 
 func begin_trans():
 	transicion.out()

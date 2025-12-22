@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var root: Node
 @export var background: Node
 @export var day: Node
 @export var time: Node
@@ -22,6 +23,7 @@ func _ready():
 		exit()
 
 func entrance():
+	root.transitioning = true
 	visible = true
 	modulate.a = 1.0
 	background.visible = true
@@ -47,6 +49,7 @@ func entrance():
 		await get_tree().create_timer(1.0).timeout
 
 func exit():
+	root.transitioning = true
 	visible = true
 	modulate.a = 1.0
 	background.visible = true
@@ -67,6 +70,7 @@ func start_fade():
 
 
 func out():
+	root.transitioning = true
 	entering_trans = false
 	day.visible = false
 	time.visible = false

@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var father: Node
 
@@ -20,9 +20,8 @@ func do_custom_action(action: String, read: int):
 #--Actions--
 
 func switch_chair(_read):
-	if not father.transition_out:
-		$"../Coliders/Pick_up_chair".switch_up_down()
-		$"../YSort/Table_w_chair".switch_up_down()
+	$"../Coliders/Pick_up_chair".switch_up_down()
+	$"../YSort/Table_w_chair".switch_up_down()
 
 
 func pick_key(_read):

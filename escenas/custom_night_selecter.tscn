@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://qvfnvujqjjn6" path="res://scripts/ai_custom_night.gd" id="2_5scaq"]
 [ext_resource type="Texture2D" uid="uid://sejpr02h60n5" path="res://fnafjuego/Placeholders/Bonnie.png" id="2_yw64g"]
 [ext_resource type="Texture2D" uid="uid://cq2ibop5ggmho" path="res://fnafjuego/Placeholders/UI_Menu/Seleccion.png" id="3_6qeii"]
-[ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Themes/Opciones.tres" id="4_uwdoj"]
+[ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="4_uwdoj"]
 [ext_resource type="Texture2D" uid="uid://l1s7u736357m" path="res://fnafjuego/Placeholders/Chica.png" id="6_dn2t3"]
 [ext_resource type="Texture2D" uid="uid://bio080u7emcc2" path="res://fnafjuego/Placeholders/Freddy.png" id="7_ph6q6"]
 [ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://fnafjuego/Placeholders/foxy.png" id="8_pfp8p"]
