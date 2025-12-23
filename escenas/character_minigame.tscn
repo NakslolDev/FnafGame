@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dp13mjs62dded" path="res://fnafjuego/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10j8s"]
-size = Vector2(12, 9)
+size = Vector2(12, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eens2"]
 atlas = ExtResource("4_fxfjq")
@@ -181,10 +181,10 @@ texture_filter = 1
 script = ExtResource("1_5ryae")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_10j8s")
 
 [node name="Skins" type="Node2D" parent="."]
+position = Vector2(0, -5)
 script = ExtResource("2_10j8s")
 
 [node name="White" type="Sprite2D" parent="Skins"]
@@ -197,12 +197,15 @@ animation = &"F"
 frame_progress = 0.660151
 
 [node name="Legs" type="Node2D" parent="."]
+position = Vector2(0, -5)
 script = ExtResource("4_10j8s")
 
 [node name="Timer" type="Timer" parent="Legs"]
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -5)
+enabled = false
 zoom = Vector2(4, 4)
 
 [connection signal="timeout" from="Legs/Timer" to="Legs" method="_on_timer_timeout"]

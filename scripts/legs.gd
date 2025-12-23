@@ -79,6 +79,12 @@ func move_step():
 	if Input.is_action_pressed("Shift"):
 		motion *= $"..".run_mult
 	
+	if dir.x != 0.0 and dir.y != 0.0:  # Frenamos movimiento diagonal
+		if Input.is_action_pressed("Shift"):
+			motion *= 0.8 # Esta redondeada hacia arriba un poco
+		else:
+			motion *= 0.9
+	
 	# Intentar movimiento completo
 	var collision = parent.move_and_collide(motion)
 	if collision:

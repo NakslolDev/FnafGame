@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://duhwlbghb2f4l" path="res://scripts/death_minigame_loader.gd" id="1_82wdj"]
 
-[node name="Death_minigame_loader" type="Node2D"]
+[node name="Death_minigame_loader" type="Node"]
 script = ExtResource("1_82wdj")
 
 [node name="Label" type="Label" parent="."]

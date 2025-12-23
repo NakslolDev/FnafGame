@@ -136,14 +136,14 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 
 func act_interact():
 	for child in manual_act_nodes:
-		if child is Node2D and child.has_method("act"):
+		if child.has_method("act"):
 			child.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
 		else:
 			recursive_act_interact(child)
 
 func recursive_act_interact(node: Node):
 	for child in node.get_children():
-		if child is Node2D and child.has_method("act"):
+		if child.has_method("act"):
 			child.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
 		else:
 			recursive_act_interact(child)
