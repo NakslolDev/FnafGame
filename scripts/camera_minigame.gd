@@ -7,7 +7,7 @@ extends Camera2D
 
 @export var chat_gpt := false
 
-func _ready() -> void:
+func locate(): # No hago _ready porque he de esperar a que se coloque el personaje donde toca
 	position = player.position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

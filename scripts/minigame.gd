@@ -16,14 +16,15 @@ var safing := false
 @export var pop_safe: Node
 @export var transicion: Node
 @export var shiftCompleted: Node
+@export var camera: Node
 
 const posiciones_inicio := {
-	"entrar": Vector2(-512.0, 24.0),
-	"salir": Vector2(-990.0, 840.0),
-	"bonnie": Vector2(-1111.0, 355.0), # Cambiar cuando el escenario se pueda subir
-	"chica": Vector2(-987.0, 357.0), # Cambiar cuando el escenario se pueda subir
-	"freddy": Vector2(-1042.0, 357.0), # Cambiar cuando el escenario se pueda subir
-	"foxy": Vector2(-1039.0, 523.0),
+	"entrar": Vector2(-544.0, 29.0),
+	"salir": Vector2(-995.0, 840.0),
+	"bonnie": Vector2(-1057.0, 381.0), 
+	"chica": Vector2(-953.0, 381.0),
+	"freddy": Vector2(-1016.0, 381.0),
+	"foxy": Vector2(-943.0, 656.0),
 }
 
 func _ready():
@@ -67,6 +68,7 @@ func locate_char(entrance: bool, animatronic: String):
 		player.position = posiciones_inicio["freddy"]
 	elif animatronic.ends_with("foxy"):
 		player.position = posiciones_inicio["foxy"]
+	camera.locate()
 
 func _on_intro_done() -> void:
 	player.freeze = false
