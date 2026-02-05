@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://djyh30hl0gveq"]
+
+[ext_resource type="Script" uid="uid://dwknywae55ths" path="res://Escenas/Night/SecurityRoom/FreddyPoster/freddy_nose.gd" id="1_7d28s"]
+[ext_resource type="Script" uid="uid://bhe04ndodnnqu" path="res://Escenas/Night/SecurityRoom/FreddyPoster/area_freddy_nose.gd" id="2_pkh7b"]
+[ext_resource type="AudioStream" uid="uid://cq5nf4qns57la" path="res://assets/sounds/fnaf-12-3-freddys-nose-sound.mp3" id="3_pfrhf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8x2bo"]
+radius = 19.0
+
+[node name="Freddy nose" type="Node2D"]
+script = ExtResource("1_7d28s")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_pkh7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-299, -171)
+shape = SubResource("CircleShape2D_8x2bo")
+
+[node name="Doit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pfrhf")
+volume_db = -5.426
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

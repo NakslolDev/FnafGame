@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://df8kv2d84k3ft"]
+
+[ext_resource type="Script" uid="uid://ywdgpayamk3n" path="res://Escenas/Night/Items/WaterBottle/watter_bottle_item.gd" id="1_t6bk8"]
+[ext_resource type="Texture2D" uid="uid://dufbm6ui6d53r" path="res://assets/Placeholders/Hidratation.png" id="2_t6bk8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wx6p"]
+radius = 34.839684
+height = 193.86778
+
+[node name="WaterBottleItem" type="Node2D" unique_id=784961989 node_paths=PackedStringArray("sprites")]
+script = ExtResource("1_t6bk8")
+sprites = [NodePath("sprites/1")]
+
+[node name="sprites" type="Node2D" parent="." unique_id=864293658]
+
+[node name="1" type="Sprite2D" parent="sprites" unique_id=984769477]
+scale = Vector2(0.30553573, 0.30553567)
+texture = ExtResource("2_t6bk8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1405667956]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=986148047]
+position = Vector2(0, -3.8146973e-06)
+shape = SubResource("CapsuleShape2D_7wx6p")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dffqin4cl711n"]
+
+[ext_resource type="Script" uid="uid://dbkepsongl7ai" path="res://Escenas/Shift/Safe/pop_safe.gd" id="1_1prpf"]
+[ext_resource type="Texture2D" uid="uid://bat2k5kbg8hvt" path="res://icon.svg" id="1_07x42"]
+[ext_resource type="Script" uid="uid://cxhguxdkxfqan" path="res://Escenas/Shift/Safe/safe_wheel.gd" id="2_86dor"]
+[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="3_86dor"]
+[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="4_pqxct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1prpf"]
+size = Vector2(448, 448)
+
+[node name="pop_safe" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_1prpf")
+
+[node name="Safe" type="Node2D" parent="."]
+
+[node name="Wheel" type="Sprite2D" parent="Safe"]
+position = Vector2(1.5258789e-05, 1.5258789e-05)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_07x42")
+script = ExtResource("2_86dor")
+
+[node name="Interact_mouse_colision" type="Area2D" parent="Safe/Wheel"]
+scale = Vector2(0.28571427, 0.28571427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Safe/Wheel/Interact_mouse_colision"]
+shape = SubResource("RectangleShape2D_1prpf")
+
+[node name="Sounds" type="Node" parent="Safe"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Safe/Sounds"]
+stream = ExtResource("4_pqxct")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="Mouse_Custom" parent="." instance=ExtResource("3_86dor")]
+position = Vector2(296, -256)
+puntero = "5"
+
+[node name="Auto-exit_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="mouse_entered" from="Safe/Wheel/Interact_mouse_colision" to="Safe/Wheel" method="_on_interact_mouse_colision_mouse_entered"]
+[connection signal="mouse_exited" from="Safe/Wheel/Interact_mouse_colision" to="Safe/Wheel" method="_on_interact_mouse_colision_mouse_exited"]
+[connection signal="timeout" from="Auto-exit_timer" to="." method="_on_autoexit_timer_timeout"]

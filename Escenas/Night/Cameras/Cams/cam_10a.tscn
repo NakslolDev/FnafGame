@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://46o0eayqnrk3"]
+
+[ext_resource type="Script" uid="uid://dma58e1lt3vy3" path="res://Escenas/Night/Cameras/Cams/cam_10a.gd" id="1_1beoe"]
+[ext_resource type="Texture2D" uid="uid://dtq2cda08litw" path="res://assets/Placeholders/Camaras/Cam10A/Cam.png" id="1_03bxj"]
+[ext_resource type="Texture2D" uid="uid://b5orn63nq5xhf" path="res://assets/Placeholders/Camaras/Cam10A/Bonnie_10A.png" id="2_1beoe"]
+[ext_resource type="Texture2D" uid="uid://bdeo7kloboys6" path="res://assets/Placeholders/Camaras/Cam10A/Foxy_10A.png" id="3_lgsqk"]
+[ext_resource type="Texture2D" uid="uid://cdml84rd2h862" path="res://assets/Placeholders/Camaras/Cam10A/Freddy_10A.png" id="4_6iqk3"]
+
+[node name="Cam_10A" type="Node2D"]
+script = ExtResource("1_1beoe")
+
+[node name="Cam" type="Sprite2D" parent="."]
+texture = ExtResource("1_03bxj")
+
+[node name="Bonnie10a" type="Sprite2D" parent="."]
+texture = ExtResource("2_1beoe")
+
+[node name="Foxy10a" type="Sprite2D" parent="."]
+texture = ExtResource("3_lgsqk")
+
+[node name="Freddy10a" type="Sprite2D" parent="."]
+texture = ExtResource("4_6iqk3")

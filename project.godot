@@ -8,24 +8,29 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Fnaf [Nombre Provisional]"
 run/main_scene="uid://clk07ggsfox88"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://Resources (tres)/default_bus_layout.tres"
+buses/default_bus_layout="uid://dilppckdl624k"
 
 [autoload]
 
-Global="*res://scripts/__Global.gd"
-Bonnie="*res://scripts/_bonnie.gd"
-Chica="*res://scripts/_chica.gd"
-Freddy="*res://scripts/_freddy.gd"
-Foxy="*res://scripts/_foxy.gd"
+Global="*res://scripts/Global/__Global.gd"
+Bonnie="*res://scripts/Global/_bonnie.gd"
+Chica="*res://scripts/Global/_chica.gd"
+Freddy="*res://scripts/Global/_freddy.gd"
+Foxy="*res://scripts/Global/_foxy.gd"
+Items="*res://scripts/Global/_items.gd"
 
 [display]
 

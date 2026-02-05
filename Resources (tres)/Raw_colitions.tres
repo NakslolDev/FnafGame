@@ -1,7 +1,7 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ba1v7xwtblihb"]
+[gd_resource type="TileSet" format=3 uid="uid://ba1v7xwtblihb"]
 
-[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://fnafjuego/minijuego assets/Black.png" id="1_ysnwj"]
-[ext_resource type="Texture2D" uid="uid://kxm04q67wv3u" path="res://fnafjuego/minijuego assets/White.png" id="2_g6adu"]
+[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://assets/minijuego assets/Black.png" id="1_ysnwj"]
+[ext_resource type="Texture2D" uid="uid://kxm04q67wv3u" path="res://assets/minijuego assets/White.png" id="2_g6adu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1t45r"]
 texture = ExtResource("1_ysnwj")

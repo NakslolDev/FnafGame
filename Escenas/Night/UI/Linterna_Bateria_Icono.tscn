@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://byolv1ohrbema"]
+
+[ext_resource type="Script" uid="uid://bs843t73wchv" path="res://Escenas/Night/UI/linterna_bateria_icono.gd" id="1_2i02j"]
+[ext_resource type="Texture2D" uid="uid://48pwrtlsah4b" path="res://assets/Placeholders/UI_Juego/Linterna/Base.png" id="1_y28de"]
+[ext_resource type="Texture2D" uid="uid://ce8tvoqyiy8u" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 1/1.png" id="2_4hsaw"]
+[ext_resource type="Texture2D" uid="uid://dlpdjqnpbv6i6" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 1/2.png" id="3_2i02j"]
+[ext_resource type="Texture2D" uid="uid://cmo5ftc3rpbd4" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 1/3.png" id="4_ppyc0"]
+[ext_resource type="Texture2D" uid="uid://cd0n5b22s1x8i" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 1/4.png" id="5_weg5g"]
+[ext_resource type="Texture2D" uid="uid://7nvuoum0uhnw" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 1/5.png" id="6_l08kp"]
+[ext_resource type="Texture2D" uid="uid://co7yr4jol2vob" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 2/1.png" id="7_k1cnb"]
+[ext_resource type="Texture2D" uid="uid://q8ggnadmc4bs" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 2/2.png" id="8_ptyup"]
+[ext_resource type="Texture2D" uid="uid://dm76qrkxg56x8" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 2/3.png" id="9_0gu81"]
+[ext_resource type="Texture2D" uid="uid://g608x4bso26c" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 2/4.png" id="10_bb6wu"]
+[ext_resource type="Texture2D" uid="uid://d2ge8hvdbplcb" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 2/5.png" id="11_lqsck"]
+[ext_resource type="Texture2D" uid="uid://o346ufrmia3o" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 3/1.png" id="12_yxfii"]
+[ext_resource type="Texture2D" uid="uid://8hvial5k0idm" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 3/2.png" id="13_r1w0d"]
+[ext_resource type="Texture2D" uid="uid://b0rlgpx7tcruy" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 3/3.png" id="14_5ycim"]
+[ext_resource type="Texture2D" uid="uid://cnn84671xt85" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 3/4.png" id="15_56h8p"]
+[ext_resource type="Texture2D" uid="uid://b4n2r40rlbld7" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 3/5.png" id="16_m4puw"]
+[ext_resource type="Texture2D" uid="uid://d1qoolxla73uq" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 4/1.png" id="17_xxtyi"]
+[ext_resource type="Texture2D" uid="uid://dyhsb1gu3f5kv" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 4/2.png" id="18_bfkxk"]
+[ext_resource type="Texture2D" uid="uid://cdlx2wh5wfwf6" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 4/3.png" id="19_yfyvh"]
+[ext_resource type="Texture2D" uid="uid://cmt3u6nc3x6mx" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 4/4.png" id="20_ia3p1"]
+[ext_resource type="Texture2D" uid="uid://4k8xmrg2xlx7" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 4/5.png" id="21_n16nh"]
+[ext_resource type="Texture2D" uid="uid://b0bhe8flv7dcy" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 5/1.png" id="22_cjhmw"]
+[ext_resource type="Texture2D" uid="uid://cns5kh6pvawo8" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 5/2.png" id="23_uo51k"]
+[ext_resource type="Texture2D" uid="uid://r48s2wv3ipga" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 5/3.png" id="24_ps8li"]
+[ext_resource type="Texture2D" uid="uid://da02ocmwcavkh" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 5/4.png" id="25_3ruj4"]
+[ext_resource type="Texture2D" uid="uid://c2pe4mhk43h8s" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 5/5.png" id="26_536du"]
+[ext_resource type="Texture2D" uid="uid://mwwvgy74uehc" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 6/1.png" id="27_l1n4w"]
+[ext_resource type="Texture2D" uid="uid://ehto5pllivt5" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 6/2.png" id="28_olc4h"]
+[ext_resource type="Texture2D" uid="uid://brywvyumjjk53" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 6/3.png" id="29_oof8g"]
+[ext_resource type="Texture2D" uid="uid://2ik3piguwxvk" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 6/4.png" id="30_asv5d"]
+[ext_resource type="Texture2D" uid="uid://cw2jbq2gvathn" path="res://assets/Placeholders/UI_Juego/Linterna/Paleta 6/5.png" id="31_dys20"]
+
+[node name="Linterna_Bateria_Icono" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_2i02j")
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(-817, -386)
+texture = ExtResource("1_y28de")
+
+[node name="Paleta_A" type="Node2D" parent="."]
+position = Vector2(-817, -386)
+
+[node name="1" type="Sprite2D" parent="Paleta_A"]
+texture = ExtResource("2_4hsaw")
+
+[node name="2" type="Sprite2D" parent="Paleta_A"]
+texture = ExtResource("3_2i02j")
+
+[node name="3" type="Sprite2D" parent="Paleta_A"]
+texture = ExtResource("4_ppyc0")
+
+[node name="4" type="Sprite2D" parent="Paleta_A"]
+texture = ExtResource("5_weg5g")
+
+[node name="5" type="Sprite2D" parent="Paleta_A"]
+texture = ExtResource("6_l08kp")
+
+[node name="Paleta_B" type="Node2D" parent="."]
+position = Vector2(-817, -386)
+
+[node name="1" type="Sprite2D" parent="Paleta_B"]
+texture = ExtResource("7_k1cnb")
+
+[node name="2" type="Sprite2D" parent="Paleta_B"]
+texture = ExtResource("8_ptyup")
+
+[node name="3" type="Sprite2D" parent="Paleta_B"]
+texture = ExtResource("9_0gu81")
+
+[node name="4" type="Sprite2D" parent="Paleta_B"]
+texture = ExtResource("10_bb6wu")
+
+[node name="5" type="Sprite2D" parent="Paleta_B"]
+texture = ExtResource("11_lqsck")
+
+[node name="Paleta_C" type="Node2D" parent="."]
+position = Vector2(-817, -386)
+
+[node name="1" type="Sprite2D" parent="Paleta_C"]
+texture = ExtResource("12_yxfii")
+
+[node name="2" type="Sprite2D" parent="Paleta_C"]
+texture = ExtResource("13_r1w0d")
+
+[node name="3" type="Sprite2D" parent="Paleta_C"]
+texture = ExtResource("14_5ycim")
+
+[node name="4" type="Sprite2D" parent="Paleta_C"]
+texture = ExtResource("15_56h8p")
+
+[node name="5" type="Sprite2D" parent="Paleta_C"]
+texture = ExtResource("16_m4puw")
+
+[node name="Paleta_D" type="Node2D" parent="."]
+position = Vector2(-817, -386)
+
+[node name="1" type="Sprite2D" parent="Paleta_D"]
+texture = ExtResource("17_xxtyi")
+
+[node name="2" type="Sprite2D" parent="Paleta_D"]
+texture = ExtResource("18_bfkxk")
+
+[node name="3" type="Sprite2D" parent="Paleta_D"]
+texture = ExtResource("19_yfyvh")
+
+[node name="4" type="Sprite2D" parent="Paleta_D"]
+texture = ExtResource("20_ia3p1")
+
+[node name="5" type="Sprite2D" parent="Paleta_D"]
+texture = ExtResource("21_n16nh")
+
+[node name="Paleta_E" type="Node2D" parent="."]
+position = Vector2(-817, -386)
+
+[node name="1" type="Sprite2D" parent="Paleta_E"]
+texture = ExtResource("22_cjhmw")
+
+[node name="2" type="Sprite2D" parent="Paleta_E"]
+texture = ExtResource("23_uo51k")
+
+[node name="3" type="Sprite2D" parent="Paleta_E"]
+texture = ExtResource("24_ps8li")
+
+[node name="4" type="Sprite2D" parent="Paleta_E"]
+texture = ExtResource("25_3ruj4")
+
+[node name="5" type="Sprite2D" parent="Paleta_E"]
+texture = ExtResource("26_536du")
+
+[node name="Paleta_F" type="Node2D" parent="."]
+position = Vector2(-817, -386)
+
+[node name="1" type="Sprite2D" parent="Paleta_F"]
+texture = ExtResource("27_l1n4w")
+
+[node name="2" type="Sprite2D" parent="Paleta_F"]
+texture = ExtResource("28_olc4h")
+
+[node name="3" type="Sprite2D" parent="Paleta_F"]
+texture = ExtResource("29_oof8g")
+
+[node name="4" type="Sprite2D" parent="Paleta_F"]
+texture = ExtResource("30_asv5d")
+
+[node name="5" type="Sprite2D" parent="Paleta_F"]
+texture = ExtResource("31_dys20")
+
+[node name="Pulse_Timer" type="Timer" parent="."]
+
+[node name="Timer_obscure" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Pulse_Timer" to="." method="_on_pulse_timer_timeout"]
+[connection signal="timeout" from="Timer_obscure" to="." method="_on_timer_obscure_timeout"]

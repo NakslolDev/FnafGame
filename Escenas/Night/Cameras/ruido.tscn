@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dr75h62c7rj4b"]
+
+[ext_resource type="Texture2D" uid="uid://m6owme8ffsl2" path="res://assets/Placeholders/Camaras/tv-snow-noise-video.jpg" id="1_aa78m"]
+[ext_resource type="Script" uid="uid://dts5focbe0rul" path="res://Escenas/Night/Cameras/ruido.gd" id="1_ifnnf"]
+
+[node name="Ruido" type="Node2D"]
+script = ExtResource("1_ifnnf")
+
+[node name="Tv-snow-noise-video" type="Sprite2D" parent="."]
+position = Vector2(1440, 810)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_aa78m")
+
+[node name="Static_speed" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Static_time" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Static_speed" to="." method="_on_static_speed_timeout"]
+[connection signal="timeout" from="Static_time" to="." method="_on_static_time_timeout"]

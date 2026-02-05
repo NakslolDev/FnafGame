@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dq5xvu5jxq2yc"]
+[gd_resource type="Theme" format=3 uid="uid://dq5xvu5jxq2yc"]
 
-[ext_resource type="FontFile" uid="uid://hrbvkug7qnof" path="res://fnafjuego/CooperBits.ttf" id="1_pdqbm"]
+[ext_resource type="FontFile" uid="uid://hrbvkug7qnof" path="res://assets/CooperBits.ttf" id="1_pdqbm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kobee"]
 

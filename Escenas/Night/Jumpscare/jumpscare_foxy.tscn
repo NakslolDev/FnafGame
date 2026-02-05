@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c56tf6s3thtjw"]
+
+[ext_resource type="Script" uid="uid://b5f8mkm1tpu7j" path="res://Escenas/Night/Jumpscare/jumpscare_foxy.gd" id="1_gvd7n"]
+[ext_resource type="AudioStream" uid="uid://dcsim6yk7ri65" path="res://assets/sounds/small fart - sound effect.mp3" id="1_jl048"]
+[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://assets/Placeholders/foxy.png" id="3_20xf4"]
+
+[node name="Jumpscare_Foxy" type="Node2D"]
+script = ExtResource("1_gvd7n")
+
+[node name="Foxy" type="Sprite2D" parent="."]
+position = Vector2(934, 701)
+scale = Vector2(5.25449, 5.62209)
+texture = ExtResource("3_20xf4")
+
+[node name="Jumpscare_duration" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="SmallFart-SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_jl048")
+bus = &"SFX"
+
+[connection signal="timeout" from="Jumpscare_duration" to="." method="_on_jumpscare_duration_timeout"]

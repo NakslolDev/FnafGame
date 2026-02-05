@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cjvr4sjqr5ybo"]
+
+[ext_resource type="Script" uid="uid://c5iugl6nl11bv" path="res://Escenas/Night/SecurityRoom/Doors/puerta.gd" id="1_owj1j"]
+[ext_resource type="Texture2D" uid="uid://bxgd32o0ieayc" path="res://assets/Placeholders/Oficina_Puerta.png" id="1_tdsja"]
+
+[node name="Puerta" type="Node2D"]
+script = ExtResource("1_owj1j")
+velocidad = 6000.0
+
+[node name="OficinaPuerta" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_tdsja")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

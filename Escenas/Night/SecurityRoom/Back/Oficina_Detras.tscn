@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://ddgr31vso5rgd"]
+
+[ext_resource type="Script" uid="uid://7r4hvoim6p3q" path="res://Escenas/Night/SecurityRoom/Back/oficina_detras.gd" id="1_eq3uw"]
+[ext_resource type="Texture2D" uid="uid://c861ktpfsrst6" path="res://assets/Placeholders/Oficina_Transición.png" id="2_jrb1r"]
+[ext_resource type="Texture2D" uid="uid://des7xtxjsqv8x" path="res://assets/Placeholders/Oficina_Detras.png" id="3_44ow4"]
+[ext_resource type="PackedScene" uid="uid://mxxfro0701lh" path="res://Escenas/Night/Movement/Detector_Girar.tscn" id="4_jrb1r"]
+[ext_resource type="PackedScene" uid="uid://eq3843walx0w" path="res://Escenas/Night/SecurityRoom/Back/Ducts/Ductos_Detras.tscn" id="5_44ow4"]
+[ext_resource type="PackedScene" uid="uid://dp1parfdkvu0l" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/Recargar_Linterna.tscn" id="6_m6crn"]
+[ext_resource type="PackedScene" uid="uid://bonrb1xrjljf" path="res://Escenas/Night/SecurityRoom/Back/switches/Switch_Energia.tscn" id="7_h5o2t"]
+[ext_resource type="Texture2D" uid="uid://cbigicttaj4sm" path="res://assets/Placeholders/pictograms/Lightning.png" id="8_vt7d0"]
+[ext_resource type="Texture2D" uid="uid://d28bbu7mv3ru1" path="res://assets/Placeholders/pictograms/Fan.png" id="9_8xigc"]
+[ext_resource type="Texture2D" uid="uid://dod7d018bw3v0" path="res://assets/Placeholders/pictograms/Door.png" id="10_j2y4x"]
+[ext_resource type="Texture2D" uid="uid://dub5xhymgllqb" path="res://assets/Placeholders/pictograms/Flashligh charge.png" id="11_xdoyy"]
+[ext_resource type="Texture2D" uid="uid://d2tkop7vep1o8" path="res://assets/Placeholders/pictograms/cams.png" id="12_vixeo"]
+[ext_resource type="Texture2D" uid="uid://bpot6gwaej3ja" path="res://assets/Placeholders/pictograms/Heater.png" id="13_eskf8"]
+[ext_resource type="Texture2D" uid="uid://8sra5t0psnlw" path="res://assets/Placeholders/pictograms/Lights.png" id="14_3p8cq"]
+
+[node name="Oficina_Detras" type="Node2D"]
+script = ExtResource("1_eq3uw")
+
+[node name="Detector_Girar_I" parent="." instance=ExtResource("4_jrb1r")]
+position = Vector2(240, 0)
+detras = true
+
+[node name="Detector_Girar_D" parent="." instance=ExtResource("4_jrb1r")]
+position = Vector2(-240, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)
+detras = true
+izquierda = false
+
+[node name="Ductos_Detras" parent="." instance=ExtResource("5_44ow4")]
+
+[node name="OficinaTransición" type="Sprite2D" parent="."]
+position = Vector2(-1440, 0)
+scale = Vector2(0.5, 1)
+texture = ExtResource("2_jrb1r")
+
+[node name="OficinaTransición2" type="Sprite2D" parent="."]
+position = Vector2(1440, 0)
+scale = Vector2(0.5, 1)
+texture = ExtResource("2_jrb1r")
+
+[node name="OficinaDetrasPNG" type="Sprite2D" parent="."]
+texture = ExtResource("3_44ow4")
+
+[node name="Recargar_Linterna" parent="." instance=ExtResource("6_m6crn")]
+
+[node name="Switches (carpeta)" type="Node2D" parent="."]
+
+[node name="Switch_Energia_1" parent="Switches (carpeta)" instance=ExtResource("7_h5o2t")]
+position = Vector2(-100, 0)
+
+[node name="Lightning" type="Sprite2D" parent="Switches (carpeta)"]
+position = Vector2(-100, -10)
+texture = ExtResource("8_vt7d0")
+
+[node name="Switch_Energia_2" parent="Switches (carpeta)" instance=ExtResource("7_h5o2t")]
+controlador = "Ventilacion"
+
+[node name="Fan" type="Sprite2D" parent="Switches (carpeta)"]
+position = Vector2(0, -10)
+texture = ExtResource("9_8xigc")
+
+[node name="Switch_Energia_3" parent="Switches (carpeta)" instance=ExtResource("7_h5o2t")]
+position = Vector2(100, 0)
+controlador = "Puertas"
+
+[node name="Door" type="Sprite2D" parent="Switches (carpeta)"]
+position = Vector2(100, -10)
+texture = ExtResource("10_j2y4x")
+
+[node name="Switch_Energia_4" parent="Switches (carpeta)" instance=ExtResource("7_h5o2t")]
+position = Vector2(200, 0)
+controlador = "Linterna"
+
+[node name="FlashlighCharge" type="Sprite2D" parent="Switches (carpeta)"]
+position = Vector2(200, -10)
+texture = ExtResource("11_xdoyy")
+
+[node name="Switch_Energia_5" parent="Switches (carpeta)" instance=ExtResource("7_h5o2t")]
+position = Vector2(300, 0)
+controlador = "Camaras"
+
+[node name="Cams" type="Sprite2D" parent="Switches (carpeta)"]
+position = Vector2(300, -10)
+texture = ExtResource("12_vixeo")
+
+[node name="Switch_Energia_6" parent="Switches (carpeta)" instance=ExtResource("7_h5o2t")]
+position = Vector2(400, 0)
+controlador = "Heater"
+
+[node name="Heater" type="Sprite2D" parent="Switches (carpeta)"]
+position = Vector2(400, -10)
+texture = ExtResource("13_eskf8")
+
+[node name="Switch_Energia_7" parent="Switches (carpeta)" instance=ExtResource("7_h5o2t")]
+position = Vector2(500, 0)
+controlador = "Luces"
+
+[node name="Lights" type="Sprite2D" parent="Switches (carpeta)"]
+position = Vector2(500, -10)
+texture = ExtResource("14_3p8cq")
+
+[connection signal="Detras_Estado" from="." to="Recargar_Linterna" method="_on_oficina_detras_detras_estado"]
+[connection signal="Linterna_Activada_Rebote" from="." to="Ductos_Detras" method="_on_oficina_detras_linterna_activada_rebote"]
+[connection signal="Girar" from="Detector_Girar_I" to="." method="_on_detector_girar_girar"]
+[connection signal="Girar" from="Detector_Girar_D" to="." method="_on_detector_girar_girar"]
+[connection signal="Linterna_Recarga_Mouse_Switch" from="Recargar_Linterna" to="." method="_on_recargar_linterna_linterna_recarga_mouse_switch"]
+[connection signal="Linterna_Recarga_Switch" from="Recargar_Linterna" to="." method="_on_recargar_linterna_linterna_recarga_switch"]
+[connection signal="Mouse_Enter_Switch" from="Switches (carpeta)/Switch_Energia_1" to="." method="_on_switch_energia_1_mouse_enter_switch"]
+[connection signal="Restaurar_General" from="Switches (carpeta)/Switch_Energia_1" to="Switches (carpeta)/Switch_Energia_2" method="_on_switch_energia_1_restaurar_general"]
+[connection signal="Restaurar_General" from="Switches (carpeta)/Switch_Energia_1" to="Switches (carpeta)/Switch_Energia_3" method="_on_switch_energia_1_restaurar_general"]
+[connection signal="Restaurar_General" from="Switches (carpeta)/Switch_Energia_1" to="Switches (carpeta)/Switch_Energia_4" method="_on_switch_energia_1_restaurar_general"]
+[connection signal="Restaurar_General" from="Switches (carpeta)/Switch_Energia_1" to="Switches (carpeta)/Switch_Energia_5" method="_on_switch_energia_1_restaurar_general"]
+[connection signal="Restaurar_General" from="Switches (carpeta)/Switch_Energia_1" to="Switches (carpeta)/Switch_Energia_6" method="_on_switch_energia_1_restaurar_general"]
+[connection signal="Restaurar_General" from="Switches (carpeta)/Switch_Energia_1" to="Switches (carpeta)/Switch_Energia_7" method="_on_switch_energia_1_restaurar_general"]
+[connection signal="Mouse_Enter_Switch" from="Switches (carpeta)/Switch_Energia_2" to="." method="_on_switch_energia_1_mouse_enter_switch"]
+[connection signal="Mouse_Enter_Switch" from="Switches (carpeta)/Switch_Energia_3" to="." method="_on_switch_energia_2_mouse_enter_switch"]
+[connection signal="Mouse_Enter_Switch" from="Switches (carpeta)/Switch_Energia_4" to="." method="_on_switch_energia_3_mouse_enter_switch"]
+[connection signal="Mouse_Enter_Switch" from="Switches (carpeta)/Switch_Energia_5" to="." method="_on_switch_energia_4_mouse_enter_switch"]
+[connection signal="Mouse_Enter_Switch" from="Switches (carpeta)/Switch_Energia_6" to="." method="_on_switch_energia_5_mouse_enter_switch"]
+[connection signal="Mouse_Enter_Switch" from="Switches (carpeta)/Switch_Energia_7" to="." method="_on_switch_energia_6_mouse_enter_switch"]

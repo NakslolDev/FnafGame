@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://clk07ggsfox88"]
+
+[ext_resource type="Script" uid="uid://4fjcgs6njf0t" path="res://Escenas/Menu/MainMenu/menu_principal.gd" id="1_7cw0h"]
+[ext_resource type="Texture2D" uid="uid://uhacg77rodqx" path="res://assets/Placeholders/Menu_Art.png" id="2_w14i5"]
+[ext_resource type="Texture2D" uid="uid://d3bokitp67hae" path="res://assets/Placeholders/UI_Menu/Titulo.png" id="3_fq31k"]
+[ext_resource type="Script" uid="uid://ronda45c7s6u" path="res://Escenas/Menu/MainMenu/main_buttons.gd" id="4_djrq7"]
+[ext_resource type="AudioStream" uid="uid://dj67m1ll27oey" path="res://assets/sounds/menu_click.wav" id="5_8x8is"]
+[ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="6_b3nup"]
+[ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/label_idiom.gd" id="7_xpa1m"]
+[ext_resource type="Texture2D" uid="uid://cq2ibop5ggmho" path="res://assets/Placeholders/UI_Menu/Seleccion.png" id="8_r2f8f"]
+[ext_resource type="Script" uid="uid://c4kfoj04ln6g8" path="res://Escenas/Menu/MainMenu/play_buttons.gd" id="9_8aeey"]
+[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="10_te3yv"]
+[ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://Escenas/Night/SecurityRoom/FreddyPoster/Freddy_nose.tscn" id="11_dytxe"]
+[ext_resource type="Script" uid="uid://coh84xcfmkrvv" path="res://Escenas/Menu/MainMenu/stars.gd" id="12_hoy0e"]
+[ext_resource type="Texture2D" uid="uid://dflfp1neyqnuf" path="res://assets/Placeholders/white_star.png" id="13_4lh2l"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="14_6ew8l"]
+[ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://Escenas/Menu/endings/auto_transicion.gd" id="15_8gg30"]
+
+[node name="Menu principal" type="Node2D" unique_id=876365489]
+script = ExtResource("1_7cw0h")
+
+[node name="MenuArt" type="Sprite2D" parent="." unique_id=1266682085]
+position = Vector2(-3.71337e-05, 0)
+scale = Vector2(3.00469, 3)
+texture = ExtResource("2_w14i5")
+
+[node name="Titulo" type="Sprite2D" parent="." unique_id=735527176]
+texture = ExtResource("3_fq31k")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1271747179]
+
+[node name="Main_buttons" type="VBoxContainer" parent="." unique_id=1866653682]
+texture_filter = 1
+offset_left = -772.0
+offset_top = 98.0
+offset_right = -142.0
+offset_bottom = 488.0
+theme_override_constants/separation = 40
+script = ExtResource("4_djrq7")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons" unique_id=1441345403]
+stream = ExtResource("5_8x8is")
+volume_db = 1.0
+
+[node name="Play" type="HBoxContainer" parent="Main_buttons" unique_id=55317943]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Play_label" type="Label" parent="Main_buttons/Play" unique_id=518270468]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 60
+text = "Play"
+script = ExtResource("7_xpa1m")
+id = "Play_"
+
+[node name="Seleccion" type="Sprite2D" parent="Main_buttons/Play" unique_id=1731342141]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("8_r2f8f")
+
+[node name="Options" type="HBoxContainer" parent="Main_buttons" unique_id=911153161]
+layout_mode = 2
+
+[node name="Options_label" type="Label" parent="Main_buttons/Options" unique_id=1012290709]
+layout_mode = 2
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 60
+text = "Options"
+script = ExtResource("7_xpa1m")
+id = "Options_"
+
+[node name="Seleccion" type="Sprite2D" parent="Main_buttons/Options" unique_id=40723599]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("8_r2f8f")
+
+[node name="Exit" type="HBoxContainer" parent="Main_buttons" unique_id=648869811]
+layout_mode = 2
+
+[node name="Exit_label" type="Label" parent="Main_buttons/Exit" unique_id=1862350918]
+layout_mode = 2
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 60
+text = "Exit"
+script = ExtResource("7_xpa1m")
+id = "Exit_"
+
+[node name="Seleccion" type="Sprite2D" parent="Main_buttons/Exit" unique_id=2139402488]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("8_r2f8f")
+
+[node name="Play_Buttons" type="VBoxContainer" parent="." unique_id=912165713]
+texture_filter = 1
+offset_left = -772.0
+offset_top = 98.0
+offset_right = -142.0
+offset_bottom = 488.0
+theme_override_constants/separation = 40
+script = ExtResource("9_8aeey")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons" unique_id=1184045499]
+stream = ExtResource("5_8x8is")
+volume_db = 1.0
+
+[node name="Continue" type="HBoxContainer" parent="Play_Buttons" unique_id=1471527534]
+layout_mode = 2
+
+[node name="Continue_label" type="Label" parent="Play_Buttons/Continue" unique_id=550827485]
+layout_mode = 2
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 60
+text = "Continue"
+script = ExtResource("7_xpa1m")
+id = "Continue_"
+
+[node name="Get_out_of_jail_card" type="Control" parent="Play_Buttons/Continue" unique_id=1726313733]
+layout_mode = 2
+
+[node name="Night_label" type="Label" parent="Play_Buttons/Continue/Get_out_of_jail_card" unique_id=1356950244]
+modulate = Color(1, 1, 1, 0.7)
+layout_mode = 0
+offset_left = -86.0
+offset_top = 54.0
+offset_right = -4.0
+offset_bottom = 74.0
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 20
+text = "Night 1"
+horizontal_alignment = 2
+
+[node name="Seleccion" type="Sprite2D" parent="Play_Buttons/Continue" unique_id=1074881841]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("8_r2f8f")
+
+[node name="New_Game" type="HBoxContainer" parent="Play_Buttons" unique_id=978291208]
+layout_mode = 2
+
+[node name="New_Game_label" type="Label" parent="Play_Buttons/New_Game" unique_id=1185260685]
+layout_mode = 2
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 60
+text = "New Game"
+script = ExtResource("7_xpa1m")
+id = "New_game"
+
+[node name="Seleccion" type="Sprite2D" parent="Play_Buttons/New_Game" unique_id=34291813]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("8_r2f8f")
+
+[node name="Custom_Night" type="HBoxContainer" parent="Play_Buttons" unique_id=644998931]
+layout_mode = 2
+
+[node name="Custom_Night_label" type="Label" parent="Play_Buttons/Custom_Night" unique_id=205182167]
+layout_mode = 2
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 60
+text = "Custom Night"
+script = ExtResource("7_xpa1m")
+id = "Custom_night"
+
+[node name="Seleccion" type="Sprite2D" parent="Play_Buttons/Custom_Night" unique_id=18439015]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("8_r2f8f")
+
+[node name="Back" type="HBoxContainer" parent="Play_Buttons" unique_id=494432838]
+layout_mode = 2
+
+[node name="Back_label" type="Label" parent="Play_Buttons/Back" unique_id=2027328510]
+layout_mode = 2
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 60
+text = "Back"
+script = ExtResource("7_xpa1m")
+id = "Back_"
+
+[node name="Seleccion" type="Sprite2D" parent="Play_Buttons/Back" unique_id=333924351]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("8_r2f8f")
+
+[node name="Mouse_Custom" parent="." unique_id=1329559837 instance=ExtResource("10_te3yv")]
+position = Vector2(0, 2000)
+menu = true
+
+[node name="Freddy nose" parent="." unique_id=1670043740 instance=ExtResource("11_dytxe")]
+position = Vector2(2855.0002, 504.00006)
+scale = Vector2(7.34, 3.165)
+
+[node name="Stars" type="Node2D" parent="." unique_id=836054293]
+script = ExtResource("12_hoy0e")
+
+[node name="WhiteStar_ending" type="Sprite2D" parent="Stars" unique_id=2135906411]
+position = Vector2(-300, -440)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("13_4lh2l")
+
+[node name="WhiteStar2_true_ending" type="Sprite2D" parent="Stars" unique_id=265690490]
+position = Vector2(-150, -440)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("13_4lh2l")
+
+[node name="WhiteStar3_420" type="Sprite2D" parent="Stars" unique_id=2066705247]
+position = Vector2(-225, -350)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("13_4lh2l")
+
+[node name="Transicion" type="Sprite2D" parent="." unique_id=1276137181]
+visible = false
+texture = ExtResource("14_6ew8l")
+script = ExtResource("15_8gg30")
+
+[connection signal="mouse_entered" from="Main_buttons/Play" to="Main_buttons" method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="Main_buttons/Play" to="Main_buttons" method="_on_play_mouse_exited"]
+[connection signal="mouse_entered" from="Main_buttons/Options" to="Main_buttons" method="_on_options_mouse_entered"]
+[connection signal="mouse_exited" from="Main_buttons/Options" to="Main_buttons" method="_on_options_mouse_exited"]
+[connection signal="mouse_entered" from="Main_buttons/Exit" to="Main_buttons" method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Main_buttons/Exit" to="Main_buttons" method="_on_exit_mouse_exited"]
+[connection signal="mouse_entered" from="Play_Buttons/Continue" to="Play_Buttons" method="_on_continue_mouse_entered"]
+[connection signal="mouse_exited" from="Play_Buttons/Continue" to="Play_Buttons" method="_on_continue_mouse_exited"]
+[connection signal="mouse_entered" from="Play_Buttons/New_Game" to="Play_Buttons" method="_on_new_game_mouse_entered"]
+[connection signal="mouse_exited" from="Play_Buttons/New_Game" to="Play_Buttons" method="_on_new_game_mouse_exited"]
+[connection signal="mouse_entered" from="Play_Buttons/Custom_Night" to="Play_Buttons" method="_on_custom_night_mouse_entered"]
+[connection signal="mouse_exited" from="Play_Buttons/Custom_Night" to="Play_Buttons" method="_on_custom_night_mouse_exited"]
+[connection signal="mouse_entered" from="Play_Buttons/Back" to="Play_Buttons" method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="Play_Buttons/Back" to="Play_Buttons" method="_on_back_mouse_exited"]
