@@ -17,7 +17,7 @@ func _input(event: InputEvent) -> void:
 
 func consume():
 	if Items.water_bottle == 0:
-		print("hola")
+		#print("hola")
 		emit_signal("exited") #saca el raton...
 		self.queue_free()
 

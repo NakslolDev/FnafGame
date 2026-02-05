@@ -39,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bsrx801kgacw0" path="res://assets/Placeholders/UI_Juego/Up_Cams.png" id="37_1av5k"]
 [ext_resource type="Script" uid="uid://cupgjt3ibvlcl" path="res://Escenas/Night/Cameras/up_cams.gd" id="38_ewhsk"]
 [ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="39_hfq1x"]
-[ext_resource type="PackedScene" uid="uid://bq8slaploxj1p" path="res://Escenas/Night/Cameras/animatronic_map.tscn" id="40_di46t"]
+[ext_resource type="PackedScene" uid="uid://bq8slaploxj1p" path="res://Escenas/Night/Cameras/animatronic_map/animatronic_map.tscn" id="40_di46t"]
 [ext_resource type="Script" uid="uid://bhg60soju1a44" path="res://Escenas/Night/SecurityRoom/Doors/door_sounds.gd" id="41_0xlqm"]
 [ext_resource type="AudioStream" uid="uid://021ib0qbueid" path="res://assets/sounds/Puerta.mp3" id="42_hut80"]
 [ext_resource type="Script" uid="uid://wdfpsu8bhrid" path="res://Escenas/Night/SecurityRoom/Sounds/freddy_footsteps.gd" id="43_pwlp6"]
@@ -164,6 +164,7 @@ position = Vector2(-346, 139)
 position = Vector2(-151, 85)
 
 [node name="Freddy nose" parent="Oficina" unique_id=1087430654 instance=ExtResource("18_uce18")]
+position = Vector2(-298, -170)
 
 [node name="Duct_sounds" parent="Oficina" unique_id=1318743049 instance=ExtResource("19_1ufiy")]
 

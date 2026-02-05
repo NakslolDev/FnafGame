@@ -30,4 +30,4 @@ func actualizar_lenguaje():
 	index = (index + 1) % idiomas.size()
 	Global.language = idiomas[index]
 	
-	get_tree().change_scene_to_file("res://escenas/Opciones.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar

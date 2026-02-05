@@ -48,7 +48,7 @@ func _process(delta):
 	else:
 		Freddy.girado = true
 	
-	print("girando: ", girando, " Pos X: ", position.x)
+	#print("girando: ", girando, " Pos X: ", position.x)
 	if girando == 1:
 		emit_signal("Girando_Señal", true)
 		if position.x == -3120:

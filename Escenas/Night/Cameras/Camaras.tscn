@@ -38,8 +38,7 @@
 [ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="17_rgdy6"]
 [ext_resource type="Texture2D" uid="uid://bf0hv8xgm5np5" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_1.png" id="17_vcu2v"]
 [ext_resource type="Texture2D" uid="uid://34dxk108f3cy" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_2.png" id="18_5lr1q"]
-[ext_resource type="PackedScene" uid="uid://dr75h62c7rj4b" path="res://Escenas/Night/Cameras/ruido.tscn" id="18_rgdy6"]
-[ext_resource type="AudioStream" uid="uid://dfgv4ixx8xuwr" path="res://assets/sounds/old-radio-noise.ogg" id="19_8i5k1"]
+[ext_resource type="PackedScene" uid="uid://dr75h62c7rj4b" path="res://Escenas/Night/Cameras/estatica/ruido.tscn" id="18_rgdy6"]
 [ext_resource type="AudioStream" uid="uid://dqxtl11xwgeo0" path="res://assets/sounds/Light_doest_work.mp3" id="19_ev252"]
 [ext_resource type="Texture2D" uid="uid://bqtlrt7wib8qs" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_3.png" id="19_xsv31"]
 [ext_resource type="Texture2D" uid="uid://bdwk11dh5uuuu" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_4.png" id="20_0mojl"]
@@ -95,40 +94,37 @@ layer = 3
 visible = false
 script = ExtResource("2_rbjw8")
 
-[node name="Cam" type="Node2D" parent="Si_Shader" unique_id=1422200098]
+[node name="Cams" type="Node2D" parent="Si_Shader" unique_id=1422200098]
 position = Vector2(960, 540)
 script = ExtResource("2_upipm")
 velocidad = 200.0
+period = 20.0
 
-[node name="Cam_1" parent="Si_Shader/Cam" unique_id=1101318814 instance=ExtResource("2_2ccee")]
+[node name="Cam_1" parent="Si_Shader/Cams" unique_id=1101318814 instance=ExtResource("2_2ccee")]
 
-[node name="Cam_2" parent="Si_Shader/Cam" unique_id=979727257 instance=ExtResource("4_46w8l")]
+[node name="Cam_2" parent="Si_Shader/Cams" unique_id=979727257 instance=ExtResource("4_46w8l")]
 
-[node name="Cam_3" parent="Si_Shader/Cam" unique_id=462211899 instance=ExtResource("5_ntgi6")]
+[node name="Cam_3" parent="Si_Shader/Cams" unique_id=462211899 instance=ExtResource("5_ntgi6")]
 
-[node name="Cam_4" parent="Si_Shader/Cam" unique_id=155952215 instance=ExtResource("6_2wxea")]
+[node name="Cam_4" parent="Si_Shader/Cams" unique_id=155952215 instance=ExtResource("6_2wxea")]
 
-[node name="Cam_5" parent="Si_Shader/Cam" unique_id=903958701 instance=ExtResource("7_3d63n")]
+[node name="Cam_5" parent="Si_Shader/Cams" unique_id=903958701 instance=ExtResource("7_3d63n")]
 
-[node name="Cam_6" parent="Si_Shader/Cam" unique_id=1660842217 instance=ExtResource("8_usepc")]
+[node name="Cam_6" parent="Si_Shader/Cams" unique_id=1660842217 instance=ExtResource("8_usepc")]
 
-[node name="Cam_7" parent="Si_Shader/Cam" unique_id=1331293344 instance=ExtResource("9_vcu2v")]
+[node name="Cam_7" parent="Si_Shader/Cams" unique_id=1331293344 instance=ExtResource("9_vcu2v")]
 
-[node name="Cam_8" parent="Si_Shader/Cam" unique_id=1041367881 instance=ExtResource("10_5lr1q")]
+[node name="Cam_8" parent="Si_Shader/Cams" unique_id=1041367881 instance=ExtResource("10_5lr1q")]
 
-[node name="Cam_9" parent="Si_Shader/Cam" unique_id=932566272 instance=ExtResource("11_xsv31")]
+[node name="Cam_9" parent="Si_Shader/Cams" unique_id=932566272 instance=ExtResource("11_xsv31")]
 
-[node name="Cam_10A" parent="Si_Shader/Cam" unique_id=1236654999 instance=ExtResource("12_0mojl")]
+[node name="Cam_10A" parent="Si_Shader/Cams" unique_id=1236654999 instance=ExtResource("12_0mojl")]
 
-[node name="Cam_10B" parent="Si_Shader/Cam" unique_id=1693652963 instance=ExtResource("13_b7x0u")]
+[node name="Cam_10B" parent="Si_Shader/Cams" unique_id=1693652963 instance=ExtResource("13_b7x0u")]
 
-[node name="Cam_11A" parent="Si_Shader/Cam" unique_id=500189134 instance=ExtResource("14_i3dc4")]
+[node name="Cam_11A" parent="Si_Shader/Cams" unique_id=500189134 instance=ExtResource("14_i3dc4")]
 
-[node name="Cam_11B" parent="Si_Shader/Cam" unique_id=1037020437 instance=ExtResource("15_jjbyy")]
-
-[node name="Timer_movement_Cam_2" type="Timer" parent="Si_Shader/Cam" unique_id=701582682]
-wait_time = 4.0
-one_shot = true
+[node name="Cam_11B" parent="Si_Shader/Cams" unique_id=1037020437 instance=ExtResource("15_jjbyy")]
 
 [node name="Linterna" type="Sprite2D" parent="Si_Shader" unique_id=941016490]
 position = Vector2(960, 540)
@@ -161,12 +157,6 @@ script = ExtResource("2_rbjw8")
 stream = ExtResource("19_ev252")
 
 [node name="Ruido" parent="No_Shader" unique_id=393620595 instance=ExtResource("18_rgdy6")]
-
-[node name="Static" type="AudioStreamPlayer" parent="No_Shader/Ruido" unique_id=502841422]
-stream = ExtResource("19_8i5k1")
-volume_db = -25.0
-bus = &"SFX"
-parameters/looping = true
 
 [node name="Area_Minimapa" type="Area2D" parent="No_Shader" unique_id=129912912]
 
@@ -471,39 +461,38 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_1" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_2" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_3" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_4" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_5" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_6" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_7" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_8" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_9" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_10A" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_10B" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_11A" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cam/Cam_11B" method="_on_camaras_alucinations"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_1" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_2" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_3" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_4" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_5" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_6" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_7" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_8" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_9" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_10A" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_10B" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_11A" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="Si_Shader/Cam/Cam_11B" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cam" to="No_Shader/Ruido" method="_on_cam_cam_act"]
-[connection signal="timeout" from="Si_Shader/Cam/Timer_movement_Cam_2" to="Si_Shader/Cam" method="_on_timer_movement_cam_2_timeout"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_1" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_2" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_3" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_4" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_5" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_6" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_7" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_8" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_9" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_10A" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_10B" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_11A" method="_on_camaras_alucinations"]
+[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_11B" method="_on_camaras_alucinations"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_1" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_2" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_3" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_4" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_5" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_6" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_7" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_8" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_9" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_10A" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_10B" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_11A" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_11B" method="_on_cam_cam_act"]
+[connection signal="cam_act" from="Si_Shader/Cams" to="No_Shader/Ruido" method="_on_cam_cam_act"]
 [connection signal="mouse_entered" from="No_Shader/Area_Minimapa" to="." method="_on_area_minimapa_mouse_entered"]
 [connection signal="mouse_exited" from="No_Shader/Area_Minimapa" to="." method="_on_area_minimapa_mouse_exited"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="." method="_on_minimapa_botones_cam_act"]
-[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cam" method="_on_minimapa_botones_cam_act"]
-[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cam/Cam_6" method="_on_minimapa_botones_cam_act"]
+[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cams" method="_on_minimapa_botones_cam_act"]
+[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cams/Cam_6" method="_on_minimapa_botones_cam_act"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="No_Shader/Ruido" method="_on_minimapa_botones_cam_act"]
 [connection signal="input_event" from="No_Shader/MinimapaBotones/Area1" to="No_Shader/MinimapaBotones" method="_on_area_1_input_event"]
 [connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area1" to="No_Shader/MinimapaBotones" method="_on_area_1_mouse_entered"]

@@ -48,7 +48,7 @@ func play():
 
 func options():
 	Global.escena_previa = "Menu_Principal"
-	get_tree().change_scene_to_file("res://escenas/Opciones.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar
 
 func exit():
 	get_tree().quit()

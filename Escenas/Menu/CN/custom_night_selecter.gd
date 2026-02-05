@@ -19,7 +19,7 @@ func _process(delta):
 			transicionando_out = false
 			Global.escena_previa = "Custom_Night"
 			Global.noche = 0
-			get_tree().change_scene_to_file("res://escenas/Main_Game.tscn") #actualizar
+			get_tree().change_scene_to_file("res://Escenas/Night/Main_Game.tscn") #actualizar
 	if transicionando_in:
 		$Transicion.modulate.a -= delta / transicion
 		if $Transicion.modulate.a <= 0.0:

@@ -7,17 +7,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8x2bo"]
 radius = 19.0
 
-[node name="Freddy nose" type="Node2D"]
+[node name="Freddy nose" type="Node2D" unique_id=516057658]
 script = ExtResource("1_7d28s")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1257206707]
 script = ExtResource("2_pkh7b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-299, -171)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=62877482]
 shape = SubResource("CircleShape2D_8x2bo")
 
-[node name="Doit" type="AudioStreamPlayer" parent="."]
+[node name="Doit" type="AudioStreamPlayer" parent="." unique_id=393911613]
 stream = ExtResource("3_pfrhf")
 volume_db = -5.426
 bus = &"SFX"

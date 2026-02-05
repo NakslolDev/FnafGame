@@ -189,7 +189,7 @@ position = Vector2(0, 2000)
 menu = true
 
 [node name="Freddy nose" parent="." unique_id=1670043740 instance=ExtResource("11_dytxe")]
-position = Vector2(2855.0002, 504.00006)
+position = Vector2(661, -37)
 scale = Vector2(7.34, 3.165)
 
 [node name="Stars" type="Node2D" parent="." unique_id=836054293]

@@ -175,7 +175,7 @@ func _on_transicion_done_out() -> void:
 	Global.just_death_min = "none" # Da igual lo que pase, que se ha de reiniciar
 	if trans_to_game:
 		Global.guardar_partida_provisional()
-		get_tree().change_scene_to_file("res://escenas/Main_Game.tscn") #actualizar
+		get_tree().change_scene_to_file("res://Escenas/Night/Main_Game.tscn") #actualizar
 	else:
 		shiftCompleted.start_animation()
 
@@ -218,9 +218,9 @@ func manage_end_night():
 	if Global.misc["When_win_go_to"] == "shift":
 		Global.m_entering = true
 		Global.minigame_starts()
-		get_tree().change_scene_to_file("res://escenas/minigame.tscn") #actualizar
+		get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar
 	else:
-		get_tree().change_scene_to_file("res://escenas/Menu_Principal.tscn") #actualizar
+		get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
 
 
 func _input(event):
@@ -233,4 +233,4 @@ func _input(event):
 func _on_esc_timer_timeout() -> void:
 	Global.escena_previa = "Minigame"
 	Global.just_death_min = "none" # Da igual lo que pase, que se ha de reiniciar
-	get_tree().change_scene_to_file("res://escenas/Menu_Principal.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar

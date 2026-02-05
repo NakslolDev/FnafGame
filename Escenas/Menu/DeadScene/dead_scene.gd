@@ -43,18 +43,18 @@ func _process(delta):
 			Global.escena_previa = "Dead_scene"
 			if Global.noche == 0:
 				if Global.misc["When_dead_go_to"] == "night":
-					get_tree().change_scene_to_file("res://escenas/Main_Game.tscn") #actualizar
+					get_tree().change_scene_to_file("res://Escenas/Night/Main_Game.tscn") #actualizar
 				else:
-					get_tree().change_scene_to_file("res://escenas/custom_night_selecter.tscn") #actualizar
+					get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
 			else:
 				if Global.misc["When_dead_go_to"] == "night":
-					get_tree().change_scene_to_file("res://escenas/Main_Game.tscn") #actualizar
+					get_tree().change_scene_to_file("res://Escenas/Night/Main_Game.tscn") #actualizar
 				elif Global.misc["When_dead_go_to"] == "shift":
 					Global.m_entering = true
 					Global.minigame_starts()
-					get_tree().change_scene_to_file("res://escenas/minigame.tscn") #actualizar
+					get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar
 				else:
-					get_tree().change_scene_to_file("res://escenas/Menu_Principal.tscn") #actualizar
+					get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
 	if transicionando_in:
 		$Transicion.modulate.a -= delta / transicion
 		if $Transicion.modulate.a <= 0.0:

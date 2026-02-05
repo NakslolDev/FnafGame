@@ -7,7 +7,7 @@ var activado: bool:
 
 func set_activado(value):
 	_activado = value
-	$Si_Shader/Cam/Cam_6.act_combination()
+	$Si_Shader/Cams/Cam_6.act_combination()
 	if value:
 		cam_flipped_discount -= 1
 		alucinations_cams(Global.insanity)
@@ -103,26 +103,26 @@ func act_light():
 		Freddy.cam_light = true
 		if memoria[camara_activa - 1] == true:
 			memoria[camara_activa - 1] = false
-			$Si_Shader/Cam.act_cam(camara_activa)
+			$Si_Shader/Cams.act_cam(camara_activa)
 	else:
 		Global.set_energia_consumption("Cam_lights", 0)
 		$Si_Shader/Linterna.modulate.a = 0.0
 		Freddy.cam_light = false
 
 func act_all_cams():
-	$Si_Shader/Cam/Cam_1.actualizar_cams()
-	$Si_Shader/Cam/Cam_2.actualizar_cams()
-	$Si_Shader/Cam/Cam_3.actualizar_cams()
-	$Si_Shader/Cam/Cam_4.actualizar_cams()
-	$Si_Shader/Cam/Cam_5.actualizar_cams()
-	$Si_Shader/Cam/Cam_6.actualizar_cams()
-	$Si_Shader/Cam/Cam_7.actualizar_cams()
-	$Si_Shader/Cam/Cam_8.actualizar_cams()
-	$Si_Shader/Cam/Cam_9.actualizar_cams()
-	$Si_Shader/Cam/Cam_10A.actualizar_cams()
-	$Si_Shader/Cam/Cam_10B.actualizar_cams()
-	$Si_Shader/Cam/Cam_11A.actualizar_cams()
-	$Si_Shader/Cam/Cam_11B.actualizar_cams()
+	$Si_Shader/Cams/Cam_1.actualizar_cams()
+	$Si_Shader/Cams/Cam_2.actualizar_cams()
+	$Si_Shader/Cams/Cam_3.actualizar_cams()
+	$Si_Shader/Cams/Cam_4.actualizar_cams()
+	$Si_Shader/Cams/Cam_5.actualizar_cams()
+	$Si_Shader/Cams/Cam_6.actualizar_cams()
+	$Si_Shader/Cams/Cam_7.actualizar_cams()
+	$Si_Shader/Cams/Cam_8.actualizar_cams()
+	$Si_Shader/Cams/Cam_9.actualizar_cams()
+	$Si_Shader/Cams/Cam_10A.actualizar_cams()
+	$Si_Shader/Cams/Cam_10B.actualizar_cams()
+	$Si_Shader/Cams/Cam_11A.actualizar_cams()
+	$Si_Shader/Cams/Cam_11B.actualizar_cams()
 
 func alucinations_cams(insano: int):
 	

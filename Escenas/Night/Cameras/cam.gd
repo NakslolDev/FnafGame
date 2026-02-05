@@ -1,8 +1,7 @@
 extends Node2D
 
 var timer_active := false
-var mover_izquierda := false
-var ultima_pos_3 := 960.0
+var girar_izquierda := false
 @export var velocidad: float
 signal cam_act(freddy: bool, local_from: int, local_to: int, local_extra: int, alucinations: bool)
 
@@ -12,40 +11,56 @@ func _ready():
 	Chica.connect("movement", Callable(self, "movement_chica"))
 	Foxy.connect("movement", Callable(self, "movement_foxy"))
 	_on_minimapa_botones_cam_act()
+	
 
 func act_cam(cam: int):
 	emit_signal("cam_act", false, 0, 0, cam, true)
 
+@export var cams_width: Dictionary = {
+	"cam1": 0.0,
+	"cam2": 0.0,
+	"cam3": 480.0,
+	"cam4": 0.0,
+	"cam5": 0.0,
+	"cam6": 0.0,
+	"cam7": 0.0,
+	"cam8": 0.0,
+	"cam9": 0.0,
+	"cam10": 0.0,
+	"cam11": 0.0,
+	"cam12": 0.0,
+	"cam13": 0.0,
+}
+const INITIAL_X_POS := 960.0
+var target_position := INITIAL_X_POS
+@export var period := 12.0
+
 func _physics_process(delta: float) -> void:
-	if $"../..".camara_activa != 3:
-		if position.x != 960:
-			position.x = 960
-		return
-	if timer_active:
-		return
-	if (position.x <= 480.0 and mover_izquierda == false) or (position.x >= 1440.0 and mover_izquierda == true):
-		if position.x < 480.0:
-			position.x = 480.0
-		if position.x > 1440.0:
-			position.x = 1440.0
-		ultima_pos_3 = position.x
-		timer_active = true
-		$Timer_movement_Cam_2.start()
-		mover_izquierda = !mover_izquierda
-		return
-	if mover_izquierda:
-		position.x += velocidad * delta
-	else:
-		position.x -= velocidad * delta
-	ultima_pos_3 = position.x
 	
-	if position.x <= 960.0:
+	var active_cam: int = $"../..".camara_activa
+	
+	if girar_izquierda:
+		target_position += velocidad * delta
+	else:
+		target_position -= velocidad * delta
+	
+	if (target_position - INITIAL_X_POS) > (velocidad * period * 0.25):
+		girar_izquierda = false
+	elif (target_position - INITIAL_X_POS) < -(velocidad * period * 0.25):
+		girar_izquierda = true
+	
+	var id_cam := "cam" + str(active_cam)
+	
+	if target_position > INITIAL_X_POS:
+		position.x = min(INITIAL_X_POS + cams_width[id_cam], target_position)
+	else:
+		position.x = max(INITIAL_X_POS - cams_width[id_cam], target_position)
+	
+	if position.x <= INITIAL_X_POS:
 		Freddy.looking_left_on_specificly_cam_3 = false
 	else:
 		Freddy.looking_left_on_specificly_cam_3 = true
 
-func _on_timer_movement_cam_2_timeout() -> void:
-	timer_active = false
 
 func _on_minimapa_botones_cam_act() -> void:
 	$Cam_1.visible = false
@@ -65,15 +80,8 @@ func _on_minimapa_botones_cam_act() -> void:
 		$Cam_1.visible = true
 	if $"../..".camara_activa == 2:
 		$Cam_2.visible = true
-		
 	if $"../..".camara_activa == 3:
 		$Cam_3.visible = true
-		position.x = ultima_pos_3
-		if position.x >= 1440.0 or position.x <= 480.0:
-			$Timer_movement_Cam_2.start()
-		else:
-			$Timer_movement_Cam_2.stop()
-		
 	if $"../..".camara_activa == 4:
 		$Cam_4.visible = true
 	if $"../..".camara_activa == 5:

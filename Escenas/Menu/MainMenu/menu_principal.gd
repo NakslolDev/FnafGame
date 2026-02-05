@@ -44,7 +44,7 @@ func begin_game():
 	Global.escena_previa = "Menu_Principal"
 	Global.m_entering = true
 	Global.minigame_starts()
-	get_tree().change_scene_to_file("res://escenas/minigame.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar
 
 
 

@@ -22,7 +22,7 @@ func _process(delta):
 			$Transicion.modulate.a = 1.0
 			transicionando_out = false
 			Global.escena_previa = "Victory_screen"
-			get_tree().change_scene_to_file("res://escenas/Menu_Principal.tscn") #actualizar
+			get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
 	if transicionando_in:
 		$Transicion.modulate.a -= delta / 5
 		if $Transicion.modulate.a <= 0.0:

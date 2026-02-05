@@ -26,7 +26,7 @@ func exit(decision: Global.Estado):
 	Global.escena_previa = "death_minigame"
 	
 	if decision == Global.Estado.STANDBY:
-		get_tree().change_scene_to_file("res://escenas/Dead_Scene.tscn") #actualizar
+		get_tree().change_scene_to_file("res://Escenas/Menu/DeadScene/Dead_Scene.tscn") #actualizar
 	
 	else:
 		Global.guardar_death_minigames() # Es importante guardar aqui.
@@ -36,4 +36,4 @@ func exit(decision: Global.Estado):
 			Global.just_death_min = "s" + animatronic
 		Global.m_entering = true
 		Global.minigame_starts()
-		get_tree().change_scene_to_file("res://escenas/minigame.tscn") #actualizar
+		get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar

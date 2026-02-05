@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://Escenas/Menu/Opciones/opciones.gd" id="1_k0pte"]
 [ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="3_64mem"]
+[ext_resource type="Script" uid="uid://cw4xikgcuuitu" path="res://Escenas/Menu/Opciones/screen.gd" id="3_s8b7i"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/label_idiom.gd" id="4_okdqg"]
 [ext_resource type="Script" uid="uid://d1x3tqyqdtr4l" path="res://Escenas/Menu/Opciones/button_mouse.gd" id="5_6fyg2"]
 [ext_resource type="Script" uid="uid://yasa6bbnwc3v" path="res://Escenas/Menu/Opciones/button_mouse_cam.gd" id="6_xbn81"]
@@ -113,6 +114,61 @@ custom_minimum_size = Vector2(0, 850)
 layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
+
+[node name="Screen" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=753198704 node_paths=PackedStringArray("vsync", "fps_label", "fps_h_slider", "fullscreen")]
+layout_mode = 2
+theme_override_constants/separation = 42
+script = ExtResource("3_s8b7i")
+vsync = NodePath("vsync")
+fps_label = NodePath("fps/Label")
+fps_h_slider = NodePath("fps/HSlider")
+fullscreen = NodePath("Fullscreen")
+
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=76118723]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_64mem")
+theme_type_variation = &"HeaderLarge"
+text = "Screen"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("4_okdqg")
+id = "screen"
+
+[node name="vsync" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=109996198]
+layout_mode = 2
+theme = ExtResource("3_64mem")
+text = "V-sync"
+autowrap_mode = 2
+
+[node name="fps" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1604895835]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/fps" unique_id=2008861723]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("3_64mem")
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(0.729412, 0.729412, 0.729412, 1)
+text = "FPS: "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/fps" unique_id=87549196]
+layout_mode = 2
+max_value = 7.0
+
+[node name="Fullscreen" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=278688353]
+layout_mode = 2
+theme = ExtResource("3_64mem")
+text = "Fullscreen
+"
+autowrap_mode = 2
 
 [node name="Mouse_Sound" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1774242955]
 layout_mode = 2
@@ -1072,6 +1128,9 @@ menu = true
 opacidad = 0.7
 puntero = "3"
 
+[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/vsync" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_button_cam_lights_pressed"]
+[connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/fps/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Fullscreen" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" to="Mouse_Custom" method="_on_button_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_cam" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_cam" method="_on_pressed"]

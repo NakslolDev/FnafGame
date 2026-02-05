@@ -14,7 +14,7 @@ func salir(guardar := true):
 		Global.guardar_configuration()
 	else:
 		Global.leer_configuration()
-	get_tree().change_scene_to_file("res://escenas/Menu_Principal.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
 
 
 
@@ -37,9 +37,9 @@ func _on_exit_pressed() -> void:
 
 func _on_undo_pressed() -> void:
 	Global.leer_configuration()
-	get_tree().change_scene_to_file("res://escenas/Opciones.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar
 
 
 func _on_reset_pressed() -> void:
 	Global.reset_configuration()
-	get_tree().change_scene_to_file("res://escenas/Opciones.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar

@@ -88,9 +88,9 @@ func _on_esc_timer_timeout():
 	if Input.is_action_pressed("Esc"):
 		Global.escena_previa = "Main_Game"
 		if Global.noche == 0:
-			get_tree().change_scene_to_file("res://escenas/custom_night_selecter.tscn") #actualizar
+			get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
 		else:
-			get_tree().change_scene_to_file("res://escenas/Menu_Principal.tscn") #actualizar
+			get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
 
 
 func _on_tick_timeout() -> void:
@@ -200,7 +200,7 @@ func game_over(win: bool):
 	
 	if win:
 		Global.escena_previa = "Main_game"
-		get_tree().change_scene_to_file("res://escenas/6_am.tscn") #actualizar
+		get_tree().change_scene_to_file("res://Escenas/Night/6Am/6_am.tscn") #actualizar
 	else:
 		
 		if go_to_death_minigame():
@@ -208,7 +208,7 @@ func game_over(win: bool):
 			get_tree().change_scene_to_file("res://escenas/death_minigame_loader.tscn") #actualizar
 		else:
 			Global.escena_previa = "Main_game"
-			get_tree().change_scene_to_file("res://escenas/Dead_Scene.tscn") #actualizar
+			get_tree().change_scene_to_file("res://Escenas/Menu/DeadScene/Dead_Scene.tscn") #actualizar
 
 
 func go_to_death_minigame() -> bool:

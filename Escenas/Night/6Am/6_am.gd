@@ -30,11 +30,11 @@ func _process(delta):
 			$HallOfFame.volume_linear -= delta/9.0
 		if $FondoNegro2.modulate.a > 1.0:
 			if Global.noche == 0:
-				get_tree().change_scene_to_file("res://escenas/custom_night_selecter.tscn") #actualizar
+				get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
 			else:
 				Global.m_entering = false
 				Global.minigame_starts()
-				get_tree().change_scene_to_file("res://escenas/minigame.tscn") #actualizar
+				get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar
 
 
 func _on_timer_1_timeout() -> void:

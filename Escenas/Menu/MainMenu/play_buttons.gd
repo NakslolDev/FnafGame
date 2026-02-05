@@ -74,7 +74,7 @@ func new_game():
 
 func custom_night():
 	Global.escena_previa = "Menu_Principal"
-	get_tree().change_scene_to_file("res://escenas/custom_night_selecter.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
 
 func back():
 	$".".set_process_input(false)

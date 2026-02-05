@@ -42,7 +42,7 @@ func play():
 func back():
 	Global.escena_previa = "Custom_Night"
 	Global.leer_partida()
-	get_tree().change_scene_to_file("res://escenas/Menu_Principal.tscn") #actualizar
+	get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
 
 
 func _on_back_mouse_entered() -> void:
