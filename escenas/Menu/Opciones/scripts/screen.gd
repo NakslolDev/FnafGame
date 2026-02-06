@@ -45,15 +45,21 @@ func _on_fullscreen_pressed() -> void:
 
 
 var fps_options := [0, 30, 60, 75, 90, 120, 144, 240]
+var fps_value: int
 
 func _on_h_slider_value_changed(value: int) -> void:
 	
-	var fps_value: int = fps_options[value]
-	
-	Global.screen["fps"] = fps_value
-	Global.aply_screen_configuration()
+	fps_value = fps_options[value]
 	
 	if value == 0:
 		fps_label.text = "FPS: inf"
 	else:
 		fps_label.text = "FPS: " + str(fps_value)
+
+func _on_h_slider_drag_ended(value_changed: bool) -> void:
+	
+	if not value_changed:
+		return
+	
+	Global.screen["fps"] = fps_value
+	Global.aply_screen_configuration()

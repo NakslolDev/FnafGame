@@ -139,11 +139,16 @@ func leer_configuration():
 	mouse_custom_op = configuration.get("mouse_custom_op", mouse_custom_op)
 	mouse_custom_punt = configuration.get("mouse_custom_punt", mouse_custom_punt)
 	mouse_cam_see = configuration.get("mouse_cam_see", mouse_cam_see)
-	_asign_recursive_diccionary(configuration.get("linterna_skin"), linterna_skin)
-	_asign_recursive_diccionary(configuration.get("energia_skin"), energia_skin)
-	_asign_recursive_diccionary(configuration.get("fade"), fade)
-	_asign_recursive_diccionary(configuration.get("misc"), misc)
-	_asign_recursive_diccionary(configuration.get("screen"), screen)
+	if configuration.has("linterna_skin"):
+		_asign_recursive_diccionary(configuration.get("linterna_skin"), linterna_skin)
+	if configuration.has("energia_skin"):
+		_asign_recursive_diccionary(configuration.get("energia_skin"), energia_skin)
+	if configuration.has("fade"):
+		_asign_recursive_diccionary(configuration.get("fade"), fade)
+	if configuration.has("misc"):
+		_asign_recursive_diccionary(configuration.get("misc"), misc)
+	if configuration.has("screen"):
+		_asign_recursive_diccionary(configuration.get("screen"), screen)
 	# Esto podria hacerlo metiendo toda la configuración en un diccionario y _asign(config, configuration), pero ya no voy a cambiar todo el codigo para ahorarme unas lineas
 	
 	if configuration.has("audio"):
@@ -219,7 +224,11 @@ func aply_screen_configuration():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
+func _process(delta: float) -> void:
+	print(DisplayServer.window_get_mode())
 
 func guardar_partida(use_debug_game_state_istead_of_normal := false):
 	
