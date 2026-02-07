@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djqjqcxkcwu8s"]
 
-[ext_resource type="Script" uid="uid://cf6imfeqj5drt" path="res://Escenas/Shift/M_objets/interact_colider.gd" id="1_8i55e"]
+[ext_resource type="Script" uid="uid://cf6imfeqj5drt" path="res://escenas/Shift/M_objets/interact_colider.gd" id="1_8i55e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g87gp"]
 

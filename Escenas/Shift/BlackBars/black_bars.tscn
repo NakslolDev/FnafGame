@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cy4q5pbjdsj20"]
 
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="1_63cx6"]
-[ext_resource type="Script" uid="uid://d3ulhnwtxrp15" path="res://Escenas/Shift/BlackBars/black_bars.gd" id="1_xcvhw"]
-[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="2_ge38c"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="1_63cx6"]
+[ext_resource type="Script" uid="uid://d3ulhnwtxrp15" path="res://escenas/Shift/BlackBars/black_bars.gd" id="1_xcvhw"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="2_ge38c"]
 
-[node name="Black_bars" type="Control" node_paths=PackedStringArray("label", "timer")]
+[node name="Black_bars" type="Control" unique_id=401110587 node_paths=PackedStringArray("label", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,17 +15,17 @@ script = ExtResource("1_xcvhw")
 label = NodePath("RichTextLabel")
 timer = NodePath("Generic_timer_07")
 
-[node name="FondoNegro" type="Sprite2D" parent="."]
+[node name="FondoNegro" type="Sprite2D" parent="." unique_id=1921723146]
 position = Vector2(960, 68)
 scale = Vector2(1, 0.12592593)
 texture = ExtResource("1_63cx6")
 
-[node name="FondoNegro2" type="Sprite2D" parent="."]
+[node name="FondoNegro2" type="Sprite2D" parent="." unique_id=652179543]
 position = Vector2(960, 1012.00006)
 scale = Vector2(1, 0.12592593)
 texture = ExtResource("1_63cx6")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=764422746]
 layout_mode = 0
 offset_top = 64.0
 offset_right = 1920.0
@@ -38,7 +38,7 @@ shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Generic_timer_07" type="Timer" parent="."]
+[node name="Generic_timer_07" type="Timer" parent="." unique_id=387549151]
 wait_time = 0.6
 one_shot = true
 

@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://bphrhnj1ljo77"]
 
-[ext_resource type="Script" uid="uid://b01bl05000u0n" path="res://Escenas/Night/Cameras/Cams/cam_11a.gd" id="1_3l3j0"]
-[ext_resource type="Texture2D" uid="uid://do3qfqpkyuxec" path="res://assets/Placeholders/Camaras/Cam11A/Cam.png" id="1_e4wpc"]
-[ext_resource type="Texture2D" uid="uid://y60id24pdiqg" path="res://assets/Placeholders/Camaras/Cam11A/Chica_11A.png" id="2_3l3j0"]
-[ext_resource type="Texture2D" uid="uid://dlvq3yufv0jd2" path="res://assets/Placeholders/Camaras/Cam11A/Foxy_11A.png" id="3_5w5bu"]
-[ext_resource type="Texture2D" uid="uid://d35lrp4spg3vd" path="res://assets/Placeholders/Camaras/Cam11A/Freddy_11A.png" id="4_yc5w2"]
+[ext_resource type="Script" uid="uid://b01bl05000u0n" path="res://escenas/Night/Cameras/Cams/cam_11a.gd" id="1_3l3j0"]
+[ext_resource type="Texture2D" uid="uid://cagd25ft5wucq" path="res://assets/Placeholders/Camaras/Cam11A/Cam.png" id="1_e4wpc"]
+[ext_resource type="Texture2D" uid="uid://ddqxtny28igsl" path="res://assets/Placeholders/Camaras/Cam11A/Chica_11A.png" id="2_3l3j0"]
+[ext_resource type="Texture2D" uid="uid://c5qcq3ugjne8e" path="res://assets/Placeholders/Camaras/Cam11A/Foxy_11A.png" id="3_5w5bu"]
+[ext_resource type="Texture2D" uid="uid://cmldwshrjksrt" path="res://assets/Placeholders/Camaras/Cam11A/Freddy_11A.png" id="4_yc5w2"]
 
-[node name="Cam_11A" type="Node2D"]
+[node name="Cam_11A" type="Node2D" unique_id=298345139]
 script = ExtResource("1_3l3j0")
 
-[node name="Cam" type="Sprite2D" parent="."]
+[node name="Cam" type="Sprite2D" parent="." unique_id=267684020]
 texture = ExtResource("1_e4wpc")
 
-[node name="Chica11a" type="Sprite2D" parent="."]
+[node name="Chica11a" type="Sprite2D" parent="." unique_id=554883554]
 texture = ExtResource("2_3l3j0")
 
-[node name="Foxy11a" type="Sprite2D" parent="."]
+[node name="Foxy11a" type="Sprite2D" parent="." unique_id=1008633186]
 texture = ExtResource("3_5w5bu")
 
-[node name="Freddy11a" type="Sprite2D" parent="."]
+[node name="Freddy11a" type="Sprite2D" parent="." unique_id=1810723286]
 texture = ExtResource("4_yc5w2")

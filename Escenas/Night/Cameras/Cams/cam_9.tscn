@@ -1,38 +1,38 @@
 [gd_scene format=3 uid="uid://d2wcktqdpngnk"]
 
-[ext_resource type="Texture2D" uid="uid://dsitkdyn36lbf" path="res://assets/Placeholders/Camaras/Cam9/Cam.png" id="1_24kdj"]
-[ext_resource type="Script" uid="uid://dyjclwxuwdued" path="res://Escenas/Night/Cameras/Cams/cam_9.gd" id="1_avpg4"]
-[ext_resource type="Texture2D" uid="uid://cxafxlnvges8t" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.5.png" id="2_avpg4"]
-[ext_resource type="Texture2D" uid="uid://cyvqnyc0xrpf6" path="res://assets/Placeholders/Camaras/Cam9/Freddy_9.png" id="2_dchns"]
-[ext_resource type="Texture2D" uid="uid://c8jyredfqlpk3" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.1.png" id="3_avpg4"]
-[ext_resource type="Texture2D" uid="uid://ie6dmvxpvjm" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.2.png" id="4_lddal"]
-[ext_resource type="Texture2D" uid="uid://jluacinoe3yi" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.3.png" id="5_hbme5"]
-[ext_resource type="Texture2D" uid="uid://chkoe5nqlla7t" path="res://assets/Placeholders/Camaras/Cam9/Chica_9.png" id="6_ovxtq"]
-[ext_resource type="Texture2D" uid="uid://ijdjeun5eaj3" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.4.png" id="7_4uwgc"]
+[ext_resource type="Texture2D" uid="uid://egr4ppajomt7" path="res://assets/Placeholders/Camaras/Cam9/Cam.png" id="1_24kdj"]
+[ext_resource type="Script" uid="uid://dyjclwxuwdued" path="res://escenas/Night/Cameras/Cams/cam_9.gd" id="1_avpg4"]
+[ext_resource type="Texture2D" uid="uid://dykw085odo0y8" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.5.png" id="2_avpg4"]
+[ext_resource type="Texture2D" uid="uid://sp0mnajy34d3" path="res://assets/Placeholders/Camaras/Cam9/Freddy_9.png" id="2_dchns"]
+[ext_resource type="Texture2D" uid="uid://b6ia612r7yjdo" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.1.png" id="3_avpg4"]
+[ext_resource type="Texture2D" uid="uid://bhi0kmjujg5gi" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.2.png" id="4_lddal"]
+[ext_resource type="Texture2D" uid="uid://8oj50r8xqi7l" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.3.png" id="5_hbme5"]
+[ext_resource type="Texture2D" uid="uid://h6rbb6d64i38" path="res://assets/Placeholders/Camaras/Cam9/Chica_9.png" id="6_ovxtq"]
+[ext_resource type="Texture2D" uid="uid://bj3eggxojdm03" path="res://assets/Placeholders/Camaras/Cam9/Foxy_9.4.png" id="7_4uwgc"]
 
-[node name="Cam_9" type="Node2D"]
+[node name="Cam_9" type="Node2D" unique_id=477570959]
 script = ExtResource("1_avpg4")
 
-[node name="Cam" type="Sprite2D" parent="."]
+[node name="Cam" type="Sprite2D" parent="." unique_id=1822214467]
 texture = ExtResource("1_24kdj")
 
-[node name="Foxy9_5" type="Sprite2D" parent="."]
+[node name="Foxy9_5" type="Sprite2D" parent="." unique_id=18082199]
 texture = ExtResource("2_avpg4")
 
-[node name="Freddy9" type="Sprite2D" parent="."]
+[node name="Freddy9" type="Sprite2D" parent="." unique_id=1447373353]
 texture = ExtResource("2_dchns")
 
-[node name="Foxy9_1" type="Sprite2D" parent="."]
+[node name="Foxy9_1" type="Sprite2D" parent="." unique_id=497452809]
 texture = ExtResource("3_avpg4")
 
-[node name="Foxy9_2" type="Sprite2D" parent="."]
+[node name="Foxy9_2" type="Sprite2D" parent="." unique_id=1177020222]
 texture = ExtResource("4_lddal")
 
-[node name="Foxy9_3" type="Sprite2D" parent="."]
+[node name="Foxy9_3" type="Sprite2D" parent="." unique_id=1588725652]
 texture = ExtResource("5_hbme5")
 
-[node name="Chica9" type="Sprite2D" parent="."]
+[node name="Chica9" type="Sprite2D" parent="." unique_id=418476674]
 texture = ExtResource("6_ovxtq")
 
-[node name="Foxy9_4" type="Sprite2D" parent="."]
+[node name="Foxy9_4" type="Sprite2D" parent="." unique_id=1264785015]
 texture = ExtResource("7_4uwgc")

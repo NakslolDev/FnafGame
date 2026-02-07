@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bj026rljnlsdo"]
 
-[ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://Escenas/Night/Items/objetos.gd" id="1_r5vk6"]
-[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_tqpfq"]
+[ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://escenas/Night/Items/objetos.gd" id="1_r5vk6"]
+[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_tqpfq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omc0x"]
 resource_name = "tileset"
@@ -146,26 +146,26 @@ texture = ExtResource("2_tqpfq")
 [sub_resource type="TileSet" id="TileSet_tqpfq"]
 sources/0 = SubResource("TileSetAtlasSource_r5vk6")
 
-[node name="Round_Table" type="Node2D"]
+[node name="Round_Table" type="Node2D" unique_id=154094941]
 texture_filter = 1
 script = ExtResource("1_r5vk6")
 
-[node name="Mesa_R" type="TileMapLayer" parent="."]
+[node name="Mesa_R" type="TileMapLayer" parent="." unique_id=1473674816]
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 8, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 8, 0, 1, 0, 0, 0, 0, 0, 255, 255, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 1, 0, 0, 0)
 tile_set = SubResource("TileSet_wokv3")
 
-[node name="Things_1" type="TileMapLayer" parent="."]
+[node name="Things_1" type="TileMapLayer" parent="." unique_id=2078516969]
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 2, 0, 0, 0, 0, 0, 255, 255, 0, 0, 13, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_tqpfq")
 
-[node name="Things_2" type="TileMapLayer" parent="."]
+[node name="Things_2" type="TileMapLayer" parent="." unique_id=2098201736]
 tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 13, 0, 3, 0, 0, 0, 255, 255, 0, 0, 0, 0, 13, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 4, 0, 0, 32)
 tile_set = SubResource("TileSet_tqpfq")
 
-[node name="Things_3" type="TileMapLayer" parent="."]
+[node name="Things_3" type="TileMapLayer" parent="." unique_id=1500216961]
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 12, 0, 3, 0, 0, 96, 0, 0, 0, 0, 0, 0, 12, 0, 2, 0, 0, 0, 255, 255, 0, 0, 0, 0, 13, 0, 1, 0, 0, 0)
 tile_set = SubResource("TileSet_tqpfq")
 
-[node name="Things_4" type="TileMapLayer" parent="."]
+[node name="Things_4" type="TileMapLayer" parent="." unique_id=246523531]
 tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 12, 0, 1, 0, 0, 0, 255, 255, 255, 255, 0, 0, 13, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_tqpfq")

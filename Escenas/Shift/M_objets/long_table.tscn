@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b11fiquxgu4wa"]
 
-[ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://Escenas/Night/Items/objetos.gd" id="1_et5i7"]
-[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_nyist"]
+[ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://escenas/Night/Items/objetos.gd" id="1_et5i7"]
+[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_nyist"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omc0x"]
 resource_name = "tileset"
@@ -158,31 +158,31 @@ texture = ExtResource("2_nyist")
 [sub_resource type="TileSet" id="TileSet_tqpfq"]
 sources/0 = SubResource("TileSetAtlasSource_r5vk6")
 
-[node name="Long_Table" type="Node2D"]
+[node name="Long_Table" type="Node2D" unique_id=354824648]
 texture_filter = 1
 script = ExtResource("1_et5i7")
 
-[node name="Mesa_L" type="TileMapLayer" parent="."]
+[node name="Mesa_L" type="TileMapLayer" parent="." unique_id=1856420958]
 position = Vector2(8, 0)
 tile_map_data = PackedByteArray("AAD///7/AAAJAAMAAAD/////AAAJAAQAAAAAAP7/AAAKAAMAAAAAAP//AAAKAAQAAAD//wAAAAAJAAUAAAD//wEAAAAJAAYAAAAAAAAAAAAKAAUAAAAAAAEAAAAKAAYAAAD///3/AAAJAAIAAAD//wIAAAAJAAcAAAAAAP3/AAAKAAIAAAAAAAIAAAAKAAcAAAD+//3/AAAIAAIAAAD+//7/AAAIAAMAAAD+////AAAIAAQAAAD+/wAAAAAIAAUAAAD+/wEAAAAIAAYAAAD+/wIAAAAIAAcAAAA=")
 tile_set = SubResource("TileSet_wokv3")
 
-[node name="Things_1" type="TileMapLayer" parent="."]
+[node name="Things_1" type="TileMapLayer" parent="." unique_id=1843403565]
 position = Vector2(9.58, 0)
 tile_map_data = PackedByteArray("AAD///7/AAANAAMAAAD//wEAAAAMAAEAAAD/////AAAMAAQAAAA=")
 tile_set = SubResource("TileSet_tqpfq")
 
-[node name="Things_2" type="TileMapLayer" parent="."]
+[node name="Things_2" type="TileMapLayer" parent="." unique_id=397601618]
 position = Vector2(3.145, 0)
 tile_map_data = PackedByteArray("AAAAAAAAAAANAAAAAFD///7/AAAMAAAAAAD//wEAAAAMAAMAAAA=")
 tile_set = SubResource("TileSet_tqpfq")
 
-[node name="Things_3" type="TileMapLayer" parent="."]
+[node name="Things_3" type="TileMapLayer" parent="." unique_id=1068892513]
 position = Vector2(-4.06, 0)
 tile_map_data = PackedByteArray("AAD//wAAAAAMAAAAAGAAAP//AAAMAAAAAFAAAAEAAAANAAEAAAAAAP7/AAANAAIAAAA=")
 tile_set = SubResource("TileSet_tqpfq")
 
-[node name="Things_4" type="TileMapLayer" parent="."]
+[node name="Things_4" type="TileMapLayer" parent="." unique_id=1765128886]
 position = Vector2(3.7, 1.065)
 tile_map_data = PackedByteArray("AAAAAP//AAAMAAAAAFD///7/AAANAAEAAAD/////AAANAAMAAAD//wAAAAAMAAMAAAAAAAEAAAANAAAAAFA=")
 tile_set = SubResource("TileSet_tqpfq")

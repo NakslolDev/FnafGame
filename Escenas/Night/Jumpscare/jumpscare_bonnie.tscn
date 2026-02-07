@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://cbjiygcxok8xd"]
 
-[ext_resource type="Texture2D" uid="uid://sejpr02h60n5" path="res://assets/Placeholders/Bonnie.png" id="1_6ybcq"]
-[ext_resource type="Script" uid="uid://cg6eu5dfndmeb" path="res://Escenas/Night/Jumpscare/jumpscare_bonnie.gd" id="1_grvaq"]
-[ext_resource type="AudioStream" uid="uid://dcsim6yk7ri65" path="res://assets/sounds/small fart - sound effect.mp3" id="3_11bk8"]
+[ext_resource type="Texture2D" uid="uid://d3k0ah58dgnc4" path="res://assets/Placeholders/Bonnie.png" id="1_6ybcq"]
+[ext_resource type="Script" uid="uid://cg6eu5dfndmeb" path="res://escenas/Night/Jumpscare/jumpscare_bonnie.gd" id="1_grvaq"]
+[ext_resource type="AudioStream" uid="uid://clcaokegmwji0" path="res://assets/sounds/small fart - sound effect.mp3" id="3_11bk8"]
 
-[node name="Jumpscare_Bonnie" type="Node2D"]
+[node name="Jumpscare_Bonnie" type="Node2D" unique_id=1984440560]
 script = ExtResource("1_grvaq")
 
-[node name="Bonnie" type="Sprite2D" parent="."]
+[node name="Bonnie" type="Sprite2D" parent="." unique_id=1999444622]
 position = Vector2(597, 1162.75)
 scale = Vector2(10.5556, 4.8604)
 texture = ExtResource("1_6ybcq")
 
-[node name="Jumpscare_duration" type="Timer" parent="."]
+[node name="Jumpscare_duration" type="Timer" parent="." unique_id=1401667734]
 wait_time = 1.5
 one_shot = true
 
-[node name="SmallFart-SoundEffect" type="AudioStreamPlayer" parent="."]
+[node name="SmallFart-SoundEffect" type="AudioStreamPlayer" parent="." unique_id=215898820]
 stream = ExtResource("3_11bk8")
 bus = &"SFX"
 

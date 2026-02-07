@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bmwn0qi6enr06"]
 
-[ext_resource type="Script" uid="uid://bfrb3mq3874br" path="res://Escenas/Night/Items/Battery/battery_items.gd" id="1_qnrss"]
-[ext_resource type="Texture2D" uid="uid://vliun6dbv73p" path="res://assets/Placeholders/batteries-png.png" id="2_7b8v8"]
+[ext_resource type="Script" uid="uid://bfrb3mq3874br" path="res://escenas/Night/Items/Battery/battery_items.gd" id="1_qnrss"]
+[ext_resource type="Texture2D" uid="uid://ssm2mgkh3rhk" path="res://assets/Placeholders/batteries-png.png" id="2_7b8v8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b8v8"]
 radius = 55.000004

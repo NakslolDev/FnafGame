@@ -18,13 +18,14 @@ var safing := false
 @export var shiftCompleted: Node
 @export var camera: Node
 
-const posiciones_inicio := {
-	"entrar": Vector2(-544.0, 29.0),
-	"salir": Vector2(-995.0, 840.0),
-	"bonnie": Vector2(-1057.0, 381.0), 
-	"chica": Vector2(-953.0, 381.0),
-	"freddy": Vector2(-1016.0, 381.0),
-	"foxy": Vector2(-943.0, 656.0),
+@export var spawn_points: Node
+@onready var posiciones_inicio := { # si get child da problemas, usar find_child. No lo uso ya pues es más caro
+	"entrar": spawn_points.get_child(0).position,
+	"salir": spawn_points.get_child(1).position,
+	"bonnie": spawn_points.get_child(2).position, 
+	"chica": spawn_points.get_child(3).position,
+	"freddy": spawn_points.get_child(4).position,
+	"foxy": spawn_points.get_child(5).position,
 }
 
 func _ready():

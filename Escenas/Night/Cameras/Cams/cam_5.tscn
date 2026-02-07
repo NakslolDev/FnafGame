@@ -1,26 +1,26 @@
 [gd_scene format=3 uid="uid://e8r6fg31exj6"]
 
-[ext_resource type="Script" uid="uid://lhmvrk45e17" path="res://Escenas/Night/Cameras/Cams/cam_5.gd" id="1_jn1ey"]
-[ext_resource type="Texture2D" uid="uid://6gxoeqicg2mx" path="res://assets/Placeholders/Camaras/Cam5/Cam.png" id="2_bhuxu"]
-[ext_resource type="Texture2D" uid="uid://f2ab0i214v0y" path="res://assets/Placeholders/Camaras/Cam5/Foxy_5.1.png" id="3_n4s20"]
-[ext_resource type="Texture2D" uid="uid://bpvbyp02sa0my" path="res://assets/Placeholders/Camaras/Cam5/Foxy_5.2.png" id="4_2162b"]
-[ext_resource type="Texture2D" uid="uid://bam064cts7dw3" path="res://assets/Placeholders/Camaras/Cam5/Freddy_5.png" id="5_x0o2o"]
-[ext_resource type="Texture2D" uid="uid://dny4bku1s1acl" path="res://assets/Placeholders/Camaras/Cam5/Chica_5.png" id="6_2yxxv"]
+[ext_resource type="Script" uid="uid://lhmvrk45e17" path="res://escenas/Night/Cameras/Cams/cam_5.gd" id="1_jn1ey"]
+[ext_resource type="Texture2D" uid="uid://b18y8o1d4fc56" path="res://assets/Placeholders/Camaras/Cam5/Cam.png" id="2_bhuxu"]
+[ext_resource type="Texture2D" uid="uid://dnt13e2eipy25" path="res://assets/Placeholders/Camaras/Cam5/Foxy_5.1.png" id="3_n4s20"]
+[ext_resource type="Texture2D" uid="uid://dkgnj3o057dj2" path="res://assets/Placeholders/Camaras/Cam5/Foxy_5.2.png" id="4_2162b"]
+[ext_resource type="Texture2D" uid="uid://bowm3s4l4ij11" path="res://assets/Placeholders/Camaras/Cam5/Freddy_5.png" id="5_x0o2o"]
+[ext_resource type="Texture2D" uid="uid://c0j1tx4nssruw" path="res://assets/Placeholders/Camaras/Cam5/Chica_5.png" id="6_2yxxv"]
 
-[node name="Cam_5" type="Node2D"]
+[node name="Cam_5" type="Node2D" unique_id=412922463]
 script = ExtResource("1_jn1ey")
 
-[node name="Cam" type="Sprite2D" parent="."]
+[node name="Cam" type="Sprite2D" parent="." unique_id=1636443852]
 texture = ExtResource("2_bhuxu")
 
-[node name="Foxy5_1" type="Sprite2D" parent="."]
+[node name="Foxy5_1" type="Sprite2D" parent="." unique_id=1844308133]
 texture = ExtResource("3_n4s20")
 
-[node name="Foxy5_2" type="Sprite2D" parent="."]
+[node name="Foxy5_2" type="Sprite2D" parent="." unique_id=1384975693]
 texture = ExtResource("4_2162b")
 
-[node name="Freddy5" type="Sprite2D" parent="."]
+[node name="Freddy5" type="Sprite2D" parent="." unique_id=1506274048]
 texture = ExtResource("5_x0o2o")
 
-[node name="Chica5" type="Sprite2D" parent="."]
+[node name="Chica5" type="Sprite2D" parent="." unique_id=20290894]
 texture = ExtResource("6_2yxxv")

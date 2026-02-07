@@ -1,25 +1,25 @@
 [gd_scene format=3 uid="uid://bfqudxeqg8lre"]
 
-[ext_resource type="Script" uid="uid://sh6risndd8no" path="res://Escenas/Menu/endings/ending_screens.gd" id="1_l1utt"]
-[ext_resource type="Texture2D" uid="uid://70l5wku4iln6" path="res://assets/Placeholders/end_screen_Good.png" id="2_tpnn0"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="3_udi24"]
-[ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://Escenas/Menu/endings/auto_transicion.gd" id="4_13sgt"]
+[ext_resource type="Script" uid="uid://sh6risndd8no" path="res://escenas/Menu/endings/ending_screens.gd" id="1_l1utt"]
+[ext_resource type="Texture2D" uid="uid://d1pxrykbgdsu3" path="res://assets/Placeholders/end_screen_Good.png" id="2_tpnn0"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="3_udi24"]
+[ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://escenas/Menu/endings/auto_transicion.gd" id="4_13sgt"]
 
-[node name="True_ending" type="Node2D"]
+[node name="True_ending" type="Node2D" unique_id=675256873]
 script = ExtResource("1_l1utt")
 ending = "true"
 
-[node name="EndScreenTrue" type="Sprite2D" parent="."]
+[node name="EndScreenTrue" type="Sprite2D" parent="." unique_id=454393891]
 position = Vector2(960, 540)
 texture = ExtResource("2_tpnn0")
 
-[node name="Transicion" type="Sprite2D" parent="."]
+[node name="Transicion" type="Sprite2D" parent="." unique_id=1833731895]
 visible = false
 position = Vector2(960, 540)
 texture = ExtResource("3_udi24")
 script = ExtResource("4_13sgt")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=683773343]
 wait_time = 5.0
 one_shot = true
 autostart = true

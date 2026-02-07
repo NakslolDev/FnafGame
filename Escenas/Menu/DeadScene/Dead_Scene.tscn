@@ -1,53 +1,53 @@
 [gd_scene format=3 uid="uid://b3kiul1ga6m3q"]
 
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="1_hyku8"]
-[ext_resource type="Script" uid="uid://dngangnlmq38i" path="res://Escenas/Menu/DeadScene/dead_scene.gd" id="1_jo435"]
-[ext_resource type="Texture2D" uid="uid://bio080u7emcc2" path="res://assets/Placeholders/Freddy.png" id="2_xvp0x"]
-[ext_resource type="Texture2D" uid="uid://d01vpiv4adidc" path="res://assets/Placeholders/Fan_PNG.png" id="3_ctmg2"]
-[ext_resource type="FontFile" uid="uid://hrbvkug7qnof" path="res://assets/CooperBits.ttf" id="3_x3aip"]
-[ext_resource type="Texture2D" uid="uid://l1s7u736357m" path="res://assets/Placeholders/Chica.png" id="3_xxx2t"]
-[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://assets/Placeholders/foxy.png" id="4_jo435"]
-[ext_resource type="Texture2D" uid="uid://sejpr02h60n5" path="res://assets/Placeholders/Bonnie.png" id="5_ctmg2"]
-[ext_resource type="Texture2D" uid="uid://cxoyh4wqd3pql" path="res://assets/Placeholders/Gradient.png" id="8_tgvoy"]
-[ext_resource type="Script" uid="uid://fxu7mqp6h1c" path="res://Escenas/Menu/DeadScene/advice.gd" id="9_ctmg2"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="1_hyku8"]
+[ext_resource type="Script" uid="uid://dngangnlmq38i" path="res://escenas/Menu/DeadScene/dead_scene.gd" id="1_jo435"]
+[ext_resource type="Texture2D" uid="uid://d3265mxv31r2w" path="res://assets/Placeholders/Freddy.png" id="2_xvp0x"]
+[ext_resource type="Texture2D" uid="uid://bvnykk64cpapv" path="res://assets/Placeholders/Fan_PNG.png" id="3_ctmg2"]
+[ext_resource type="FontFile" uid="uid://duqp40quebv2t" path="res://assets/CooperBits.ttf" id="3_x3aip"]
+[ext_resource type="Texture2D" uid="uid://bq2r0qn2h6fol" path="res://assets/Placeholders/Chica.png" id="3_xxx2t"]
+[ext_resource type="Texture2D" uid="uid://s1cucwt5uhrm" path="res://assets/Placeholders/foxy.png" id="4_jo435"]
+[ext_resource type="Texture2D" uid="uid://d3k0ah58dgnc4" path="res://assets/Placeholders/Bonnie.png" id="5_ctmg2"]
+[ext_resource type="Texture2D" uid="uid://cq5pprmn5aavl" path="res://assets/Placeholders/Gradient.png" id="8_tgvoy"]
+[ext_resource type="Script" uid="uid://fxu7mqp6h1c" path="res://escenas/Menu/DeadScene/advice.gd" id="9_ctmg2"]
 
-[node name="Dead_Scene" type="Node2D"]
+[node name="Dead_Scene" type="Node2D" unique_id=223756709]
 script = ExtResource("1_jo435")
 transicion = 1
 
-[node name="FondoNegro" type="Sprite2D" parent="."]
+[node name="FondoNegro" type="Sprite2D" parent="." unique_id=776884653]
 texture = ExtResource("1_hyku8")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1771915213]
 
-[node name="Imagen" type="Node2D" parent="."]
+[node name="Imagen" type="Node2D" parent="." unique_id=1845947157]
 
-[node name="Fan" type="Sprite2D" parent="Imagen"]
+[node name="Fan" type="Sprite2D" parent="Imagen" unique_id=130119726]
 position = Vector2(520, 26.0001)
 scale = Vector2(0.498657, 0.510652)
 texture = ExtResource("3_ctmg2")
 
-[node name="Bonnie" type="Sprite2D" parent="Imagen"]
+[node name="Bonnie" type="Sprite2D" parent="Imagen" unique_id=506130076]
 position = Vector2(523.5, -2)
 scale = Vector2(2.10833, 1.74453)
 texture = ExtResource("5_ctmg2")
 
-[node name="Chica" type="Sprite2D" parent="Imagen"]
+[node name="Chica" type="Sprite2D" parent="Imagen" unique_id=744468963]
 position = Vector2(509, -9)
 scale = Vector2(2.08056, 2.17172)
 texture = ExtResource("3_xxx2t")
 
-[node name="Freddy" type="Sprite2D" parent="Imagen"]
+[node name="Freddy" type="Sprite2D" parent="Imagen" unique_id=2099901431]
 position = Vector2(537, -19.9999)
 scale = Vector2(0.472727, 0.446577)
 texture = ExtResource("2_xvp0x")
 
-[node name="Foxy" type="Sprite2D" parent="Imagen"]
+[node name="Foxy" type="Sprite2D" parent="Imagen" unique_id=680931861]
 position = Vector2(527, 15)
 scale = Vector2(3.36667, 3.27519)
 texture = ExtResource("4_jo435")
 
-[node name="Game_over" type="Label" parent="."]
+[node name="Game_over" type="Label" parent="." unique_id=682182252]
 offset_left = -854.0
 offset_top = -507.0
 offset_right = 111.0
@@ -57,7 +57,7 @@ theme_override_font_sizes/font_size = 300
 text = "Game
 Over"
 
-[node name="Advice" type="Label" parent="."]
+[node name="Advice" type="Label" parent="." unique_id=1362521330]
 offset_left = -913.0
 offset_top = 346.0
 offset_right = -43.0
@@ -71,10 +71,10 @@ vertical_alignment = 2
 autowrap_mode = 2
 script = ExtResource("9_ctmg2")
 
-[node name="Gradient" type="Sprite2D" parent="."]
+[node name="Gradient" type="Sprite2D" parent="." unique_id=1939038496]
 position = Vector2(471.5, -3)
 scale = Vector2(0.454687, 1)
 texture = ExtResource("8_tgvoy")
 
-[node name="Transicion" type="Sprite2D" parent="."]
+[node name="Transicion" type="Sprite2D" parent="." unique_id=244695745]
 texture = ExtResource("1_hyku8")

@@ -1,119 +1,119 @@
 [gd_scene format=3 uid="uid://o8o073xrlb54"]
 
-[ext_resource type="Script" uid="uid://buo05pdr8jp5k" path="res://Escenas/Night/UI/energia_icono.gd" id="1_w60gr"]
-[ext_resource type="Texture2D" uid="uid://bkgtma4ajypyk" path="res://assets/Placeholders/UI_Juego/Energia/Base.png" id="2_sq720"]
-[ext_resource type="Texture2D" uid="uid://cdqvnwctcsahy" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 1/1.png" id="3_56hmi"]
-[ext_resource type="Texture2D" uid="uid://bwiq4ibqo20cj" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 1/2.png" id="4_xghys"]
-[ext_resource type="Texture2D" uid="uid://t75t1tvhc5kk" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 1/3.png" id="5_pqum8"]
-[ext_resource type="Texture2D" uid="uid://cjw46l2vei01o" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 2/1.png" id="6_24pld"]
-[ext_resource type="Texture2D" uid="uid://6b3t37fa7mnb" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 2/2.png" id="7_ruyal"]
-[ext_resource type="Texture2D" uid="uid://calt4m71rmd2" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 2/3.png" id="8_ys87y"]
-[ext_resource type="Texture2D" uid="uid://sjj247it378t" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/1.png" id="9_ym467"]
-[ext_resource type="Texture2D" uid="uid://cddrmvqgp4hr2" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/2.png" id="10_m6umj"]
-[ext_resource type="Texture2D" uid="uid://bni62dsuyxmi" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/3.png" id="11_7pob8"]
-[ext_resource type="Texture2D" uid="uid://fliwet7yl7nk" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 4/1.png" id="12_eyv7r"]
-[ext_resource type="Texture2D" uid="uid://bl68gtokxy8ig" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 4/2.png" id="13_cdvf6"]
-[ext_resource type="Texture2D" uid="uid://c6kpumxj2st5b" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 4/3.png" id="14_y8plx"]
-[ext_resource type="Texture2D" uid="uid://c50qivreli2m3" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 5/1.png" id="15_8w05s"]
-[ext_resource type="Texture2D" uid="uid://cryuahj10c88h" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 5/2.png" id="16_wkpyn"]
-[ext_resource type="Texture2D" uid="uid://c0xgc1t2h4it8" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 5/3.png" id="17_djisy"]
-[ext_resource type="Texture2D" uid="uid://debf4d78rx2la" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 6/1.png" id="18_7j5ig"]
-[ext_resource type="Texture2D" uid="uid://cyejtkq8kslok" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 6/2.png" id="19_t4lkf"]
-[ext_resource type="Texture2D" uid="uid://oospe42r5ns6" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 6/3.png" id="20_5tdfp"]
+[ext_resource type="Script" uid="uid://buo05pdr8jp5k" path="res://escenas/Night/UI/energia_icono.gd" id="1_w60gr"]
+[ext_resource type="Texture2D" uid="uid://5bndnw23mvci" path="res://assets/Placeholders/UI_Juego/Energia/Base.png" id="2_sq720"]
+[ext_resource type="Texture2D" uid="uid://cjg02bwuuf17u" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 1/1.png" id="3_56hmi"]
+[ext_resource type="Texture2D" uid="uid://ck63mhwv58y72" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 1/2.png" id="4_xghys"]
+[ext_resource type="Texture2D" uid="uid://jsmsudcemi0i" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 1/3.png" id="5_pqum8"]
+[ext_resource type="Texture2D" uid="uid://dbejklilbsw6m" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 2/1.png" id="6_24pld"]
+[ext_resource type="Texture2D" uid="uid://c27dkbtujxw2r" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 2/2.png" id="7_ruyal"]
+[ext_resource type="Texture2D" uid="uid://d0nq7ygmyoroi" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 2/3.png" id="8_ys87y"]
+[ext_resource type="Texture2D" uid="uid://c3bb7gsfaeyep" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/1.png" id="9_ym467"]
+[ext_resource type="Texture2D" uid="uid://fj8bh12lghay" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/2.png" id="10_m6umj"]
+[ext_resource type="Texture2D" uid="uid://dbg1rqnb6jd25" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/3.png" id="11_7pob8"]
+[ext_resource type="Texture2D" uid="uid://dmtijwat0sanf" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 4/1.png" id="12_eyv7r"]
+[ext_resource type="Texture2D" uid="uid://cu7vm7prk3gnj" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 4/2.png" id="13_cdvf6"]
+[ext_resource type="Texture2D" uid="uid://catvhxgc17tcv" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 4/3.png" id="14_y8plx"]
+[ext_resource type="Texture2D" uid="uid://ch4mg1ulquofn" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 5/1.png" id="15_8w05s"]
+[ext_resource type="Texture2D" uid="uid://eg7aofxupi4m" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 5/2.png" id="16_wkpyn"]
+[ext_resource type="Texture2D" uid="uid://c2a1x4axkjxr6" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 5/3.png" id="17_djisy"]
+[ext_resource type="Texture2D" uid="uid://de3dd1ly6eqki" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 6/1.png" id="18_7j5ig"]
+[ext_resource type="Texture2D" uid="uid://dk8dnrraobewn" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 6/2.png" id="19_t4lkf"]
+[ext_resource type="Texture2D" uid="uid://cl0firo3b52gp" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 6/3.png" id="20_5tdfp"]
 
-[node name="Energia_Icono" type="Node2D"]
+[node name="Energia_Icono" type="Node2D" unique_id=1486649796]
 texture_filter = 1
 script = ExtResource("1_w60gr")
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="Base" type="Sprite2D" parent="." unique_id=255253118]
 position = Vector2(-563, -467)
 texture = ExtResource("2_sq720")
 
-[node name="Paleta_A" type="Node2D" parent="."]
+[node name="Paleta_A" type="Node2D" parent="." unique_id=247398589]
 
-[node name="1" type="Sprite2D" parent="Paleta_A"]
+[node name="1" type="Sprite2D" parent="Paleta_A" unique_id=1846501825]
 position = Vector2(-563, -467)
 texture = ExtResource("3_56hmi")
 
-[node name="2" type="Sprite2D" parent="Paleta_A"]
+[node name="2" type="Sprite2D" parent="Paleta_A" unique_id=309607657]
 position = Vector2(-563, -467)
 texture = ExtResource("4_xghys")
 
-[node name="3" type="Sprite2D" parent="Paleta_A"]
+[node name="3" type="Sprite2D" parent="Paleta_A" unique_id=760529197]
 position = Vector2(-563, -467)
 texture = ExtResource("5_pqum8")
 
-[node name="Paleta_B" type="Node2D" parent="."]
+[node name="Paleta_B" type="Node2D" parent="." unique_id=1363838215]
 
-[node name="1" type="Sprite2D" parent="Paleta_B"]
+[node name="1" type="Sprite2D" parent="Paleta_B" unique_id=624663409]
 position = Vector2(-563, -467)
 texture = ExtResource("6_24pld")
 
-[node name="2" type="Sprite2D" parent="Paleta_B"]
+[node name="2" type="Sprite2D" parent="Paleta_B" unique_id=1148428569]
 position = Vector2(-563, -467)
 texture = ExtResource("7_ruyal")
 
-[node name="3" type="Sprite2D" parent="Paleta_B"]
+[node name="3" type="Sprite2D" parent="Paleta_B" unique_id=1230514948]
 position = Vector2(-563, -467)
 texture = ExtResource("8_ys87y")
 
-[node name="Paleta_C" type="Node2D" parent="."]
+[node name="Paleta_C" type="Node2D" parent="." unique_id=1276513684]
 
-[node name="1" type="Sprite2D" parent="Paleta_C"]
+[node name="1" type="Sprite2D" parent="Paleta_C" unique_id=694969041]
 position = Vector2(-563, -467)
 texture = ExtResource("15_8w05s")
 
-[node name="2" type="Sprite2D" parent="Paleta_C"]
+[node name="2" type="Sprite2D" parent="Paleta_C" unique_id=330991222]
 position = Vector2(-563, -467)
 texture = ExtResource("16_wkpyn")
 
-[node name="3" type="Sprite2D" parent="Paleta_C"]
+[node name="3" type="Sprite2D" parent="Paleta_C" unique_id=469676343]
 position = Vector2(-563, -467)
 texture = ExtResource("17_djisy")
 
-[node name="Paleta_D" type="Node2D" parent="."]
+[node name="Paleta_D" type="Node2D" parent="." unique_id=586273668]
 
-[node name="1" type="Sprite2D" parent="Paleta_D"]
+[node name="1" type="Sprite2D" parent="Paleta_D" unique_id=1865561157]
 position = Vector2(-563, -467)
 texture = ExtResource("9_ym467")
 
-[node name="2" type="Sprite2D" parent="Paleta_D"]
+[node name="2" type="Sprite2D" parent="Paleta_D" unique_id=939968928]
 position = Vector2(-563, -467)
 texture = ExtResource("10_m6umj")
 
-[node name="3" type="Sprite2D" parent="Paleta_D"]
+[node name="3" type="Sprite2D" parent="Paleta_D" unique_id=1825909354]
 position = Vector2(-563, -467)
 texture = ExtResource("11_7pob8")
 
-[node name="Paleta_E" type="Node2D" parent="."]
+[node name="Paleta_E" type="Node2D" parent="." unique_id=564971445]
 
-[node name="1" type="Sprite2D" parent="Paleta_E"]
+[node name="1" type="Sprite2D" parent="Paleta_E" unique_id=1722373744]
 position = Vector2(-563, -467)
 texture = ExtResource("12_eyv7r")
 
-[node name="2" type="Sprite2D" parent="Paleta_E"]
+[node name="2" type="Sprite2D" parent="Paleta_E" unique_id=217570033]
 position = Vector2(-563, -467)
 texture = ExtResource("13_cdvf6")
 
-[node name="3" type="Sprite2D" parent="Paleta_E"]
+[node name="3" type="Sprite2D" parent="Paleta_E" unique_id=698246316]
 position = Vector2(-563, -467)
 texture = ExtResource("14_y8plx")
 
-[node name="Paleta_F" type="Node2D" parent="."]
+[node name="Paleta_F" type="Node2D" parent="." unique_id=496720746]
 
-[node name="1" type="Sprite2D" parent="Paleta_F"]
+[node name="1" type="Sprite2D" parent="Paleta_F" unique_id=2105557240]
 position = Vector2(-563, -467)
 texture = ExtResource("18_7j5ig")
 
-[node name="2" type="Sprite2D" parent="Paleta_F"]
+[node name="2" type="Sprite2D" parent="Paleta_F" unique_id=150209295]
 position = Vector2(-563, -467)
 texture = ExtResource("19_t4lkf")
 
-[node name="3" type="Sprite2D" parent="Paleta_F"]
+[node name="3" type="Sprite2D" parent="Paleta_F" unique_id=884221315]
 position = Vector2(-563, -467)
 texture = ExtResource("20_5tdfp")
 
-[node name="Timer_obscure" type="Timer" parent="."]
+[node name="Timer_obscure" type="Timer" parent="." unique_id=1899776061]
 one_shot = true
 
 [connection signal="timeout" from="Timer_obscure" to="." method="_on_timer_timeout"]

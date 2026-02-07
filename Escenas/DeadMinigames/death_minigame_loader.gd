@@ -2,6 +2,9 @@ extends Node
 
 @onready var animatronic := Global.killed_by
 
+var scene_dead = load("res://Escenas/Menu/DeadScene/Dead_Scene.tscn") as PackedScene
+var scene_minigame = load("res://Escenas/Shift/minigame.tscn") as PackedScene
+
 func _ready() -> void:
 	print("Current anim: ", animatronic)
 	print("Enter -> complete | Space -> Save | Esc to exit")
@@ -18,15 +21,21 @@ func _input(event: InputEvent) -> void:
 		return
 	Global.dm[animatronic] = decision
 	exit(decision)
-	print(event, " | ", decision)
+	#print(event, " | ", decision)
 
 
 func exit(decision: Global.Estado):
 	
 	Global.escena_previa = "death_minigame"
 	
+	var dead_scene: Callable = func():
+		get_tree().change_scene_to_packed(scene_dead)
+	
+	var minigame_scene: Callable = func():
+		get_tree().change_scene_to_packed(scene_minigame)
+	
 	if decision == Global.Estado.STANDBY:
-		get_tree().change_scene_to_file("res://Escenas/Menu/DeadScene/Dead_Scene.tscn") #actualizar
+		dead_scene.call_deferred()
 	
 	else:
 		Global.guardar_death_minigames() # Es importante guardar aqui.
@@ -36,4 +45,4 @@ func exit(decision: Global.Estado):
 			Global.just_death_min = "s" + animatronic
 		Global.m_entering = true
 		Global.minigame_starts()
-		get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar
+		minigame_scene.call_deferred()

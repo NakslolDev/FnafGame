@@ -1,44 +1,44 @@
 [gd_scene format=3 uid="uid://ben1xduwqjx0k"]
 
-[ext_resource type="Script" uid="uid://depuj23yjh7gx" path="res://Escenas/Night/SecurityRoom/Buttons/boton.gd" id="1_0dpeo"]
-[ext_resource type="Script" uid="uid://bb4256acvhna2" path="res://Escenas/Night/SecurityRoom/Buttons/area_boton.gd" id="2_rwcrt"]
-[ext_resource type="Texture2D" uid="uid://c1furmqgyt38p" path="res://assets/Placeholders/Oficina_Boton_Rojo.png" id="2_u33ia"]
-[ext_resource type="Texture2D" uid="uid://fl8rjvk4yh4t" path="res://assets/Placeholders/Oficina_Boton_Verde.png" id="3_rwcrt"]
-[ext_resource type="Texture2D" uid="uid://dg1rc62wry1iy" path="res://assets/Placeholders/Oficina_Boton_No_Energia.png" id="4_rwcrt"]
-[ext_resource type="AudioStream" uid="uid://cy0qyemnslhcv" path="res://assets/sounds/Button_on.wav" id="6_b3rwc"]
-[ext_resource type="AudioStream" uid="uid://crvpdt5unjsew" path="res://assets/sounds/Button_off.wav" id="7_u8i2q"]
+[ext_resource type="Script" uid="uid://depuj23yjh7gx" path="res://escenas/Night/SecurityRoom/Buttons/boton.gd" id="1_0dpeo"]
+[ext_resource type="Script" uid="uid://bb4256acvhna2" path="res://escenas/Night/SecurityRoom/Buttons/area_boton.gd" id="2_rwcrt"]
+[ext_resource type="Texture2D" uid="uid://5exxd8onk6bo" path="res://assets/Placeholders/Oficina_Boton_Rojo.png" id="2_u33ia"]
+[ext_resource type="Texture2D" uid="uid://d32dopv6stjww" path="res://assets/Placeholders/Oficina_Boton_Verde.png" id="3_rwcrt"]
+[ext_resource type="Texture2D" uid="uid://dr83xy0f6l71k" path="res://assets/Placeholders/Oficina_Boton_No_Energia.png" id="4_rwcrt"]
+[ext_resource type="AudioStream" uid="uid://dofe8jpof2udp" path="res://assets/sounds/Button_on.wav" id="6_b3rwc"]
+[ext_resource type="AudioStream" uid="uid://e2ceevc5hvw6" path="res://assets/sounds/Button_off.wav" id="7_u8i2q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcv1s"]
 size = Vector2(61.5, 92)
 
-[node name="Boton" type="Node2D"]
+[node name="Boton" type="Node2D" unique_id=358012948]
 script = ExtResource("1_0dpeo")
 
-[node name="OficinaBotonVerde" type="Sprite2D" parent="."]
+[node name="OficinaBotonVerde" type="Sprite2D" parent="." unique_id=554593006]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_rwcrt")
 
-[node name="OficinaBotonRojo" type="Sprite2D" parent="."]
+[node name="OficinaBotonRojo" type="Sprite2D" parent="." unique_id=1916399674]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_u33ia")
 
-[node name="OficinaBotonNoEnergia" type="Sprite2D" parent="."]
+[node name="OficinaBotonNoEnergia" type="Sprite2D" parent="." unique_id=1053905841]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_rwcrt")
 
-[node name="AreaBoton" type="Area2D" parent="."]
+[node name="AreaBoton" type="Area2D" parent="." unique_id=1004161636]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_rwcrt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBoton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBoton" unique_id=995394532]
 position = Vector2(-415.75, 117)
 shape = SubResource("RectangleShape2D_kcv1s")
 
-[node name="ButtonOff" type="AudioStreamPlayer2D" parent="."]
+[node name="ButtonOff" type="AudioStreamPlayer2D" parent="." unique_id=1953351596]
 stream = ExtResource("7_u8i2q")
 bus = &"SFX"
 
-[node name="ButtonOn" type="AudioStreamPlayer2D" parent="."]
+[node name="ButtonOn" type="AudioStreamPlayer2D" parent="." unique_id=1346142686]
 stream = ExtResource("6_b3rwc")
 bus = &"SFX"
 

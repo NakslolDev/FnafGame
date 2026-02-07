@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bo828jywsimiy"]
 
-[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_saqaj"]
+[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_saqaj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omc0x"]
 resource_name = "tileset"
@@ -83,10 +83,10 @@ texture = ExtResource("2_saqaj")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_omc0x")
 
-[node name="Chair" type="Node2D"]
+[node name="Chair" type="Node2D" unique_id=812466580]
 texture_filter = 1
 
-[node name="Chair" type="TileMapLayer" parent="."]
+[node name="Chair" type="TileMapLayer" parent="." unique_id=535238647]
 position = Vector2(8, 0)
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 20, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 20, 0, 1, 0, 0, 0)
 tile_set = SubResource("TileSet_wokv3")

@@ -205,7 +205,7 @@ func game_over(win: bool):
 		
 		if go_to_death_minigame():
 			Global.escena_previa = "Main_game"
-			get_tree().change_scene_to_file("res://escenas/death_minigame_loader.tscn") #actualizar
+			get_tree().change_scene_to_file("res://escenas/DeadMinigames/death_minigame_loader.tscn") #actualizar
 		else:
 			Global.escena_previa = "Main_game"
 			get_tree().change_scene_to_file("res://Escenas/Menu/DeadScene/Dead_Scene.tscn") #actualizar

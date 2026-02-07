@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bo3fa6mc0i5nu"]
 
-[ext_resource type="Script" uid="uid://8nysrngfedn" path="res://Escenas/Night/SecurityRoom/Ducts/ductos.gd" id="1_sysxk"]
-[ext_resource type="Texture2D" uid="uid://xm371okco0oy" path="res://assets/Placeholders/Oficina_Ventilacion_Iluminado.png" id="2_ab0ic"]
+[ext_resource type="Script" uid="uid://8nysrngfedn" path="res://escenas/Night/SecurityRoom/Ducts/ductos.gd" id="1_sysxk"]
+[ext_resource type="Texture2D" uid="uid://bcg5sc4ad1nim" path="res://assets/Placeholders/Oficina_Ventilacion_Iluminado.png" id="2_ab0ic"]
 [ext_resource type="Shader" uid="uid://cy37sjn6e8y4u" path="res://shaders/Pasillo.gdshader" id="3_cxujm"]
-[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://assets/Placeholders/foxy.png" id="3_og8rt"]
-[ext_resource type="Texture2D" uid="uid://vwwaob3tpnxq" path="res://assets/Placeholders/Oficina_Ventilacion_Oscuro.png" id="4_c2dxv"]
-[ext_resource type="Script" uid="uid://s3m41odryu66" path="res://Escenas/Night/SecurityRoom/Ducts/ductos_fondo_oscuro.gd" id="5_2e03e"]
+[ext_resource type="Texture2D" uid="uid://s1cucwt5uhrm" path="res://assets/Placeholders/foxy.png" id="3_og8rt"]
+[ext_resource type="Texture2D" uid="uid://bh101neimxq5b" path="res://assets/Placeholders/Oficina_Ventilacion_Oscuro.png" id="4_c2dxv"]
+[ext_resource type="Script" uid="uid://s3m41odryu66" path="res://escenas/Night/SecurityRoom/Ducts/ductos_fondo_oscuro.gd" id="5_2e03e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ab0ic"]
 shader = ExtResource("3_cxujm")
@@ -23,43 +23,43 @@ size = Vector2(1274.04, 2278.78)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fgkh"]
 size = Vector2(507.426, 971.757)
 
-[node name="Ductos" type="Node2D"]
+[node name="Ductos" type="Node2D" unique_id=2053998410]
 script = ExtResource("1_sysxk")
 
-[node name="DuctosFondoIluminado" type="Sprite2D" parent="."]
+[node name="DuctosFondoIluminado" type="Sprite2D" parent="." unique_id=106053953]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_ab0ic")
 
-[node name="Foxy" type="Sprite2D" parent="."]
+[node name="Foxy" type="Sprite2D" parent="." unique_id=700650726]
 position = Vector2(2, -199)
 scale = Vector2(0.821795, 0.381783)
 texture = ExtResource("3_og8rt")
 
-[node name="DuctosFondoOscuro_Alpha" type="Sprite2D" parent="."]
+[node name="DuctosFondoOscuro_Alpha" type="Sprite2D" parent="." unique_id=571082699]
 modulate = Color(1, 1, 1, 0.4)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_c2dxv")
 
-[node name="DuctosFondoOscuro" type="Sprite2D" parent="."]
+[node name="DuctosFondoOscuro" type="Sprite2D" parent="." unique_id=763222007]
 material = SubResource("ShaderMaterial_ab0ic")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_c2dxv")
 script = ExtResource("5_2e03e")
 
-[node name="Soft_focus" type="Area2D" parent="."]
+[node name="Soft_focus" type="Area2D" parent="." unique_id=527769337]
 position = Vector2(2, -199)
 scale = Vector2(0.821795, 0.381783)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Soft_focus"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soft_focus" unique_id=2036631456]
 position = Vector2(0, 31.4315)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_og8rt")
 
-[node name="Hard_focus" type="Area2D" parent="."]
+[node name="Hard_focus" type="Area2D" parent="." unique_id=865826660]
 position = Vector2(2, -199)
 scale = Vector2(0.821795, 0.381783)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus" unique_id=2142220010]
 scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_2fgkh")
 

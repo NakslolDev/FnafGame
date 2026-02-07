@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://ckov56uah4qup"]
 
-[ext_resource type="Script" uid="uid://cu8m7y0h8yl2f" path="res://Escenas/Night/6Am/6_am.gd" id="1_5ea3b"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="1_jqnvh"]
-[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="3_x61da"]
-[ext_resource type="AudioStream" uid="uid://dhclanw636w3" path="res://assets/sounds/Hall of Fame.mp3" id="4_x61da"]
+[ext_resource type="Script" uid="uid://cu8m7y0h8yl2f" path="res://escenas/Night/6Am/6_am.gd" id="1_5ea3b"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="1_jqnvh"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="3_x61da"]
+[ext_resource type="AudioStream" uid="uid://db105ev75lyex" path="res://assets/sounds/Hall of Fame.mp3" id="4_x61da"]
 
-[node name="6_AM" type="Node2D"]
+[node name="6_AM" type="Node2D" unique_id=126954993]
 script = ExtResource("1_5ea3b")
 
-[node name="FondoNegro" type="Sprite2D" parent="."]
+[node name="FondoNegro" type="Sprite2D" parent="." unique_id=1403435223]
 position = Vector2(960, 540)
 texture = ExtResource("1_jqnvh")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1388574262]
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_fonts/font = ExtResource("3_x61da")
@@ -21,9 +21,9 @@ text = "   AM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=1049827333]
 
-[node name="Label2" type="Label" parent="Node2D"]
+[node name="Label2" type="Label" parent="Node2D" unique_id=1413780568]
 offset_left = 119.0
 offset_top = 152.0
 offset_right = 2039.0
@@ -36,23 +36,23 @@ text = "5
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FondoNegro3" type="Sprite2D" parent="."]
+[node name="FondoNegro3" type="Sprite2D" parent="." unique_id=1402174576]
 position = Vector2(468, 106)
 scale = Vector2(0.371354, 0.387037)
 texture = ExtResource("1_jqnvh")
 
-[node name="FondoNegro4" type="Sprite2D" parent="."]
+[node name="FondoNegro4" type="Sprite2D" parent="." unique_id=129074985]
 position = Vector2(489, 1064)
 scale = Vector2(0.411139, 0.403778)
 texture = ExtResource("1_jqnvh")
 
-[node name="FondoNegro2" type="Sprite2D" parent="."]
+[node name="FondoNegro2" type="Sprite2D" parent="." unique_id=618407634]
 position = Vector2(960, 540)
 texture = ExtResource("1_jqnvh")
 
-[node name="Timer1" type="Timer" parent="."]
+[node name="Timer1" type="Timer" parent="." unique_id=1427064842]
 
-[node name="HallOfFame" type="AudioStreamPlayer" parent="."]
+[node name="HallOfFame" type="AudioStreamPlayer" parent="." unique_id=1278878744]
 stream = ExtResource("4_x61da")
 volume_db = -10.0
 bus = &"Musica"

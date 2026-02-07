@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://cditugvb64tye"]
 
-[ext_resource type="Script" uid="uid://begqqlud8o7ho" path="res://Escenas/Night/Cameras/Cams/cam_4.gd" id="1_yw0hh"]
-[ext_resource type="Texture2D" uid="uid://cnxlnb4epf0ew" path="res://assets/Placeholders/Camaras/Cam4/Cam.png" id="2_3mrw8"]
-[ext_resource type="Texture2D" uid="uid://ccnnv0b8mfu6u" path="res://assets/Placeholders/Camaras/Cam4/Freddy_4.png" id="3_vw0r3"]
-[ext_resource type="Texture2D" uid="uid://eru47dpp6wkd" path="res://assets/Placeholders/Camaras/Cam4/Foxy_4.png" id="4_gh3b2"]
-[ext_resource type="Texture2D" uid="uid://dw08a8su3pnem" path="res://assets/Placeholders/Camaras/Cam4/Chica_4.png" id="5_57xvf"]
+[ext_resource type="Script" uid="uid://begqqlud8o7ho" path="res://escenas/Night/Cameras/Cams/cam_4.gd" id="1_yw0hh"]
+[ext_resource type="Texture2D" uid="uid://cnreve7lruhhw" path="res://assets/Placeholders/Camaras/Cam4/Cam.png" id="2_3mrw8"]
+[ext_resource type="Texture2D" uid="uid://bhw65b3cmipt2" path="res://assets/Placeholders/Camaras/Cam4/Freddy_4.png" id="3_vw0r3"]
+[ext_resource type="Texture2D" uid="uid://brniic5yucc61" path="res://assets/Placeholders/Camaras/Cam4/Foxy_4.png" id="4_gh3b2"]
+[ext_resource type="Texture2D" uid="uid://dcisl0mgr5inw" path="res://assets/Placeholders/Camaras/Cam4/Chica_4.png" id="5_57xvf"]
 
-[node name="Cam_4" type="Node2D"]
+[node name="Cam_4" type="Node2D" unique_id=1322189336]
 script = ExtResource("1_yw0hh")
 
-[node name="Cam" type="Sprite2D" parent="."]
+[node name="Cam" type="Sprite2D" parent="." unique_id=613074398]
 texture = ExtResource("2_3mrw8")
 
-[node name="Freddy4" type="Sprite2D" parent="."]
+[node name="Freddy4" type="Sprite2D" parent="." unique_id=517622540]
 texture = ExtResource("3_vw0r3")
 
-[node name="Foxy4" type="Sprite2D" parent="."]
+[node name="Foxy4" type="Sprite2D" parent="." unique_id=649782328]
 texture = ExtResource("4_gh3b2")
 
-[node name="Chica4" type="Sprite2D" parent="."]
+[node name="Chica4" type="Sprite2D" parent="." unique_id=1051271784]
 texture = ExtResource("5_57xvf")

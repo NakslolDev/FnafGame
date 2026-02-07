@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b11fiquxgu4wa" path="res://escenas/Shift/M_objets/long_table.tscn" id="11_w3343"]
 [ext_resource type="PackedScene" uid="uid://dkw61scyyeb22" path="res://escenas/Shift/M_objets/placeholder.tscn" id="12_axwuc"]
 [ext_resource type="PackedScene" uid="uid://bmc1g8wl35gb0" path="res://escenas/Shift/M_objets/placeholder_noclip.tscn" id="13_7g4ok"]
+[ext_resource type="Texture2D" uid="uid://0plph23qdqex" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://escenas/Shift/Text/pop_text.tscn" id="14_v4577"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://escenas/Shift/Safe/pop_safe.tscn" id="15_kqcik"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://escenas/Shift/BlackBars/black_bars.tscn" id="16_3hrc1"]
@@ -148,6 +149,9 @@ size = Vector2(2, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx56r"]
 size = Vector2(2, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26wog"]
+size = Vector2(22, 10)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_au55v"]
 shader = ExtResource("21_cgfeb")
 shader_parameter/overlay = false
@@ -172,7 +176,7 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 1.0
 shader_parameter/vignette_opacity = 0.665
 
-[node name="Minigame" type="Node" unique_id=1354298531 node_paths=PackedStringArray("manual_act_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe", "transicion", "shiftCompleted", "camera")]
+[node name="Minigame" type="Node" unique_id=1354298531 node_paths=PackedStringArray("manual_act_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe", "transicion", "shiftCompleted", "camera", "spawn_points")]
 script = ExtResource("1_xv0fq")
 manual_act_nodes = [NodePath("Coliders/Key_locations"), NodePath("Things_Front_All/Secret_room_hitbox")]
 custom_action = NodePath("CustomActions")
@@ -183,6 +187,7 @@ pop_safe = NodePath("Shader&else/Pop_Safe")
 transicion = NodePath("Shader&else/Transicion")
 shiftCompleted = NodePath("Shader&else/Shift_completed")
 camera = NodePath("Camera2D")
+spawn_points = NodePath("SpawnPoints")
 
 [node name="CustomActions" type="Node" parent="." unique_id=2004216622 node_paths=PackedStringArray("father")]
 script = ExtResource("2_wna5r")
@@ -252,7 +257,7 @@ player = NodePath("Character_Minigame")
 Walls = [NodePath("WallMain"), NodePath("WallWarehouse"), NodePath("WallPAS"), NodePath("WallKitchen"), NodePath("WallBathroomBoys"), NodePath("WallBathroomGirls"), NodePath("WallRightHallTop"), NodePath("WallLeftHallTop"), NodePath("WallRightHallBottom"), NodePath("WallLeftHallBottom"), NodePath("WallOffice"), NodePath("WallCloset"), NodePath("WallArcadeBottom"), NodePath("WallArcadeTop"), NodePath("WallSecretOffice")]
 
 [node name="Character_Minigame" parent="YSort" unique_id=1051262395 instance=ExtResource("8_w4bkp")]
-position = Vector2(-983, 363)
+position = Vector2(-1020, 399)
 speed = 100.0
 
 [node name="WallMain" type="Node2D" parent="YSort" unique_id=693646244]
@@ -519,6 +524,62 @@ position = Vector2(-600, 480)
 position = Vector2(-1104, 504)
 scale = Vector2(2, 2)
 
+[node name="Bonnie" type="StaticBody2D" parent="YSort" unique_id=607158155]
+position = Vector2(-1088, 403)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSort/Bonnie" unique_id=866872540]
+position = Vector2(0, -14)
+texture = ExtResource("14_q3h4n")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bonnie" unique_id=2112908395]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_26wog")
+
+[node name="Chica" type="StaticBody2D" parent="YSort" unique_id=847560091]
+position = Vector2(-943, 403)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSort/Chica" unique_id=48772114]
+position = Vector2(0, -14)
+texture = ExtResource("14_q3h4n")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Chica" unique_id=2027123930]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_26wog")
+
+[node name="Freddy" type="StaticBody2D" parent="YSort" unique_id=1681684182]
+position = Vector2(-1017, 405)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSort/Freddy" unique_id=689622740]
+position = Vector2(0, -14)
+texture = ExtResource("14_q3h4n")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Freddy" unique_id=606808548]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_26wog")
+
+[node name="Foxy" type="StaticBody2D" parent="YSort" unique_id=961055914]
+position = Vector2(-958, 677)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSort/Foxy" unique_id=1800019504]
+position = Vector2(0, -14)
+texture = ExtResource("14_q3h4n")
+region_enabled = true
+region_rect = Rect2(96, 0, 32, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Foxy" unique_id=1717986377]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_26wog")
+
 [node name="Shader&else" type="CanvasLayer" parent="." unique_id=964723939]
 
 [node name="Pop_Text" parent="Shader&else" unique_id=1416511614 instance=ExtResource("14_v4577")]
@@ -534,6 +595,7 @@ offset_right = -1920.0
 offset_bottom = -1080.0
 
 [node name="Transicion" type="Node2D" parent="Shader&else" unique_id=1441869645 node_paths=PackedStringArray("root", "background", "day", "time")]
+visible = false
 script = ExtResource("17_b7ymr")
 root = NodePath("../..")
 background = NodePath("Background")
@@ -1076,6 +1138,152 @@ chica = 2
 freddy = 2
 foxy = 2
 
+[node name="Animatronics" type="Node" parent="Coliders" unique_id=1447810241]
+
+[node name="Bonnie" type="Node2D" parent="Coliders/Animatronics" unique_id=365201993]
+position = Vector2(-1088, 408)
+metadata/_edit_group_ = true
+
+[node name="Normal" parent="Coliders/Animatronics/Bonnie" unique_id=2028459704 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "b_normal"
+kbonnie = false
+sbonnie = false
+bonnie = 1
+
+[node name="j_kill" parent="Coliders/Animatronics/Bonnie" unique_id=1953096149 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "b_just_kill"
+none = false
+kchica = false
+kfreddy = false
+kfoxy = false
+sbonnie = false
+schica = false
+sfreddy = false
+sfoxy = false
+bonnie = 2
+
+[node name="kill" parent="Coliders/Animatronics/Bonnie" unique_id=1916413932 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "b_kill"
+kbonnie = false
+sbonnie = false
+bonnie = 2
+
+[node name="save" parent="Coliders/Animatronics/Bonnie" unique_id=806878942 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "b_saved"
+bonnie = 3
+
+[node name="Chica" type="Node2D" parent="Coliders/Animatronics" unique_id=837495934]
+position = Vector2(-943, 408)
+metadata/_edit_group_ = true
+
+[node name="Normal" parent="Coliders/Animatronics/Chica" unique_id=1373127966 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "c_normal"
+kchica = false
+schica = false
+chica = 1
+
+[node name="j_kill" parent="Coliders/Animatronics/Chica" unique_id=197814364 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "c_just_kill"
+none = false
+kbonnie = false
+kfreddy = false
+kfoxy = false
+sbonnie = false
+schica = false
+sfreddy = false
+sfoxy = false
+chica = 2
+
+[node name="kill" parent="Coliders/Animatronics/Chica" unique_id=1465277496 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "c_kill"
+kchica = false
+schica = false
+chica = 2
+
+[node name="save" parent="Coliders/Animatronics/Chica" unique_id=1532449315 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "c_saved"
+chica = 3
+
+[node name="Freddy" type="Node2D" parent="Coliders/Animatronics" unique_id=1181786856]
+position = Vector2(-1017, 410)
+metadata/_edit_group_ = true
+
+[node name="Normal" parent="Coliders/Animatronics/Freddy" unique_id=1515623603 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "f_normal"
+kfreddy = false
+sfreddy = false
+freddy = 1
+
+[node name="j_kill" parent="Coliders/Animatronics/Freddy" unique_id=1061925324 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "f_just_kill"
+none = false
+kbonnie = false
+kchica = false
+kfoxy = false
+sbonnie = false
+schica = false
+sfreddy = false
+sfoxy = false
+freddy = 2
+
+[node name="kill" parent="Coliders/Animatronics/Freddy" unique_id=186905129 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "f_kill"
+kfreddy = false
+sfreddy = false
+freddy = 2
+
+[node name="save" parent="Coliders/Animatronics/Freddy" unique_id=614669369 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "f_saved"
+freddy = 3
+
+[node name="Foxy" type="Node2D" parent="Coliders/Animatronics" unique_id=1311711053]
+position = Vector2(-958, 682)
+metadata/_edit_group_ = true
+
+[node name="Normal" parent="Coliders/Animatronics/Foxy" unique_id=1247881424 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "x_normal"
+kfoxy = false
+sfoxy = false
+foxy = 1
+
+[node name="j_kill" parent="Coliders/Animatronics/Foxy" unique_id=1257513246 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "x_just_kill"
+none = false
+kbonnie = false
+kchica = false
+kfreddy = false
+sbonnie = false
+schica = false
+sfreddy = false
+sfoxy = false
+foxy = 2
+
+[node name="kill" parent="Coliders/Animatronics/Foxy" unique_id=145256253 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "x_kill"
+kfoxy = false
+sfoxy = false
+foxy = 2
+
+[node name="save" parent="Coliders/Animatronics/Foxy" unique_id=1635466462 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1.3893229, 0.71692866)
+id = "x_saved"
+foxy = 3
+
 [node name="Things_Front_All" type="Node" parent="." unique_id=1029449219]
 
 [node name="Secret_room_hitbox" type="TileMapLayer" parent="Things_Front_All" unique_id=345879813 node_paths=PackedStringArray("parent")]
@@ -1088,6 +1296,26 @@ parent = NodePath("../..")
 
 [node name="ESC_Timer" type="Timer" parent="." unique_id=934962560]
 wait_time = 2.0
+
+[node name="SpawnPoints" type="Node" parent="." unique_id=561319891]
+
+[node name="entrar" type="Node2D" parent="SpawnPoints" unique_id=1473890155]
+position = Vector2(-544, 29)
+
+[node name="salir" type="Node2D" parent="SpawnPoints" unique_id=20620569]
+position = Vector2(-995, 840)
+
+[node name="bonnie" type="Node2D" parent="SpawnPoints" unique_id=822006454]
+position = Vector2(-1088, 397)
+
+[node name="chica" type="Node2D" parent="SpawnPoints" unique_id=1085496162]
+position = Vector2(-943, 397)
+
+[node name="freddy" type="Node2D" parent="SpawnPoints" unique_id=51748189]
+position = Vector2(-1017, 399)
+
+[node name="foxy" type="Node2D" parent="SpawnPoints" unique_id=633103239]
+position = Vector2(-958, 671)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1205363921 node_paths=PackedStringArray("black_foreground", "player")]
 zoom = Vector2(4, 4)

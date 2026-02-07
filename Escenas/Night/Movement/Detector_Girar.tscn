@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mxxfro0701lh"]
 
-[ext_resource type="Script" uid="uid://c6u3k6adme7a5" path="res://Escenas/Night/Movement/detector_girar.gd" id="1_iw5l3"]
+[ext_resource type="Script" uid="uid://c6u3k6adme7a5" path="res://escenas/Night/Movement/detector_girar.gd" id="1_iw5l3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksrhl"]
 size = Vector2(93, 1080)
@@ -8,18 +8,18 @@ size = Vector2(93, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v31rw"]
 size = Vector2(1044, 1080)
 
-[node name="Detector_Girar" type="Node2D"]
+[node name="Detector_Girar" type="Node2D" unique_id=1480869271]
 script = ExtResource("1_iw5l3")
 
-[node name="Area2D_Girar" type="Area2D" parent="."]
+[node name="Area2D_Girar" type="Area2D" parent="." unique_id=736508002]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Girar"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Girar" unique_id=955470976]
 position = Vector2(-1153.5, 0)
 shape = SubResource("RectangleShape2D_ksrhl")
 
-[node name="Area2D_Pre_Girar" type="Area2D" parent="."]
+[node name="Area2D_Pre_Girar" type="Area2D" parent="." unique_id=1514746790]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Pre_Girar"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Pre_Girar" unique_id=1746172723]
 position = Vector2(-522, 0)
 shape = SubResource("RectangleShape2D_v31rw")
 

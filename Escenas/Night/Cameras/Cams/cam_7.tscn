@@ -1,46 +1,46 @@
 [gd_scene format=3 uid="uid://b2w3hd5l84g7e"]
 
-[ext_resource type="Script" uid="uid://dkjhkhpxq6ken" path="res://Escenas/Night/Cameras/Cams/cam_7.gd" id="1_4706u"]
-[ext_resource type="Texture2D" uid="uid://d3yp1hp26q42h" path="res://assets/Placeholders/Camaras/Cam7/Cam.png" id="1_ocxed"]
-[ext_resource type="Texture2D" uid="uid://cqdnboejxy4ja" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.1.png" id="2_4706u"]
-[ext_resource type="Texture2D" uid="uid://bh6mcqm5c7u5n" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.2.png" id="3_elsql"]
-[ext_resource type="Texture2D" uid="uid://cmkhnoufyqndd" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.3.png" id="4_lqu0a"]
-[ext_resource type="Texture2D" uid="uid://bhk6rljatueh2" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.4.png" id="5_fwpjw"]
-[ext_resource type="Texture2D" uid="uid://b8a222yspcmvf" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.5.png" id="6_qijln"]
-[ext_resource type="Texture2D" uid="uid://btmvq500xh7m" path="res://assets/Placeholders/Camaras/Cam7/Freddy_7.png" id="7_abavc"]
-[ext_resource type="Texture2D" uid="uid://c3me7hf35qmnw" path="res://assets/Placeholders/Camaras/Cam7/Bonnie_7.1.png" id="8_4t4c7"]
-[ext_resource type="Texture2D" uid="uid://bqymdhcrurx2v" path="res://assets/Placeholders/Camaras/Cam7/Bonnie_7.2.png" id="9_xvq5d"]
-[ext_resource type="Texture2D" uid="uid://bpq50by5jx8aq" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.6.png" id="11_elsql"]
+[ext_resource type="Script" uid="uid://dkjhkhpxq6ken" path="res://escenas/Night/Cameras/Cams/cam_7.gd" id="1_4706u"]
+[ext_resource type="Texture2D" uid="uid://boo5rh0ljxw7a" path="res://assets/Placeholders/Camaras/Cam7/Cam.png" id="1_ocxed"]
+[ext_resource type="Texture2D" uid="uid://b5plhjo362ho2" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.1.png" id="2_4706u"]
+[ext_resource type="Texture2D" uid="uid://bggra7a7an2me" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.2.png" id="3_elsql"]
+[ext_resource type="Texture2D" uid="uid://glnuwa7t536b" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.3.png" id="4_lqu0a"]
+[ext_resource type="Texture2D" uid="uid://k0qcm0v4vqq" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.4.png" id="5_fwpjw"]
+[ext_resource type="Texture2D" uid="uid://c50lojmi5hoo5" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.5.png" id="6_qijln"]
+[ext_resource type="Texture2D" uid="uid://dlqsqns86k8p3" path="res://assets/Placeholders/Camaras/Cam7/Freddy_7.png" id="7_abavc"]
+[ext_resource type="Texture2D" uid="uid://cfm4lwp88cskd" path="res://assets/Placeholders/Camaras/Cam7/Bonnie_7.1.png" id="8_4t4c7"]
+[ext_resource type="Texture2D" uid="uid://by7x4u112ejtf" path="res://assets/Placeholders/Camaras/Cam7/Bonnie_7.2.png" id="9_xvq5d"]
+[ext_resource type="Texture2D" uid="uid://d0ay7v0vauek5" path="res://assets/Placeholders/Camaras/Cam7/Foxy_7.6.png" id="11_elsql"]
 
-[node name="Cam_7" type="Node2D"]
+[node name="Cam_7" type="Node2D" unique_id=423832330]
 script = ExtResource("1_4706u")
 
-[node name="Cam" type="Sprite2D" parent="."]
+[node name="Cam" type="Sprite2D" parent="." unique_id=1712408416]
 texture = ExtResource("1_ocxed")
 
-[node name="Foxy7_1" type="Sprite2D" parent="."]
+[node name="Foxy7_1" type="Sprite2D" parent="." unique_id=825281300]
 texture = ExtResource("2_4706u")
 
-[node name="Foxy7_2" type="Sprite2D" parent="."]
+[node name="Foxy7_2" type="Sprite2D" parent="." unique_id=898438542]
 texture = ExtResource("3_elsql")
 
-[node name="Foxy7_3" type="Sprite2D" parent="."]
+[node name="Foxy7_3" type="Sprite2D" parent="." unique_id=1144091039]
 texture = ExtResource("4_lqu0a")
 
-[node name="Foxy7_4" type="Sprite2D" parent="."]
+[node name="Foxy7_4" type="Sprite2D" parent="." unique_id=276097839]
 texture = ExtResource("5_fwpjw")
 
-[node name="Foxy7_5" type="Sprite2D" parent="."]
+[node name="Foxy7_5" type="Sprite2D" parent="." unique_id=220947913]
 texture = ExtResource("6_qijln")
 
-[node name="Freddy7" type="Sprite2D" parent="."]
+[node name="Freddy7" type="Sprite2D" parent="." unique_id=2145717182]
 texture = ExtResource("7_abavc")
 
-[node name="Bonnie7_1" type="Sprite2D" parent="."]
+[node name="Bonnie7_1" type="Sprite2D" parent="." unique_id=1844469636]
 texture = ExtResource("8_4t4c7")
 
-[node name="Bonnie7_2" type="Sprite2D" parent="."]
+[node name="Bonnie7_2" type="Sprite2D" parent="." unique_id=1193357871]
 texture = ExtResource("9_xvq5d")
 
-[node name="Foxy7_6" type="Sprite2D" parent="."]
+[node name="Foxy7_6" type="Sprite2D" parent="." unique_id=1609963378]
 texture = ExtResource("11_elsql")

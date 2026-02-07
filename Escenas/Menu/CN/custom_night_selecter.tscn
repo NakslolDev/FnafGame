@@ -17,16 +17,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn2t3"]
 size = Vector2(44, 50)
 
-[node name="Custom_Night_Selecter" type="Node2D"]
+[node name="Custom_Night_Selecter" type="Node2D" unique_id=787260633]
 script = ExtResource("1_ko47r")
 transicion = 1
 
-[node name="FondoNegro" type="Sprite2D" parent="."]
+[node name="FondoNegro" type="Sprite2D" parent="." unique_id=448423306]
 texture = ExtResource("1_38h6d")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=455099206]
 
-[node name="all_idk" type="VBoxContainer" parent="."]
+[node name="all_idk" type="VBoxContainer" parent="." unique_id=1547141837]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -39,46 +39,46 @@ grow_vertical = 2
 theme_override_constants/separation = 225
 alignment = 2
 
-[node name="selection" type="HBoxContainer" parent="all_idk"]
+[node name="selection" type="HBoxContainer" parent="all_idk" unique_id=6354248]
 layout_mode = 2
 theme_override_constants/separation = 240
 alignment = 1
 
-[node name="Bonnie" type="VBoxContainer" parent="all_idk/selection"]
+[node name="Bonnie" type="VBoxContainer" parent="all_idk/selection" unique_id=552170095]
 layout_mode = 2
 theme_override_constants/separation = 300
 alignment = 1
 script = ExtResource("2_5scaq")
 
-[node name="Timer" type="Timer" parent="all_idk/selection/Bonnie"]
+[node name="Timer" type="Timer" parent="all_idk/selection/Bonnie" unique_id=1778455943]
 one_shot = true
 
-[node name="Sprite" type="Control" parent="all_idk/selection/Bonnie"]
+[node name="Sprite" type="Control" parent="all_idk/selection/Bonnie" unique_id=1699724210]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Bonnie_sprite" type="Sprite2D" parent="all_idk/selection/Bonnie/Sprite"]
+[node name="Bonnie_sprite" type="Sprite2D" parent="all_idk/selection/Bonnie/Sprite" unique_id=1903911778]
 texture = ExtResource("2_yw64g")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Bonnie"]
+[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Bonnie" unique_id=2068992179]
 layout_mode = 2
 theme_override_constants/separation = 45
 
-[node name="Menos" type="Control" parent="all_idk/selection/Bonnie/HBoxContainer"]
+[node name="Menos" type="Control" parent="all_idk/selection/Bonnie/HBoxContainer" unique_id=1786595949]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos" unique_id=828926470]
 scale = Vector2(-1, 1.35905)
 texture = ExtResource("3_6qeii")
 
-[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos"]
+[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos" unique_id=635182565]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos/menos Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Bonnie/HBoxContainer/Menos/menos Area2D" unique_id=1110552916]
 shape = SubResource("RectangleShape2D_dn2t3")
 
-[node name="Nivel_AI" type="Label" parent="all_idk/selection/Bonnie/HBoxContainer"]
+[node name="Nivel_AI" type="Label" parent="all_idk/selection/Bonnie/HBoxContainer" unique_id=1720463123]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -87,55 +87,55 @@ theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
 
-[node name="Mas" type="Control" parent="all_idk/selection/Bonnie/HBoxContainer"]
+[node name="Mas" type="Control" parent="all_idk/selection/Bonnie/HBoxContainer" unique_id=1687053213]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas" unique_id=1195946659]
 scale = Vector2(1, 1.37963)
 texture = ExtResource("3_6qeii")
 
-[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas"]
+[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas" unique_id=983304821]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas/mas Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Bonnie/HBoxContainer/Mas/mas Area2D" unique_id=370343060]
 shape = SubResource("RectangleShape2D_dn2t3")
 
-[node name="Chica" type="VBoxContainer" parent="all_idk/selection"]
+[node name="Chica" type="VBoxContainer" parent="all_idk/selection" unique_id=893708745]
 layout_mode = 2
 theme_override_constants/separation = 300
 alignment = 1
 script = ExtResource("2_5scaq")
 who = 1
 
-[node name="Timer" type="Timer" parent="all_idk/selection/Chica"]
+[node name="Timer" type="Timer" parent="all_idk/selection/Chica" unique_id=579282999]
 one_shot = true
 
-[node name="Sprite" type="Control" parent="all_idk/selection/Chica"]
+[node name="Sprite" type="Control" parent="all_idk/selection/Chica" unique_id=1711589433]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Chica_sprite" type="Sprite2D" parent="all_idk/selection/Chica/Sprite"]
+[node name="Chica_sprite" type="Sprite2D" parent="all_idk/selection/Chica/Sprite" unique_id=1099513771]
 texture = ExtResource("6_dn2t3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Chica"]
+[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Chica" unique_id=392898916]
 layout_mode = 2
 theme_override_constants/separation = 45
 
-[node name="Menos" type="Control" parent="all_idk/selection/Chica/HBoxContainer"]
+[node name="Menos" type="Control" parent="all_idk/selection/Chica/HBoxContainer" unique_id=668222940]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Chica/HBoxContainer/Menos"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Chica/HBoxContainer/Menos" unique_id=539226]
 scale = Vector2(-1, 1.35905)
 texture = ExtResource("3_6qeii")
 
-[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Chica/HBoxContainer/Menos"]
+[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Chica/HBoxContainer/Menos" unique_id=217489892]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Chica/HBoxContainer/Menos/menos Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Chica/HBoxContainer/Menos/menos Area2D" unique_id=869695979]
 shape = SubResource("RectangleShape2D_dn2t3")
 
-[node name="Nivel_AI" type="Label" parent="all_idk/selection/Chica/HBoxContainer"]
+[node name="Nivel_AI" type="Label" parent="all_idk/selection/Chica/HBoxContainer" unique_id=1444529121]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme = ExtResource("4_uwdoj")
@@ -143,56 +143,56 @@ theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
 
-[node name="Mas" type="Control" parent="all_idk/selection/Chica/HBoxContainer"]
+[node name="Mas" type="Control" parent="all_idk/selection/Chica/HBoxContainer" unique_id=1564550252]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Chica/HBoxContainer/Mas"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Chica/HBoxContainer/Mas" unique_id=1867170350]
 scale = Vector2(1, 1.37963)
 texture = ExtResource("3_6qeii")
 
-[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Chica/HBoxContainer/Mas"]
+[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Chica/HBoxContainer/Mas" unique_id=321854339]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Chica/HBoxContainer/Mas/mas Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Chica/HBoxContainer/Mas/mas Area2D" unique_id=188805126]
 shape = SubResource("RectangleShape2D_dn2t3")
 
-[node name="Freddy" type="VBoxContainer" parent="all_idk/selection"]
+[node name="Freddy" type="VBoxContainer" parent="all_idk/selection" unique_id=521369566]
 layout_mode = 2
 theme_override_constants/separation = 300
 alignment = 1
 script = ExtResource("2_5scaq")
 who = 2
 
-[node name="Timer" type="Timer" parent="all_idk/selection/Freddy"]
+[node name="Timer" type="Timer" parent="all_idk/selection/Freddy" unique_id=472653107]
 one_shot = true
 
-[node name="Sprite" type="Control" parent="all_idk/selection/Freddy"]
+[node name="Sprite" type="Control" parent="all_idk/selection/Freddy" unique_id=318926815]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Freddy_sprite" type="Sprite2D" parent="all_idk/selection/Freddy/Sprite"]
+[node name="Freddy_sprite" type="Sprite2D" parent="all_idk/selection/Freddy/Sprite" unique_id=1423268534]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_ph6q6")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Freddy"]
+[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Freddy" unique_id=1593390158]
 layout_mode = 2
 theme_override_constants/separation = 45
 
-[node name="Menos" type="Control" parent="all_idk/selection/Freddy/HBoxContainer"]
+[node name="Menos" type="Control" parent="all_idk/selection/Freddy/HBoxContainer" unique_id=1296593816]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos" unique_id=2072359274]
 scale = Vector2(-1, 1.35905)
 texture = ExtResource("3_6qeii")
 
-[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos"]
+[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos" unique_id=67079907]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos/menos Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Freddy/HBoxContainer/Menos/menos Area2D" unique_id=300424826]
 shape = SubResource("RectangleShape2D_dn2t3")
 
-[node name="Nivel_AI" type="Label" parent="all_idk/selection/Freddy/HBoxContainer"]
+[node name="Nivel_AI" type="Label" parent="all_idk/selection/Freddy/HBoxContainer" unique_id=752990142]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme = ExtResource("4_uwdoj")
@@ -200,72 +200,72 @@ theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
 
-[node name="Mas" type="Control" parent="all_idk/selection/Freddy/HBoxContainer"]
+[node name="Mas" type="Control" parent="all_idk/selection/Freddy/HBoxContainer" unique_id=954105906]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas" unique_id=1957829753]
 scale = Vector2(1, 1.37963)
 texture = ExtResource("3_6qeii")
 
-[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas"]
+[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas" unique_id=232284686]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas/mas Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Freddy/HBoxContainer/Mas/mas Area2D" unique_id=971193639]
 shape = SubResource("RectangleShape2D_dn2t3")
 
-[node name="Foxy" type="VBoxContainer" parent="all_idk/selection"]
+[node name="Foxy" type="VBoxContainer" parent="all_idk/selection" unique_id=1607871473]
 layout_mode = 2
 theme_override_constants/separation = 300
 alignment = 1
 script = ExtResource("2_5scaq")
 who = 3
 
-[node name="Timer" type="Timer" parent="all_idk/selection/Foxy"]
+[node name="Timer" type="Timer" parent="all_idk/selection/Foxy" unique_id=1272263151]
 one_shot = true
 
-[node name="Sprite" type="Control" parent="all_idk/selection/Foxy"]
+[node name="Sprite" type="Control" parent="all_idk/selection/Foxy" unique_id=351676292]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Foxy_sprite" type="Sprite2D" parent="all_idk/selection/Foxy/Sprite"]
+[node name="Foxy_sprite" type="Sprite2D" parent="all_idk/selection/Foxy/Sprite" unique_id=1712979314]
 scale = Vector2(1.575, 1.575)
 texture = ExtResource("8_pfp8p")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Foxy"]
+[node name="HBoxContainer" type="HBoxContainer" parent="all_idk/selection/Foxy" unique_id=1461551783]
 layout_mode = 2
 theme_override_constants/separation = 45
 
-[node name="Menos" type="Control" parent="all_idk/selection/Foxy/HBoxContainer"]
+[node name="Menos" type="Control" parent="all_idk/selection/Foxy/HBoxContainer" unique_id=1865212889]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos" unique_id=1992753873]
 scale = Vector2(-1, 1.35905)
 texture = ExtResource("3_6qeii")
 
-[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos"]
+[node name="menos Area2D" type="Area2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos" unique_id=206892246]
 
-[node name="Mas" type="Control" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D"]
+[node name="Mas" type="Control" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D" unique_id=270272147]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 170.0
 offset_right = 170.0
 size_flags_vertical = 4
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas" unique_id=1111116760]
 scale = Vector2(1, 1.37963)
 texture = ExtResource("3_6qeii")
 
-[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas"]
+[node name="mas Area2D" type="Area2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas" unique_id=1686347107]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas/mas Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D/Mas/mas Area2D" unique_id=1712174402]
 shape = SubResource("RectangleShape2D_dn2t3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="all_idk/selection/Foxy/HBoxContainer/Menos/menos Area2D" unique_id=1286042683]
 shape = SubResource("RectangleShape2D_dn2t3")
 
-[node name="Nivel_AI" type="Label" parent="all_idk/selection/Foxy/HBoxContainer"]
+[node name="Nivel_AI" type="Label" parent="all_idk/selection/Foxy/HBoxContainer" unique_id=1454998004]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme = ExtResource("4_uwdoj")
@@ -273,16 +273,16 @@ theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
 
-[node name="Buttons_CN" type="HBoxContainer" parent="all_idk"]
+[node name="Buttons_CN" type="HBoxContainer" parent="all_idk" unique_id=2020783581]
 layout_mode = 2
 theme_override_constants/separation = 170
 alignment = 1
 script = ExtResource("12_m1vm1")
 
-[node name="Back" type="HBoxContainer" parent="all_idk/Buttons_CN"]
+[node name="Back" type="HBoxContainer" parent="all_idk/Buttons_CN" unique_id=1191773835]
 layout_mode = 2
 
-[node name="Back_label" type="Label" parent="all_idk/Buttons_CN/Back"]
+[node name="Back_label" type="Label" parent="all_idk/Buttons_CN/Back" unique_id=635056816]
 layout_mode = 2
 theme = ExtResource("4_uwdoj")
 theme_override_font_sizes/font_size = 60
@@ -290,19 +290,19 @@ text = "Back"
 script = ExtResource("14_jtx3x")
 id = "Back_"
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/Buttons_CN/Back"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/Buttons_CN/Back" unique_id=1406554890]
 texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("3_6qeii")
 
-[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN/Back"]
+[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN/Back" unique_id=445658787]
 stream = ExtResource("13_ko47r")
 volume_db = 1.0
 
-[node name="Ready" type="HBoxContainer" parent="all_idk/Buttons_CN"]
+[node name="Ready" type="HBoxContainer" parent="all_idk/Buttons_CN" unique_id=1771743730]
 layout_mode = 2
 
-[node name="Ready_label" type="Label" parent="all_idk/Buttons_CN/Ready"]
+[node name="Ready_label" type="Label" parent="all_idk/Buttons_CN/Ready" unique_id=3764764]
 layout_mode = 2
 theme = ExtResource("4_uwdoj")
 theme_override_font_sizes/font_size = 60
@@ -310,19 +310,19 @@ text = "Ready"
 script = ExtResource("14_jtx3x")
 id = "Ready_"
 
-[node name="Seleccion" type="Sprite2D" parent="all_idk/Buttons_CN/Ready"]
+[node name="Seleccion" type="Sprite2D" parent="all_idk/Buttons_CN/Ready" unique_id=1941272902]
 texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("3_6qeii")
 
-[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN/Ready"]
+[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN/Ready" unique_id=1661470050]
 stream = ExtResource("13_ko47r")
 volume_db = 1.0
 
-[node name="Mouse_Custom" parent="." instance=ExtResource("9_dn2t3")]
+[node name="Mouse_Custom" parent="." unique_id=982483190 instance=ExtResource("9_dn2t3")]
 menu = true
 
-[node name="Transicion" type="Sprite2D" parent="."]
+[node name="Transicion" type="Sprite2D" parent="." unique_id=1299240598]
 texture = ExtResource("1_38h6d")
 
 [connection signal="timeout" from="all_idk/selection/Bonnie/Timer" to="all_idk/selection/Bonnie" method="_on_timer_timeout"]

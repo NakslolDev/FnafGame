@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cumryt3pxo2wv"]
 
-[ext_resource type="Script" uid="uid://de7uh84b4365x" path="res://Escenas/Shift/Player/character_minigame.gd" id="1_5ryae"]
-[ext_resource type="Script" uid="uid://cfxrs5edynyr" path="res://Escenas/Shift/Player/skins.gd" id="2_10j8s"]
-[ext_resource type="Script" uid="uid://b7iv4c1uc27g7" path="res://Escenas/Shift/Player/legs.gd" id="4_10j8s"]
-[ext_resource type="Texture2D" uid="uid://dp13mjs62dded" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
+[ext_resource type="Script" uid="uid://de7uh84b4365x" path="res://escenas/Shift/Player/character_minigame.gd" id="1_5ryae"]
+[ext_resource type="Script" uid="uid://cfxrs5edynyr" path="res://escenas/Shift/Player/skins.gd" id="2_10j8s"]
+[ext_resource type="Script" uid="uid://b7iv4c1uc27g7" path="res://escenas/Shift/Player/legs.gd" id="4_10j8s"]
+[ext_resource type="Texture2D" uid="uid://drveqxiljlmpt" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10j8s"]
 size = Vector2(12, 6)
@@ -175,33 +175,33 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Character_Minigame" type="CharacterBody2D"]
+[node name="Character_Minigame" type="CharacterBody2D" unique_id=2075604743]
 texture_filter = 1
 script = ExtResource("1_5ryae")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=417798725]
 shape = SubResource("RectangleShape2D_10j8s")
 
-[node name="Skins" type="Node2D" parent="." node_paths=PackedStringArray("root", "animation")]
+[node name="Skins" type="Node2D" parent="." unique_id=1936935563 node_paths=PackedStringArray("root", "animation")]
 position = Vector2(0, -5)
 script = ExtResource("2_10j8s")
 root = NodePath("..")
 animation = NodePath("Unnamed_Guard")
 
-[node name="Unnamed_Guard" type="AnimatedSprite2D" parent="Skins"]
+[node name="Unnamed_Guard" type="AnimatedSprite2D" parent="Skins" unique_id=669519696]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_cpux7")
 animation = &"F"
 frame_progress = 0.660151
 
-[node name="Legs" type="Node2D" parent="."]
+[node name="Legs" type="Node2D" parent="." unique_id=2032418714]
 position = Vector2(0, -5)
 script = ExtResource("4_10j8s")
 
-[node name="Timer" type="Timer" parent="Legs"]
+[node name="Timer" type="Timer" parent="Legs" unique_id=880649715]
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=89072915]
 position = Vector2(0, -5)
 enabled = false
 zoom = Vector2(4, 4)

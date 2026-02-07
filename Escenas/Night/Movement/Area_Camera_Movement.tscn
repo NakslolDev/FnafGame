@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cydpwtyfo5jlj"]
 
-[ext_resource type="Script" uid="uid://domv87h8mbo40" path="res://Escenas/Night/Movement/area_camera_movement.gd" id="1_ceg3y"]
+[ext_resource type="Script" uid="uid://domv87h8mbo40" path="res://escenas/Night/Movement/area_camera_movement.gd" id="1_ceg3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghe2a"]
 size = Vector2(320, 1080)
