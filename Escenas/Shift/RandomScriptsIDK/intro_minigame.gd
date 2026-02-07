@@ -7,6 +7,8 @@ extends Node2D
 
 var entering_trans := true
 
+var fading_out := false
+
 const duration := 3.0
 
 signal done
@@ -60,7 +62,7 @@ func exit():
 
 func start_fade():
 	
-	print("HELOOO: ", entering_trans)
+	fading_out = true
 	
 	var tween := create_tween()
 	
@@ -69,7 +71,10 @@ func start_fade():
 		emit_signal("done")
 	)
 	tween.tween_property(self, "modulate:a", 0.0, duration*0.3)
-
+	tween.tween_callback(func():
+		fading_out = false
+		entering_trans = false
+	)
 
 func out():
 	root.transitioning = true
@@ -87,7 +92,7 @@ func out():
 	)
 
 func _input(event: InputEvent) -> void:
-	if not entering_trans:
+	if not entering_trans or fading_out:
 		return
 	if event.is_action_pressed("Click") or event.is_action_pressed("interact"):
 		entering_trans = false
