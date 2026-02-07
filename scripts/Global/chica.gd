@@ -42,14 +42,15 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 	if AI_level == 0  or position == "office":  # Si está desactivado o si ya está en la oficina, no se va a mover...
 		return
 	
-	if door_closed:
-		door_closed_log = true # Guarda la información
-	elif door_closed_log == true: # Solo se activa el primer tick después de que abrir la puerta.
-		@warning_ignore("integer_division")
-		if tick_count > 0 + (AI_level / 2): # Si está a punto de moverse, te deja un poco más de tiempo.
+	if position == "PD":
+		if door_closed:
+			door_closed_log = true # Guarda la información
+		elif door_closed_log == true: # Solo se activa el primer tick después de que abrir la puerta.
 			@warning_ignore("integer_division")
-			tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
-		door_closed_log = false
+			if tick_count > 0 + (AI_level / 2): # Si está a punto de moverse, te deja un poco más de tiempo.
+				@warning_ignore("integer_division")
+				tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
+			door_closed_log = false
 	
 	
 	if position == "PD": # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.

@@ -8,6 +8,7 @@ var gotcha := 0
 var lock_movement := false
 var next_room: String # esta variable determina a que habitacion intentará ir
 var door_fail_count := 0
+var flashlight_stunt := 0
 
 #63 posiciones posibles... (segun chat gpt)
 #map -> positions per room (0 = s, so I can int)
@@ -37,7 +38,7 @@ var door_I_closed_log := false
 var door_D_closed := false
 var door_D_closed_log := false
 
-var duct_heater := {
+var duct_heater := { # el valor real de los ductos
 	"1": false,
 	"2": false,
 	"3": false,
@@ -48,7 +49,7 @@ var duct_heater := {
 	"8": false,
 }
 
-var duct_heater_memory := {
+var duct_heater_memory := { # lo que utiliza foxy para decidir
 	"1":  {"on": false, "time": 0},
 	"2":  {"on": false, "time": 0},
 	"3":  {"on": false, "time": 0},
@@ -115,40 +116,46 @@ func reset():
 	door_D_closed_log = false
 
 
-func tick():
+func tick(): # Cada tick (5 veces por segundo)
 	
 	if AI_level == 0 or room == "office": # si ya estña en la oficina, no se va a mover...
 		return
 	
-	if door_I_closed:
-		door_I_closed_log = true
-	else:
-		if door_I_closed_log == true: # resetea los ticks
+	if room == "lhall" and position == 0: # este tiempo extra solo devería ocurrir si ya está de por sí en la puerta
+		if door_I_closed:
+			door_I_closed_log = true # Guarda la información
+		elif door_I_closed_log: # Solo se activa el primer tick después de que abrir la puerta.
 			@warning_ignore("integer_division")
-			tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
+			if tick_count > 0 + (AI_level / 2): # Si está a punto de moverse, te deja un poco más de tiempo.
+				@warning_ignore("integer_division")
+				tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
 			door_I_closed_log = false
 	
-	if door_D_closed:
-		door_D_closed_log = true
-	else:
-		if door_D_closed_log == true: # resetea los ticks
+	if room == "lhall" and position == 0: # este tiempo extra solo devería ocurrir si ya está de por sí en la puerta
+		if door_D_closed:
+			door_D_closed_log = true # Guarda la información
+		elif door_D_closed_log: # Solo se activa el primer tick después de que abrir la puerta.
 			@warning_ignore("integer_division")
-			tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
+			if tick_count > 0 + (AI_level / 2): # Si está a punto de moverse, te deja un poco más de tiempo.
+				@warning_ignore("integer_division")
+				tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
 			door_D_closed_log = false
 	
-	if gotcha > 0:
+	if gotcha > 0: # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.
 		if room == "lhall" and position == 0:
-			if soft_focus_I or door_I_closed:
+			if soft_focus_I or door_I_closed: # Si le estás mirando con la linterna (por las camaras no se ve...) o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
 				print_rich("[color=B5623F]GOTCHA!")
 		elif room == "rhall" and position == 0:
 			if soft_focus_D or door_D_closed:
 				gotcha = 0
 				print_rich("[color=B5623F]GOTCHA!")
-		else:
+		else: # Gotcha solo devería ser != 0 en la puerta
 			gotcha = 0
+	elif gotcha < 0:
+		gotcha = 0	
 	
-	var tick_count_limit: int
+	var tick_count_limit: int # Declara el límite al que tiene que llegar tick count limit antes de moverse
 	
 	if position == 0 and (room.begins_with("Duc") or room.ends_with("hall")):
 		if (room == "rhall" and hard_focus_D) or (room == "lhall" and hard_focus_I) or (room == "Duc8" and hard_focus_DB) or (room == "Duc5" and hard_focus_DF):
@@ -161,6 +168,7 @@ func tick():
 	elif room.begins_with("Duc") and duct_heater[room.substr(3)]: # no uso duct_heater_memory porque no se actualiza lo suficientemente rápido.
 		tick_count_limit = 5 # esto hace que si le das con el heater a foxy siempre salga rapido
 		tick_focus_count = 0
+		flashlight_stunt = 0 # no se queda quieto si activas el heater
 	elif room.begins_with("Duc"):
 		tick_count_limit = 25 - AI_level # foxy se mueve más rapido cuanta + AI, pues en los ductos siempre acierta el movimiento
 		tick_focus_count = 0
@@ -177,28 +185,26 @@ func tick():
 		animacion_go_back = true
 	
 	tick_count += 1
+	
 	if tick_count >= tick_count_limit:
 		tick_count = 0
-		movement_oportunity(Global.noche, AI_level)
+		movement_oportunity()
 
 
-func movement_oportunity(_night, AI):
+func movement_oportunity():
+	
+	if flashlight_stunt > 0: # no se puede mover por tres movimientos después de hecharlo hacia atras con la linterna
+		flashlight_stunt -= 1
+		return
 	
 	var movement_hit := false
 	var rand_MO
-	
-	for i in range(1,9): # del 1 al 8
-		if duct_heater_memory[str(i)]["on"]: # controlo la memoria de foxy. Cuando se haya movido 5 veces, se olvida
-			duct_heater_memory[str(i)]["time"] += 1
-		if duct_heater_memory[str(i)]["time"] == 7:
-			duct_heater_memory[str(i)]["time"] = 0
-			duct_heater_memory[str(i)]["on"] = false
 	
 	if room.begins_with("Duc"):
 		movement_hit = true
 	else:
 		rand_MO = randi_range(0, 20)
-		if AI > rand_MO:
+		if AI_level > rand_MO:
 			movement_hit = true
 		
 		if room.ends_with("hall") and position == 0:
@@ -226,40 +232,38 @@ func movement_oportunity(_night, AI):
 				lock_movement = false
 	
 	if movement_hit:
-		move(AI)
+		move()
 	else:
 		print_rich("[color=FA8150]Foxy movement no: from ", position, " in ", room)
 
 
-func move(AI, skip_decision := false): # esta funcion va a ser increiblemente larga... Voy a separarla en otras funciones dependiendo de la havitacion
+# skip decision lo utilizo cuando bonnie o chica lo expulsan, pues en esa funcion uso otro decide que obliga a no ir a las puertas
+func move(skip_decision := false): # esta funcion va a ser increiblemente larga... Voy a separarla en otras funciones dependiendo de la habitacion
 	
 	var soft_focus := false
 	last_position = position
 	last_room = room
 	
 	if not skip_decision:
-		decide_next_room(false, true, AI)
+		decide_next_room(true) # el true es de check, que es para que solo cambie si cambia la memoria de ducts
 	
 	if next_room == "office" and ((room == "rhall" and position != 0 and soft_focus_D) or (room == "lhall" and position != 0 and soft_focus_I) or (room == "Duc8" and position == 4 and soft_focus_DB) or (room == "Duc5" and position == 3 and soft_focus_DF)):
 		soft_focus = true
 	else:
-		call("move_" + room, AI)
+		call("move_" + room)
 	
 	if (room == "rhall" or room == "lhall") and position == 0:
 		gotcha = 2
 	
 	if soft_focus:
 		print_rich("[color=FA8150]Foxy soft focus: from ", position, " in ", room)
-	elif position == last_position and room == last_room and not (room == "pas" and position == 0):
-		print_rich("[color=FA8150]Foxy dead end: from ", position, " in ", room)
-		decide_next_room(true, false, AI)
-		# aqui puedo decidir si volver a mover o que se quede ahi...
-	else:
-		print_rich("[color=FA8150]Foxy movement: to ", position, " in ", room, " from ", last_position, " in ", last_room)
-		emit_signal("movement", position, room, last_position, last_room)
-		if room != last_room and not room == "office": # si cambia de habitacion y no es a office, que en office no hay funcion
-			true_last_room = last_room
-			decide_next_room(false, false, AI)
+		return
+	
+	print_rich("[color=FA8150]Foxy movement: to ", position, " in ", room, " from ", last_position, " in ", last_room)
+	emit_signal("movement", position, room, last_position, last_room)
+	if room != last_room and not room == "office": # si cambia de habitacion y no es a office, que en office no hay funcion
+		true_last_room = last_room
+		decide_next_room()
 
 func move_back_to():
 	
@@ -271,14 +275,16 @@ func move_back_to():
 			position = 2
 		else:
 			position = 4
+		flashlight_stunt = 3
 	elif room == "Duc8":
 		if randi_range(0, 1) == 0:
 			position = 3
 		else:
 			position = 5
+		flashlight_stunt = 3
 	elif room == "lhall" or room == "rhall":
 		position = 2
-		next_room = "0" # recalcule
+		next_room = "0" # para que recalcule
 	
 	print_rich("[color=FA8150]Foxy found my flashlight : from ", position, " in ", room)
 	emit_signal("movement", position, room, last_position, last_room)
@@ -290,13 +296,13 @@ func move_back_to():
 
 func movement_bonnie(to, _a = null):
 	if room == "lhall" and position == 0 and to == "PI":
-		decide_lhall(false, AI_level, true)
-		move(AI_level, true)
+		decide_lhall(false, true)
+		move(true)
 
 func movement_chica(to, _a = null):
 	if room == "rhall" and position == 0 and to == "PD":
-		decide_rhall(false, AI_level, true)
-		move(AI_level, true)
+		decide_rhall(false, true)
+		move(true)
 
 func energy_breakdown():
 	
@@ -314,20 +320,54 @@ func energy_breakdown():
 			change = true
 	
 	if change:
-		decide_next_room(false, false, AI_level)
+		decide_next_room()
 
-func decide_next_room(dead_end: bool, check: bool, AI): # si no hay un dead end, no puede volver a la habitacion anteriorcall("decide_" + room, dead_end, AI)
+
+# check es: solo cambia de decisión si ves un ducto que ha cambiado
+func decide_next_room(check: bool = false): # si no hay un dead end, no puede volver a la habitacion anterior
 	
 	var duct_act := false
+	var dead_end := false
 	
-	print_rich("[color=B5623F]Foxy will think: check ", check, " and dead_end ", dead_end)
+	print_rich("[color=B5623F]Foxy will think... just check: ", check)
+	
+	duct_act = check_ducts()
+	
+	if (room == "lhall" and position == 0) or (room == "rhall" and position == 0): # es necesario que haga un checkeo antes de intentar entrar para ver si las puertas estan cerradas o abiertas
+		duct_act = true
+	
+	if next_room.begins_with("Duc") and duct_heater_memory[next_room.substr(3)]["on"]:
+		dead_end = true
+		print_rich("[color=cb5a29]Foxy found a dead end: from ", position, " in ", room)
+	
+	if (check and duct_act) or not check or next_room == "0":
+		call("decide_" + room, dead_end)
+		print_rich("[color=cb5a29]Foxy will go to ", next_room, " knowing last room was ", true_last_room)
+		print_rich("[color=B5623F]--- Estado de duct_heater_memory ---")
+		for key in duct_heater_memory.keys():
+			var data = duct_heater_memory[key]
+			var estado = str(data["on"])
+			var tiempo = str(data["time"])
+			print_rich("[color=B5623F]Ducto " + key + " → on: " + estado + ", time: " + tiempo + "[/color]")
+
+func check_ducts() -> bool:
+	
+	var duct_act: bool = false
+	
+	for i in range(1,9): # del 1 al 8
+		if duct_heater_memory[str(i)]["on"]:
+			duct_heater_memory[str(i)]["time"] += 1
+		if duct_heater_memory[str(i)]["time"] == 3:
+			duct_heater_memory[str(i)]["time"] = 0
+			duct_heater_memory[str(i)]["on"] = false
+			print_rich("[color=B5623F]Foxy forgot the duct ", i)
 	
 	if (room == "main" and position == 1) or (room == "arcade" and position == 1) or room == "Duc1":
 		duct_heater_memory["1"]["time"] = 0 # como esto solo comprueva el tiempo que ha pasado desde que sabe que está activo, puedo resetearlo siempre
 		if duct_heater_memory["1"]["on"] != duct_heater["1"]:
 			duct_heater_memory["1"]["on"] = duct_heater["1"]
 			duct_act = true
-	if (room == "acrade" and position == 1) or (room == "arcade" and position == 2) or (room == "arcade" and position == 3) or room == "Duc2":
+	if (room == "arcade" and position == 1) or (room == "arcade" and position == 2) or (room == "arcade" and position == 4) or room == "Duc2":
 		duct_heater_memory["2"]["time"] = 0
 		if duct_heater_memory["2"]["on"] != duct_heater["2"]:
 			duct_heater_memory["2"]["on"] = duct_heater["2"]
@@ -337,7 +377,7 @@ func decide_next_room(dead_end: bool, check: bool, AI): # si no hay un dead end,
 		if duct_heater_memory["3"]["on"] != duct_heater["3"]:
 			duct_heater_memory["3"]["on"] = duct_heater["3"]
 			duct_act = true
-	if (room == "main" and position == 4) or (room == "kitchn" and position == 1) or (room == "pas" and position == 2) or room == "Duc4":
+	if (room == "main" and position == 4) or (room == "kitchen" and position == 1) or (room == "pas" and position == 2) or room == "Duc4":
 		duct_heater_memory["4"]["time"] = 0
 		if duct_heater_memory["4"]["on"] != duct_heater["4"]:
 			duct_heater_memory["4"]["on"] = duct_heater["4"]
@@ -362,30 +402,18 @@ func decide_next_room(dead_end: bool, check: bool, AI): # si no hay un dead end,
 		if duct_heater_memory["8"]["on"] != duct_heater["8"]:
 			duct_heater_memory["8"]["on"] = duct_heater["8"]
 			duct_act = true
-	if (room == "lhall" and position == 0) or (room == "rhall" and position == 0): # es necesario que haga un checkeo antes de intentar entrar para ver si las puertas estan cerradas o abiertas
-		duct_act = true
-	
-	if (check and duct_act) or not check or next_room == "0":
-		call("decide_" + room, dead_end, AI)
-		print_rich("[color=B5623F]Foxy will go to ", next_room, " knowing last room was ", true_last_room)
-		print_rich("[color=B5623F] Checkeo: ", check)
-		print_rich("[color=B5623F]--- Estado de duct_heater_memory ---")
-		for key in duct_heater_memory.keys():
-			var data = duct_heater_memory[key]
-			var estado = str(data["on"])
-			var tiempo = str(data["time"])
-			print_rich("[color=B5623F]Ducto " + key + " → on: " + estado + ", time: " + tiempo + "[/color]")
+		
+	print_rich("[color=B5623F]Did foxy learn something new?: ", duct_act)
+	return duct_act
 
 
-func decide_main(dead_end, _AI):
+func decide_main(dead_end):
 	
 	if position == 1: # sigue un sistema de prioridad en el que va del mejor al peor. Este orden lo elijo yo, dependiendo de la distancia y el camino.
 		if ((true_last_room == "Duc3" and dead_end) or true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
 			next_room = "Duc3"
-		elif (((true_last_room == "Duc1" or true_last_room == "arcade") and dead_end) or (true_last_room != "Duc1" and true_last_room != "arcade")) and not duct_heater_memory["1"]["on"]:
+		elif ((true_last_room == "Duc1" and dead_end) or true_last_room != "Duc1") and not duct_heater_memory["1"]["on"]:
 			next_room = "Duc1"
-		elif (((true_last_room == "Duc1" or true_last_room == "arcade") and dead_end) or (true_last_room != "Duc1" and true_last_room != "arcade")):
-			next_room = "arcade"
 		elif ((true_last_room == "Duc4" and dead_end) or true_last_room != "Duc4") and not duct_heater_memory["4"]["on"]:
 			next_room = "Duc4"
 		else:
@@ -396,10 +424,8 @@ func decide_main(dead_end, _AI):
 			next_room = "Duc3"
 		elif ((true_last_room == "Duc4" and dead_end) or true_last_room != "Duc4") and not duct_heater_memory["4"]["on"]:
 			next_room = "Duc4"
-		elif (((true_last_room == "Duc1" or true_last_room == "arcade") and dead_end) or (true_last_room != "Duc1" and true_last_room != "arcade")) and not duct_heater_memory["1"]["on"]:
+		elif ((true_last_room == "Duc1" and dead_end) or true_last_room != "Duc1") and not duct_heater_memory["1"]["on"]:
 			next_room = "Duc1"
-		elif (((true_last_room == "Duc1" or true_last_room == "arcade") and dead_end) or (true_last_room != "Duc1" and true_last_room != "arcade")):
-			next_room = "arcade"
 		else:
 			next_room = "entrance"
 	
@@ -414,15 +440,9 @@ func decide_main(dead_end, _AI):
 			next_room = "Duc3"
 		elif true_last_room != "Duc4" and not duct_heater_memory["4"]["on"]:
 			next_room = "Duc4"
-		elif (true_last_room == "Duc1" or true_last_room == "arcade") and true_last_room != "entrance" and not duct_heater_memory["6"]["on"]:
-			var rand_go_to = randi_range(0, 1)
-			if rand_go_to == 0:
-				next_room = "arcade"
-			else:
-				next_room = "entrance"
-		elif true_last_room == "Duc1" or true_last_room == "arcade":
-			next_room = "arcade"
-		elif true_last_room != "entrance" and not duct_heater_memory["6"]["on"]:
+		elif true_last_room != "Duc1" and not duct_heater_memory["1"]["on"]:
+			next_room = "Duc1"
+		else:
 			next_room = "entrance"
 	
 	if position == 4:
@@ -432,10 +452,8 @@ func decide_main(dead_end, _AI):
 			next_room = "Duc3"
 		elif ((true_last_room == "entrance" and dead_end) or true_last_room != "entrance") and not duct_heater_memory["6"]["on"]:
 			next_room = "entrance"
-		elif (((true_last_room == "Duc1" or true_last_room == "arcade") and dead_end) or (true_last_room != "Duc1" and true_last_room != "arcade")) and not duct_heater_memory["1"]["on"]:
-			next_room = "Duc1"
 		else:
-			next_room = "arcade"
+			next_room = "Duc1"
 	
 	if position == 5:
 		if ((true_last_room == "Duc4" and dead_end) or true_last_room != "Duc4") and not duct_heater_memory["4"]["on"]:
@@ -444,42 +462,40 @@ func decide_main(dead_end, _AI):
 			next_room = "entrance"
 		elif ((true_last_room == "Duc3" and dead_end) or true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
 			next_room = "Duc3"
-		elif (((true_last_room == "Duc1" or true_last_room == "arcade") and dead_end) or (true_last_room != "Duc1" and true_last_room != "arcade")) and not duct_heater_memory["1"]["on"]:
-			next_room = "Duc1"
 		else:
-			next_room = "arcade"
+			next_room = "Duc1"
 
-func decide_arcade(dead_end, _AI): # Hay casos en los que 2 camions son buenos. Entonces, escojera dependiendo de si hay algun camino cerrado. Si no, a suertes
+func decide_arcade(dead_end):
 	
 	if position == 1 or position == 2: # el camino a escojer es el mismo
 		if not duct_heater_memory["2"]["on"]:
 			next_room = "Duc2"
 		elif ((true_last_room == "Duc7" and dead_end) or true_last_room != "Duc7") and not duct_heater_memory["7"]["on"]:
 			next_room = "Duc7"
-		elif not duct_heater_memory["3"]["on"]:
+		elif ((true_last_room == "Duc3" and dead_end) or true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
 			next_room = "Duc3"
 		else:
-			next_room = "main"
+			next_room = "Duc1"
 	
 	if position == 3:
 		if ((true_last_room == "Duc3" and dead_end) or true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
 			next_room = "Duc3"
-		elif not duct_heater_memory["7"]["on"]:
+		elif ((true_last_room == "Duc7" and dead_end) or true_last_room != "Duc7") and not duct_heater_memory["7"]["on"]:
 			next_room = "Duc7"
 		else:
-			next_room = "main"
+			next_room = "Duc1"
 	
 	if position == 4:
 		if ((true_last_room == "Duc7" and dead_end) or true_last_room != "Duc7") and not duct_heater_memory["7"]["on"]:
 			next_room = "Duc7"
-		elif not duct_heater_memory["3"]["on"]:
+		elif ((true_last_room == "Duc3" and dead_end) or true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
 			next_room = "Duc3"
 		else:
-			next_room = "main"
+			next_room = "Duc1"
 
-func decide_pas(dead_end, _AI):
+func decide_pas(dead_end): # esta es la más compleja, pues es la única en la que realmente hay varias decisiones igual de buenas
 	
-	if position == 0:
+	if position == 0: # se que... pero bueno
 		if true_last_room != "Duc3" and not duct_heater_memory["3"]["on"] and true_last_room != "Duc4" and not duct_heater_memory["4"]["on"] and true_last_room != "Duc5" and not duct_heater_memory["5"]["on"]:
 			var rand_go_to = randi_range(0, 5)
 			if rand_go_to == 0:
@@ -488,11 +504,17 @@ func decide_pas(dead_end, _AI):
 				next_room = "Duc4"
 			else:
 				next_room = "Duc5"
-		elif true_last_room != "Duc5" and not duct_heater_memory["5"]["on"]:
+		elif (true_last_room != "Duc5") and not duct_heater_memory["5"]["on"]:
 			next_room = "Duc5"
-		elif true_last_room != "Duc3" and not duct_heater_memory["3"]["on"]:
+		elif (true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
 			next_room = "Duc3"
-		elif true_last_room != "Duc4" and not duct_heater_memory["4"]["on"]:
+		elif (true_last_room != "Duc4") and not duct_heater_memory["4"]["on"]:
+			next_room = "Duc4"
+		elif (true_last_room != "Duc5" or dead_end) and not duct_heater_memory["5"]["on"]:
+			next_room = "Duc5"
+		elif (true_last_room != "Duc3" or dead_end) and not duct_heater_memory["3"]["on"]:
+			next_room = "Duc3"
+		elif (true_last_room != "Duc4" or dead_end) and not duct_heater_memory["4"]["on"]:
 			next_room = "Duc4"
 		else: 
 			next_room = "0"
@@ -508,9 +530,13 @@ func decide_pas(dead_end, _AI):
 					next_room = "Duc3"
 				else:
 					next_room = "Duc4"
-			elif true_last_room != "Duc3" and not duct_heater_memory["3"]["on"]:
+			elif (true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
 				next_room = "Duc3"
-			elif true_last_room != "Duc4" and not duct_heater_memory["4"]["on"]:
+			elif (true_last_room != "Duc4") and not duct_heater_memory["4"]["on"]:
+				next_room = "Duc4"
+			elif (true_last_room != "Duc3" or dead_end) and not duct_heater_memory["3"]["on"]:
+				next_room = "Duc3"
+			elif (true_last_room != "Duc4" or dead_end) and not duct_heater_memory["4"]["on"]:
 				next_room = "Duc4"
 			else: 
 				next_room = "0"
@@ -525,9 +551,13 @@ func decide_pas(dead_end, _AI):
 					next_room = "Duc3"
 				else:
 					next_room = "Duc5"
-			elif true_last_room != "Duc3" and not duct_heater_memory["3"]["on"]:
+			elif (true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
 				next_room = "Duc3"
-			elif true_last_room != "Duc5" and not duct_heater_memory["5"]["on"]:
+			elif (true_last_room != "Duc5") and not duct_heater_memory["5"]["on"]:
+				next_room = "Duc5"
+			elif (true_last_room != "Duc3" or dead_end) and not duct_heater_memory["3"]["on"]:
+				next_room = "Duc3"
+			elif (true_last_room != "Duc5" or dead_end) and not duct_heater_memory["5"]["on"]:
 				next_room = "Duc5"
 			else: 
 				next_room = "0"
@@ -542,21 +572,25 @@ func decide_pas(dead_end, _AI):
 					next_room = "Duc4"
 				else:
 					next_room = "Duc5"
-			elif true_last_room != "Duc4" and not duct_heater_memory["4"]["on"]:
+			elif (true_last_room != "Duc4") and not duct_heater_memory["4"]["on"]:
 				next_room = "Duc4"
-			elif true_last_room != "Duc5" and not duct_heater_memory["5"]["on"]:
+			elif (true_last_room != "Duc5") and not duct_heater_memory["5"]["on"]:
+				next_room = "Duc5"
+			elif (true_last_room != "Duc4" or dead_end) and not duct_heater_memory["4"]["on"]:
+				next_room = "Duc4"
+			elif (true_last_room != "Duc5" or dead_end) and not duct_heater_memory["5"]["on"]:
 				next_room = "Duc5"
 			else: 
 				next_room = "0"
 
-func decide_entrance(dead_end, _AI): # por fin una sencillita
+func decide_entrance(dead_end): # por fin una sencillita
 	
 	if ((true_last_room == "Duc6" and dead_end) or true_last_room != "Duc6") and not duct_heater_memory["6"]["on"]:
 		next_room = "Duc6"
 	else:
 		next_room = "main"
 
-func decide_kitchen(dead_end, _AI):
+func decide_kitchen(dead_end):
 	
 	if ((true_last_room == "Duc6" and dead_end) or true_last_room != "Duc6") and not duct_heater_memory["6"]["on"]:
 		next_room = "Duc6"
@@ -565,7 +599,7 @@ func decide_kitchen(dead_end, _AI):
 	else:
 		next_room = "0"
 
-func decide_almacen(dead_end, _AI): # aunque hay 2 posiciones posibles, siempre intentará ir a Duc8
+func decide_almacen(dead_end): # aunque hay 2 posiciones posibles, siempre intentará ir a Duc8
 	
 	if ((true_last_room == "Duc8" and dead_end) or true_last_room != "Duc8") and not duct_heater_memory["8"]["on"]:
 		next_room = "Duc8"
@@ -574,7 +608,7 @@ func decide_almacen(dead_end, _AI): # aunque hay 2 posiciones posibles, siempre 
 	else:
 		next_room = "0"
 
-func decide_closet(dead_end, _AI):
+func decide_closet(dead_end):
 	
 	if ((true_last_room == "Duc8" and dead_end) or true_last_room != "Duc8") and not duct_heater_memory["8"]["on"]:
 		next_room = "Duc8"
@@ -583,14 +617,14 @@ func decide_closet(dead_end, _AI):
 	else:
 		next_room = "0"
 
-func decide_lhall(dead_end, _AI, bonnie := false):
+func decide_lhall(dead_end, bonnie := false):
 	
 	if position == 0:
 		if not door_I_closed and not bonnie:
 			next_room = "office"
 		elif true_last_room != "Duc5" and not duct_heater_memory["5"]["on"]: # 50 % de probabilidades de pasar por position 0 y atacar por la puerta
 			next_room = "Duc5"
-		elif not duct_heater_memory["5"]["on"]:
+		elif not duct_heater_memory["8"]["on"]:
 			next_room = "Duc8"
 		elif not duct_heater_memory["5"]["on"]:
 			next_room = "Duc5"
@@ -627,7 +661,7 @@ func decide_lhall(dead_end, _AI, bonnie := false):
 		else:
 			next_room = "Duc5"
 
-func decide_rhall(dead_end, _AI, chica := false): # exactamente igual que lhall
+func decide_rhall(dead_end, chica := false): # exactamente igual que lhall
 	
 	if position == 0:
 		if not door_D_closed and not chica:
@@ -671,7 +705,7 @@ func decide_rhall(dead_end, _AI, chica := false): # exactamente igual que lhall
 		else:
 			next_room = "Duc5"
 
-func decide_Duc1(_dead_end, _AI):
+func decide_Duc1(_dead_end):
 	
 	if duct_heater_memory["1"]["on"]:
 		if position == 1:
@@ -690,11 +724,11 @@ func decide_Duc1(_dead_end, _AI):
 		else:
 			next_room = "main"
 
-func decide_Duc2(_dead_end, _AI): # controlaré el salir antes o despues en move dependiendo del heater
+func decide_Duc2(_dead_end): # controlaré el salir antes o despues en move dependiendo del heater
 	
 	next_room = "arcade"
 
-func decide_Duc3(_dead_end, _AI):
+func decide_Duc3(_dead_end):
 	
 	if duct_heater_memory["3"]["on"]:
 		if position == 1:
@@ -717,7 +751,7 @@ func decide_Duc3(_dead_end, _AI):
 		else:
 			next_room = "pas"
 
-func decide_Duc4(_dead_end, _AI):
+func decide_Duc4(_dead_end):
 	
 	if duct_heater_memory["4"]["on"]:
 		if position == 1:
@@ -773,7 +807,7 @@ func decide_Duc5(_dead_end, AI):
 	else:
 		next_room = "office"
 
-func decide_Duc6(_dead_end, _AI):
+func decide_Duc6(_dead_end):
 	
 	if duct_heater_memory["6"]["on"]:
 		if position == 1:
@@ -794,7 +828,7 @@ func decide_Duc6(_dead_end, _AI):
 		else:
 			next_room = "almacen"
 
-func decide_Duc7(_dead_end, _AI):
+func decide_Duc7(_dead_end):
 	
 	if duct_heater_memory["7"]["on"]:
 		if position == 1:
@@ -808,7 +842,7 @@ func decide_Duc7(_dead_end, _AI):
 		else:
 			next_room = "arcade"
 
-func decide_Duc8(_dead_end, _AI):
+func decide_Duc8(_dead_end):
 	
 	if duct_heater_memory["8"]["on"]:
 		if position == 0:
@@ -832,9 +866,9 @@ func decide_Duc8(_dead_end, _AI):
 
 
 #room -> 0 (nowhere), main, arcade, pas, entrance, kitchen, almacen, closet, lhall, rhall, office
-func move_main(_AI):
+func move_main():
 	
-	if next_room == "arcade" or next_room == "Duc1":
+	if next_room == "Duc1":
 		if position > 1:
 			position -= 1
 		else:
@@ -869,10 +903,10 @@ func move_main(_AI):
 	else:
 		pass
 
-func move_arcade(_AI): # nunca va a ir a Duc1 desde arcade
+func move_arcade(): # nunca va a ir a Duc1 desde arcade # SI QUE VA A IR A DUC1 DESDE ARCADE QUE COJONES DIGO?????
 	
 	if next_room == "Duc2":
-		if position != 4:
+		if position != 3:
 			room = next_room
 			if position == 1:
 				position = 1
@@ -881,7 +915,7 @@ func move_arcade(_AI): # nunca va a ir a Duc1 desde arcade
 			else:
 				position = 5
 		else:
-			position -= 1
+			position += 1
 	
 	elif next_room == "Duc3":
 		if position < 3:
@@ -893,25 +927,28 @@ func move_arcade(_AI): # nunca va a ir a Duc1 desde arcade
 			position -= 1
 	
 	elif next_room == "Duc7":
-		if position < 4:
+		if position == 3 or position == 1:
 			position += 1
+		elif position == 2:
+			position = 4
 		elif position == 4:
 			room = next_room
 			position = 1
 	
-	elif next_room == "main":
-		if position > 2:
-			position = 2
-		elif position == 2:
-			position = 1
-		elif position == 1:
+	elif next_room == "Duc1":
+		if position == 1:
 			room = next_room
-			position = 1
+			position = 3
+		else:
+			if position == 4:
+				position = 2
+			else:
+				position -= 1
 	
 	else:
 		pass
 
-func move_pas(_AI):
+func move_pas():
 	
 	if next_room == "Duc3":
 		if position != 3:
@@ -937,7 +974,7 @@ func move_pas(_AI):
 	else:
 		pass
 
-func move_entrance(_AI):
+func move_entrance():
 	
 	if next_room == "main":
 		room = next_room
@@ -946,7 +983,7 @@ func move_entrance(_AI):
 		room = next_room
 		position = 1
 
-func move_kitchen(_AI):
+func move_kitchen():
 	
 	if next_room == "Duc6":
 		room = next_room
@@ -957,7 +994,7 @@ func move_kitchen(_AI):
 	else:
 		pass
 
-func move_almacen(_AI):
+func move_almacen():
 	
 	if next_room == "Duc8":
 		if position == 1:
@@ -974,7 +1011,7 @@ func move_almacen(_AI):
 	else:
 		pass
 
-func move_closet(_AI):
+func move_closet():
 	
 	if next_room == "Duc7":
 		room = next_room
@@ -985,7 +1022,7 @@ func move_closet(_AI):
 	else:
 		pass
 
-func move_lhall(_AI):
+func move_lhall():
 	
 	if next_room == "Duc8":
 		if position != 2:
@@ -1011,7 +1048,7 @@ func move_lhall(_AI):
 	else:
 		pass
 
-func move_rhall(_AI):
+func move_rhall():
 	
 	if next_room == "Duc8":
 		if position != 2:
@@ -1037,7 +1074,7 @@ func move_rhall(_AI):
 	else:
 		pass
 
-func move_Duc1(_AI):
+func move_Duc1():
 	
 	if next_room == "main":
 		if position != 1:
@@ -1052,7 +1089,7 @@ func move_Duc1(_AI):
 			room = next_room
 			position = 1
 
-func move_Duc2(_AI):
+func move_Duc2():
 	
 	if duct_heater_memory["2"]["on"]:
 		if position == 1:
@@ -1073,7 +1110,7 @@ func move_Duc2(_AI):
 			room = next_room
 			position = 4
 
-func move_Duc3(_AI):
+func move_Duc3():
 	
 	if next_room == "main":
 		if position > 3:
@@ -1096,7 +1133,7 @@ func move_Duc3(_AI):
 			room = next_room
 			position = 3
 
-func move_Duc4(_AI):
+func move_Duc4():
 	
 	if next_room == "main":
 		if position > 2:
@@ -1119,7 +1156,7 @@ func move_Duc4(_AI):
 			room = next_room
 			position = 2
 
-func move_Duc5(_AI):
+func move_Duc5():
 	
 	if next_room == "pas":
 		if position > 3:
@@ -1152,7 +1189,7 @@ func move_Duc5(_AI):
 			position = 0
 			lock_movement = true
 
-func move_Duc6(_AI):
+func move_Duc6():
 	
 	if next_room == "entrance":
 		if position != 1:
@@ -1175,7 +1212,7 @@ func move_Duc6(_AI):
 			room = next_room 
 			position = 1
 
-func move_Duc7(_AI):
+func move_Duc7():
 	
 	if next_room == "arcade":
 		if position != 1:
@@ -1190,7 +1227,7 @@ func move_Duc7(_AI):
 			room = next_room
 			position = 1
 
-func move_Duc8(_AI):
+func move_Duc8():
 	
 	if next_room == "rhall":
 		if position > 6:
