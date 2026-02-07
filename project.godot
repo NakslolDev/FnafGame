@@ -31,6 +31,7 @@ Chica="*res://scripts/Global/chica.gd"
 Freddy="*res://scripts/Global/freddy.gd"
 Foxy="*res://scripts/Global/foxy.gd"
 Items="*res://scripts/Global/items.gd"
+GlobalWorldEnvironment="*uid://c06jc4s8iwci4"
 
 [display]
 

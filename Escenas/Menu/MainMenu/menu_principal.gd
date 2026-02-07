@@ -3,7 +3,7 @@ extends Node2D
 var game_exist := false
 var noche_menu := 1
 
-@export var transicion := 3.0
+@export var transicion := 1.0
 var transicionando_out: bool
 var transicionando_in: bool
 

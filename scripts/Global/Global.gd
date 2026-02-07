@@ -226,9 +226,9 @@ func aply_screen_configuration():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	
+	GlobalWorldEnvironment.environment.adjustment_brightness = screen["brightness"]
 
-func _process(delta: float) -> void:
-	print(DisplayServer.window_get_mode())
 
 func guardar_partida(use_debug_game_state_istead_of_normal := false):
 	
@@ -588,6 +588,15 @@ func eliminar_progreso():
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 
+
+func existe_algo() -> bool:
+	var path_conf := user_root + configuration_rout
+	var path_game := user_root + partida_rout
+	var path_progress := user_root + progreso_rout
+	print(user_root)
+	return FileAccess.file_exists(path_conf) or FileAccess.file_exists(path_game) or FileAccess.file_exists(path_progress)
+
+
 #-misc
 
 func _asign_recursive_diccionary(dick_origin: Dictionary, dick_destiny: Dictionary): # Los diccionarios ya funcionan como referencia en GDscrip
@@ -743,6 +752,7 @@ var screen := {
 	"vsync": true,
 	"fps": 0,
 	"fullscreen": true,
+	"brightness": 1.0,
 }
 
 #---Variables Progreso---#
@@ -1176,6 +1186,10 @@ func _ready():
 	
 	await get_tree().create_timer(0.5).timeout #solucion cutre pero funciona
 	aply_screen_configuration()
+	
+	if not existe_algo():
+		escena_previa = "Menu_Principal"
+		get_tree().change_scene_to_file("res://escenas/Night/Enviroment/brightness_adjust.tscn")
 
 
 

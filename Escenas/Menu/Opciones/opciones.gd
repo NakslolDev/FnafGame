@@ -43,3 +43,8 @@ func _on_undo_pressed() -> void:
 func _on_reset_pressed() -> void:
 	Global.reset_configuration()
 	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar
+
+
+func _on_brightness_pressed() -> void:
+	Global.escena_previa = "Opciones"
+	GlobalWorldEnvironment.load_brightness_slider()
