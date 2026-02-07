@@ -189,19 +189,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Lights_Out" type="Node2D" parent="." unique_id=630175932]
+[node name="Lights" type="Node2D" parent="." unique_id=630175932 node_paths=PackedStringArray("oficina_lights_out_alpha", "irritating_light")]
 visible = false
 script = ExtResource("24_ao3mo")
+oficina_lights_out_alpha = NodePath("Oficina_lights_out_Alpha")
+irritating_light = NodePath("Irritating_light")
 
-[node name="Oficina_lights_out_Alpha" type="Sprite2D" parent="Lights_Out" unique_id=174580296]
+[node name="Oficina_lights_out_Alpha" type="Sprite2D" parent="Lights" unique_id=174580296]
 texture = ExtResource("25_0pxa1")
 
-[node name="Oficina_lights_out" type="Sprite2D" parent="Lights_Out" unique_id=616897827]
+[node name="Oficina_lights_out" type="Sprite2D" parent="Lights" unique_id=616897827]
 material = SubResource("ShaderMaterial_er7cc")
 texture = ExtResource("25_0pxa1")
 script = ExtResource("27_60v0j")
 
-[node name="Irritating_light" type="AudioStreamPlayer" parent="Lights_Out" unique_id=142042597]
+[node name="Irritating_light" type="AudioStreamPlayer" parent="Lights" unique_id=142042597]
 stream = ExtResource("28_imsbu")
 volume_db = 3.0
 bus = &"SFX"
@@ -403,7 +405,7 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Derecho" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Izquierdo" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Oficina_Detras" method="_on_linterna_linterna_activada_switch"]
-[connection signal="Linterna_Activada_Switch" from="Linterna" to="Lights_Out/Oficina_lights_out" method="_on_linterna_linterna_activada_switch"]
+[connection signal="Linterna_Activada_Switch" from="Linterna" to="Lights/Oficina_lights_out" method="_on_linterna_linterna_activada_switch"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Bonnie" to="." method="_on_jumpscare_bonnie_jumpscare_end"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Chica" to="." method="_on_jumpscare_chica_jumpscare_end"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Freddy" to="." method="_on_jumpscare_freddy_jumpscare_end"]
