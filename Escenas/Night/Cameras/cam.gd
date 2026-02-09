@@ -4,6 +4,8 @@ var timer_active := false
 var girar_izquierda := false
 @export var velocidad: float
 signal cam_act(freddy: bool, local_from: int, local_to: int, local_extra: int, alucinations: bool)
+@export var cameras: Array[Node2D]
+
 
 func _ready():
 	Freddy.connect("movement", Callable(self, "movement_freddy"))

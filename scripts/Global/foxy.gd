@@ -774,7 +774,7 @@ func decide_Duc4(_dead_end):
 		else:
 			next_room = "pas"
 
-func decide_Duc5(_dead_end, AI):
+func decide_Duc5(_dead_end):
 	
 	if duct_heater_memory["5"]["on"]: # dependiendo del nivel de AI, será más facil echarle a pas
 		if position == 0:
@@ -785,7 +785,7 @@ func decide_Duc5(_dead_end, AI):
 		if position == 2:
 			var rand_go_to_pas: int
 			rand_go_to_pas = randi_range(0, 20) # esto hace más sencillo hechar a foxy a pas
-			if AI > rand_go_to_pas:
+			if AI_level > rand_go_to_pas:
 				next_room = "lhall"
 			else:
 				next_room = "lhall"
@@ -796,7 +796,7 @@ func decide_Duc5(_dead_end, AI):
 		if position == 4: 
 			var rand_go_to_pas: int
 			rand_go_to_pas = randi_range(0, 20) # esto hace más sencillo hechar a foxy a pas
-			if AI > rand_go_to_pas:
+			if AI_level > rand_go_to_pas:
 				next_room = "rhall"
 			else:
 				next_room = "rhall"

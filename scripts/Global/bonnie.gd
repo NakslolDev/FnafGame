@@ -1,5 +1,21 @@
 extends Node
 
+#Constants (or other things). You can tweek these
+const GENERAL_TICK_LIMIT := 40 # la cantidad de ticks para un oportunity movement
+const DOOR_TICK_LIMIT := 20
+const UA_TICK_LIMIT := 1
+
+const MAXIMUM_FAILS_WHEN_DOOR_OPEN := 3
+const MAXIMUM_FAILS_WHEN_DOOR_CLOSED := 8
+
+const AI_LIMIT_FOR_EXTRA_BLOCKS_WHEN_NOT_SEEN := 10 # cuando está en la puerta, pero no le has visto, bloquea su movimiento más veces...
+const EXTRA_BLOCKS_WHEN_NOT_SEEN_UNDER_LIMIT := 2
+const EXTRA_BLOCKS_WHEN_NOT_SEEN_OVER_LIMIT := 1
+
+#Constants. You canNOT tweek these
+const LEFT_DOOR_CAM := 11
+
+
 #AI variables
 var AI_level: int # Indica el nivel. No necesita reset, pues se asigna en global automaticamente.
 var tick_count := 0 # cuenta los ticks que han pasado. Si llega a tick count limit (se decide en la propia funcion tick dependiendo de la situación), se vuelve 0 e intetará moverse
@@ -44,14 +60,14 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 			door_closed_log = true # Guarda la información
 		elif door_closed_log: # Solo se activa el primer tick después de que abrir la puerta.
 			@warning_ignore("integer_division")
-			if tick_count > 0 + (AI_level / 2): # Si está a punto de moverse, te deja un poco más de tiempo.
+			if tick_count > (AI_level / 2): # Si está a punto de moverse, te deja un poco más de tiempo.
 				@warning_ignore("integer_division")
-				tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
+				tick_count = (AI_level / 2) # en niveles altos te deja 1 segundo
 			door_closed_log = false
 	
 	if gotcha > 0: # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.
 		if position == "PI":
-			if door_soft_focus or (camara == 11 and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
+			if door_soft_focus or (camara == LEFT_DOOR_CAM and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
 				print_rich("[color=cyan]GOTCHA!")
 		else: # Gotcha solo devería ser != 0 en la puerta
@@ -60,11 +76,11 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 	var tick_count_limit: int # Declara el límite al que tiene que llegar tick count limit antes de moverse
 	
 	if Global.debug["cheats"]["ultra_agresive"]: # se intenta mover cada tick con el hack ultra agresive
-		tick_count_limit = 1
+		tick_count_limit = UA_TICK_LIMIT
 	elif position != "PI": # si no está en la puerta, se intenta mover cada 40 ticks = 8 segundos
-		tick_count_limit = 40
+		tick_count_limit = GENERAL_TICK_LIMIT
 	else: # si está en la puerta, intentará moverse cada 15 ticks = 3 segundos
-		tick_count_limit = 15
+		tick_count_limit = DOOR_TICK_LIMIT
 	
 	tick_count += 1 # cada tick añade uno a tick count
 	
@@ -106,21 +122,23 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 		if door_fail_count < 0: # Si no se mueve, comprueva los fallos.
 			door_fail_count = 0 # Primero resetea a 0 en caso de que fuese negativo.
 		door_fail_count += 1 # Añade un intento fallido de entrar 
-		if door_fail_count == 4: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 4 y no en el siguiente MO es intencional
+		if door_fail_count == MAXIMUM_FAILS_WHEN_DOOR_OPEN: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 4 y no en el siguiente MO es intencional
 			move()
 			return
 	
 	else: # puerta cerrada
-		if 50 + AI_level * 2 <= randi_range(0, 100): # AI = 1:~ 50%, AI = 20:~ 90% (de que no se valla).
+		if 50 + AI_level * 2 <= randi_range(0, 100): # AI = 1:~ 50%, AI = 20:~ 90% (de que se quede en la puerta).
 			move()
 			return
 		
 		if door_fail_count > 0: # Si no se mueve, comprueva los fallos.
 			door_fail_count = 0 # Primero resetea a 0 en caso de que fuese positivo.
 		door_fail_count -= 1 # Añade un intento fallido de irse 
-		if door_fail_count == -10: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = -10 y no en el siguiente MO sigue siendo intencional
+		if door_fail_count == -MAXIMUM_FAILS_WHEN_DOOR_CLOSED: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = -10 y no en el siguiente MO sigue siendo intencional
 			move()
 			return
+	
+	# Ahora mismo, si abres la puerta, e intenta entrar, pero no lo hace, y vuelves a cerrar, el contador se resetea. De momento lo dejo intencional
 	
 	print_rich("[color=cyan]Bonnie movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 
@@ -162,10 +180,10 @@ func move(): # decide a donde moverse
 			position = "office" # si la puerta no está cerrada, evidentemente entra
 	
 	if position == "PI": # Cuando llega a PI. Como no se puede quedar quieto (en esta función) no hay problemas
-		if AI_level < 6:
-			gotcha = 1 # bloquea 1 extra hasta que le miras...
+		if AI_level < AI_LIMIT_FOR_EXTRA_BLOCKS_WHEN_NOT_SEEN:
+			gotcha = EXTRA_BLOCKS_WHEN_NOT_SEEN_UNDER_LIMIT # bloquea 2 extra hasta que le miras...
 		else:
-			gotcha = 2 # bloquea 1 extra hasta que le miras...
+			gotcha = EXTRA_BLOCKS_WHEN_NOT_SEEN_OVER_LIMIT # bloquea 1 extra hasta que le miras...
 		lock_movement = true # bloquea el primer intento siempre
 		
 	print_rich("[color=cyan]Bonnie movement yes: from ", last_position, " to ", position)

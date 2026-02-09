@@ -1,5 +1,21 @@
 extends Node
 
+#Constants (or other things). You can tweek these
+const GENERAL_TICK_LIMIT := 25 # la cantidad de ticks para un oportunity movement
+const DOOR_TICK_LIMIT := 15
+const UA_TICK_LIMIT := 1
+const OPENING_SAFE_TICK_LIMIT := 5 * 20 # 20 segundos
+
+const MAXIMUM_FAILS_WHEN_DOOR_OPEN := 4
+const MAXIMUM_FAILS_WHEN_DOOR_CLOSED := 4
+
+const AI_LIMIT_FOR_EXTRA_BLOCKS_WHEN_NOT_SEEN := 10 # cuando está en la puerta, pero no le has visto, bloquea su movimiento más veces...
+const EXTRA_BLOCKS_WHEN_NOT_SEEN_UNDER_LIMIT := 2
+const EXTRA_BLOCKS_WHEN_NOT_SEEN_OVER_LIMIT := 1
+
+#Constants. You canNOT tweek these
+const RIGHT_DOOR_CAM := 13
+
 #AI variables
 var AI_level: int # Indica el nivel. No necesita reset, pues se asigna en global automaticamente.
 var tick_count := 0 # cuenta los ticks que han pasado. Si llega a tick count limit (se decide en la propia funcion tick dependiendo de la situación), se vuelve 0 e intetará moverse
@@ -55,7 +71,7 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 	
 	if position == "PD": # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.
 		if gotcha > 0:
-			if door_soft_focus or (camara == 11 and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
+			if door_soft_focus or (camara == RIGHT_DOOR_CAM and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
 				print_rich("[color=yellow]GOTCHA!")
 		if door_soft_focus: # Comprueva si le has mirado con la linterna
@@ -67,15 +83,15 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 	var tick_count_limit: int # Declara el límite al que tiene que llegar tick count limit antes de moverse
 	
 	if Global.debug["cheats"]["ultra_agresive"]: # se intenta mover cada tick con el hack ultra agresive
-		tick_count_limit = 1
+		tick_count_limit = UA_TICK_LIMIT
 	elif position != "PD": # Si no está en las puertas
 		if (Global.noche == 5 and Global.mapa["door_office_open"] and not Global.mapa["safe_open"]) and position == "6": # Está intentando abrir la caja fuerta. la condicion es un poco larga, pero asi es más organico. Reacciona al mapa y no a una varable
-			tick_count_limit = 5 * 20 # 20 segundos
+			tick_count_limit = OPENING_SAFE_TICK_LIMIT # 20 segundos
 			print_rich("[color=yellow]WAITING: ", tick_count, " of ", tick_count_limit)
 		else: # noramlmente
-			tick_count_limit = 25 # 25 ticks, cada 5 segundos
+			tick_count_limit = GENERAL_TICK_LIMIT # 25 ticks, cada 5 segundos
 	else: # En la puerta, 3 segundos
-		tick_count_limit = 15
+		tick_count_limit = DOOR_TICK_LIMIT
 	
 	tick_count += 1
 	
@@ -97,9 +113,9 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 		print_rich("[color=yellow]Chica movement no (still not seen): from ", position)
 		return
 	
-	if lock_movement and position == "PI": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
+	if lock_movement and position == "PD": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
 		lock_movement = false
-		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se valla antes
+		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se largue antes
 			print_rich("[color=yellow]Chica movement no (locked first try): from ", position)
 			return
 	
@@ -115,7 +131,7 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 			return
 		else:
 			door_fail_count += 1
-		if door_fail_count == 5: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 5 y no en el siguiente MO es intencional
+		if door_fail_count == MAXIMUM_FAILS_WHEN_DOOR_OPEN: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 5 y no en el siguiente MO es intencional
 			move()
 			return
 	else:
@@ -124,9 +140,11 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 			return
 		else:
 			door_fail_count += 1
-		if door_fail_count == 5: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 3 y no en el siguiente MO es intencional
+		if door_fail_count == MAXIMUM_FAILS_WHEN_DOOR_CLOSED: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 5 y no en el siguiente MO es intencional
 			move()
 			return
+	
+	# en este caso, door_fail_count funciona en paralelo tanto si tienes la puerta abierta como cerrada...
 	
 	print_rich("[color=yellow]Chica movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 	
@@ -200,7 +218,6 @@ func move():
 			else:
 				position = "office"
 		
-		
 		if true_last == position:
 			if position != "PD":
 				if randi_range(0, 20 + AI_level) < 10: # desde 50-50 a 25-75 de no volver a la misma posición, para que a AI = 20 no repita tanto
@@ -210,10 +227,13 @@ func move():
 					repetir = false
 		else: # si no vuelve a la posicion anterior, no repetir
 			repetir = false
-		
-	if position == "PD": # Cuando llega a PI. Como no se puede quedar quieto (en esta función) no hay problemas
-		gotcha = 1 # bloquea 1 extra hasta que le miras...
+	
+	if position == "PD": # Cuando llega a PD. Como no se puede quedar quieta (en esta función) no hay problemas
+		if AI_level < AI_LIMIT_FOR_EXTRA_BLOCKS_WHEN_NOT_SEEN:
+			gotcha = EXTRA_BLOCKS_WHEN_NOT_SEEN_UNDER_LIMIT # bloquea 2 extra hasta que le miras...
+		else:
+			gotcha = EXTRA_BLOCKS_WHEN_NOT_SEEN_OVER_LIMIT # bloquea 1 extra hasta que le miras...
 		lock_movement = true # bloquea el primer intento siempre
-		
+	
 	print_rich("[color=yellow]Chica movement yes: from ", last_position, " to ", position)
 	emit_signal("movement", position, last_position) # Envía la señal de que se ha movido
