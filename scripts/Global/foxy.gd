@@ -333,6 +333,8 @@ func decide_next_room(check: bool = false): # si no hay un dead end, no puede vo
 	
 	duct_act = check_ducts()
 	
+	if not check: _advance_time_on_ducts_memory()
+	
 	if (room == "lhall" and position == 0) or (room == "rhall" and position == 0): # es necesario que haga un checkeo antes de intentar entrar para ver si las puertas estan cerradas o abiertas
 		duct_act = true
 	
@@ -353,14 +355,6 @@ func decide_next_room(check: bool = false): # si no hay un dead end, no puede vo
 func check_ducts() -> bool:
 	
 	var duct_act: bool = false
-	
-	for i in range(1,9): # del 1 al 8
-		if duct_heater_memory[str(i)]["on"]:
-			duct_heater_memory[str(i)]["time"] += 1
-		if duct_heater_memory[str(i)]["time"] == 3:
-			duct_heater_memory[str(i)]["time"] = 0
-			duct_heater_memory[str(i)]["on"] = false
-			print_rich("[color=B5623F]Foxy forgot the duct ", i)
 	
 	if (room == "main" and position == 1) or (room == "arcade" and position == 1) or room == "Duc1":
 		duct_heater_memory["1"]["time"] = 0 # como esto solo comprueva el tiempo que ha pasado desde que sabe que está activo, puedo resetearlo siempre
@@ -406,6 +400,14 @@ func check_ducts() -> bool:
 	print_rich("[color=B5623F]Did foxy learn something new?: ", duct_act)
 	return duct_act
 
+func _advance_time_on_ducts_memory():
+	for i in range(1,9): # del 1 al 8
+		if duct_heater_memory[str(i)]["on"]:
+			duct_heater_memory[str(i)]["time"] += 1
+		if duct_heater_memory[str(i)]["time"] == 3:
+			duct_heater_memory[str(i)]["time"] = 0
+			duct_heater_memory[str(i)]["on"] = false
+			print_rich("[color=B5623F]Foxy forgot the duct ", i)
 
 func decide_main(dead_end):
 	
