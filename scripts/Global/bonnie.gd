@@ -107,12 +107,12 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 	
 	
 	if position != "PI": # Si no está en la puerta
-		if not (door_soft_focus and position == "5"): # 5 siempre va a la puerta. Así evito que aparezca de la nada si tienes la linterna apuntando a la puerta
-			if AI_level > randi_range(0, 20): # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
-				move()
-				return
-		else:
+		if (door_soft_focus and position == "5"): # 5 siempre va a la puerta. Así evito que aparezca de la nada si tienes la linterna apuntando a la puerta
 			print_rich("[color=cyan]Bonnie movement no (flashlight on door): from ", position)
+			return
+		if AI_level > randi_range(0, 20): # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
+			move()
+			return
 	
 	elif not door_closed: # puerta abierta
 		if AI_level >= randi_range(0, 20): # siempre acierta en nivel 20

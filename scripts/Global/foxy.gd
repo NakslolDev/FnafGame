@@ -1,5 +1,20 @@
 extends Node
 
+#Constants (or other things). You can tweek these
+const GENERAL_TICK_LIMIT := 25 # la cantidad de ticks para un oportunity movement
+const DUCT_TICK_LIMIT := 25 # No es absoluto, pues hago un - AI_level
+const HEATER_TICK_LIMIT := 5
+const DOOR_TICK_LIMIT := 20
+const UA_TICK_LIMIT := 1
+
+const BLOCKS_WHEN_NOT_SEEN_ON_DOORS := 2
+
+const FLASHLIGHT_STUNT_ON_DUCTS := 3
+const FLASHLIGHT_STUNT_ON_DOORS := 2
+
+const TIME_THAT_FOXY_REMEMBERS := 3
+
+
 var AI_level: int # No voy a volver a comentar lo que ya he comentado en bonnie y en chica...
 var tick_count := 0
 var tick_focus_count := 0
@@ -10,9 +25,9 @@ var next_room: String # esta variable determina a que habitacion intentará ir
 var door_fail_count := 0
 var flashlight_stunt := 0
 
-#63 posiciones posibles... (segun chat gpt)
+#64 posiciones posibles... 
 #map -> positions per room (0 = s, so I can int)
-#room -> 0 (nowhere), main, arcade, pas, entrance, kitchen, almacen, closet, lhall, rhall, office
+#room -> main, arcade, pas, entrance, kitchen, almacen, closet, lhall, rhall, office
 # Duc1, Duc2, Duc3... Duc8
 # position 0 -> Especiales, dependiendo de room (atacando o estado inicial o office)
 var room := "pas"
@@ -23,6 +38,7 @@ var true_last_room := "pas"
 
 signal movement(to_pos: String, to_room: int, from_pos: String, from_room: int)
 signal move_back()
+signal flashlight_stunt_over()
 
 #info
 var soft_focus_I := false
@@ -164,20 +180,20 @@ func tick(): # Cada tick (5 veces por segundo)
 			print_rich("[color=B5623F]Foxy stalled")
 		else:
 			tick_focus_count = 0
-		tick_count_limit = 20
+		tick_count_limit = DOOR_TICK_LIMIT
 	elif room.begins_with("Duc") and duct_heater[room.substr(3)]: # no uso duct_heater_memory porque no se actualiza lo suficientemente rápido.
-		tick_count_limit = 5 # esto hace que si le das con el heater a foxy siempre salga rapido
+		tick_count_limit = HEATER_TICK_LIMIT # esto hace que si le das con el heater a foxy siempre salga rapido
 		tick_focus_count = 0
 		flashlight_stunt = 0 # no se queda quieto si activas el heater
 	elif room.begins_with("Duc"):
-		tick_count_limit = 25 - AI_level # foxy se mueve más rapido cuanta + AI, pues en los ductos siempre acierta el movimiento
+		tick_count_limit = DUCT_TICK_LIMIT - AI_level # foxy se mueve más rapido cuanta + AI, pues en los ductos siempre acierta el movimiento
 		tick_focus_count = 0
 	else:
-		tick_count_limit = 25
+		tick_count_limit = GENERAL_TICK_LIMIT
 		tick_focus_count = 0
 	
 	if Global.debug["cheats"]["ultra_agresive"] and not room.begins_with("Duc"):
-		tick_count_limit = 1 # no tengo ni idea de como reemplazarlo sin que se rompa, asi que lo cambio aqui
+		tick_count_limit = UA_TICK_LIMIT # no tengo ni idea de como reemplazarlo sin que se rompa, asi que lo cambio aqui
 	
 	@warning_ignore("integer_division") # evita que me salte el aviso
 	if tick_focus_count >= 10 + (AI_level / 2) and animacion_go_back == false:
@@ -186,15 +202,19 @@ func tick(): # Cada tick (5 veces por segundo)
 	
 	tick_count += 1
 	
-	if tick_count >= tick_count_limit:
-		tick_count = 0
-		movement_oportunity()
+	if tick_count < tick_count_limit:
+		return
+	
+	tick_count = 0
+	movement_oportunity()
 
 
 func movement_oportunity():
 	
 	if flashlight_stunt > 0: # no se puede mover por tres movimientos después de hecharlo hacia atras con la linterna
 		flashlight_stunt -= 1
+		if flashlight_stunt == 0:
+			flashlight_stunt_over.emit()
 		return
 	
 	var movement_hit := false
@@ -240,28 +260,26 @@ func movement_oportunity():
 # skip decision lo utilizo cuando bonnie o chica lo expulsan, pues en esa funcion uso otro decide que obliga a no ir a las puertas
 func move(skip_decision := false): # esta funcion va a ser increiblemente larga... Voy a separarla en otras funciones dependiendo de la habitacion
 	
-	var soft_focus := false
 	last_position = position
 	last_room = room
+	
+	# si tiene soft focus en la puerta o ducto, volver
+	if next_room == "office" and ((room == "rhall" and position != 0 and soft_focus_D) or (room == "lhall" and position != 0 and soft_focus_I) or (room == "Duc8" and position == 4 and soft_focus_DB) or (room == "Duc5" and position == 3 and soft_focus_DF)):
+		print_rich("[color=FA8150]Foxy soft focus: from ", position, " in ", room)
+		return
 	
 	if not skip_decision:
 		decide_next_room(true) # el true es de check, que es para que solo cambie si cambia la memoria de ducts
 	
-	if next_room == "office" and ((room == "rhall" and position != 0 and soft_focus_D) or (room == "lhall" and position != 0 and soft_focus_I) or (room == "Duc8" and position == 4 and soft_focus_DB) or (room == "Duc5" and position == 3 and soft_focus_DF)):
-		soft_focus = true
-	else:
-		call("move_" + room)
-	
-	if (room == "rhall" or room == "lhall") and position == 0:
-		gotcha = 2
-	
-	if soft_focus:
-		print_rich("[color=FA8150]Foxy soft focus: from ", position, " in ", room)
-		return
+	call("move_" + room) # mueve a foxy
 	
 	print_rich("[color=FA8150]Foxy movement: to ", position, " in ", room, " from ", last_position, " in ", last_room)
 	emit_signal("movement", position, room, last_position, last_room)
-	if room != last_room and not room == "office": # si cambia de habitacion y no es a office, que en office no hay funcion
+	
+	if (room == "rhall" or room == "lhall") and position == 0:
+		gotcha = BLOCKS_WHEN_NOT_SEEN_ON_DOORS
+	
+	if room != last_room and not room == "office": # si cambia de habitacion y no es a office, que en office no hay funcion de decidir
 		true_last_room = last_room
 		decide_next_room()
 
@@ -275,24 +293,24 @@ func move_back_to():
 			position = 2
 		else:
 			position = 4
-		flashlight_stunt = 3
+		flashlight_stunt = FLASHLIGHT_STUNT_ON_DUCTS
 	elif room == "Duc8":
 		if randi_range(0, 1) == 0:
 			position = 3
 		else:
 			position = 5
-		flashlight_stunt = 3
+		flashlight_stunt = FLASHLIGHT_STUNT_ON_DUCTS
 	elif room == "lhall" or room == "rhall":
 		position = 2
 		next_room = "0" # para que recalcule
+		flashlight_stunt = FLASHLIGHT_STUNT_ON_DOORS
 	
 	print_rich("[color=FA8150]Foxy found my flashlight : from ", position, " in ", room)
 	emit_signal("movement", position, room, last_position, last_room)
 	
 	animacion_go_back = false
 	tick_focus_count = 0
-	@warning_ignore("integer_division")
-	tick_count = -15 + (AI_level / 2)  # stalea 3-1 segundos
+
 
 func movement_bonnie(to, _a = null):
 	if room == "lhall" and position == 0 and to == "PI":
@@ -309,7 +327,7 @@ func energy_breakdown():
 	if AI_level == 0:
 		return
 	
-	print("[color=FA8150]ME LLAMARON?????")
+	print("[color=cb5a29]ME LLAMARON?????")
 	
 	var change := false
 	
@@ -329,7 +347,7 @@ func decide_next_room(check: bool = false): # si no hay un dead end, no puede vo
 	var duct_act := false
 	var dead_end := false
 	
-	print_rich("[color=B5623F]Foxy will think... just check: ", check)
+	print_rich("[color=B5623F]Foxy will think... just checking: ", check)
 	
 	duct_act = check_ducts()
 	
@@ -342,15 +360,18 @@ func decide_next_room(check: bool = false): # si no hay un dead end, no puede vo
 		dead_end = true
 		print_rich("[color=cb5a29]Foxy found a dead end: from ", position, " in ", room)
 	
-	if (check and duct_act) or not check or next_room == "0":
-		call("decide_" + room, dead_end)
-		print_rich("[color=cb5a29]Foxy will go to ", next_room, " knowing last room was ", true_last_room)
-		print_rich("[color=B5623F]--- Estado de duct_heater_memory ---")
-		for key in duct_heater_memory.keys():
-			var data = duct_heater_memory[key]
-			var estado = str(data["on"])
-			var tiempo = str(data["time"])
-			print_rich("[color=B5623F]Ducto " + key + " → on: " + estado + ", time: " + tiempo + "[/color]")
+	if not ((check and duct_act) or not check or next_room == "0"):
+		return
+	
+	call("decide_" + room, dead_end)
+	print_rich("[color=cb5a29]Foxy will go to ", next_room, " knowing last room was ", true_last_room)
+	
+	print_rich("[color=B5623F]--- Estado de duct_heater_memory ---")
+	for key in duct_heater_memory.keys():
+		var data = duct_heater_memory[key]
+		var estado = str(data["on"])
+		var tiempo = str(data["time"])
+		print_rich("[color=B5623F]Ducto " + key + " → on: " + estado + ", time: " + tiempo + "[/color]")
 
 func check_ducts() -> bool:
 	
@@ -404,10 +425,11 @@ func _advance_time_on_ducts_memory():
 	for i in range(1,9): # del 1 al 8
 		if duct_heater_memory[str(i)]["on"]:
 			duct_heater_memory[str(i)]["time"] += 1
-		if duct_heater_memory[str(i)]["time"] == 3:
+		if duct_heater_memory[str(i)]["time"] == TIME_THAT_FOXY_REMEMBERS:
 			duct_heater_memory[str(i)]["time"] = 0
 			duct_heater_memory[str(i)]["on"] = false
 			print_rich("[color=B5623F]Foxy forgot the duct ", i)
+
 
 func decide_main(dead_end):
 	
@@ -781,33 +803,36 @@ func decide_Duc5(_dead_end):
 	if duct_heater_memory["5"]["on"]: # dependiendo del nivel de AI, será más facil echarle a pas
 		if position == 0:
 			next_room = "office"
-		if position == 1:
+		elif position == 1:
 			next_room = "lhall"
 		
-		if position == 2:
+		elif position == 2:
 			var rand_go_to_pas: int
-			rand_go_to_pas = randi_range(0, 20) # esto hace más sencillo hechar a foxy a pas
-			if AI_level > rand_go_to_pas:
+			rand_go_to_pas = randi_range(0, 40) # esto hace más sencillo echar a foxy a pas
+			if AI_level + 20 > rand_go_to_pas:
 				next_room = "lhall"
 			else:
-				next_room = "lhall"
+				next_room = "pas"
 		
-		if position == 3:
+		elif position == 3:
 			next_room = "pas"
 		
-		if position == 4: 
+		elif position == 4: 
 			var rand_go_to_pas: int
-			rand_go_to_pas = randi_range(0, 20) # esto hace más sencillo hechar a foxy a pas
-			if AI_level > rand_go_to_pas:
+			rand_go_to_pas = randi_range(0, 40) # esto hace más sencillo echar a foxy a pas
+			if AI_level + 20 > rand_go_to_pas:
 				next_room = "rhall"
 			else:
-				next_room = "rhall"
+				next_room = "pas"
 		
-		if position == 5:
+		elif position == 5:
 			next_room = "rhall"
+		
+		elif position == 6:
+			next_room = "pas"
 	
 	else:
-		next_room = "office"
+		next_room = "office" # simple enough
 
 func decide_Duc6(_dead_end):
 	
@@ -971,7 +996,7 @@ func move_pas():
 			position = 1
 		else:
 			room = next_room
-			position = 3
+			position = 6
 	
 	else:
 		pass
@@ -1161,21 +1186,27 @@ func move_Duc4():
 func move_Duc5():
 	
 	if next_room == "pas":
-		if position > 3:
+		if position > 3 and position != 6:
 			position -= 1
 		elif position < 3:
 			position += 1
+		elif position == 3:
+			position = 6
 		else:
 			room = next_room 
 			position = 1
 	elif next_room == "rhall":
-		if position != 5:
+		if position == 6:
+			position = 3
+		elif position != 5:
 			position += 1
 		else:
 			room = next_room
 			position = 1
 	elif next_room == "lhall":
-		if position != 1:
+		if position == 6:
+			position = 3
+		elif position != 1:
 			position -= 1
 		else:
 			room = next_room
@@ -1183,6 +1214,8 @@ func move_Duc5():
 	if next_room == "office":
 		if position == 0:
 			room = next_room
+		elif position == 6:
+			position = 3
 		elif position > 3:
 			position -= 1
 		elif position < 3:

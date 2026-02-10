@@ -1,5 +1,14 @@
 extends Node
 
+#Constants (or other things). You can tweek these
+const GENERAL_TICK_LIMIT := 30 # la cantidad de ticks para un oportunity movement
+const DOOR_TICK_LIMIT := 15
+const UA_TICK_LIMIT := 1
+
+const WATCH_TICK_FIRST_LIMIT := 20
+const WATCH_TICK_SECOND_LIMIT := 30
+
+
 var AI_level: int # No voy a volver a comentar lo que ya he comentado en bonnie y en chica...
 var tick_count: int
 var lock_movement: bool
@@ -62,21 +71,21 @@ func tick():
 			cam_look_count += 1
 		
 		if cam_light:
-			if cam_look_count < 20:
-				cam_look_count = 20
+			if cam_look_count < WATCH_TICK_FIRST_LIMIT:
+				cam_look_count = WATCH_TICK_FIRST_LIMIT
 			tick_count = 0 # le resetea los ticks...
 		else: # solo evita que avance el tick count, no lo resetea
 			print_rich("[color=967B63]Freddy stop tick count: from ", position)
 		
-		if cam_look_count >= 30 and position != "S" and position != "0":
+		if cam_look_count >= WATCH_TICK_SECOND_LIMIT and position != "S" and position != "0":
 			move_back() # se mueve hacia atras
 			cam_look_count = 0
 		
 		return
 	
 	elif looking_at_me(false) and seen and cam_look_count > 0: # Si lo has mirado en las camaras y bajas el monitor -> cam stall
-		if cam_look_count > 20:
-			cam_look_count = 20
+		if cam_look_count > WATCH_TICK_FIRST_LIMIT:
+			cam_look_count = WATCH_TICK_FIRST_LIMIT
 		if randf_range(0, 49 - AI_level) < 10: # 1/5 IA 0, 1/3 IA 20... Lo que se traduce en ~20 segundos ia 0, ~12 en IA 20
 			cam_look_count -= 1 # ahora me he quedado en que está quieto un rato, pero va descendiendo
 			print_rich("[color=967B63]Freddy is awakening... with cam closed: from ", position) # al principio havia hecho que se quedase quieto
@@ -90,16 +99,19 @@ func tick():
 	var tick_count_limit: int
 	
 	if Global.debug["cheats"]["ultra_agresive"] or puerta_atack:
-		tick_count_limit = 1
+		tick_count_limit = UA_TICK_LIMIT
 	elif position != "PI" and position != "PD":
-		tick_count_limit = 30
+		tick_count_limit = GENERAL_TICK_LIMIT
 	else:
-		tick_count_limit = 15
+		tick_count_limit = DOOR_TICK_LIMIT
 	
 	tick_count += 1
-	if tick_count == tick_count_limit:
-		tick_count = 0
-		movement_oportunity()
+	
+	if tick_count < tick_count_limit: # Si llega o supera el límite
+		return
+	
+	tick_count = 0
+	movement_oportunity()
 
 func looking_at_me(cam_open_required := true):
 	

@@ -229,6 +229,8 @@ func movement_foxy(_a = null, _b = null, _c = null, _d = null):
 			$FoxyIcon.position = Vector2(1759.0, 225.0)
 		if Foxy.position == 5:
 			$FoxyIcon.position = Vector2(1778.0, 225.0)
+		if Foxy.position == 6:
+			$FoxyIcon.position = Vector2(1732.0, 220.0)
 	if Foxy.room == "Duc6":
 		$FoxyIcon.scale = Vector2(1.0, 1.0)
 		if Foxy.position == 1:

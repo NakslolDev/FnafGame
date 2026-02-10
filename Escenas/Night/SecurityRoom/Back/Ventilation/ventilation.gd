@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var vent := true
 @export var speed := 0.5

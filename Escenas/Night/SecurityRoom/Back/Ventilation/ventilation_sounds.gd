@@ -27,9 +27,10 @@ func movement_foxy(pos, room, from_p, from_r):
 			aply_volume()
 			
 			if (room != "Duc5" and room != "Duc8") or pos == 0:
-				#end()
 				playing = false
 			else:
+				if Foxy.flashlight_stunt > 0:
+					await Foxy.flashlight_stunt_over
 				playing = true
 				if (from_r != "Duc5" and from_r != "Duc8") or from_p == 0:
 					play()
@@ -60,6 +61,7 @@ func reproduce():
 		$VentilationLow6.volume_db = volume
 		$VentilationLow6.play()
 
+
 func play():
 	if last == 11:
 		last = 1
@@ -71,14 +73,15 @@ func _on_crawling_finished() -> void:
 	if playing:
 		play()
 
-func end():
-	$Crawling.stop()
 
 func control_volume(pos, room):
 	if pos == 0:
 		volume = -8
 	elif room == "Duc5":
-		volume = -15 - abs(3 - pos) * 5
+		if pos == 6: # no tengo 3 direcciones...
+			volume = -20
+		else:
+			volume = -15 - abs(3 - pos) * 5 # -15, -20, -25, etc
 	elif room == "Duc8":
 		volume = -15 - abs(4 - pos) * 5
 	if Global.energia["Luces"]:
