@@ -32,7 +32,7 @@ func actualizar_cams():
 		$Foxy9_2.modulate.a = 1.0
 	if (Foxy.room == "pas" and Foxy.position == 3) or foxy_al == 4:
 		$Foxy9_4.modulate.a = 1.0
-	if (Foxy.room == "Duc5" and Foxy.position == 3) or foxy_al == 5:
+	if (Foxy.room == "Duc5" and Foxy.position == 6) or foxy_al == 5:
 		$Foxy9_5.modulate.a = 1.0
 
 func _on_cam_cam_act(freddy: bool, local_from: int, local_to: int, local_extra: int, al: bool) -> void:

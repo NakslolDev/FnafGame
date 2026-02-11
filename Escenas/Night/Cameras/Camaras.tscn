@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://byvd0b3g2e2uh" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 1.png" id="48_7y4jm"]
 [ext_resource type="Texture2D" uid="uid://cx3r33fr3m2np" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 2.png" id="49_rgdy6"]
 [ext_resource type="Texture2D" uid="uid://bgm5imdsvxljr" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 3.png" id="50_8i5k1"]
+[ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="60_78nsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vp63"]
 size = Vector2(697, 591)
@@ -85,13 +86,36 @@ shader_parameter/sharpness = 2.0
 shader_parameter/direction = Vector2(0, 1)
 shader_parameter/wrapping_mode = 0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r14dw"]
+shader = ExtResource("60_78nsn")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.10000000475
+shader_parameter/scanlines_width = 0.0010000000475
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.30000001425
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
 [node name="Camaras" type="Node2D" unique_id=1932195095]
 texture_filter = 1
 script = ExtResource("1_br1gn")
 
 [node name="Si_Shader" type="CanvasLayer" parent="." unique_id=1468658571]
 layer = 3
-visible = false
 script = ExtResource("2_rbjw8")
 
 [node name="Cams" type="Node2D" parent="Si_Shader" unique_id=1422200098]
@@ -449,10 +473,9 @@ cams = true
 
 [node name="CanvasLayer_Shader" type="CanvasLayer" parent="." unique_id=634090983]
 layer = 3
-visible = false
 script = ExtResource("2_rbjw8")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer_Shader" unique_id=296090820]
+[node name="ShaderBemd" type="ColorRect" parent="CanvasLayer_Shader" unique_id=296090820]
 material = SubResource("ShaderMaterial_xkbhl")
 anchors_preset = 15
 anchor_right = 1.0
@@ -460,6 +483,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ShaderScreen" type="ColorRect" parent="CanvasLayer_Shader" unique_id=480354104]
+material = SubResource("ShaderMaterial_r14dw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_1" method="_on_camaras_alucinations"]
 [connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_2" method="_on_camaras_alucinations"]

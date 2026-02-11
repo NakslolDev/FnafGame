@@ -169,6 +169,19 @@ text = "Fullscreen
 "
 autowrap_mode = 2
 
+[node name="Brightness" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1146398527]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("3_64mem")
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(0.729412, 0.729412, 0.729412, 1)
+text = "Brightness"
+autowrap_mode = 2
+script = ExtResource("25_7k58l")
+id = "Brightness"
+
 [node name="Mouse_Sound" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1774242955]
 layout_mode = 2
 theme_override_constants/separation = 100
@@ -551,19 +564,6 @@ layout_mode = 2
 max_value = 2.5
 step = 0.1
 value = 1.0
-
-[node name="Brightness" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=775038254]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("3_64mem")
-theme_type_variation = &"HeaderSmall"
-theme_override_colors/font_color = Color(0.729412, 0.729412, 0.729412, 1)
-text = "Brightness"
-autowrap_mode = 2
-script = ExtResource("25_7k58l")
-id = "Brightness"
 
 [node name="Debug_menu" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=15916016]
 layout_mode = 2
@@ -1115,7 +1115,6 @@ puntero = "3"
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_when_dead" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_when_dead" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_when_win" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_when_win" method="_on_pressed"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed/Label" method="_on_h_slider_value_changed"]
-[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Brightness" to="." method="_on_brightness_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Debug_menu" to="Debug_panel" method="_on_debug_menu_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Save_exit" to="." method="_on_save_exit_pressed"]
