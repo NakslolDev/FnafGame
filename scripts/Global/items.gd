@@ -8,9 +8,6 @@ const WATER_STRENGHT := 300
 const WATERING_TIME := 15.0
 var batteries: int
 
-#func _process(delta):
-	#print(delta)
-
 func night_starts(): # Completamente temporal
 	
 	batteries = 0

@@ -37,7 +37,7 @@ const INITIAL_X_POS := 960.0
 var target_position := INITIAL_X_POS
 @export var period := 12.0
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	
 	var active_cam: int = $"../..".camara_activa
 	

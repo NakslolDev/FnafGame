@@ -42,7 +42,7 @@ func skip_wait():
 	
 	tween.custom_step(time_to_skip)
 
-func _process(delta):
+func _physics_process(delta):
 	if in_hold:
 		hold_elapsed += delta
 

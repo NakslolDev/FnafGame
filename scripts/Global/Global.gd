@@ -59,11 +59,13 @@ func get_csv_value_id(csv:String, row_id: String, col_id: String) -> String: # D
 	
 	# Leer la cabecera para encontrar el índice del idioma
 	if file.eof_reached():
+		file.close()
 		return "Something went wrong... (empty CSV)"
 	
 	var header = file.get_csv_line()
 	var col_index = header.find(col_id)
 	if col_index == -1:
+		file.close()
 		return "Something went wrong... (Language not found: " + col_id + ")"
 	
 	# Buscar la fila correspondiente al row_id
@@ -76,6 +78,7 @@ func get_csv_value_id(csv:String, row_id: String, col_id: String) -> String: # D
 			if col_index < 0 or col_index >= columns.size():
 				return "Something went wrong... (col out of range)"
 			var cell = columns[col_index].strip_edges()
+			file.close()
 			return cell if cell != "" else "Something went wrong... (empty cell)"
 	
 	file.close()

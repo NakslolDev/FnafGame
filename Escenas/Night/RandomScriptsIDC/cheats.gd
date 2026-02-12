@@ -40,6 +40,6 @@ func get_global_values():
 		set(key, Global.debug["cheats"][key])
 		bosque_escarlata = false
 
-func _process(_delta):
+func _physics_process(_delta):
 	if infinite_light:
 		Global.linterna_bateria = 100

@@ -13,7 +13,7 @@ func _ready():
 	distance = $"..".step
 	time = 1.0 / $"..".speed
 
-func _process(_delta):
+func _physics_process(_delta):
 	get_direction_s(Input.is_action_pressed("W"), Input.is_action_pressed("A"), Input.is_action_pressed("S"), Input.is_action_pressed("D")) # inportante la diferencia de event e Input. event es solo el primer frame. Input es constante
 	$"../Skins".act_animation(waking, direction_s, colided)
 

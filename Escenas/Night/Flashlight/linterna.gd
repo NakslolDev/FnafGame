@@ -24,7 +24,7 @@ func _ready():
 	set_linterna(linterna_activa_temporal)
 
 func _process(_delta):
-		
+	
 	global_position = get_global_mouse_position()
 	
 	if Global.linterna_bateria == 0:

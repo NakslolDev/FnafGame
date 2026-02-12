@@ -59,7 +59,7 @@ func _ready():
 	$Camaras_Control/Camaras.act_all_cams() # es necesario activarlos otra vez para que cojan los verdaderos datos de los animatronicos
 	$True_No_Shader/Animatronic_Map.act_first()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	
 	if $True_No_Shader/Tick_label.modulate.a > 0.001:
 		$True_No_Shader/Tick_label.modulate.a -= 5 * delta
@@ -97,6 +97,7 @@ func _on_tick_timeout() -> void:
 	tick_call()
 	if not tick_stop:
 		$Control/Tick.start(tick_speed)
+
 
 func tick_call():
 	if $Cheats.tick_count:
