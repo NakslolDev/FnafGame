@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var cams: Node2D
+
 var _activado := false
 var activado: bool:
 	get: return _activado
@@ -7,27 +9,19 @@ var activado: bool:
 
 func set_activado(value):
 	_activado = value
-	$Si_Shader/Cams/Cam_6.act_combination()
+	#cams/Cam_6.act_combination()
+	visible = value
+	$No_Shader.visible = value
+	$Si_Shader.visible = value
+	$CanvasLayer_Shader.visible = value
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Cam 6 Sounds"), (value and camara_activa == 6))
 	if value:
-		cam_flipped_discount -= 1
-		alucinations_cams(Global.insanity)
 		act_light()
-		$".".modulate.a = 1.0
-		$No_Shader.visible = true
-		$Si_Shader.visible = true
-		$CanvasLayer_Shader.visible = true
 		$No_Shader/Ruido._on_minimapa_botones_cam_act()
 		$No_Shader/Ruido/Static.play()
-		if camara_activa == 6:
-			AudioServer.set_bus_mute(AudioServer.get_bus_index("Cam 6 Sounds"), false)
 	else:
 		cam_lights = false
-		$".".modulate.a = 0.0
-		$No_Shader.visible = false
-		$Si_Shader.visible = false
-		$CanvasLayer_Shader.visible = false
 		$No_Shader/Ruido/Static.stop()
-		AudioServer.set_bus_mute(AudioServer.get_bus_index("Cam 6 Sounds"), true)
 
 func _on_minimapa_botones_cam_act() -> void:
 	if camara_activa == 6:
@@ -52,6 +46,7 @@ func set_hora(value):
 	else:
 		$No_Shader/Border/VBoxContainer/Time.text = str(value) + " AM"
 
+@export var linterna: Sprite2D
 var cam_lights: bool
 var cam_lights_limit := false
 
@@ -78,10 +73,6 @@ var duct_not_heater_animation := { # true = alpha+
 	"8": true,
 }
 
-signal alucinations
-var memoria := [false, false, false, false, false, false, false, false, false, false, false, false, false]
-var cam_flipped_discount := 0
-
 func _input(event):
 	if not activado:
 		return
@@ -97,65 +88,20 @@ func _input(event):
 		act_light()
 
 func act_light():
+	
 	if cam_lights and Global.energia["Camaras"]:
 		Global.set_energia_consumption("Cam_lights", 1)
-		$Si_Shader/Linterna.modulate.a = 0.5
+		linterna.modulate.a = 0.5
 		Freddy.cam_light = true
-		if memoria[camara_activa - 1] == true:
-			memoria[camara_activa - 1] = false
-			$Si_Shader/Cams.act_cam(camara_activa)
+	
 	else:
 		Global.set_energia_consumption("Cam_lights", 0)
-		$Si_Shader/Linterna.modulate.a = 0.0
+		linterna.modulate.a = 0.0
 		Freddy.cam_light = false
+	
+	for cam in cams.cameras:
+		cam.actualizar_cams()
 
-func act_all_cams():
-	$Si_Shader/Cams/Cam_1.actualizar_cams()
-	$Si_Shader/Cams/Cam_2.actualizar_cams()
-	$Si_Shader/Cams/Cam_3.actualizar_cams()
-	$Si_Shader/Cams/Cam_4.actualizar_cams()
-	$Si_Shader/Cams/Cam_5.actualizar_cams()
-	$Si_Shader/Cams/Cam_6.actualizar_cams()
-	$Si_Shader/Cams/Cam_7.actualizar_cams()
-	$Si_Shader/Cams/Cam_8.actualizar_cams()
-	$Si_Shader/Cams/Cam_9.actualizar_cams()
-	$Si_Shader/Cams/Cam_10A.actualizar_cams()
-	$Si_Shader/Cams/Cam_10B.actualizar_cams()
-	$Si_Shader/Cams/Cam_11A.actualizar_cams()
-	$Si_Shader/Cams/Cam_11B.actualizar_cams()
-
-func alucinations_cams(insano: int):
-	
-	if cam_flipped_discount <= 0 or memoria == [false, false, false, false, false, false, false, false, false, false, false, false, false]: # si no envio la señal, las alucinaciones se mantienen
-		cam_flipped_discount = randi_range(5, 10)
-	else:
-		return
-	
-	if not insano > randi_range(0, 500):
-		return
-	
-	var al_intensity := 0
-	var rand_number := 0
-	while rand_number < insano:
-		al_intensity += 1
-		if al_intensity < 8:
-			rand_number = min(randi_range(0, 1000), randi_range(0, 1000)) # pilla el minimo de entre estos numeros
-		else:
-			break
-	do_alucinations(al_intensity)
-
-func do_alucinations(many: int):
-	memoria = [false, false, false, false, false, false, false, false, false, false, false, false, false]
-	
-	while many > 0:
-		many -= 1
-		
-		var cam := randi_range(1, 13)
-		while memoria[cam - 1] == true:
-			cam = randi_range(1, 13)
-		memoria[cam - 1] = true
-	
-	emit_signal("alucinations")
 
 func _ready():
 	Global.connect("energia_actualizada", Callable(self, "energia_act"))

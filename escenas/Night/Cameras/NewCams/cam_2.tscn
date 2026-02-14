@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://crwkri6333nuw"]
+
+[ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_ksfdc"]
+[ext_resource type="Texture2D" uid="uid://jw6iq7nvwqml" path="res://assets/Placeholders/Camaras/Cam2/Cam.png" id="2_1l1x4"]
+[ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_as2a8"]
+[ext_resource type="Texture2D" uid="uid://cqbsxwskwb052" path="res://assets/Placeholders/Camaras/Cam2/Bonnie_2.1.png" id="4_ilgge"]
+[ext_resource type="Texture2D" uid="uid://br22xc2qsplcl" path="res://assets/Placeholders/Camaras/Cam2/Bonnie_2.2.png" id="5_rrjkk"]
+[ext_resource type="Texture2D" uid="uid://df2yj3r3g0gi6" path="res://assets/Placeholders/Camaras/Cam2/Bonnie_2.3.png" id="6_x2v05"]
+[ext_resource type="Texture2D" uid="uid://qafahjauxf1f" path="res://assets/Placeholders/Camaras/Cam2/Foxy_2.1.png" id="7_svbsi"]
+[ext_resource type="Texture2D" uid="uid://damrrn8lyobhw" path="res://assets/Placeholders/Camaras/Cam2/Foxy_2.2.png" id="8_8iea4"]
+[ext_resource type="Texture2D" uid="uid://5gtrkalw30ju" path="res://assets/Placeholders/Camaras/Cam2/Foxy_2.3.png" id="9_03unn"]
+[ext_resource type="Texture2D" uid="uid://bfhxtpq8hsn4f" path="res://assets/Placeholders/Camaras/Cam2/Freddy_2.1.png" id="10_1mgfg"]
+[ext_resource type="Texture2D" uid="uid://chr28hgdm127g" path="res://assets/Placeholders/Camaras/Cam2/Freddy_2.2.png" id="11_lwbov"]
+
+[node name="Cam2" type="Node2D" unique_id=1208974310 node_paths=PackedStringArray("sprites")]
+script = ExtResource("1_ksfdc")
+cam_number = 2
+sprites = [NodePath("Background"), NodePath("Bonnie0"), NodePath("Bonnie1"), NodePath("Bonnie2"), NodePath("Foxy1"), NodePath("Foxy2"), NodePath("FoxyD3"), NodePath("Freddy0"), NodePath("Freddy1")]
+metadata/_custom_type_script = "uid://cd811lhimvfl6"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1267746695]
+texture = ExtResource("2_1l1x4")
+script = ExtResource("3_as2a8")
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Bonnie0" type="Sprite2D" parent="." unique_id=973807964]
+texture = ExtResource("4_ilgge")
+script = ExtResource("3_as2a8")
+bonnie = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Bonnie1" type="Sprite2D" parent="." unique_id=602652207]
+texture = ExtResource("5_rrjkk")
+script = ExtResource("3_as2a8")
+bonnie = 3
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Bonnie2" type="Sprite2D" parent="." unique_id=798075744]
+texture = ExtResource("6_x2v05")
+script = ExtResource("3_as2a8")
+bonnie = 4
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy1" type="Sprite2D" parent="." unique_id=22382040]
+texture = ExtResource("7_svbsi")
+script = ExtResource("3_as2a8")
+foxy_room = 1
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy2" type="Sprite2D" parent="." unique_id=918705245]
+texture = ExtResource("8_8iea4")
+script = ExtResource("3_as2a8")
+foxy_room = 1
+foxy_pos = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyD3" type="Sprite2D" parent="." unique_id=1827698717]
+texture = ExtResource("9_03unn")
+script = ExtResource("3_as2a8")
+foxy_room = 13
+foxy_pos = 3
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Freddy0" type="Sprite2D" parent="." unique_id=706395000]
+texture = ExtResource("10_1mgfg")
+script = ExtResource("3_as2a8")
+freddy = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Freddy1" type="Sprite2D" parent="." unique_id=1271522809]
+texture = ExtResource("11_lwbov")
+script = ExtResource("3_as2a8")
+freddy = 6
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"

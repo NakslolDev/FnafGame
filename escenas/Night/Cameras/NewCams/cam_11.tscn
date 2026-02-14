@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://wfyjkae1wov5"]
+
+[ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_8stwk"]
+[ext_resource type="Texture2D" uid="uid://b6sfifynwglq1" path="res://assets/Placeholders/Camaras/Cam10B/Cam.png" id="2_frskc"]
+[ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_ericd"]
+[ext_resource type="Texture2D" uid="uid://dxoq866gld30t" path="res://assets/Placeholders/Camaras/Cam10B/Bonnie_10B.png" id="4_umh32"]
+[ext_resource type="Texture2D" uid="uid://dlfqry4233jdq" path="res://assets/Placeholders/Camaras/Cam10B/Foxy_10B.1.png" id="5_bqqy3"]
+[ext_resource type="Texture2D" uid="uid://b05woyolr115p" path="res://assets/Placeholders/Camaras/Cam10B/Foxy_10B.2.png" id="6_qmsrv"]
+[ext_resource type="Texture2D" uid="uid://n4wbfg6evrpx" path="res://assets/Placeholders/Camaras/Cam10B/Freddy_10B.png" id="7_6ppvy"]
+
+[node name="Cam11" type="Node2D" unique_id=1081304585 node_paths=PackedStringArray("sprites")]
+script = ExtResource("1_8stwk")
+cam_number = 11
+sprites = [NodePath("Cam"), NodePath("Bonnie"), NodePath("Foxy2"), NodePath("FoxyDuc"), NodePath("Freddy")]
+metadata/_custom_type_script = "uid://cd811lhimvfl6"
+
+[node name="Cam" type="Sprite2D" parent="." unique_id=1224585770]
+texture = ExtResource("2_frskc")
+script = ExtResource("3_ericd")
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Bonnie" type="Sprite2D" parent="." unique_id=1035478711]
+texture = ExtResource("4_umh32")
+script = ExtResource("3_ericd")
+bonnie = 8
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy2" type="Sprite2D" parent="." unique_id=743293011]
+texture = ExtResource("5_bqqy3")
+script = ExtResource("3_ericd")
+foxy_room = 8
+foxy_pos = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyDuc" type="Sprite2D" parent="." unique_id=1390936179]
+texture = ExtResource("6_qmsrv")
+script = ExtResource("3_ericd")
+foxy_room = 18
+foxy_pos = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Freddy" type="Sprite2D" parent="." unique_id=2118272674]
+texture = ExtResource("7_6ppvy")
+script = ExtResource("3_ericd")
+freddy = 9
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"

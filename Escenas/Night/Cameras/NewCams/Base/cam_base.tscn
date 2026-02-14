@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://limvantf7nq8"]
-
-[ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Base/cam_base.gd" id="1_nwdhq"]
-
-[node name="CamBase" type="Node2D" unique_id=2068173599]
-script = ExtResource("1_nwdhq")

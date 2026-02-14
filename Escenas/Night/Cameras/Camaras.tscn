@@ -1,64 +1,64 @@
 [gd_scene format=3 uid="uid://d2hwtk3f7idft"]
 
-[ext_resource type="Script" uid="uid://b27147ui1yhfq" path="res://Escenas/Night/Cameras/camaras.gd" id="1_br1gn"]
-[ext_resource type="PackedScene" uid="uid://d15nqwuup3sgy" path="res://Escenas/Night/Cameras/Cams/cam_1.tscn" id="2_2ccee"]
-[ext_resource type="Texture2D" uid="uid://c2kdy8o4sph8l" path="res://assets/Placeholders/Camaras/UI/Minimapa Botones.png" id="2_af0gv"]
-[ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://Escenas/Night/RandomScriptsIDC/ready_visible.gd" id="2_rbjw8"]
-[ext_resource type="Script" uid="uid://dv1bpnkkcodf8" path="res://Escenas/Night/Cameras/cam.gd" id="2_upipm"]
+[ext_resource type="Script" uid="uid://b27147ui1yhfq" path="res://escenas/Night/Cameras/camaras.gd" id="1_br1gn"]
+[ext_resource type="Texture2D" uid="uid://b5ntuf2gom4uh" path="res://assets/Placeholders/Camaras/UI/Minimapa Botones.png" id="2_af0gv"]
+[ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://escenas/Night/RandomScriptsIDC/ready_visible.gd" id="2_rbjw8"]
+[ext_resource type="Script" uid="uid://dv1bpnkkcodf8" path="res://escenas/Night/Cameras/scripts/cam.gd" id="2_upipm"]
 [ext_resource type="Shader" uid="uid://dtawjw1d75oyi" path="res://shaders/Persperctive_fnaf.gdshader" id="2_xkbhl"]
-[ext_resource type="Script" uid="uid://cm3tocsp0h603" path="res://Escenas/Night/Cameras/minimapa_botones.gd" id="3_3rjyj"]
-[ext_resource type="Texture2D" uid="uid://cigbvkk3j8ffo" path="res://assets/Placeholders/Camaras/UI/Button Highlight/1.png" id="3_6sdql"]
-[ext_resource type="PackedScene" uid="uid://cda5kiiskwlbq" path="res://Escenas/Night/Cameras/Cams/cam_2.tscn" id="4_46w8l"]
-[ext_resource type="Texture2D" uid="uid://u7u3wrl53pmu" path="res://assets/Placeholders/Camaras/UI/Button Highlight/2.png" id="4_i8kd1"]
-[ext_resource type="PackedScene" uid="uid://e44s7ccrwy40" path="res://Escenas/Night/Cameras/Cams/cam_3.tscn" id="5_ntgi6"]
-[ext_resource type="Texture2D" uid="uid://b0bh4y432so3i" path="res://assets/Placeholders/Camaras/UI/Button Highlight/3.png" id="5_ukvct"]
-[ext_resource type="PackedScene" uid="uid://cditugvb64tye" path="res://Escenas/Night/Cameras/Cams/cam_4.tscn" id="6_2wxea"]
-[ext_resource type="Texture2D" uid="uid://cuwvdcrhj1gbh" path="res://assets/Placeholders/Camaras/UI/Button Highlight/4.png" id="6_n2msv"]
-[ext_resource type="PackedScene" uid="uid://e8r6fg31exj6" path="res://Escenas/Night/Cameras/Cams/cam_5.tscn" id="7_3d63n"]
-[ext_resource type="Texture2D" uid="uid://iwe711asy7l3" path="res://assets/Placeholders/Camaras/UI/Button Highlight/5.png" id="7_4imir"]
-[ext_resource type="Texture2D" uid="uid://yyax57naf8aw" path="res://assets/Placeholders/Camaras/UI/Button Highlight/6.png" id="8_15j7b"]
-[ext_resource type="PackedScene" uid="uid://cje8cwptwv3lc" path="res://Escenas/Night/Cameras/Cams/cam_6.tscn" id="8_usepc"]
-[ext_resource type="Texture2D" uid="uid://dk4l23enly6v0" path="res://assets/Placeholders/Camaras/UI/Button Highlight/7.png" id="9_3rjyj"]
-[ext_resource type="PackedScene" uid="uid://b2w3hd5l84g7e" path="res://Escenas/Night/Cameras/Cams/cam_7.tscn" id="9_vcu2v"]
-[ext_resource type="Texture2D" uid="uid://cgka48vk0day7" path="res://assets/Placeholders/Camaras/UI/Button Highlight/8.png" id="10_2ccee"]
-[ext_resource type="PackedScene" uid="uid://dw5i2anclvxax" path="res://Escenas/Night/Cameras/Cams/cam_8.tscn" id="10_5lr1q"]
-[ext_resource type="Texture2D" uid="uid://1a4gq274kwas" path="res://assets/Placeholders/Camaras/UI/Button Highlight/9.png" id="11_upipm"]
-[ext_resource type="PackedScene" uid="uid://d2wcktqdpngnk" path="res://Escenas/Night/Cameras/Cams/cam_9.tscn" id="11_xsv31"]
-[ext_resource type="PackedScene" uid="uid://46o0eayqnrk3" path="res://Escenas/Night/Cameras/Cams/cam_10a.tscn" id="12_0mojl"]
-[ext_resource type="Texture2D" uid="uid://bv3m77fkr18l4" path="res://assets/Placeholders/Camaras/UI/Button Highlight/10A.png" id="12_46w8l"]
-[ext_resource type="PackedScene" uid="uid://c534eojaodxik" path="res://Escenas/Night/Cameras/Cams/cam_10b.tscn" id="13_b7x0u"]
-[ext_resource type="Texture2D" uid="uid://brbtbyeyiaq56" path="res://assets/Placeholders/Camaras/UI/Button Highlight/10B.png" id="13_ntgi6"]
-[ext_resource type="Texture2D" uid="uid://bty7gt2pakt4m" path="res://assets/Placeholders/Camaras/UI/Button Highlight/11A.png" id="14_2wxea"]
-[ext_resource type="PackedScene" uid="uid://bphrhnj1ljo77" path="res://Escenas/Night/Cameras/Cams/cam_11a.tscn" id="14_i3dc4"]
-[ext_resource type="Texture2D" uid="uid://2tf8dsnyhpjn" path="res://assets/Placeholders/Camaras/UI/Button Highlight/11B.png" id="15_3d63n"]
-[ext_resource type="PackedScene" uid="uid://citry658ygo8e" path="res://Escenas/Night/Cameras/Cams/cam_11b.tscn" id="15_jjbyy"]
-[ext_resource type="Texture2D" uid="uid://cx85hyhbp1k4l" path="res://assets/Placeholders/Camaras/Cam6/Cam.png" id="16_3onkb"]
-[ext_resource type="Texture2D" uid="uid://bttp7ke2h52qu" path="res://assets/Placeholders/Linterna.png" id="16_tmxn1"]
-[ext_resource type="Texture2D" uid="uid://7ri231ls1otd" path="res://assets/Placeholders/Camaras/UI/Minimapa Ductos.png" id="16_usepc"]
-[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="17_rgdy6"]
-[ext_resource type="Texture2D" uid="uid://bf0hv8xgm5np5" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_1.png" id="17_vcu2v"]
-[ext_resource type="Texture2D" uid="uid://34dxk108f3cy" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_2.png" id="18_5lr1q"]
-[ext_resource type="PackedScene" uid="uid://dr75h62c7rj4b" path="res://Escenas/Night/Cameras/estatica/ruido.tscn" id="18_rgdy6"]
-[ext_resource type="AudioStream" uid="uid://dqxtl11xwgeo0" path="res://assets/sounds/Light_doest_work.mp3" id="19_ev252"]
-[ext_resource type="Texture2D" uid="uid://bqtlrt7wib8qs" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_3.png" id="19_xsv31"]
-[ext_resource type="Texture2D" uid="uid://bdwk11dh5uuuu" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_4.png" id="20_0mojl"]
-[ext_resource type="Texture2D" uid="uid://10fngjhmu07a" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_5.png" id="21_b7x0u"]
-[ext_resource type="Texture2D" uid="uid://dshdldpmu1xwb" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_6.png" id="22_i3dc4"]
-[ext_resource type="Texture2D" uid="uid://ciqd3k4m81auv" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_7.png" id="23_jjbyy"]
-[ext_resource type="Texture2D" uid="uid://jc2657n2fewe" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_8.png" id="24_yh74e"]
-[ext_resource type="Texture2D" uid="uid://dq8py3xw1exgs" path="res://assets/Placeholders/Camaras/UI/Cam_Selecter.png" id="25_4imir"]
-[ext_resource type="Script" uid="uid://vbujo2ogwuhp" path="res://Escenas/Night/Cameras/selecter.gd" id="25_15j7b"]
-[ext_resource type="Texture2D" uid="uid://cxwnxlesi66ww" path="res://assets/Placeholders/Camaras/UI/Cam_Selecter_HL.png" id="26_15j7b"]
-[ext_resource type="Texture2D" uid="uid://cr171qqvk3mko" path="res://assets/Placeholders/Camaras/UI/Duct_Selecter.png" id="27_3rjyj"]
-[ext_resource type="Texture2D" uid="uid://bhowm1syjtymp" path="res://assets/Placeholders/Camaras/UI/Duct_Selecter_HL.png" id="28_2ccee"]
-[ext_resource type="Texture2D" uid="uid://cks84aonllq7h" path="res://assets/Placeholders/Camaras/UI/borderlines/Border.png" id="45_0vgwf"]
-[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="45_yh74e"]
-[ext_resource type="Script" uid="uid://2g42yp6xnc62" path="res://Escenas/Night/Cameras/border.gd" id="46_3onkb"]
-[ext_resource type="Texture2D" uid="uid://bcur5eymsryhd" path="res://assets/Placeholders/Camaras/UI/borderlines/Dot.png" id="46_aeiuf"]
-[ext_resource type="Texture2D" uid="uid://dp1jipaw8a00y" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery Base.png" id="47_3onkb"]
-[ext_resource type="Texture2D" uid="uid://cxgkiq6r58cmu" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 1.png" id="48_7y4jm"]
-[ext_resource type="Texture2D" uid="uid://df2xvt5tjte2u" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 2.png" id="49_rgdy6"]
-[ext_resource type="Texture2D" uid="uid://btrh4hdjcsev4" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 3.png" id="50_8i5k1"]
+[ext_resource type="Script" uid="uid://cm3tocsp0h603" path="res://escenas/Night/Cameras/scripts/minimapa_botones.gd" id="3_3rjyj"]
+[ext_resource type="Texture2D" uid="uid://dsuhhd08e28y3" path="res://assets/Placeholders/Camaras/UI/Button Highlight/1.png" id="3_6sdql"]
+[ext_resource type="Texture2D" uid="uid://boxekndowjyr5" path="res://assets/Placeholders/Camaras/UI/Button Highlight/2.png" id="4_i8kd1"]
+[ext_resource type="Texture2D" uid="uid://0wp7x10ib0nk" path="res://assets/Placeholders/Camaras/UI/Button Highlight/3.png" id="5_ukvct"]
+[ext_resource type="PackedScene" uid="uid://crwkri6333nuw" path="res://escenas/Night/Cameras/NewCams/cam_2.tscn" id="5_v2gfh"]
+[ext_resource type="Texture2D" uid="uid://c03230yfel1t0" path="res://assets/Placeholders/Camaras/UI/Button Highlight/4.png" id="6_n2msv"]
+[ext_resource type="PackedScene" uid="uid://dy21jonwe8m3w" path="res://escenas/Night/Cameras/NewCams/cam_3.tscn" id="6_uorri"]
+[ext_resource type="Texture2D" uid="uid://c1sopoacbhxmg" path="res://assets/Placeholders/Camaras/UI/Button Highlight/5.png" id="7_4imir"]
+[ext_resource type="PackedScene" uid="uid://b2tcax23fufxq" path="res://escenas/Night/Cameras/NewCams/cam_4.tscn" id="7_41gh2"]
+[ext_resource type="Texture2D" uid="uid://caf4em8i7m0xh" path="res://assets/Placeholders/Camaras/UI/Button Highlight/6.png" id="8_15j7b"]
+[ext_resource type="PackedScene" uid="uid://b41uiddca36d1" path="res://escenas/Night/Cameras/NewCams/cam_5.tscn" id="8_88h2j"]
+[ext_resource type="PackedScene" uid="uid://cmghgfkkol88w" path="res://escenas/Night/Cameras/NewCams/cam_6/cam_6.tscn" id="9_2drmh"]
+[ext_resource type="Texture2D" uid="uid://lnxl4yrq70tx" path="res://assets/Placeholders/Camaras/UI/Button Highlight/7.png" id="9_3rjyj"]
+[ext_resource type="Texture2D" uid="uid://ckd7s6hd74c2a" path="res://assets/Placeholders/Camaras/UI/Button Highlight/8.png" id="10_2ccee"]
+[ext_resource type="PackedScene" uid="uid://cwccuacda3cbg" path="res://escenas/Night/Cameras/NewCams/cam_7.tscn" id="10_78nsn"]
+[ext_resource type="PackedScene" uid="uid://ctwqfevftyqdh" path="res://escenas/Night/Cameras/NewCams/cam_8.tscn" id="11_r14dw"]
+[ext_resource type="Texture2D" uid="uid://3rjrcumkpity" path="res://assets/Placeholders/Camaras/UI/Button Highlight/9.png" id="11_upipm"]
+[ext_resource type="Texture2D" uid="uid://dntxbudlv5ric" path="res://assets/Placeholders/Camaras/UI/Button Highlight/10A.png" id="12_46w8l"]
+[ext_resource type="PackedScene" uid="uid://v50bk1nqvlqr" path="res://escenas/Night/Cameras/NewCams/cam_9.tscn" id="12_oe8ru"]
+[ext_resource type="Texture2D" uid="uid://cq26ot34iyuvx" path="res://assets/Placeholders/Camaras/UI/Button Highlight/10B.png" id="13_ntgi6"]
+[ext_resource type="PackedScene" uid="uid://va54lymxaq4x" path="res://escenas/Night/Cameras/NewCams/cam_10.tscn" id="13_s0jpk"]
+[ext_resource type="Texture2D" uid="uid://dbt0fxofvo5g1" path="res://assets/Placeholders/Camaras/UI/Button Highlight/11A.png" id="14_2wxea"]
+[ext_resource type="PackedScene" uid="uid://wfyjkae1wov5" path="res://escenas/Night/Cameras/NewCams/cam_11.tscn" id="14_bju3j"]
+[ext_resource type="Texture2D" uid="uid://bgg650doffa2" path="res://assets/Placeholders/Camaras/UI/Button Highlight/11B.png" id="15_3d63n"]
+[ext_resource type="PackedScene" uid="uid://ddvkh5eql5g5a" path="res://escenas/Night/Cameras/NewCams/cam_12.tscn" id="15_gomtu"]
+[ext_resource type="Texture2D" uid="uid://ch5lwuekvvg5p" path="res://assets/Placeholders/Camaras/Cam6/Cam.png" id="16_3onkb"]
+[ext_resource type="PackedScene" uid="uid://i24dv7xx0r13" path="res://escenas/Night/Cameras/NewCams/cam_13.tscn" id="16_kq2nd"]
+[ext_resource type="Texture2D" uid="uid://cvgpsiwmtdk5m" path="res://assets/Placeholders/Linterna.png" id="16_tmxn1"]
+[ext_resource type="Texture2D" uid="uid://dbibmbqy84et8" path="res://assets/Placeholders/Camaras/UI/Minimapa Ductos.png" id="16_usepc"]
+[ext_resource type="PackedScene" uid="uid://yp8yfkj58or4" path="res://escenas/Night/Cameras/NewCams/cam_1.tscn" id="17_r14dw"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="17_rgdy6"]
+[ext_resource type="Texture2D" uid="uid://t3tmcrkaa7ky" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_1.png" id="17_vcu2v"]
+[ext_resource type="Texture2D" uid="uid://crcwc7sf2jy3d" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_2.png" id="18_5lr1q"]
+[ext_resource type="PackedScene" uid="uid://dr75h62c7rj4b" path="res://escenas/Night/Cameras/estatica/ruido.tscn" id="18_rgdy6"]
+[ext_resource type="AudioStream" uid="uid://dlomb7s1jl4jx" path="res://assets/sounds/Light_doest_work.mp3" id="19_ev252"]
+[ext_resource type="Texture2D" uid="uid://2tnyeg2sn42q" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_3.png" id="19_xsv31"]
+[ext_resource type="Texture2D" uid="uid://bfeefxmn1fip6" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_4.png" id="20_0mojl"]
+[ext_resource type="Texture2D" uid="uid://cuehmriypay3f" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_5.png" id="21_b7x0u"]
+[ext_resource type="Texture2D" uid="uid://hvjmxn1dqidj" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_6.png" id="22_i3dc4"]
+[ext_resource type="Texture2D" uid="uid://cxdpwqk1r5woc" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_7.png" id="23_jjbyy"]
+[ext_resource type="Texture2D" uid="uid://bnf6xx0odvv61" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_8.png" id="24_yh74e"]
+[ext_resource type="Texture2D" uid="uid://niapylts1lbo" path="res://assets/Placeholders/Camaras/UI/Cam_Selecter.png" id="25_4imir"]
+[ext_resource type="Script" uid="uid://vbujo2ogwuhp" path="res://escenas/Night/Cameras/scripts/selecter.gd" id="25_15j7b"]
+[ext_resource type="Texture2D" uid="uid://dxs3bp5aslr2r" path="res://assets/Placeholders/Camaras/UI/Cam_Selecter_HL.png" id="26_15j7b"]
+[ext_resource type="Texture2D" uid="uid://cvpdam6cq41pe" path="res://assets/Placeholders/Camaras/UI/Duct_Selecter.png" id="27_3rjyj"]
+[ext_resource type="Texture2D" uid="uid://bh2fgxxnru22a" path="res://assets/Placeholders/Camaras/UI/Duct_Selecter_HL.png" id="28_2ccee"]
+[ext_resource type="Texture2D" uid="uid://qp424mvppayp" path="res://assets/Placeholders/Camaras/UI/borderlines/Border.png" id="45_0vgwf"]
+[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://escenas/Night/UI/Mouse_Custom.tscn" id="45_yh74e"]
+[ext_resource type="Script" uid="uid://2g42yp6xnc62" path="res://escenas/Night/Cameras/scripts/border.gd" id="46_3onkb"]
+[ext_resource type="Texture2D" uid="uid://dadknnhyktqff" path="res://assets/Placeholders/Camaras/UI/borderlines/Dot.png" id="46_aeiuf"]
+[ext_resource type="Texture2D" uid="uid://fsxt7s1l06xy" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery Base.png" id="47_3onkb"]
+[ext_resource type="Texture2D" uid="uid://byvd0b3g2e2uh" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 1.png" id="48_7y4jm"]
+[ext_resource type="Texture2D" uid="uid://cx3r33fr3m2np" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 2.png" id="49_rgdy6"]
+[ext_resource type="Texture2D" uid="uid://bgm5imdsvxljr" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 3.png" id="50_8i5k1"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="60_78nsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vp63"]
@@ -105,50 +105,54 @@ shader_parameter/static_noise_intensity = 0.06
 shader_parameter/aberration = 0.03
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = true
-shader_parameter/warp_amount = 0.30000001425
+shader_parameter/warp_amount = 0.0
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 
-[node name="Camaras" type="Node2D" unique_id=1932195095]
+[node name="Camaras" type="Node2D" unique_id=1932195095 node_paths=PackedStringArray("cams", "linterna")]
 texture_filter = 1
 script = ExtResource("1_br1gn")
+cams = NodePath("Si_Shader/Cams")
+linterna = NodePath("Si_Shader/Linterna")
 
 [node name="Si_Shader" type="CanvasLayer" parent="." unique_id=1468658571]
 layer = 3
 script = ExtResource("2_rbjw8")
 
-[node name="Cams" type="Node2D" parent="Si_Shader" unique_id=1422200098]
+[node name="Cams" type="Node2D" parent="Si_Shader" unique_id=1422200098 node_paths=PackedStringArray("camaras_root", "cameras")]
 position = Vector2(960, 540)
 script = ExtResource("2_upipm")
+camaras_root = NodePath("../..")
+cameras = [NodePath("Cam1"), NodePath("Cam2"), NodePath("Cam3"), NodePath("Cam4"), NodePath("Cam5"), NodePath("Cam6"), NodePath("Cam7"), NodePath("Cam8"), NodePath("Cam9"), NodePath("Cam10"), NodePath("Cam11"), NodePath("Cam12"), NodePath("Cam13")]
 velocidad = 200.0
 period = 20.0
 
-[node name="Cam_1" parent="Si_Shader/Cams" unique_id=1101318814 instance=ExtResource("2_2ccee")]
+[node name="Cam1" parent="Si_Shader/Cams" unique_id=1208974310 instance=ExtResource("17_r14dw")]
 
-[node name="Cam_2" parent="Si_Shader/Cams" unique_id=979727257 instance=ExtResource("4_46w8l")]
+[node name="Cam2" parent="Si_Shader/Cams" unique_id=1173309079 instance=ExtResource("5_v2gfh")]
 
-[node name="Cam_3" parent="Si_Shader/Cams" unique_id=462211899 instance=ExtResource("5_ntgi6")]
+[node name="Cam3" parent="Si_Shader/Cams" unique_id=1954128902 instance=ExtResource("6_uorri")]
 
-[node name="Cam_4" parent="Si_Shader/Cams" unique_id=155952215 instance=ExtResource("6_2wxea")]
+[node name="Cam4" parent="Si_Shader/Cams" unique_id=309052662 instance=ExtResource("7_41gh2")]
 
-[node name="Cam_5" parent="Si_Shader/Cams" unique_id=903958701 instance=ExtResource("7_3d63n")]
+[node name="Cam5" parent="Si_Shader/Cams" unique_id=621870603 instance=ExtResource("8_88h2j")]
 
-[node name="Cam_6" parent="Si_Shader/Cams" unique_id=1660842217 instance=ExtResource("8_usepc")]
+[node name="Cam6" parent="Si_Shader/Cams" unique_id=433915285 instance=ExtResource("9_2drmh")]
 
-[node name="Cam_7" parent="Si_Shader/Cams" unique_id=1331293344 instance=ExtResource("9_vcu2v")]
+[node name="Cam7" parent="Si_Shader/Cams" unique_id=2117772679 instance=ExtResource("10_78nsn")]
 
-[node name="Cam_8" parent="Si_Shader/Cams" unique_id=1041367881 instance=ExtResource("10_5lr1q")]
+[node name="Cam8" parent="Si_Shader/Cams" unique_id=1979102074 instance=ExtResource("11_r14dw")]
 
-[node name="Cam_9" parent="Si_Shader/Cams" unique_id=932566272 instance=ExtResource("11_xsv31")]
+[node name="Cam9" parent="Si_Shader/Cams" unique_id=1320883646 instance=ExtResource("12_oe8ru")]
 
-[node name="Cam_10A" parent="Si_Shader/Cams" unique_id=1236654999 instance=ExtResource("12_0mojl")]
+[node name="Cam10" parent="Si_Shader/Cams" unique_id=1751710409 instance=ExtResource("13_s0jpk")]
 
-[node name="Cam_10B" parent="Si_Shader/Cams" unique_id=1693652963 instance=ExtResource("13_b7x0u")]
+[node name="Cam11" parent="Si_Shader/Cams" unique_id=1081304585 instance=ExtResource("14_bju3j")]
 
-[node name="Cam_11A" parent="Si_Shader/Cams" unique_id=500189134 instance=ExtResource("14_i3dc4")]
+[node name="Cam12" parent="Si_Shader/Cams" unique_id=67756757 instance=ExtResource("15_gomtu")]
 
-[node name="Cam_11B" parent="Si_Shader/Cams" unique_id=1037020437 instance=ExtResource("15_jjbyy")]
+[node name="Cam13" parent="Si_Shader/Cams" unique_id=314794619 instance=ExtResource("16_kq2nd")]
 
 [node name="Linterna" type="Sprite2D" parent="Si_Shader" unique_id=941016490]
 position = Vector2(960, 540)
@@ -473,6 +477,7 @@ cams = true
 
 [node name="CanvasLayer_Shader" type="CanvasLayer" parent="." unique_id=634090983]
 layer = 3
+visible = false
 script = ExtResource("2_rbjw8")
 
 [node name="ShaderBemd" type="ColorRect" parent="CanvasLayer_Shader" unique_id=296090820]
@@ -492,38 +497,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_1" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_2" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_3" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_4" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_5" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_6" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_7" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_8" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_9" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_10A" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_10B" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_11A" method="_on_camaras_alucinations"]
-[connection signal="alucinations" from="." to="Si_Shader/Cams/Cam_11B" method="_on_camaras_alucinations"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_1" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_2" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_3" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_4" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_5" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_6" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_7" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_8" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_9" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_10A" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_10B" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_11A" method="_on_cam_cam_act"]
-[connection signal="cam_act" from="Si_Shader/Cams" to="Si_Shader/Cams/Cam_11B" method="_on_cam_cam_act"]
 [connection signal="cam_act" from="Si_Shader/Cams" to="No_Shader/Ruido" method="_on_cam_cam_act"]
 [connection signal="mouse_entered" from="No_Shader/Area_Minimapa" to="." method="_on_area_minimapa_mouse_entered"]
 [connection signal="mouse_exited" from="No_Shader/Area_Minimapa" to="." method="_on_area_minimapa_mouse_exited"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="." method="_on_minimapa_botones_cam_act"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cams" method="_on_minimapa_botones_cam_act"]
-[connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cams/Cam_6" method="_on_minimapa_botones_cam_act"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="No_Shader/Ruido" method="_on_minimapa_botones_cam_act"]
 [connection signal="input_event" from="No_Shader/MinimapaBotones/Area1" to="No_Shader/MinimapaBotones" method="_on_area_1_input_event"]
 [connection signal="mouse_entered" from="No_Shader/MinimapaBotones/Area1" to="No_Shader/MinimapaBotones" method="_on_area_1_mouse_entered"]

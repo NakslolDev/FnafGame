@@ -62,9 +62,7 @@ func _on_static_speed_timeout() -> void:
 func _on_minimapa_botones_cam_act() -> void:
 	up_static(0.1, true)
 
-func _on_cam_cam_act(freddy: bool, local_from: int, local_to: int, local_extra: int, al: bool) -> void:
-	if al:
-		return
+func _on_cam_cam_act(freddy: bool, local_from: int, local_to: int, local_extra: int) -> void:
 	if freddy:
 		up_static(1.5, false)
 	elif $"../..".camara_activa == local_from or $"../..".camara_activa == local_to or $"../..".camara_activa == local_extra:

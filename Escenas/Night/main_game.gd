@@ -56,7 +56,6 @@ func _ready():
 	tick_speed = 1.0 / tick_rate
 	transicionando = true
 	transicion_loc.modulate.a = 1.0
-	$Camaras_Control/Camaras.act_all_cams() # es necesario activarlos otra vez para que cojan los verdaderos datos de los animatronicos
 	$True_No_Shader/Animatronic_Map.act_first()
 
 func _process(delta: float) -> void:

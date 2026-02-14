@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b2tcax23fufxq"]
+
+[ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_funtx"]
+[ext_resource type="Texture2D" uid="uid://cnreve7lruhhw" path="res://assets/Placeholders/Camaras/Cam4/Cam.png" id="2_m4l10"]
+[ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_0txya"]
+[ext_resource type="Texture2D" uid="uid://bhw65b3cmipt2" path="res://assets/Placeholders/Camaras/Cam4/Freddy_4.png" id="4_dd5ko"]
+[ext_resource type="Texture2D" uid="uid://brniic5yucc61" path="res://assets/Placeholders/Camaras/Cam4/Foxy_4.png" id="5_lxg5d"]
+[ext_resource type="Texture2D" uid="uid://dcisl0mgr5inw" path="res://assets/Placeholders/Camaras/Cam4/Chica_4.png" id="6_3he66"]
+
+[node name="Cam4" type="Node2D" unique_id=309052662 node_paths=PackedStringArray("sprites")]
+script = ExtResource("1_funtx")
+cam_number = 4
+sprites = [NodePath("Cam"), NodePath("Freddy"), NodePath("Foxy"), NodePath("Chica")]
+metadata/_custom_type_script = "uid://cd811lhimvfl6"
+
+[node name="Cam" type="Sprite2D" parent="." unique_id=559544021]
+texture = ExtResource("2_m4l10")
+script = ExtResource("3_0txya")
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Freddy" type="Sprite2D" parent="." unique_id=840019401]
+texture = ExtResource("4_dd5ko")
+script = ExtResource("3_0txya")
+freddy = 11
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy" type="Sprite2D" parent="." unique_id=1278382803]
+texture = ExtResource("5_lxg5d")
+script = ExtResource("3_0txya")
+foxy_room = 4
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Chica" type="Sprite2D" parent="." unique_id=1535359611]
+texture = ExtResource("6_3he66")
+script = ExtResource("3_0txya")
+chica = 3
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"

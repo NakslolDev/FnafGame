@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://b2yslivavr5vg" path="res://escenas/Menu/Opciones/scripts/button_language.gd" id="16_3ayvq"]
 [ext_resource type="Script" uid="uid://ci54e0kutof43" path="res://escenas/Menu/Opciones/scripts/button_switch_doors.gd" id="17_4shsc"]
 [ext_resource type="Script" uid="uid://b1c25kks7k3p1" path="res://escenas/Menu/Opciones/scripts/button_cam_lights.gd" id="18_ssvwo"]
-[ext_resource type="Script" uid="uid://cwhu2sftil7sk" path="res://escenas/Night/Cameras/flick_down_cams.gd" id="19_rramm"]
+[ext_resource type="Script" uid="uid://cwhu2sftil7sk" path="res://escenas/Night/Cameras/scripts/flick_down_cams.gd" id="19_rramm"]
 [ext_resource type="Script" uid="uid://cgrf4bemdli7b" path="res://escenas/Menu/Opciones/scripts/button_when_dead.gd" id="20_ey2eu"]
 [ext_resource type="Script" uid="uid://24xvgy3l2ncb" path="res://escenas/Menu/Opciones/scripts/button_when_win.gd" id="21_aq4ee"]
 [ext_resource type="Script" uid="uid://cwh1f4g4dt7w2" path="res://escenas/Menu/Opciones/scripts/text_speed.gd" id="22_efbbb"]
