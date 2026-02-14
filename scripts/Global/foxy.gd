@@ -290,15 +290,15 @@ func move_back_to():
 	
 	if room == "Duc5":
 		if randi_range(0, 1) == 0:
-			position = 2
+			position = 1
 		else:
-			position = 4
+			position = 5
 		flashlight_stunt = FLASHLIGHT_STUNT_ON_DUCTS
 	elif room == "Duc8":
 		if randi_range(0, 1) == 0:
-			position = 3
+			position = 2
 		else:
-			position = 5
+			position = 6
 		flashlight_stunt = FLASHLIGHT_STUNT_ON_DUCTS
 	elif room == "lhall" or room == "rhall":
 		position = 2
@@ -808,8 +808,8 @@ func decide_Duc5(_dead_end):
 		
 		elif position == 2:
 			var rand_go_to_pas: int
-			rand_go_to_pas = randi_range(0, 40) # esto hace más sencillo echar a foxy a pas
-			if AI_level + 20 > rand_go_to_pas:
+			rand_go_to_pas = randi_range(0, 20) # esto hace más sencillo echar a foxy a pas
+			if AI_level > rand_go_to_pas:
 				next_room = "lhall"
 			else:
 				next_room = "pas"
@@ -819,8 +819,8 @@ func decide_Duc5(_dead_end):
 		
 		elif position == 4: 
 			var rand_go_to_pas: int
-			rand_go_to_pas = randi_range(0, 40) # esto hace más sencillo echar a foxy a pas
-			if AI_level + 20 > rand_go_to_pas:
+			rand_go_to_pas = randi_range(0, 20) # esto hace más sencillo echar a foxy a pas
+			if AI_level > rand_go_to_pas:
 				next_room = "rhall"
 			else:
 				next_room = "pas"
