@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://i24dv7xx0r13" path="res://escenas/Night/Cameras/NewCams/cam_13.tscn" id="16_kq2nd"]
 [ext_resource type="Texture2D" uid="uid://cvgpsiwmtdk5m" path="res://assets/Placeholders/Linterna.png" id="16_tmxn1"]
 [ext_resource type="Texture2D" uid="uid://dbibmbqy84et8" path="res://assets/Placeholders/Camaras/UI/Minimapa Ductos.png" id="16_usepc"]
+[ext_resource type="Script" uid="uid://sugqxbfnyp2n" path="res://escenas/Night/Cameras/alucination_control.gd" id="17_oe8ru"]
 [ext_resource type="PackedScene" uid="uid://yp8yfkj58or4" path="res://escenas/Night/Cameras/NewCams/cam_1.tscn" id="17_r14dw"]
 [ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="17_rgdy6"]
 [ext_resource type="Texture2D" uid="uid://t3tmcrkaa7ky" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_1.png" id="17_vcu2v"]
@@ -110,21 +111,24 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 
-[node name="Camaras" type="Node2D" unique_id=1932195095 node_paths=PackedStringArray("cams", "linterna")]
+[node name="Camaras" type="Node2D" unique_id=1932195095 node_paths=PackedStringArray("cams", "alucination_control", "linterna")]
 texture_filter = 1
 script = ExtResource("1_br1gn")
 cams = NodePath("Si_Shader/Cams")
+alucination_control = NodePath("Si_Shader/Cams/Alucination_control")
 linterna = NodePath("Si_Shader/Linterna")
 
 [node name="Si_Shader" type="CanvasLayer" parent="." unique_id=1468658571]
 layer = 3
+visible = false
 script = ExtResource("2_rbjw8")
 
-[node name="Cams" type="Node2D" parent="Si_Shader" unique_id=1422200098 node_paths=PackedStringArray("camaras_root", "cameras")]
+[node name="Cams" type="Node2D" parent="Si_Shader" unique_id=1422200098 node_paths=PackedStringArray("camaras_root", "cameras", "alucination_control")]
 position = Vector2(960, 540)
 script = ExtResource("2_upipm")
 camaras_root = NodePath("../..")
 cameras = [NodePath("Cam1"), NodePath("Cam2"), NodePath("Cam3"), NodePath("Cam4"), NodePath("Cam5"), NodePath("Cam6"), NodePath("Cam7"), NodePath("Cam8"), NodePath("Cam9"), NodePath("Cam10"), NodePath("Cam11"), NodePath("Cam12"), NodePath("Cam13")]
+alucination_control = NodePath("Alucination_control")
 velocidad = 200.0
 period = 20.0
 
@@ -153,6 +157,10 @@ period = 20.0
 [node name="Cam12" parent="Si_Shader/Cams" unique_id=67756757 instance=ExtResource("15_gomtu")]
 
 [node name="Cam13" parent="Si_Shader/Cams" unique_id=314794619 instance=ExtResource("16_kq2nd")]
+
+[node name="Alucination_control" type="Node" parent="Si_Shader/Cams" unique_id=1352561431 node_paths=PackedStringArray("cams")]
+script = ExtResource("17_oe8ru")
+cams = NodePath("..")
 
 [node name="Linterna" type="Sprite2D" parent="Si_Shader" unique_id=941016490]
 position = Vector2(960, 540)

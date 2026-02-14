@@ -10,23 +10,26 @@
 [node name="Cam12" type="Node2D" unique_id=67756757 node_paths=PackedStringArray("sprites")]
 script = ExtResource("1_34ajv")
 cam_number = 12
-sprites = [NodePath("Cam"), NodePath("Chica"), NodePath("Foxy"), NodePath("Freddy")]
+sprites = [NodePath("Cam"), NodePath("Chica"), NodePath("Foxy"), NodePath("Freddy"), NodePath("Cam2"), NodePath("Chica2"), NodePath("Foxy2"), NodePath("Freddy2")]
 metadata/_custom_type_script = "uid://cd811lhimvfl6"
 
 [node name="Cam" type="Sprite2D" parent="." unique_id=139241254]
 texture = ExtResource("2_lfbvs")
 script = ExtResource("3_2aq05")
+light = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="Chica" type="Sprite2D" parent="." unique_id=776070197]
 texture = ExtResource("4_detua")
 script = ExtResource("3_2aq05")
+light = 2
 chica = 5
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="Foxy" type="Sprite2D" parent="." unique_id=1816286198]
 texture = ExtResource("5_8l4hr")
 script = ExtResource("3_2aq05")
+light = 2
 foxy_room = 9
 foxy_pos = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
@@ -34,5 +37,40 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="Freddy" type="Sprite2D" parent="." unique_id=1336339204]
 texture = ExtResource("6_4s307")
 script = ExtResource("3_2aq05")
+light = 2
+freddy = 13
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="NoLightSeparator" type="Node" parent="." unique_id=2035625258]
+
+[node name="Cam2" type="Sprite2D" parent="." unique_id=264536615]
+self_modulate = Color(0.21518216, 0.21518219, 0.21518219, 1)
+texture = ExtResource("2_lfbvs")
+script = ExtResource("3_2aq05")
+light = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Chica2" type="Sprite2D" parent="." unique_id=1468110237]
+self_modulate = Color(0.21518216, 0.21518219, 0.21518219, 1)
+texture = ExtResource("4_detua")
+script = ExtResource("3_2aq05")
+light = 1
+chica = 5
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy2" type="Sprite2D" parent="." unique_id=579931620]
+self_modulate = Color(0.21518216, 0.21518219, 0.21518219, 1)
+texture = ExtResource("5_8l4hr")
+script = ExtResource("3_2aq05")
+light = 1
+foxy_room = 9
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Freddy2" type="Sprite2D" parent="." unique_id=447736117]
+self_modulate = Color(0.21518216, 0.21518219, 0.21518219, 1)
+texture = ExtResource("6_4s307")
+script = ExtResource("3_2aq05")
+light = 1
 freddy = 13
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"

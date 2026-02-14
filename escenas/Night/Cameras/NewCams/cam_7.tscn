@@ -16,17 +16,19 @@
 [node name="Cam7" type="Node2D" unique_id=2117772679 node_paths=PackedStringArray("sprites")]
 script = ExtResource("1_qe8dl")
 cam_number = 7
-sprites = [NodePath("Cam"), NodePath("FoxyDuc1"), NodePath("Foxy1"), NodePath("Freddy"), NodePath("Bonnie2"), NodePath("Foxy2"), NodePath("FoxyDuc3"), NodePath("Foxy3"), NodePath("Foxy4"), NodePath("Bonnie3")]
+sprites = [NodePath("Cam"), NodePath("FoxyDuc1"), NodePath("Foxy1"), NodePath("Freddy"), NodePath("Bonnie2"), NodePath("Foxy2"), NodePath("FoxyDuc3"), NodePath("Foxy3"), NodePath("Foxy4"), NodePath("Bonnie3"), NodePath("Cam2"), NodePath("FoxyDuc2"), NodePath("Foxy5"), NodePath("Freddy2"), NodePath("Bonnie4"), NodePath("Foxy6"), NodePath("FoxyDuc4"), NodePath("Foxy7"), NodePath("Foxy8"), NodePath("Bonnie5")]
 metadata/_custom_type_script = "uid://cd811lhimvfl6"
 
 [node name="Cam" type="Sprite2D" parent="." unique_id=1716780820]
 texture = ExtResource("2_318yp")
 script = ExtResource("3_c1vjx")
+light = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="FoxyDuc1" type="Sprite2D" parent="." unique_id=37337888]
 texture = ExtResource("4_r6xgv")
 script = ExtResource("3_c1vjx")
+light = 2
 foxy_room = 11
 foxy_pos = 3
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
@@ -34,6 +36,7 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="Foxy1" type="Sprite2D" parent="." unique_id=1559117047]
 texture = ExtResource("5_r33wg")
 script = ExtResource("3_c1vjx")
+light = 2
 foxy_room = 2
 foxy_pos = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
@@ -41,18 +44,21 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="Freddy" type="Sprite2D" parent="." unique_id=849399835]
 texture = ExtResource("6_0fpgc")
 script = ExtResource("3_c1vjx")
+light = 2
 freddy = 7
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="Bonnie2" type="Sprite2D" parent="." unique_id=790971929]
 texture = ExtResource("7_by4w4")
 script = ExtResource("3_c1vjx")
+light = 2
 bonnie = 4
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="Foxy2" type="Sprite2D" parent="." unique_id=914257133]
 texture = ExtResource("8_ttkjy")
 script = ExtResource("3_c1vjx")
+light = 2
 foxy_room = 2
 foxy_pos = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
@@ -60,6 +66,7 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="FoxyDuc3" type="Sprite2D" parent="." unique_id=441391923]
 texture = ExtResource("9_enf01")
 script = ExtResource("3_c1vjx")
+light = 2
 foxy_room = 13
 foxy_pos = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
@@ -67,6 +74,7 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="Foxy3" type="Sprite2D" parent="." unique_id=320887317]
 texture = ExtResource("10_cbsv3")
 script = ExtResource("3_c1vjx")
+light = 2
 foxy_room = 2
 foxy_pos = 3
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
@@ -74,6 +82,7 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="Foxy4" type="Sprite2D" parent="." unique_id=399423981]
 texture = ExtResource("11_pin3v")
 script = ExtResource("3_c1vjx")
+light = 2
 foxy_room = 2
 foxy_pos = 4
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
@@ -81,5 +90,93 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="Bonnie3" type="Sprite2D" parent="." unique_id=1349210845]
 texture = ExtResource("12_nidb1")
 script = ExtResource("3_c1vjx")
+light = 2
+bonnie = 5
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="NoLightSeparator" type="Node" parent="." unique_id=1379523361]
+
+[node name="Cam2" type="Sprite2D" parent="." unique_id=1894366514]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("2_318yp")
+script = ExtResource("3_c1vjx")
+light = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyDuc2" type="Sprite2D" parent="." unique_id=1952027347]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("4_r6xgv")
+script = ExtResource("3_c1vjx")
+light = 1
+foxy_room = 11
+foxy_pos = 3
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy5" type="Sprite2D" parent="." unique_id=1881994922]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("5_r33wg")
+script = ExtResource("3_c1vjx")
+light = 1
+foxy_room = 2
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Freddy2" type="Sprite2D" parent="." unique_id=2119079162]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("6_0fpgc")
+script = ExtResource("3_c1vjx")
+light = 1
+freddy = 7
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Bonnie4" type="Sprite2D" parent="." unique_id=389437160]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("7_by4w4")
+script = ExtResource("3_c1vjx")
+light = 1
+bonnie = 4
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy6" type="Sprite2D" parent="." unique_id=358890806]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("8_ttkjy")
+script = ExtResource("3_c1vjx")
+light = 1
+foxy_room = 2
+foxy_pos = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyDuc4" type="Sprite2D" parent="." unique_id=1405527557]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("9_enf01")
+script = ExtResource("3_c1vjx")
+light = 1
+foxy_room = 13
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy7" type="Sprite2D" parent="." unique_id=317193825]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("10_cbsv3")
+script = ExtResource("3_c1vjx")
+light = 1
+foxy_room = 2
+foxy_pos = 3
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy8" type="Sprite2D" parent="." unique_id=108195874]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("11_pin3v")
+script = ExtResource("3_c1vjx")
+light = 1
+foxy_room = 2
+foxy_pos = 4
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Bonnie5" type="Sprite2D" parent="." unique_id=1910530985]
+self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
+texture = ExtResource("12_nidb1")
+script = ExtResource("3_c1vjx")
+light = 1
 bonnie = 5
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"

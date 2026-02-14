@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var cams: Node2D
+@export var alucination_control: Node
 
 var _activado := false
 var activado: bool:
@@ -15,6 +16,7 @@ func set_activado(value):
 	$Si_Shader.visible = value
 	$CanvasLayer_Shader.visible = value
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Cam 6 Sounds"), (value and camara_activa == 6))
+	alucination_control.alucinations(value)
 	if value:
 		act_light()
 		$No_Shader/Ruido._on_minimapa_botones_cam_act()
@@ -93,6 +95,7 @@ func act_light():
 		Global.set_energia_consumption("Cam_lights", 1)
 		linterna.modulate.a = 0.5
 		Freddy.cam_light = true
+		alucination_control.flashlight(camara_activa)
 	
 	else:
 		Global.set_energia_consumption("Cam_lights", 0)

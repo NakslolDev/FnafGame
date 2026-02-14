@@ -2,6 +2,7 @@ extends Node2D
 
 @export var camaras_root: Node2D
 @export var cameras: Array[CamBase]
+@export var alucination_control: Node
 
 var timer_active := false
 var girar_izquierda := false
@@ -18,6 +19,10 @@ func _ready():
 	_conect_cams_signals()
 	
 	_on_minimapa_botones_cam_act()
+	
+	return
+	alucination_control._make_alucinations(400)
+	alucination_control.cam_counter = alucination_control.alucinations_cam_flick_limit
 
 
 func _conect_cams_signals():
@@ -80,6 +85,13 @@ func _on_minimapa_botones_cam_act() -> void:
 	for cam in cameras:
 		cam.visible = camaras_root.camara_activa == cam.cam_number
 		cam.actualizar_cams()
+	
+	print("")
+	print("current al (", alucination_control.alucinaciones.size(),"): ",)
+	for _print in alucination_control.alucinaciones:
+		print(_print)
+	print("")
+
 
 
 func movement_freddy(to, tpath, from, fpath):
