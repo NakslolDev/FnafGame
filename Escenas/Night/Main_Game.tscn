@@ -391,7 +391,6 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Sound" from="Oficina/Puerta Derecha" to="Door sounds" method="_on_puerta_derecha_sound"]
 [connection signal="state" from="Oficina/Puerta Derecha" to="Freddy footsteps" method="_on_puerta_derecha_state"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]
-[connection signal="Linterna_Activada_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_activada_rebote"]
 [connection signal="Linterna_Recarga_Switch_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_recarga_switch_rebote"]
 [connection signal="Oficina_Detras_Mouse_Switch" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_oficina_detras_mouse_switch"]
 [connection signal="mouse_entered" from="Oficina/VHS_Player/VHS_colider" to="Linterna" method="_on_vhs_colider_mouse_entered"]

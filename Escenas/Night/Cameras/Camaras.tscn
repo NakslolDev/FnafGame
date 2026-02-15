@@ -142,7 +142,8 @@ period = 20.0
 
 [node name="Cam5" parent="Si_Shader/Cams" unique_id=621870603 instance=ExtResource("8_88h2j")]
 
-[node name="Cam6" parent="Si_Shader/Cams" unique_id=433915285 instance=ExtResource("9_2drmh")]
+[node name="Cam6" parent="Si_Shader/Cams" unique_id=433915285 node_paths=PackedStringArray("camaras_root") instance=ExtResource("9_2drmh")]
+camaras_root = NodePath("../../..")
 
 [node name="Cam7" parent="Si_Shader/Cams" unique_id=2117772679 instance=ExtResource("10_78nsn")]
 

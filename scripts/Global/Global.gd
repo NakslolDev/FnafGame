@@ -425,7 +425,7 @@ func leer_partida():
 			# Cargar variables
 			
 			noche = devpartida.get("noche", noche)
-			safe_code = devpartida.get("safe_code", safe_code)
+			safe_code = _asign_array_int(devpartida.get("safe_code", safe_code), SAFE_CODE_SIZE)
 			_asign_recursive_diccionary(devpartida.get("inventario"), inventario)
 			_asign_recursive_diccionary(devpartida.get("mapa"), mapa)
 			_asign_recursive_diccionary(devpartida.get("dm"), dm)
@@ -457,12 +457,14 @@ func leer_partida():
 	# Cargar variables
 	
 	noche = partida.get("noche", noche)
-	safe_code = partida.get("safe_code", safe_code)
+	safe_code = _asign_array_int(partida.get("safe_code", safe_code), SAFE_CODE_SIZE)
 	_asign_recursive_diccionary(partida.get("inventario"), inventario)
 	_asign_recursive_diccionary(partida.get("mapa"), mapa)
 	_asign_recursive_diccionary(partida.get("dm"), dm)
 	
 	print("Partida cargada")
+
+
 
 func leer_partida_provisional():
 	
@@ -627,6 +629,13 @@ func _asign_recursive_diccionary(dick_origin: Dictionary, dick_destiny: Dictiona
 				_:
 					dick_destiny[key] = origin_value
 
+func _asign_array_int(_array: Array, _max_size: int) -> Array[int]:
+	var _new_array: Array[int] = []
+	
+	for i in _max_size:
+		_new_array.append(int(_array[i]))
+	
+	return _new_array
 
 #---Configuration---#
 
@@ -776,7 +785,8 @@ var finales := {
 
 var noche := 1 # 1-6, 0 es custom night.
 
-var safe_code := [2, 7, 3, 5, 3] # el codigo en orden de la caja
+const SAFE_CODE_SIZE := 5
+var safe_code: Array[int] = [2, 7, 3, 5, 3] # el codigo en orden de la caja
 var location_key := 0
 
 
@@ -824,7 +834,16 @@ func randomize_safe_code():
 			digits.append(int(ch))
 			if len(digits) == 5:
 				break
-		Global.safe_code = digits
+		
+		if len(digits) != 5:
+			push_warning("Safe combination too short...")
+			for i in range(0, 5):
+				Global.safe_code[i] = randi_range(1, 9)
+			print("Safe code set: ", Global.safe_code)
+		
+		else:
+			Global.safe_code = digits
+			print("Safe code override: ", Global.safe_code)
 	else:
 		for i in range(0, 5):
 			Global.safe_code[i] = randi_range(1, 9)
@@ -1015,12 +1034,15 @@ func set_energia_consumption(nombre: String, valor: int): # En vez de dar el val
 	
 	consumtion()
 	
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "consumption acted: ", energia_consumption["Total"])
+	
 	if energia_consumption["Total"] > energia_consumption["Max"]:
 		if mapa["computer_working"]:
 			mapa["computer_failed"] = true
 			set_energia_consumption("Especial", 0)
 		emit_signal("Energy_Breakdown")
 		actualizar_ventilacion()
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "fuse breakdown!")
 
 func consumtion():
 	energia_consumption["Total"] = 0
@@ -1062,7 +1084,9 @@ func print_energia_consumption():
 	print(salida)
 
 func set_energia(nombre: String, valor: bool): # En vez de dar el valor directamente, se usa esta función
-		
+	
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "switch: ", nombre, " - ", valor)
+	
 	if nombre == "General" and valor == false:
 		for key in energia.keys():
 			if energia[key] != false:

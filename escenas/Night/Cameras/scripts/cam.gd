@@ -19,10 +19,6 @@ func _ready():
 	_conect_cams_signals()
 	
 	_on_minimapa_botones_cam_act()
-	
-	return
-	alucination_control._make_alucinations(400)
-	alucination_control.cam_counter = alucination_control.alucinations_cam_flick_limit
 
 
 func _conect_cams_signals():
@@ -80,17 +76,11 @@ func _process(delta: float) -> void:
 
 
 func _on_minimapa_botones_cam_act() -> void:
-	print("Cam changed: ", camaras_root.camara_activa)
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Cam changed: ", camaras_root.camara_activa)
 	
 	for cam in cameras:
 		cam.visible = camaras_root.camara_activa == cam.cam_number
 		cam.actualizar_cams()
-	
-	print("")
-	print("current al (", alucination_control.alucinaciones.size(),"): ",)
-	for _print in alucination_control.alucinaciones:
-		print(_print)
-	print("")
 
 
 

@@ -64,7 +64,7 @@ func tick():
 	if looking_at_me():
 		
 		if not seen:
-			print_rich("[color=967B63]GOTCHA!")
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]GOTCHA!")
 			seen = true
 		
 		if position != "S" and position != "0":
@@ -75,7 +75,7 @@ func tick():
 				cam_look_count = WATCH_TICK_FIRST_LIMIT
 			tick_count = 0 # le resetea los ticks...
 		else: # solo evita que avance el tick count, no lo resetea
-			print_rich("[color=967B63]Freddy stop tick count: from ", position)
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy stop tick count: from ", position)
 		
 		if cam_look_count >= WATCH_TICK_SECOND_LIMIT and position != "S" and position != "0":
 			move_back() # se mueve hacia atras
@@ -88,9 +88,9 @@ func tick():
 			cam_look_count = WATCH_TICK_FIRST_LIMIT
 		if randf_range(0, 49 - AI_level) < 10: # 1/5 IA 0, 1/3 IA 20... Lo que se traduce en ~20 segundos ia 0, ~12 en IA 20
 			cam_look_count -= 1 # ahora me he quedado en que está quieto un rato, pero va descendiendo
-			print_rich("[color=967B63]Freddy is awakening... with cam closed: from ", position) # al principio havia hecho que se quedase quieto
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy is awakening... with cam closed: from ", position) # al principio havia hecho que se quedase quieto
 		else:
-			print_rich("[color=967B63]Freddy stop tick count with cam closed: from ", position) # al principio havia hecho que se quedase quieto
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy stop tick count with cam closed: from ", position) # al principio havia hecho que se quedase quieto
 		return
 	
 	else:
@@ -158,7 +158,7 @@ func movement_oportunity():
 	
 	if path_to_take == 0:
 		path_to_take = randi_range(1,2)
-		print_rich("[color=967B63]PATH DECIDED: ", path_to_take)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]PATH DECIDED: ", path_to_take)
 	
 	if (path_to_take == 1 and position != "PI") or (path_to_take == 2 and position != "PD"):
 		door_fail_count = 0
@@ -185,7 +185,7 @@ func movement_oportunity():
 	
 	if puerta_atack:
 		if door_fail_count * AI_level / 5.0 > randi_range(0, 5000):
-			print_rich("[color=967B63]Freddy gave up: from ", position)
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy gave up: from ", position)
 			puerta_atack = false
 			if path_to_take == 1:
 				path_to_take = 2
@@ -196,9 +196,9 @@ func movement_oportunity():
 	
 	
 	if position == "PD" or position == "PI" and puerta_atack:
-		print_rich("[color=967B63]Freddy movement puerta_atack: from ", position)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement door atack: from ", position)
 	else:
-		print_rich("[color=967B63]Freddy movement no: from ", position)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement no: from ", position)
 
 
 func move():
@@ -287,7 +287,7 @@ func move():
 	if position == "PI":
 		lock_movement = true # bloquea el primer intento siempre
 	
-	print_rich("[color=967B63]Freddy movement yes: from ", last_position, " to ", position)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement yes: from ", last_position, " to ", position)
 	emit_signal("movement", position, path, last_position, last_path)
 
 func move_back():
@@ -325,5 +325,5 @@ func move_back():
 	elif position == "PI":
 		position = "3"
 	
-	print_rich("[color=967B63]Freddy movement back: from ", last_position, " to ", position)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement back: from ", last_position, " to ", position)
 	emit_signal("movement", position, path, last_position, last_path)

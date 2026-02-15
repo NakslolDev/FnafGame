@@ -15,15 +15,20 @@ func set_activado(value):
 	$No_Shader.visible = value
 	$Si_Shader.visible = value
 	$CanvasLayer_Shader.visible = value
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Cam 6 Sounds"), (value and camara_activa == 6))
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Cam 6 Sounds"), !(value and camara_activa == 6))
 	alucination_control.alucinations(value)
+	for cam in cams.cameras:
+		cam.actualizar_cams()
 	if value:
 		act_light()
 		$No_Shader/Ruido._on_minimapa_botones_cam_act()
 		$No_Shader/Ruido/Static.play()
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Opend cams")
 	else:
 		cam_lights = false
 		$No_Shader/Ruido/Static.stop()
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Closed cams")
+
 
 func _on_minimapa_botones_cam_act() -> void:
 	if camara_activa == 6:
@@ -96,11 +101,13 @@ func act_light():
 		linterna.modulate.a = 0.5
 		Freddy.cam_light = true
 		alucination_control.flashlight(camara_activa)
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "cam light on")
 	
 	else:
 		Global.set_energia_consumption("Cam_lights", 0)
 		linterna.modulate.a = 0.0
 		Freddy.cam_light = false
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "cam light off")
 	
 	for cam in cams.cameras:
 		cam.actualizar_cams()
@@ -171,6 +178,16 @@ func energia_act():
 	act_heater()
 
 func act_heater():
+	
+	print("")
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Heater acted:")
+	var some: bool = false
+	for i in range(1,9): # 1-8
+		if duct_heater[str(i)]:
+			some = true
+			print("heater ", i, "active")
+	if not some: print("no heater active :(")
+	print("")
 	
 	if Global.energia["Heater"] == false:
 		for i in range(1, 9): # 1-8

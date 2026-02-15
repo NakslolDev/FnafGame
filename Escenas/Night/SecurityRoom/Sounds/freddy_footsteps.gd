@@ -90,7 +90,7 @@ func freddy_izquierda():
 	else:
 		$General.volume_db = db_volume - 10
 		$General.play()
-	print("Volume: ", db_volume)
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "left freddy footsteps: ", db_volume, " db")
 
 func freddy_derecha():
 	if freddy_far:
@@ -107,14 +107,14 @@ func freddy_derecha():
 	else:
 		$General.volume_db = db_volume - 10
 		$General.play()
-	print("Volume: ", db_volume)
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "right freddy footsteps: ", db_volume, " db")
 
 func freddy_general():
 	if freddy_far:
 		db_volume -= 5
 	$General.volume_db = db_volume - 5
 	$General.play()
-	print("Volume: ", db_volume)
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "freddy footsteps: ", db_volume, " db")
 
 func _on_oficina_girando_estado(girando: int) -> void:
 	local_girando = girando

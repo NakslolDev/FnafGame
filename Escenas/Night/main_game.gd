@@ -45,8 +45,6 @@ func _ready():
 	bonnie_cam_wait = 0
 	chica_cam_wait = 0
 	Global.reset_night()
-	Global.night_starts()
-	Items.night_starts()
 	Bonnie.reset()
 	Chica.reset()
 	Freddy.reset()
@@ -57,6 +55,9 @@ func _ready():
 	transicionando = true
 	transicion_loc.modulate.a = 1.0
 	$True_No_Shader/Animatronic_Map.act_first()
+	
+	Global.night_starts()
+	Items.night_starts()
 
 func _process(delta: float) -> void:
 	
@@ -85,7 +86,10 @@ func _input(event):
 func _on_esc_timer_timeout():
 	# Si al terminar el tiempo todavía se está presionando Esc, cambiamos de escena
 	if Input.is_action_pressed("Esc"):
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "escaped")
 		Global.escena_previa = "Main_Game"
+		Global.reset_night()
+		$Control/Tick.stop()
 		if Global.noche == 0:
 			get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
 		else:
@@ -198,6 +202,8 @@ func change_tick_rate(new_tick: float):
 
 func game_over(win: bool):
 	
+	Global.reset_night()
+	
 	if win:
 		Global.escena_previa = "Main_game"
 		get_tree().change_scene_to_file("res://Escenas/Night/6Am/6_am.tscn") #actualizar
@@ -245,7 +251,7 @@ func _on_jumpscare_bonnie_jumpscare_end() -> void:
 	else:
 		Global.dead_scene_type = 0
 	game_over(false)
-	print("YOU GOT REPRODUCED")
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "YOU GOT REPRODUCED")
 
 func _on_jumpscare_chica_jumpscare_end() -> void:
 	Global.killed_by = "chica"
@@ -254,7 +260,7 @@ func _on_jumpscare_chica_jumpscare_end() -> void:
 	else:
 		Global.dead_scene_type = 0
 	game_over(false)
-	print("YOU GOT CHICKEND")
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "YOU GOT CHICKEND")
 
 func _on_jumpscare_freddy_jumpscare_end() -> void:
 	Global.killed_by = "freddy"
@@ -263,7 +269,7 @@ func _on_jumpscare_freddy_jumpscare_end() -> void:
 	else:
 		Global.dead_scene_type = 0
 	game_over(false)
-	print("YOU GOT FREDDYED")
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "YOU GOT FREDDYED")
 
 func _on_jumpscare_foxy_jumpscare_end() -> void:
 	Global.killed_by = "foxy"
@@ -272,4 +278,4 @@ func _on_jumpscare_foxy_jumpscare_end() -> void:
 	else:
 		Global.dead_scene_type = 0
 	game_over(false)
-	print("YOU GOT FOXED")
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "YOU GOT FOXED")

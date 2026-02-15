@@ -109,7 +109,7 @@ func _make_alucinations(insanity: int):
 				"position": pos
 			})
 	
-	print("")
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2))
 	print("made alucinations (", alucinaciones.size(),"): ",)
 	for _print in alucinaciones:
 		print(_print)

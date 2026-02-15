@@ -161,11 +161,11 @@ func tick(): # Cada tick (5 veces por segundo)
 		if room == "lhall" and position == 0:
 			if soft_focus_I or door_I_closed: # Si le estás mirando con la linterna (por las camaras no se ve...) o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
-				print_rich("[color=B5623F]GOTCHA!")
+				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]GOTCHA!")
 		elif room == "rhall" and position == 0:
 			if soft_focus_D or door_D_closed:
 				gotcha = 0
-				print_rich("[color=B5623F]GOTCHA!")
+				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]GOTCHA!")
 		else: # Gotcha solo devería ser != 0 en la puerta
 			gotcha = 0
 	elif gotcha < 0:
@@ -177,7 +177,7 @@ func tick(): # Cada tick (5 veces por segundo)
 		if (room == "rhall" and hard_focus_D) or (room == "lhall" and hard_focus_I) or (room == "Duc8" and hard_focus_DB) or (room == "Duc5" and hard_focus_DF):
 			tick_count = 0
 			tick_focus_count += 1
-			print_rich("[color=B5623F]Foxy stalled")
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]Foxy stalled")
 		else:
 			tick_focus_count = 0
 		tick_count_limit = DOOR_TICK_LIMIT
@@ -254,7 +254,7 @@ func movement_oportunity():
 	if movement_hit:
 		move()
 	else:
-		print_rich("[color=FA8150]Foxy movement no: from ", position, " in ", room)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement no: from ", position, " in ", room)
 
 
 # skip decision lo utilizo cuando bonnie o chica lo expulsan, pues en esa funcion uso otro decide que obliga a no ir a las puertas
@@ -265,7 +265,7 @@ func move(skip_decision := false): # esta funcion va a ser increiblemente larga.
 	
 	# si tiene soft focus en la puerta o ducto, volver
 	if next_room == "office" and ((room == "rhall" and position != 0 and soft_focus_D) or (room == "lhall" and position != 0 and soft_focus_I) or (room == "Duc8" and position == 4 and soft_focus_DB) or (room == "Duc5" and position == 3 and soft_focus_DF)):
-		print_rich("[color=FA8150]Foxy soft focus: from ", position, " in ", room)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy soft focus: from ", position, " in ", room)
 		return
 	
 	if not skip_decision:
@@ -273,7 +273,7 @@ func move(skip_decision := false): # esta funcion va a ser increiblemente larga.
 	
 	call("move_" + room) # mueve a foxy
 	
-	print_rich("[color=FA8150]Foxy movement: to ", position, " in ", room, " from ", last_position, " in ", last_room)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement: to ", position, " in ", room, " from ", last_position, " in ", last_room)
 	emit_signal("movement", position, room, last_position, last_room)
 	
 	if (room == "rhall" or room == "lhall") and position == 0:
@@ -305,7 +305,7 @@ func move_back_to():
 		next_room = "0" # para que recalcule
 		flashlight_stunt = FLASHLIGHT_STUNT_ON_DOORS
 	
-	print_rich("[color=FA8150]Foxy found my flashlight : from ", position, " in ", room)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy found my flashlight : from ", position, " in ", room)
 	emit_signal("movement", position, room, last_position, last_room)
 	
 	animacion_go_back = false
@@ -327,7 +327,7 @@ func energy_breakdown():
 	if AI_level == 0:
 		return
 	
-	print("[color=cb5a29]ME LLAMARON?????")
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=cb5a29]ME LLAMARON?????")
 	
 	var change := false
 	
@@ -347,7 +347,7 @@ func decide_next_room(check: bool = false): # si no hay un dead end, no puede vo
 	var duct_act := false
 	var dead_end := false
 	
-	print_rich("[color=B5623F]Foxy will think... just checking: ", check)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]Foxy will think... just checking: ", check)
 	
 	duct_act = check_ducts()
 	
@@ -358,15 +358,15 @@ func decide_next_room(check: bool = false): # si no hay un dead end, no puede vo
 	
 	if next_room.begins_with("Duc") and duct_heater_memory[next_room.substr(3)]["on"]:
 		dead_end = true
-		print_rich("[color=cb5a29]Foxy found a dead end: from ", position, " in ", room)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=cb5a29]Foxy found a dead end: from ", position, " in ", room)
 	
 	if not ((check and duct_act) or not check or next_room == "0"):
 		return
 	
 	call("decide_" + room, dead_end)
-	print_rich("[color=cb5a29]Foxy will go to ", next_room, " knowing last room was ", true_last_room)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=cb5a29]Foxy will go to ", next_room, " knowing last room was ", true_last_room)
 	
-	print_rich("[color=B5623F]--- Estado de duct_heater_memory ---")
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]--- Estado de duct_heater_memory ---")
 	for key in duct_heater_memory.keys():
 		var data = duct_heater_memory[key]
 		var estado = str(data["on"])
@@ -418,7 +418,7 @@ func check_ducts() -> bool:
 			duct_heater_memory["8"]["on"] = duct_heater["8"]
 			duct_act = true
 		
-	print_rich("[color=B5623F]Did foxy learn something new?: ", duct_act)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]Did foxy learn something new?: ", duct_act)
 	return duct_act
 
 func _advance_time_on_ducts_memory():
@@ -428,7 +428,7 @@ func _advance_time_on_ducts_memory():
 		if duct_heater_memory[str(i)]["time"] == TIME_THAT_FOXY_REMEMBERS:
 			duct_heater_memory[str(i)]["time"] = 0
 			duct_heater_memory[str(i)]["on"] = false
-			print_rich("[color=B5623F]Foxy forgot the duct ", i)
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]Foxy forgot the duct ", i)
 
 
 func decide_main(dead_end):
@@ -1069,7 +1069,6 @@ func move_lhall():
 			lock_movement = true
 		elif not door_I_closed:
 			room = next_room # office no tiene posicion...
-			#print("Door I: ", door_I_closed)
 		else:
 			pass
 	else:
@@ -1095,7 +1094,6 @@ func move_rhall():
 			lock_movement = true
 		elif not door_D_closed:
 			room = next_room # office no tiene posicion...
-			#print("Door D: ", door_D_closed)
 		else:
 			pass
 	else:

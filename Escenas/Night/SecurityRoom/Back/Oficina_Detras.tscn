@@ -46,7 +46,7 @@ texture = ExtResource("3_44ow4")
 
 [node name="Recargar_Linterna" parent="." unique_id=1461783972 instance=ExtResource("6_m6crn")]
 
-[node name="Switches (carpeta)" type="Node2D" parent="." unique_id=66421261]
+[node name="Switches (carpeta)" type="Node2D" parent="." unique_id=775732335]
 
 [node name="Switch_Energia_1" parent="Switches (carpeta)" unique_id=1154522195 instance=ExtResource("7_h5o2t")]
 position = Vector2(-100, 0)

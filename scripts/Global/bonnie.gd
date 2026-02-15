@@ -69,7 +69,7 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 		if position == "PI":
 			if door_soft_focus or (camara == LEFT_DOOR_CAM and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
-				print_rich("[color=cyan]GOTCHA!")
+				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]GOTCHA!")
 		else: # Gotcha solo devería ser != 0 en la puerta
 			gotcha = 0
 	
@@ -96,19 +96,19 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 	
 	if gotcha > 0: # Si no lo has mirado
 		gotcha -= 1 # Resta 1 al contador
-		print_rich("[color=cyan]Bonnie movement no (still not seen): from ", position)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no (still not seen): from ", position)
 		return
 	
 	if lock_movement and position == "PI": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
 		lock_movement = false
 		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se valla antes
-			print_rich("[color=cyan]Bonnie movement no (locked first try): from ", position)
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no (locked first try): from ", position)
 			return
 	
 	
 	if position != "PI": # Si no está en la puerta
 		if (door_soft_focus and position == "5"): # 5 siempre va a la puerta. Así evito que aparezca de la nada si tienes la linterna apuntando a la puerta
-			print_rich("[color=cyan]Bonnie movement no (flashlight on door): from ", position)
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no (flashlight on door): from ", position)
 			return
 		if AI_level > randi_range(0, 20): # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
 			move()
@@ -140,7 +140,7 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 	
 	# Ahora mismo, si abres la puerta, e intenta entrar, pero no lo hace, y vuelves a cerrar, el contador se resetea. De momento lo dejo intencional
 	
-	print_rich("[color=cyan]Bonnie movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 
 
 func move(): # decide a donde moverse
@@ -186,5 +186,5 @@ func move(): # decide a donde moverse
 			gotcha = EXTRA_BLOCKS_WHEN_NOT_SEEN_OVER_LIMIT # bloquea 1 extra hasta que le miras...
 		lock_movement = true # bloquea el primer intento siempre
 		
-	print_rich("[color=cyan]Bonnie movement yes: from ", last_position, " to ", position)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement yes: from ", last_position, " to ", position)
 	emit_signal("movement", position, last_position) # Envía la señal de que se ha movido

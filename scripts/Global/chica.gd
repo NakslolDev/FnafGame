@@ -73,7 +73,7 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 		if gotcha > 0:
 			if door_soft_focus or (camara == RIGHT_DOOR_CAM and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
-				print_rich("[color=yellow]GOTCHA!")
+				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]GOTCHA!")
 		if door_soft_focus: # Comprueva si le has mirado con la linterna
 			gotcha_lights = true
 	else:
@@ -87,7 +87,7 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 	elif position != "PD": # Si no está en las puertas
 		if (Global.noche == 5 and Global.mapa["door_office_open"] and not Global.mapa["safe_open"]) and position == "6": # Está intentando abrir la caja fuerta. la condicion es un poco larga, pero asi es más organico. Reacciona al mapa y no a una varable
 			tick_count_limit = OPENING_SAFE_TICK_LIMIT # 20 segundos
-			print_rich("[color=yellow]WAITING: ", tick_count, " of ", tick_count_limit)
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]WAITING: ", tick_count, " of ", tick_count_limit)
 		else: # noramlmente
 			tick_count_limit = GENERAL_TICK_LIMIT # 25 ticks, cada 5 segundos
 	else: # En la puerta, 3 segundos
@@ -99,7 +99,7 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 		return
 	
 	if watching_cam_6_when_i_am_there_and_door_is_open_and_i_am_attempting_to_open_the_safe:
-		print_rich("[color=yellow]still hearing, be pacient")
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]still hearing, be pacient")
 		return # no dejo que se mueva si estás en esa camara mientras intenta abrir
 	
 	tick_count = 0 # resetea el contador
@@ -110,13 +110,13 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 	
 	if gotcha > 0: # Si no lo has mirado
 		gotcha -= 1 # Resta 1 al contador
-		print_rich("[color=yellow]Chica movement no (still not seen): from ", position)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement no (still not seen): from ", position)
 		return
 	
 	if lock_movement and position == "PD": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
 		lock_movement = false
 		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se largue antes
-			print_rich("[color=yellow]Chica movement no (locked first try): from ", position)
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement no (locked first try): from ", position)
 			return
 	
 	if position != "PD":
@@ -146,7 +146,7 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 	
 	# en este caso, door_fail_count funciona en paralelo tanto si tienes la puerta abierta como cerrada...
 	
-	print_rich("[color=yellow]Chica movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 	
 
 func move():
@@ -235,5 +235,5 @@ func move():
 			gotcha = EXTRA_BLOCKS_WHEN_NOT_SEEN_OVER_LIMIT # bloquea 1 extra hasta que le miras...
 		lock_movement = true # bloquea el primer intento siempre
 	
-	print_rich("[color=yellow]Chica movement yes: from ", last_position, " to ", position)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement yes: from ", last_position, " to ", position)
 	emit_signal("movement", position, last_position) # Envía la señal de que se ha movido

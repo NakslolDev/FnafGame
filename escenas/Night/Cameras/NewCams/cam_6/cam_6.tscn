@@ -160,8 +160,10 @@ stream = ExtResource("22_ir08u")
 volume_db = -20.0
 bus = &"Cam 6 Sounds"
 
-[node name="Safe_sounds" type="Node" parent="." unique_id=516436993]
+[node name="Safe_sounds" type="Node" parent="." unique_id=516436993 node_paths=PackedStringArray("timer", "safe_tick")]
 script = ExtResource("23_5qyln")
+timer = NodePath("Timer")
+safe_tick = NodePath("safe_tick")
 
 [node name="Timer" type="Timer" parent="Safe_sounds" unique_id=1456946209]
 

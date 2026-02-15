@@ -1,50 +1,49 @@
 extends Node
 
+@export var timer: Timer
+@export var safe_tick: AudioStreamPlayer
+
 var playing := false
-var stop := false
-var stop_num := 0
+var paused := false
+var stop_num := 0 # la cantidad de veces que ha parado sin salirte (ej, bajar cámaras)
 var remain_combination := [0, 0, 0, 0, 0]
 var cicle := 0
 
 func begin():
-#	print("BEGIN COMBINATION")
 	
-	if (playing and not stop) or not (Chica.position == "6" and (Global.noche == 5 and Global.mapa["door_office_open"] and not Global.mapa["safe_open"])):
-#		print("Nevermind")
+	if (playing and not paused) or not (Chica.position == "6" and (Global.mapa["door_office_open"] and not Global.mapa["safe_open"])):
 		return
 	playing = true
 	
 	Chica.watching_cam_6_when_i_am_there_and_door_is_open_and_i_am_attempting_to_open_the_safe = true
 	
-	if not stop:
+	if not paused:
 		remain_combination = Global.safe_code.duplicate() # duplicate para no referenciar. Sin argumentos pues no es un array complejo...
 		cicle = 1
 	else:
 		remain_combination[cicle - 1] = Global.safe_code[cicle - 1]
 	
-	$Timer.start(1.0)
-	stop = false
+	timer.start(1.0)
+	paused = false
 
 
 func end(absolute := false):
-#	print("STOP COMBINATION")
-	
 	if not playing:
 		return
 	
+	timer.stop()
 	Chica.watching_cam_6_when_i_am_there_and_door_is_open_and_i_am_attempting_to_open_the_safe = false
 	if absolute:
-#		print("ABSOLUTE")
 		playing = false
-		stop = false
+		paused = false
 		stop_num = 0
 		Chica.tick_count = 0
 		Chica.movement_oportunity(true)
 	else:
-#		print("Temporal")
 		if stop_num >= 4:
 			end(true)
-		stop = true
+			return
+		paused = true
 		stop_num += 1
 		if Chica.tick_count > 5 * 15:
 			Chica.tick_count = 5 * 15
@@ -52,18 +51,18 @@ func end(absolute := false):
 
 func _on_timer_timeout() -> void:
 	
-	if not playing or stop:
+	if not playing or paused:
 		return
 	
-	if remain_combination == [0, 0, 0, 0, 0]:
+	if remain_combination == [0, 0, 0, 0, 0] or cicle > remain_combination.size():
 		end(true)
 		return
 	
-	$safe_tick.play()
+	safe_tick.play()
 	
 	remain_combination[cicle - 1] -= 1
 	if remain_combination[cicle - 1] == 0:
 		cicle += 1
-		$Timer.start(1.5)
+		timer.start(1.5)
 	else:
-		$Timer.start(randf_range(0.4, 0.8))
+		timer.start(randf_range(0.4, 0.8))
