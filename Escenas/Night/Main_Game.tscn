@@ -46,6 +46,7 @@
 [ext_resource type="AudioStream" uid="uid://c8q60uet6mb1n" path="res://assets/sounds/Freddy_footsteps.mp3" id="44_yiwpa"]
 [ext_resource type="Script" uid="uid://cyeiwifp8oayw" path="res://escenas/Night/Cameras/scripts/camaras_control.gd" id="45_ba5fs"]
 [ext_resource type="PackedScene" uid="uid://d2hwtk3f7idft" path="res://escenas/Night/Cameras/Camaras.tscn" id="46_axquf"]
+[ext_resource type="PackedScene" uid="uid://cr7jcxwdqvwwr" path="res://escenas/Night/DirectionalAudio/directional_audio.tscn" id="47_pi1lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b0xl"]
 size = Vector2(96, 30)
@@ -167,6 +168,8 @@ position = Vector2(-151, 85)
 position = Vector2(-298, -170)
 
 [node name="Duct_sounds" parent="Oficina" unique_id=1318743049 instance=ExtResource("19_1ufiy")]
+
+[node name="DirectionalAudio" parent="." unique_id=2054814738 instance=ExtResource("47_pi1lr")]
 
 [node name="Linterna" parent="." unique_id=173084317 instance=ExtResource("20_ewgm2")]
 position = Vector2(0, 1500)
@@ -292,8 +295,11 @@ position = Vector2(0, 90)
 position = Vector2(960, 540)
 texture = ExtResource("25_0pxa1")
 
-[node name="Door sounds" type="CanvasLayer" parent="." unique_id=396400246]
+[node name="Door sounds" type="CanvasLayer" parent="." unique_id=396400246 node_paths=PackedStringArray("puerta_izquierda", "puerta_derecha", "oficina")]
 script = ExtResource("41_0xlqm")
+puerta_izquierda = NodePath("Puerta_izquierda")
+puerta_derecha = NodePath("Puerta_derecha")
+oficina = NodePath("../Oficina")
 
 [node name="Puerta_izquierda" type="AudioStreamPlayer2D" parent="Door sounds" unique_id=25197986]
 position = Vector2(960, 540)
@@ -367,6 +373,7 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Boton Izquierda" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Boton Derecha" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Oficina_Detras" method="_on_oficina_girando_estado"]
+[connection signal="Girando_Estado" from="Oficina" to="DirectionalAudio" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="True_No_Shader/UpCams" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Door sounds" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Freddy footsteps" method="_on_oficina_girando_estado"]

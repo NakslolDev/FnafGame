@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cr7jcxwdqvwwr"]
+
+[ext_resource type="AudioStream" uid="uid://7tdwrap7126b" path="res://Audios/Scarlet Forest.mp3" id="1_l35w1"]
+[ext_resource type="Script" uid="uid://bo1h656p1ymyd" path="res://escenas/Night/DirectionalAudio/directional_audio.gd" id="1_yh57f"]
+[ext_resource type="Script" uid="uid://cem83cl7ongg6" path="res://escenas/Night/DirectionalAudio/audio.gd" id="2_yh57f"]
+
+[node name="DirectionalAudio" type="Node2D" unique_id=2054814738]
+script = ExtResource("1_yh57f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1281520148]
+stream = ExtResource("1_l35w1")
+script = ExtResource("2_yh57f")
+x_position = 6
