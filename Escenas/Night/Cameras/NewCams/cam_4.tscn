@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://b2tcax23fufxq"]
 
-[ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_funtx"]
-[ext_resource type="Texture2D" uid="uid://cnreve7lruhhw" path="res://assets/Placeholders/Camaras/Cam4/Cam.png" id="2_m4l10"]
-[ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_0txya"]
-[ext_resource type="Texture2D" uid="uid://bhw65b3cmipt2" path="res://assets/Placeholders/Camaras/Cam4/Freddy_4.png" id="4_dd5ko"]
-[ext_resource type="Texture2D" uid="uid://brniic5yucc61" path="res://assets/Placeholders/Camaras/Cam4/Foxy_4.png" id="5_lxg5d"]
-[ext_resource type="Texture2D" uid="uid://dcisl0mgr5inw" path="res://assets/Placeholders/Camaras/Cam4/Chica_4.png" id="6_3he66"]
+[ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_funtx"]
+[ext_resource type="Texture2D" uid="uid://cnxlnb4epf0ew" path="res://assets/Placeholders/Camaras/Cam4/Cam.png" id="2_m4l10"]
+[ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_0txya"]
+[ext_resource type="Texture2D" uid="uid://ccnnv0b8mfu6u" path="res://assets/Placeholders/Camaras/Cam4/Freddy_4.png" id="4_dd5ko"]
+[ext_resource type="Texture2D" uid="uid://eru47dpp6wkd" path="res://assets/Placeholders/Camaras/Cam4/Foxy_4.png" id="5_lxg5d"]
+[ext_resource type="Texture2D" uid="uid://dw08a8su3pnem" path="res://assets/Placeholders/Camaras/Cam4/Chica_4.png" id="6_3he66"]
 
 [node name="Cam4" type="Node2D" unique_id=309052662 node_paths=PackedStringArray("sprites")]
 script = ExtResource("1_funtx")

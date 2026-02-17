@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dr75h62c7rj4b"]
 
-[ext_resource type="Texture2D" uid="uid://ct3a72kafkcsu" path="res://assets/Placeholders/Camaras/tv-snow-noise-video.jpg" id="1_aa78m"]
-[ext_resource type="Script" uid="uid://dts5focbe0rul" path="res://escenas/Night/Cameras/estatica/ruido.gd" id="1_ifnnf"]
-[ext_resource type="AudioStream" uid="uid://bm5aun5dl67in" path="res://assets/sounds/old-radio-noise.ogg" id="3_yklea"]
+[ext_resource type="Texture2D" uid="uid://m6owme8ffsl2" path="res://assets/Placeholders/Camaras/tv-snow-noise-video.jpg" id="1_aa78m"]
+[ext_resource type="Script" uid="uid://dts5focbe0rul" path="res://Escenas/Night/Cameras/estatica/ruido.gd" id="1_ifnnf"]
+[ext_resource type="AudioStream" uid="uid://dfgv4ixx8xuwr" path="res://assets/sounds/old-radio-noise.ogg" id="3_yklea"]
 
 [node name="Ruido" type="Node2D" unique_id=473699341 node_paths=PackedStringArray("noise", "static_speed", "static_time", "_static")]
 script = ExtResource("1_ifnnf")

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bo3fa6mc0i5nu"]
 
-[ext_resource type="Script" uid="uid://8nysrngfedn" path="res://escenas/Night/SecurityRoom/Ducts/ductos.gd" id="1_sysxk"]
-[ext_resource type="Texture2D" uid="uid://bcg5sc4ad1nim" path="res://assets/Placeholders/Oficina_Ventilacion_Iluminado.png" id="2_ab0ic"]
+[ext_resource type="Script" uid="uid://8nysrngfedn" path="res://Escenas/Night/SecurityRoom/Ducts/ductos.gd" id="1_sysxk"]
+[ext_resource type="Texture2D" uid="uid://xm371okco0oy" path="res://assets/Placeholders/Oficina_Ventilacion_Iluminado.png" id="2_ab0ic"]
 [ext_resource type="Shader" uid="uid://cy37sjn6e8y4u" path="res://shaders/Pasillo.gdshader" id="3_cxujm"]
-[ext_resource type="Texture2D" uid="uid://s1cucwt5uhrm" path="res://assets/Placeholders/foxy.png" id="3_og8rt"]
-[ext_resource type="Texture2D" uid="uid://bh101neimxq5b" path="res://assets/Placeholders/Oficina_Ventilacion_Oscuro.png" id="4_c2dxv"]
-[ext_resource type="Script" uid="uid://s3m41odryu66" path="res://escenas/Night/SecurityRoom/Ducts/ductos_fondo_oscuro.gd" id="5_2e03e"]
+[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://assets/Placeholders/foxy.png" id="3_og8rt"]
+[ext_resource type="Texture2D" uid="uid://vwwaob3tpnxq" path="res://assets/Placeholders/Oficina_Ventilacion_Oscuro.png" id="4_c2dxv"]
+[ext_resource type="Script" uid="uid://s3m41odryu66" path="res://Escenas/Night/SecurityRoom/Ducts/ductos_fondo_oscuro.gd" id="5_2e03e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ab0ic"]
 shader = ExtResource("3_cxujm")

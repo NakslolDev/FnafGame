@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://yfdfcy54h2iy"]
 
-[ext_resource type="Script" uid="uid://c4f5vtlccwm3" path="res://escenas/Night/Jumpscare/jumpscare_freddy.gd" id="1_060h1"]
-[ext_resource type="AudioStream" uid="uid://clcaokegmwji0" path="res://assets/sounds/small fart - sound effect.mp3" id="2_060h1"]
-[ext_resource type="Texture2D" uid="uid://d3265mxv31r2w" path="res://assets/Placeholders/Freddy.png" id="2_61b5c"]
+[ext_resource type="Script" uid="uid://c4f5vtlccwm3" path="res://Escenas/Night/Jumpscare/jumpscare_freddy.gd" id="1_060h1"]
+[ext_resource type="AudioStream" uid="uid://dcsim6yk7ri65" path="res://assets/sounds/small fart - sound effect.mp3" id="2_060h1"]
+[ext_resource type="Texture2D" uid="uid://bio080u7emcc2" path="res://assets/Placeholders/Freddy.png" id="2_61b5c"]
 
 [node name="Jumpscare_Freddy" type="Node2D" unique_id=916054850]
 script = ExtResource("1_060h1")

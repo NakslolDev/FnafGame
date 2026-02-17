@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8ii2utfbiuaa"]
 
-[ext_resource type="Script" uid="uid://duhwlbghb2f4l" path="res://escenas/DeadMinigames/death_minigame_loader.gd" id="1_82wdj"]
+[ext_resource type="Script" uid="uid://duhwlbghb2f4l" path="res://Escenas/DeadMinigames/death_minigame_loader.gd" id="1_82wdj"]
 
 [node name="Death_minigame_loader" type="Node" unique_id=634696383]
 script = ExtResource("1_82wdj")

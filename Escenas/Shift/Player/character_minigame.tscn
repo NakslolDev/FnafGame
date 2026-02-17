@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cumryt3pxo2wv"]
 
-[ext_resource type="Script" uid="uid://de7uh84b4365x" path="res://escenas/Shift/Player/character_minigame.gd" id="1_5ryae"]
-[ext_resource type="Script" uid="uid://cfxrs5edynyr" path="res://escenas/Shift/Player/skins.gd" id="2_10j8s"]
-[ext_resource type="Script" uid="uid://b7iv4c1uc27g7" path="res://escenas/Shift/Player/legs.gd" id="4_10j8s"]
-[ext_resource type="Texture2D" uid="uid://drveqxiljlmpt" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
+[ext_resource type="Script" uid="uid://de7uh84b4365x" path="res://Escenas/Shift/Player/character_minigame.gd" id="1_5ryae"]
+[ext_resource type="Script" uid="uid://cfxrs5edynyr" path="res://Escenas/Shift/Player/skins.gd" id="2_10j8s"]
+[ext_resource type="Script" uid="uid://b7iv4c1uc27g7" path="res://Escenas/Shift/Player/legs.gd" id="4_10j8s"]
+[ext_resource type="Texture2D" uid="uid://dp13mjs62dded" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10j8s"]
 size = Vector2(12, 6)

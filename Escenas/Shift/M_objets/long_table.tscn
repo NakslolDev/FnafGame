@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b11fiquxgu4wa"]
 
-[ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://escenas/Night/Items/objetos.gd" id="1_et5i7"]
-[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_nyist"]
+[ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://Escenas/Night/Items/objetos.gd" id="1_et5i7"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_nyist"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omc0x"]
 resource_name = "tileset"

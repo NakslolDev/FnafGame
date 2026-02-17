@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://b4mqpnnrc5bd3"]
 
-[ext_resource type="Script" uid="uid://nu4mh5i6aol7" path="res://escenas/Night/Enviroment/brightness_adjust.gd" id="1_sgokr"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="1_u11vv"]
+[ext_resource type="Script" uid="uid://nu4mh5i6aol7" path="res://Escenas/Night/Enviroment/brightness_adjust.gd" id="1_sgokr"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="1_u11vv"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="2_sgokr"]
-[ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://escenas/Menu/Opciones/scripts/label_idiom.gd" id="3_mepjm"]
-[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://escenas/Night/UI/Mouse_Custom.tscn" id="5_mepjm"]
-[ext_resource type="Script" uid="uid://dnse04uiexae2" path="res://escenas/Menu/Opciones/scripts/button_languaje.gd" id="5_ougf8"]
+[ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="3_mepjm"]
+[ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="5_mepjm"]
+[ext_resource type="Script" uid="uid://dnse04uiexae2" path="res://Escenas/Menu/Opciones/scripts/button_languaje.gd" id="5_ougf8"]
 
 [node name="BrightnessAdjust" type="Control" unique_id=1911218068 node_paths=PackedStringArray("h_slider")]
 layout_mode = 3

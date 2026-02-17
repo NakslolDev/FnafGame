@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mxxfro0701lh"]
 
-[ext_resource type="Script" uid="uid://c6u3k6adme7a5" path="res://escenas/Night/Movement/detector_girar.gd" id="1_iw5l3"]
+[ext_resource type="Script" uid="uid://c6u3k6adme7a5" path="res://Escenas/Night/Movement/detector_girar.gd" id="1_iw5l3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksrhl"]
 size = Vector2(93, 1080)

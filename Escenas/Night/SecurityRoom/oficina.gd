@@ -2,8 +2,8 @@ extends Node2D
 
 # mover 240 hacia los lados como máximo
 @export var movimiento_max := 240.0
-@export var movimiento_max_girar := 5000
-@export var VELOCIDAD_CAMERA: float #250-300
+@export var movimiento_max_girar := 7000
+@export var VELOCIDAD_CAMERA: float = 300.0
 @export var buttons_slow_down := false
 var velocidad: float
 var lock_tf_in := false

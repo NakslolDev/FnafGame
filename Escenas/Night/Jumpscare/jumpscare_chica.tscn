@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cbxe832owyn3x"]
 
-[ext_resource type="Script" uid="uid://cwxpbnpsbvyhn" path="res://escenas/Night/Jumpscare/jumpscare_chica.gd" id="1_0fia5"]
-[ext_resource type="Texture2D" uid="uid://dqs0remv8elth" path="res://assets/Placeholders/Camaras/Chica.png" id="2_bx2u6"]
-[ext_resource type="AudioStream" uid="uid://clcaokegmwji0" path="res://assets/sounds/small fart - sound effect.mp3" id="3_4wsyc"]
+[ext_resource type="Script" uid="uid://cwxpbnpsbvyhn" path="res://Escenas/Night/Jumpscare/jumpscare_chica.gd" id="1_0fia5"]
+[ext_resource type="Texture2D" uid="uid://dpu0m5dl5fi64" path="res://assets/Placeholders/Camaras/Chica.png" id="2_bx2u6"]
+[ext_resource type="AudioStream" uid="uid://dcsim6yk7ri65" path="res://assets/sounds/small fart - sound effect.mp3" id="3_4wsyc"]
 
 [node name="Jumpscare_Chica" type="Node2D" unique_id=1051987340]
 script = ExtResource("1_0fia5")

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://b5xqa4eh847iv"]
 
-[ext_resource type="Script" uid="uid://bowug2p2pk4qk" path="res://escenas/Night/Flashlight/linterna.gd" id="1_cdu3y"]
-[ext_resource type="Texture2D" uid="uid://cvgpsiwmtdk5m" path="res://assets/Placeholders/Linterna.png" id="2_b2cok"]
-[ext_resource type="Script" uid="uid://kgl87e831f7j" path="res://escenas/Night/Flashlight/timer_descargar.gd" id="3_b2cok"]
-[ext_resource type="Script" uid="uid://kqbp5qq017xk" path="res://escenas/Night/Flashlight/timer_recargar.gd" id="4_4vkxa"]
-[ext_resource type="AudioStream" uid="uid://b3gd8vppudhk1" path="res://assets/sounds/Linterna_Press.mp3" id="5_75v57"]
-[ext_resource type="AudioStream" uid="uid://bcm36prkthhlf" path="res://assets/sounds/Linterna_Release.mp3" id="6_4cvca"]
+[ext_resource type="Script" uid="uid://bowug2p2pk4qk" path="res://Escenas/Night/Flashlight/linterna.gd" id="1_cdu3y"]
+[ext_resource type="Texture2D" uid="uid://bttp7ke2h52qu" path="res://assets/Placeholders/Linterna.png" id="2_b2cok"]
+[ext_resource type="Script" uid="uid://kgl87e831f7j" path="res://Escenas/Night/Flashlight/timer_descargar.gd" id="3_b2cok"]
+[ext_resource type="Script" uid="uid://kqbp5qq017xk" path="res://Escenas/Night/Flashlight/timer_recargar.gd" id="4_4vkxa"]
+[ext_resource type="AudioStream" uid="uid://y1kt5vwb2put" path="res://assets/sounds/Linterna_Press.mp3" id="5_75v57"]
+[ext_resource type="AudioStream" uid="uid://c4uqxtjy5yw0" path="res://assets/sounds/Linterna_Release.mp3" id="6_4cvca"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4vkxa"]
 
