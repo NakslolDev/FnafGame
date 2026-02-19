@@ -6,7 +6,6 @@ extends Node2D
 @export var velocidad := 4000.0
 
 signal Sound()
-signal state(closed: bool)
 
 var estado: Vector2
 
@@ -20,7 +19,6 @@ func _process(delta):
 
 func _on_boton_izquierda_puerta_cambio(puerta_activada: bool) -> void:
 	play_puerta()
-	emit_signal("state", puerta_activada)
 	if puerta_activada:
 		estado = posicion_cerrada  # Baja
 		Global.set_energia_consumption("Puerta_I", 1)
@@ -38,7 +36,6 @@ func _on_boton_izquierda_puerta_cambio(puerta_activada: bool) -> void:
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "left door opend")
 
 func _on_boton_derecha_puerta_cambio(puerta_activada: bool) -> void:
-	emit_signal("state", puerta_activada)
 	play_puerta()
 	if puerta_activada:
 		estado = posicion_cerrada  # Baja

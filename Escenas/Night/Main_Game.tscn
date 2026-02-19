@@ -40,10 +40,6 @@
 [ext_resource type="Script" uid="uid://cupgjt3ibvlcl" path="res://Escenas/Night/Cameras/scripts/up_cams.gd" id="38_ewhsk"]
 [ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="39_hfq1x"]
 [ext_resource type="PackedScene" uid="uid://bq8slaploxj1p" path="res://Escenas/Night/Cameras/animatronic_map/animatronic_map.tscn" id="40_di46t"]
-[ext_resource type="Script" uid="uid://bhg60soju1a44" path="res://Escenas/Night/SecurityRoom/Doors/door_sounds.gd" id="41_0xlqm"]
-[ext_resource type="AudioStream" uid="uid://021ib0qbueid" path="res://assets/sounds/Puerta.mp3" id="42_hut80"]
-[ext_resource type="Script" uid="uid://wdfpsu8bhrid" path="res://Escenas/Night/SecurityRoom/Sounds/freddy_footsteps.gd" id="43_pwlp6"]
-[ext_resource type="AudioStream" uid="uid://bqs0uhx1obplm" path="res://assets/sounds/Freddy_footsteps.mp3" id="44_yiwpa"]
 [ext_resource type="Script" uid="uid://cyeiwifp8oayw" path="res://Escenas/Night/Cameras/scripts/camaras_control.gd" id="45_ba5fs"]
 [ext_resource type="PackedScene" uid="uid://d2hwtk3f7idft" path="res://Escenas/Night/Cameras/Camaras.tscn" id="46_axquf"]
 [ext_resource type="PackedScene" uid="uid://cr7jcxwdqvwwr" path="res://Escenas/Night/DirectionalAudio/directional_audio.tscn" id="47_pi1lr"]
@@ -95,8 +91,6 @@ script = ExtResource("2_4erhx")
 
 [node name="Oficina" type="Node2D" parent="." unique_id=540360308]
 script = ExtResource("4_arw1f")
-movimiento_max_girar = 7000
-VELOCIDAD_CAMERA = 300.0
 
 [node name="Ventilation" type="Node" parent="Oficina" unique_id=913684193]
 script = ExtResource("5_ujq6x")
@@ -296,50 +290,6 @@ position = Vector2(0, 90)
 position = Vector2(960, 540)
 texture = ExtResource("25_0pxa1")
 
-[node name="Door sounds" type="CanvasLayer" parent="." unique_id=396400246 node_paths=PackedStringArray("puerta_izquierda", "puerta_derecha", "oficina")]
-script = ExtResource("41_0xlqm")
-puerta_izquierda = NodePath("Puerta_izquierda")
-puerta_derecha = NodePath("Puerta_derecha")
-oficina = NodePath("../Oficina")
-
-[node name="Puerta_izquierda" type="AudioStreamPlayer2D" parent="Door sounds" unique_id=25197986]
-position = Vector2(960, 540)
-stream = ExtResource("42_hut80")
-volume_db = 10.0
-max_distance = 5000.0
-bus = &"SFX"
-
-[node name="Puerta_derecha" type="AudioStreamPlayer2D" parent="Door sounds" unique_id=1921708676]
-position = Vector2(960, 540)
-stream = ExtResource("42_hut80")
-volume_db = 10.0
-max_distance = 5000.0
-bus = &"SFX"
-
-[node name="Freddy footsteps" type="CanvasLayer" parent="." unique_id=1541263116]
-script = ExtResource("43_pwlp6")
-
-[node name="Timer" type="Timer" parent="Freddy footsteps" unique_id=1787327061]
-
-[node name="General" type="AudioStreamPlayer" parent="Freddy footsteps" unique_id=352819472]
-stream = ExtResource("44_yiwpa")
-volume_db = -20.0
-bus = &"SFX"
-
-[node name="izquierda" type="AudioStreamPlayer2D" parent="Freddy footsteps" unique_id=443381512]
-position = Vector2(960, 540)
-stream = ExtResource("44_yiwpa")
-volume_db = -15.0
-max_distance = 5000.0
-bus = &"SFX"
-
-[node name="derecha" type="AudioStreamPlayer2D" parent="Freddy footsteps" unique_id=1930778467]
-position = Vector2(960, 540)
-stream = ExtResource("44_yiwpa")
-volume_db = -15.0
-max_distance = 5000.0
-bus = &"SFX"
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=850215130]
 ignore_rotation = false
 
@@ -376,8 +326,6 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Oficina_Detras" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="DirectionalAudio" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="True_No_Shader/UpCams" method="_on_oficina_girando_estado"]
-[connection signal="Girando_Estado" from="Oficina" to="Door sounds" method="_on_oficina_girando_estado"]
-[connection signal="Girando_Estado" from="Oficina" to="Freddy footsteps" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Camaras_Control" method="_on_oficina_girando_estado"]
 [connection signal="Girar_Input_Permitido" from="Oficina" to="Oficina/Detector_Girar_Izquierda" method="_on_oficina_girar_input_permitido"]
 [connection signal="Girar_Input_Permitido" from="Oficina" to="Oficina/Oficina_Detras" method="_on_oficina_girar_input_permitido"]
@@ -391,13 +339,11 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Mouse_Entered_Switch" from="Oficina/Boton Izquierda" to="Oficina" method="_on_boton_izquierda_mouse_entered_switch"]
 [connection signal="Mouse_Entered_Switch" from="Oficina/Boton Izquierda" to="Linterna" method="_on_boton_izquierda_mouse_entered_switch"]
 [connection signal="Puerta_Cambio" from="Oficina/Boton Izquierda" to="Oficina/Puerta Izquierda" method="_on_boton_izquierda_puerta_cambio"]
-[connection signal="Sound" from="Oficina/Puerta Izquierda" to="Door sounds" method="_on_puerta_izquierda_sound"]
-[connection signal="state" from="Oficina/Puerta Izquierda" to="Freddy footsteps" method="_on_puerta_izquierda_state"]
+[connection signal="Sound" from="Oficina/Puerta Izquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
 [connection signal="Mouse_Entered_Switch" from="Oficina/Boton Derecha" to="Oficina" method="_on_boton_derecha_mouse_entered_switch"]
 [connection signal="Mouse_Entered_Switch" from="Oficina/Boton Derecha" to="Linterna" method="_on_boton_derecha_mouse_entered_switch"]
 [connection signal="Puerta_Cambio" from="Oficina/Boton Derecha" to="Oficina/Puerta Derecha" method="_on_boton_derecha_puerta_cambio"]
-[connection signal="Sound" from="Oficina/Puerta Derecha" to="Door sounds" method="_on_puerta_derecha_sound"]
-[connection signal="state" from="Oficina/Puerta Derecha" to="Freddy footsteps" method="_on_puerta_derecha_state"]
+[connection signal="Sound" from="Oficina/Puerta Derecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]
 [connection signal="Linterna_Recarga_Switch_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_recarga_switch_rebote"]
 [connection signal="Oficina_Detras_Mouse_Switch" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_oficina_detras_mouse_switch"]
@@ -418,7 +364,6 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Freddy" to="." method="_on_jumpscare_freddy_jumpscare_end"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Foxy" to="." method="_on_jumpscare_foxy_jumpscare_end"]
 [connection signal="timeout" from="True_No_Shader/UpCams/Timer" to="True_No_Shader/UpCams" method="_on_timer_timeout"]
-[connection signal="timeout" from="Freddy footsteps/Timer" to="Freddy footsteps" method="_on_timer_timeout"]
 [connection signal="mouse_entered" from="Camaras_Control/Area2D_up" to="Camaras_Control" method="_on_area_2d_up_mouse_entered"]
 [connection signal="mouse_exited" from="Camaras_Control/Area2D_up" to="Camaras_Control" method="_on_area_2d_up_mouse_exited"]
 [connection signal="mouse_entered" from="Camaras_Control/Area2D_down" to="Camaras_Control" method="_on_area_2d_down_mouse_entered"]

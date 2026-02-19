@@ -17,6 +17,8 @@ func _append_sounds_recursively(father: Node):
 var _local_security_room_position: float
 
 func _physics_process(_delta: float) -> void:
+	if oficina == null: # asi no peta
+		return
 	if _local_security_room_position == oficina.position.x:
 		return
 	
@@ -24,3 +26,13 @@ func _physics_process(_delta: float) -> void:
 	
 	for audio in sounds:
 		audio._change_pos(_local_security_room_position)
+
+
+@export var puerta_izquierda: spacial_audio
+@export var puerta_derecha: spacial_audio
+
+func _on_puerta_izquierda_sound() -> void:
+	puerta_izquierda.play()
+
+func _on_puerta_derecha_sound() -> void:
+	puerta_derecha.play()
