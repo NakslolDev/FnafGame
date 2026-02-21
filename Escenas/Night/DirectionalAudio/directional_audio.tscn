@@ -78,3 +78,5 @@ bus = &"SFX"
 script = ExtResource("2_yh57f")
 x_position = 4
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[connection signal="timeout" from="FreddyFootsteps/Timer" to="FreddyFootsteps" method="_on_timer_timeout"]

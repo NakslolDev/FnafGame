@@ -8,7 +8,7 @@ extends Node
 
 var bool_izquierda: bool
 var freddy_far: bool
-var db_volume: int
+var db_volume: float
 var count := 0
 
 func _ready():
@@ -42,28 +42,32 @@ func _on_timer_timeout() -> void:
 	if count == 0:
 		return
 	count -= 1
+	db_volume = 0.0
+	
+	if freddy_far:
+		db_volume -= 5.0
 	
 	if bool_izquierda:
 		if not Freddy.door_I_closed and not Global.energia["Luces"]:
-			db_volume = -15
+			db_volume -= 15.0
 			freddy_izquierda()
 		elif Freddy.door_I_closed and not Global.energia["Luces"]:
-			db_volume = -20
+			db_volume -= 20.0
 			freddy_izquierda()
 		elif not Freddy.door_I_closed and Global.energia["Luces"]:
-			db_volume = -20
+			db_volume -= 20.0
 			freddy_general()
 		else:
 			return
 	else:
 		if not Freddy.door_D_closed and not Global.energia["Luces"]:
-			db_volume = -15
+			db_volume -= 15.0
 			freddy_derecha()
 		elif Freddy.door_D_closed and not Global.energia["Luces"]:
-			db_volume = -20
+			db_volume -= 20.0
 			freddy_derecha()
 		elif not Freddy.door_D_closed and Global.energia["Luces"]:
-			db_volume = -20
+			db_volume -= 20.0
 			freddy_general()
 		else:
 			return
@@ -71,22 +75,18 @@ func _on_timer_timeout() -> void:
 	timer.start(1.0)
 
 func freddy_izquierda():
-	if freddy_far:
-		db_volume -= 5
 	izquierda._volume = db_volume
+	izquierda.change_volume()
 	izquierda.play()
 	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "left freddy footsteps: ", db_volume, " db")
 
 func freddy_derecha():
-	if freddy_far:
-		db_volume -= 5
 	derecha._volume = db_volume
+	derecha.change_volume()
 	derecha.play()
 	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "right freddy footsteps: ", db_volume, " db")
 
 func freddy_general():
-	if freddy_far:
-		db_volume -= 5
 	general.volume_db = db_volume - 5
 	general.play()
 	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "freddy footsteps: ", db_volume, " db")

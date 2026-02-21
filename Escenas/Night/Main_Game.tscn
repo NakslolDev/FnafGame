@@ -86,6 +86,10 @@ one_shot = true
 
 [node name="Cheats" type="Node2D" parent="." unique_id=1211520319]
 script = ExtResource("2_4erhx")
+get_from_global = false
+infinite_light = true
+max_consumption = 0
+animatronic_map = true
 
 [node name="Area Camera Movement" parent="." unique_id=1983863320 instance=ExtResource("3_22qg4")]
 

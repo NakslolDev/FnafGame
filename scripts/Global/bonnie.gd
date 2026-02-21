@@ -85,10 +85,8 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 	tick_count += 1 # cada tick añade uno a tick count
 	
 	if tick_count < tick_count_limit: # Si llega o supera el límite
-		return
-	
-	tick_count = 0 # resetea el contador
-	movement_oportunity() # Y se intenta mover
+		tick_count = 0 # resetea el contador
+		movement_oportunity() # Y se intenta mover
 
 
 func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto más nivel de IA, más posibilidades de moverse

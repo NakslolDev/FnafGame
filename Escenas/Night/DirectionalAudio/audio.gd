@@ -6,6 +6,8 @@ const DISPLACEMENT := 1080.0
 
 const OFFICE_WITH := 3120.0
 
+var _local_deg
+
 enum pos {CENTER, SOFT_LEFT, LEFT, FAR_LEFT, SOFT_RIGHT, RIGHT, FAR_RIGHT, CUSTOM}
 @export var x_position: pos = pos.CENTER
 
@@ -21,7 +23,7 @@ func _ready():
 	panning_strength = 3.0
 	attenuation = 0.0
 	
-	_position_degrees(_starting_pos_displacement())
+	_change_pos(0.0) # al principio tu posicion es 0
 
 
 func _starting_pos_displacement() -> float:
@@ -48,25 +50,24 @@ func _starting_pos_displacement() -> float:
 	
 	return _degrees
 
-func _position_degrees(_degrees: float):
+func _position_degrees():
 	
 	position = CENTER_COORDS
 	
-	position.x += DISPLACEMENT * concentration * sin(deg_to_rad(_degrees))
+	position.x += DISPLACEMENT * concentration * sin(deg_to_rad(_local_deg))
 
 func _x_to_deg(_x_pos) -> float:
 	var _deg: float
 	_deg = _x_pos * (180.0 / OFFICE_WITH)
 	return _deg
 
-func _change_volume(_deg):
-	volume_db = _volume - _lower_db * sin(deg_to_rad(abs(_deg) / 2.0))
+func change_volume():
+	volume_db = _volume - _lower_db * sin(deg_to_rad(abs(_local_deg) / 2.0))
 
 
 func _change_pos(_x_pos: float):
 	
-	var _deg: float
-	_deg = _starting_pos_displacement() + _x_to_deg(_x_pos)
+	_local_deg = _starting_pos_displacement() + _x_to_deg(_x_pos)
 	
-	_position_degrees(_deg)
-	_change_volume(_deg)
+	_position_degrees()
+	change_volume()

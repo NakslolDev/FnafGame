@@ -5,6 +5,8 @@ const GENERAL_TICK_LIMIT := 30 # la cantidad de ticks para un oportunity movemen
 const DOOR_TICK_LIMIT := 15
 const UA_TICK_LIMIT := 1
 
+const WITHOUT_CAM_OPEND := false # mayor claridad
+
 const WATCH_TICK_FIRST_LIMIT := 20
 const WATCH_TICK_SECOND_LIMIT := 30
 
@@ -15,7 +17,7 @@ var lock_movement: bool
 var door_fail_count: int
 var cam_look_count: int
 var path_to_take: int # esta variable determina que comportamiento va a tomar freddy
-var puerta_atack: bool
+var puerta_attack: bool
 
 #Path 0 -> S, 0, T1, T2, office
 #Path 1 -> 1, 2, 3, PI
@@ -43,7 +45,7 @@ func reset():
 	door_fail_count = 0
 	cam_look_count = 0
 	path_to_take = 0
-	puerta_atack = false
+	puerta_attack = false
 	path = 0
 	position = "S"
 	last_path = 0
@@ -83,22 +85,24 @@ func tick():
 		
 		return
 	
-	elif looking_at_me(false) and seen and cam_look_count > 0: # Si lo has mirado en las camaras y bajas el monitor -> cam stall
+	elif looking_at_me(WITHOUT_CAM_OPEND) and seen and cam_look_count > 0: # Si lo has mirado en las camaras y bajas el monitor -> cam stall
 		if cam_look_count > WATCH_TICK_FIRST_LIMIT:
 			cam_look_count = WATCH_TICK_FIRST_LIMIT
+		
 		if randf_range(0, 49 - AI_level) < 10: # 1/5 IA 0, 1/3 IA 20... Lo que se traduce en ~20 segundos ia 0, ~12 en IA 20
 			cam_look_count -= 1 # ahora me he quedado en que está quieto un rato, pero va descendiendo
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy is awakening... with cam closed: from ", position) # al principio havia hecho que se quedase quieto
 		else:
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy stop tick count with cam closed: from ", position) # al principio havia hecho que se quedase quieto
+	
 		return
 	
-	else:
-		cam_look_count = 0
+	#else -> continue
+	cam_look_count = 0
 	
 	var tick_count_limit: int
 	
-	if Global.debug["cheats"]["ultra_agresive"] or puerta_atack:
+	if Global.debug["cheats"]["ultra_agresive"] or puerta_attack:
 		tick_count_limit = UA_TICK_LIMIT
 	elif position != "PI" and position != "PD":
 		tick_count_limit = GENERAL_TICK_LIMIT
@@ -107,11 +111,9 @@ func tick():
 	
 	tick_count += 1
 	
-	if tick_count < tick_count_limit: # Si llega o supera el límite
-		return
-	
-	tick_count = 0
-	movement_oportunity()
+	if tick_count >= tick_count_limit: # Si llega o supera el límite
+		tick_count = 0
+		movement_oportunity()
 
 func looking_at_me(cam_open_required := true):
 	
@@ -152,7 +154,7 @@ func movement_oportunity():
 	
 	if lock_movement:
 		if position == "PI" or position == "PD": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
-			puerta_atack = false 
+			puerta_attack = false 
 			lock_movement = false
 			return
 	
@@ -162,31 +164,31 @@ func movement_oportunity():
 	
 	if (path_to_take == 1 and position != "PI") or (path_to_take == 2 and position != "PD"):
 		door_fail_count = 0
-		puerta_atack = false
+		puerta_attack = false
 		if AI_level > randi_range(0, 20):
 			move()
 			return
 	
 	else:
 		if AI_level > randi_range(0, 20):
-			puerta_atack = true
+			puerta_attack = true
 		
 		if (position == "PI" and not door_I_closed) or (position == "PD" and not door_D_closed): # La puerta está abierta por donde intenta entrar
 			
-			if puerta_atack and (cam_activa or girado): # te entra siempre si tienes la cam activa o mires hacia atras
+			if puerta_attack and (cam_activa or girado): # te entra siempre si tienes la cam activa o mires hacia atras
 				move()
 				return
-			elif puerta_atack:
+			elif puerta_attack:
 				door_fail_count += 1
 		
-		elif puerta_atack: # si la puerta está cerrada pero te está atacando
+		elif puerta_attack: # si la puerta está cerrada pero te está atacando
 				door_fail_count += 1
 	
 	
-	if puerta_atack:
+	if puerta_attack:
 		if door_fail_count * AI_level / 5.0 > randi_range(0, 5000):
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy gave up: from ", position)
-			puerta_atack = false
+			puerta_attack = false
 			if path_to_take == 1:
 				path_to_take = 2
 			else:
@@ -195,7 +197,7 @@ func movement_oportunity():
 			return
 	
 	
-	if position == "PD" or position == "PI" and puerta_atack:
+	if position == "PD" or position == "PI" and puerta_attack:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement door atack: from ", position)
 	else:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement no: from ", position)
@@ -293,6 +295,7 @@ func move():
 func move_back():
 	
 	tick_count = 0
+	puerta_attack = false
 	last_position = position
 	last_path = path
 	var ipos = int(position)

@@ -202,11 +202,9 @@ func tick(): # Cada tick (5 veces por segundo)
 	
 	tick_count += 1
 	
-	if tick_count < tick_count_limit:
-		return
-	
-	tick_count = 0
-	movement_oportunity()
+	if tick_count >= tick_count_limit:
+		tick_count = 0
+		movement_oportunity()
 
 
 func movement_oportunity():
