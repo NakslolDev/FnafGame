@@ -81,8 +81,7 @@ func _process(delta):
 		
 		var target = Vector2(0, 0)
 		position = position.move_toward(target, movimiento_max_girar * delta)
-
-	cams_open
+	
 	if girando != 0:
 		return
 	
@@ -160,6 +159,7 @@ func _get_velocity_from_mouse():
 		velocidad = (mouse_pos - local_margin) * local_multiplyer
 	else:
 		velocidad = (mouse_pos + local_margin) * local_multiplyer
+	
 
 
 func _on_boton_izquierda_mouse_entered_switch() -> void:

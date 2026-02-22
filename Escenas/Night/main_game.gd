@@ -10,8 +10,26 @@ var tick_speed: float
 var tick_rate: float
 var tick_stop := false
 
-#nodes
+@export_group("nodes")
 @export var oficina: Node2D
+@export var oficina_detras: Node2D
+@export var freddy_nose: Node2D
+@export var linterna: Node2D
+@export var cheats: Node
+#control:
+@export var tick: Timer
+@export var esc_timer: Timer
+#---
+@export var mouse_custom: Node2D
+@export var camaras_control: Node2D
+@export var camaras: Node2D
+#misc:
+@export var animatronic_map: Node2D
+@export var tick_label: Label
+@export var batery_label: Label
+@export var time_label: Label
+@export var insanity_label: Label
+
 
 
 var _camaras_activadas: bool
@@ -28,13 +46,14 @@ signal alucinations(on: bool)
 func set_camaras_activadas(value):
 	_camaras_activadas = value
 	if value:
-		$Linterna.cams_up() # linterna
-	$"Oficina/Freddy nose".cam_warp = value # Nariz de freddy
+		linterna.cams_up() # linterna
+	freddy_nose.cam_warp = value # Nariz de freddy
 	Bonnie.cam_activa = value
 	Chica.cam_activa = value
 	Freddy.cam_activa = value
 	oficina.cams_open = value
 
+@export_group("transition")
 @export var transicion := 5
 var transicionando: bool
 @export var transicion_loc: Node
@@ -47,26 +66,26 @@ func _ready():
 	Chica.reset()
 	Freddy.reset()
 	Foxy.reset()
-	$Control/Tick.start()
-	change_tick_rate($Cheats.tick_rate)
+	tick.start()
+	change_tick_rate(cheats.tick_rate)
 	tick_speed = 1.0 / tick_rate
 	transicionando = true
 	transicion_loc.modulate.a = 1.0
-	$True_No_Shader/Animatronic_Map.act_first()
+	animatronic_map.act_first()
 	
 	Global.night_starts()
 	Items.night_starts()
 
 func _process(delta: float) -> void:
 	
-	if $True_No_Shader/Tick_label.modulate.a > 0.001:
-		$True_No_Shader/Tick_label.modulate.a -= 5 * delta
+	if tick_label.modulate.a > 0.001:
+		tick_label.modulate.a -= 5 * delta
 	
-	if $Cheats.see_light_batery:
-		$True_No_Shader/VBoxContainer/Batery_Label.visible = true
-		$True_No_Shader/VBoxContainer/Batery_Label.text = str(Global.linterna_bateria) + "%"
+	if cheats.see_light_batery:
+		batery_label.visible = true
+		batery_label.text = str(Global.linterna_bateria) + "%"
 	else:
-		$True_No_Shader/VBoxContainer/Batery_Label.visible = false
+		batery_label.visible = false
 	
 	if transicionando:
 		transicion_loc.modulate.a -= delta / transicion
@@ -76,10 +95,10 @@ func _process(delta: float) -> void:
 	
 func _input(event):
 	if event.is_action_pressed("Esc"):
-		$Control/ESC_Timer.start()  # Empieza el conteo
+		esc_timer.start()  # Empieza el conteo
 	
 	elif event.is_action_released("Esc"):
-		$Control/ESC_Timer.stop()  # Se cancela si suelta antes de tiempo
+		esc_timer.stop()  # Se cancela si suelta antes de tiempo
 
 func _on_esc_timer_timeout():
 	# Si al terminar el tiempo todavía se está presionando Esc, cambiamos de escena
@@ -87,7 +106,7 @@ func _on_esc_timer_timeout():
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "escaped")
 		Global.escena_previa = "Main_Game"
 		Global.reset_night()
-		$Control/Tick.stop()
+		tick.stop()
 		if Global.noche == 0:
 			get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
 		else:
@@ -97,12 +116,12 @@ func _on_esc_timer_timeout():
 func _on_tick_timeout() -> void:
 	tick_call()
 	if not tick_stop:
-		$Control/Tick.start(tick_speed)
+		tick.start(tick_speed)
 
 
 func tick_call():
-	if $Cheats.tick_count:
-		$True_No_Shader/Tick_label.modulate.a = 1.0
+	if cheats.tick_count:
+		tick_label.modulate.a = 1.0
 	Bonnie.tick()
 	Chica.tick()
 	Freddy.tick()
@@ -111,18 +130,15 @@ func tick_call():
 	
 	alucinacion_attempt()
 	
-	$Camaras_Control/Camaras.hora = Global.time_hour
-	$True_No_Shader/VBoxContainer/Insanity_label.text = "Insanity: " + str(Global.insanity)
-	if Global.time_minute < 10:
-		$True_No_Shader/VBoxContainer/Time_label.text = str(Global.time_hour) + ":0" + str(Global.time_minute)
-	else:
-		$True_No_Shader/VBoxContainer/Time_label.text = str(Global.time_hour) + ":" + str(Global.time_minute)
+	camaras.hora = Global.time_hour
+	insanity_label.text = "Insanity: " + str(Global.insanity)
+	time_label.text = str(Global.time_hour) + ":" + str(Global.time_minute).pad_zeros(2)
 	
 	if Global.time_hour == 6:
 		tick_stop = true
 		game_over(true)
 	
-	if $Cheats.invencibility:
+	if cheats.invencibility:
 		pass
 	
 	elif Bonnie.position == "office":
@@ -131,8 +147,8 @@ func tick_call():
 				bonnie_cam_wait += 1
 				return
 			else:
-				$Camaras_Control.toggle_cams()
-		if $Oficina.girando != 0 and $Oficina.girando != 3:
+				camaras_control.toggle_cams()
+		if oficina.girando != 0 and oficina.girando != 3:
 			return
 		emit_signal("jumpscare", "Bonnie")
 	
@@ -142,32 +158,32 @@ func tick_call():
 				chica_cam_wait += 1
 				return
 			else:
-				$Camaras_Control.toggle_cams()
-		if $Oficina.girando != 0 and $Oficina.girando != 3:
+				camaras_control.toggle_cams()
+		if oficina.girando != 0 and oficina.girando != 3:
 			return
 		emit_signal("jumpscare", "Chica")
 	
 	elif Freddy.position == "office":
 		if camaras_activadas == true:
 			return
-		if $Oficina.girando != 0: # freddy no te salta mientras miras hacia atras
+		if oficina.girando != 0: # freddy no te salta mientras miras hacia atras
 			return
 		emit_signal("jumpscare", "Freddy")
 	
 	elif Foxy.room == "office":
 		if camaras_activadas == true:
 			return
-		if $Oficina.girando != 0 and $Oficina.girando != 3:
+		if oficina.girando != 0 and oficina.girando != 3:
 			return
 		emit_signal("jumpscare", "Foxy")
 
 func _on_jumpscare(_who: String) -> void:
 	tick_stop = true
 	stop_alucinations()
-	$Oficina/Oficina_Detras.stop_everything = true
-	$Camaras_Control.game_over = true
-	$Mouse_Custom.override_alpha = true
-	$Mouse_Custom.modulate.a = 0.0
+	oficina_detras.stop_everything = true
+	camaras_control.game_over = true
+	mouse_custom.override_alpha = true
+	mouse_custom.modulate.a = 0.0
 
 func alucinacion_attempt():
 	
@@ -184,19 +200,19 @@ func alucinacion_attempt():
 	var probability =  1.0 / (T * 5.0) # 5 chequeos por segund
 	
 	if randf() < probability:
-		if not $Camaras_Control/Camaras.activado and (Global.energia["Luces"] or randi_range(0, 1) == 1):
+		if not camaras.activado and (Global.energia["Luces"] or randi_range(0, 1) == 1):
 			emit_signal("alucinations", true)
-			change_tick_rate($Cheats.tick_rate * 2)
+			change_tick_rate(cheats.tick_rate * 2)
 			alucinaciones_cooldown = 200 - 180 * ((insanity_clamp - al_max_time_on_insanity) / al_min_time_on_insanity)
 
 func stop_alucinations():
-	change_tick_rate($Cheats.tick_rate)
+	change_tick_rate(cheats.tick_rate)
 	emit_signal("alucinations", false)
 
 func change_tick_rate(new_tick: float):
 	tick_rate = new_tick
 	tick_speed = 1.0 / new_tick
-	$Linterna.tick_rate = new_tick
+	linterna.tick_rate = new_tick
 
 func game_over(win: bool):
 	

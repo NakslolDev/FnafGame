@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var get_from_global := true
 @export var invencibility := false
