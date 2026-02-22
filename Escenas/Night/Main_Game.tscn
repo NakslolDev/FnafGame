@@ -295,9 +295,12 @@ texture = ExtResource("25_0pxa1")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=850215130]
 ignore_rotation = false
 
-[node name="Camaras_Control" type="Node2D" parent="." unique_id=2062625524]
+[node name="Camaras_Control" type="Node2D" parent="." unique_id=2062625524 node_paths=PackedStringArray("root", "camaras", "up_cams")]
 position = Vector2(-960, -540)
 script = ExtResource("45_ba5fs")
+root = NodePath("..")
+camaras = NodePath("Camaras")
+up_cams = NodePath("../True_No_Shader/UpCams")
 
 [node name="Camaras" parent="Camaras_Control" unique_id=2142612778 instance=ExtResource("46_axquf")]
 
