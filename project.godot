@@ -36,6 +36,10 @@ window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+interactable="Area2D interactable on the night sections. It prevents overlaping with the flashlight"
+
 [input]
 
 Puerta_Izquierda={

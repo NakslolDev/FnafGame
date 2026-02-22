@@ -1,7 +1,6 @@
 extends Node2D
 
 signal Linterna_Recarga_Switch()
-signal Linterna_Recarga_Mouse_Switch()
 
 var _recargando: bool
 var recargando := false:
@@ -43,11 +42,6 @@ func _input(event):
 		if event.is_action_pressed("Space"):
 			_on_click()
 
-func _on_area_2d_mouse_entered() -> void:
-	emit_signal("Linterna_Recarga_Mouse_Switch")
-
-func _on_area_2d_mouse_exited() -> void:
-	emit_signal("Linterna_Recarga_Mouse_Switch")
 
 func _on_oficina_detras_detras_estado(Detras: bool) -> void:
 	detras = Detras

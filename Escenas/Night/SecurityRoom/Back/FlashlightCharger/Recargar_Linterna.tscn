@@ -15,7 +15,7 @@ script = ExtResource("1_8pogo")
 [node name="LinternaRecargando" type="Sprite2D" parent="." unique_id=2097981898]
 texture = ExtResource("1_b6u2f")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1844893614]
+[node name="Area2D" type="Area2D" parent="." unique_id=1844893614 groups=["interactable"]]
 script = ExtResource("3_i4dkt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1645869425]
@@ -31,6 +31,3 @@ bus = &"SFX"
 stream = ExtResource("5_2truv")
 volume_db = -8.0
 bus = &"SFX"
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

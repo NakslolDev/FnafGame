@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d1j05sj38vxq2" path="res://Escenas/Night/main_game.gd" id="1_ri0qg"]
 [ext_resource type="Script" uid="uid://dg87i78j5fghc" path="res://Escenas/Night/RandomScriptsIDC/cheats.gd" id="2_4erhx"]
-[ext_resource type="PackedScene" uid="uid://cydpwtyfo5jlj" path="res://Escenas/Night/Movement/Area_Camera_Movement.tscn" id="3_22qg4"]
 [ext_resource type="Script" uid="uid://bqwie24f1rykg" path="res://Escenas/Night/SecurityRoom/oficina.gd" id="4_arw1f"]
 [ext_resource type="Script" uid="uid://blpn7t14i1trt" path="res://Escenas/Night/SecurityRoom/Back/Ventilation/ventilation.gd" id="5_ujq6x"]
 [ext_resource type="AudioStream" uid="uid://6cf4ra3goluv" path="res://assets/sounds/Ventilation_loop.ogg" id="6_hal1v"]
@@ -42,9 +41,6 @@
 [ext_resource type="Script" uid="uid://cyeiwifp8oayw" path="res://Escenas/Night/Cameras/scripts/camaras_control.gd" id="45_ba5fs"]
 [ext_resource type="PackedScene" uid="uid://d2hwtk3f7idft" path="res://Escenas/Night/Cameras/Camaras.tscn" id="46_axquf"]
 [ext_resource type="PackedScene" uid="uid://cr7jcxwdqvwwr" path="res://Escenas/Night/DirectionalAudio/directional_audio.tscn" id="47_pi1lr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b0xl"]
-size = Vector2(96, 30)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33sfd"]
 shader = ExtResource("23_snhey")
@@ -103,8 +99,6 @@ script = ExtResource("2_4erhx")
 get_from_global = false
 see_time_always = true
 
-[node name="Area Camera Movement" parent="." unique_id=1983863320 instance=ExtResource("3_22qg4")]
-
 [node name="Oficina" type="Node2D" parent="." unique_id=540360308]
 script = ExtResource("4_arw1f")
 
@@ -158,12 +152,6 @@ texture = ExtResource("13_yfjon")
 
 [node name="VHS_Player" parent="Oficina" unique_id=454136740 instance=ExtResource("14_lctcs")]
 position = Vector2(259, 120)
-
-[node name="VHS_colider" type="Area2D" parent="Oficina/VHS_Player" unique_id=41549744]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Oficina/VHS_Player/VHS_colider" unique_id=1141474120]
-position = Vector2(37, -18)
-shape = SubResource("RectangleShape2D_7b0xl")
 
 [node name="Table_items" type="Node2D" parent="Oficina" unique_id=950471746]
 script = ExtResource("15_pukf3")
@@ -350,23 +338,13 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina" method="_on_detector_girar_izquierda_girar"]
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina/Oficina_Detras" method="_on_detector_girar_izquierda_girar"]
 [connection signal="Mouse_Entered_Switch" from="Oficina/Boton Izquierda" to="Oficina" method="_on_boton_izquierda_mouse_entered_switch"]
-[connection signal="Mouse_Entered_Switch" from="Oficina/Boton Izquierda" to="Linterna" method="_on_boton_izquierda_mouse_entered_switch"]
 [connection signal="Puerta_Cambio" from="Oficina/Boton Izquierda" to="Oficina/Puerta Izquierda" method="_on_boton_izquierda_puerta_cambio"]
 [connection signal="Sound" from="Oficina/Puerta Izquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
 [connection signal="Mouse_Entered_Switch" from="Oficina/Boton Derecha" to="Oficina" method="_on_boton_derecha_mouse_entered_switch"]
-[connection signal="Mouse_Entered_Switch" from="Oficina/Boton Derecha" to="Linterna" method="_on_boton_derecha_mouse_entered_switch"]
 [connection signal="Puerta_Cambio" from="Oficina/Boton Derecha" to="Oficina/Puerta Derecha" method="_on_boton_derecha_puerta_cambio"]
 [connection signal="Sound" from="Oficina/Puerta Derecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]
 [connection signal="Linterna_Recarga_Switch_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_recarga_switch_rebote"]
-[connection signal="Oficina_Detras_Mouse_Switch" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_oficina_detras_mouse_switch"]
-[connection signal="mouse_entered" from="Oficina/VHS_Player/VHS_colider" to="Linterna" method="_on_vhs_colider_mouse_entered"]
-[connection signal="mouse_exited" from="Oficina/VHS_Player/VHS_colider" to="Linterna" method="_on_vhs_colider_mouse_exited"]
-[connection signal="entered" from="Oficina/Table_items/Battery_items" to="Linterna" method="_on_battery_items_entered"]
-[connection signal="exited" from="Oficina/Table_items/Battery_items" to="Linterna" method="_on_battery_items_exited"]
-[connection signal="entered" from="Oficina/Table_items/WatterBottleItem" to="Linterna" method="_on_watter_bottle_item_entered"]
-[connection signal="exited" from="Oficina/Table_items/WatterBottleItem" to="Linterna" method="_on_watter_bottle_item_exited"]
-[connection signal="Freddy_Nose_Entered_Switch" from="Oficina/Freddy nose" to="Linterna" method="_on_freddy_nose_freddy_nose_entered_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Ductos" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Derecho" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Izquierdo" method="_on_linterna_linterna_activada_switch"]

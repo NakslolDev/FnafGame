@@ -29,9 +29,13 @@ size = Vector2(28, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35koi"]
 size = Vector2(28, 30)
 
-[node name="VHS_Player" type="Node2D" unique_id=588532467]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om6ro"]
+size = Vector2(96, 30)
+
+[node name="VHS_Player" type="Node2D" unique_id=588532467 node_paths=PackedStringArray("vhs_colider")]
 texture_filter = 1
 script = ExtResource("1_wceyb")
+vhs_colider = NodePath("VHS_colider")
 
 [node name="Audios" type="Node" parent="." unique_id=343145849]
 
@@ -123,6 +127,12 @@ texture = ExtResource("10_j8py7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stop/Stop_Area2D" unique_id=1923259210]
 position = Vector2(71, -18)
 shape = SubResource("RectangleShape2D_35koi")
+
+[node name="VHS_colider" type="Area2D" parent="." unique_id=445280823]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VHS_colider" unique_id=2088174322]
+position = Vector2(37, -18)
+shape = SubResource("RectangleShape2D_om6ro")
 
 [connection signal="timeout" from="Gyro/Timer" to="Gyro" method="_on_timer_timeout"]
 [connection signal="input_event" from="Play/Play_Area2D" to="." method="_on_play_area_2d_input_event"]

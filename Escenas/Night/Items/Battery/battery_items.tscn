@@ -7,9 +7,10 @@
 radius = 55.000004
 height = 144.0
 
-[node name="BatteryItems" type="Node2D" unique_id=442056989 node_paths=PackedStringArray("sprites")]
+[node name="BatteryItems" type="Node2D" unique_id=442056989 node_paths=PackedStringArray("sprites", "area_2d")]
 script = ExtResource("1_qnrss")
 sprites = [NodePath("sprites/1"), NodePath("sprites/2"), NodePath("sprites/3")]
+area_2d = NodePath("Area2D")
 
 [node name="sprites" type="Node2D" parent="." unique_id=1559922662]
 
@@ -28,7 +29,7 @@ position = Vector2(4, 11.000002)
 scale = Vector2(0.1825, 0.18249997)
 texture = ExtResource("2_7b8v8")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=902376028]
+[node name="Area2D" type="Area2D" parent="." unique_id=902376028 groups=["interactable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=728527538]
 position = Vector2(0, -3.8146973e-06)

@@ -2,8 +2,11 @@ extends Node2D
 
 var audio: Node
 var scarlet_forest := false
+@export var vhs_colider: Area2D
+
 
 func _ready():
+	vhs_colider.add_to_group("interactable")
 	act_audio()
 	act_status(0)
 

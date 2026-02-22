@@ -12,9 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://cfg5cdx2pmwt3" path="res://assets/Placeholders/Mouse/Puntero_Custom_cam_4.png" id="10_blhhq"]
 [ext_resource type="Texture2D" uid="uid://sumb0ap2d0ie" path="res://assets/Placeholders/Mouse/Puntero_Custom_cam_5.png" id="11_3auat"]
 
-[node name="Mouse_Custom" type="Node2D" unique_id=528246970]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfkm6"]
+
+[node name="Mouse_Custom" type="Node2D" unique_id=528246970 node_paths=PackedStringArray("mouse_hitbox")]
 texture_filter = 1
 script = ExtResource("1_pjkeq")
+mouse_hitbox = NodePath("MouseHitbox")
 
 [node name="PunteroCustom" type="Sprite2D" parent="." unique_id=1315661927]
 texture = ExtResource("2_1ulut")
@@ -45,3 +48,9 @@ texture = ExtResource("10_blhhq")
 
 [node name="PunteroCustomCam5" type="Sprite2D" parent="." unique_id=1543259387]
 texture = ExtResource("11_3auat")
+
+[node name="MouseHitbox" type="Area2D" parent="." unique_id=559893690]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseHitbox" unique_id=516520604]
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("CircleShape2D_pfkm6")

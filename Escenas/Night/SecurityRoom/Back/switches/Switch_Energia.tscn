@@ -29,6 +29,3 @@ shape = SubResource("RectangleShape2D_1stgw")
 stream = ExtResource("5_1stgw")
 volume_db = 5.0
 bus = &"SFX"
-
-[connection signal="mouse_entered" from="Area2D_Switch" to="." method="_on_area_2d_switch_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D_Switch" to="." method="_on_area_2d_switch_mouse_exited"]

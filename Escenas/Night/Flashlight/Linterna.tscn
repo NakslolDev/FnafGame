@@ -9,9 +9,13 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4vkxa"]
 
-[node name="Linterna" type="Node2D" unique_id=1199950271]
+[node name="Linterna" type="Node2D" unique_id=1199950271 node_paths=PackedStringArray("linternaPNG", "linterna_press", "linterna_release", "linterna_animacion_timer")]
 material = SubResource("CanvasItemMaterial_4vkxa")
 script = ExtResource("1_cdu3y")
+linternaPNG = NodePath("linternaPNG")
+linterna_press = NodePath("Linterna_Press")
+linterna_release = NodePath("Linterna_Release")
+linterna_animacion_timer = NodePath("linterna_animacion")
 
 [node name="linternaPNG" type="Sprite2D" parent="." unique_id=1369847649]
 scale = Vector2(1.5, 1.5)

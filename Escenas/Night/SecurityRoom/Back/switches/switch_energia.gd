@@ -5,7 +5,6 @@ extends Node2D
 @export_enum("General", "Ventilacion", "Puertas", "Linterna", "Camaras", "Heater", "Luces")
 var controlador: String = "General"
 
-signal Mouse_Enter_Switch()
 signal Restaurar_General()
 
 func _ready():
@@ -38,12 +37,6 @@ func _on_click():
 	$Tiny_click.volume_linear = 1.0
 	switch_on = !switch_on
 	switch_act(switch_on)
-
-func _on_area_2d_switch_mouse_entered() -> void:
-	emit_signal("Mouse_Enter_Switch")
-
-func _on_area_2d_switch_mouse_exited() -> void:
-	emit_signal("Mouse_Enter_Switch")
 
 
 func _on_switch_energia_1_restaurar_general() -> void:

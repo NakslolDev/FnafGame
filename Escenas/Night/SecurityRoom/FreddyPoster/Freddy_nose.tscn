@@ -7,8 +7,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8x2bo"]
 radius = 19.0
 
-[node name="Freddy nose" type="Node2D" unique_id=516057658]
+[node name="Freddy nose" type="Node2D" unique_id=516057658 node_paths=PackedStringArray("doit")]
 script = ExtResource("1_7d28s")
+doit = NodePath("Doit")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1257206707]
 script = ExtResource("2_pkh7b")
@@ -20,6 +21,3 @@ shape = SubResource("CircleShape2D_8x2bo")
 stream = ExtResource("3_pfrhf")
 volume_db = -5.426
 bus = &"SFX"
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

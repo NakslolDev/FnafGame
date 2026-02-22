@@ -3,7 +3,6 @@ extends Node2D
 signal Girar_Detras(izquierda: bool)
 signal Linterna_Activada_Rebote()
 signal Linterna_Recarga_Switch_Rebote()
-signal Oficina_Detras_Mouse_Switch()
 signal Detras_Estado(Detras: bool)
 
 var stop_everything := false
@@ -27,23 +26,6 @@ func _on_linterna_linterna_activada_switch() -> void:
 
 func _on_recargar_linterna_linterna_recarga_switch() -> void:
 	emit_signal("Linterna_Recarga_Switch_Rebote")
-
-func _on_recargar_linterna_linterna_recarga_mouse_switch() -> void:
-	emit_signal("Oficina_Detras_Mouse_Switch")
-
-
-func _on_switch_energia_1_mouse_enter_switch() -> void:
-	emit_signal("Oficina_Detras_Mouse_Switch")
-func _on_switch_energia_2_mouse_enter_switch() -> void:
-	emit_signal("Oficina_Detras_Mouse_Switch")
-func _on_switch_energia_3_mouse_enter_switch() -> void:
-	emit_signal("Oficina_Detras_Mouse_Switch")
-func _on_switch_energia_4_mouse_enter_switch() -> void:
-	emit_signal("Oficina_Detras_Mouse_Switch")
-func _on_switch_energia_5_mouse_enter_switch() -> void:
-	emit_signal("Oficina_Detras_Mouse_Switch")
-func _on_switch_energia_6_mouse_enter_switch() -> void:
-	emit_signal("Oficina_Detras_Mouse_Switch")
 
 
 func _on_oficina_girando_estado(girando: int) -> void:

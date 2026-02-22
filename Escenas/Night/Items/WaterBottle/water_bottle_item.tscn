@@ -7,9 +7,10 @@
 radius = 34.839684
 height = 193.86778
 
-[node name="WaterBottleItem" type="Node2D" unique_id=784961989 node_paths=PackedStringArray("sprites")]
+[node name="WaterBottleItem" type="Node2D" unique_id=784961989 node_paths=PackedStringArray("sprites", "area_2d")]
 script = ExtResource("1_t6bk8")
 sprites = [NodePath("sprites/1")]
+area_2d = NodePath("Area2D")
 
 [node name="sprites" type="Node2D" parent="." unique_id=864293658]
 
@@ -17,7 +18,7 @@ sprites = [NodePath("sprites/1")]
 scale = Vector2(0.30553573, 0.30553567)
 texture = ExtResource("2_t6bk8")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1405667956]
+[node name="Area2D" type="Area2D" parent="." unique_id=1405667956 groups=["interactable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=986148047]
 position = Vector2(0, -3.8146973e-06)

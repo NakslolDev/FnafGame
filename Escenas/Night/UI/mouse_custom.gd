@@ -8,6 +8,9 @@ var opacidad: float = 1.0
 var puntero: String = "1"
 var override_alpha := false
 
+@export var mouse_hitbox: Area2D # usado para bloquear la linterna
+
+
 func _ready():
 	
 	if Global.mouse_custom_op < 0.0:
