@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://yp8yfkj58or4"]
 
 [ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_exjtj"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_5gxr1"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="2_5gxr1"]
 [ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="2_ftn7a"]
-[ext_resource type="Texture2D" uid="uid://brghnucatvng4" path="res://assets/Placeholders/Camaras/Cam1/Bonnie_S.png" id="4_aqlm1"]
-[ext_resource type="Texture2D" uid="uid://dlafsha6rv65q" path="res://assets/Placeholders/Camaras/Cam1/Freddy_S.png" id="5_vx7is"]
-[ext_resource type="Texture2D" uid="uid://d4akjbxwv5m7f" path="res://assets/Placeholders/Camaras/Cam1/Chica_S.png" id="6_wlnvh"]
+[ext_resource type="Texture2D" uid="uid://0yyaw6hc3lve" path="res://assets/Placeholders/Camaras/Cam1/Bonnie_S.png" id="4_aqlm1"]
+[ext_resource type="Texture2D" uid="uid://cli2vts8ut73p" path="res://assets/Placeholders/Camaras/Cam1/Freddy_S.png" id="5_vx7is"]
+[ext_resource type="Texture2D" uid="uid://7y5uqpxcgfim" path="res://assets/Placeholders/Camaras/Cam1/Chica_S.png" id="6_wlnvh"]
 
 [node name="Cam1" type="Node2D" unique_id=1208974310 node_paths=PackedStringArray("sprites")]
 script = ExtResource("1_exjtj")

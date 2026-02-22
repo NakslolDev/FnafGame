@@ -11,7 +11,7 @@ var obscure_time := 3.0
 
 func _ready():
 	
-	Items.consume_batteries.connect(act_insta_skin)
+	Items.recharge_flashlight.connect(act_insta_skin)
 	
 	obscure_time = Global.fade["Linterna"]["Time"]
 	obscure_time_animation = Global.fade["Linterna"]["Speed"]

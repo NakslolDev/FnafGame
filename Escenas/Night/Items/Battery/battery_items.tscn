@@ -1,27 +1,52 @@
 [gd_scene format=3 uid="uid://bmwn0qi6enr06"]
 
-[ext_resource type="Script" uid="uid://bfrb3mq3874br" path="res://Escenas/Night/Items/Battery/battery_items.gd" id="1_qnrss"]
-[ext_resource type="Texture2D" uid="uid://vliun6dbv73p" path="res://assets/Placeholders/batteries-png.png" id="2_7b8v8"]
+[ext_resource type="Texture2D" uid="uid://ssm2mgkh3rhk" path="res://assets/Placeholders/batteries-png.png" id="2_7b8v8"]
+[ext_resource type="Script" uid="uid://clbiysx00lfmc" path="res://Escenas/Night/Items/consumable_class.gd" id="2_lq57c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b8v8"]
-radius = 55.000004
-height = 144.0
+radius = 50.0
+height = 120.0
 
-[node name="BatteryItems" type="Node2D" unique_id=442056989 node_paths=PackedStringArray("sprites", "area_2d")]
-script = ExtResource("1_qnrss")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4tlbm"]
+radius = 50.0
+height = 147.73988
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq57c"]
+radius = 59.0
+height = 168.0
+
+[node name="BatteryItems" type="Node2D" unique_id=18992194 node_paths=PackedStringArray("sprites", "colliders", "area")]
+script = ExtResource("2_lq57c")
+object_name = "batteries"
 sprites = [NodePath("sprites/1"), NodePath("sprites/2"), NodePath("sprites/3")]
-area_2d = NodePath("Area2D")
+colliders = [NodePath("Area2D/Collition1"), NodePath("Area2D/Collition2"), NodePath("Area2D/Collition3")]
+area = NodePath("Area2D")
+metadata/_custom_type_script = "uid://clbiysx00lfmc"
 
 [node name="sprites" type="Node2D" parent="." unique_id=1559922662]
 
 [node name="3" type="Sprite2D" parent="sprites" unique_id=1102786932]
+visible = false
 position = Vector2(34, -9)
 scale = Vector2(0.1825, 0.18249997)
 texture = ExtResource("2_7b8v8")
 
+[node name="2" type="Sprite2D" parent="sprites/3" unique_id=409435134]
+position = Vector2(-312.32877, 10.958908)
+texture = ExtResource("2_7b8v8")
+
+[node name="1" type="Sprite2D" parent="sprites/3" unique_id=810216461]
+position = Vector2(-164.38359, 109.58908)
+texture = ExtResource("2_7b8v8")
+
 [node name="2" type="Sprite2D" parent="sprites" unique_id=1354800032]
+visible = false
 position = Vector2(-23, -7)
 scale = Vector2(0.1825, 0.18249997)
+texture = ExtResource("2_7b8v8")
+
+[node name="1" type="Sprite2D" parent="sprites/2" unique_id=1958561557]
+position = Vector2(147.9452, 98.630165)
 texture = ExtResource("2_7b8v8")
 
 [node name="1" type="Sprite2D" parent="sprites" unique_id=169740604]
@@ -31,10 +56,19 @@ texture = ExtResource("2_7b8v8")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=902376028 groups=["interactable"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=728527538]
-position = Vector2(0, -3.8146973e-06)
+[node name="Collition1" type="CollisionShape2D" parent="Area2D" unique_id=728527538]
+position = Vector2(7, 11)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_7b8v8")
 
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="Collition2" type="CollisionShape2D" parent="Area2D" unique_id=493254018]
+visible = false
+position = Vector2(-6.9999995, 5)
+rotation = -0.89628303
+shape = SubResource("CapsuleShape2D_4tlbm")
+
+[node name="Collition3" type="CollisionShape2D" parent="Area2D" unique_id=585051508]
+visible = false
+position = Vector2(6, -1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_lq57c")

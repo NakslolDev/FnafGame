@@ -1,49 +1,55 @@
 extends Node
 
-signal consume_batteries
-signal hydrate
+signal act_objects
 
-var water_bottle: int
-const WATER_STRENGHT := 300
-const WATERING_TIME := 15.0
-var batteries: int
+var objects = {
+	"water_bottle": 3,
+	"batteries": 3,
+}
 
-func night_starts(): # Completamente temporal
+#methods---
+
+#batteries
+
+signal recharge_flashlight
+
+func consume_batteries():
+	if objects["batteries"] == 0: return
 	
-	batteries = 0
-	water_bottle = 0
-	
-	for i in range(randi_range(2,3)):
-		if randi_range(0,2) == 0 and water_bottle == 0:
-			water_bottle += 1
-			print("one water")
-		else:
-			batteries += 1
-			print("one battery")
-	print("total of ", batteries, " batteries, ", water_bottle, " watters, ")
-	emit_signal("consume_batteries") # actualiza las baterias
-	emit_signal("hydrate") # actualiza las aguas
-
-
-func consume_battery():
-	if batteries == 0: return
-	batteries -= 1
-	emit_signal("consume_batteries")
+	objects["batteries"] -= 1
+	recharge_flashlight.emit()
+	act_objects.emit()
 	print("sweet succulent double A batteries")
 
-func consume_water():
-	if water_bottle == 0: return
-	water_bottle -= 1
-	emit_signal("hydrate")
-	print("ts is lacking some Guacamole Gamer Fart 9000")
+#water bottle
+
+var drinking: bool = false
+
+func consume_water_bottle():
+	if objects["water_bottle"] == 0: return
 	
+	if drinking: return
+	
+	objects["water_bottle"] -= 1
+	drinking = true
+	act_objects.emit()
+	_hydrate_from_water_bottle()
+	print("ts is lacking some Guacamole Gamer Fart 9000")
+
+const WATER_STRENGHT := 300
+const WATERING_TIME := 15.0
+func _hydrate_from_water_bottle():
 	var start := Global.insanity
 	var end: int = max(Global.insanity - WATER_STRENGHT, -100)
-
+	var time: float = WATERING_TIME * (start - end) / WATER_STRENGHT
+	
 	var tween := create_tween()
 	tween.tween_method(
 		func(value): Global.insanity = int(value),
 		start,
 		end,
-		WATERING_TIME
+		time
+	)
+	tween.tween_callback(
+		func(): drinking = false
 	)

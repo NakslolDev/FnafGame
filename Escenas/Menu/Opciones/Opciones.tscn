@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv54uvsb4g8u4"]
 
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://Escenas/Menu/Opciones/opciones.gd" id="1_k0pte"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="3_64mem"]
 [ext_resource type="Script" uid="uid://cw4xikgcuuitu" path="res://Escenas/Menu/Opciones/scripts/screen.gd" id="3_s8b7i"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="4_okdqg"]
@@ -713,12 +713,6 @@ theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Timeless"
 
-[node name="CheckBox_items" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=391926984]
-layout_mode = 2
-theme = ExtResource("28_t63xu")
-theme_override_constants/h_separation = 25
-text = "Items"
-
 [node name="CheckBox_ultra_agresive" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=574168031]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
@@ -1129,7 +1123,6 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Invencibility" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_invencibility_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Instant_win" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_instant_win_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Timeless" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_timeless_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_items" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_items_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_ultra_agresive" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_ultra_agresive_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Infinite_Batery" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_infinite_batery_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Lights_consume" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_lights_consume_toggled"]

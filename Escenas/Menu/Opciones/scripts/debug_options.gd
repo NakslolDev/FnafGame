@@ -33,9 +33,6 @@ func _on_check_box_invencibility_toggled(toggled_on: bool) -> void:
 func _on_check_box_timeless_toggled(toggled_on: bool) -> void:
 	debug["cheats"]["timeless"] = toggled_on
 
-func _on_check_box_items_toggled(toggled_on: bool) -> void:
-	debug["cheats"]["items"] = toggled_on
-
 func _on_check_box_ultra_agresive_toggled(toggled_on: bool) -> void:
 	debug["cheats"]["ultra_agresive"] = toggled_on
 

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dy21jonwe8m3w"]
 
 [ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_ksfdc"]
-[ext_resource type="Texture2D" uid="uid://fxqwww0bfktu" path="res://assets/Placeholders/Camaras/Cam3/Cam.png" id="2_itias"]
+[ext_resource type="Texture2D" uid="uid://cb3kwhapk5kbb" path="res://assets/Placeholders/Camaras/Cam3/Cam.png" id="2_itias"]
 [ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_as2a8"]
-[ext_resource type="Texture2D" uid="uid://cgu52iabtt0oy" path="res://assets/Placeholders/Camaras/Cam3/Chica_3.1.png" id="4_go3m6"]
-[ext_resource type="Texture2D" uid="uid://ddwg0taft1frb" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.2.png" id="5_wsw8u"]
-[ext_resource type="Texture2D" uid="uid://naguuri1elxs" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.1.png" id="6_btbx0"]
-[ext_resource type="Texture2D" uid="uid://crl4tycg0n47y" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.3.png" id="7_g3rdw"]
-[ext_resource type="Texture2D" uid="uid://dixwhi276miix" path="res://assets/Placeholders/Camaras/Cam3/Freddy_3.1.png" id="8_0fdoa"]
-[ext_resource type="Texture2D" uid="uid://bwr1rckss5542" path="res://assets/Placeholders/Camaras/Cam3/Freddy_3.2.png" id="9_dynnp"]
+[ext_resource type="Texture2D" uid="uid://cns21o5svbild" path="res://assets/Placeholders/Camaras/Cam3/Chica_3.1.png" id="4_go3m6"]
+[ext_resource type="Texture2D" uid="uid://q6oggi4ixlyr" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.2.png" id="5_wsw8u"]
+[ext_resource type="Texture2D" uid="uid://dybjidnqs07b0" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.1.png" id="6_btbx0"]
+[ext_resource type="Texture2D" uid="uid://c8k4ih5ou0v72" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.3.png" id="7_g3rdw"]
+[ext_resource type="Texture2D" uid="uid://cmpkmltrak3ne" path="res://assets/Placeholders/Camaras/Cam3/Freddy_3.1.png" id="8_0fdoa"]
+[ext_resource type="Texture2D" uid="uid://ct3555hwil1xk" path="res://assets/Placeholders/Camaras/Cam3/Freddy_3.2.png" id="9_dynnp"]
 
 [node name="Cam3" type="Node2D" unique_id=1954128902 node_paths=PackedStringArray("sprites")]
 script = ExtResource("1_ksfdc")

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bcvei4idhn4bm"]
 
 [ext_resource type="Script" uid="uid://sh6risndd8no" path="res://Escenas/Menu/endings/ending_screens.gd" id="1_3xreb"]
-[ext_resource type="Texture2D" uid="uid://duhirbeyt8bm1" path="res://assets/Placeholders/end_screen_Mediocre.png" id="1_mte25"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_gk1km"]
+[ext_resource type="Texture2D" uid="uid://v6lk4nwp7fkr" path="res://assets/Placeholders/end_screen_Mediocre.png" id="1_mte25"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="2_gk1km"]
 [ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://Escenas/Menu/endings/auto_transicion.gd" id="4_craah"]
 
 [node name="Mediocre_ending" type="Node2D" unique_id=2099527829]

@@ -24,7 +24,7 @@ var tick_rate: float
 
 func _ready():
 	Foxy.move_back.connect(foxy_animacion)
-	Items.consume_batteries.connect(add_batteries)
+	Items.recharge_flashlight.connect(add_batteries)
 	set_process(true)
 	# Aseguramos que el nodo ya existe y luego llamamos el setter
 	set_linterna(linterna_activa_temporal)

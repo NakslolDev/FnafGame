@@ -74,7 +74,6 @@ func _ready():
 	animatronic_map.act_first()
 	
 	Global.night_starts()
-	Items.night_starts()
 
 func _process(delta: float) -> void:
 	

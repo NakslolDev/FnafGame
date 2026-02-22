@@ -1,16 +1,24 @@
 [gd_scene format=3 uid="uid://df8kv2d84k3ft"]
 
-[ext_resource type="Script" uid="uid://ywdgpayamk3n" path="res://Escenas/Night/Items/WaterBottle/watter_bottle_item.gd" id="1_t6bk8"]
-[ext_resource type="Texture2D" uid="uid://dufbm6ui6d53r" path="res://assets/Placeholders/Hidratation.png" id="2_t6bk8"]
+[ext_resource type="Script" uid="uid://clbiysx00lfmc" path="res://Escenas/Night/Items/consumable_class.gd" id="1_rw4yx"]
+[ext_resource type="Texture2D" uid="uid://icpst4p3e5di" path="res://assets/Placeholders/Hidratation.png" id="2_t6bk8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wx6p"]
 radius = 34.839684
 height = 193.86778
 
-[node name="WaterBottleItem" type="Node2D" unique_id=784961989 node_paths=PackedStringArray("sprites", "area_2d")]
-script = ExtResource("1_t6bk8")
-sprites = [NodePath("sprites/1")]
-area_2d = NodePath("Area2D")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rw4yx"]
+radius = 48.0
+height = 206.0
+
+[node name="WaterBottleItem" type="Node2D" unique_id=130798574 node_paths=PackedStringArray("sprites", "colliders", "area")]
+script = ExtResource("1_rw4yx")
+object_name = "water_bottle"
+maximun = 2
+sprites = [NodePath("sprites/1"), NodePath("sprites/2")]
+colliders = [NodePath("Area2D/Collision1"), NodePath("Area2D/Collision2")]
+area = NodePath("Area2D")
+metadata/_custom_type_script = "uid://clbiysx00lfmc"
 
 [node name="sprites" type="Node2D" parent="." unique_id=864293658]
 
@@ -18,11 +26,21 @@ area_2d = NodePath("Area2D")
 scale = Vector2(0.30553573, 0.30553567)
 texture = ExtResource("2_t6bk8")
 
+[node name="2" type="Sprite2D" parent="sprites" unique_id=51642040]
+position = Vector2(-21, -10)
+scale = Vector2(0.30553573, 0.30553567)
+texture = ExtResource("2_t6bk8")
+
+[node name="1" type="Sprite2D" parent="sprites/2" unique_id=1502417223]
+position = Vector2(68.73173, 32.7294)
+texture = ExtResource("2_t6bk8")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1405667956 groups=["interactable"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=986148047]
+[node name="Collision1" type="CollisionShape2D" parent="Area2D" unique_id=986148047]
 position = Vector2(0, -3.8146973e-06)
 shape = SubResource("CapsuleShape2D_7wx6p")
 
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="Collision2" type="CollisionShape2D" parent="Area2D" unique_id=188650193]
+position = Vector2(-9, -2)
+shape = SubResource("CapsuleShape2D_rw4yx")

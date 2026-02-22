@@ -824,6 +824,10 @@ var dm: Dictionary[String, Estado] = {
 	"foxy": Estado.STANDBY,
 }
 
+var map_objects = {
+	"kitcken_water_bottle": false,
+}
+
 #---Funciones Partida---#
 
 
@@ -1160,7 +1164,6 @@ var debug :={
 		"invencibility": false,
 		"instawin": false,
 		"timeless": false,
-		"items": false,
 		"ultra_agresive": false,
 		"infinite_light": false,
 		"lights_consume": false,
