@@ -69,8 +69,9 @@ size = Vector2(1050, 115)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei8qt"]
 size = Vector2(1264.5, 19)
 
-[node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("transicion_loc")]
+[node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("oficina", "transicion_loc")]
 script = ExtResource("1_ri0qg")
+oficina = NodePath("Oficina")
 transicion_loc = NodePath("True_No_Shader/Transicion")
 
 [node name="Control" type="Node2D" parent="." unique_id=240838659]
@@ -85,10 +86,6 @@ one_shot = true
 
 [node name="Cheats" type="Node2D" parent="." unique_id=1211520319]
 script = ExtResource("2_4erhx")
-get_from_global = false
-infinite_light = true
-max_consumption = 0
-animatronic_map = true
 
 [node name="Area Camera Movement" parent="." unique_id=1983863320 instance=ExtResource("3_22qg4")]
 
@@ -320,7 +317,6 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="jumpscare" from="." to="True_No_Shader/Jumpscare_Foxy" method="_on_main_game_jumpscare"]
 [connection signal="timeout" from="Control/Tick" to="." method="_on_tick_timeout"]
 [connection signal="timeout" from="Control/ESC_Timer" to="." method="_on_esc_timer_timeout"]
-[connection signal="Camera_Movement" from="Area Camera Movement" to="Oficina" method="_on_area_camera_movement_camera_movement"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Detector_Girar_Izquierda" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Boton Izquierda" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Boton Derecha" method="_on_oficina_girando_estado"]

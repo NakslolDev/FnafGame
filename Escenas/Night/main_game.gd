@@ -10,6 +10,10 @@ var tick_speed: float
 var tick_rate: float
 var tick_stop := false
 
+#nodes
+@export var oficina: Node2D
+
+
 var _camaras_activadas: bool
 var camaras_activadas := false:
 	get: return _camaras_activadas
@@ -25,17 +29,11 @@ func set_camaras_activadas(value):
 	_camaras_activadas = value
 	if value:
 		$Linterna.cams_up() # linterna
-		$"Oficina/Freddy nose".cam_warp = true # Nariz de freddy
-		Bonnie.cam_activa = true
-		Chica.cam_activa = true
-		Freddy.cam_activa = true
-		$"Area Camera Movement".stop_movement()
-	else:
-		$"Oficina/Freddy nose".cam_warp = false # Nariz de freddy
-		Bonnie.cam_activa = false
-		Chica.cam_activa = false
-		Freddy.cam_activa = false
-		$"Area Camera Movement".remember()
+	$"Oficina/Freddy nose".cam_warp = value # Nariz de freddy
+	Bonnie.cam_activa = value
+	Chica.cam_activa = value
+	Freddy.cam_activa = value
+	oficina.cams_open = value
 
 @export var transicion := 5
 var transicionando: bool

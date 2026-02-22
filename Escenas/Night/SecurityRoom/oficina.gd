@@ -20,6 +20,8 @@ var desconectar_no_repetir := false
 var oficina_detras_nodo: Node2D = null
 var padre_original: Node = null
 
+var cams_open := false
+
 func _process(delta):
 	
 	if giro_input_centro:
@@ -50,7 +52,7 @@ func _process(delta):
 	
 	#print("girando: ", girando, " Pos X: ", position.x)
 	if girando == 1:
-		emit_signal("Girando_Señal", true)
+		Girando_Señal.emit(true)
 		if position.x == -3120:
 			girando = 3
 			return
@@ -58,7 +60,7 @@ func _process(delta):
 		position = position.move_toward(target, movimiento_max_girar * delta)
 		
 	if girando == 2:
-		emit_signal("Girando_Señal", true)
+		Girando_Señal.emit(true)
 		if position.x == 3120:
 			girando = 3
 			return
@@ -66,7 +68,7 @@ func _process(delta):
 		position = position.move_toward(target, movimiento_max_girar * delta)
 		
 	if girando == -1 or girando == -2:
-		emit_signal("Girando_Señal", true)
+		Girando_Señal.emit(true)
 		if position.x == 0:
 			girando = 0
 			return
@@ -80,13 +82,15 @@ func _process(delta):
 		var target = Vector2(0, 0)
 		position = position.move_toward(target, movimiento_max_girar * delta)
 
-	
+	cams_open
 	if girando != 0:
 		return
 	
-	emit_signal("Girando_Señal", false)
+	Girando_Señal.emit(false)
 	
 	var boton_slow_down = 1.0
+	
+	_get_velocity_from_mouse()
 	
 	if position.x >= movimiento_max and velocidad < 0:
 		velocidad = 0
@@ -95,9 +99,9 @@ func _process(delta):
 		velocidad = 0
 
 	if velocidad == 0:
-		emit_signal("Movimiento", false)
+		Movimiento.emit(false)
 	else:
-		emit_signal("Movimiento", true)
+		Movimiento.emit(true)
 	
 	if lock_tf_in and buttons_slow_down:
 		boton_slow_down = 0.5
@@ -108,7 +112,7 @@ func _process(delta):
 		position.x = movimiento_max
 	if position.x < -movimiento_max:
 		position.x = -movimiento_max
-	
+
 
 func _separar_oficina_detras_de_oficina(izquierda: bool):
 	oficina_detras_nodo = $Oficina_Detras
@@ -134,13 +138,30 @@ func _separar_oficina_detras_de_oficina(izquierda: bool):
 	
 	desconectar_no_repetir = false
 
-func _on_area_camera_movement_camera_movement(direction: int) -> void:
-	if girando == 0:
-		velocidad = VELOCIDAD_CAMERA * direction	
+const MOVEMENT_MARGIN := 150.0
+const MOVEMENT_MULTIPLYER := 2.5
+
+func _get_velocity_from_mouse():
+	if cams_open: return
+	
+	var mouse_pos: float = get_global_mouse_position().x
+	
+	var local_margin := MOVEMENT_MARGIN
+	var local_multiplyer := MOVEMENT_MULTIPLYER
+	
+	if Input.is_action_pressed("Focus"):
+		local_margin = 300
+		local_multiplyer = 1.5
+	
+	if abs(mouse_pos) < local_margin:
+		velocidad = 0 
+	
+	elif mouse_pos > 0:
+		velocidad = (mouse_pos - local_margin) * local_multiplyer
 	else:
-		velocidad = 0
-	
-	
+		velocidad = (mouse_pos + local_margin) * local_multiplyer
+
+
 func _on_boton_izquierda_mouse_entered_switch() -> void:
 	lock_tf_in = !lock_tf_in
 
@@ -173,16 +194,23 @@ func _on_oficina_detras_girar_detras(izquierda: bool) -> void:
 
 
 func _on_detector_girar_izquierda_girar_input() -> void:
+	
+	const LEFT := true
+	const RIGHT := false
+	const LOOK_FORWARDS := false
+	const LOOK_BACKWARDS := true
+	
 	if girando == 0:
 		if position.x == movimiento_max:
-			emit_signal("Girar_Input_Permitido", true, false)
+			Girar_Input_Permitido.emit(LEFT, LOOK_FORWARDS)
 		if position.x == -movimiento_max:
-			emit_signal("Girar_Input_Permitido", false, false)
+			Girar_Input_Permitido.emit(RIGHT, LOOK_FORWARDS)
 		if position.x != movimiento_max and position.x != -movimiento_max:
 			giro_input_centro = true
 	if girando == 3:
 		var random = randi() % 2 == 0
 		if random:
-			emit_signal("Girar_Input_Permitido", true, true)
+			Girar_Input_Permitido.emit(LEFT, LOOK_BACKWARDS)
+
 		else:
-			emit_signal("Girar_Input_Permitido", false, true)
+			Girar_Input_Permitido.emit(RIGHT, LOOK_BACKWARDS)
