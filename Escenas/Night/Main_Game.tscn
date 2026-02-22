@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]
 [ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://Escenas/Night/SecurityRoom/FreddyPoster/Freddy_nose.tscn" id="18_uce18"]
-[ext_resource type="PackedScene" uid="uid://rsyl1634xn7a" path="res://Escenas/Night/SecurityRoom/Ducts/Duct_sounds.tscn" id="19_1ufiy"]
 [ext_resource type="PackedScene" uid="uid://b5xqa4eh847iv" path="res://Escenas/Night/Flashlight/Linterna.tscn" id="20_ewgm2"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="21_vtd2r"]
 [ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://Escenas/Night/RandomScriptsIDC/ready_visible.gd" id="22_cmb4g"]
@@ -164,8 +163,6 @@ position = Vector2(-151, 85)
 
 [node name="Freddy nose" parent="Oficina" unique_id=1087430654 instance=ExtResource("18_uce18")]
 position = Vector2(-298, -170)
-
-[node name="Duct_sounds" parent="Oficina" unique_id=1318743049 instance=ExtResource("19_1ufiy")]
 
 [node name="DirectionalAudio" parent="." unique_id=2054814738 node_paths=PackedStringArray("oficina") instance=ExtResource("47_pi1lr")]
 oficina = NodePath("../Oficina")

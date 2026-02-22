@@ -8,7 +8,7 @@ const OFFICE_WITH := 3120.0
 
 var _local_deg
 
-enum pos {CENTER, SOFT_LEFT, LEFT, FAR_LEFT, SOFT_RIGHT, RIGHT, FAR_RIGHT, CUSTOM}
+enum pos {CENTER, SOFT_LEFT, LEFT, FAR_LEFT, SOFT_RIGHT, RIGHT, FAR_RIGHT, BEHIND, CUSTOM}
 @export var x_position: pos = pos.CENTER
 
 @export var _custom_degrees := 0
@@ -45,6 +45,8 @@ func _starting_pos_displacement() -> float:
 			_degrees = 60.0
 		pos.FAR_RIGHT:
 			_degrees = 90.0
+		pos.BEHIND:
+			_degrees = 180.0
 		pos.CUSTOM:
 			_degrees = _custom_degrees
 	
