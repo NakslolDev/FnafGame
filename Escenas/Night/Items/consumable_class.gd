@@ -11,10 +11,7 @@ class_name consumable
 
 func _ready():
 	Items.act_objects.connect(_act)
-	
 	_validate()
-	
-	_act()
 
 func _validate():
 	if sprites.size() == 0:

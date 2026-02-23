@@ -3,17 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://ssm2mgkh3rhk" path="res://assets/Placeholders/batteries-png.png" id="2_7b8v8"]
 [ext_resource type="Script" uid="uid://clbiysx00lfmc" path="res://Escenas/Night/Items/consumable_class.gd" id="2_lq57c"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b8v8"]
-radius = 50.0
-height = 120.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq57c"]
+radius = 59.0
+height = 168.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4tlbm"]
 radius = 50.0
 height = 147.73988
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq57c"]
-radius = 59.0
-height = 168.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b8v8"]
+radius = 50.0
+height = 120.0
 
 [node name="BatteryItems" type="Node2D" unique_id=18992194 node_paths=PackedStringArray("sprites", "colliders", "area")]
 script = ExtResource("2_lq57c")
@@ -56,19 +56,20 @@ texture = ExtResource("2_7b8v8")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=902376028 groups=["interactable"]]
 
-[node name="Collition1" type="CollisionShape2D" parent="Area2D" unique_id=728527538]
-position = Vector2(7, 11)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_7b8v8")
-
-[node name="Collition2" type="CollisionShape2D" parent="Area2D" unique_id=493254018]
-visible = false
-position = Vector2(-6.9999995, 5)
-rotation = -0.89628303
-shape = SubResource("CapsuleShape2D_4tlbm")
-
 [node name="Collition3" type="CollisionShape2D" parent="Area2D" unique_id=585051508]
 visible = false
 position = Vector2(6, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_lq57c")
+
+[node name="Collition2" type="CollisionShape2D" parent="Area2D" unique_id=493254018]
+visible = false
+position = Vector2(-6.9999995, 5)
+rotation = -0.89628303
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_4tlbm")
+
+[node name="Collition1" type="CollisionShape2D" parent="Area2D" unique_id=728527538]
+position = Vector2(7, 11)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7b8v8")

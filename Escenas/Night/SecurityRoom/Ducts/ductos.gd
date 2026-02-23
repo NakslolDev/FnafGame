@@ -14,7 +14,7 @@ func movement(_a = null, _b = null, _c = null, _d = null):
 		$Foxy.modulate.a = 0.0
 
 @onready var sprite := $DuctosFondoOscuro
-	
+
 func _on_linterna_linterna_activada_switch() -> void:
 	shader_enabled = !shader_enabled
 	act_linerna_focus()

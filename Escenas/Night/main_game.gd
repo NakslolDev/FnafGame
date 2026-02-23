@@ -58,6 +58,25 @@ func set_camaras_activadas(value):
 var transicionando: bool
 @export var transicion_loc: Node
 
+func _enter_tree() -> void: # antes que ready
+	save_volume_linear = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("Master"))
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), 0.0)
+
+var save_volume_linear: float
+const TIEMPO_TRANSICION_VOLUMEN := 5.0
+func _return_volume_slowly() -> void:
+	await get_tree().create_timer(0.5).timeout
+	var bus := AudioServer.get_bus_index("Master")
+	var tween := create_tween()
+
+	tween.tween_method(
+		func(value: float) -> void:
+			AudioServer.set_bus_volume_linear(bus, value),
+		AudioServer.get_bus_volume_linear(bus),
+		save_volume_linear,
+		TIEMPO_TRANSICION_VOLUMEN
+	)
+
 func _ready():
 	bonnie_cam_wait = 0
 	chica_cam_wait = 0
@@ -72,8 +91,12 @@ func _ready():
 	transicionando = true
 	transicion_loc.modulate.a = 1.0
 	animatronic_map.act_first()
+	if not cheats.see_light_batery: batery_label.visible = false
 	
+	Items.night_starts()
 	Global.night_starts()
+	
+	_return_volume_slowly()
 
 func _process(delta: float) -> void:
 	
@@ -83,15 +106,13 @@ func _process(delta: float) -> void:
 	if cheats.see_light_batery:
 		batery_label.visible = true
 		batery_label.text = str(Global.linterna_bateria) + "%"
-	else:
-		batery_label.visible = false
 	
 	if transicionando:
 		transicion_loc.modulate.a -= delta / transicion
 		if transicion_loc.modulate.a <= 0:
 			transicion_loc.modulate.a = 0
 			transicionando = false
-	
+
 func _input(event):
 	if event.is_action_pressed("Esc"):
 		esc_timer.start()  # Empieza el conteo
@@ -106,6 +127,7 @@ func _on_esc_timer_timeout():
 		Global.escena_previa = "Main_Game"
 		Global.reset_night()
 		tick.stop()
+		AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), save_volume_linear) # porsia no se ha terminado de reiniciar
 		if Global.noche == 0:
 			get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
 		else:

@@ -1,44 +1,45 @@
 extends Node2D
 
 signal Puerta_Cambio(puerta_activada: bool)
+signal ButtonPlay(on: bool)
 
-signal Mouse_Entered_Switch()
+@export var root: Node2D
+
+@export var oficina_boton_verde: Sprite2D
+@export var oficina_boton_rojo: Sprite2D
+@export var oficina_boton_no_energia: Sprite2D
 
 @export var boton_izquierda := true
 var puerta_activada := false
 var mouse_entered := false
 var local_girando: int
 
-func _ready():
-	$ButtonOff.volume_linear = 0.0
-	$ButtonOn.volume_linear = 0.0
-	if boton_izquierda:
-		$ButtonOn.position.x = -500
-		$ButtonOff.position.x = -500
-	else:
-		$ButtonOn.position.x = 500
-		$ButtonOff.position.x = 500
+var stuck_door := false
 
-	actualizar_sprites()
-	Global.connect("energia_actualizada", Callable(self, "energia_act"))
+func _ready():
+	actualizar_sprites(false)
+	Global.energia_actualizada.connect(energia_act)
 
 func energia_act():
-	actualizar_sprites()
-	if puerta_activada and Global.energia["Puertas"] == false:
+	actualizar_sprites(false)
+	stuck_door = false
+	if puerta_activada and not Global.energia["Puertas"]:
 		puerta_activada = false
-		emit_signal("Puerta_Cambio", puerta_activada)
+		Puerta_Cambio.emit(puerta_activada)
 
 func _on_click():
-	if $"../..".camaras_activadas or $"../..".tick_stop:
+	if root.camaras_activadas or root.tick_stop:
 		return
-	$ButtonOff.volume_linear = 1.0
-	$ButtonOn.volume_linear = 1.0
-	if local_girando == 0 or local_girando == 3:
-		if Global.energia["General"] and Global.energia["Puertas"]:
-			puerta_activada = !puerta_activada
-			emit_signal("Puerta_Cambio", puerta_activada)
-			actualizar_sprites()
+	if not Global.energia["Puertas"]:
+		return
 	
+	puerta_activada = !puerta_activada
+	actualizar_sprites()
+	if not stuck_door: Puerta_Cambio.emit(puerta_activada)
+	if not puerta_activada and randi_range(0,50) == 0 and Global.noche != 1 and Global.noche != 2 and Global.noche != 3: # no quiero que suceda en las primeras noches, pues tengo intención de        
+		stuck_door = true # decir en la primera noche que las puertas se pueden atascar, pero que no suceda hasta la noche 4...
+
+
 func _input(event):
 	if boton_izquierda:
 		if local_girando == 3 and Global.misc["Switch_Doors_Back"]:
@@ -56,26 +57,19 @@ func _input(event):
 			if event.is_action_pressed("Puerta_Derecha"):
 				_on_click()
 
-func actualizar_sprites():
+func actualizar_sprites(audio := true):
 	if Global.energia["General"] and Global.energia["Puertas"]:
-		$OficinaBotonNoEnergia.modulate.a = 0.0
+		oficina_boton_no_energia.modulate.a = 0.0
 		if puerta_activada:
-			$OficinaBotonRojo.modulate.a = 0.0
-			$OficinaBotonVerde.modulate.a = 1.0
-			$ButtonOn.play()
+			oficina_boton_rojo.modulate.a = 0.0
+			oficina_boton_verde.modulate.a = 1.0
+			if audio: ButtonPlay.emit(true)
 		else:
-			$OficinaBotonRojo.modulate.a = 1.0
-			$OficinaBotonVerde.modulate.a = 0.0
-			$ButtonOff.play()
+			oficina_boton_rojo.modulate.a = 1.0
+			oficina_boton_verde.modulate.a = 0.0
+			if audio: ButtonPlay.emit(false)
 	else:
-		$OficinaBotonNoEnergia.modulate.a = 1.0
-
-
-func _on_area_boton_mouse_entered() -> void:
-	emit_signal("Mouse_Entered_Switch")
-
-func _on_area_boton_mouse_exited() -> void:
-	emit_signal("Mouse_Entered_Switch")
+		oficina_boton_no_energia.modulate.a = 1.0
 
 func _on_oficina_girando_estado(girando: int) -> void:
 	local_girando = girando

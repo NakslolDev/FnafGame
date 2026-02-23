@@ -783,7 +783,7 @@ var finales := {
 
 #---Variables Partida---#
 
-var noche := 1 # 1-6, 0 es custom night.
+var noche := 0 # 1-6, 0 es custom night.
 
 const SAFE_CODE_SIZE := 5
 var safe_code: Array[int] = [2, 7, 3, 5, 3] # el codigo en orden de la caja
@@ -938,6 +938,8 @@ func reset_night():
 
 func night_starts():
 	
+	print("Night ", noche, " starts")
+	
 	if noche == 0:
 		return
 	
@@ -946,6 +948,7 @@ func night_starts():
 	
 	mapa["computer_failed"] = false
 	if mapa["computer_working"]:
+		print("Watch out! Computer working")
 		set_energia_consumption("Especial", 1)
 
 func get_night_info(animatronic: String, night: int, time: int):
@@ -1126,6 +1129,7 @@ func minigame_starts():
 	if just_death_min == "none":
 		if m_entering:
 			leer_partida() # En esta funcion es donde se maneja el debug
+			Items.reset()
 		else:
 			leer_partida_provisional()
 			eliminar_partida_provisional()

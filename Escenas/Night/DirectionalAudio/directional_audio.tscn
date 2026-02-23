@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://cr7jcxwdqvwwr"]
 
-[ext_resource type="AudioStream" uid="uid://7tdwrap7126b" path="res://Audios/Scarlet Forest.mp3" id="1_l35w1"]
 [ext_resource type="Script" uid="uid://bo1h656p1ymyd" path="res://Escenas/Night/DirectionalAudio/directional_audio.gd" id="1_yh57f"]
 [ext_resource type="Script" uid="uid://cem83cl7ongg6" path="res://Escenas/Night/DirectionalAudio/audio.gd" id="2_yh57f"]
 [ext_resource type="AudioStream" uid="uid://cbbmymi1inytu" path="res://assets/sounds/Puerta.mp3" id="4_2kf65"]
+[ext_resource type="AudioStream" uid="uid://e2ceevc5hvw6" path="res://assets/sounds/Button_off.wav" id="4_07bc2"]
 [ext_resource type="Script" uid="uid://beay6cpxoxis5" path="res://Escenas/Night/DirectionalAudio/freddy_footsteps.gd" id="5_77qym"]
+[ext_resource type="AudioStream" uid="uid://dofe8jpof2udp" path="res://assets/sounds/Button_on.wav" id="5_866d1"]
 [ext_resource type="AudioStream" uid="uid://c8q60uet6mb1n" path="res://assets/sounds/Freddy_footsteps.mp3" id="6_va5cy"]
 [ext_resource type="Script" uid="uid://cduq7owpa8xgc" path="res://Escenas/Night/DirectionalAudio/duct_sounds.gd" id="7_1lyji"]
 [ext_resource type="AudioStream" uid="uid://dcm32cs86nxqr" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-1.ogg" id="8_t0g7s"]
@@ -17,16 +18,31 @@
 [ext_resource type="AudioStream" uid="uid://52vbwgu8pb7g" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-8.ogg" id="15_t1181"]
 [ext_resource type="AudioStream" uid="uid://byx3vc1ny3pp4" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-9.ogg" id="16_jylkl"]
 [ext_resource type="AudioStream" uid="uid://g38daojiq52t" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-10.ogg" id="17_cfblu"]
+[ext_resource type="Script" uid="uid://cs7umqba0kyk3" path="res://Escenas/Night/DirectionalAudio/toy_sounds.gd" id="17_t0g7s"]
+[ext_resource type="AudioStream" uid="uid://co34dmxcv4mac" path="res://assets/sounds/ToySFX/toy1.ogg" id="18_d2xl7"]
+[ext_resource type="AudioStream" uid="uid://d2hvubn05u5mv" path="res://assets/sounds/ToySFX/toy2.ogg" id="19_7hmdq"]
+[ext_resource type="AudioStream" uid="uid://c70xko545xbyq" path="res://assets/sounds/ToySFX/toy3.ogg" id="20_07bc2"]
+[ext_resource type="AudioStream" uid="uid://bgt58j702f267" path="res://assets/sounds/ToySFX/toy4.ogg" id="21_866d1"]
+[ext_resource type="AudioStream" uid="uid://cm7l370vlt1ln" path="res://assets/sounds/ToySFX/toy5.ogg" id="22_yqa2m"]
+[ext_resource type="AudioStream" uid="uid://d27hnkth7ytgn" path="res://assets/sounds/ToySFX/toy6.ogg" id="23_ljxjf"]
+[ext_resource type="AudioStream" uid="uid://jnwtrljtpbea" path="res://assets/sounds/ToySFX/toy7.ogg" id="24_dg7u0"]
+[ext_resource type="AudioStream" uid="uid://c17s2bxq6civm" path="res://assets/sounds/ToySFX/toy8.ogg" id="25_qy4f5"]
+[ext_resource type="AudioStream" uid="uid://d203oe481f4um" path="res://assets/sounds/ToySFX/toy9.ogg" id="26_k7hqg"]
+[ext_resource type="AudioStream" uid="uid://qeu83g11splu" path="res://assets/sounds/ToySFX/toy10.ogg" id="27_blfdf"]
+[ext_resource type="AudioStream" uid="uid://dq4p0j4fstjp4" path="res://assets/sounds/ToySFX/toy11.ogg" id="28_0mw7q"]
+[ext_resource type="AudioStream" uid="uid://dbuimwy8gmhbk" path="res://assets/sounds/ToySFX/Pop1.ogg" id="29_cpmoq"]
+[ext_resource type="AudioStream" uid="uid://b8206yf5o5gfw" path="res://assets/sounds/ToySFX/Pop2.ogg" id="30_up7ln"]
+[ext_resource type="AudioStream" uid="uid://cy6b71h3y3f0s" path="res://assets/sounds/ToySFX/Pop3.ogg" id="31_bro3t"]
+[ext_resource type="AudioStream" uid="uid://bpqmc7vohd6gf" path="res://assets/sounds/ToySFX/Pop4.ogg" id="32_ig2k4"]
 
-[node name="DirectionalAudio" type="Node2D" unique_id=2054814738 node_paths=PackedStringArray("puerta_izquierda", "puerta_derecha")]
+[node name="DirectionalAudio" type="Node2D" unique_id=2054814738 node_paths=PackedStringArray("puerta_izquierda", "puerta_derecha", "left_button_off", "left_button_on", "right_button_off", "right_button_on")]
 script = ExtResource("1_yh57f")
 puerta_izquierda = NodePath("DoorSounds/Puerta_izquierda")
 puerta_derecha = NodePath("DoorSounds/Puerta_derecha")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1281520148]
-stream = ExtResource("1_l35w1")
-volume_db = -10.0
-script = ExtResource("2_yh57f")
+left_button_off = NodePath("DoorButtonSounds/LeftButtonOff")
+left_button_on = NodePath("DoorButtonSounds/LeftButtonOn")
+right_button_off = NodePath("DoorButtonSounds/RightButtonOff")
+right_button_on = NodePath("DoorButtonSounds/RightButtonOn")
 
 [node name="DoorSounds" type="Node" parent="." unique_id=1948655175]
 
@@ -54,6 +70,36 @@ x_position = 4
 _volume = 10.0
 _lower_db = 2.0
 concentration = 0.75
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="DoorButtonSounds" type="Node" parent="." unique_id=917455486]
+
+[node name="LeftButtonOff" type="AudioStreamPlayer2D" parent="DoorButtonSounds" unique_id=103875056]
+stream = ExtResource("4_07bc2")
+bus = &"SFX"
+script = ExtResource("2_yh57f")
+x_position = 1
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="LeftButtonOn" type="AudioStreamPlayer2D" parent="DoorButtonSounds" unique_id=739204508]
+stream = ExtResource("5_866d1")
+bus = &"SFX"
+script = ExtResource("2_yh57f")
+x_position = 1
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="RightButtonOff" type="AudioStreamPlayer2D" parent="DoorButtonSounds" unique_id=335744946]
+stream = ExtResource("4_07bc2")
+bus = &"SFX"
+script = ExtResource("2_yh57f")
+x_position = 4
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="RightButtonOn" type="AudioStreamPlayer2D" parent="DoorButtonSounds" unique_id=1650737697]
+stream = ExtResource("5_866d1")
+bus = &"SFX"
+script = ExtResource("2_yh57f")
+x_position = 4
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [node name="FreddyFootsteps" type="Node" parent="." unique_id=1259396484 node_paths=PackedStringArray("timer", "general", "izquierda", "derecha")]
@@ -259,6 +305,22 @@ bus = &"Ducts (reverb)"
 script = ExtResource("2_yh57f")
 x_position = 7
 concentration = 0.8
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="ToySound" type="Node" parent="." unique_id=1550202519 node_paths=PackedStringArray("left", "right")]
+script = ExtResource("17_t0g7s")
+left = NodePath("Left")
+right = NodePath("Right")
+toy_sounds = Array[AudioStream]([ExtResource("18_d2xl7"), ExtResource("19_7hmdq"), ExtResource("20_07bc2"), ExtResource("21_866d1"), ExtResource("22_yqa2m"), ExtResource("23_ljxjf"), ExtResource("24_dg7u0"), ExtResource("25_qy4f5"), ExtResource("26_k7hqg"), ExtResource("27_blfdf"), ExtResource("28_0mw7q")])
+pop_sounds = Array[AudioStream]([ExtResource("29_cpmoq"), ExtResource("30_up7ln"), ExtResource("31_bro3t"), ExtResource("32_ig2k4")])
+
+[node name="Left" type="AudioStreamPlayer2D" parent="ToySound" unique_id=1491593716]
+stream = ExtResource("18_d2xl7")
+script = ExtResource("2_yh57f")
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Right" type="AudioStreamPlayer2D" parent="ToySound" unique_id=1645205466]
+script = ExtResource("2_yh57f")
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [connection signal="timeout" from="FreddyFootsteps/Timer" to="FreddyFootsteps" method="_on_timer_timeout"]

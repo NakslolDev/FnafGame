@@ -2,7 +2,6 @@ extends Node2D
 
 var linterna_activa_temporal := false
 
-@export var battery_item_charge := 50
 @export var linterna_discharch_speed := 0.3
 @export var linterna_recharch_speed := 0.4
 @export var linterna_penalty := 10
@@ -24,7 +23,6 @@ var tick_rate: float
 
 func _ready():
 	Foxy.move_back.connect(foxy_animacion)
-	Items.recharge_flashlight.connect(add_batteries)
 	set_process(true)
 	# Aseguramos que el nodo ya existe y luego llamamos el setter
 	set_linterna(linterna_activa_temporal)
@@ -44,7 +42,7 @@ func set_linterna(value):
 	linterna_activa_temporal = value
 	if linterna_activa_temporal:
 		linternaPNG.modulate.a = 0.3
-		if Global.linterna_bateria <= 10 and Global.linterna_bateria > 1: #hace que si no te queda suficiente bateria pa encender, se queda a 1%
+		if Global.linterna_bateria <= linterna_penalty and Global.linterna_bateria > 1: #hace que si no te queda suficiente bateria pa encender, se queda a 1%
 			Global.linterna_bateria = 1
 		else:
 			Global.linterna_bateria -= linterna_penalty # cuanto quita la linterna 
@@ -99,9 +97,6 @@ func _on_oficina_detras_linterna_recarga_switch_rebote() -> void:
 func _on_timer_recargar_linterna_tic_recarga() -> void:
 	if Global.energia["Linterna"]:
 		Global.linterna_bateria += 1
-
-func add_batteries():
-	Global.linterna_bateria += battery_item_charge
 
 
 const ITERATIONS_ON_FOXY_ANIMATION := 9

@@ -57,4 +57,4 @@ func play_puerta():
 	$Timer.start()
 
 func _on_timer_timeout() -> void:
-	emit_signal("Sound")
+	Sound.emit()

@@ -36,3 +36,21 @@ func _on_puerta_izquierda_sound() -> void:
 
 func _on_puerta_derecha_sound() -> void:
 	puerta_derecha.play()
+
+
+@export var left_button_off: spacial_audio
+@export var left_button_on: spacial_audio
+@export var right_button_off: spacial_audio
+@export var right_button_on: spacial_audio
+
+func _on_boton_izquierda_button_play(on: bool) -> void:
+	if on:
+		left_button_on.play()
+	else:
+		left_button_off.play()
+
+func _on_boton_derecha_button_play(on: bool) -> void:
+	if on:
+		right_button_on.play()
+	else:
+		right_button_off.play()

@@ -11,7 +11,7 @@ var oscuridad := 0.2
 func _ready():
 	visible = true
 	oficina_lights_out_alpha.modulate.a = oscuridad
-	Global.connect("energia_actualizada", Callable(self, "energia_act"))
+	Global.energia_actualizada.connect(energia_act)
 	irritating_light.play()
 
 func energia_act():

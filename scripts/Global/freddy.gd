@@ -289,8 +289,12 @@ func move():
 	if position == "PI":
 		lock_movement = true # bloquea el primer intento siempre
 	
-	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement yes: from ", last_position, " to ", position)
-	emit_signal("movement", position, path, last_position, last_path)
+	if position != last_position or path != last_path:
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement yes: from ", last_position, " in ", last_path, " to ", position, " in ", path)
+		movement.emit(position, path, last_position, last_path)
+	else:
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement hitted but stayed still: from ", position, " in ", path)
+
 
 func move_back():
 	
@@ -328,5 +332,5 @@ func move_back():
 	elif position == "PI":
 		position = "3"
 	
-	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement back: from ", last_position, " to ", position)
-	emit_signal("movement", position, path, last_position, last_path)
+	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement back: from ", last_position, " in ", last_path, " to ", position, " in ", path)
+	movement.emit(position, path, last_position, last_path)

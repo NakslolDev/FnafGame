@@ -1,12 +1,11 @@
 extends Node2D
 
+
 # mover 240 hacia los lados como máximo
 @export var movimiento_max := 240.0
 @export var movimiento_max_girar := 7000
 @export var VELOCIDAD_CAMERA: float = 300.0
-@export var buttons_slow_down := false
 var velocidad: float
-var lock_tf_in := false
 signal Movimiento(si: bool)
 signal Girando_Señal(si: bool)
 signal Girando_Estado(girando: int)
@@ -17,7 +16,7 @@ var giro_input_centro := false
 
 #Para desconectar oficina detras
 var desconectar_no_repetir := false
-var oficina_detras_nodo: Node2D = null
+@export var oficina_detras_nodo: Node2D
 var padre_original: Node = null
 
 var cams_open := false
@@ -43,7 +42,7 @@ func _process(delta):
 			_on_detector_girar_izquierda_girar_input()
 		return
 	
-	emit_signal("Girando_Estado", girando)
+	Girando_Estado.emit(girando)
 	
 	if girando == 0:
 		Freddy.girado = false
@@ -87,8 +86,6 @@ func _process(delta):
 	
 	Girando_Señal.emit(false)
 	
-	var boton_slow_down = 1.0
-	
 	_get_velocity_from_mouse()
 	
 	if position.x >= movimiento_max and velocidad < 0:
@@ -102,10 +99,7 @@ func _process(delta):
 	else:
 		Movimiento.emit(true)
 	
-	if lock_tf_in and buttons_slow_down:
-		boton_slow_down = 0.5
-	
-	position.x -= velocidad * delta * boton_slow_down
+	position.x -= velocidad * delta
 	
 	if position.x > movimiento_max:
 		position.x = movimiento_max
@@ -114,7 +108,6 @@ func _process(delta):
 
 
 func _separar_oficina_detras_de_oficina(izquierda: bool):
-	oficina_detras_nodo = $Oficina_Detras
 	padre_original = oficina_detras_nodo.get_parent()
 	
 	# Guardamos posición global para evitar que se mueva
@@ -159,14 +152,6 @@ func _get_velocity_from_mouse():
 		velocidad = (mouse_pos - local_margin) * local_multiplyer
 	else:
 		velocidad = (mouse_pos + local_margin) * local_multiplyer
-	
-
-
-func _on_boton_izquierda_mouse_entered_switch() -> void:
-	lock_tf_in = !lock_tf_in
-
-func _on_boton_derecha_mouse_entered_switch() -> void:
-	lock_tf_in = !lock_tf_in
 
 
 func _on_detector_girar_izquierda_girar(izquierda: bool) -> void:

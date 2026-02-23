@@ -36,7 +36,7 @@ var last_room := "pas"
 var last_position := 0
 var true_last_room := "pas"
 
-signal movement(to_pos: String, to_room: int, from_pos: String, from_room: int)
+signal movement(to_pos: int, to_room: String, from_pos: int, from_room: String)
 signal move_back()
 signal flashlight_stunt_over()
 
@@ -77,9 +77,9 @@ var duct_heater_memory := { # lo que utiliza foxy para decidir
 }
 
 func _ready():
-	Bonnie.connect("movement", Callable(self, "movement_bonnie"))
-	Chica.connect("movement", Callable(self, "movement_chica"))
-	Global.connect("Energy_Breakdown", Callable(self, "energy_breakdown"))
+	Bonnie.movement.connect(movement_bonnie)
+	Chica.movement.connect(movement_chica)
+	Global.Energy_Breakdown.connect(energy_breakdown)
 
 func reset():
 	
@@ -271,8 +271,14 @@ func move(skip_decision := false): # esta funcion va a ser increiblemente larga.
 	
 	call("move_" + room) # mueve a foxy
 	
+	if position == last_position and room == last_room:  # solo se mueve si se ha movido... Evidentemente. No mando el mensaje para evitar que se actualizen las cámaras, u otros similares
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement hitted but stayed still: from ", position, " in ", room)
+		return
+	
+	
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement: to ", position, " in ", room, " from ", last_position, " in ", last_room)
-	emit_signal("movement", position, room, last_position, last_room)
+	movement.emit(position, room, last_position, last_room)
+	
 	
 	if (room == "rhall" or room == "lhall") and position == 0:
 		gotcha = BLOCKS_WHEN_NOT_SEEN_ON_DOORS
@@ -304,7 +310,7 @@ func move_back_to():
 		flashlight_stunt = FLASHLIGHT_STUNT_ON_DOORS
 	
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy found my flashlight : from ", position, " in ", room)
-	emit_signal("movement", position, room, last_position, last_room)
+	movement.emit(position, room, last_position, last_room)
 	
 	animacion_go_back = false
 	tick_focus_count = 0

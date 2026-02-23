@@ -15,12 +15,12 @@ void fragment() {
 
     float alpha = tex.a;
 
-    // 🌫️ Aplicar transparencia general SIEMPRE si está activada
+    // Aplicar transparencia general SIEMPRE si está activada
     if (transparencia >= 0.5) {
         alpha *= nivel_transparencia;
     }
 
-    // 🔦 Aplicar solo si el shader (linterna) está activado
+    // Aplicar solo si el shader (linterna) está activado
     if (shader_enabled >= 0.5) {
         if (dist < radio) {
             alpha = 0.0;

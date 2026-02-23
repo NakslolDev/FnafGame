@@ -95,11 +95,10 @@ one_shot = true
 
 [node name="Cheats" type="Node" parent="." unique_id=1206509325]
 script = ExtResource("2_4erhx")
-get_from_global = false
-see_insanity = true
 
-[node name="Oficina" type="Node2D" parent="." unique_id=540360308]
+[node name="Oficina" type="Node2D" parent="." unique_id=540360308 node_paths=PackedStringArray("oficina_detras_nodo")]
 script = ExtResource("4_arw1f")
+oficina_detras_nodo = NodePath("Oficina_Detras")
 
 [node name="Ventilation" type="Node" parent="Oficina" unique_id=913684193]
 script = ExtResource("5_ujq6x")
@@ -127,14 +126,16 @@ izquierda = false
 
 [node name="Pasillo Izquierdo" parent="Oficina" unique_id=1170505708 instance=ExtResource("9_1n26x")]
 
-[node name="Boton Izquierda" parent="Oficina" unique_id=1413277315 instance=ExtResource("10_y2ail")]
+[node name="Boton Izquierda" parent="Oficina" unique_id=1413277315 node_paths=PackedStringArray("root") instance=ExtResource("10_y2ail")]
+root = NodePath("../..")
 
 [node name="Puerta Izquierda" parent="Oficina" unique_id=1880143791 instance=ExtResource("11_e8gno")]
 position = Vector2(0, -1200)
 
-[node name="Boton Derecha" parent="Oficina" unique_id=1274667929 instance=ExtResource("10_y2ail")]
+[node name="Boton Derecha" parent="Oficina" unique_id=1274667929 node_paths=PackedStringArray("root") instance=ExtResource("10_y2ail")]
 rotation = 3.14159
 scale = Vector2(1, -1)
+root = NodePath("../..")
 boton_izquierda = false
 
 [node name="Puerta Derecha" parent="Oficina" unique_id=693856865 instance=ExtResource("11_e8gno")]
@@ -196,10 +197,11 @@ irritating_light = NodePath("Irritating_light")
 [node name="Oficina_lights_out_Alpha" type="Sprite2D" parent="Lights" unique_id=174580296]
 texture = ExtResource("25_0pxa1")
 
-[node name="Oficina_lights_out" type="Sprite2D" parent="Lights" unique_id=616897827]
+[node name="Oficina_lights_out" type="Sprite2D" parent="Lights" unique_id=616897827 node_paths=PackedStringArray("lights")]
 material = SubResource("ShaderMaterial_er7cc")
 texture = ExtResource("25_0pxa1")
 script = ExtResource("27_60v0j")
+lights = NodePath("..")
 
 [node name="Irritating_light" type="AudioStreamPlayer" parent="Lights" unique_id=142042597]
 stream = ExtResource("28_imsbu")
@@ -208,7 +210,6 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="No_Shader_UI" type="CanvasLayer" parent="." unique_id=597497136]
-visible = false
 script = ExtResource("22_cmb4g")
 
 [node name="Linterna_Bateria_Icono" parent="No_Shader_UI" unique_id=1311019173 instance=ExtResource("29_wt1mn")]
@@ -338,10 +339,10 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girar_Input" from="Oficina/Detector_Girar_Izquierda" to="Oficina" method="_on_detector_girar_izquierda_girar_input"]
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina" method="_on_detector_girar_izquierda_girar"]
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina/Oficina_Detras" method="_on_detector_girar_izquierda_girar"]
-[connection signal="Mouse_Entered_Switch" from="Oficina/Boton Izquierda" to="Oficina" method="_on_boton_izquierda_mouse_entered_switch"]
+[connection signal="ButtonPlay" from="Oficina/Boton Izquierda" to="DirectionalAudio" method="_on_boton_izquierda_button_play"]
 [connection signal="Puerta_Cambio" from="Oficina/Boton Izquierda" to="Oficina/Puerta Izquierda" method="_on_boton_izquierda_puerta_cambio"]
 [connection signal="Sound" from="Oficina/Puerta Izquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
-[connection signal="Mouse_Entered_Switch" from="Oficina/Boton Derecha" to="Oficina" method="_on_boton_derecha_mouse_entered_switch"]
+[connection signal="ButtonPlay" from="Oficina/Boton Derecha" to="DirectionalAudio" method="_on_boton_derecha_button_play"]
 [connection signal="Puerta_Cambio" from="Oficina/Boton Derecha" to="Oficina/Puerta Derecha" method="_on_boton_derecha_puerta_cambio"]
 [connection signal="Sound" from="Oficina/Puerta Derecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]

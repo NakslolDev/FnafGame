@@ -235,5 +235,8 @@ func move():
 			gotcha = EXTRA_BLOCKS_WHEN_NOT_SEEN_OVER_LIMIT # bloquea 1 extra hasta que le miras...
 		lock_movement = true # bloquea el primer intento siempre
 	
-	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement yes: from ", last_position, " to ", position)
-	emit_signal("movement", position, last_position) # Envía la señal de que se ha movido
+	if position != last_position:
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement yes: from ", last_position, " to ", position)
+		movement.emit(position, last_position) # Envía la señal de que se ha movido
+	else:
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement hitted but stayed still: from ", position)

@@ -34,6 +34,7 @@ func _process(delta):
 	
 	if obscure == true and Global.fade["Linterna"]["Active"]:
 		$".".modulate.a -= delta / obscure_time_animation
+	#visible = Global.energia["Luces"]
 
 func actualizar_skin():
 	if obscure == false: # hace que se pueda oscurecer
