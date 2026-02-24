@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://depuj23yjh7gx" path="res://Escenas/Night/SecurityRoom/Buttons/boton.gd" id="1_0dpeo"]
 [ext_resource type="Script" uid="uid://bb4256acvhna2" path="res://Escenas/Night/SecurityRoom/Buttons/area_boton.gd" id="2_rwcrt"]
-[ext_resource type="Texture2D" uid="uid://5exxd8onk6bo" path="res://assets/Placeholders/Oficina_Boton_Rojo.png" id="2_u33ia"]
-[ext_resource type="Texture2D" uid="uid://d32dopv6stjww" path="res://assets/Placeholders/Oficina_Boton_Verde.png" id="3_rwcrt"]
-[ext_resource type="Texture2D" uid="uid://dr83xy0f6l71k" path="res://assets/Placeholders/Oficina_Boton_No_Energia.png" id="4_rwcrt"]
+[ext_resource type="Texture2D" uid="uid://c1furmqgyt38p" path="res://assets/Placeholders/Oficina_Boton_Rojo.png" id="2_u33ia"]
+[ext_resource type="Texture2D" uid="uid://fl8rjvk4yh4t" path="res://assets/Placeholders/Oficina_Boton_Verde.png" id="3_rwcrt"]
+[ext_resource type="Texture2D" uid="uid://dg1rc62wry1iy" path="res://assets/Placeholders/Oficina_Boton_No_Energia.png" id="4_rwcrt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcv1s"]
 size = Vector2(61.5, 92)

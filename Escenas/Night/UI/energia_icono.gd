@@ -57,7 +57,7 @@ func _process(delta):
 		energia = Global.energia_consumption["Total"]
 	if obscure == true and Global.fade["Energia"]["Active"]:
 		$".".modulate.a -= delta / obscure_time_animation
-	visible = Global.energia["Luces"] # al principio era el general, pero he decidido cambiarlo a las luces
+	visible = Global.energia["General"] # al principio era el general, pero he decidido cambiarlo a las luces
 
 func actualizar_skin():
 	$".".modulate.a = Global.energia_skin["alpha_general"]

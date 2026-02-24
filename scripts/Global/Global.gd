@@ -787,7 +787,7 @@ var noche := 0 # 1-6, 0 es custom night.
 
 const SAFE_CODE_SIZE := 5
 var safe_code: Array[int] = [2, 7, 3, 5, 3] # el codigo en orden de la caja
-var location_key := 0
+var location_key := 3
 
 
 var inventario: Dictionary[String, bool] = {

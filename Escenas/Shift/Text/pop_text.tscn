@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://tlwpejxgfme7"]
 
 [ext_resource type="Script" uid="uid://msy3vbqedlcu" path="res://Escenas/Shift/Text/pop_text.gd" id="1_oalcq"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="2_fdo78"]
+[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="2_fdo78"]
 [ext_resource type="Script" uid="uid://bnkb6vqkeiy7j" path="res://Escenas/Shift/Text/label_pop_text.gd" id="3_k80lv"]
 [ext_resource type="Script" uid="uid://saxavtp52pba" path="res://scripts/tools & others/Effects/rainbow.gd" id="3_qiqv6"]
 [ext_resource type="Script" uid="uid://byiv8sg0sc7sy" path="res://scripts/tools & others/Effects/wave.gd" id="3_urwka"]
 [ext_resource type="Script" uid="uid://bmhw14xn8rwhx" path="res://scripts/tools & others/Effects/shake.gd" id="4_gg6um"]
 [ext_resource type="Script" uid="uid://cpp6oetjrcauh" path="res://scripts/tools & others/Effects/tornado.gd" id="6_mb5rd"]
 [ext_resource type="Script" uid="uid://didmeig0mvuse" path="res://scripts/tools & others/Effects/fade.gd" id="7_wjrdk"]
-[ext_resource type="AudioStream" uid="uid://c7cbi1c1gifp8" path="res://assets/sounds/8.bit_taking_sound_2.ogg" id="9_wjrdk"]
+[ext_resource type="AudioStream" uid="uid://ofnxxp7mxyj5" path="res://assets/sounds/8.bit_taking_sound_2.ogg" id="9_wjrdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdo78"]
 bg_color = Color(0, 0, 0, 1)

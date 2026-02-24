@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bo828jywsimiy"]
 
-[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_saqaj"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_saqaj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omc0x"]
 resource_name = "tileset"

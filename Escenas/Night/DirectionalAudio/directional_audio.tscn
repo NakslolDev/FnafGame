@@ -2,22 +2,22 @@
 
 [ext_resource type="Script" uid="uid://bo1h656p1ymyd" path="res://Escenas/Night/DirectionalAudio/directional_audio.gd" id="1_yh57f"]
 [ext_resource type="Script" uid="uid://cem83cl7ongg6" path="res://Escenas/Night/DirectionalAudio/audio.gd" id="2_yh57f"]
-[ext_resource type="AudioStream" uid="uid://cbbmymi1inytu" path="res://assets/sounds/Puerta.mp3" id="4_2kf65"]
-[ext_resource type="AudioStream" uid="uid://e2ceevc5hvw6" path="res://assets/sounds/Button_off.wav" id="4_07bc2"]
+[ext_resource type="AudioStream" uid="uid://021ib0qbueid" path="res://assets/sounds/Puerta.mp3" id="4_2kf65"]
+[ext_resource type="AudioStream" uid="uid://crvpdt5unjsew" path="res://assets/sounds/Button_off.wav" id="4_07bc2"]
 [ext_resource type="Script" uid="uid://beay6cpxoxis5" path="res://Escenas/Night/DirectionalAudio/freddy_footsteps.gd" id="5_77qym"]
-[ext_resource type="AudioStream" uid="uid://dofe8jpof2udp" path="res://assets/sounds/Button_on.wav" id="5_866d1"]
-[ext_resource type="AudioStream" uid="uid://c8q60uet6mb1n" path="res://assets/sounds/Freddy_footsteps.mp3" id="6_va5cy"]
+[ext_resource type="AudioStream" uid="uid://cy0qyemnslhcv" path="res://assets/sounds/Button_on.wav" id="5_866d1"]
+[ext_resource type="AudioStream" uid="uid://bqs0uhx1obplm" path="res://assets/sounds/Freddy_footsteps.mp3" id="6_va5cy"]
 [ext_resource type="Script" uid="uid://cduq7owpa8xgc" path="res://Escenas/Night/DirectionalAudio/duct_sounds.gd" id="7_1lyji"]
-[ext_resource type="AudioStream" uid="uid://dcm32cs86nxqr" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-1.ogg" id="8_t0g7s"]
-[ext_resource type="AudioStream" uid="uid://ddv74paun3u4k" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-2.ogg" id="9_0we8q"]
-[ext_resource type="AudioStream" uid="uid://in6oelmw1ckg" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-3.ogg" id="10_r3yas"]
-[ext_resource type="AudioStream" uid="uid://d4caw3othxsnx" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-4.ogg" id="11_vcnm0"]
-[ext_resource type="AudioStream" uid="uid://c5ts6s00cqn1c" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-5.ogg" id="12_ppax3"]
-[ext_resource type="AudioStream" uid="uid://cyy86s0nocl" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-11.ogg" id="13_v08rd"]
-[ext_resource type="AudioStream" uid="uid://lu2tplyarbe8" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-7.ogg" id="14_5pnrn"]
-[ext_resource type="AudioStream" uid="uid://52vbwgu8pb7g" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-8.ogg" id="15_t1181"]
-[ext_resource type="AudioStream" uid="uid://byx3vc1ny3pp4" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-9.ogg" id="16_jylkl"]
-[ext_resource type="AudioStream" uid="uid://g38daojiq52t" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-10.ogg" id="17_cfblu"]
+[ext_resource type="AudioStream" uid="uid://bskefd83uvx33" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-1.ogg" id="8_t0g7s"]
+[ext_resource type="AudioStream" uid="uid://b1vkws6jkxruv" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-2.ogg" id="9_0we8q"]
+[ext_resource type="AudioStream" uid="uid://bcsfaxpoymmci" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-3.ogg" id="10_r3yas"]
+[ext_resource type="AudioStream" uid="uid://ctyh1rmdhdyfd" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-4.ogg" id="11_vcnm0"]
+[ext_resource type="AudioStream" uid="uid://bxl7xf1rprovx" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-5.ogg" id="12_ppax3"]
+[ext_resource type="AudioStream" uid="uid://bk7sjof51ibbj" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-11.ogg" id="13_v08rd"]
+[ext_resource type="AudioStream" uid="uid://drt75irlpigaf" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-7.ogg" id="14_5pnrn"]
+[ext_resource type="AudioStream" uid="uid://dex3xxmi6ghsb" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-8.ogg" id="15_t1181"]
+[ext_resource type="AudioStream" uid="uid://d0md4jlxbaynr" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-9.ogg" id="16_jylkl"]
+[ext_resource type="AudioStream" uid="uid://cl3q6s8vwth0j" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-10.ogg" id="17_cfblu"]
 [ext_resource type="Script" uid="uid://cs7umqba0kyk3" path="res://Escenas/Night/DirectionalAudio/toy_sounds.gd" id="17_t0g7s"]
 [ext_resource type="AudioStream" uid="uid://co34dmxcv4mac" path="res://assets/sounds/ToySFX/toy1.ogg" id="18_d2xl7"]
 [ext_resource type="AudioStream" uid="uid://d2hvubn05u5mv" path="res://assets/sounds/ToySFX/toy2.ogg" id="19_7hmdq"]
@@ -30,8 +30,8 @@
 [ext_resource type="AudioStream" uid="uid://d203oe481f4um" path="res://assets/sounds/ToySFX/toy9.ogg" id="26_k7hqg"]
 [ext_resource type="AudioStream" uid="uid://qeu83g11splu" path="res://assets/sounds/ToySFX/toy10.ogg" id="27_blfdf"]
 [ext_resource type="AudioStream" uid="uid://dq4p0j4fstjp4" path="res://assets/sounds/ToySFX/toy11.ogg" id="28_0mw7q"]
-[ext_resource type="AudioStream" uid="uid://dbuimwy8gmhbk" path="res://assets/sounds/ToySFX/Pop1.ogg" id="29_cpmoq"]
-[ext_resource type="AudioStream" uid="uid://b8206yf5o5gfw" path="res://assets/sounds/ToySFX/Pop2.ogg" id="30_up7ln"]
+[ext_resource type="AudioStream" uid="uid://cfbeglo3qk43k" path="res://assets/sounds/ToySFX/Pop1.ogg" id="29_cpmoq"]
+[ext_resource type="AudioStream" uid="uid://cao2bk3rmsq7x" path="res://assets/sounds/ToySFX/Pop2.ogg" id="30_up7ln"]
 [ext_resource type="AudioStream" uid="uid://cy6b71h3y3f0s" path="res://assets/sounds/ToySFX/Pop3.ogg" id="31_bro3t"]
 [ext_resource type="AudioStream" uid="uid://bpqmc7vohd6gf" path="res://assets/sounds/ToySFX/Pop4.ogg" id="32_ig2k4"]
 
@@ -317,10 +317,14 @@ pop_sounds = Array[AudioStream]([ExtResource("29_cpmoq"), ExtResource("30_up7ln"
 [node name="Left" type="AudioStreamPlayer2D" parent="ToySound" unique_id=1491593716]
 stream = ExtResource("18_d2xl7")
 script = ExtResource("2_yh57f")
+x_position = 1
+concentration = 0.9
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [node name="Right" type="AudioStreamPlayer2D" parent="ToySound" unique_id=1645205466]
 script = ExtResource("2_yh57f")
+x_position = 4
+concentration = 0.9
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [connection signal="timeout" from="FreddyFootsteps/Timer" to="FreddyFootsteps" method="_on_timer_timeout"]

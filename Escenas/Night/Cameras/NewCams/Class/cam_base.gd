@@ -2,12 +2,18 @@ extends Node2D
 class_name CamBase
 
 @export var cam_number: int
-@export var sprites: Array[CamSprite]
+var sprites: Array[CamSprite] = []
 
 var alucinaciones: Array[Dictionary]
 
 func _ready():
+	_connect_cams()
 	actualizar_cams()
+
+func _connect_cams():
+	for child in get_children():
+		if child is CamSprite:
+			sprites.append(child)
 
 func actualizar_cams():
 	for sprite in sprites:

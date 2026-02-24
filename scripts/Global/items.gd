@@ -16,10 +16,10 @@ func night_starts():
 
 func reset():
 	objects = {
-		"water_bottle": 0,
-		"batteries": 0,
+		"water_bottle": 1,
+		"batteries": 2,
 		"door_toy": 0,
-		"left_door_toy": true,
+		"left_door_toy": false,
 		"right_door_toy": true,
 	}
 	drinking = false

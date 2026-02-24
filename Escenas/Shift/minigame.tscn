@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://Escenas/Shift/minigame.gd" id="1_xv0fq"]
 [ext_resource type="Script" uid="uid://op64ky6ob2qy" path="res://Escenas/Shift/RandomScriptsIDK/minigame_custom_actions.gd" id="2_wna5r"]
-[ext_resource type="Texture2D" uid="uid://dqs4bst1s7y3y" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
+[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
 [ext_resource type="Script" uid="uid://bvas38t5dvubq" path="res://Escenas/Shift/RandomScriptsIDK/black_background.gd" id="4_vs41v"]
-[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
 [ext_resource type="TileSet" uid="uid://ba1v7xwtblihb" path="res://Resources (tres)/Raw_colitions.tres" id="6_yq6rm"]
 [ext_resource type="Script" uid="uid://cck4qkhapri2y" path="res://Escenas/Shift/RandomScriptsIDK/Minigame_Ysort.gd" id="7_pwkhe"]
 [ext_resource type="PackedScene" uid="uid://cumryt3pxo2wv" path="res://Escenas/Shift/Player/character_minigame.tscn" id="8_w4bkp"]
@@ -13,17 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://b11fiquxgu4wa" path="res://Escenas/Shift/M_objets/long_table.tscn" id="11_w3343"]
 [ext_resource type="PackedScene" uid="uid://dkw61scyyeb22" path="res://Escenas/Shift/M_objets/placeholder.tscn" id="12_axwuc"]
 [ext_resource type="PackedScene" uid="uid://bmc1g8wl35gb0" path="res://Escenas/Shift/M_objets/placeholder_noclip.tscn" id="13_7g4ok"]
-[ext_resource type="Texture2D" uid="uid://0plph23qdqex" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
+[ext_resource type="Texture2D" uid="uid://c6dq54nbl5xpo" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://Escenas/Shift/Text/pop_text.tscn" id="14_v4577"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://Escenas/Shift/Safe/pop_safe.tscn" id="15_kqcik"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://Escenas/Shift/BlackBars/black_bars.tscn" id="16_3hrc1"]
 [ext_resource type="Script" uid="uid://hrj5r1dkwlwl" path="res://Escenas/Shift/RandomScriptsIDK/intro_minigame.gd" id="17_b7ymr"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="19_ur7tl"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
+[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="19_ur7tl"]
 [ext_resource type="Script" uid="uid://okkqwaugqcim" path="res://Escenas/Shift/RandomScriptsIDK/daylable_transition.gd" id="20_y4nle"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="21_cgfeb"]
 [ext_resource type="Script" uid="uid://dybfd3q13udjj" path="res://Escenas/Shift/RandomScriptsIDK/shift_completed.gd" id="22_pu8a6"]
-[ext_resource type="Texture2D" uid="uid://cfg2lp4aa8tme" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
+[ext_resource type="Texture2D" uid="uid://crqrn4aglues7" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
 [ext_resource type="PackedScene" uid="uid://djqjqcxkcwu8s" path="res://Escenas/Shift/M_objets/_interact_colider.tscn" id="24_ly3ag"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://Escenas/Shift/M_objets/location_key.gd" id="25_ekm4o"]
 [ext_resource type="Script" uid="uid://dculdecv7rjo" path="res://Escenas/Shift/RandomScriptsIDK/secret_room_hitbox.gd" id="26_42vnu"]
@@ -502,14 +502,17 @@ position = Vector2(-888, 312)
 [node name="Magic_Text_Chair" parent="YSort" unique_id=2000448098 instance=ExtResource("9_o8hhc")]
 position = Vector2(-523, 672)
 
+[node name="Posible_key_4" parent="YSort" unique_id=1751356285 instance=ExtResource("12_axwuc")]
+position = Vector2(-827, 677)
+
 [node name="Posible_key_3" parent="YSort" unique_id=1905339028 instance=ExtResource("12_axwuc")]
-position = Vector2(-872, 504)
+position = Vector2(-1525, 672)
 
 [node name="Posible_key_2" parent="YSort" unique_id=1882799839 instance=ExtResource("12_axwuc")]
-position = Vector2(-912, 504)
+position = Vector2(-641, 542)
 
 [node name="Posible_key_1" parent="YSort" unique_id=1704121610 instance=ExtResource("12_axwuc")]
-position = Vector2(-952, 504)
+position = Vector2(-1378, 357)
 
 [node name="Safe" parent="YSort" unique_id=1328562962 instance=ExtResource("12_axwuc")]
 position = Vector2(-408, 744)
@@ -832,7 +835,7 @@ read_end_in = Array[int]([4])
 [node name="Key_locations" type="Node" parent="Coliders" unique_id=827395008]
 
 [node name="Location_key_1" type="Node2D" parent="Coliders/Key_locations" unique_id=476470755]
-position = Vector2(-912, 504)
+position = Vector2(-1378, 357)
 script = ExtResource("25_ekm4o")
 metadata/_edit_group_ = true
 
@@ -869,7 +872,7 @@ entering = false
 key = 2
 
 [node name="Location_key_2" type="Node2D" parent="Coliders/Key_locations" unique_id=1367404172]
-position = Vector2(-872, 504)
+position = Vector2(-641, 542)
 script = ExtResource("25_ekm4o")
 metadata/_edit_group_ = true
 
@@ -906,7 +909,7 @@ entering = false
 key = 2
 
 [node name="Location_key_3" type="Node2D" parent="Coliders/Key_locations" unique_id=1394991056]
-position = Vector2(-952, 504)
+position = Vector2(-1525, 672)
 script = ExtResource("25_ekm4o")
 metadata/_edit_group_ = true
 
@@ -934,6 +937,43 @@ key = 2
 [node name="Nokey" type="Node2D" parent="Coliders/Key_locations/Location_key_3" unique_id=608324577]
 
 [node name="No_key" parent="Coliders/Key_locations/Location_key_3/Nokey" unique_id=1509045452 instance=ExtResource("24_ly3ag")]
+id = "No_key"
+read_end_in = Array[int]([1])
+night_1 = false
+night_2 = false
+night_3 = false
+entering = false
+key = 2
+
+[node name="Location_key_4" type="Node2D" parent="Coliders/Key_locations" unique_id=2052202976]
+position = Vector2(-827, 677)
+script = ExtResource("25_ekm4o")
+metadata/_edit_group_ = true
+
+[node name="Nothing" parent="Coliders/Key_locations/Location_key_4" unique_id=2028459704 instance=ExtResource("24_ly3ag")]
+id = "Nothing"
+read_end_in = Array[int]([1])
+night_1 = false
+night_2 = false
+night_3 = false
+exiting = false
+key = 2
+
+[node name="Key" type="Node2D" parent="Coliders/Key_locations/Location_key_4" unique_id=330683491]
+
+[node name="Key" parent="Coliders/Key_locations/Location_key_4/Key" unique_id=122434961 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "Pick_key_w_text"
+id = "Pick_key"
+night_1 = false
+night_2 = false
+night_3 = false
+entering = false
+key = 2
+
+[node name="Nokey" type="Node2D" parent="Coliders/Key_locations/Location_key_4" unique_id=126683032]
+
+[node name="No_key" parent="Coliders/Key_locations/Location_key_4/Nokey" unique_id=1972587134 instance=ExtResource("24_ly3ag")]
 id = "No_key"
 read_end_in = Array[int]([1])
 night_1 = false
@@ -1144,7 +1184,7 @@ foxy = 2
 position = Vector2(-1088, 408)
 metadata/_edit_group_ = true
 
-[node name="Normal" parent="Coliders/Animatronics/Bonnie" unique_id=2028459704 instance=ExtResource("24_ly3ag")]
+[node name="Normal" parent="Coliders/Animatronics/Bonnie" unique_id=1950601333 instance=ExtResource("24_ly3ag")]
 scale = Vector2(1.3893229, 0.71692866)
 id = "b_normal"
 kbonnie = false

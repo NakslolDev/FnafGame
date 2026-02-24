@@ -11,6 +11,15 @@ var override_freddy_static := false
 @export var static_time: Timer
 @export var _static: AudioStreamPlayer
 
+const UP_STATIC_WHEN_CHANGING_CAMS := 0.1
+const UP_STATIC_WHEN_ANIMATRONIC_MOVEMENT := 0.7
+const UP_STATIC_WHEN_FREDDY_MOVEMENT := 1.2
+
+const FADE_FAST := true
+const FADE_SLOW := false
+
+const FADE_FAST_SPEED := 0.8
+const FADE_SLOW_SPEED := 0.4
 
 func _ready():
 	static_speed.start()
@@ -37,9 +46,9 @@ func up_static(time: float, fast: bool):
 	alpha = 1.0
 	static_time.start(time)
 	if fast:
-		fade_speed = 0.8
+		fade_speed = FADE_FAST_SPEED
 	else:
-		fade_speed = 0.4
+		fade_speed = FADE_SLOW_SPEED
 
 func _on_static_time_timeout() -> void:
 	override_freddy_static = false
@@ -52,18 +61,12 @@ func _on_static_speed_timeout() -> void:
 		noise.position = rand_pos
 	last_pos = rand_pos
 
-#func _input(event):
-	#if event.is_action_pressed("Enter"):
-		#up_static(0.7)
-	#if event.is_action_pressed("Space"):
-		#up_static(0.1)
-
 
 func _on_minimapa_botones_cam_act() -> void:
-	up_static(0.1, true)
+	up_static(UP_STATIC_WHEN_CHANGING_CAMS, FADE_FAST)
 
 func _on_cam_cam_act(freddy: bool, local_from: int, local_to: int, local_extra: int) -> void:
 	if freddy:
-		up_static(1.5, false)
+		up_static(UP_STATIC_WHEN_FREDDY_MOVEMENT, FADE_SLOW)
 	elif $"../..".camara_activa == local_from or $"../..".camara_activa == local_to or $"../..".camara_activa == local_extra:
-		up_static(0.8, false)
+		up_static(UP_STATIC_WHEN_ANIMATRONIC_MOVEMENT, FADE_SLOW)

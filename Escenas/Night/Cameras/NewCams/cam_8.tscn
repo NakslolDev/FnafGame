@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://ctwqfevftyqdh"]
 
 [ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_neave"]
-[ext_resource type="Texture2D" uid="uid://cmqleyptawhlo" path="res://assets/Placeholders/Camaras/Cam8/Cam.png" id="2_10pv8"]
+[ext_resource type="Texture2D" uid="uid://csbjr2anpklvv" path="res://assets/Placeholders/Camaras/Cam8/Cam.png" id="2_10pv8"]
 [ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_inhg1"]
-[ext_resource type="Texture2D" uid="uid://d2pup14iq4p3k" path="res://assets/Placeholders/Camaras/Cam8/Bonnie_8.png" id="4_h1tvc"]
-[ext_resource type="Texture2D" uid="uid://dr6viky6je6py" path="res://assets/Placeholders/Camaras/Cam8/Foxy_8.png" id="5_omn10"]
+[ext_resource type="Texture2D" uid="uid://m8qliv7b3yp0" path="res://assets/Placeholders/Camaras/Cam8/Bonnie_8.png" id="4_h1tvc"]
+[ext_resource type="Texture2D" uid="uid://b06sx3ttofb1m" path="res://assets/Placeholders/Camaras/Cam8/Foxy_8.png" id="5_omn10"]
 
-[node name="Cam8" type="Node2D" unique_id=1979102074 node_paths=PackedStringArray("sprites")]
+[node name="Cam8" type="Node2D" unique_id=1979102074]
 script = ExtResource("1_neave")
 cam_number = 8
-sprites = [NodePath("Cam"), NodePath("Bonnie"), NodePath("Foxy"), NodePath("Cam2"), NodePath("Bonnie2"), NodePath("Foxy2")]
 metadata/_custom_type_script = "uid://cd811lhimvfl6"
 
 [node name="Cam" type="Sprite2D" parent="." unique_id=183427765]

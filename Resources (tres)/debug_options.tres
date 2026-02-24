@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://dq5xvu5jxq2yc"]
 
-[ext_resource type="FontFile" uid="uid://duqp40quebv2t" path="res://assets/CooperBits.ttf" id="1_pdqbm"]
+[ext_resource type="FontFile" uid="uid://hrbvkug7qnof" path="res://assets/CooperBits.ttf" id="1_pdqbm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kobee"]
 
