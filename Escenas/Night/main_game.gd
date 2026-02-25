@@ -16,6 +16,7 @@ var tick_stop := false
 @export var freddy_nose: Node2D
 @export var linterna: Node2D
 @export var cheats: Node
+@export var transicion: Node
 #control:
 @export var tick: Timer
 @export var esc_timer: Timer
@@ -53,28 +54,34 @@ func set_camaras_activadas(value):
 	Freddy.cam_activa = value
 	oficina.cams_open = value
 
-@export_group("transition")
-@export var transicion := 5
-var transicionando: bool
-@export var transicion_loc: Node
 
 func _enter_tree() -> void: # antes que ready
 	save_volume_linear = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("Master"))
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), 0.0)
 
 var save_volume_linear: float
-const TIEMPO_TRANSICION_VOLUMEN := 5.0
-func _return_volume_slowly() -> void:
+const TIEMPO_TRANSICION := 5.0
+func _transition_in() -> void:
+	
+	transicion.modulate.a = 1.0
+	
 	await get_tree().create_timer(0.5).timeout
-	var bus := AudioServer.get_bus_index("Master")
-	var tween := create_tween()
+	
+	var tween_trans := create_tween()
 
-	tween.tween_method(
+	tween_trans.tween_property(
+		transicion, "modulate:a", 0.0, TIEMPO_TRANSICION
+	)
+	
+	var tween_sound := create_tween()
+	var bus := AudioServer.get_bus_index("Master")
+
+	tween_sound.tween_method(
 		func(value: float) -> void:
 			AudioServer.set_bus_volume_linear(bus, value),
 		AudioServer.get_bus_volume_linear(bus),
 		save_volume_linear,
-		TIEMPO_TRANSICION_VOLUMEN
+		TIEMPO_TRANSICION
 	)
 
 func _ready():
@@ -88,15 +95,13 @@ func _ready():
 	tick.start()
 	change_tick_rate(cheats.tick_rate)
 	tick_speed = 1.0 / tick_rate
-	transicionando = true
-	transicion_loc.modulate.a = 1.0
 	animatronic_map.act_first()
 	if not cheats.see_light_batery: batery_label.visible = false
 	
 	Items.night_starts()
 	Global.night_starts()
 	
-	_return_volume_slowly()
+	_transition_in()
 
 func _process(delta: float) -> void:
 	
@@ -106,12 +111,6 @@ func _process(delta: float) -> void:
 	if cheats.see_light_batery:
 		batery_label.visible = true
 		batery_label.text = str(Global.linterna_bateria) + "%"
-	
-	if transicionando:
-		transicion_loc.modulate.a -= delta / transicion
-		if transicion_loc.modulate.a <= 0:
-			transicion_loc.modulate.a = 0
-			transicionando = false
 
 func _input(event):
 	if event.is_action_pressed("Esc"):
