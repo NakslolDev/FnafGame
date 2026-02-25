@@ -24,13 +24,6 @@ var tick_stop := false
 @export var mouse_custom: Node2D
 @export var camaras_control: Node2D
 @export var camaras: Node2D
-#misc:
-@export var animatronic_map: Node2D
-@export var tick_label: Label
-@export var batery_label: Label
-@export var time_label: Label
-@export var insanity_label: Label
-
 
 
 var _camaras_activadas: bool
@@ -64,19 +57,15 @@ const TIEMPO_TRANSICION := 5.0
 func _transition_in() -> void:
 	
 	transicion.modulate.a = 1.0
-	
 	await get_tree().create_timer(0.5).timeout
 	
-	var tween_trans := create_tween()
-
-	tween_trans.tween_property(
-		transicion, "modulate:a", 0.0, TIEMPO_TRANSICION
-	)
-	
-	var tween_sound := create_tween()
 	var bus := AudioServer.get_bus_index("Master")
-
-	tween_sound.tween_method(
+	var tween := create_tween()
+	
+	tween.parallel() # Hace que todos los tweens internos ocurran al mismo tiempo
+	tween.tween_property(transicion, "modulate:a", 0.0, TIEMPO_TRANSICION)
+	
+	tween.tween_method(
 		func(value: float) -> void:
 			AudioServer.set_bus_volume_linear(bus, value),
 		AudioServer.get_bus_volume_linear(bus),
@@ -95,22 +84,12 @@ func _ready():
 	tick.start()
 	change_tick_rate(cheats.tick_rate)
 	tick_speed = 1.0 / tick_rate
-	animatronic_map.act_first()
-	if not cheats.see_light_batery: batery_label.visible = false
 	
 	Items.night_starts()
 	Global.night_starts()
 	
 	_transition_in()
 
-func _process(delta: float) -> void:
-	
-	if tick_label.modulate.a > 0.001:
-		tick_label.modulate.a -= 5 * delta
-	
-	if cheats.see_light_batery:
-		batery_label.visible = true
-		batery_label.text = str(Global.linterna_bateria) + "%"
 
 func _input(event):
 	if event.is_action_pressed("Esc"):
@@ -140,8 +119,6 @@ func _on_tick_timeout() -> void:
 
 
 func tick_call():
-	if cheats.tick_count:
-		tick_label.modulate.a = 1.0
 	Bonnie.tick()
 	Chica.tick()
 	Freddy.tick()
@@ -151,8 +128,6 @@ func tick_call():
 	alucinacion_attempt()
 	
 	camaras.hora = Global.time_hour
-	insanity_label.text = "Insanity: " + str(Global.insanity)
-	time_label.text = str(Global.time_hour) + ":" + str(Global.time_minute).pad_zeros(2)
 	
 	if Global.time_hour == 6:
 		tick_stop = true

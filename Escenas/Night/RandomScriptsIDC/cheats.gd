@@ -16,6 +16,15 @@ extends Node
 @export var timeless := false
 
 
+@export_category("nodes")
+@export var tick_label: Label
+@export var batery_label: Label
+@export var time_label: Label
+@export var insanity_label: Label
+@export var animatronic_map_node: Node2D
+@export var vhs_player: Node2D
+
+
 func _ready():
 	
 	get_global_values()
@@ -26,12 +35,16 @@ func _ready():
 		Global.energia_consumption["Max"] = max_consumption
 	
 	Global.timeless = timeless
-	$"../True_No_Shader/Animatronic_Map".visible = animatronic_map
+	animatronic_map_node.visible = animatronic_map
+	animatronic_map_node.act_first()
 	Global.energia_consumption["Lights_Consume"] = lights_consume
-	$"../True_No_Shader/VBoxContainer/Time_label".visible = see_time_always
-	$"../True_No_Shader/VBoxContainer/Insanity_label".visible = see_insanity
+	time_label.visible = see_time_always
+	insanity_label.visible = see_insanity
 	Global.night_speed = night_duration
-	$"../Oficina/VHS_Player".scarlet_forest = bosque_escarlata
+	vhs_player.scarlet_forest = bosque_escarlata
+	
+	if not see_light_batery: batery_label.visible = false
+	
 
 func get_global_values():
 	if not get_from_global:
@@ -40,6 +53,21 @@ func get_global_values():
 		set(key, Global.debug["cheats"][key])
 		bosque_escarlata = false
 
-func _physics_process(_delta):
+func _process(delta: float) -> void:
+	
 	if infinite_light:
 		Global.linterna_bateria = 100
+	
+	if tick_label.modulate.a > 0.001:
+		tick_label.modulate.a -= 5 * delta
+	
+	if see_light_batery:
+		batery_label.visible = true
+		batery_label.text = str(Global.linterna_bateria) + "%"
+
+
+func _on_tick_timeout() -> void:
+	if tick_count:
+		tick_label.modulate.a = 1.0
+	time_label.text = str(Global.time_hour) + ":" + str(Global.time_minute).pad_zeros(2)
+	insanity_label.text = "Insanity: " + str(Global.insanity)

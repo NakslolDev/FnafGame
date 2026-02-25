@@ -113,7 +113,7 @@ size = Vector2(1050, 115)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei8qt"]
 size = Vector2(1264.5, 19)
 
-[node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("oficina", "oficina_detras", "freddy_nose", "linterna", "cheats", "transicion", "tick", "esc_timer", "mouse_custom", "camaras_control", "camaras", "animatronic_map", "tick_label", "batery_label", "time_label", "insanity_label")]
+[node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("oficina", "oficina_detras", "freddy_nose", "linterna", "cheats", "transicion", "tick", "esc_timer", "mouse_custom", "camaras_control", "camaras")]
 script = ExtResource("1_ri0qg")
 oficina = NodePath("Oficina")
 oficina_detras = NodePath("Oficina/Oficina_Detras")
@@ -126,11 +126,6 @@ esc_timer = NodePath("Control/ESC_Timer")
 mouse_custom = NodePath("Mouse_Custom")
 camaras_control = NodePath("Camaras_Control")
 camaras = NodePath("Camaras_Control/Camaras")
-animatronic_map = NodePath("True_No_Shader/Animatronic_Map")
-tick_label = NodePath("True_No_Shader/Tick_label")
-batery_label = NodePath("True_No_Shader/VBoxContainer/Batery_Label")
-time_label = NodePath("True_No_Shader/VBoxContainer/Time_label")
-insanity_label = NodePath("True_No_Shader/VBoxContainer/Insanity_label")
 
 [node name="Control" type="Node" parent="." unique_id=1181263599]
 
@@ -142,8 +137,14 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="Cheats" type="Node" parent="." unique_id=1206509325]
+[node name="Cheats" type="Node" parent="." unique_id=1206509325 node_paths=PackedStringArray("tick_label", "batery_label", "time_label", "insanity_label", "animatronic_map_node", "vhs_player")]
 script = ExtResource("2_4erhx")
+tick_label = NodePath("../True_No_Shader/Tick_label")
+batery_label = NodePath("../True_No_Shader/VBoxContainer/Batery_Label")
+time_label = NodePath("../True_No_Shader/VBoxContainer/Time_label")
+insanity_label = NodePath("../True_No_Shader/VBoxContainer/Insanity_label")
+animatronic_map_node = NodePath("../True_No_Shader/Animatronic_Map")
+vhs_player = NodePath("../Oficina/VHS_Player")
 
 [node name="Oficina" type="Node2D" parent="." unique_id=540360308 node_paths=PackedStringArray("oficina_detras_nodo")]
 script = ExtResource("4_arw1f")
@@ -384,6 +385,7 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="jumpscare" from="." to="True_No_Shader/Jumpscare_Freddy" method="_on_main_game_jumpscare"]
 [connection signal="jumpscare" from="." to="True_No_Shader/Jumpscare_Foxy" method="_on_main_game_jumpscare"]
 [connection signal="timeout" from="Control/Tick" to="." method="_on_tick_timeout"]
+[connection signal="timeout" from="Control/Tick" to="Cheats" method="_on_tick_timeout"]
 [connection signal="timeout" from="Control/ESC_Timer" to="." method="_on_esc_timer_timeout"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Detector_Girar_Izquierda" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Boton Izquierda" method="_on_oficina_girando_estado"]
