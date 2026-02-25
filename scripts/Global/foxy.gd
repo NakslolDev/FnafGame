@@ -14,6 +14,7 @@ const FLASHLIGHT_STUNT_ON_DOORS := 2
 
 const TIME_THAT_FOXY_REMEMBERS := 3
 
+const MAX_FAILED_ATT_ON_GIVING_UP_A_DUCT := 7
 
 var AI_level: int # No voy a volver a comentar lo que ya he comentado en bonnie y en chica...
 var tick_count := 0
@@ -24,6 +25,11 @@ var lock_movement := false
 var next_room: String # esta variable determina a que habitacion intentará ir
 var door_fail_count := 0
 var flashlight_stunt := 0
+var enter_duct_when_closed_failed := 0
+var will_stay_on_duct := false
+var go_straight := false # this var controls whether foxy will go straight to you. How this works is when it is activated, it will go to a predetermined room for each room
+# Also, he will roll twice his movement attempt, so he will also be moving faster. When he encounters a dead end, eather getting to position 0 or clashing against a heated duct, it will deactivate
+# Examples of when it activates: when energy breakdown. Maybe more in the future
 
 #64 posiciones posibles... 
 #map -> positions per room (0 = s, so I can int)
@@ -116,6 +122,8 @@ func reset():
 	last_room = "pas"
 	last_position = 0
 	door_fail_count = 0
+	enter_duct_when_closed_failed = 0
+	will_stay_on_duct = false
 	
 	# info (a parte de los heaters)
 	soft_focus_I = false
@@ -207,52 +215,94 @@ func tick(): # Cada tick (5 veces por segundo)
 		movement_oportunity()
 
 
-func movement_oportunity():
+func movement_oportunity(): # He particionado mucho el codigo para que este mas limpio y legible. Sobre todo en la ia de foxy, que es la mas compleja de lejos
 	
+	if _manage_flashlight_stunt():
+		return
+	
+	var movement_hit := false
+	
+	if AI_level > randi_range(0, 20): # probabilidad de moverse
+		movement_hit = true
+	elif go_straight and AI_level > randi_range(0, 20): # literalmente una segunda oportunidad
+		movement_hit = true
+	
+	if room.begins_with("Duc"):
+		movement_hit = true
+	
+	movement_hit = _manage_about_to_go_in_duct(movement_hit)
+	
+	if _manage_doors():
+		movement_hit = true
+	
+	if _manage_lock_movement():
+		movement_hit = false
+	
+	if movement_hit:
+		move()
+	else:
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement no: from ", position, " in ", room)
+
+func _manage_flashlight_stunt() -> bool:
 	if flashlight_stunt > 0: # no se puede mover por tres movimientos después de hecharlo hacia atras con la linterna
 		flashlight_stunt -= 1
 		if flashlight_stunt == 0:
 			flashlight_stunt_over.emit()
-		return
+		return true
+	return false
+
+func _manage_about_to_go_in_duct(movement_hit) -> bool:
 	
-	var movement_hit := false
-	var rand_MO
-	
-	if room.begins_with("Duc"):
-		movement_hit = true
-	else:
-		rand_MO = randi_range(0, 20)
-		if AI_level > rand_MO:
-			movement_hit = true
+	if _check_if_about_to_enter_duct() and duct_heater.get(next_room[-1], false):
 		
-		if room.ends_with("hall") and position == 0:
-			door_fail_count += 1
-			if room == "rhall" and door_D_closed and door_fail_count >= 3:
-				movement_hit = true
-			elif room == "rhall" and not door_D_closed and door_fail_count >= 6:
-				movement_hit = true
-			elif room == "lhall" and door_I_closed and door_fail_count >= 3:
-				movement_hit = true
-			elif room == "lhall" and not door_I_closed and door_fail_count >= 6:
-				movement_hit = true
-		else:
-			door_fail_count = 0
+		if AI_level >= randi_range(0, 100):
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=cb5a29]Foxy will wait for that duct: from ", position, " in ", room)
+			will_stay_on_duct = true # se va a quedar todo el tiempo posible en la entrada
+		
+		if will_stay_on_duct:
+			movement_hit = false
+		
+		if not movement_hit:
+			enter_duct_when_closed_failed += 1
+			if enter_duct_when_closed_failed >= MAX_FAILED_ATT_ON_GIVING_UP_A_DUCT:
+				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=cb5a29]Foxy was tired of waiting for that duct: from ", position, " in ", room)
+				movement_hit = true # si pasan 5 turnos sin moverse, le fuerzo a moverse
 	
+	else:
+		enter_duct_when_closed_failed = 0
+		will_stay_on_duct = false # reinicia los valores, ya que o se va a mover o no esta en la entrada de un ducto
+	
+	return movement_hit
+
+func _manage_doors() -> bool:
+	var force_hit := false
+	if room.ends_with("hall") and position == 0:
+		door_fail_count += 1
+		if room == "rhall" and door_D_closed and door_fail_count >= 3:
+			force_hit = true
+		elif room == "rhall" and not door_D_closed and door_fail_count >= 6:
+			force_hit = true
+		elif room == "lhall" and door_I_closed and door_fail_count >= 3:
+			force_hit = true
+		elif room == "lhall" and not door_I_closed and door_fail_count >= 6:
+			force_hit = true
+	else:
+		door_fail_count = 0
+	return force_hit
+
+func _manage_lock_movement() -> bool:
+	var lock := false
 	if lock_movement == true:
 		if position == 0 and (room.begins_with("Duc") or room.ends_with("hall")): # comprueva que acaba de llegar a las entradas de la oficina. Si lo paras, si que se vuelve
 			if (room == "lhall" and not door_I_closed) or (room == "rhall" and not door_D_closed) or room.begins_with("Duc"):
-				movement_hit = false
+				lock = true
 				if gotcha > 0:
 					gotcha -= 1
 				else:
 					lock_movement = false
 			else:
 				lock_movement = false
-	
-	if movement_hit:
-		move()
-	else:
-		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement no: from ", position, " in ", room)
+	return lock
 
 
 # skip decision lo utilizo cuando bonnie o chica lo expulsan, pues en esa funcion uso otro decide que obliga a no ir a las puertas
@@ -273,8 +323,13 @@ func move(skip_decision := false): # esta funcion va a ser increiblemente larga.
 	
 	if position == last_position and room == last_room:  # solo se mueve si se ha movido... Evidentemente. No mando el mensaje para evitar que se actualizen las cámaras, u otros similares
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement hitted but stayed still: from ", position, " in ", room)
+		for key in duct_heater_memory.keys(): # reinicia la memoria para que se intente mover la proxima vez
+			duct_heater_memory[key]["on"] = false
+			duct_heater_memory[key]["time"] = 0
 		return
 	
+	if position == 0: # position = 0 es que esta en el borde de la oficina
+		go_straight = false
 	
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement: to ", position, " in ", room, " from ", last_position, " in ", last_room)
 	movement.emit(position, room, last_position, last_room)
@@ -312,6 +367,7 @@ func move_back_to():
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy found my flashlight : from ", position, " in ", room)
 	movement.emit(position, room, last_position, last_room)
 	
+	go_straight = false # si lo hechas tambien. No deberia de estar true nunca pero bueno...
 	animacion_go_back = false
 	tick_focus_count = 0
 
@@ -333,16 +389,14 @@ func energy_breakdown():
 	
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=cb5a29]ME LLAMARON?????")
 	
-	var change := false
-	
 	for key in duct_heater_memory.keys():
 		if duct_heater_memory[key]["on"] != duct_heater[key]:
 			duct_heater_memory[key]["on"] = duct_heater[key]
 			duct_heater_memory[key]["time"] = 0
-			change = true
 	
-	if change:
-		decide_next_room()
+	go_straight = true
+	
+	decide_next_room()
 
 
 # check es: solo cambia de decisión si ves un ducto que ha cambiado
@@ -360,9 +414,12 @@ func decide_next_room(check: bool = false): # si no hay un dead end, no puede vo
 	if (room == "lhall" and position == 0) or (room == "rhall" and position == 0): # es necesario que haga un checkeo antes de intentar entrar para ver si las puertas estan cerradas o abiertas
 		duct_act = true
 	
-	if next_room.begins_with("Duc") and duct_heater_memory[next_room.substr(3)]["on"]:
+	if next_room.begins_with("Duc") and duct_heater_memory[next_room[-1]]["on"]:
 		dead_end = true
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=cb5a29]Foxy found a dead end: from ", position, " in ", room)
+	
+	if dead_end or (duct_act and room.begins_with("Duc")): # si se encuentra un duct bloqueado o lo expulsas de uno
+		go_straight = false # desactiva el go straight
 	
 	if not ((check and duct_act) or not check or next_room == "0"):
 		return
@@ -421,7 +478,7 @@ func check_ducts() -> bool:
 		if duct_heater_memory["8"]["on"] != duct_heater["8"]:
 			duct_heater_memory["8"]["on"] = duct_heater["8"]
 			duct_act = true
-		
+	
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]Did foxy learn something new?: ", duct_act)
 	return duct_act
 
@@ -435,7 +492,20 @@ func _advance_time_on_ducts_memory():
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]Foxy forgot the duct ", i)
 
 
+
 func decide_main(dead_end):
+	
+	if go_straight: # kind of too big but whatever
+		if position > 3:
+			next_room = "Duc4"
+		elif position < 3:
+			next_room = "Duc3"
+		else:
+			if randi_range(0,1) == 0:
+				next_room = "Duc4"
+			else:
+				next_room = "Duc3"
+		return
 	
 	if position == 1: # sigue un sistema de prioridad en el que va del mejor al peor. Este orden lo elijo yo, dependiendo de la distancia y el camino.
 		if ((true_last_room == "Duc3" and dead_end) or true_last_room != "Duc3") and not duct_heater_memory["3"]["on"]:
@@ -495,6 +565,10 @@ func decide_main(dead_end):
 
 func decide_arcade(dead_end):
 	
+	if go_straight:
+		next_room = "Duc7"
+		return
+	
 	if position == 1 or position == 2: # el camino a escojer es el mismo
 		if not duct_heater_memory["2"]["on"]:
 			next_room = "Duc2"
@@ -522,6 +596,10 @@ func decide_arcade(dead_end):
 			next_room = "Duc1"
 
 func decide_pas(dead_end): # esta es la más compleja, pues es la única en la que realmente hay varias decisiones igual de buenas
+	
+	if go_straight:
+		next_room = "Duc5"
+		return
 	
 	if position == 0: # se que... pero bueno
 		if true_last_room != "Duc3" and not duct_heater_memory["3"]["on"] and true_last_room != "Duc4" and not duct_heater_memory["4"]["on"] and true_last_room != "Duc5" and not duct_heater_memory["5"]["on"]:
@@ -574,6 +652,7 @@ func decide_pas(dead_end): # esta es la más compleja, pues es la única en la q
 			next_room = "Duc4"
 		else:
 			if true_last_room != "Duc3" and not duct_heater_memory["3"]["on"] and true_last_room != "Duc5" and not duct_heater_memory["5"]["on"]:
+				@warning_ignore("integer_division")
 				var rand_go_to = randi_range(0, 2)
 				if rand_go_to == 0:
 					next_room = "Duc3"
@@ -613,12 +692,20 @@ func decide_pas(dead_end): # esta es la más compleja, pues es la única en la q
 
 func decide_entrance(dead_end): # por fin una sencillita
 	
+	if go_straight:
+		next_room = "Duc6"
+		return
+	
 	if ((true_last_room == "Duc6" and dead_end) or true_last_room != "Duc6") and not duct_heater_memory["6"]["on"]:
 		next_room = "Duc6"
 	else:
 		next_room = "main"
 
 func decide_kitchen(dead_end):
+	
+	if go_straight:
+		next_room = "Duc6"
+		return
 	
 	if ((true_last_room == "Duc6" and dead_end) or true_last_room != "Duc6") and not duct_heater_memory["6"]["on"]:
 		next_room = "Duc6"
@@ -629,6 +716,10 @@ func decide_kitchen(dead_end):
 
 func decide_almacen(dead_end): # aunque hay 2 posiciones posibles, siempre intentará ir a Duc8
 	
+	if go_straight:
+		next_room = "Duc8"
+		return
+	
 	if ((true_last_room == "Duc8" and dead_end) or true_last_room != "Duc8") and not duct_heater_memory["8"]["on"]:
 		next_room = "Duc8"
 	elif not duct_heater_memory["6"]["on"]:
@@ -638,6 +729,10 @@ func decide_almacen(dead_end): # aunque hay 2 posiciones posibles, siempre inten
 
 func decide_closet(dead_end):
 	
+	if go_straight:
+		next_room = "Duc8"
+		return
+	
 	if ((true_last_room == "Duc8" and dead_end) or true_last_room != "Duc8") and not duct_heater_memory["8"]["on"]:
 		next_room = "Duc8"
 	elif not duct_heater_memory["7"]["on"]:
@@ -646,6 +741,8 @@ func decide_closet(dead_end):
 		next_room = "0"
 
 func decide_lhall(dead_end, bonnie := false):
+	
+	# aqui no hay decide straight pues ya esta al lado de office, pero por la puerta tampoco es la mejor de las opciones... Que decida normal
 	
 	if position == 0:
 		if not door_I_closed and not bonnie:
@@ -691,6 +788,8 @@ func decide_lhall(dead_end, bonnie := false):
 
 func decide_rhall(dead_end, chica := false): # exactamente igual que lhall
 	
+	# lo mismo que en lhall para go_straight
+	
 	if position == 0:
 		if not door_D_closed and not chica:
 			next_room = "office"
@@ -735,6 +834,10 @@ func decide_rhall(dead_end, chica := false): # exactamente igual que lhall
 
 func decide_Duc1(_dead_end):
 	
+	if go_straight:
+		next_room = "arcade"
+		return
+	
 	if duct_heater_memory["1"]["on"]:
 		if position == 1:
 			next_room = "main"
@@ -754,9 +857,17 @@ func decide_Duc1(_dead_end):
 
 func decide_Duc2(_dead_end): # controlaré el salir antes o despues en move dependiendo del heater
 	
+	if go_straight: # muy importante :)
+		next_room = "arcade"
+		return
+	
 	next_room = "arcade"
 
 func decide_Duc3(_dead_end):
+	
+	if go_straight:
+		next_room = "pas"
+		return
 	
 	if duct_heater_memory["3"]["on"]:
 		if position == 1:
@@ -781,6 +892,10 @@ func decide_Duc3(_dead_end):
 
 func decide_Duc4(_dead_end):
 	
+	if go_straight:
+		next_room = "pas"
+		return
+	
 	if duct_heater_memory["4"]["on"]:
 		if position == 1:
 			next_room = "pas"
@@ -803,6 +918,10 @@ func decide_Duc4(_dead_end):
 			next_room = "pas"
 
 func decide_Duc5(_dead_end):
+	
+	if go_straight:
+		next_room = "office"
+		return
 	
 	if duct_heater_memory["5"]["on"]: # dependiendo del nivel de AI, será más facil echarle a pas
 		if position == 0:
@@ -840,6 +959,10 @@ func decide_Duc5(_dead_end):
 
 func decide_Duc6(_dead_end):
 	
+	if go_straight:
+		next_room = "almacen"
+		return
+	
 	if duct_heater_memory["6"]["on"]:
 		if position == 1:
 			next_room = "entrance"
@@ -861,6 +984,10 @@ func decide_Duc6(_dead_end):
 
 func decide_Duc7(_dead_end):
 	
+	if go_straight:
+		next_room = "closet"
+		return
+	
 	if duct_heater_memory["7"]["on"]:
 		if position == 1:
 			next_room = "arcade"
@@ -874,6 +1001,10 @@ func decide_Duc7(_dead_end):
 			next_room = "arcade"
 
 func decide_Duc8(_dead_end):
+	
+	if go_straight:
+		next_room = "office"
+		return
 	
 	if duct_heater_memory["8"]["on"]:
 		if position == 0:
@@ -894,6 +1025,7 @@ func decide_Duc8(_dead_end):
 	
 	else:
 		next_room = "office"
+
 
 
 #room -> 0 (nowhere), main, arcade, pas, entrance, kitchen, almacen, closet, lhall, rhall, office
@@ -1304,3 +1436,38 @@ func move_Duc8():
 			position -= 1
 		elif position < 4:
 			position += 1
+
+
+func _check_if_about_to_enter_duct():
+	match next_room:
+		"Duc1":
+			if room == "main" and position == 1: return true
+			if room == "arcade" and position == 1: return true
+		"Duc2":
+			if room == "arcade" and position in [1,2,4]: return true
+		"Duc3":
+			if room == "main" and position == 2: return true
+			if room == "arcade" and position == 3: return true
+			if room == "pas" and position == 3: return true
+		"Duc4":
+			if room == "main" and position == 4: return true
+			if room == "kitchen": return true
+			if room == "pas" and position == 2: return true
+		"Duc5":
+			if room == "pas" and position == 1: return true
+			if room == "lhall" and position == 1: return true
+			if room == "rhall" and position == 1: return true
+		"Duc6":
+			if room == "entrance" and position == 1: return true
+			if room == "kitchen": return true
+			if room == "almacen" and position == 1: return true
+		"Duc7":
+			if room == "arcade" and position == 4: return true
+			if room == "closet": return true
+		"Duc8":
+			if room == "lhall" and position == 2: return true
+			if room == "rhall" and position == 2: return true
+			if room == "almacen" and position == 2: return true
+			if room == "closet": return true
+	
+	return false

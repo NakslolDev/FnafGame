@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://dg87i78j5fghc" path="res://Escenas/Night/RandomScriptsIDC/cheats.gd" id="2_4erhx"]
 [ext_resource type="Script" uid="uid://bqwie24f1rykg" path="res://Escenas/Night/SecurityRoom/oficina.gd" id="4_arw1f"]
 [ext_resource type="Script" uid="uid://blpn7t14i1trt" path="res://Escenas/Night/SecurityRoom/Back/Ventilation/ventilation.gd" id="5_ujq6x"]
-[ext_resource type="AudioStream" uid="uid://bv7inmiadvssp" path="res://assets/sounds/Ventilation_loop.ogg" id="6_hal1v"]
+[ext_resource type="AudioStream" uid="uid://6cf4ra3goluv" path="res://assets/sounds/Ventilation_loop.ogg" id="6_hal1v"]
 [ext_resource type="PackedScene" uid="uid://mxxfro0701lh" path="res://Escenas/Night/Movement/Detector_Girar.tscn" id="7_q5fcm"]
 [ext_resource type="PackedScene" uid="uid://bo3fa6mc0i5nu" path="res://Escenas/Night/SecurityRoom/Ducts/Ductos.tscn" id="8_v0aef"]
 [ext_resource type="PackedScene" uid="uid://bkhep68tnnnt4" path="res://Escenas/Night/SecurityRoom/Halls/Pasillo.tscn" id="9_1n26x"]
 [ext_resource type="PackedScene" uid="uid://ben1xduwqjx0k" path="res://Escenas/Night/SecurityRoom/Buttons/Boton.tscn" id="10_y2ail"]
 [ext_resource type="PackedScene" uid="uid://cjvr4sjqr5ybo" path="res://Escenas/Night/SecurityRoom/Doors/Puerta.tscn" id="11_e8gno"]
 [ext_resource type="PackedScene" uid="uid://ddgr31vso5rgd" path="res://Escenas/Night/SecurityRoom/Back/Oficina_Detras.tscn" id="12_5xwdc"]
-[ext_resource type="Texture2D" uid="uid://1vysn0m7h542" path="res://assets/Placeholders/Oficina.png" id="13_yfjon"]
+[ext_resource type="Texture2D" uid="uid://coqihx5segjlr" path="res://assets/Placeholders/Oficina.png" id="13_yfjon"]
 [ext_resource type="PackedScene" uid="uid://br8x1cwdt7tp1" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.tscn" id="14_lctcs"]
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]
@@ -21,10 +21,10 @@
 [ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://Escenas/Night/RandomScriptsIDC/ready_visible.gd" id="22_cmb4g"]
 [ext_resource type="Shader" uid="uid://dtawjw1d75oyi" path="res://shaders/Persperctive_fnaf.gdshader" id="23_snhey"]
 [ext_resource type="Script" uid="uid://cb6at3lh66cid" path="res://Escenas/Night/RandomScriptsIDC/lights_out.gd" id="24_ao3mo"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="25_0pxa1"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="25_0pxa1"]
 [ext_resource type="Shader" uid="uid://cy37sjn6e8y4u" path="res://shaders/Pasillo.gdshader" id="26_y2bxh"]
 [ext_resource type="Script" uid="uid://da400mqw67h8w" path="res://Escenas/Night/SecurityRoom/oficina_lights_out.gd" id="27_60v0j"]
-[ext_resource type="AudioStream" uid="uid://bn42ke3v6m5pw" path="res://assets/sounds/Irritating_fluorecent_light_loop.ogg" id="28_imsbu"]
+[ext_resource type="AudioStream" uid="uid://e3jysadl0hnq" path="res://assets/sounds/Irritating_fluorecent_light_loop.ogg" id="28_imsbu"]
 [ext_resource type="PackedScene" uid="uid://byolv1ohrbema" path="res://Escenas/Night/UI/Linterna_Bateria_Icono.tscn" id="29_wt1mn"]
 [ext_resource type="PackedScene" uid="uid://o8o073xrlb54" path="res://Escenas/Night/UI/Energia_Icono.tscn" id="30_6536c"]
 [ext_resource type="PackedScene" uid="uid://c3c06jfj5tb32" path="res://Escenas/Night/alucinations/alucinations.tscn" id="31_bplc8"]
@@ -33,9 +33,9 @@
 [ext_resource type="PackedScene" uid="uid://cbxe832owyn3x" path="res://Escenas/Night/Jumpscare/jumpscare_chica.tscn" id="34_jv4bp"]
 [ext_resource type="PackedScene" uid="uid://yfdfcy54h2iy" path="res://Escenas/Night/Jumpscare/jumpscare_freddy.tscn" id="35_eg2cr"]
 [ext_resource type="PackedScene" uid="uid://c56tf6s3thtjw" path="res://Escenas/Night/Jumpscare/jumpscare_foxy.tscn" id="36_bfel1"]
-[ext_resource type="Texture2D" uid="uid://beajaurpxnglx" path="res://assets/Placeholders/UI_Juego/Up_Cams.png" id="37_1av5k"]
+[ext_resource type="Texture2D" uid="uid://bsrx801kgacw0" path="res://assets/Placeholders/UI_Juego/Up_Cams.png" id="37_1av5k"]
 [ext_resource type="Script" uid="uid://cupgjt3ibvlcl" path="res://Escenas/Night/Cameras/scripts/up_cams.gd" id="38_ewhsk"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="39_hfq1x"]
+[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="39_hfq1x"]
 [ext_resource type="PackedScene" uid="uid://bq8slaploxj1p" path="res://Escenas/Night/Cameras/animatronic_map/animatronic_map.tscn" id="40_di46t"]
 [ext_resource type="Script" uid="uid://cyeiwifp8oayw" path="res://Escenas/Night/Cameras/scripts/camaras_control.gd" id="45_ba5fs"]
 [ext_resource type="PackedScene" uid="uid://d2hwtk3f7idft" path="res://Escenas/Night/Cameras/Camaras.tscn" id="46_axquf"]
@@ -144,8 +144,6 @@ one_shot = true
 
 [node name="Cheats" type="Node" parent="." unique_id=1206509325]
 script = ExtResource("2_4erhx")
-get_from_global = false
-infinite_light = true
 
 [node name="Oficina" type="Node2D" parent="." unique_id=540360308 node_paths=PackedStringArray("oficina_detras_nodo")]
 script = ExtResource("4_arw1f")
