@@ -51,14 +51,15 @@ shader_parameter/wrapping_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xe21u"]
 shader = ExtResource("26_y2bxh")
 shader_parameter/mouse_pos = Vector2(0, 0)
-shader_parameter/radio = 400.0
+shader_parameter/radio = 450.0
 shader_parameter/viewport_size = Vector2(0, 0)
-shader_parameter/fade_range = 0.0
+shader_parameter/fade_range = 50.0
 shader_parameter/shader_enabled = 0.0
 shader_parameter/transparencia = 1.0
 shader_parameter/nivel_transparencia = 1.0
 
 [sub_resource type="Gradient" id="Gradient_mros8"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pd3h4"]
 noise_type = 0
