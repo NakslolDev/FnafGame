@@ -4,12 +4,30 @@ var active := false
 var selected := 0
 var hard_selected := 0
 
+@export_category("nodes")
+@export var menu_principal: Node2D
+@export var main_buttons: VBoxContainer
+
+@export var node_continue: HBoxContainer
+@export var node_new_game: HBoxContainer
+@export var node_custom_night: HBoxContainer
+@export var node_back: HBoxContainer
+
+@export var continue_seleccion: Sprite2D
+@export var new_game_seleccion: Sprite2D
+@export var cn_seleccion: Sprite2D
+@export var back_seleccion: Sprite2D
+
+@export var night_label: Label
+@export var menu_click: AudioStreamPlayer
+
 func _ready():
-	$".".set_process_input(false)
-	$".".visible = false
+	set_process_input(false)
+	visible = false
+	act_selected()
 
 func _process(delta):
-	var night_alpha = $Continue/Get_out_of_jail_card/Night_label
+	var night_alpha = night_label
 	if selected == 1 and night_alpha.modulate.a < 0.6:
 		night_alpha.modulate.a += delta / 3.0
 	if selected != 1 and night_alpha.modulate.a > 0.0:
@@ -18,28 +36,28 @@ func _process(delta):
 func act_selected(just_selected := false):
 	
 	if not just_selected:
-		$Continue.visible = $"..".game_exist
-		$Custom_Night.visible = Global.custom_night
+		node_continue.visible = menu_principal.game_exist
+		node_custom_night.visible = Global.custom_night
 	
 		if Global.debug["game_state"]["override"]:
-			$Continue.visible = true
-			$Continue/Get_out_of_jail_card/Night_label.text = get_tree().current_scene.get_text("Night_") + " " + str($"..".noche_menu) + " [debug game state]"
+			node_continue.visible = true
+			night_label.text = get_tree().current_scene.get_text("Night_") + " " + str(menu_principal.noche_menu) + " [debug game state]"
 		else:
-			$Continue/Get_out_of_jail_card/Night_label.text = get_tree().current_scene.get_text("Night_") + " " + str($"..".noche_menu)
+			night_label.text = get_tree().current_scene.get_text("Night_") + " " + str(menu_principal.noche_menu)
 	
-	$Continue/Seleccion.visible = false
-	$New_Game/Seleccion.visible = false
-	$Custom_Night/Seleccion.visible = false
-	$Back/Seleccion.visible = false
+	continue_seleccion.visible = false
+	new_game_seleccion.visible = false
+	cn_seleccion.visible = false
+	back_seleccion.visible = false
 	
 	if selected == 1:
-		$Continue/Seleccion.visible = true
+		continue_seleccion.visible = true
 	if selected == 2:
-		$New_Game/Seleccion.visible = true
+		new_game_seleccion.visible = true
 	if selected == 3:
-		$Custom_Night/Seleccion.visible = true
+		cn_seleccion.visible = true
 	if selected == 4:
-		$Back/Seleccion.visible = true
+		back_seleccion.visible = true
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Enter") or event.is_action_pressed("Space"):
@@ -66,28 +84,28 @@ func _input(event: InputEvent) -> void:
 		back()
 
 func _continue():
-	$"..".transition_to_play()
+	menu_principal.transition_to_play()
 
 func new_game():
 	Global.create_new_game()
-	$"..".transition_to_play()
+	menu_principal.transition_to_play()
 
 func custom_night():
 	Global.escena_previa = "Menu_Principal"
 	get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
 
 func back():
-	$".".set_process_input(false)
-	$".".visible = false
-	$"../Main_buttons".set_process_input(true)
-	$"../Main_buttons".visible = true
+	set_process_input(false)
+	visible = false
+	main_buttons.set_process_input(true)
+	main_buttons.visible = true
 
 
 func _on_continue_mouse_entered() -> void:
 	hard_selected = 1
 	if selected != 1:
 		selected = 1
-		$Menu_Click.play()
+		menu_click.play()
 		act_selected(true)
 
 func _on_continue_mouse_exited() -> void:
@@ -98,7 +116,7 @@ func _on_new_game_mouse_entered() -> void:
 	hard_selected = 2
 	if selected != 2:
 		selected = 2
-		$Menu_Click.play()
+		menu_click.play()
 		act_selected(true)
 
 func _on_new_game_mouse_exited() -> void:
@@ -109,7 +127,7 @@ func _on_custom_night_mouse_entered() -> void:
 	hard_selected = 3
 	if selected != 3:
 		selected = 3
-		$Menu_Click.play()
+		menu_click.play()
 		act_selected(true)
 
 func _on_custom_night_mouse_exited() -> void:
@@ -120,7 +138,7 @@ func _on_back_mouse_entered() -> void:
 	hard_selected = 4
 	if selected != 4:
 		selected = 4
-		$Menu_Click.play()
+		menu_click.play()
 		act_selected(true)
 
 func _on_back_mouse_exited() -> void:

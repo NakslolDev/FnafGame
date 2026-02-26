@@ -23,7 +23,7 @@ func _ready():
 	panning_strength = 3.0
 	attenuation = 0.0
 	
-	_change_pos(0.0) # al principio tu posicion es 0
+	change_pos(0.0) # al principio tu posicion es 0
 
 
 func _starting_pos_displacement() -> float:
@@ -67,7 +67,7 @@ func change_volume():
 	volume_db = _volume - _lower_db * sin(deg_to_rad(abs(_local_deg) / 2.0))
 
 
-func _change_pos(_x_pos: float):
+func change_pos(_x_pos: float):
 	
 	_local_deg = _starting_pos_displacement() + _x_to_deg(_x_pos)
 	

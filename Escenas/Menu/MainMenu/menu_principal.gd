@@ -3,9 +3,8 @@ extends Node2D
 var game_exist := false
 var noche_menu := 1
 
-@export var transicion := 1.0
-var transicionando_out: bool
-var transicionando_in: bool
+@export var transicion: Sprite2D
+const TRANSITION_TIME := 3.0
 
 func _ready():
 	game_exist = FileAccess.file_exists("user://partida.json")
@@ -15,37 +14,34 @@ func _ready():
 	elif Global.noche != -1:
 		noche_menu = Global.noche
 	if Global.escena_previa != "Opciones" and Global.escena_previa != "Custom_Night":
-		transicionando_in = true
-		$Transicion.modulate.a = 1.0
+		_trans_in()
 	else:
-		$Transicion.modulate.a = 0.0
-	Global.custom_night_ai = [0, 0, 0, 0]
-	$Play_Buttons.act_selected()
+		transicion.modulate.a = 0.0
+	#Global.custom_night_ai = [0, 0, 0, 0]
 
+func _trans_in():
+	transicion.modulate.a = 1.0
+	var tween := create_tween()
+	tween.tween_property(
+		transicion, "modulate:a", 0.0, TRANSITION_TIME
+	)
 
-func _process(delta):
-	if transicionando_out:
-		$Transicion.modulate.a += delta / transicion
-		if $Transicion.modulate.a >= 1.0:
-			$Transicion.modulate.a = 1.0
-			transicionando_out = false
-			begin_game()
-	if transicionando_in:
-		$Transicion.modulate.a -= delta / transicion
-		if $Transicion.modulate.a <= 0.0:
-			$Transicion.modulate.a = 0.0
-			transicionando_in = false
+func transition_to_play():
+	var time = TRANSITION_TIME * (1.0 - transicion.modulate.a)
+	var tween := create_tween()
+	tween.tween_property(
+		transicion, "modulate:a", 1.0, time
+	)
+	tween.finished.connect(
+		begin_game
+	)
 
-func transition_to_play(): # como no hay ningun otro caso de transicion, no tengo que distinguir
-	transicionando_in = false
-	transicionando_out = true
 
 func begin_game():
 	Global.escena_previa = "Menu_Principal"
 	Global.m_entering = true
 	Global.minigame_starts()
 	get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar
-
 
 
 func get_text(id: String):

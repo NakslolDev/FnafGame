@@ -1,25 +1,26 @@
 [gd_scene format=3 uid="uid://clk07ggsfox88"]
 
 [ext_resource type="Script" uid="uid://4fjcgs6njf0t" path="res://Escenas/Menu/MainMenu/menu_principal.gd" id="1_7cw0h"]
-[ext_resource type="Texture2D" uid="uid://d3bokitp67hae" path="res://assets/Placeholders/UI_Menu/Titulo.png" id="3_fq31k"]
+[ext_resource type="Texture2D" uid="uid://08513rl5tslf" path="res://assets/Placeholders/UI_Menu/Titulo.png" id="3_fq31k"]
 [ext_resource type="Script" uid="uid://ronda45c7s6u" path="res://Escenas/Menu/MainMenu/main_buttons.gd" id="4_djrq7"]
-[ext_resource type="AudioStream" uid="uid://dj67m1ll27oey" path="res://assets/sounds/menu_click.wav" id="5_8x8is"]
+[ext_resource type="AudioStream" uid="uid://bjvedqrixaul0" path="res://assets/sounds/menu_click.wav" id="5_8x8is"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="6_b3nup"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="7_xpa1m"]
-[ext_resource type="Texture2D" uid="uid://cq2ibop5ggmho" path="res://assets/Placeholders/UI_Menu/Seleccion.png" id="8_r2f8f"]
+[ext_resource type="Texture2D" uid="uid://cakbtkd5v3bat" path="res://assets/Placeholders/UI_Menu/Seleccion.png" id="8_r2f8f"]
 [ext_resource type="Script" uid="uid://c4kfoj04ln6g8" path="res://Escenas/Menu/MainMenu/play_buttons.gd" id="9_8aeey"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="10_te3yv"]
 [ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://Escenas/Night/SecurityRoom/FreddyPoster/Freddy_nose.tscn" id="11_dytxe"]
 [ext_resource type="Script" uid="uid://coh84xcfmkrvv" path="res://Escenas/Menu/MainMenu/stars.gd" id="12_hoy0e"]
-[ext_resource type="Texture2D" uid="uid://dflfp1neyqnuf" path="res://assets/Placeholders/white_star.png" id="13_4lh2l"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="14_6ew8l"]
+[ext_resource type="Texture2D" uid="uid://bcowwykqilax5" path="res://assets/Placeholders/white_star.png" id="13_4lh2l"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="14_6ew8l"]
 [ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://Escenas/Menu/endings/auto_transicion.gd" id="15_8gg30"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2kspd"]
 load_path = "res://.godot/imported/Menu_Art.png-2ce95289e9e0f2b534a267740bebaf33.ctex"
 
-[node name="Menu principal" type="Node2D" unique_id=876365489]
+[node name="Menu principal" type="Node2D" unique_id=876365489 node_paths=PackedStringArray("transicion")]
 script = ExtResource("1_7cw0h")
+transicion = NodePath("Transicion")
 
 [node name="MenuArt" type="Sprite2D" parent="." unique_id=1266682085]
 position = Vector2(-3.71337e-05, 0)
@@ -31,7 +32,7 @@ texture = ExtResource("3_fq31k")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1271747179]
 
-[node name="Main_buttons" type="VBoxContainer" parent="." unique_id=1866653682]
+[node name="Main_buttons" type="VBoxContainer" parent="." unique_id=1866653682 node_paths=PackedStringArray("play_buttons", "play_seleccion", "options_seleccion", "exit_seleccion", "menu_click")]
 texture_filter = 1
 offset_left = -772.0
 offset_top = 98.0
@@ -39,6 +40,11 @@ offset_right = -142.0
 offset_bottom = 488.0
 theme_override_constants/separation = 40
 script = ExtResource("4_djrq7")
+play_buttons = NodePath("../Play_Buttons")
+play_seleccion = NodePath("Play/Seleccion")
+options_seleccion = NodePath("Options/Seleccion")
+exit_seleccion = NodePath("Exit/Seleccion")
+menu_click = NodePath("Menu_Click")
 
 [node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons" unique_id=1441345403]
 stream = ExtResource("5_8x8is")
@@ -94,7 +100,7 @@ texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("8_r2f8f")
 
-[node name="Play_Buttons" type="VBoxContainer" parent="." unique_id=912165713]
+[node name="Play_Buttons" type="VBoxContainer" parent="." unique_id=912165713 node_paths=PackedStringArray("menu_principal", "main_buttons", "node_continue", "node_new_game", "node_custom_night", "node_back", "continue_seleccion", "new_game_seleccion", "cn_seleccion", "back_seleccion", "night_label", "menu_click")]
 texture_filter = 1
 offset_left = -772.0
 offset_top = 98.0
@@ -102,6 +108,18 @@ offset_right = -142.0
 offset_bottom = 488.0
 theme_override_constants/separation = 40
 script = ExtResource("9_8aeey")
+menu_principal = NodePath("..")
+main_buttons = NodePath("../Main_buttons")
+node_continue = NodePath("Continue")
+node_new_game = NodePath("New_Game")
+node_custom_night = NodePath("Custom_Night")
+node_back = NodePath("Back")
+continue_seleccion = NodePath("Continue/Seleccion")
+new_game_seleccion = NodePath("New_Game/Seleccion")
+cn_seleccion = NodePath("Custom_Night/Seleccion")
+back_seleccion = NodePath("Back/Seleccion")
+night_label = NodePath("Continue/Get_out_of_jail_card/Night_label")
+menu_click = NodePath("Menu_Click")
 
 [node name="Menu_Click" type="AudioStreamPlayer" parent="Play_Buttons" unique_id=1184045499]
 stream = ExtResource("5_8x8is")

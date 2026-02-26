@@ -3,14 +3,20 @@ extends Node2D
 var sounds: Array[spacial_audio] = [] # rellenamos en ready
 
 func _ready() -> void:
-	_append_sounds_recursively(self)
+	_append_sounds_recursively()
 
-func _append_sounds_recursively(father: Node):
+func _append_sounds_recursively(father: Node = self):
 	for node in father.get_children():
 		if node is spacial_audio:
 			sounds.append(node)
 		else:
 			_append_sounds_recursively(node)
+
+
+func _recursive_sum(arr: Array[int], n: int = arr.size() - 1):
+	arr[n]
+	pass
+
 
 @export var oficina: Node2D
 
@@ -25,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 	_local_security_room_position = oficina.position.x
 	
 	for audio in sounds:
-		audio._change_pos(_local_security_room_position)
+		audio.change_pos(_local_security_room_position)
 
 
 @export var puerta_izquierda: spacial_audio
