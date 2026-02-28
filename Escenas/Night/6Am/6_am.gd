@@ -1,17 +1,27 @@
-extends Node2D
+extends CanvasLayer
+
+#nose donde poner esto
+# AM en principio tendría que estar fuera de NumberMask
+# pero hay un bug en godot y el self modulate de NumberMask
+# se aplica tambien al hijo, por lo que el alpha se aplica 2 veces.
+# lo meto para que no se vea raro 
 
 @onready var scene_handler: Node = get_tree().get_first_node_in_group("scene_handler")
+
+@export var everything: Node2D
 
 @export var numbers: Node2D
 @export var timer: Timer
 @export var hall_of_fame: AudioStreamPlayer
 
 
-const VELOCITY := 80.0
+const VELOCITY := 50.0
 var moving_6 := false
 var velocity := 0.0
 
 var exiting := false
+var can_exit := true
+const TRANS_OUT_TIME := 3.0
 
 func _ready():
 	timer.start()
@@ -19,10 +29,10 @@ func _ready():
 
 func _process(delta):
 	if moving_6: # movimiento -> 0 -> -475
-		numbers.position.y -= delta * velocity
-		if numbers.position.y <= -475.0/2.0 and velocity <= 0:
+		numbers.global_position.y -= delta * velocity
+		if numbers.global_position.y <= -475.0/2.0 and velocity <= 0:
 			moving_6 = false
-		if numbers.position.y >= -475.0/2.0: # es un poco más de la mitad para que no frene del todo
+		if numbers.global_position.y >= -475.0/2.0: # es un poco más de la mitad para que no frene del todo
 			velocity += delta * VELOCITY
 		else:
 			velocity -= delta * VELOCITY
@@ -30,9 +40,14 @@ func _process(delta):
 
 func exit():
 	if Global.noche == 0:
-		scene_handler.trans_to_scene(scene_handler.scene.CUSTOM_NIGHT)
+		scene_handler.trans_to_scene(scene_handler.scene.CUSTOM_NIGHT, TRANS_OUT_TIME)
 	else:
-		scene_handler.trans_to_scene(scene_handler.scene.SHIFT)
+		scene_handler.trans_to_scene(scene_handler.scene.SHIFT, TRANS_OUT_TIME)
+	
+	var tween := create_tween()
+	tween.tween_property(
+		hall_of_fame, "volume_linear", 0.0, TRANS_OUT_TIME
+	)
 
 
 func _on_timer_1_timeout() -> void:
@@ -43,7 +58,7 @@ func _on_hall_of_fame_finished() -> void:
 	exit()
 
 func _input(event: InputEvent) -> void:
-	if exiting:
+	if exiting or not can_exit:
 		return
 	if event.is_action_pressed("Click") or event.is_action_pressed("Enter") or event.is_action_pressed("Esc") or event.is_action_pressed("Space"):
 		exit()

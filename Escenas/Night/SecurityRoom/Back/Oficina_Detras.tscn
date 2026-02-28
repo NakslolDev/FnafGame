@@ -15,19 +15,23 @@
 [ext_resource type="Texture2D" uid="uid://70g1lisui57o" path="res://assets/Placeholders/pictograms/Heater.png" id="13_eskf8"]
 [ext_resource type="Texture2D" uid="uid://dr1gi5l7x0gu7" path="res://assets/Placeholders/pictograms/Lights.png" id="14_3p8cq"]
 
-[node name="Oficina_Detras" type="Node2D" unique_id=848302343]
+[node name="Oficina_Detras" type="Node2D" unique_id=848302343 node_paths=PackedStringArray("detector_girar_i", "detector_girar_d")]
 script = ExtResource("1_eq3uw")
+detector_girar_i = NodePath("Detector_Girar_I")
+detector_girar_d = NodePath("Detector_Girar_D")
 
-[node name="Detector_Girar_I" parent="." unique_id=402128410 instance=ExtResource("4_jrb1r")]
+[node name="Detector_Girar_I" parent="." unique_id=402128410 node_paths=PackedStringArray("oficina") instance=ExtResource("4_jrb1r")]
 position = Vector2(240, 0)
 detras = true
+oficina = NodePath("..")
 
-[node name="Detector_Girar_D" parent="." unique_id=777721763 instance=ExtResource("4_jrb1r")]
+[node name="Detector_Girar_D" parent="." unique_id=777721763 node_paths=PackedStringArray("oficina") instance=ExtResource("4_jrb1r")]
 position = Vector2(-240, 0)
 rotation = 3.14159
 scale = Vector2(1, -1)
 detras = true
 izquierda = false
+oficina = NodePath("..")
 
 [node name="Ductos_Detras" parent="." unique_id=1865929924 instance=ExtResource("5_44ow4")]
 
@@ -44,59 +48,67 @@ texture = ExtResource("2_jrb1r")
 [node name="OficinaDetrasPNG" type="Sprite2D" parent="." unique_id=1775018625]
 texture = ExtResource("3_44ow4")
 
-[node name="Recargar_Linterna" parent="." unique_id=1461783972 instance=ExtResource("6_m6crn")]
+[node name="Recargar_Linterna" parent="." unique_id=1461783972 node_paths=PackedStringArray("office_behind") instance=ExtResource("6_m6crn")]
+office_behind = NodePath("..")
 
 [node name="Switches (carpeta)" type="Node2D" parent="." unique_id=775732335]
 
-[node name="Switch_Energia_1" parent="Switches (carpeta)" unique_id=1154522195 instance=ExtResource("7_h5o2t")]
+[node name="Switch_Energia_1" parent="Switches (carpeta)" unique_id=1154522195 node_paths=PackedStringArray("office_behind") instance=ExtResource("7_h5o2t")]
 position = Vector2(-100, 0)
+office_behind = NodePath("../..")
 
 [node name="Lightning" type="Sprite2D" parent="Switches (carpeta)" unique_id=1248776872]
 position = Vector2(-100, -10)
 texture = ExtResource("8_vt7d0")
 
-[node name="Switch_Energia_2" parent="Switches (carpeta)" unique_id=1693543509 instance=ExtResource("7_h5o2t")]
+[node name="Switch_Energia_2" parent="Switches (carpeta)" unique_id=1693543509 node_paths=PackedStringArray("office_behind") instance=ExtResource("7_h5o2t")]
 controlador = "Ventilacion"
+office_behind = NodePath("../..")
 
 [node name="Fan" type="Sprite2D" parent="Switches (carpeta)" unique_id=417498537]
 position = Vector2(0, -10)
 texture = ExtResource("9_8xigc")
 
-[node name="Switch_Energia_3" parent="Switches (carpeta)" unique_id=1643514900 instance=ExtResource("7_h5o2t")]
+[node name="Switch_Energia_3" parent="Switches (carpeta)" unique_id=1643514900 node_paths=PackedStringArray("office_behind") instance=ExtResource("7_h5o2t")]
 position = Vector2(100, 0)
 controlador = "Puertas"
+office_behind = NodePath("../..")
 
 [node name="Door" type="Sprite2D" parent="Switches (carpeta)" unique_id=4239974]
 position = Vector2(100, -10)
 texture = ExtResource("10_j2y4x")
 
-[node name="Switch_Energia_4" parent="Switches (carpeta)" unique_id=801276200 instance=ExtResource("7_h5o2t")]
+[node name="Switch_Energia_4" parent="Switches (carpeta)" unique_id=801276200 node_paths=PackedStringArray("office_behind") instance=ExtResource("7_h5o2t")]
 position = Vector2(200, 0)
 controlador = "Linterna"
+office_behind = NodePath("../..")
 
 [node name="FlashlighCharge" type="Sprite2D" parent="Switches (carpeta)" unique_id=1957537773]
 position = Vector2(200, -10)
 texture = ExtResource("11_xdoyy")
 
-[node name="Switch_Energia_5" parent="Switches (carpeta)" unique_id=1316905474 instance=ExtResource("7_h5o2t")]
+[node name="Switch_Energia_5" parent="Switches (carpeta)" unique_id=1316905474 node_paths=PackedStringArray("office_behind") instance=ExtResource("7_h5o2t")]
 position = Vector2(300, 0)
 controlador = "Camaras"
+office_behind = NodePath("../..")
 
 [node name="Cams" type="Sprite2D" parent="Switches (carpeta)" unique_id=1806950246]
 position = Vector2(300, -10)
 texture = ExtResource("12_vixeo")
 
-[node name="Switch_Energia_6" parent="Switches (carpeta)" unique_id=467452185 instance=ExtResource("7_h5o2t")]
+[node name="Switch_Energia_6" parent="Switches (carpeta)" unique_id=467452185 node_paths=PackedStringArray("office_behind") instance=ExtResource("7_h5o2t")]
 position = Vector2(400, 0)
 controlador = "Heater"
+office_behind = NodePath("../..")
 
 [node name="Heater" type="Sprite2D" parent="Switches (carpeta)" unique_id=1680030217]
 position = Vector2(400, -10)
 texture = ExtResource("13_eskf8")
 
-[node name="Switch_Energia_7" parent="Switches (carpeta)" unique_id=624212914 instance=ExtResource("7_h5o2t")]
+[node name="Switch_Energia_7" parent="Switches (carpeta)" unique_id=624212914 node_paths=PackedStringArray("office_behind") instance=ExtResource("7_h5o2t")]
 position = Vector2(500, 0)
 controlador = "Luces"
+office_behind = NodePath("../..")
 
 [node name="Lights" type="Sprite2D" parent="Switches (carpeta)" unique_id=898551550]
 position = Vector2(500, -10)

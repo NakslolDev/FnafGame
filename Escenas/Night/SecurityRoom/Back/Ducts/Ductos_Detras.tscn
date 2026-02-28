@@ -23,8 +23,10 @@ size = Vector2(1106, 1106.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cm3ov"]
 size = Vector2(546, 413)
 
-[node name="Ductos_Detras" type="Node2D" unique_id=1399113967]
+[node name="Ductos_Detras" type="Node2D" unique_id=1399113967 node_paths=PackedStringArray("ducto_detras_oscuro", "foxy")]
 script = ExtResource("1_tp3nd")
+ducto_detras_oscuro = NodePath("DuctoDetrasOscuro")
+foxy = NodePath("Foxy")
 
 [node name="DuctoDetrasIluminado" type="Sprite2D" parent="." unique_id=465259173]
 texture = ExtResource("1_drq1o")

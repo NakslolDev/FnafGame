@@ -2,6 +2,11 @@ extends Node2D
 
 signal Linterna_Recarga_Switch()
 
+@export var linterna_recargando: Sprite2D
+@export var agarrar: AudioStreamPlayer
+@export var encajar: AudioStreamPlayer
+@export var office_behind: Node2D
+
 var _recargando: bool
 var recargando := false:
 	get: return _recargando
@@ -22,20 +27,20 @@ var detras := false
 
 func _ready():
 	Global.set_energia_consumption("Linterna_Rec", 0)
-	Global.connect("energia_actualizada", Callable(self, "energia_act"))
-	$LinternaRecargando.modulate.a = 0.0
+	Global.energia_actualizada.connect(energia_act)
+	linterna_recargando.visible = false
 
 func _on_click():
-	if $"..".stop_everything == true:
+	if office_behind.stop_everything == true:
 		return
 	emit_signal("Linterna_Recarga_Switch")
 	recargando = !recargando
 	if recargando:
-		$LinternaRecargando.modulate.a = 1.0
-		$Encajar.play()
+		linterna_recargando.visible = true
+		encajar.play()
 	else:
-		$LinternaRecargando.modulate.a = 0.0
-		$Agarrar.play()
+		linterna_recargando.visible = false
+		agarrar.play()
 
 func _input(event):
 	if detras:

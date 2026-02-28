@@ -67,7 +67,7 @@ func trans_to_scene(next: scene, fade_time: float = transition.DEFAULT_TRANSITIO
 		scene.MAIN_MENU:
 			change_to_main_menu(true)
 		scene.OPTIONS:
-			change_to_opciones(true)
+			change_to_options(true)
 		scene.CUSTOM_NIGHT:
 			change_to_custom_night(true)
 		scene.NIGHT:
@@ -107,7 +107,7 @@ func change_to_main_menu(force: bool = false):
 	_manage_main_menu()
 	changing_scene = false
 
-func change_to_opciones(force: bool = false):
+func change_to_options(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
 	_act_current_scene(scene.OPTIONS)
@@ -278,3 +278,38 @@ func reset_options_scene():
 	current_tree_scene.queue_free()
 	current_tree_scene = opciones.instantiate()
 	add_child(current_tree_scene)
+
+
+const COOL_TRANS_FADE_TIME := 5.0
+func cool_6_am_transition():
+	
+	if changing_scene: return
+	changing_scene = true
+	
+	if current_scene != scene.NIGHT:
+		push_error("TF you doing, cool 6am transition is for night only")
+	
+	var new_node: Node = _6_am.instantiate()
+	new_node.everything.modulate.a = 0.0
+	current_tree_scene.add_sibling(new_node)
+	
+	current_tree_scene.tick_stop = true
+	current_tree_scene.on_tick_stop.emit()
+	
+	new_node.can_exit = false
+	 
+	var tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(
+		new_node.everything, "modulate:a", 1.0, COOL_TRANS_FADE_TIME
+	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	await tween.finished
+	
+	new_node.can_exit = true
+	_act_current_scene(scene.SIX_AM)
+	
+	if current_tree_scene != null: current_tree_scene.queue_free()
+	current_tree_scene = new_node
+	
+	_manage_6_am()
+	changing_scene = false

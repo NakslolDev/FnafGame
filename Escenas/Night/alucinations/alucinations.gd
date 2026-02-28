@@ -52,3 +52,8 @@ func _on_alucination_change_timeout() -> void:
 
 func _on_main_game_alucinations(on: bool) -> void:
 	active = on
+
+
+func _on_main_game_on_tick_stop() -> void:
+	active = false
+	visible = false

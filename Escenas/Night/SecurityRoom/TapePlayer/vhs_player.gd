@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var main_game: Node2D
+
 var audio: Node
 var scarlet_forest := false
 @export var vhs_colider: Area2D
@@ -29,10 +31,13 @@ func act_audio():
 		else:
 			audio = $Audios/ScarletForest
 	
-	if audio and not audio.is_connected("finished", Callable(self, "_on_audio_finished")):
-		audio.connect("finished", Callable(self, "_on_audio_finished")) # conecta la señal
+	if audio and not audio.finished.is_connected(_on_audio_finished):
+		audio.finished.connect(_on_audio_finished) # conecta la señal
 
 func act_status(status: int):
+	
+	if main_game.tick_stop:
+		return
 	
 	if status == 0:
 		$Play/PlayOn.visible = false

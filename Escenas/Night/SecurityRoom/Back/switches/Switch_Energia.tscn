@@ -9,8 +9,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1stgw"]
 size = Vector2(58, 120)
 
-[node name="Switch_Energia" type="Node2D" unique_id=1343769268]
+[node name="Switch_Energia" type="Node2D" unique_id=1343769268 node_paths=PackedStringArray("tiny_click", "switch_off", "switch_on_sprite")]
 script = ExtResource("1_8vunc")
+tiny_click = NodePath("Tiny_click")
+switch_off = NodePath("SwitchOff")
+switch_on_sprite = NodePath("SwitchOn")
 
 [node name="SwitchOff" type="Sprite2D" parent="." unique_id=1691092448]
 texture = ExtResource("2_thdhr")

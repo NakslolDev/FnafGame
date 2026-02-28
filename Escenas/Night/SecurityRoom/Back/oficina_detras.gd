@@ -17,27 +17,30 @@ func _on_detector_girar_izquierda_girar(izquierda: bool) -> void:
 
 
 func _on_detector_girar_girar(izquierda: bool) -> void:
-	emit_signal("Girar_Detras", izquierda)
+	Girar_Detras.emit(izquierda)
 
 
 func _on_linterna_linterna_activada_switch() -> void:
-	emit_signal("Linterna_Activada_Rebote")
+	Linterna_Activada_Rebote.emit()
 
 
 func _on_recargar_linterna_linterna_recarga_switch() -> void:
-	emit_signal("Linterna_Recarga_Switch_Rebote")
+	Linterna_Recarga_Switch_Rebote.emit()
 
 
 func _on_oficina_girando_estado(girando: int) -> void:
-	if girando == 3:
-		emit_signal("Detras_Estado", true)
-	else:
-		emit_signal("Detras_Estado", false)
+	Detras_Estado.emit(girando == 3)
 
+@export var detector_girar_i: Node2D
+@export var detector_girar_d: Node2D
 
 func _on_oficina_girar_input_permitido(izquierda: bool, detras: bool) -> void:
 	if detras:
 		if izquierda:
-			$Detector_Girar_I.emit_signal("Girar", true)
+			detector_girar_i.Girar.emit(true)
 		else:
-			$Detector_Girar_D.emit_signal("Girar", false)
+			detector_girar_d.Girar.emit(false)
+
+
+func _on_main_game_on_tick_stop() -> void:
+	stop_everything = true

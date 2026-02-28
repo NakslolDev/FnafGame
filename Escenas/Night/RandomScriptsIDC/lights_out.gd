@@ -26,3 +26,7 @@ func energia_act():
 	else:
 		oficina_lights_out_alpha.modulate.a = DARK_ALPHA
 		irritating_light.stream_paused = true
+
+
+func _on_main_game_on_tick_stop() -> void:
+	irritating_light.stop()

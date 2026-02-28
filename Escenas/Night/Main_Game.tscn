@@ -150,8 +150,9 @@ vhs_player = NodePath("../Oficina/VHS_Player")
 script = ExtResource("4_arw1f")
 oficina_detras_nodo = NodePath("Oficina_Detras")
 
-[node name="Ventilation" type="Node" parent="Oficina" unique_id=913684193]
+[node name="Ventilation" type="Node" parent="Oficina" unique_id=913684193 node_paths=PackedStringArray("ventilation_loop")]
 script = ExtResource("5_ujq6x")
+ventilation_loop = NodePath("VentilationLoop")
 speed = 0.25
 volume = 0.25
 
@@ -161,11 +162,13 @@ volume_db = -10.0
 bus = &"SFX"
 parameters/looping = true
 
-[node name="Detector_Girar_Izquierda" parent="Oficina" unique_id=663374591 instance=ExtResource("7_q5fcm")]
+[node name="Detector_Girar_Izquierda" parent="Oficina" unique_id=663374591 node_paths=PackedStringArray("oficina") instance=ExtResource("7_q5fcm")]
+oficina = NodePath("../..")
 
-[node name="Detector_Girar_Derecha" parent="Oficina" unique_id=1317894783 instance=ExtResource("7_q5fcm")]
+[node name="Detector_Girar_Derecha" parent="Oficina" unique_id=1317894783 node_paths=PackedStringArray("oficina") instance=ExtResource("7_q5fcm")]
 scale = Vector2(-1, 1)
 izquierda = false
+oficina = NodePath("../..")
 
 [node name="Ductos" parent="Oficina" unique_id=537877836 instance=ExtResource("8_v0aef")]
 
@@ -200,19 +203,23 @@ position = Vector2(0, -1500)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("13_yfjon")
 
-[node name="VHS_Player" parent="Oficina" unique_id=454136740 instance=ExtResource("14_lctcs")]
+[node name="VHS_Player" parent="Oficina" unique_id=454136740 node_paths=PackedStringArray("main_game") instance=ExtResource("14_lctcs")]
 position = Vector2(259, 120)
+main_game = NodePath("../..")
 
 [node name="Table_items" type="Node2D" parent="Oficina" unique_id=950471746]
 
-[node name="Battery_items" parent="Oficina/Table_items" unique_id=622084330 instance=ExtResource("16_13g5b")]
+[node name="Battery_items" parent="Oficina/Table_items" unique_id=622084330 node_paths=PackedStringArray("main_game") instance=ExtResource("16_13g5b")]
 position = Vector2(-346, 139)
+main_game = NodePath("../../..")
 
-[node name="WatterBottleItem" parent="Oficina/Table_items" unique_id=18006926 instance=ExtResource("17_5sfnd")]
+[node name="WatterBottleItem" parent="Oficina/Table_items" unique_id=18006926 node_paths=PackedStringArray("main_game") instance=ExtResource("17_5sfnd")]
 position = Vector2(-151, 85)
+main_game = NodePath("../../..")
 
-[node name="Freddy nose" parent="Oficina" unique_id=1087430654 instance=ExtResource("18_uce18")]
+[node name="Freddy nose" parent="Oficina" unique_id=1087430654 node_paths=PackedStringArray("main_game") instance=ExtResource("18_uce18")]
 position = Vector2(-298, -170)
+main_game = NodePath("../..")
 
 [node name="DirectionalAudio" parent="." unique_id=2054814738 node_paths=PackedStringArray("oficina") instance=ExtResource("47_pi1lr")]
 oficina = NodePath("../Oficina")
@@ -384,6 +391,12 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="jumpscare" from="." to="True_No_Shader/Jumpscare_Chica" method="_on_main_game_jumpscare"]
 [connection signal="jumpscare" from="." to="True_No_Shader/Jumpscare_Freddy" method="_on_main_game_jumpscare"]
 [connection signal="jumpscare" from="." to="True_No_Shader/Jumpscare_Foxy" method="_on_main_game_jumpscare"]
+[connection signal="on_tick_stop" from="." to="." method="_on_on_tick_stop"]
+[connection signal="on_tick_stop" from="." to="Oficina/Ventilation" method="_on_main_game_on_tick_stop"]
+[connection signal="on_tick_stop" from="." to="Oficina/Oficina_Detras" method="_on_main_game_on_tick_stop"]
+[connection signal="on_tick_stop" from="." to="No_Shader_UI/Lights" method="_on_main_game_on_tick_stop"]
+[connection signal="on_tick_stop" from="." to="True_No_Shader/Alucinations" method="_on_main_game_on_tick_stop"]
+[connection signal="on_tick_stop" from="." to="Camaras_Control" method="_on_main_game_on_tick_stop"]
 [connection signal="timeout" from="Control/Tick" to="." method="_on_tick_timeout"]
 [connection signal="timeout" from="Control/Tick" to="Cheats" method="_on_tick_timeout"]
 [connection signal="timeout" from="Control/ESC_Timer" to="." method="_on_esc_timer_timeout"]

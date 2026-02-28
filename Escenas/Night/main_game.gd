@@ -11,6 +11,10 @@ var alucinaciones_cooldown: int
 var tick_speed: float
 var tick_rate: float
 var tick_stop := false
+signal on_tick_stop
+func _on_on_tick_stop() -> void:
+	tick.stop()
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "tick stopped")
 
 @export_group("nodes")
 @export var oficina: Node2D
@@ -56,7 +60,7 @@ func _enter_tree() -> void: # antes que ready
 
 var save_volume_linear: float
 const TIEMPO_TRANSICION := 5.0
-func _transition_in() -> void:
+func _transition_in() -> void: # la idea es mejorar esta transicion
 	
 	transicion.modulate.a = 1.0
 	await get_tree().create_timer(0.5).timeout
@@ -64,9 +68,10 @@ func _transition_in() -> void:
 	var bus := AudioServer.get_bus_index("Master")
 	var tween := create_tween()
 	
-	tween.parallel() # Hace que todos los tweens internos ocurran al mismo tiempo
-	tween.tween_property(transicion, "modulate:a", 0.0, TIEMPO_TRANSICION)
-	
+	tween.set_parallel() # Hace que todos los tweens internos ocurran al mismo tiempo
+	tween.tween_property(
+		transicion, "modulate:a", 0.0, TIEMPO_TRANSICION
+	)
 	tween.tween_method(
 		func(value: float) -> void:
 			AudioServer.set_bus_volume_linear(bus, value),
@@ -93,6 +98,10 @@ func _ready():
 
 
 func _input(event):
+	if event.is_action_pressed("W"):
+		tick_stop = true
+		on_tick_stop.emit()
+	
 	if event.is_action_pressed("Esc"):
 		esc_timer.start()  # Empieza el conteo
 	
@@ -105,7 +114,8 @@ func _on_esc_timer_timeout():
 	# Si al terminar el tiempo todavía se está presionando Esc, cambiamos de escena
 	if Input.is_action_pressed("Esc"):
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "escaped")
-		tick.stop()
+		tick_stop = true
+		on_tick_stop.emit()
 		AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), save_volume_linear) # porsia no se ha terminado de reiniciar
 		if Global.noche == 0:
 			scene_handler.trans_to_scene(scene_handler.scene.CUSTOM_NIGHT, QUICK_TRANSITION_TIME)
@@ -132,6 +142,7 @@ func tick_call():
 	
 	if Global.time_hour == 6:
 		tick_stop = true
+		on_tick_stop.emit()
 		game_over(true)
 	
 	if cheats.invencibility:
@@ -175,9 +186,8 @@ func tick_call():
 
 func _on_jumpscare(_who: String) -> void:
 	tick_stop = true
-	stop_alucinations()
-	oficina_detras.stop_everything = true
-	camaras_control.game_over = true
+	on_tick_stop.emit()
+	oficina.jumpscare_block = true # la unica diferencia entre tick stop normal y que te hagan jumpscare
 	mouse_custom.override_alpha = true
 	mouse_custom.modulate.a = 0.0
 
@@ -203,7 +213,7 @@ func alucinacion_attempt():
 
 func stop_alucinations():
 	change_tick_rate(cheats.tick_rate)
-	emit_signal("alucinations", false)
+	alucinations.emit(false)
 
 func change_tick_rate(new_tick: float):
 	tick_rate = new_tick
@@ -213,7 +223,7 @@ func change_tick_rate(new_tick: float):
 func game_over(win: bool):
 	
 	if win:
-		scene_handler.change_to_6_am() # a ver como hago la transición
+		scene_handler.cool_6_am_transition() # a ver como hago la transición
 	else:
 		print("Death minigames: ", go_to_death_minigame())
 		if go_to_death_minigame():

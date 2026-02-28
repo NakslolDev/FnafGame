@@ -7,34 +7,34 @@ var controlador: String = "General"
 
 signal Restaurar_General()
 
-func _ready():
-	Global.connect("Energy_Breakdown", Callable(self, "energia_out"))
-	$Tiny_click.volume_linear = 0.0
-	switch_act(switch_on)
+@export var tiny_click: AudioStreamPlayer
+@export var switch_off: Sprite2D
+@export var switch_on_sprite: Sprite2D
+@export var office_behind: Node2D
 
-func switch_act(value):
-	$Tiny_click.play()
-	if value:
-		$SwitchOn.modulate.a = 1.0
-		$SwitchOff.modulate.a = 0.0
-	else:
-		$SwitchOn.modulate.a = 0.0
-		$SwitchOff.modulate.a = 1.0
+const SILENT := true
+
+func _ready():
+	Global.Energy_Breakdown.connect(energia_out)
+
+func switch_act(value, silent: bool = not SILENT):
+	if not silent: tiny_click.play()
+	
+	switch_on_sprite.visible = value
+	switch_off.visible = !value
+	
 	if value and (Global.energia["General"] or controlador == "General"):
 		if controlador == "General":
-			emit_signal("Restaurar_General")
-		Global.set_energia(controlador, true)
-	else:
-		Global.set_energia(controlador, false)
+			Restaurar_General.emit()
+	Global.set_energia(controlador, value)
 
 func energia_out():
-	if switch_on:
-		_on_click()
+	switch_on = false
+	switch_act(switch_on, SILENT)
 
 func _on_click():
-	if $"../..".stop_everything == true:
+	if office_behind.stop_everything == true:
 		return
-	$Tiny_click.volume_linear = 1.0
 	switch_on = !switch_on
 	switch_act(switch_on)
 

@@ -9,8 +9,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4dkt"]
 size = Vector2(208, 400)
 
-[node name="Recargar_Linterna" type="Node2D" unique_id=2017254811]
+[node name="Recargar_Linterna" type="Node2D" unique_id=2017254811 node_paths=PackedStringArray("linterna_recargando", "agarrar", "encajar")]
 script = ExtResource("1_8pogo")
+linterna_recargando = NodePath("LinternaRecargando")
+agarrar = NodePath("Agarrar")
+encajar = NodePath("Encajar")
 
 [node name="LinternaRecargando" type="Sprite2D" parent="." unique_id=2097981898]
 texture = ExtResource("1_b6u2f")

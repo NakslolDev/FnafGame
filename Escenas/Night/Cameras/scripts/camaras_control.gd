@@ -34,6 +34,9 @@ func _on_area_2d_down_mouse_entered() -> void:
 
 
 func toggle_cams():
+	if game_over:
+		return
+	
 	if root.camaras_activadas:
 		camaras.activado = false
 		root.camaras_activadas = false
@@ -52,3 +55,7 @@ func _on_oficina_girando_estado(girando: int) -> void:
 		se_puede = true
 	else:
 		se_puede = false
+
+
+func _on_main_game_on_tick_stop() -> void:
+	game_over = true

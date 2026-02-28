@@ -1,6 +1,5 @@
 extends Node2D
 
-
 # mover 240 hacia los lados como máximo
 @export var movimiento_max := 240.0
 @export var movimiento_max_girar := 7000
@@ -21,7 +20,12 @@ var padre_original: Node = null
 
 var cams_open := false
 
+var jumpscare_block := false
+
 func _process(delta):
+	
+	if jumpscare_block:
+		return
 	
 	if giro_input_centro:
 		var target: Vector2

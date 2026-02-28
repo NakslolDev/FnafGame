@@ -3,25 +3,26 @@ extends Node2D
 var shader_enabled := false
 var focus := 0
 
-@onready var sprite := $DuctoDetrasOscuro
+@export var ducto_detras_oscuro: Sprite2D
+@export var foxy: Sprite2D
 
 func _ready():
-	$Foxy.modulate.a = 0.0
-	Foxy.connect("movement", Callable(self, "movement"))
+	foxy.modulate.a = 0.0
+	Foxy.movement.connect(movement)
 
 func movement(_a = null, _b = null, _c = null, _d = null):
 	if Foxy.room == "Duc8" and Foxy.position == 0:
-		$Foxy.modulate.a = 1.0
+		foxy.modulate.a = 1.0
 	else:
-		$Foxy.modulate.a = 0.0
+		foxy.modulate.a = 0.0
 
 func _on_oficina_detras_linterna_activada_rebote() -> void:
 	shader_enabled = !shader_enabled
 	act_linerna_focus()
 	if shader_enabled:
-		sprite.material.set_shader_parameter("shader_enabled", 1.0)
+		ducto_detras_oscuro.material.set_shader_parameter("shader_enabled", 1.0)
 	else:
-		sprite.material.set_shader_parameter("shader_enabled", 0.0)
+		ducto_detras_oscuro.material.set_shader_parameter("shader_enabled", 0.0)
 
 func act_linerna_focus():
 	if shader_enabled and focus != 0:

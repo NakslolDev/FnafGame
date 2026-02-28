@@ -924,15 +924,8 @@ func reset_night():
 	time_minute = 0
 	tick_count = 0
 	linterna_bateria = 100
-	energia = { # reinicia swithces
-		"General": true,
-		"Luces": true,
-		"Ventilacion": true,
-		"Puertas": true,
-		"Linterna": true,
-		"Camaras": true,
-		"Heater": true
-	}
+	for key in energia:
+		set_energia(key, true)
 	act_animatronic_ai(time_hour)
 
 func night_starts():
@@ -1097,14 +1090,14 @@ func set_energia(nombre: String, valor: bool): # En vez de dar el valor directam
 		for key in energia.keys():
 			if energia[key] != false:
 				energia[key] = false
-		emit_signal("energia_actualizada")
+		energia_actualizada.emit()
 		actualizar_luces()
 		actualizar_ventilacion()
 		return
 		
 	if energia.has(nombre) and energia[nombre] != valor:
 		energia[nombre] = valor
-		emit_signal("energia_actualizada")
+		energia_actualizada.emit()
 		actualizar_ventilacion()
 		actualizar_luces()
 

@@ -1,6 +1,7 @@
 extends Node2D
 class_name consumable
 
+@export var main_game: Node2D
 
 @export var object_name: String
 @export var maximun: int = 3
@@ -41,6 +42,9 @@ func _validate():
 		Items.objects[object_name] = maximun
 
 func _input(event: InputEvent) -> void:
+	if main_game.tick_stop:
+		return
+	
 	if not event.is_action_pressed("Click") or not _is_mouse_over():
 		return
 	

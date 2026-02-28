@@ -53,5 +53,6 @@ texture = ExtResource("9_8ft8s")
 script = ExtResource("10_rp7rm")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=304125001]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("11_rp7rm")
