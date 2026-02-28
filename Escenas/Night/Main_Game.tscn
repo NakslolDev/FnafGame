@@ -363,42 +363,34 @@ scale = Vector2(3, 3)
 
 [node name="Ruido1" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=1660319294]
 material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_u32el")
 
 [node name="Ruido2" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=345150706]
 material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_u1au3")
 
 [node name="Ruido3" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=917585757]
 material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_xe21u")
 
 [node name="Ruido4" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=866052324]
 material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_pd3h4")
 
 [node name="Ruido5" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=994945696]
 material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_0nvb3")
 
 [node name="Ruido6" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=556371632]
 material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_4erhx")
 
 [node name="Ruido7" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=1555904730]
 material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_arw1f")
 
 [node name="Ruido8" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=734748453]
 material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_hal1v")
 
 [node name="Viñeta" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=457874713]
