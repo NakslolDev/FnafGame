@@ -12,12 +12,6 @@ func _append_sounds_recursively(father: Node = self):
 		else:
 			_append_sounds_recursively(node)
 
-
-func _recursive_sum(arr: Array[int], n: int = arr.size() - 1):
-	arr[n]
-	pass
-
-
 @export var oficina: Node2D
 
 var _local_security_room_position: float

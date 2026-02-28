@@ -1,20 +1,33 @@
 extends Node2D
 
+@onready var scene_handler: Node = get_tree().get_first_node_in_group("scene_handler")
+
 var type := 0
 
-@export var transicion := 3
-var transicionando_out: bool
-var transicionando_in: bool
+@export var advice: Label
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Click") or event.is_action_pressed("Enter") or event.is_action_pressed("Esc") or event.is_action_pressed("Space") or event.is_action_pressed("interact"):
-		transition_to_menu()
+@export var timer: Timer
+
+const MINIMUN_TIME := 2.0
+
+var can_trans := false
 
 func _ready():
-	transicionando_in = true
 	type = Global.dead_scene_type
 	act_sprites()
-	$Advice.act_advice(type)
+	advice.act_advice(type)
+	
+	timer.start(MINIMUN_TIME)
+
+func _on_timer_timeout() -> void:
+	can_trans = true
+
+func _input(event: InputEvent) -> void:
+	if not can_trans:
+		return
+	if event.is_action_pressed("Click") or event.is_action_pressed("Enter") or event.is_action_pressed("Esc") or event.is_action_pressed("Space") or event.is_action_pressed("interact"):
+		exit()
+
 
 func act_sprites():
 	$Imagen/Fan.visible = false
@@ -34,33 +47,16 @@ func act_sprites():
 	if type == 4:
 		$Imagen/Foxy.visible = true
 
-func _process(delta):
-	if transicionando_out:
-		$Transicion.modulate.a += delta / transicion
-		if $Transicion.modulate.a >= 1.0:
-			$Transicion.modulate.a = 1.0
-			transicionando_out = false
-			Global.escena_previa = "Dead_scene"
-			if Global.noche == 0:
-				if Global.misc["When_dead_go_to"] == "night":
-					get_tree().change_scene_to_file("res://Escenas/Night/Main_Game.tscn") #actualizar
-				else:
-					get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
-			else:
-				if Global.misc["When_dead_go_to"] == "night":
-					get_tree().change_scene_to_file("res://Escenas/Night/Main_Game.tscn") #actualizar
-				elif Global.misc["When_dead_go_to"] == "shift":
-					Global.m_entering = true
-					Global.minigame_starts()
-					get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar
-				else:
-					get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
-	if transicionando_in:
-		$Transicion.modulate.a -= delta / transicion
-		if $Transicion.modulate.a <= 0.0:
-			$Transicion.modulate.a = 0.0
-			transicionando_in = false
-
-func transition_to_menu(): # como no hay ningun otro caso de transicion, no tengo que distinguir
-	transicionando_in = false
-	transicionando_out = true
+func exit():
+	if Global.noche == 0:
+		if Global.misc["When_dead_go_to"] == "night":
+			scene_handler.trans_to_scene(scene_handler.scene.NIGHT)
+		else:
+			scene_handler.trans_to_scene(scene_handler.scene.CUSTOM_NIGHT)
+	else:
+		if Global.misc["When_dead_go_to"] == "night":
+			scene_handler.trans_to_scene(scene_handler.scene.NIGHT)
+		elif Global.misc["When_dead_go_to"] == "shift":
+			scene_handler.trans_to_scene(scene_handler.scene.SHIFT)
+		else:
+			scene_handler.trans_to_scene(scene_handler.scene.MAIN_MENU)

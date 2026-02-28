@@ -5,24 +5,43 @@ var debug := Global.debug
 func _ready():
 	sync()
 
+@export_group("nodes")
+@export var check_box_prevent_save: CheckBox
+@export var check_box_invencibility: CheckBox
+@export var check_box_instant_win: CheckBox
+@export var check_box_timeless: CheckBox
+@export var check_box_ultra_agresive: CheckBox
+@export var check_box_infinite_batery: CheckBox
+@export var check_box_lights_consume: CheckBox
+@export var check_box_animatronic_map: CheckBox
+@export var check_box_see_light_batery: CheckBox
+@export var check_box_see_time_always: CheckBox
+@export var check_box_see_insanity: CheckBox
+@export var check_box_tick_count: CheckBox
+@export var spin_box_max_consumption: SpinBox
+@export var spin_boxt_night_duration: SpinBox
+@export var spin_boxt_tick_rate: SpinBox
+
+
 func sync():
-	debug = Global.debug 
-	$CheckBox_prevent_save.button_pressed = debug["prevent_save"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_Invencibility.button_pressed = debug["cheats"]["invencibility"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_Timeless.button_pressed = debug["cheats"]["timeless"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_ultra_agresive.button_pressed = debug["cheats"]["ultra_agresive"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_Infinite_Batery.button_pressed = debug["cheats"]["infinite_light"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_Lights_consume.button_pressed = debug["cheats"]["lights_consume"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_animatronic_map.button_pressed = debug["cheats"]["animatronic_map"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_see_light_batery.button_pressed = debug["cheats"]["see_light_batery"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_see_time_always.button_pressed = debug["cheats"]["see_time_always"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_see_insanity.button_pressed = debug["cheats"]["see_insanity"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_tick_count.button_pressed = debug["cheats"]["tick_count"]
-	$MarginContainer_cheats/VBoxContainer/max_consumption/SpinBox_max_consumption.value = debug["cheats"]["max_consumption"]
-	$MarginContainer_cheats/VBoxContainer/night_duration/SpinBoxt_night_duration.value = debug["cheats"]["night_duration"]
-	$MarginContainer_cheats/VBoxContainer/tick_rate/SpinBoxt_tick_rate.value = debug["cheats"]["tick_rate"]
-	$MarginContainer_cheats/VBoxContainer/CheckBox_Instant_win.button_pressed = debug["cheats"]["instawin"] 
+	debug = Global.debug
+	check_box_prevent_save.button_pressed = debug["prevent_save"]
 	
+	check_box_invencibility.button_pressed = debug["cheats"]["invencibility"]
+	check_box_instant_win.button_pressed = debug["cheats"]["instawin"]
+	check_box_timeless.button_pressed = debug["cheats"]["timeless"]
+	check_box_ultra_agresive.button_pressed = debug["cheats"]["ultra_agresive"]
+	check_box_infinite_batery.button_pressed = debug["cheats"]["infinite_light"]
+	check_box_lights_consume.button_pressed = debug["cheats"]["lights_consume"]
+	check_box_animatronic_map.button_pressed = debug["cheats"]["animatronic_map"]
+	check_box_see_light_batery.button_pressed = debug["cheats"]["see_light_batery"]
+	check_box_see_time_always.button_pressed = debug["cheats"]["see_time_always"]
+	check_box_see_insanity.button_pressed = debug["cheats"]["see_insanity"]
+	check_box_tick_count.button_pressed = debug["cheats"]["tick_count"]
+	
+	spin_box_max_consumption.value = debug["cheats"]["max_consumption"]
+	spin_boxt_night_duration.value = debug["cheats"]["night_duration"]
+	spin_boxt_tick_rate.value = debug["cheats"]["tick_rate"]
 
 func _on_check_box_prevsafe_toggled(toggled_on: bool) -> void:
 	debug["prevent_save"] = toggled_on

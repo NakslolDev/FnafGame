@@ -9,7 +9,7 @@ extends Button
 @export var Deutsch := true
 
 func _ready():
-	$".".text = root_node.get_text(id)
+	.text = root_node.get_text(id)
 
 func _on_pressed() -> void:
 	actualizar_lenguaje()
@@ -30,4 +30,4 @@ func actualizar_lenguaje():
 	index = (index + 1) % idiomas.size()
 	Global.audio_language = idiomas[index]
 	
-	$".".text = root_node.get_text(id)
+	.text = root_node.get_text(id)

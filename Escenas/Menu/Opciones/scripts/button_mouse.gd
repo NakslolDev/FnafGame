@@ -1,7 +1,7 @@
 extends Button
 
 @export var id: String
-@onready var root_node = get_node("/root/Opciones")
+@export var root_node: Node
 var _text
 
 func _ready():

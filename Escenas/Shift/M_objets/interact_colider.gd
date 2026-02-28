@@ -67,7 +67,7 @@ enum dmState{Omit, None, Complete, Saved}
 @export var freddy: dmState = dmState.Omit
 @export var foxy: dmState = dmState.Omit
 
-
+@onready var minigame: Node = get_tree().get_first_node_in_group("minigame") # curioso, pero bueno, funciona
 
 signal do_action(action: String, read: int)
 signal send_id_to_text(id: String, end_in: Array[int], read: int)
@@ -142,7 +142,7 @@ func _input(event):
 	if not (event.is_action_pressed("interact") and player_in) or not active:
 		return
 	
-	if get_tree().get_root().get_node("Minigame").reading or get_tree().get_root().get_node("Minigame").safing: #uso otro if para que no quede tan largo
+	if minigame.reading or minigame.safing or minigame.transitioning: #uso otro if para que no quede tan largo
 		return
 	
 	print("Read: ", read, "  End in: ", read_end_in)
@@ -151,11 +151,11 @@ func _input(event):
 		action = custom_action
 	
 	if action == "Text":
-		emit_signal("send_id_to_text", id, read_end_in, read)
+		send_id_to_text.emit(id, read_end_in, read)
 	else:
-		emit_signal("do_action", action, read)
+		do_action.emit(action, read)
 		if action.ends_with("w_text"):
-			emit_signal("send_id_to_text", id, read_end_in, read)
+			send_id_to_text.emit(id, read_end_in, read)
 	if read < read_end_in.size():
 		read += 1
 	

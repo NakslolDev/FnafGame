@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv54uvsb4g8u4"]
 
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://Escenas/Menu/Opciones/opciones.gd" id="1_k0pte"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="3_64mem"]
 [ext_resource type="Script" uid="uid://cw4xikgcuuitu" path="res://Escenas/Menu/Opciones/scripts/screen.gd" id="3_s8b7i"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="4_okdqg"]
@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://24xvgy3l2ncb" path="res://Escenas/Menu/Opciones/scripts/button_when_win.gd" id="21_aq4ee"]
 [ext_resource type="Script" uid="uid://cwh1f4g4dt7w2" path="res://Escenas/Menu/Opciones/scripts/text_speed.gd" id="22_efbbb"]
 [ext_resource type="Script" uid="uid://bh6vae5cm5pt0" path="res://Escenas/Menu/Opciones/scripts/debug_menu.gd" id="24_gc1n0"]
-[ext_resource type="Script" uid="uid://dnse04uiexae2" path="res://Escenas/Menu/Opciones/scripts/button_languaje.gd" id="25_7k58l"]
+[ext_resource type="Script" uid="uid://dnse04uiexae2" path="res://Escenas/Menu/Opciones/scripts/button_translate_language.gd" id="25_7k58l"]
 [ext_resource type="Script" uid="uid://dxx02db84wdrr" path="res://Escenas/Menu/Opciones/scripts/debug_panel.gd" id="26_1dkiy"]
 [ext_resource type="Script" uid="uid://8kmrqndwl8b7" path="res://Escenas/Menu/Opciones/scripts/debug_options.gd" id="27_wa1uf"]
 [ext_resource type="Theme" uid="uid://dq5xvu5jxq2yc" path="res://Resources (tres)/debug_options.tres" id="28_t63xu"]
@@ -58,7 +58,7 @@ corner_detail = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjkuq"]
 
-[node name="Opciones" type="Control" unique_id=1491869246]
+[node name="Opciones" type="Control" unique_id=1491869246 node_paths=PackedStringArray("debug_panel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,6 +69,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 script = ExtResource("1_k0pte")
+debug = true
+debug_panel = NodePath("Debug_panel")
 
 [node name="FondoNegro" type="Sprite2D" parent="." unique_id=2076492844]
 position = Vector2(960, 540)
@@ -123,7 +125,7 @@ fps_label = NodePath("fps/Label")
 fps_h_slider = NodePath("fps/HSlider")
 fullscreen = NodePath("Fullscreen")
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=76118723]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=76118723 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -134,6 +136,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "screen"
+root_node = NodePath("../../../../../..")
 
 [node name="vsync" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=109996198]
 layout_mode = 2
@@ -169,7 +172,7 @@ text = "Fullscreen
 "
 autowrap_mode = 2
 
-[node name="Brightness" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1146398527]
+[node name="Brightness" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1146398527 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -181,6 +184,7 @@ text = "Brightness"
 autowrap_mode = 2
 script = ExtResource("25_7k58l")
 id = "Brightness"
+root_node = NodePath("../../../../../..")
 
 [node name="Mouse_Sound" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1774242955]
 layout_mode = 2
@@ -190,7 +194,7 @@ theme_override_constants/separation = 100
 layout_mode = 2
 theme_override_constants/separation = 42
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse" unique_id=1676710195]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse" unique_id=1676710195 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -201,8 +205,9 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "Mouse_title"
+root_node = NodePath("../../../../../../..")
 
-[node name="Button_mouse_type" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse" unique_id=881098410]
+[node name="Button_mouse_type" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse" unique_id=881098410 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("3_64mem")
@@ -211,8 +216,9 @@ text = "Mouse Type: 3"
 autowrap_mode = 2
 script = ExtResource("5_6fyg2")
 id = "Mouse_type"
+root_node = NodePath("../../../../../../..")
 
-[node name="Button_mouse_cam" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse" unique_id=1434362345]
+[node name="Button_mouse_cam" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse" unique_id=1434362345 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Highlight in cams"
@@ -220,13 +226,14 @@ autowrap_mode = 2
 script = ExtResource("6_xbn81")
 id_on = "Mouse_hl_on"
 id_off = "Mouse_hl_off"
+root_node = NodePath("../../../../../../..")
 
 [node name="mouse_op" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse" unique_id=971704404]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op" unique_id=1856919374]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op" unique_id=1856919374 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -239,6 +246,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "Mouse_opacity"
+root_node = NodePath("../../../../../../../..")
 
 [node name="HSlider" type="HSlider" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op" unique_id=1915715044]
 layout_mode = 2
@@ -246,7 +254,7 @@ max_value = 1.0
 step = 0.01
 script = ExtResource("7_b8pj5")
 
-[node name="TooLittleOp" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op" unique_id=45093169]
+[node name="TooLittleOp" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/mouse_op" unique_id=45093169 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("3_64mem")
 theme_override_colors/font_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
@@ -254,12 +262,13 @@ text = "(full opacity while in menu)"
 horizontal_alignment = 1
 script = ExtResource("4_okdqg")
 id = "Too_little_op"
+root_node = NodePath("../../../../../../../..")
 
 [node name="Sound" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound" unique_id=1139040558]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound" unique_id=195362401]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound" unique_id=195362401 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -270,13 +279,14 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "Sound_title"
+root_node = NodePath("../../../../../../..")
 
 [node name="Master_Volume" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound" unique_id=1275694057]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Master_Volume" unique_id=1256159371]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Master_Volume" unique_id=1256159371 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -289,6 +299,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "Sound_master"
+root_node = NodePath("../../../../../../../..")
 
 [node name="HSlider" type="HSlider" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Master_Volume" unique_id=1489927150]
 layout_mode = 2
@@ -304,7 +315,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/SFX_Volume" unique_id=1032844910]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/SFX_Volume" unique_id=1032844910 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -317,6 +328,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "Sound_sfx"
+root_node = NodePath("../../../../../../../..")
 
 [node name="HSlider" type="HSlider" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/SFX_Volume" unique_id=1089211293]
 layout_mode = 2
@@ -332,7 +344,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Music_Volume" unique_id=1450803129]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Music_Volume" unique_id=1450803129 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -345,6 +357,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "Sound_music"
+root_node = NodePath("../../../../../../../..")
 
 [node name="HSlider" type="HSlider" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Music_Volume" unique_id=1915883267]
 layout_mode = 2
@@ -363,7 +376,7 @@ theme_override_constants/separation = 75
 layout_mode = 2
 theme_override_constants/separation = 35
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1487662226]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1487662226 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -374,8 +387,9 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "UI_title"
+root_node = NodePath("../../../../../../..")
 
-[node name="Button_UI_type" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1340813821]
+[node name="Button_UI_type" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1340813821 node_paths=PackedStringArray("root_node", "button_customice_ui")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("3_64mem")
@@ -385,8 +399,10 @@ autowrap_mode = 2
 script = ExtResource("11_6hagv")
 id_energy = "UI_energy_con"
 id_flashlight = "UI_flashlight_con"
+root_node = NodePath("../../../../../../..")
+button_customice_ui = NodePath("../Button_Customice_UI")
 
-[node name="Button_Customice_UI" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1251719234]
+[node name="Button_Customice_UI" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1251719234 node_paths=PackedStringArray("root_node")]
 visible = false
 layout_mode = 2
 theme = ExtResource("3_64mem")
@@ -395,8 +411,9 @@ autowrap_mode = 2
 script = ExtResource("12_epepx")
 id_energy = "UI_energy_cust"
 id_flashlight = "UI_flashlight_cust"
+root_node = NodePath("../../../../../../..")
 
-[node name="Button_Fade_Out" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1616097917]
+[node name="Button_Fade_Out" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1616097917 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Fade out when not used"
@@ -404,8 +421,9 @@ autowrap_mode = 2
 script = ExtResource("13_t7tks")
 id_on = "UI_fade_on"
 id_off = "UI_fade_off"
+root_node = NodePath("../../../../../../..")
 
-[node name="Fade_Out_Options" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1495059565]
+[node name="Fade_Out_Options" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI" unique_id=1495059565 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -413,6 +431,7 @@ theme_override_constants/separation = 9
 script = ExtResource("14_rxyt1")
 id_time = "UI_fade_time"
 id_speed = "UI_fade_speed"
+root_node = NodePath("../../../../../../..")
 
 [node name="Fade_Time" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options" unique_id=116616761]
 custom_minimum_size = Vector2(1, 0)
@@ -450,7 +469,7 @@ step = 0.1
 layout_mode = 2
 theme_override_constants/separation = 35
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language" unique_id=970385771]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language" unique_id=970385771 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -461,8 +480,9 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "Language_title"
+root_node = NodePath("../../../../../../..")
 
-[node name="Button_Language" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language" unique_id=1087198122]
+[node name="Button_Language" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language" unique_id=1087198122 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -472,6 +492,7 @@ text = "English"
 autowrap_mode = 2
 script = ExtResource("16_3ayvq")
 id = "Language"
+root_node = NodePath("../../../../../../..")
 Deutsch = false
 
 [node name="Misc" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1787875783]
@@ -479,7 +500,7 @@ custom_minimum_size = Vector2(310, 0)
 layout_mode = 2
 theme_override_constants/separation = 42
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=1397578514]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=1397578514 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_64mem")
@@ -489,8 +510,9 @@ horizontal_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_okdqg")
 id = "Misc_title"
+root_node = NodePath("../../../../../..")
 
-[node name="Button_Switch_Doors" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=992860719]
+[node name="Button_Switch_Doors" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=992860719 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Switch key doors when facing back"
@@ -498,8 +520,9 @@ autowrap_mode = 2
 script = ExtResource("17_4shsc")
 id_on = "Switch_doors_on"
 id_off = "Switch_doors_off"
+root_node = NodePath("../../../../../..")
 
-[node name="Button_cam_lights" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=1261471927]
+[node name="Button_cam_lights" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=1261471927 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Automaticly block cam lights"
@@ -507,8 +530,9 @@ autowrap_mode = 2
 script = ExtResource("18_ssvwo")
 id_on = "Auto_cam_lights_on"
 id_off = "Auto_cam_lights_off"
+root_node = NodePath("../../../../../..")
 
-[node name="Button_flick_cams" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=351580465]
+[node name="Button_flick_cams" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=351580465 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Flick down for cams"
@@ -516,8 +540,9 @@ autowrap_mode = 2
 script = ExtResource("19_rramm")
 id_on = "Flick_down_cams_on"
 id_off = "Flick_down_cams_off"
+root_node = NodePath("../../../../../..")
 
-[node name="Button_when_dead" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=937482808]
+[node name="Button_when_dead" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=937482808 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(222, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -528,8 +553,9 @@ text = "when dead go to menu"
 autowrap_mode = 3
 script = ExtResource("20_ey2eu")
 id = "When_dead_"
+root_node = NodePath("../../../../../..")
 
-[node name="Button_when_win" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=1517842545]
+[node name="Button_when_win" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=1517842545 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -540,13 +566,14 @@ text = "When win go to next shift"
 autowrap_mode = 2
 script = ExtResource("21_aq4ee")
 id = "When_win_"
+root_node = NodePath("../../../../../..")
 
 [node name="Text_Speed" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=648310028]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed" unique_id=1363551090]
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed" unique_id=1363551090 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -558,6 +585,7 @@ text = "Text speed"
 autowrap_mode = 2
 script = ExtResource("22_efbbb")
 id = "Text_speed"
+root_node = NodePath("../../../../../../..")
 
 [node name="HSlider" type="HSlider" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed" unique_id=1873549620]
 layout_mode = 2
@@ -565,58 +593,64 @@ max_value = 2.5
 step = 0.1
 value = 1.0
 
-[node name="Debug_menu" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=15916016]
+[node name="Debug_menu" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc" unique_id=15916016 node_paths=PackedStringArray("opciones")]
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "debug"
 script = ExtResource("24_gc1n0")
+opciones = NodePath("../../../../../..")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Accesibilidad/Panel/VBoxContainer" unique_id=472748266]
 layout_mode = 2
 theme_override_constants/separation = -55
 alignment = 1
 
-[node name="save" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=163487432]
+[node name="save" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=163487432 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Save"
 script = ExtResource("25_7k58l")
 id = "save"
+root_node = NodePath("../../../../..")
 
-[node name="Save_exit" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=1709659617]
+[node name="Save_exit" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=1709659617 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Save and exit (esc)"
 script = ExtResource("25_7k58l")
 id = "save_and_exit"
+root_node = NodePath("../../../../..")
 
-[node name="Exit" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=1080424047]
+[node name="Exit" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=1080424047 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Exit"
 script = ExtResource("25_7k58l")
 id = "exit"
+root_node = NodePath("../../../../..")
 
-[node name="Undo" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=532986918]
+[node name="Undo" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=532986918 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Revert changes"
 script = ExtResource("25_7k58l")
 id = "reset"
+root_node = NodePath("../../../../..")
 
-[node name="Reset" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=1334838354]
+[node name="Reset" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer2" unique_id=1334838354 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_64mem")
 text = "Reset to default"
 script = ExtResource("25_7k58l")
 id = "reset_to_default"
+root_node = NodePath("../../../../..")
 
-[node name="Debug_panel" type="Panel" parent="." unique_id=311943914]
+[node name="Debug_panel" type="Panel" parent="." unique_id=311943914 node_paths=PackedStringArray("general", "gamestate")]
 visible = false
 layout_mode = 0
 offset_left = 560.0
@@ -625,6 +659,8 @@ offset_right = 1360.0
 offset_bottom = 1030.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ndx3k")
 script = ExtResource("26_1dkiy")
+general = NodePath("ScrollContainer/General")
+gamestate = NodePath("ScrollContainer/General/MarginContainer_gs/Gamestate")
 
 [node name="Input_eater" type="Panel" parent="Debug_panel" unique_id=207256109]
 layout_mode = 0
@@ -647,25 +683,40 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer" unique_id=313878102]
+[node name="General" type="VBoxContainer" parent="Debug_panel/ScrollContainer" unique_id=313878102 node_paths=PackedStringArray("check_box_prevent_save", "check_box_invencibility", "check_box_instant_win", "check_box_timeless", "check_box_ultra_agresive", "check_box_infinite_batery", "check_box_lights_consume", "check_box_animatronic_map", "check_box_see_light_batery", "check_box_see_time_always", "check_box_see_insanity", "check_box_tick_count", "spin_box_max_consumption", "spin_boxt_night_duration", "spin_boxt_tick_rate")]
 custom_minimum_size = Vector2(720, 900)
 layout_mode = 2
 theme_override_constants/separation = 40
 script = ExtResource("27_wa1uf")
+check_box_prevent_save = NodePath("CheckBox_prevent_save")
+check_box_invencibility = NodePath("MarginContainer_cheats/Cheats/CheckBox_Invencibility")
+check_box_instant_win = NodePath("MarginContainer_cheats/Cheats/CheckBox_Instant_win")
+check_box_timeless = NodePath("MarginContainer_cheats/Cheats/CheckBox_Timeless")
+check_box_ultra_agresive = NodePath("MarginContainer_cheats/Cheats/CheckBox_ultra_agresive")
+check_box_infinite_batery = NodePath("MarginContainer_cheats/Cheats/CheckBox_Infinite_Batery")
+check_box_lights_consume = NodePath("MarginContainer_cheats/Cheats/CheckBox_Lights_consume")
+check_box_animatronic_map = NodePath("MarginContainer_cheats/Cheats/CheckBox_animatronic_map")
+check_box_see_light_batery = NodePath("MarginContainer_cheats/Cheats/CheckBox_see_light_batery")
+check_box_see_time_always = NodePath("MarginContainer_cheats/Cheats/CheckBox_see_time_always")
+check_box_see_insanity = NodePath("MarginContainer_cheats/Cheats/CheckBox_see_insanity")
+check_box_tick_count = NodePath("MarginContainer_cheats/Cheats/CheckBox_tick_count")
+spin_box_max_consumption = NodePath("MarginContainer_cheats/Cheats/max_consumption/SpinBox_max_consumption")
+spin_boxt_night_duration = NodePath("MarginContainer_cheats/Cheats/night_duration/SpinBoxt_night_duration")
+spin_boxt_tick_rate = NodePath("MarginContainer_cheats/Cheats/tick_rate/SpinBoxt_tick_rate")
 
-[node name="Exit_debug" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=1684956740]
+[node name="Exit_debug" type="Button" parent="Debug_panel/ScrollContainer/General" unique_id=1684956740]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Exit debug mode"
 alignment = 0
 
-[node name="Close" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=854930416]
+[node name="Close" type="Button" parent="Debug_panel/ScrollContainer/General" unique_id=854930416]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Close (esc)"
 alignment = 0
 
-[node name="CheckBox_prevent_save" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=1861369641]
+[node name="CheckBox_prevent_save" type="CheckBox" parent="Debug_panel/ScrollContainer/General" unique_id=1861369641]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
@@ -674,183 +725,183 @@ text = "Prevent game from saving
 (if activated, the game will go back to its orignal
 state when debug is turned of / quit the game)"
 
-[node name="Unlock_cn" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=1341799003]
+[node name="Unlock_cn" type="Button" parent="Debug_panel/ScrollContainer/General" unique_id=1341799003]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Unlock Custom Night"
 alignment = 0
 
-[node name="Cheats" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=1114511691]
+[node name="Cheats" type="Label" parent="Debug_panel/ScrollContainer/General" unique_id=1114511691]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "Cheats"
 
-[node name="MarginContainer_cheats" type="MarginContainer" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=1223352991]
+[node name="MarginContainer_cheats" type="MarginContainer" parent="Debug_panel/ScrollContainer/General" unique_id=1223352991]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats" unique_id=1202765531]
+[node name="Cheats" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats" unique_id=1202765531]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="CheckBox_Invencibility" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=1043586838]
+[node name="CheckBox_Invencibility" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1043586838]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Invencibility"
 
-[node name="CheckBox_Instant_win" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=70283122]
+[node name="CheckBox_Instant_win" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=70283122]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Instant win"
 
-[node name="CheckBox_Timeless" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=1391708836]
+[node name="CheckBox_Timeless" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1391708836]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Timeless"
 
-[node name="CheckBox_ultra_agresive" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=574168031]
+[node name="CheckBox_ultra_agresive" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=574168031]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Ultra agresive"
 
-[node name="CheckBox_Infinite_Batery" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=332959660]
+[node name="CheckBox_Infinite_Batery" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=332959660]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Infinite Batery"
 
-[node name="CheckBox_Lights_consume" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=2054798941]
+[node name="CheckBox_Lights_consume" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=2054798941]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Lights consume"
 
-[node name="CheckBox_animatronic_map" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=580906530]
+[node name="CheckBox_animatronic_map" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=580906530]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Animatronic map"
 
-[node name="CheckBox_see_light_batery" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=1301694855]
+[node name="CheckBox_see_light_batery" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1301694855]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "See exact batery"
 
-[node name="CheckBox_see_time_always" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=1444729551]
+[node name="CheckBox_see_time_always" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1444729551]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "See exact time"
 
-[node name="CheckBox_see_insanity" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=705980430]
+[node name="CheckBox_see_insanity" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=705980430]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "See insanity"
 
-[node name="CheckBox_tick_count" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=1658007938]
+[node name="CheckBox_tick_count" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1658007938]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "See ticks"
 
-[node name="max_consumption" type="HBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=1677766029]
+[node name="max_consumption" type="HBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1677766029]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="SpinBox_max_consumption" type="SpinBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/max_consumption" unique_id=1912927088]
+[node name="SpinBox_max_consumption" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/max_consumption" unique_id=1912927088]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 value = 3.0
 alignment = 1
 script = ExtResource("29_1pq54")
 
-[node name="text" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/max_consumption" unique_id=638253477]
+[node name="text" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/max_consumption" unique_id=638253477]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "Max energy consumption (0 = inf)"
 
-[node name="night_duration" type="HBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=1891266260]
+[node name="night_duration" type="HBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1891266260]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="SpinBoxt_night_duration" type="SpinBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/night_duration" unique_id=2061438305]
+[node name="SpinBoxt_night_duration" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/night_duration" unique_id=2061438305]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 value = 5.0
 alignment = 1
 script = ExtResource("29_1pq54")
 
-[node name="text" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/night_duration" unique_id=1500317012]
+[node name="text" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/night_duration" unique_id=1500317012]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "night duration (tick per in-game minute)"
 
-[node name="tick_rate" type="HBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer" unique_id=878589862]
+[node name="tick_rate" type="HBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=878589862]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="SpinBoxt_tick_rate" type="SpinBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/tick_rate" unique_id=1323141384]
+[node name="SpinBoxt_tick_rate" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/tick_rate" unique_id=1323141384]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 value = 5.0
 alignment = 1
 script = ExtResource("29_1pq54")
 
-[node name="text" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/tick_rate" unique_id=561217912]
+[node name="text" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/tick_rate" unique_id=561217912]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "tick rate (ticks / second)"
 
-[node name="game_state" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=389656235]
+[node name="game_state" type="Label" parent="Debug_panel/ScrollContainer/General" unique_id=389656235]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "Game State (not recomended, might break things)"
 
-[node name="MarginContainer_gs" type="MarginContainer" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=1909579905]
+[node name="MarginContainer_gs" type="MarginContainer" parent="Debug_panel/ScrollContainer/General" unique_id=1909579905]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs" unique_id=1852455816 node_paths=PackedStringArray("vbox_mapa", "vbox_invent")]
+[node name="Gamestate" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs" unique_id=1852455816 node_paths=PackedStringArray("vbox_mapa", "vbox_invent")]
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("30_r21sq")
 vbox_mapa = NodePath("MarginContainer_mapa/VBoxContainer")
 vbox_invent = NodePath("MarginContainer_inventory/VBoxContainer")
 
-[node name="Sync" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=735283896]
+[node name="Sync" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=735283896]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Syncronice"
 alignment = 0
 
-[node name="CheckBox_Override" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=70694823]
+[node name="CheckBox_Override" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=70694823]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Use debug game state"
 
-[node name="Night" type="HBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=2121467111]
+[node name="Night" type="HBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=2121467111]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="SpinBox_night" type="SpinBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Night" unique_id=1410361129]
+[node name="SpinBox_night" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Night" unique_id=1410361129]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 min_value = 1.0
@@ -859,37 +910,37 @@ value = 1.0
 alignment = 1
 script = ExtResource("29_1pq54")
 
-[node name="text" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Night" unique_id=1013959582]
+[node name="text" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Night" unique_id=1013959582]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "Night"
 
-[node name="CheckBox_force_enter" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=1698930177]
+[node name="CheckBox_force_enter" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=1698930177]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Force entering"
 
-[node name="CheckBox_force_exiting" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=706614334]
+[node name="CheckBox_force_exiting" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=706614334]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Force exiting"
 
-[node name="Combination" type="HBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=719679237]
+[node name="Combination" type="HBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=719679237]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="Force_combination" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Combination" unique_id=2073134461]
+[node name="Force_combination" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=2073134461]
 custom_minimum_size = Vector2(370, 0)
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Force safe combination"
 
-[node name="SpinBox_comb" type="SpinBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Combination" unique_id=98039883]
+[node name="SpinBox_comb" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=98039883]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 min_value = 11111.0
@@ -898,180 +949,180 @@ value = 11111.0
 alignment = 1
 script = ExtResource("29_1pq54")
 
-[node name="inventario" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Combination" unique_id=154151273]
+[node name="inventario" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=154151273]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "(no 0)"
 
-[node name="inventario" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=757809806]
+[node name="inventario" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=757809806]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "Inventory"
 
-[node name="MarginContainer_inventory" type="MarginContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=396469422]
+[node name="MarginContainer_inventory" type="MarginContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=396469422]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory" unique_id=1863777483]
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory" unique_id=1863777483]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="CheckBox_key" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=2065601462]
+[node name="CheckBox_key" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=2065601462]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Office key"
 
-[node name="CheckBox_recorder" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=1501305414]
+[node name="CheckBox_recorder" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=1501305414]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Recorder"
 
-[node name="CheckBox_screwdriver" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=1093042957]
+[node name="CheckBox_screwdriver" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=1093042957]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Screwdriver"
 
-[node name="CheckBox_bateries" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=752797353]
+[node name="CheckBox_bateries" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=752797353]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Bateries"
 
-[node name="CheckBox_pen" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=1181673619]
+[node name="CheckBox_pen" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=1181673619]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Pen"
 
-[node name="CheckBox_files" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=1049054941]
+[node name="CheckBox_files" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=1049054941]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Files"
 
-[node name="CheckBox_safe_usb_key" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=466367597]
+[node name="CheckBox_safe_usb_key" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=466367597]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "safe USB-Key"
 
-[node name="CheckBox_dm_usb_key" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=1363025901]
+[node name="CheckBox_dm_usb_key" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=1363025901]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "death minigames USB-Key"
 
-[node name="CheckBox_exe" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer" unique_id=425404157]
+[node name="CheckBox_exe" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=425404157]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = ".exe"
 
-[node name="mapa" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=1876930995]
+[node name="mapa" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=1876930995]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "Mapa"
 
-[node name="MarginContainer_mapa" type="MarginContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" unique_id=621672331]
+[node name="MarginContainer_mapa" type="MarginContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=621672331]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa" unique_id=1396447763]
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa" unique_id=1396447763]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="CheckBox_door_office_open" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer" unique_id=1386560540]
+[node name="CheckBox_door_office_open" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer" unique_id=1386560540]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Office door open"
 
-[node name="CheckBox_death_minigames" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer" unique_id=1331664834]
+[node name="CheckBox_death_minigames" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer" unique_id=1331664834]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Death minigames"
 
-[node name="CheckBox_safe_open" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer" unique_id=1489915626]
+[node name="CheckBox_safe_open" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer" unique_id=1489915626]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Safe open"
 
-[node name="CheckBox_safe_opened_by_animatronic" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer" unique_id=1447319555]
+[node name="CheckBox_safe_opened_by_animatronic" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer" unique_id=1447319555]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Safe opened by animatronic"
 
-[node name="CheckBox_computer_on" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer" unique_id=779594028]
+[node name="CheckBox_computer_on" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer" unique_id=779594028]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Computer on"
 
-[node name="CheckBox_computer_working" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer" unique_id=433142470]
+[node name="CheckBox_computer_working" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer" unique_id=433142470]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Computer working"
 
-[node name="CheckBox_computer_failed" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer" unique_id=1322850761]
+[node name="CheckBox_computer_failed" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer" unique_id=1322850761]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Computer failed"
 
-[node name="CheckBox_signed_in" type="CheckBox" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer" unique_id=554194431]
+[node name="CheckBox_signed_in" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer" unique_id=554194431]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Signed in for night 6"
 
-[node name="Save files" type="Label" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=2058974210]
+[node name="Save files" type="Label" parent="Debug_panel/ScrollContainer/General" unique_id=2058974210]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
 theme_override_font_sizes/font_size = 25
 text = "Save files (Really carefull here)"
 
-[node name="MarginContainer_savefiles" type="MarginContainer" parent="Debug_panel/ScrollContainer/VBoxContainer" unique_id=924882539]
+[node name="MarginContainer_savefiles" type="MarginContainer" parent="Debug_panel/ScrollContainer/General" unique_id=924882539]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles" unique_id=865633511]
+[node name="FileManagement" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles" unique_id=865633511]
 layout_mode = 2
 theme_override_constants/separation = 15
 script = ExtResource("31_et6hj")
 
-[node name="save_progress" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" unique_id=1430692547]
+[node name="save_progress" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1430692547]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Save progress"
 alignment = 0
 
-[node name="delete_config" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" unique_id=1034123337]
+[node name="delete_config" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1034123337]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Delete configuration save file"
 alignment = 0
 
-[node name="delete_partida" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" unique_id=1876838377]
+[node name="delete_partida" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1876838377]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Delete current game"
 alignment = 0
 
-[node name="delete_progress" type="Button" parent="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" unique_id=1125155858]
+[node name="delete_progress" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1125155858]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Delete all non-game progress"
@@ -1116,49 +1167,49 @@ puntero = "3"
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Reset" to="." method="_on_reset_pressed"]
 [connection signal="button_hide" from="Debug_panel" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Debug_menu" method="_on_debug_panel_button_hide"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/Exit_debug" to="Debug_panel" method="_on_exit_debug_pressed"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/Close" to="Debug_panel" method="_on_close_pressed"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/CheckBox_prevent_save" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_prevsafe_toggled"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/Unlock_cn" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_unlock_cn_pressed"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Invencibility" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_invencibility_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Instant_win" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_instant_win_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Timeless" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_timeless_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_ultra_agresive" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_ultra_agresive_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Infinite_Batery" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_infinite_batery_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_Lights_consume" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_lights_consume_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_animatronic_map" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_animatronic_map_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_see_light_batery" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_see_light_batery_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_see_time_always" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_see_time_always_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_see_insanity" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_see_insanity_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/CheckBox_tick_count" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_check_box_tick_count_toggled"]
-[connection signal="value_changed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/max_consumption/SpinBox_max_consumption" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_spin_box_max_consumption_value_changed"]
-[connection signal="value_changed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/night_duration/SpinBoxt_night_duration" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_spin_boxt_night_duration_value_changed"]
-[connection signal="value_changed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_cheats/VBoxContainer/tick_rate/SpinBoxt_tick_rate" to="Debug_panel/ScrollContainer/VBoxContainer" method="_on_spin_boxt_tick_rate_value_changed"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Sync" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_sync_pressed"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/CheckBox_Override" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_override_toggled"]
-[connection signal="value_changed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Night/SpinBox_night" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_spin_box_night_value_changed"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/CheckBox_force_enter" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_force_enter_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/CheckBox_force_exiting" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_force_exiting_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Combination/Force_combination" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_force_combination_toggled"]
-[connection signal="value_changed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/Combination/SpinBox_comb" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_spin_box_comb_value_changed"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_office_key_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_recorder" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_recorder_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_screwdriver" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_screwdriver_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_bateries" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_bateries_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_pen" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_pen_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_files" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_files_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_safe_usb_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_usb_key_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_dm_usb_key" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_dm_usb_key_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_inventory/VBoxContainer/CheckBox_exe" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_exe_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_door_office_open" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_door_office_open_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_death_minigames" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_death_minigames_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_safe_open" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_safe_open_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_safe_opened_by_animatronic" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_safe_opened_by_animatronic_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_computer_on" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_computer_on_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_computer_working" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_computer_working_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_computer_failed_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer/MarginContainer_mapa/VBoxContainer/CheckBox_signed_in" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_gs/VBoxContainer" method="_on_check_box_signed_toggled"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer/save_progress" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" method="_on_save_all_pressed"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer/delete_config" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" method="_on_delete_config_pressed"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer/delete_partida" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" method="_on_delete_partida_pressed"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer/delete_progress" to="Debug_panel/ScrollContainer/VBoxContainer/MarginContainer_savefiles/VBoxContainer" method="_on_delete_progress_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/Exit_debug" to="Debug_panel" method="_on_exit_debug_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/Close" to="Debug_panel" method="_on_close_pressed"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/CheckBox_prevent_save" to="Debug_panel/ScrollContainer/General" method="_on_check_box_prevsafe_toggled"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/Unlock_cn" to="Debug_panel/ScrollContainer/General" method="_on_unlock_cn_pressed"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_Invencibility" to="Debug_panel/ScrollContainer/General" method="_on_check_box_invencibility_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_Instant_win" to="Debug_panel/ScrollContainer/General" method="_on_check_box_instant_win_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_Timeless" to="Debug_panel/ScrollContainer/General" method="_on_check_box_timeless_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_ultra_agresive" to="Debug_panel/ScrollContainer/General" method="_on_check_box_ultra_agresive_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_Infinite_Batery" to="Debug_panel/ScrollContainer/General" method="_on_check_box_infinite_batery_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_Lights_consume" to="Debug_panel/ScrollContainer/General" method="_on_check_box_lights_consume_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_animatronic_map" to="Debug_panel/ScrollContainer/General" method="_on_check_box_animatronic_map_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_see_light_batery" to="Debug_panel/ScrollContainer/General" method="_on_check_box_see_light_batery_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_see_time_always" to="Debug_panel/ScrollContainer/General" method="_on_check_box_see_time_always_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_see_insanity" to="Debug_panel/ScrollContainer/General" method="_on_check_box_see_insanity_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_tick_count" to="Debug_panel/ScrollContainer/General" method="_on_check_box_tick_count_toggled"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/max_consumption/SpinBox_max_consumption" to="Debug_panel/ScrollContainer/General" method="_on_spin_box_max_consumption_value_changed"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/night_duration/SpinBoxt_night_duration" to="Debug_panel/ScrollContainer/General" method="_on_spin_boxt_night_duration_value_changed"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/tick_rate/SpinBoxt_tick_rate" to="Debug_panel/ScrollContainer/General" method="_on_spin_boxt_tick_rate_value_changed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Sync" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_sync_pressed"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/CheckBox_Override" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_override_toggled"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Night/SpinBox_night" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_night_value_changed"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/CheckBox_force_enter" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_force_enter_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/CheckBox_force_exiting" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_force_exiting_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/Force_combination" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_force_combination_toggled"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/SpinBox_comb" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_comb_value_changed"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_key" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_office_key_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_recorder" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_recorder_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_screwdriver" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_screwdriver_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_bateries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_bateries_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_pen" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_pen_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_files" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_files_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_safe_usb_key" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_usb_key_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_dm_usb_key" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_dm_usb_key_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_exe" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_exe_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_door_office_open" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_door_office_open_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_death_minigames" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_death_minigames_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_safe_open" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_safe_open_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_safe_opened_by_animatronic" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_safe_opened_by_animatronic_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_computer_on" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_computer_on_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_computer_working" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_computer_working_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_computer_failed_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_signed_in" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_signed_toggled"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/save_progress" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_save_all_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_config" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_config_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_partida" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_partida_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_progress" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_progress_pressed"]

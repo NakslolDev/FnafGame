@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c43ghhrjlh56n"]
+
+[ext_resource type="Script" uid="uid://3dh3ckrnye8o" path="res://Escenas/Menu/endings/ending_screen.gd" id="1_6bt6p"]
+[ext_resource type="Texture2D" uid="uid://v6lk4nwp7fkr" path="res://assets/Placeholders/end_screen_Mediocre.png" id="1_wbii6"]
+[ext_resource type="Texture2D" uid="uid://ctg3pkkvu8h5b" path="res://assets/Placeholders/end_screen_Party.png" id="2_6bt6p"]
+[ext_resource type="Texture2D" uid="uid://clwnyvu1pobsi" path="res://assets/Placeholders/end_screen_Bad.png" id="3_3yhoj"]
+[ext_resource type="Texture2D" uid="uid://d1pxrykbgdsu3" path="res://assets/Placeholders/end_screen_Good.png" id="4_pld5c"]
+
+[node name="EndingScreen" type="Node" unique_id=1976902392 node_paths=PackedStringArray("mediocre", "party", "bad", "true_ending", "time", "min_time")]
+script = ExtResource("1_6bt6p")
+mediocre = NodePath("Mediocre")
+party = NodePath("Party")
+bad = NodePath("Bad")
+true_ending = NodePath("True")
+time = NodePath("Time")
+min_time = NodePath("MinTime")
+
+[node name="Mediocre" type="Node2D" parent="." unique_id=421490305]
+position = Vector2(960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mediocre" unique_id=402404387]
+texture = ExtResource("1_wbii6")
+
+[node name="Party" type="Node2D" parent="." unique_id=434291061]
+position = Vector2(960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Party" unique_id=1028925701]
+texture = ExtResource("2_6bt6p")
+
+[node name="Bad" type="Node2D" parent="." unique_id=844850883]
+position = Vector2(960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bad" unique_id=1826087704]
+texture = ExtResource("3_3yhoj")
+
+[node name="True" type="Node2D" parent="." unique_id=176667918]
+position = Vector2(960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="True" unique_id=837988567]
+texture = ExtResource("4_pld5c")
+
+[node name="Time" type="Timer" parent="." unique_id=1933274349]
+
+[node name="MinTime" type="Timer" parent="." unique_id=538690481]
+
+[connection signal="timeout" from="Time" to="." method="_on_time_timeout"]
+[connection signal="timeout" from="MinTime" to="." method="_on_min_time_timeout"]

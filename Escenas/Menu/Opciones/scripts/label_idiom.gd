@@ -1,7 +1,7 @@
 extends Label
 
 @export var id: String
-@onready var root_node = get_tree().current_scene
+@export var root_node: Node
 
 func _ready():
-	$".".text = root_node.get_text(id)
+	text = root_node.get_text(id)

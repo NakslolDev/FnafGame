@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://Escenas/Shift/minigame.gd" id="1_xv0fq"]
 [ext_resource type="Script" uid="uid://op64ky6ob2qy" path="res://Escenas/Shift/RandomScriptsIDK/minigame_custom_actions.gd" id="2_wna5r"]
-[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
+[ext_resource type="Texture2D" uid="uid://dqs4bst1s7y3y" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
 [ext_resource type="Script" uid="uid://bvas38t5dvubq" path="res://Escenas/Shift/RandomScriptsIDK/black_background.gd" id="4_vs41v"]
-[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
+[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
 [ext_resource type="TileSet" uid="uid://ba1v7xwtblihb" path="res://Resources (tres)/Raw_colitions.tres" id="6_yq6rm"]
 [ext_resource type="Script" uid="uid://cck4qkhapri2y" path="res://Escenas/Shift/RandomScriptsIDK/Minigame_Ysort.gd" id="7_pwkhe"]
 [ext_resource type="PackedScene" uid="uid://cumryt3pxo2wv" path="res://Escenas/Shift/Player/character_minigame.tscn" id="8_w4bkp"]
@@ -13,17 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://b11fiquxgu4wa" path="res://Escenas/Shift/M_objets/long_table.tscn" id="11_w3343"]
 [ext_resource type="PackedScene" uid="uid://dkw61scyyeb22" path="res://Escenas/Shift/M_objets/placeholder.tscn" id="12_axwuc"]
 [ext_resource type="PackedScene" uid="uid://bmc1g8wl35gb0" path="res://Escenas/Shift/M_objets/placeholder_noclip.tscn" id="13_7g4ok"]
-[ext_resource type="Texture2D" uid="uid://c6dq54nbl5xpo" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
+[ext_resource type="Texture2D" uid="uid://0plph23qdqex" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://Escenas/Shift/Text/pop_text.tscn" id="14_v4577"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://Escenas/Shift/Safe/pop_safe.tscn" id="15_kqcik"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://Escenas/Shift/BlackBars/black_bars.tscn" id="16_3hrc1"]
 [ext_resource type="Script" uid="uid://hrj5r1dkwlwl" path="res://Escenas/Shift/RandomScriptsIDK/intro_minigame.gd" id="17_b7ymr"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
-[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="19_ur7tl"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="19_ur7tl"]
 [ext_resource type="Script" uid="uid://okkqwaugqcim" path="res://Escenas/Shift/RandomScriptsIDK/daylable_transition.gd" id="20_y4nle"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="21_cgfeb"]
 [ext_resource type="Script" uid="uid://dybfd3q13udjj" path="res://Escenas/Shift/RandomScriptsIDK/shift_completed.gd" id="22_pu8a6"]
-[ext_resource type="Texture2D" uid="uid://crqrn4aglues7" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
+[ext_resource type="Texture2D" uid="uid://cfg2lp4aa8tme" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
 [ext_resource type="PackedScene" uid="uid://djqjqcxkcwu8s" path="res://Escenas/Shift/M_objets/_interact_colider.tscn" id="24_ly3ag"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://Escenas/Shift/M_objets/location_key.gd" id="25_ekm4o"]
 [ext_resource type="Script" uid="uid://dculdecv7rjo" path="res://Escenas/Shift/RandomScriptsIDK/secret_room_hitbox.gd" id="26_42vnu"]
@@ -176,7 +176,7 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 1.0
 shader_parameter/vignette_opacity = 0.665
 
-[node name="Minigame" type="Node" unique_id=1354298531 node_paths=PackedStringArray("manual_act_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe", "transicion", "shiftCompleted", "camera", "spawn_points")]
+[node name="Minigame" type="Node" unique_id=1354298531 node_paths=PackedStringArray("manual_act_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe", "transicion", "shiftCompleted", "camera", "spawn_points", "esc_timer") groups=["minigame"]]
 script = ExtResource("1_xv0fq")
 manual_act_nodes = [NodePath("Coliders/Key_locations"), NodePath("Things_Front_All/Secret_room_hitbox")]
 custom_action = NodePath("CustomActions")
@@ -188,6 +188,7 @@ transicion = NodePath("Shader&else/Transicion")
 shiftCompleted = NodePath("Shader&else/Shift_completed")
 camera = NodePath("Camera2D")
 spawn_points = NodePath("SpawnPoints")
+esc_timer = NodePath("ESC_Timer")
 
 [node name="CustomActions" type="Node" parent="." unique_id=2004216622 node_paths=PackedStringArray("father")]
 script = ExtResource("2_wna5r")
@@ -259,6 +260,7 @@ Walls = [NodePath("WallMain"), NodePath("WallWarehouse"), NodePath("WallPAS"), N
 [node name="Character_Minigame" parent="YSort" unique_id=1051262395 instance=ExtResource("8_w4bkp")]
 position = Vector2(-1020, 399)
 speed = 100.0
+run_mult = 5.0
 
 [node name="WallMain" type="Node2D" parent="YSort" unique_id=693646244]
 visible = false
@@ -642,15 +644,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Shift_completed" type="Node2D" parent="Shader&else" unique_id=180556764 node_paths=PackedStringArray("placeholder")]
+[node name="Shift_completed" type="Node2D" parent="Shader&else" unique_id=180556764 node_paths=PackedStringArray("timer", "timer_skip")]
 visible = false
 script = ExtResource("22_pu8a6")
-placeholder = NodePath("ShiftCompleted")
+timer = NodePath("Timer")
+timer_skip = NodePath("TimerSkip")
 
 [node name="ShiftCompleted" type="Sprite2D" parent="Shader&else/Shift_completed" unique_id=1457628500]
 position = Vector2(960, 540)
 scale = Vector2(3.014129, 3.0167599)
 texture = ExtResource("23_bu3ml")
+
+[node name="Timer" type="Timer" parent="Shader&else/Shift_completed" unique_id=92189584]
+
+[node name="TimerSkip" type="Timer" parent="Shader&else/Shift_completed" unique_id=921650236]
 
 [node name="Coliders" type="Node" parent="." unique_id=213914015]
 
@@ -1371,6 +1378,7 @@ scale = Vector2(30.9375, 17.625)
 texture = ExtResource("3_u5xp7")
 
 [connection signal="done" from="Shader&else/Transicion" to="." method="_on_intro_done"]
-[connection signal="done_out" from="Shader&else/Transicion" to="." method="_on_transicion_done_out"]
 [connection signal="done" from="Shader&else/Shift_completed" to="." method="_on_shift_completed_done"]
+[connection signal="timeout" from="Shader&else/Shift_completed/Timer" to="Shader&else/Shift_completed" method="_on_timer_timeout"]
+[connection signal="timeout" from="Shader&else/Shift_completed/TimerSkip" to="Shader&else/Shift_completed" method="_on_timer_skip_timeout"]
 [connection signal="timeout" from="ESC_Timer" to="." method="_on_esc_timer_timeout"]

@@ -36,14 +36,14 @@ func _process(delta):
 func act_selected(just_selected := false):
 	
 	if not just_selected:
-		node_continue.visible = menu_principal.game_exist
+		node_continue.visible = FileAccess.file_exists("user://partida.json")
 		node_custom_night.visible = Global.custom_night
 	
 		if Global.debug["game_state"]["override"]:
 			node_continue.visible = true
-			night_label.text = get_tree().current_scene.get_text("Night_") + " " + str(menu_principal.noche_menu) + " [debug game state]"
+			night_label.text = menu_principal.get_text("Night_") + " " + str(int(Global.debug["game_state"]["night"])) + " [debug game state]"
 		else:
-			night_label.text = get_tree().current_scene.get_text("Night_") + " " + str(menu_principal.noche_menu)
+			night_label.text = menu_principal.get_text("Night_") + " " + str(Global.noche)
 	
 	continue_seleccion.visible = false
 	new_game_seleccion.visible = false
@@ -84,15 +84,14 @@ func _input(event: InputEvent) -> void:
 		back()
 
 func _continue():
-	menu_principal.transition_to_play()
+	menu_principal.begin_game()
 
 func new_game():
 	Global.create_new_game()
-	menu_principal.transition_to_play()
+	menu_principal.begin_game()
 
 func custom_night():
-	Global.escena_previa = "Menu_Principal"
-	get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
+	menu_principal.custom_night()
 
 func back():
 	set_process_input(false)

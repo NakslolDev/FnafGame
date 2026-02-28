@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bonrb1xrjljf"]
 
 [ext_resource type="Script" uid="uid://d3dg3tgsptsdf" path="res://Escenas/Night/SecurityRoom/Back/switches/switch_energia.gd" id="1_8vunc"]
-[ext_resource type="Texture2D" uid="uid://ck66hhuuy3vxk" path="res://assets/Placeholders/Switch_offn.png" id="2_thdhr"]
-[ext_resource type="Texture2D" uid="uid://ddk0mwj1yyg6h" path="res://assets/Placeholders/Switch_on.png" id="3_1stgw"]
+[ext_resource type="Texture2D" uid="uid://brdvhdv03rq4m" path="res://assets/Placeholders/Switch_offn.png" id="2_thdhr"]
+[ext_resource type="Texture2D" uid="uid://d1aijjiuvtcke" path="res://assets/Placeholders/Switch_on.png" id="3_1stgw"]
 [ext_resource type="Script" uid="uid://cokefoipy4xrr" path="res://Escenas/Night/SecurityRoom/Back/switches/area_2d_switch.gd" id="4_thdhr"]
-[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="5_1stgw"]
+[ext_resource type="AudioStream" uid="uid://dvatoo5krcu4s" path="res://assets/sounds/Tiny click.wav" id="5_1stgw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1stgw"]
 size = Vector2(58, 120)

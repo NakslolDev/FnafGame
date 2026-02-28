@@ -1,20 +1,22 @@
 extends Control
 
+@onready var scene_handler: Node = get_tree().get_first_node_in_group("scene_handler")
+
 @export var debug := false
+@export var debug_panel: Panel
 
 func _input(event):
-	if $Debug_panel.visible:
+	if debug_panel.visible:
 		return
 	if event.is_action_pressed("Esc"):
 		salir()
 
 func salir(guardar := true):
-	Global.escena_previa = "Opciones"
 	if guardar:
 		Global.guardar_configuration()
 	else:
 		Global.leer_configuration()
-	get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
+	scene_handler.change_to_main_menu()
 
 
 
@@ -37,14 +39,12 @@ func _on_exit_pressed() -> void:
 
 func _on_undo_pressed() -> void:
 	Global.leer_configuration()
-	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar
+	scene_handler.reset_options_scene()
 
 
 func _on_reset_pressed() -> void:
 	Global.reset_configuration()
-	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar
+	scene_handler.reset_options_scene()
 
-
-func _on_brightness_pressed() -> void:
-	Global.escena_previa = "Opciones"
-	GlobalWorldEnvironment.load_brightness_slider()
+func change_language():
+	scene_handler.reset_options_scene()

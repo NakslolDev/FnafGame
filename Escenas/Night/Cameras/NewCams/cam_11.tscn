@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://wfyjkae1wov5"]
 
 [ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_8stwk"]
-[ext_resource type="Texture2D" uid="uid://celtd6banlg17" path="res://assets/Placeholders/Camaras/Cam10B/Cam.png" id="2_frskc"]
+[ext_resource type="Texture2D" uid="uid://b6sfifynwglq1" path="res://assets/Placeholders/Camaras/Cam10B/Cam.png" id="2_frskc"]
 [ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_ericd"]
-[ext_resource type="Texture2D" uid="uid://dvamilt3vug0f" path="res://assets/Placeholders/Camaras/Cam10B/Bonnie_10B.png" id="4_umh32"]
-[ext_resource type="Texture2D" uid="uid://bfuccc0vx3qk8" path="res://assets/Placeholders/Camaras/Cam10B/Foxy_10B.1.png" id="5_bqqy3"]
-[ext_resource type="Texture2D" uid="uid://p8pplll6c5y0" path="res://assets/Placeholders/Camaras/Cam10B/Foxy_10B.2.png" id="6_qmsrv"]
-[ext_resource type="Texture2D" uid="uid://domnayhsk8rno" path="res://assets/Placeholders/Camaras/Cam10B/Freddy_10B.png" id="7_6ppvy"]
+[ext_resource type="Texture2D" uid="uid://dxoq866gld30t" path="res://assets/Placeholders/Camaras/Cam10B/Bonnie_10B.png" id="4_umh32"]
+[ext_resource type="Texture2D" uid="uid://dlfqry4233jdq" path="res://assets/Placeholders/Camaras/Cam10B/Foxy_10B.1.png" id="5_bqqy3"]
+[ext_resource type="Texture2D" uid="uid://b05woyolr115p" path="res://assets/Placeholders/Camaras/Cam10B/Foxy_10B.2.png" id="6_qmsrv"]
+[ext_resource type="Texture2D" uid="uid://n4wbfg6evrpx" path="res://assets/Placeholders/Camaras/Cam10B/Freddy_10B.png" id="7_6ppvy"]
 
 [node name="Cam11" type="Node2D" unique_id=1081304585]
 script = ExtResource("1_8stwk")

@@ -1,10 +1,12 @@
 extends Button
 
+@export var opciones: Control
+
 var inputs := []
 
 func _ready():
 	visible = Global.debug["debug_mode"]
-	if $"../../../../../..".debug:
+	if opciones.debug:
 		visible = true
 		Global.debug["prevent_save"] = true
 		Global.debug["debug_mode"] = true

@@ -1,7 +1,7 @@
 extends Button
 
 @export var id: String
-@onready var root_node = get_node("/root/Opciones")
+@export var root_node: Node
 
 @export_group("Languajes")
 @export var English := true
@@ -9,7 +9,7 @@ extends Button
 @export var Deutsch := true
 
 func _ready():
-	$".".text = root_node.get_text(id)
+	text = root_node.get_text(id)
 
 func _on_pressed() -> void:
 	actualizar_lenguaje()
@@ -30,4 +30,4 @@ func actualizar_lenguaje():
 	index = (index + 1) % idiomas.size()
 	Global.language = idiomas[index]
 	
-	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar
+	root_node.change_language()

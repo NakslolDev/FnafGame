@@ -1,13 +1,8 @@
 [gd_scene format=3 uid="uid://c06jc4s8iwci4"]
 
-[ext_resource type="Script" uid="uid://6xhj7ky0wsor" path="res://Escenas/Night/Enviroment/world_environment.gd" id="1_83d3b"]
-[ext_resource type="PackedScene" uid="uid://b4mqpnnrc5bd3" path="res://Escenas/Night/Enviroment/brightness_adjust.tscn" id="2_kj6ec"]
-
 [sub_resource type="Environment" id="Environment_wd8b3"]
 background_mode = 3
 adjustment_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" unique_id=1513798567]
 environment = SubResource("Environment_wd8b3")
-script = ExtResource("1_83d3b")
-bright_slider = ExtResource("2_kj6ec")

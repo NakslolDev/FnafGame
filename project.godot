@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Fnaf [Nombre Provisional]"
-run/main_scene="uid://clk07ggsfox88"
+run/main_scene="uid://b5m4l3jyq8cco"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -39,6 +39,8 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 interactable="Area2D interactable on the night sections. It prevents overlaping with the flashlight"
+minigame=""
+scene_handler=""
 
 [input]
 

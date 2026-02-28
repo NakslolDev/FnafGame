@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://ckov56uah4qup"]
 
 [ext_resource type="Script" uid="uid://cu8m7y0h8yl2f" path="res://Escenas/Night/6Am/6_am.gd" id="1_5ea3b"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="1_jqnvh"]
-[ext_resource type="FontFile" uid="uid://cm3op4jlwg1q1" path="res://assets/I-pixel-u.ttf" id="3_x61da"]
-[ext_resource type="AudioStream" uid="uid://dhclanw636w3" path="res://assets/sounds/Hall of Fame.mp3" id="4_x61da"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="1_jqnvh"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="3_x61da"]
+[ext_resource type="AudioStream" uid="uid://db105ev75lyex" path="res://assets/sounds/Hall of Fame.mp3" id="4_x61da"]
 
-[node name="6_AM" type="Node2D" unique_id=126954993]
+[node name="6_AM" type="Node2D" unique_id=126954993 node_paths=PackedStringArray("numbers", "timer", "hall_of_fame")]
 script = ExtResource("1_5ea3b")
+numbers = NodePath("Numbers")
+timer = NodePath("Timer")
+hall_of_fame = NodePath("HallOfFame")
 
 [node name="FondoNegro" type="Sprite2D" parent="." unique_id=1403435223]
 position = Vector2(960, 540)
@@ -21,9 +24,9 @@ text = "   AM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1049827333]
+[node name="Numbers" type="Node2D" parent="." unique_id=1049827333]
 
-[node name="Label2" type="Label" parent="Node2D" unique_id=1413780568]
+[node name="Label2" type="Label" parent="Numbers" unique_id=1413780568]
 offset_left = 119.0
 offset_top = 152.0
 offset_right = 2039.0
@@ -46,16 +49,12 @@ position = Vector2(489, 1064)
 scale = Vector2(0.411139, 0.403778)
 texture = ExtResource("1_jqnvh")
 
-[node name="FondoNegro2" type="Sprite2D" parent="." unique_id=618407634]
-position = Vector2(960, 540)
-texture = ExtResource("1_jqnvh")
-
-[node name="Timer1" type="Timer" parent="." unique_id=1427064842]
+[node name="Timer" type="Timer" parent="." unique_id=1427064842]
 
 [node name="HallOfFame" type="AudioStreamPlayer" parent="." unique_id=1278878744]
 stream = ExtResource("4_x61da")
 volume_db = -10.0
 bus = &"Musica"
 
-[connection signal="timeout" from="Timer1" to="." method="_on_timer_1_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_1_timeout"]
 [connection signal="finished" from="HallOfFame" to="." method="_on_hall_of_fame_finished"]

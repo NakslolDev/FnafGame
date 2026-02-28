@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var scene_handler: Node = get_tree().get_first_node_in_group("scene_handler")
+
 @export var al_max_time_on_insanity: float = 50.0
 @export var al_min_time_on_insanity: float = 700.0
 @export var al_max_time_mid := 20.0 # estas probabilidades no tienen en cuenta el tiempo de alucinaciones_cooldown
@@ -76,7 +78,6 @@ func _transition_in() -> void:
 func _ready():
 	bonnie_cam_wait = 0
 	chica_cam_wait = 0
-	Global.reset_night()
 	Bonnie.reset()
 	Chica.reset()
 	Freddy.reset()
@@ -98,18 +99,18 @@ func _input(event):
 	elif event.is_action_released("Esc"):
 		esc_timer.stop()  # Se cancela si suelta antes de tiempo
 
+
+const QUICK_TRANSITION_TIME := 0.5
 func _on_esc_timer_timeout():
 	# Si al terminar el tiempo todavía se está presionando Esc, cambiamos de escena
 	if Input.is_action_pressed("Esc"):
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "escaped")
-		Global.escena_previa = "Main_Game"
-		Global.reset_night()
 		tick.stop()
 		AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), save_volume_linear) # porsia no se ha terminado de reiniciar
 		if Global.noche == 0:
-			get_tree().change_scene_to_file("res://Escenas/Menu/CN/custom_night_selecter.tscn") #actualizar
+			scene_handler.trans_to_scene(scene_handler.scene.CUSTOM_NIGHT, QUICK_TRANSITION_TIME)
 		else:
-			get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
+			scene_handler.trans_to_scene(scene_handler.scene.MAIN_MENU, QUICK_TRANSITION_TIME)
 
 
 func _on_tick_timeout() -> void:
@@ -211,19 +212,14 @@ func change_tick_rate(new_tick: float):
 
 func game_over(win: bool):
 	
-	Global.reset_night()
-	
 	if win:
-		Global.escena_previa = "Main_game"
-		get_tree().change_scene_to_file("res://Escenas/Night/6Am/6_am.tscn") #actualizar
+		scene_handler.change_to_6_am() # a ver como hago la transición
 	else:
-		
+		print("Death minigames: ", go_to_death_minigame())
 		if go_to_death_minigame():
-			Global.escena_previa = "Main_game"
-			get_tree().change_scene_to_file("res://escenas/DeadMinigames/death_minigame_loader.tscn") #actualizar
+			scene_handler.change_to_death_minigame() # lo mismo, a ver como hago la transición
 		else:
-			Global.escena_previa = "Main_game"
-			get_tree().change_scene_to_file("res://Escenas/Menu/DeadScene/Dead_Scene.tscn") #actualizar
+			scene_handler.change_to_death_scene() # \\
 
 
 func go_to_death_minigame() -> bool:
@@ -243,11 +239,11 @@ func go_to_death_minigame() -> bool:
 			return true
 	
 	elif Global.killed_by == "freddy":
-		if Global.dm["bonnie"] != Global.Estado.STANDBY and Global.dm["chica"] != Global.Estado.STANDBY and Global.dm["freddy"] == Global.Estado.STANDBY:
+		if Global.dm["chica"] != Global.Estado.STANDBY and Global.dm["freddy"] == Global.Estado.STANDBY:
 			return true
 	
 	elif Global.killed_by == "foxy":
-		if Global.dm["bonnie"] != Global.Estado.STANDBY and Global.dm["chica"] != Global.Estado.STANDBY and Global.dm["freddy"] != Global.Estado.STANDBY and Global.dm["foxy"] == Global.Estado.STANDBY:
+		if Global.dm["freddy"] != Global.Estado.STANDBY and Global.dm["foxy"] == Global.Estado.STANDBY:
 			return true
 	
 	return false

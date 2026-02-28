@@ -6,6 +6,8 @@ var hard_selected := 0
 
 @export_category("nodes")
 
+@export var menu_principal: Node2D
+
 @export var play_buttons: VBoxContainer
 
 @export var play_seleccion: Sprite2D
@@ -57,8 +59,7 @@ func play():
 	play_buttons.visible = true
 
 func options():
-	Global.escena_previa = "Menu_Principal"
-	get_tree().change_scene_to_file("res://Escenas/Menu/Opciones/Opciones.tscn") #actualizar
+	menu_principal.options()
 
 func exit():
 	get_tree().quit()

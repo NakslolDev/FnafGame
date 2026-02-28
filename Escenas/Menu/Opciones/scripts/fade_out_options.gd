@@ -2,7 +2,7 @@ extends VBoxContainer
 
 @export var id_time: String
 @export var id_speed: String
-@onready var root_node = get_node("/root/Opciones")
+@export var root_node: Node
 
 var active: bool
 var UI := "Energia"
@@ -52,9 +52,9 @@ func act_active_state():
 	$Time_Slider.editable = active
 	$Speed_Slider.editable = active
 	if active:
-		$".".modulate = Color(1, 1, 1, 1)
+		modulate = Color(1, 1, 1, 1)
 	else:
-		$".".modulate = Color(1, 1, 1, 0.2)
+		modulate = Color(1, 1, 1, 0.2)
 
 func _on_button_fade_out_pressed() -> void:
 	active = !active

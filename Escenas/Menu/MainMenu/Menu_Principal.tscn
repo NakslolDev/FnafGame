@@ -12,15 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://Escenas/Night/SecurityRoom/FreddyPoster/Freddy_nose.tscn" id="11_dytxe"]
 [ext_resource type="Script" uid="uid://coh84xcfmkrvv" path="res://Escenas/Menu/MainMenu/stars.gd" id="12_hoy0e"]
 [ext_resource type="Texture2D" uid="uid://bcowwykqilax5" path="res://assets/Placeholders/white_star.png" id="13_4lh2l"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="14_6ew8l"]
-[ext_resource type="Script" uid="uid://cua3o7a7n63ws" path="res://Escenas/Menu/endings/auto_transicion.gd" id="15_8gg30"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2kspd"]
 load_path = "res://.godot/imported/Menu_Art.png-2ce95289e9e0f2b534a267740bebaf33.ctex"
 
-[node name="Menu principal" type="Node2D" unique_id=876365489 node_paths=PackedStringArray("transicion")]
+[node name="Menu principal" type="Node2D" unique_id=876365489]
 script = ExtResource("1_7cw0h")
-transicion = NodePath("Transicion")
 
 [node name="MenuArt" type="Sprite2D" parent="." unique_id=1266682085]
 position = Vector2(-3.71337e-05, 0)
@@ -32,7 +29,7 @@ texture = ExtResource("3_fq31k")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1271747179]
 
-[node name="Main_buttons" type="VBoxContainer" parent="." unique_id=1866653682 node_paths=PackedStringArray("play_buttons", "play_seleccion", "options_seleccion", "exit_seleccion", "menu_click")]
+[node name="Main_buttons" type="VBoxContainer" parent="." unique_id=1866653682 node_paths=PackedStringArray("menu_principal", "play_buttons", "play_seleccion", "options_seleccion", "exit_seleccion", "menu_click")]
 texture_filter = 1
 offset_left = -772.0
 offset_top = 98.0
@@ -40,6 +37,7 @@ offset_right = -142.0
 offset_bottom = 488.0
 theme_override_constants/separation = 40
 script = ExtResource("4_djrq7")
+menu_principal = NodePath("..")
 play_buttons = NodePath("../Play_Buttons")
 play_seleccion = NodePath("Play/Seleccion")
 options_seleccion = NodePath("Options/Seleccion")
@@ -54,7 +52,7 @@ volume_db = 1.0
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Play_label" type="Label" parent="Main_buttons/Play" unique_id=518270468]
+[node name="Play_label" type="Label" parent="Main_buttons/Play" unique_id=518270468 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("6_b3nup")
@@ -62,6 +60,7 @@ theme_override_font_sizes/font_size = 60
 text = "Play"
 script = ExtResource("7_xpa1m")
 id = "Play_"
+root_node = NodePath("../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="Main_buttons/Play" unique_id=1731342141]
 texture_filter = 1
@@ -71,13 +70,14 @@ texture = ExtResource("8_r2f8f")
 [node name="Options" type="HBoxContainer" parent="Main_buttons" unique_id=911153161]
 layout_mode = 2
 
-[node name="Options_label" type="Label" parent="Main_buttons/Options" unique_id=1012290709]
+[node name="Options_label" type="Label" parent="Main_buttons/Options" unique_id=1012290709 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 60
 text = "Options"
 script = ExtResource("7_xpa1m")
 id = "Options_"
+root_node = NodePath("../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="Main_buttons/Options" unique_id=40723599]
 texture_filter = 1
@@ -87,13 +87,14 @@ texture = ExtResource("8_r2f8f")
 [node name="Exit" type="HBoxContainer" parent="Main_buttons" unique_id=648869811]
 layout_mode = 2
 
-[node name="Exit_label" type="Label" parent="Main_buttons/Exit" unique_id=1862350918]
+[node name="Exit_label" type="Label" parent="Main_buttons/Exit" unique_id=1862350918 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 60
 text = "Exit"
 script = ExtResource("7_xpa1m")
 id = "Exit_"
+root_node = NodePath("../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="Main_buttons/Exit" unique_id=2139402488]
 texture_filter = 1
@@ -128,13 +129,14 @@ volume_db = 1.0
 [node name="Continue" type="HBoxContainer" parent="Play_Buttons" unique_id=1471527534]
 layout_mode = 2
 
-[node name="Continue_label" type="Label" parent="Play_Buttons/Continue" unique_id=550827485]
+[node name="Continue_label" type="Label" parent="Play_Buttons/Continue" unique_id=550827485 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 60
 text = "Continue"
 script = ExtResource("7_xpa1m")
 id = "Continue_"
+root_node = NodePath("../../..")
 
 [node name="Get_out_of_jail_card" type="Control" parent="Play_Buttons/Continue" unique_id=1726313733]
 layout_mode = 2
@@ -159,13 +161,14 @@ texture = ExtResource("8_r2f8f")
 [node name="New_Game" type="HBoxContainer" parent="Play_Buttons" unique_id=978291208]
 layout_mode = 2
 
-[node name="New_Game_label" type="Label" parent="Play_Buttons/New_Game" unique_id=1185260685]
+[node name="New_Game_label" type="Label" parent="Play_Buttons/New_Game" unique_id=1185260685 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 60
 text = "New Game"
 script = ExtResource("7_xpa1m")
 id = "New_game"
+root_node = NodePath("../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="Play_Buttons/New_Game" unique_id=34291813]
 texture_filter = 1
@@ -175,13 +178,14 @@ texture = ExtResource("8_r2f8f")
 [node name="Custom_Night" type="HBoxContainer" parent="Play_Buttons" unique_id=644998931]
 layout_mode = 2
 
-[node name="Custom_Night_label" type="Label" parent="Play_Buttons/Custom_Night" unique_id=205182167]
+[node name="Custom_Night_label" type="Label" parent="Play_Buttons/Custom_Night" unique_id=205182167 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 60
 text = "Custom Night"
 script = ExtResource("7_xpa1m")
 id = "Custom_night"
+root_node = NodePath("../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="Play_Buttons/Custom_Night" unique_id=18439015]
 texture_filter = 1
@@ -191,13 +195,14 @@ texture = ExtResource("8_r2f8f")
 [node name="Back" type="HBoxContainer" parent="Play_Buttons" unique_id=494432838]
 layout_mode = 2
 
-[node name="Back_label" type="Label" parent="Play_Buttons/Back" unique_id=2027328510]
+[node name="Back_label" type="Label" parent="Play_Buttons/Back" unique_id=2027328510 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 60
 text = "Back"
 script = ExtResource("7_xpa1m")
 id = "Back_"
+root_node = NodePath("../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="Play_Buttons/Back" unique_id=333924351]
 texture_filter = 1
@@ -212,8 +217,11 @@ menu = true
 position = Vector2(661, -37)
 scale = Vector2(7.34, 3.165)
 
-[node name="Stars" type="Node2D" parent="." unique_id=836054293]
+[node name="Stars" type="Node2D" parent="." unique_id=836054293 node_paths=PackedStringArray("white_star_ending", "white_star_2_true_ending", "white_star_3_420")]
 script = ExtResource("12_hoy0e")
+white_star_ending = NodePath("WhiteStar_ending")
+white_star_2_true_ending = NodePath("WhiteStar2_true_ending")
+white_star_3_420 = NodePath("WhiteStar3_420")
 
 [node name="WhiteStar_ending" type="Sprite2D" parent="Stars" unique_id=2135906411]
 position = Vector2(-300, -440)
@@ -229,11 +237,6 @@ texture = ExtResource("13_4lh2l")
 position = Vector2(-225, -350)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("13_4lh2l")
-
-[node name="Transicion" type="Sprite2D" parent="." unique_id=1276137181]
-visible = false
-texture = ExtResource("14_6ew8l")
-script = ExtResource("15_8gg30")
 
 [connection signal="mouse_entered" from="Main_buttons/Play" to="Main_buttons" method="_on_play_mouse_entered"]
 [connection signal="mouse_exited" from="Main_buttons/Play" to="Main_buttons" method="_on_play_mouse_exited"]

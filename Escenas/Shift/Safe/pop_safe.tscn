@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dffqin4cl711n"]
 
 [ext_resource type="Script" uid="uid://dbkepsongl7ai" path="res://Escenas/Shift/Safe/pop_safe.gd" id="1_1prpf"]
-[ext_resource type="Texture2D" uid="uid://bat2k5kbg8hvt" path="res://icon.svg" id="1_07x42"]
+[ext_resource type="Texture2D" uid="uid://ci4npkdotpvya" path="res://icon.svg" id="1_07x42"]
 [ext_resource type="Script" uid="uid://cxhguxdkxfqan" path="res://Escenas/Shift/Safe/safe_wheel.gd" id="2_86dor"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="3_86dor"]
-[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="4_pqxct"]
+[ext_resource type="AudioStream" uid="uid://dvatoo5krcu4s" path="res://assets/sounds/Tiny click.wav" id="4_pqxct"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1prpf"]
 size = Vector2(448, 448)

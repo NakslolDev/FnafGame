@@ -1,10 +1,10 @@
 extends Node
 
+@onready var scene_handler: Node = get_tree().get_first_node_in_group("scene_handler")
+
 @export var custom_pos := false
 
 var transitioning := false
-var trans_to_game: bool
-
 var reading := false
 var safing := false
 
@@ -28,6 +28,9 @@ var safing := false
 	"foxy": spawn_points.get_child(5).position,
 }
 
+func _enter_tree() -> void:
+	add_to_group("minigame")
+
 func _ready():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -47,13 +50,14 @@ func _ready():
 func connect_signals_recursively(node: Node): #De esta forma conecta todo lo de dentro de coliders, aunque no sean hijos directos. Esto me permite organizar mejor
 	for child in node.get_children():
 		if child.has_signal("send_id_to_text"):
-			child.connect("send_id_to_text", Callable(self, "_on_interacted_text"))
+			child.send_id_to_text.connect(_on_interacted_text)
 		if child.has_signal("do_action"):
-			child.connect("do_action", Callable(self, "on_action"))
+			child.do_action.connect(on_action)
 		
 		# Llamada recursiva para nietos, bisnietos, etc.
 		connect_signals_recursively(child)
 
+##char
 
 func locate_char(entrance: bool, animatronic: String):
 	if animatronic == "none":
@@ -71,9 +75,8 @@ func locate_char(entrance: bool, animatronic: String):
 		player.position = posiciones_inicio["foxy"]
 	camera.locate()
 
-func _on_intro_done() -> void:
-	player.freeze = false
-	transitioning = false
+
+##interactables
 
 func _on_interacted_text(id: String, end_in: Array[int], read: int):
 	if reading or safing or transitioning:
@@ -84,7 +87,7 @@ func _on_interacted_text(id: String, end_in: Array[int], read: int):
 	pop_text.end_in = end_in
 	pop_text.pop_up(id, read)
 
-func _on_finished_text():	
+func _on_finished_text():
 	reading = false
 	pop_text.visible = false
 	player.freeze = false
@@ -125,11 +128,9 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	
 	elif action == "Exit_pizza":
 		exit()
-		begin_trans()
 	
 	elif action == "Begin_night":
 		begin()
-		begin_trans()
 	
 	else:
 		custom_action.do_custom_action(action, read) # Tengo un nodo a parte para las acciones custom, para organizar
@@ -160,78 +161,81 @@ func act_active(node: Node):
 		else:
 			act_active(child)
 
+##scene
+
+func _on_intro_done() -> void:
+	player.freeze = false
+	transitioning = false
+
 func exit():
 	player.freeze = true
-	trans_to_game = false
+	transitioning = true
+	scene_handler.trans_to_nothing()
+	await scene_handler.done_fade_in
+	shiftCompleted.start_animation()
 
 func begin():
 	player.freeze = true
-	trans_to_game = true
+	transitioning = true
+	scene_handler.trans_to_scene(scene_handler.scene.NIGHT)
 
-func begin_trans():
-	transicion.out()
-
-func _on_transicion_done_out() -> void:
-	Global.escena_previa = "Minigame"
-	Global.just_death_min = "none" # Da igual lo que pase, que se ha de reiniciar
-	if trans_to_game:
-		Global.guardar_partida_provisional()
-		get_tree().change_scene_to_file("res://Escenas/Night/Main_Game.tscn") #actualizar
-	else:
-		shiftCompleted.start_animation()
 
 func _on_shift_completed_done() -> void:
-	manage_end_night()
+	manage_end_shift()
 
-func manage_end_night():
+func manage_end_shift():
 	
-	print("todo bien")
 	if Global.inventario["exe"]:
-		get_tree().change_scene_to_file("res://escenas/endings/good_ending.tscn") #actualizar # final bueno. Luego habra que cambiar la logica...
+		scene_handler.ending = scene_handler.end.TRUE
+		scene_handler.trans_to_scene(scene_handler.scene.END)
 		return
 	elif Global.inventario["files"]:
-		get_tree().change_scene_to_file("res://escenas/endings/bad_ending.tscn") #actualizar # Final malo. La idea es que se active siempre que salgas, da igual en que noche estes
-		return # El return es porque no tiene que hacer nada mas. Tampoco guardar partida. El progreso se guarda en otro lado
-	
-	elif Global.noche != 0 and Global.noche < 5: # Si es una noche normal, 1-4, suma 1 a la noche
+		scene_handler.ending = scene_handler.end.BAD
+		scene_handler.trans_to_scene(scene_handler.scene.END)
+		return
+
+
+	if Global.noche != 0 and Global.noche < 5: # Si es una noche normal, 1-4, suma 1 a la noche
 		Global.noche += 1
 	
 	else: 
 		
-		if Global.noche == 5: # Noche 5
+		if Global.noche == 5:
 			if Global.mapa["signed_in"]:
 				Global.noche += 1
-			
 			else:
-				get_tree().change_scene_to_file("res://escenas/endings/mediocre_ending.tscn") #actualizar # Final mediocre
+				scene_handler.ending = scene_handler.end.MEDIOCRE
+				scene_handler.trans_to_scene(scene_handler.scene.END)
 				return
 		
 		elif Global.noche == 6:
-			get_tree().change_scene_to_file("res://escenas/endings/party_ending.tscn") #actualizar # Final de la noche 6. No tienes ni files ni exe
+			scene_handler.ending = scene_handler.end.PARTY
+			scene_handler.trans_to_scene(scene_handler.scene.END)
 			return
 	
 	if not is_inside_tree():
 		push_warning("manage_end_night(): el nodo ya no está en el árbol")
 		return
 	
-	Global.guardar_partida() # guarda la partida.
+	Global.guardar_partida() # guarda la partida cuando no llega a un final.
 	
 	if Global.misc["When_win_go_to"] == "shift":
-		Global.m_entering = true
-		Global.minigame_starts()
-		get_tree().change_scene_to_file("res://Escenas/Shift/minigame.tscn") #actualizar
+		scene_handler.trans_to_scene(scene_handler.scene.SHIFT)
 	else:
-		get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
+		scene_handler.trans_to_scene(scene_handler.scene.MAIN_MENU)
 
-
+@export var esc_timer: Timer
 func _input(event):
+	if transitioning:
+		return
+	
 	if event.is_action_pressed("Esc"):
-		$ESC_Timer.start()  # Empieza el conteo
+		esc_timer.start()  # Empieza el conteo
 	
 	elif event.is_action_released("Esc"):
-		$ESC_Timer.stop()  # Se cancela si suelta antes de tiempo
+		esc_timer.stop()  # Se cancela si suelta antes de tiempo
 
+const QUICK_TRANSITION_TIME := 0.5
 func _on_esc_timer_timeout() -> void:
-	Global.escena_previa = "Minigame"
-	Global.just_death_min = "none" # Da igual lo que pase, que se ha de reiniciar
-	get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
+	player.freeze = true
+	scene_handler.trans_to_scene(scene_handler.scene.MAIN_MENU, QUICK_TRANSITION_TIME)

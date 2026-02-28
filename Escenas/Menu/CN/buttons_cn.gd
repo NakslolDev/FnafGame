@@ -1,5 +1,11 @@
 extends HBoxContainer
 
+@export var back_selection: Sprite2D
+@export var ready_selection: Sprite2D
+@export var menu_click: AudioStreamPlayer
+@export var custom_night_selecter: Node2D
+
+
 var selected := 0
 var hard_selected := 0
 
@@ -8,15 +14,15 @@ func _ready():
 
 func act_selected():
 	
-	$Back/Seleccion.visible = false
-	$Ready/Seleccion.visible = false
+	back_selection.visible = false
+	ready_selection.visible = false
 	
 	if selected == 1:
-		$Back/Menu_Click.play()
-		$Back/Seleccion.visible = true
+		menu_click.play()
+		back_selection.visible = true
 	if selected == 2:
-		$Ready/Menu_Click.play()
-		$Ready/Seleccion.visible = true
+		menu_click.play()
+		ready_selection.visible = true
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Enter") or event.is_action_pressed("Space"):
@@ -37,12 +43,10 @@ func _input(event: InputEvent) -> void:
 func play():
 	if Global.custom_night_ai == [1, 9, 8, 7]:
 		get_tree().quit()
-	$"../..".transition_to_play()
+	custom_night_selecter.start_night()
 
 func back():
-	Global.escena_previa = "Custom_Night"
-	Global.leer_partida()
-	get_tree().change_scene_to_file("res://Escenas/Menu/MainMenu/Menu_Principal.tscn") #actualizar
+	custom_night_selecter.go_back()
 
 
 func _on_back_mouse_entered() -> void:

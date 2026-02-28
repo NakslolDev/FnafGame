@@ -14,7 +14,6 @@ const progreso_rout: String = "progreso.json"
 const debug_partida_rout: String = "deb-partida.json"
 const debug_partida_prov_rout: String = "deb-partida_prov.json"
 
-var escena_previa: String
 var dead_scene_type := 0
 var killed_by := "none" # bonnie, chica, freddy, foxy. none es cuando no te ha matado nadie
 
@@ -1202,29 +1201,6 @@ func reset_debug():
 	leer_progreso()
 	leer_partida()
 	eliminar_debug_partida()
-
-
-#---Ready---#
-
-func _ready():
-	
-	eliminar_debug_partida() # De existir, elimina el archivo
-	
-	leer_progreso()
-	
-	leer_partida()
-	
-	guardar_configuration_default()
-	
-	leer_configuration()
-	
-	await get_tree().create_timer(0.5).timeout #solucion cutre pero funciona
-	aply_screen_configuration()
-	
-	if not existe_algo():
-		escena_previa = "Menu_Principal"
-		get_tree().change_scene_to_file("res://escenas/Night/Enviroment/brightness_adjust.tscn")
-
 
 
 func _input(event: InputEvent) -> void:

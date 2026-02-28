@@ -5,14 +5,13 @@ extends Node2D
 @export var day: Node
 @export var time: Node
 
-var entering_trans := true
+var entering_trans := false
 
 var fading_out := false
 
-const duration := 3.0
+const DURATION := 3.0
 
 signal done
-signal done_out
 
 func _ready():
 	if not Global.just_death_min == "none":
@@ -21,10 +20,9 @@ func _ready():
 	
 	if Global.m_entering:
 		entrance()
-	else:
-		exit()
 
 func entrance():
+	entering_trans = true
 	root.transitioning = true
 	visible = true
 	modulate.a = 1.0
@@ -53,15 +51,6 @@ func entrance():
 		time.text = "23:5" + str(minutes) + ":" + str(seconds+i).pad_zeros(2)
 		await get_tree().create_timer(1.0).timeout
 
-func exit():
-	root.transitioning = true
-	visible = true
-	modulate.a = 1.0
-	background.visible = true
-	day.visible = false
-	time.visible = false
-	if entering_trans:
-		start_fade()
 
 func start_fade():
 	
@@ -69,30 +58,16 @@ func start_fade():
 	
 	var tween := create_tween()
 	
-	tween.tween_property(self, "modulate:a", 0.3, duration*0.7)
+	tween.tween_property(self, "modulate:a", 0.3, DURATION*0.7)
 	tween.tween_callback(func():
-		emit_signal("done")
+		done.emit()
 	)
-	tween.tween_property(self, "modulate:a", 0.0, duration*0.3)
+	tween.tween_property(self, "modulate:a", 0.0, DURATION*0.3)
 	tween.tween_callback(func():
 		fading_out = false
 		entering_trans = false
 	)
 
-func out():
-	root.transitioning = true
-	entering_trans = false
-	day.visible = false
-	time.visible = false
-	background.visible = true
-	visible = true
-	modulate.a = 0.0
-	var tween := create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, duration*0.5)
-	tween.finished.connect(func():
-		await get_tree().process_frame
-		emit_signal("done_out")
-	)
 
 func _input(event: InputEvent) -> void:
 	if not entering_trans or fading_out:

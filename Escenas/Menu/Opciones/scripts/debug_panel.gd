@@ -7,15 +7,19 @@ func _input(event):
 		_on_close_pressed()
 
 
+@export var general: VBoxContainer
+@export var gamestate: VBoxContainer
+
+
 func _on_debug_menu_pressed() -> void:
 	visible = true
-	$ScrollContainer/VBoxContainer.sync()
+	general.sync()
+	gamestate.sync()
 
 func _on_exit_debug_pressed() -> void:
 	visible = false
 	emit_signal("button_hide")
 	Global.reset_debug()
-	
 
 func _on_close_pressed() -> void:
 	visible = false

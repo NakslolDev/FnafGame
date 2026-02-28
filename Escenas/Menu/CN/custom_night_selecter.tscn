@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://bybkv3vaq6qlk"]
 
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="1_38h6d"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="1_38h6d"]
 [ext_resource type="Script" uid="uid://eyxr8a44p7bu" path="res://Escenas/Menu/CN/custom_night_selecter.gd" id="1_ko47r"]
 [ext_resource type="Script" uid="uid://qvfnvujqjjn6" path="res://Escenas/Menu/CN/ai_custom_night.gd" id="2_5scaq"]
-[ext_resource type="Texture2D" uid="uid://sejpr02h60n5" path="res://assets/Placeholders/Bonnie.png" id="2_yw64g"]
-[ext_resource type="Texture2D" uid="uid://cq2ibop5ggmho" path="res://assets/Placeholders/UI_Menu/Seleccion.png" id="3_6qeii"]
+[ext_resource type="Texture2D" uid="uid://d3k0ah58dgnc4" path="res://assets/Placeholders/Bonnie.png" id="2_yw64g"]
+[ext_resource type="Texture2D" uid="uid://cakbtkd5v3bat" path="res://assets/Placeholders/UI_Menu/Seleccion.png" id="3_6qeii"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="4_uwdoj"]
-[ext_resource type="Texture2D" uid="uid://l1s7u736357m" path="res://assets/Placeholders/Chica.png" id="6_dn2t3"]
-[ext_resource type="Texture2D" uid="uid://bio080u7emcc2" path="res://assets/Placeholders/Freddy.png" id="7_ph6q6"]
-[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://assets/Placeholders/foxy.png" id="8_pfp8p"]
+[ext_resource type="Texture2D" uid="uid://bq2r0qn2h6fol" path="res://assets/Placeholders/Chica.png" id="6_dn2t3"]
+[ext_resource type="Texture2D" uid="uid://d3265mxv31r2w" path="res://assets/Placeholders/Freddy.png" id="7_ph6q6"]
+[ext_resource type="Texture2D" uid="uid://s1cucwt5uhrm" path="res://assets/Placeholders/foxy.png" id="8_pfp8p"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="9_dn2t3"]
 [ext_resource type="Script" uid="uid://blhhdaef1du3h" path="res://Escenas/Menu/CN/buttons_cn.gd" id="12_m1vm1"]
-[ext_resource type="AudioStream" uid="uid://dj67m1ll27oey" path="res://assets/sounds/menu_click.wav" id="13_ko47r"]
+[ext_resource type="AudioStream" uid="uid://bjvedqrixaul0" path="res://assets/sounds/menu_click.wav" id="13_ko47r"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="14_jtx3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn2t3"]
@@ -19,7 +19,6 @@ size = Vector2(44, 50)
 
 [node name="Custom_Night_Selecter" type="Node2D" unique_id=787260633]
 script = ExtResource("1_ko47r")
-transicion = 1
 
 [node name="FondoNegro" type="Sprite2D" parent="." unique_id=448423306]
 texture = ExtResource("1_38h6d")
@@ -273,57 +272,56 @@ theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
 
-[node name="Buttons_CN" type="HBoxContainer" parent="all_idk" unique_id=2020783581]
+[node name="Buttons_CN" type="HBoxContainer" parent="all_idk" unique_id=2020783581 node_paths=PackedStringArray("back_selection", "ready_selection", "menu_click", "custom_night_selecter")]
 layout_mode = 2
 theme_override_constants/separation = 170
 alignment = 1
 script = ExtResource("12_m1vm1")
+back_selection = NodePath("Back/Seleccion")
+ready_selection = NodePath("Ready/Seleccion")
+menu_click = NodePath("Menu_Click")
+custom_night_selecter = NodePath("../..")
+
+[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN" unique_id=445658787]
+stream = ExtResource("13_ko47r")
+volume_db = 1.0
 
 [node name="Back" type="HBoxContainer" parent="all_idk/Buttons_CN" unique_id=1191773835]
 layout_mode = 2
 
-[node name="Back_label" type="Label" parent="all_idk/Buttons_CN/Back" unique_id=635056816]
+[node name="Back_label" type="Label" parent="all_idk/Buttons_CN/Back" unique_id=635056816 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("4_uwdoj")
 theme_override_font_sizes/font_size = 60
 text = "Back"
 script = ExtResource("14_jtx3x")
 id = "Back_"
+root_node = NodePath("../../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="all_idk/Buttons_CN/Back" unique_id=1406554890]
 texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("3_6qeii")
 
-[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN/Back" unique_id=445658787]
-stream = ExtResource("13_ko47r")
-volume_db = 1.0
-
 [node name="Ready" type="HBoxContainer" parent="all_idk/Buttons_CN" unique_id=1771743730]
 layout_mode = 2
 
-[node name="Ready_label" type="Label" parent="all_idk/Buttons_CN/Ready" unique_id=3764764]
+[node name="Ready_label" type="Label" parent="all_idk/Buttons_CN/Ready" unique_id=3764764 node_paths=PackedStringArray("root_node")]
 layout_mode = 2
 theme = ExtResource("4_uwdoj")
 theme_override_font_sizes/font_size = 60
 text = "Ready"
 script = ExtResource("14_jtx3x")
 id = "Ready_"
+root_node = NodePath("../../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="all_idk/Buttons_CN/Ready" unique_id=1941272902]
 texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("3_6qeii")
 
-[node name="Menu_Click" type="AudioStreamPlayer" parent="all_idk/Buttons_CN/Ready" unique_id=1661470050]
-stream = ExtResource("13_ko47r")
-volume_db = 1.0
-
 [node name="Mouse_Custom" parent="." unique_id=982483190 instance=ExtResource("9_dn2t3")]
 menu = true
-
-[node name="Transicion" type="Sprite2D" parent="." unique_id=1299240598]
-texture = ExtResource("1_38h6d")
 
 [connection signal="timeout" from="all_idk/selection/Bonnie/Timer" to="all_idk/selection/Bonnie" method="_on_timer_timeout"]
 [connection signal="input_event" from="all_idk/selection/Bonnie/HBoxContainer/Menos/menos Area2D" to="all_idk/selection/Bonnie" method="_on_menos_area_2d_input_event"]

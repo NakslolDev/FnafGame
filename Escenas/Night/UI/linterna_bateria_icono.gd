@@ -33,12 +33,12 @@ func _process(delta):
 		bateria = Global.linterna_bateria
 	
 	if obscure == true and Global.fade["Linterna"]["Active"]:
-		$".".modulate.a -= delta / obscure_time_animation
+		modulate.a -= delta / obscure_time_animation
 	#visible = Global.energia["Luces"]
 
 func actualizar_skin():
 	if obscure == false: # hace que se pueda oscurecer
-		$".".modulate.a = Global.linterna_skin["alpha_general"]
+		modulate.a = Global.linterna_skin["alpha_general"]
 	$Base.modulate.a = Global.linterna_skin["alpha_base"]
 
 	for nombre_paleta in Global.linterna_skin["partes"].keys():

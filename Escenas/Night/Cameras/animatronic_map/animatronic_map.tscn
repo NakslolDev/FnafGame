@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bq8slaploxj1p"]
 
 [ext_resource type="Script" uid="uid://lihv3siwy1fs" path="res://Escenas/Night/Cameras/animatronic_map/animatronic_map.gd" id="1_h6hd8"]
-[ext_resource type="Texture2D" uid="uid://7ri231ls1otd" path="res://assets/Placeholders/Camaras/UI/Minimapa Ductos.png" id="1_ljng8"]
-[ext_resource type="Texture2D" uid="uid://dpm7dtuqooc7s" path="res://assets/Placeholders/Camaras/Bonnie_Icon.png" id="3_f37ft"]
-[ext_resource type="Texture2D" uid="uid://5iynxhn6w537" path="res://assets/Placeholders/Camaras/Chica_Icon.png" id="4_ipxkm"]
-[ext_resource type="Texture2D" uid="uid://bepi0anfi43h" path="res://assets/Placeholders/Camaras/Foxy_Icon.png" id="5_1bthv"]
-[ext_resource type="Texture2D" uid="uid://bq62vigxep5rq" path="res://assets/Placeholders/Camaras/Freddy_Icon.png" id="6_p30fh"]
+[ext_resource type="Texture2D" uid="uid://dbibmbqy84et8" path="res://assets/Placeholders/Camaras/UI/Minimapa Ductos.png" id="1_ljng8"]
+[ext_resource type="Texture2D" uid="uid://blx1d1sl6mrt8" path="res://assets/Placeholders/Camaras/Bonnie_Icon.png" id="3_f37ft"]
+[ext_resource type="Texture2D" uid="uid://cs06ibllcsagg" path="res://assets/Placeholders/Camaras/Chica_Icon.png" id="4_ipxkm"]
+[ext_resource type="Texture2D" uid="uid://b7dsjot170h3w" path="res://assets/Placeholders/Camaras/Foxy_Icon.png" id="5_1bthv"]
+[ext_resource type="Texture2D" uid="uid://bpuah2pjv1jl2" path="res://assets/Placeholders/Camaras/Freddy_Icon.png" id="6_p30fh"]
 
 [node name="Animatronic_Map" type="Node2D" unique_id=1691874444]
 texture_filter = 1
