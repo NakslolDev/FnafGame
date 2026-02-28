@@ -3,20 +3,27 @@ extends Sprite2D
 var shader_enabled := false
 @export var lights: Node2D
 @export var viñeta: Sprite2D
-@export var ruido: Sprite2D
-
+@export var ruido: Node2D
+@onready var ruido_child := ruido.get_children()
+@export var ruido_timer: Timer
 
 
 func _ready():
 	Global.energia_actualizada.connect(energia_act)
-	if lights.light_out_custom:
-		visible = true
-		viñeta.visible = true
-		ruido.visible = true
-	else:
-		visible = false
-		viñeta.visible = false
-		ruido.visible = false
+	visible = lights.light_out_custom
+	viñeta.visible = lights.light_out_custom
+	ruido.visible = lights.light_out_custom
+	ruido_timer.start()
+
+var last: Sprite2D
+func _on_ruido_timer_timeout() -> void:
+	for child in ruido_child:
+		child.visible = false
+	var new: Sprite2D = ruido_child.pick_random()
+	while new == last:
+		new = ruido_child.pick_random()
+	new.visible = true
+	last = new
 
 func _process(_delta):
 	var viewport_size = get_viewport().get_visible_rect().size
@@ -30,21 +37,16 @@ func _process(_delta):
 	v_mat.set_shader_parameter("mouse_pos", mouse)
 	v_mat.set_shader_parameter("viewport_size", viewport_size)
 	
-	var r_mat = ruido.material
-	r_mat.set_shader_parameter("mouse_pos", mouse)
-	r_mat.set_shader_parameter("viewport_size", viewport_size)
+	for child in ruido_child:
+		child.material.set_shader_parameter("mouse_pos", mouse)
+		child.material.set_shader_parameter("viewport_size", viewport_size)
 
 func energia_act():
 	if lights.light_out_custom:
 		return
-	if Global.energia["Luces"]:
-		visible = false
-		viñeta.visible = false
-		ruido.visible = false
-	else:
-		visible = true
-		viñeta.visible = true
-		ruido.visible = true
+	visible = !Global.energia["Luces"]
+	viñeta.visible = !Global.energia["Luces"]
+	ruido.visible = !Global.energia["Luces"]
 
 func _on_linterna_linterna_activada_switch() -> void:
 	shader_enabled = !shader_enabled

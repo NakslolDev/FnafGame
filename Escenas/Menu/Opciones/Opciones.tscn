@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://cw4xikgcuuitu" path="res://Escenas/Menu/Opciones/scripts/screen.gd" id="3_s8b7i"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="4_okdqg"]
 [ext_resource type="Script" uid="uid://d1x3tqyqdtr4l" path="res://Escenas/Menu/Opciones/scripts/button_mouse.gd" id="5_6fyg2"]
+[ext_resource type="Script" uid="uid://cnhwcya1p6ljm" path="res://Escenas/Menu/Opciones/brightness.gd" id="6_s8b7i"]
 [ext_resource type="Script" uid="uid://yasa6bbnwc3v" path="res://Escenas/Menu/Opciones/scripts/button_mouse_cam.gd" id="6_xbn81"]
+[ext_resource type="PackedScene" uid="uid://22h3fq1pfifb" path="res://Escenas/Menu/Opciones/you_should_see_this/you_should_see_this.tscn" id="7_64mem"]
 [ext_resource type="Script" uid="uid://w6fehj22prqw" path="res://Escenas/Menu/Opciones/scripts/h_slider_mouse.gd" id="7_b8pj5"]
 [ext_resource type="Script" uid="uid://dxkmlcj62gawi" path="res://Escenas/Menu/Opciones/scripts/volume.gd" id="8_7wkqv"]
 [ext_resource type="Script" uid="uid://by33gmwl2pjhs" path="res://Escenas/Menu/Opciones/scripts/volume_sfx.gd" id="9_pepcp"]
@@ -172,19 +174,37 @@ text = "Fullscreen
 "
 autowrap_mode = 2
 
-[node name="Brightness" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1146398527 node_paths=PackedStringArray("root_node")]
-custom_minimum_size = Vector2(300, 0)
+[node name="Brightness" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1143555135 node_paths=PackedStringArray("label", "h_slider", "root_node")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+script = ExtResource("6_s8b7i")
+label = NodePath("Label")
+h_slider = NodePath("HSlider")
+id = "Brightness"
+root_node = NodePath("../../../../../..")
+
+[node name="Label" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness" unique_id=2127778806]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("3_64mem")
 theme_type_variation = &"HeaderSmall"
 theme_override_colors/font_color = Color(0.729412, 0.729412, 0.729412, 1)
-text = "Brightness"
+text = "Brightness "
+horizontal_alignment = 1
 autowrap_mode = 2
-script = ExtResource("25_7k58l")
-id = "Brightness"
-root_node = NodePath("../../../../../..")
+
+[node name="HSlider" type="HSlider" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness" unique_id=1312091073]
+layout_mode = 2
+min_value = 0.2
+max_value = 1.8
+step = 0.01
+value = 1.0
+
+[node name="YouShouldSeeThis" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness" unique_id=1241567631 instance=ExtResource("7_64mem")]
+position = Vector2(106, 123.5)
 
 [node name="Mouse_Sound" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1774242955]
 layout_mode = 2
@@ -1138,6 +1158,8 @@ puntero = "3"
 [connection signal="drag_ended" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/fps/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_h_slider_drag_ended"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/fps/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Fullscreen" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_fullscreen_pressed"]
+[connection signal="drag_ended" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness" method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" to="Mouse_Custom" method="_on_button_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_cam" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_cam" method="_on_pressed"]

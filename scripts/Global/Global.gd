@@ -763,7 +763,7 @@ var screen := {
 	"vsync": true,
 	"fps": 0,
 	"fullscreen": true,
-	"brightness": 1.0,
+	"brightness": 0.2,
 }
 
 #---Variables Progreso---#

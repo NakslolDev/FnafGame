@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://22h3fq1pfifb"]
+
+[ext_resource type="Texture2D" uid="uid://cjkajetbgtinr" path="res://assets/Placeholders/icono.jpg" id="1_i0vdr"]
+[ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="2_aj3wp"]
+[ext_resource type="Texture2D" uid="uid://dqs4bst1s7y3y" path="res://assets/minijuego assets/Black.png" id="3_aj3wp"]
+
+[node name="YouShouldSeeThis" type="Node2D" unique_id=1241567631]
+
+[node name="1" type="Sprite2D" parent="." unique_id=132521243]
+position = Vector2(-69, -1)
+texture = ExtResource("1_i0vdr")
+region_enabled = true
+region_rect = Rect2(32, 96, 96, 96)
+
+[node name="2" type="Sprite2D" parent="." unique_id=1971914066]
+position = Vector2(68, 0)
+texture = ExtResource("1_i0vdr")
+region_enabled = true
+region_rect = Rect2(32, 96, 96, 96)
+
+[node name="Label" type="Label" parent="." unique_id=1490956965]
+offset_left = -118.0
+offset_top = -65.0
+offset_right = -21.0
+offset_bottom = -42.0
+theme = ExtResource("2_aj3wp")
+text = "You should"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1155854669]
+offset_left = -118.0
+offset_top = 47.0
+offset_right = -20.0
+offset_bottom = 70.0
+theme = ExtResource("2_aj3wp")
+text = "not see this"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=34931792]
+offset_left = 20.0
+offset_top = -65.0
+offset_right = 117.0
+offset_bottom = -42.0
+theme = ExtResource("2_aj3wp")
+text = "You should"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=1628766199]
+offset_left = 20.0
+offset_top = 48.0
+offset_right = 117.0
+offset_bottom = 71.0
+theme = ExtResource("2_aj3wp")
+text = "see this"
+horizontal_alignment = 1
+
+[node name="3" type="Sprite2D" parent="." unique_id=707113224]
+modulate = Color(1, 1, 1, 0.98)
+position = Vector2(-66.99997, -1.6925888)
+scale = Vector2(7.1109376, 8.086575)
+texture = ExtResource("3_aj3wp")
+
+[node name="4" type="Sprite2D" parent="." unique_id=563383053]
+modulate = Color(1, 1, 1, 0.95000005)
+position = Vector2(68.000015, -1)
+scale = Vector2(7.1109376, 8.086575)
+texture = ExtResource("3_aj3wp")

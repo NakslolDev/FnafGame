@@ -63,13 +63,103 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pd3h4"]
 noise_type = 0
-seed = 2
-frequency = 0.5
+seed = -33
+frequency = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u32el"]
+width = 640
+height = 360
+noise = SubResource("FastNoiseLite_pd3h4")
+color_ramp = SubResource("Gradient_mros8")
+seamless_blend_skirt = 0.0
+bump_strength = 32.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xe21u"]
+noise_type = 0
+frequency = 0.7
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u1au3"]
 width = 640
 height = 360
-noise = SubResource("FastNoiseLite_pd3h4")
+noise = SubResource("FastNoiseLite_xe21u")
+color_ramp = SubResource("Gradient_mros8")
+seamless_blend_skirt = 0.0
+bump_strength = 32.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u32el"]
+noise_type = 0
+seed = 237
+frequency = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xe21u"]
+width = 640
+height = 360
+noise = SubResource("FastNoiseLite_u32el")
+color_ramp = SubResource("Gradient_mros8")
+seamless_blend_skirt = 0.0
+bump_strength = 32.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mros8"]
+noise_type = 0
+seed = -66
+frequency = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pd3h4"]
+width = 640
+height = 360
+noise = SubResource("FastNoiseLite_mros8")
+color_ramp = SubResource("Gradient_mros8")
+seamless_blend_skirt = 0.0
+bump_strength = 32.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u1au3"]
+noise_type = 0
+seed = 541
+frequency = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0nvb3"]
+width = 640
+height = 360
+noise = SubResource("FastNoiseLite_u1au3")
+color_ramp = SubResource("Gradient_mros8")
+seamless_blend_skirt = 0.0
+bump_strength = 32.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ri0qg"]
+noise_type = 0
+seed = -118
+frequency = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4erhx"]
+width = 640
+height = 360
+noise = SubResource("FastNoiseLite_ri0qg")
+color_ramp = SubResource("Gradient_mros8")
+seamless_blend_skirt = 0.0
+bump_strength = 32.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_22qg4"]
+noise_type = 0
+seed = -1466
+frequency = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_arw1f"]
+width = 640
+height = 360
+noise = SubResource("FastNoiseLite_22qg4")
+color_ramp = SubResource("Gradient_mros8")
+seamless_blend_skirt = 0.0
+bump_strength = 32.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ujq6x"]
+noise_type = 0
+seed = 448
+frequency = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hal1v"]
+width = 640
+height = 360
+noise = SubResource("FastNoiseLite_ujq6x")
 color_ramp = SubResource("Gradient_mros8")
 seamless_blend_skirt = 0.0
 bump_strength = 32.0
@@ -97,7 +187,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0.8)
 metadata/_snap_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_er7cc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mros8"]
 shader = ExtResource("26_y2bxh")
 shader_parameter/mouse_pos = Vector2(0, 0)
 shader_parameter/radio = 0.0
@@ -105,7 +195,7 @@ shader_parameter/viewport_size = Vector2(0, 0)
 shader_parameter/fade_range = 500.0
 shader_parameter/shader_enabled = 0.0
 shader_parameter/transparencia = 1.0
-shader_parameter/nivel_transparencia = 0.98
+shader_parameter/nivel_transparencia = 0.95
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4c7a"]
 size = Vector2(1050, 115)
@@ -264,23 +354,66 @@ irritating_light = NodePath("Irritating_light")
 visible = false
 texture = ExtResource("25_0pxa1")
 
-[node name="Ruido" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=248029266]
+[node name="RuidoTimer" type="Timer" parent="No_Shader_UI/Lights" unique_id=77940231]
+wait_time = 0.05
+
+[node name="Ruido" type="Node2D" parent="No_Shader_UI/Lights" unique_id=2076738744]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+
+[node name="Ruido1" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=1660319294]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+texture = SubResource("NoiseTexture2D_u32el")
+
+[node name="Ruido2" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=345150706]
 material = SubResource("ShaderMaterial_xe21u")
 scale = Vector2(3, 3)
 texture = SubResource("NoiseTexture2D_u1au3")
+
+[node name="Ruido3" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=917585757]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+texture = SubResource("NoiseTexture2D_xe21u")
+
+[node name="Ruido4" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=866052324]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+texture = SubResource("NoiseTexture2D_pd3h4")
+
+[node name="Ruido5" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=994945696]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+texture = SubResource("NoiseTexture2D_0nvb3")
+
+[node name="Ruido6" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=556371632]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+texture = SubResource("NoiseTexture2D_4erhx")
+
+[node name="Ruido7" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=1555904730]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+texture = SubResource("NoiseTexture2D_arw1f")
+
+[node name="Ruido8" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=734748453]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+texture = SubResource("NoiseTexture2D_hal1v")
 
 [node name="Viñeta" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=457874713]
 material = SubResource("ShaderMaterial_u32el")
 texture = SubResource("GradientTexture2D_xe21u")
 
-[node name="Oficina_lights_out" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=616897827 node_paths=PackedStringArray("lights", "viñeta", "ruido")]
+[node name="Oficina_lights_out" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=616897827 node_paths=PackedStringArray("lights", "viñeta", "ruido", "ruido_timer")]
 visible = false
-material = SubResource("ShaderMaterial_er7cc")
+material = SubResource("ShaderMaterial_mros8")
 texture = ExtResource("25_0pxa1")
 script = ExtResource("27_60v0j")
 lights = NodePath("..")
 "viñeta" = NodePath("../Viñeta")
 ruido = NodePath("../Ruido")
+ruido_timer = NodePath("../RuidoTimer")
 
 [node name="Irritating_light" type="AudioStreamPlayer" parent="No_Shader_UI/Lights" unique_id=142042597]
 stream = ExtResource("28_imsbu")
@@ -429,6 +562,7 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Izquierdo" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Oficina_Detras" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="No_Shader_UI/Lights/Oficina_lights_out" method="_on_linterna_linterna_activada_switch"]
+[connection signal="timeout" from="No_Shader_UI/Lights/RuidoTimer" to="No_Shader_UI/Lights/Oficina_lights_out" method="_on_ruido_timer_timeout"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Bonnie" to="." method="_on_jumpscare_bonnie_jumpscare_end"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Chica" to="." method="_on_jumpscare_chica_jumpscare_end"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Freddy" to="." method="_on_jumpscare_freddy_jumpscare_end"]
