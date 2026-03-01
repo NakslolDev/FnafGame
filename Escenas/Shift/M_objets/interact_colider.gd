@@ -43,7 +43,6 @@ enum Condition{Omit, Need, Exclude}
 @export var key: Condition = Condition.Omit
 @export var recorder: Condition = Condition.Omit
 @export var screwdriver: Condition = Condition.Omit
-@export var bateries: Condition = Condition.Omit
 @export var pen: Condition = Condition.Omit
 @export var files: Condition = Condition.Omit
 @export var safe_usb_key: Condition = Condition.Omit
@@ -59,6 +58,24 @@ enum Condition{Omit, Need, Exclude}
 @export var computer_working: Condition = Condition.Omit
 @export var computer_failed: Condition = Condition.Omit
 @export var signed_in: Condition = Condition.Omit
+
+@export_group("Map Items")
+@export var kitchen_water_bottle: Condition = Condition.Omit
+@export var main_water_bottle: Condition = Condition.Omit
+@export var closet_batteries: Condition = Condition.Omit
+@export var pas_batteries: Condition = Condition.Omit
+@export var arcade_batteries: Condition = Condition.Omit
+@export var almacen_batteries: Condition = Condition.Omit
+@export var box_toy: Condition = Condition.Omit
+@export var almacen_toy: Condition = Condition.Omit
+
+@export_group("Items")
+@export var water_bottle: Condition = Condition.Omit
+@export var batteries: Condition = Condition.Omit
+@export var door_toy: Condition = Condition.Omit
+@export var left_door_toy: Condition = Condition.Omit
+@export var right_door_toy: Condition = Condition.Omit
+
 
 @export_group("Death_minigame_state")
 enum dmState{Omit, None, Complete, Saved}
@@ -129,6 +146,28 @@ func check_active():
 		if value == dmState.Saved and Global.dm[_key] != Global.Estado.SALVADO:
 			active = false
 			return
+	
+	for _key in Global.map_items: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
+		var value: Condition = get(_key)
+		if value == Condition.Omit: # sobra, pero para que quede más limpio
+			continue
+		if value == Condition.Need and not Global.map_items[_key]:
+			active = false
+			return
+		if value == Condition.Exclude and Global.map_items[_key]:
+			active = false
+			return
+	
+	for _key in Items.objects: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
+		var value: Condition = get(_key)
+		if value == Condition.Omit: # sobra, pero para que quede más limpio
+			continue
+		if value == Condition.Need and not Items.objects[_key]:
+			active = false
+			return
+		if value == Condition.Exclude and Items.objects[_key]:
+			active = false
+			return
 
 func _on_body_entered(body: Node2D) -> void:
 	if str(body).begins_with("Character_Minigame"):
@@ -139,6 +178,7 @@ func _on_body_exited(body: Node2D) -> void:
 		player_in = false
 
 func _input(event):
+	
 	if not (event.is_action_pressed("interact") and player_in) or not active:
 		return
 	
@@ -158,4 +198,3 @@ func _input(event):
 			send_id_to_text.emit(id, read_end_in, read)
 	if read < read_end_in.size():
 		read += 1
-	

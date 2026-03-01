@@ -98,9 +98,9 @@ func _ready():
 
 
 func _input(event):
-	if event.is_action_pressed("W"):
-		tick_stop = true
-		on_tick_stop.emit()
+	#if event.is_action_pressed("W"):
+		#tick_stop = true
+		#on_tick_stop.emit()
 	
 	if event.is_action_pressed("Esc"):
 		esc_timer.start()  # Empieza el conteo

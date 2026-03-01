@@ -47,7 +47,7 @@ func _ready():
 
 func _act_current_scene(new: scene):
 	if current_scene == scene.SHIFT:
-		_manage_exit_minigame() # aquí va la lógica al salir de una escena, no al entrar a esta
+		_manage_exit_minigame(new) # aquí va la lógica al salir de una escena, no al entrar a esta
 
 	last_scene = current_scene
 	current_scene = new
@@ -102,6 +102,7 @@ func change_to_main_menu(force: bool = false):
 	_manage_main_menu_before_change()
 	_act_current_scene(scene.MAIN_MENU)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = menu_principal.instantiate()
 	add_child(current_tree_scene)
 	_manage_main_menu()
@@ -112,6 +113,7 @@ func change_to_options(force: bool = false):
 	changing_scene = true
 	_act_current_scene(scene.OPTIONS)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = opciones.instantiate()
 	add_child(current_tree_scene)
 	changing_scene = false
@@ -121,6 +123,7 @@ func change_to_custom_night(force: bool = false):
 	changing_scene = true
 	_act_current_scene(scene.CUSTOM_NIGHT)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = custom_night_selecter.instantiate()
 	add_child(current_tree_scene)
 	_manage_custom_night()
@@ -132,6 +135,7 @@ func change_to_main_game(force: bool = false):
 	_manage_night_before_change()
 	_act_current_scene(scene.NIGHT)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = main_game.instantiate()
 	add_child(current_tree_scene)
 	_manage_night()
@@ -143,6 +147,7 @@ func change_to_shift(force: bool = false):
 	_manage_minigame_before_change()
 	_act_current_scene(scene.SHIFT)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = minigame.instantiate()
 	add_child(current_tree_scene)
 	_manage_minigame()
@@ -153,6 +158,7 @@ func change_to_death_minigame(force: bool = false):
 	changing_scene = true
 	_act_current_scene(scene.DEATH_MINIGAME)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = death_minigame_loader.instantiate()
 	add_child(current_tree_scene)
 	changing_scene = false
@@ -162,6 +168,7 @@ func change_to_death_scene(force: bool = false):
 	changing_scene = true
 	_act_current_scene(scene.DEATH)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = dead_scene.instantiate()
 	add_child(current_tree_scene)
 	changing_scene = false
@@ -171,6 +178,7 @@ func change_to_6_am(force: bool = false):
 	changing_scene = true
 	_act_current_scene(scene.SIX_AM)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = _6_am.instantiate()
 	add_child(current_tree_scene)
 	_manage_6_am()
@@ -184,6 +192,7 @@ func change_to_ending(force: bool = false):
 	changing_scene = true
 	_act_current_scene(scene.END)
 	if current_tree_scene != null: current_tree_scene.queue_free()
+	await get_tree().process_frame
 	current_tree_scene = ending_screen.instantiate()
 	add_child(current_tree_scene)
 	_manage_endign_screen()
@@ -226,11 +235,25 @@ func _manage_minigame():
 		current_tree_scene._on_intro_done() # simplemente desbloquea al jugador
 	Global.custom_night_ai = [0,0,0,0] # Lo reseteo en minigame para que solo se resetee si juegas normalmente
 
-func _manage_exit_minigame():
+var fleing := false
+func _manage_exit_minigame(new: scene):
 	Global.just_death_min = "none" # Da igual lo que pase, que se ha de reiniciar
+	
+	if fleing: # sales con esc...
+		fleing = false
+		return
+
+	if not new in [scene.NIGHT, scene.END]:
+		Global.noche += 1
+		Global.randomice_map_items() # importante llamar a esto antes de guardar partida, pues la idea es que no puedes salir y volver a entrar para tener otra loot table
+		# Además, es a posta que solamente aparezcan en la segunda noche... Aunque igual lo cambio (añadir la función a Global.create_new_game)
+		Global.guardar_partida()
 
 
 func _manage_night_before_change():
+	if current_scene == scene.CUSTOM_NIGHT:
+		Global.noche = 0
+	
 	Global.reset_night()
 
 func _manage_night():
@@ -280,7 +303,7 @@ func reset_options_scene():
 	add_child(current_tree_scene)
 
 
-const COOL_TRANS_FADE_TIME := 5.0
+const COOL_TRANS_FADE_TIME := 8.0
 func cool_6_am_transition():
 	
 	if changing_scene: return

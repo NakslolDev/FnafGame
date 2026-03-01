@@ -59,3 +59,47 @@ func activate_dm_machine(read):
 
 func claim_dm_usb(_read):
 	Global.inventario["dm_usb_key"] = true
+
+
+func get_screwdriver(_read):
+	Global.inventario["screwdriver"] = true
+
+func get_closet_batteries(_read):
+	Items.objects["batteries"] += 1
+	Global.map_items["closet_batteries"] = false
+
+func get_pas_batteries(_read):
+	Items.objects["batteries"] += 1
+	Global.map_items["pas_batteries"] = false
+
+func get_arcade_batteries(_read):
+	Items.objects["batteries"] += 1
+	Global.map_items["arcade_batteries"] = false
+
+func get_almacen_batteries(_read):
+	Items.objects["batteries"] += 1
+	Global.map_items["almacen_batteries"] = false
+
+func get_kitchen_water(_read):
+	Items.objects["water_bottle"] += 1
+	Global.map_items["kitchen_water_bottle"] = false
+
+func get_main_water(_read):
+	Items.objects["water_bottle"] += 1
+	Global.map_items["main_water_bottle"] = false
+
+func get_box_toy(_read):
+	Items.objects["door_toy"] += 1
+	Global.map_items["box_toy"] = false
+
+func get_almacen_toy(_read):
+	Items.objects["door_toy"] += 1
+	Global.map_items["almacen_toy"] = false
+
+func put_left_toy(_read):
+	Items.objects["door_toy"] -= 1
+	Items.objects["left_door_toy"] = true
+
+func put_right_toy(_read):
+	Items.objects["door_toy"] -= 1
+	Items.objects["right_door_toy"] = true

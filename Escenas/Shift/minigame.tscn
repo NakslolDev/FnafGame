@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://0plph23qdqex" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://Escenas/Shift/Text/pop_text.tscn" id="14_v4577"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://Escenas/Shift/Safe/pop_safe.tscn" id="15_kqcik"]
+[ext_resource type="Script" uid="uid://crfhs1eixfovv" path="res://Escenas/Shift/RandomScriptsIDK/toy_on_door.gd" id="15_u5xp7"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://Escenas/Shift/BlackBars/black_bars.tscn" id="16_3hrc1"]
 [ext_resource type="Script" uid="uid://hrj5r1dkwlwl" path="res://Escenas/Shift/RandomScriptsIDK/intro_minigame.gd" id="17_b7ymr"]
 [ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
@@ -178,7 +179,7 @@ shader_parameter/vignette_opacity = 0.665
 
 [node name="Minigame" type="Node" unique_id=1354298531 node_paths=PackedStringArray("manual_act_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe", "transicion", "shiftCompleted", "camera", "spawn_points", "esc_timer") groups=["minigame"]]
 script = ExtResource("1_xv0fq")
-manual_act_nodes = [NodePath("Coliders/Key_locations"), NodePath("Things_Front_All/Secret_room_hitbox")]
+manual_act_nodes = [NodePath("Coliders/Key_locations"), NodePath("Things_Front_All/Secret_room_hitbox"), NodePath("YSort/LeftToyOnDoor"), NodePath("YSort/RightToyOnDoor")]
 custom_action = NodePath("CustomActions")
 coliders_node = NodePath("Coliders")
 player = NodePath("YSort/Character_Minigame")
@@ -584,6 +585,38 @@ region_rect = Rect2(96, 0, 32, 48)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Foxy" unique_id=1717986377]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_26wog")
+
+[node name="Armario" parent="YSort" unique_id=2021913303 instance=ExtResource("12_axwuc")]
+position = Vector2(-1368, 832)
+
+[node name="PAS" parent="YSort" unique_id=325251574 instance=ExtResource("12_axwuc")]
+position = Vector2(-1009, 678)
+
+[node name="Main" parent="YSort" unique_id=515704892 instance=ExtResource("12_axwuc")]
+position = Vector2(-844, 254)
+
+[node name="Almacen" parent="YSort" unique_id=1737562455 instance=ExtResource("12_axwuc")]
+position = Vector2(-650, 708)
+
+[node name="Box" parent="YSort" unique_id=722427048 instance=ExtResource("12_axwuc")]
+position = Vector2(-1295, 30)
+
+[node name="LeftToyOnDoor" type="Sprite2D" parent="YSort" unique_id=831787113]
+position = Vector2(-1139, 840.5)
+scale = Vector2(0.5000011, 0.47916672)
+texture = ExtResource("14_q3h4n")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 48)
+script = ExtResource("15_u5xp7")
+
+[node name="RightToyOnDoor" type="Sprite2D" parent="YSort" unique_id=770615697]
+position = Vector2(-891, 840.5)
+scale = Vector2(0.5000025, 0.47916672)
+texture = ExtResource("14_q3h4n")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 48)
+script = ExtResource("15_u5xp7")
+left = false
 
 [node name="Shader&else" type="CanvasLayer" parent="." unique_id=964723939]
 
@@ -1330,6 +1363,111 @@ foxy = 2
 scale = Vector2(1.3893229, 0.71692866)
 id = "x_saved"
 foxy = 3
+
+[node name="Armario" type="Node2D" parent="Coliders" unique_id=1606524719]
+position = Vector2(-1368, 832)
+
+[node name="Batteries" parent="Coliders/Armario" unique_id=1840392313 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_closet_batteries_w_text"
+id = "batteries"
+exiting = false
+closet_batteries = 1
+
+[node name="PAS" type="Node2D" parent="Coliders" unique_id=244363432]
+position = Vector2(-1009, 678)
+
+[node name="Batteries" parent="Coliders/PAS" unique_id=1979556136 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_pas_batteries_w_text"
+id = "batteries"
+exiting = false
+pas_batteries = 1
+
+[node name="Screwdriver" parent="Coliders/PAS" unique_id=1064303173 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_screwdriver_w_text"
+id = "screwdriver"
+screwdriver = 2
+
+[node name="Kitchen" type="Node2D" parent="Coliders" unique_id=1573493021]
+position = Vector2(-641, 542)
+
+[node name="Water" parent="Coliders/Kitchen" unique_id=913484875 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_kitchen_water_w_text"
+id = "water_bottle"
+exiting = false
+kitchen_water_bottle = 1
+
+[node name="Main" type="Node2D" parent="Coliders" unique_id=1626080043]
+position = Vector2(-844, 254)
+
+[node name="Water" parent="Coliders/Main" unique_id=151793368 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_main_water_w_text"
+id = "water_bottle"
+exiting = false
+main_water_bottle = 1
+
+[node name="Arcade" type="Node2D" parent="Coliders" unique_id=1637380954]
+position = Vector2(-827, 677)
+
+[node name="Batteries" parent="Coliders/Arcade" unique_id=1416039000 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_arcade_batteries_w_text"
+id = "batteries"
+exiting = false
+arcade_batteries = 1
+
+[node name="Almacen" type="Node2D" parent="Coliders" unique_id=1126483468]
+position = Vector2(-650, 708)
+
+[node name="Toy" parent="Coliders/Almacen" unique_id=2117488053 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_almacen_toy_w_text"
+id = "toy"
+exiting = false
+almacen_toy = 1
+
+[node name="Batteries" parent="Coliders/Almacen" unique_id=1413157519 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_almacen_batteries_w_text"
+id = "batteries"
+exiting = false
+arcade_batteries = 1
+
+[node name="Box" type="Node2D" parent="Coliders" unique_id=1658191473]
+position = Vector2(-1295, 30)
+
+[node name="Toy" parent="Coliders/Box" unique_id=541430912 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_box_toy_w_text"
+id = "toy"
+exiting = false
+box_toy = 1
+
+[node name="ToyOnDoors" type="Node" parent="Coliders" unique_id=633217471]
+
+[node name="LeftToy" parent="Coliders/ToyOnDoors" unique_id=1231854845 instance=ExtResource("24_ly3ag")]
+position = Vector2(-1165.0001, 832.00006)
+scale = Vector2(5.628275, 6.1079884)
+action = "Custom"
+custom_action = "put_left_toy_w_text"
+id = "put_toy"
+exiting = false
+door_toy = 1
+left_door_toy = 2
+
+[node name="RightToy" parent="Coliders/ToyOnDoors" unique_id=2072235048 instance=ExtResource("24_ly3ag")]
+position = Vector2(-865.0001, 832)
+scale = Vector2(5.628275, 6.1079884)
+action = "Custom"
+custom_action = "put_right_toy_w_text"
+id = "put_toy"
+exiting = false
+door_toy = 1
+right_door_toy = 2
 
 [node name="Things_Front_All" type="Node" parent="." unique_id=1029449219]
 

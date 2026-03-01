@@ -2,8 +2,10 @@ extends VBoxContainer
 
 var debug := Global.debug 
 
-@export var vbox_mapa: Node
-@export var vbox_invent: Node
+@export var vbox_mapa: VBoxContainer
+@export var vbox_invent: VBoxContainer
+@export var vbox_map_items: VBoxContainer
+
 
 func _ready():
 	sync()
@@ -37,6 +39,13 @@ func sync():
 		if key_id.begins_with(prefix):
 			key_id = key_id.substr(prefix.length())
 		key.button_pressed = debug["game_state"]["mapa"][key_id]
+	
+	for key in vbox_map_items.get_children():
+		var prefix := "CheckBox_"
+		var key_id := key.name
+		if key_id.begins_with(prefix):
+			key_id = key_id.substr(prefix.length())
+		key.button_pressed = debug["game_state"]["map_items"][key_id]
 	
 
 func sync_map_in():
@@ -77,9 +86,6 @@ func _on_check_box_recorder_toggled(toggled_on: bool) -> void:
 
 func _on_check_box_screwdriver_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["screwdriver"] = toggled_on
-
-func _on_check_box_bateries_toggled(toggled_on: bool) -> void:
-	debug["game_state"]["inventario"]["bateries"] = toggled_on
 
 func _on_check_box_pen_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["inventario"]["pen"] = toggled_on
@@ -131,3 +137,28 @@ func _on_spin_box_comb_value_changed(value: float) -> void:
 	for c in str(value):
 		result.append(int(c))
 	debug["game_state"]["combination"] = result
+
+
+func _on_check_box_kitchen_water_bottle_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["kitchen_water_bottle"] = toggled_on
+
+func _on_check_box_main_water_bottle_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["main_water_bottle"] = toggled_on
+
+func _on_check_box_closet_batteries_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["closet_batteries"] = toggled_on
+
+func _on_check_box_pas_batteries_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["pas_batteries"] = toggled_on
+
+func _on_check_box_arcade_batteries_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["arcade_batteries"] = toggled_on
+
+func _on_check_box_almacen_batteries_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["almacen_batteries"] = toggled_on
+
+func _on_check_box_box_toy_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["box_toy"] = toggled_on
+
+func _on_check_box_almacen_toy_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["almacen_toy"] = toggled_on

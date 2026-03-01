@@ -46,6 +46,8 @@ func _ready():
 	
 	if Global.m_entering == false:
 		camera.black_foreground.visible = false
+	
+	act_interact()
 
 func connect_signals_recursively(node: Node): #De esta forma conecta todo lo de dentro de coliders, aunque no sean hijos directos. Esto me permite organizar mejor
 	for child in node.get_children():
@@ -141,14 +143,14 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 func act_interact():
 	for child in manual_act_nodes:
 		if child.has_method("act"):
-			child.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
+			child.act() 
 		else:
 			recursive_act_interact(child)
 
 func recursive_act_interact(node: Node):
 	for child in node.get_children():
 		if child.has_method("act"):
-			child.act() # <- arreglar cuando el nodo no tiene la funcion o no tiene script directamente
+			child.act()
 		else:
 			recursive_act_interact(child)
 
@@ -185,44 +187,29 @@ func _on_shift_completed_done() -> void:
 
 func manage_end_shift():
 	
+	scene_handler.fleing = false # no devería ser problema, pero no molesta
+	
 	if Global.inventario["exe"]:
 		scene_handler.ending = scene_handler.end.TRUE
 		scene_handler.trans_to_scene(scene_handler.scene.END)
-		return
+
 	elif Global.inventario["files"]:
 		scene_handler.ending = scene_handler.end.BAD
 		scene_handler.trans_to_scene(scene_handler.scene.END)
-		return
 
+	elif Global.noche == 6:
+		scene_handler.ending = scene_handler.end.PARTY
+		scene_handler.trans_to_scene(scene_handler.scene.END)
 
-	if Global.noche != 0 and Global.noche < 5: # Si es una noche normal, 1-4, suma 1 a la noche
-		Global.noche += 1
-	
-	else: 
-		
-		if Global.noche == 5:
-			if Global.mapa["signed_in"]:
-				Global.noche += 1
-			else:
-				scene_handler.ending = scene_handler.end.MEDIOCRE
-				scene_handler.trans_to_scene(scene_handler.scene.END)
-				return
-		
-		elif Global.noche == 6:
-			scene_handler.ending = scene_handler.end.PARTY
-			scene_handler.trans_to_scene(scene_handler.scene.END)
-			return
-	
-	if not is_inside_tree():
-		push_warning("manage_end_night(): el nodo ya no está en el árbol")
-		return
-	
-	Global.guardar_partida() # guarda la partida cuando no llega a un final.
-	
-	if Global.misc["When_win_go_to"] == "shift":
-		scene_handler.trans_to_scene(scene_handler.scene.SHIFT)
+	elif Global.noche == 5 and not Global.mapa["signed_in"]:
+		scene_handler.ending = scene_handler.end.MEDIOCRE
+		scene_handler.trans_to_scene(scene_handler.scene.END)
+
 	else:
-		scene_handler.trans_to_scene(scene_handler.scene.MAIN_MENU)
+		if Global.misc["When_win_go_to"] == "shift":
+			scene_handler.trans_to_scene(scene_handler.scene.SHIFT)
+		else:
+			scene_handler.trans_to_scene(scene_handler.scene.MAIN_MENU)
 
 @export var esc_timer: Timer
 func _input(event):
@@ -238,4 +225,5 @@ func _input(event):
 const QUICK_TRANSITION_TIME := 0.5
 func _on_esc_timer_timeout() -> void:
 	player.freeze = true
+	scene_handler.fleing = true
 	scene_handler.trans_to_scene(scene_handler.scene.MAIN_MENU, QUICK_TRANSITION_TIME)

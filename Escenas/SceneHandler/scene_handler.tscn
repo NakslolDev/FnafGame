@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5ocngeqd77p5" path="res://Escenas/SceneHandler/scene_handler.gd" id="1_4md2c"]
 [ext_resource type="PackedScene" uid="uid://c80vwkth1b5y2" path="res://Escenas/Night/Main_Game.tscn" id="2_kjkxg"]
 [ext_resource type="PackedScene" uid="uid://cu0m257624re4" path="res://Escenas/Shift/minigame.tscn" id="3_8ft8s"]
-[ext_resource type="Script" uid="uid://duhwlbghb2f4l" path="res://Escenas/DeadMinigames/death_minigame_loader.gd" id="4_omiqx"]
+[ext_resource type="PackedScene" uid="uid://c8ii2utfbiuaa" path="res://Escenas/DeadMinigames/death_minigame_loader.tscn" id="4_omiqx"]
 [ext_resource type="PackedScene" uid="uid://clk07ggsfox88" path="res://Escenas/Menu/MainMenu/Menu_Principal.tscn" id="5_vra34"]
 [ext_resource type="PackedScene" uid="uid://bv54uvsb4g8u4" path="res://Escenas/Menu/Opciones/Opciones.tscn" id="6_omiqx"]
 [ext_resource type="PackedScene" uid="uid://bybkv3vaq6qlk" path="res://Escenas/Menu/CN/custom_night_selecter.tscn" id="7_f0prw"]
@@ -14,29 +14,12 @@
 [ext_resource type="Script" uid="uid://cy1bldlwd82kt" path="res://Escenas/SceneHandler/transicion.gd" id="10_rp7rm"]
 [ext_resource type="Texture2D" uid="uid://qp424mvppayp" path="res://assets/Placeholders/Camaras/UI/borderlines/Border.png" id="11_rp7rm"]
 
-[sub_resource type="PackedScene" id="PackedScene_f0prw"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [PackedInt32Array(), PackedInt32Array()],
-"names": PackedStringArray("Death_minigame_loader", "Node", "script", "Label", "Label", "offset_left", "offset_top", "offset_right", "offset_bottom", "theme_override_font_sizes/font_size", "text", "Label2", "Label", "offset_left", "offset_top", "offset_right", "offset_bottom", "theme_override_font_sizes/font_size"),
-"node_count": 3,
-"node_ids": PackedInt32Array(634696383, 590118051, 136868094),
-"node_paths": [NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 6, 5, 1, 6, 2, 7, 3, 8, 4, 9, 5, 10, 6, 0, 1073741825, 0, 12, 11, -1, 5, 13, 7, 14, 8, 15, 9, 16, 10, 17, 11, 0),
-"variants": [ExtResource("4_omiqx"), 623.0, 576.0, 1291.0, 894.0, 50, "ENTER: Complete
-Space: Save
-Esc: Cancel", 541.0, 168.0, 1209.0, 381.0, 50],
-"version": 3
-}
-
 [node name="SceneHandler" type="Node" unique_id=2101335000 node_paths=PackedStringArray("transition") groups=["scene_handler"]]
 script = ExtResource("1_4md2c")
 transition = NodePath("CanvasLayer/Transition")
 main_game = ExtResource("2_kjkxg")
 minigame = ExtResource("3_8ft8s")
-death_minigame_loader = SubResource("PackedScene_f0prw")
+death_minigame_loader = ExtResource("4_omiqx")
 menu_principal = ExtResource("5_vra34")
 opciones = ExtResource("6_omiqx")
 custom_night_selecter = ExtResource("7_f0prw")

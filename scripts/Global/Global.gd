@@ -100,9 +100,9 @@ func guardar_configuration():
 		"misc": misc,
 		"screen": screen,
 		"audio": {
-			"master": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")),
-			"musica": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")),
-			"sfx": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")),
+			"master": clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")), -80, 24),
+			"musica": clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")), -80, 24),
+			"sfx": clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")), -80, 24),
 		}
 	}
 	if configuration["mouse_custom_op"] < 0.5:
@@ -245,6 +245,7 @@ func guardar_partida(use_debug_game_state_istead_of_normal := false):
 				"inventario": debug["game_state"]["inventario"],
 				"mapa": debug["game_state"]["mapa"],
 				"dm": debug["game_state"]["dm"],
+				"map_items": debug["game_state"]["map_items"]
 			}
 		else:
 			sync_debug_to_current()
@@ -254,6 +255,7 @@ func guardar_partida(use_debug_game_state_istead_of_normal := false):
 				"inventario": inventario,
 				"mapa": mapa,
 				"dm": dm,
+				"map_items": map_items,
 			}
 		
 		var devpath := user_root + debug_partida_rout
@@ -275,6 +277,7 @@ func guardar_partida(use_debug_game_state_istead_of_normal := false):
 		"inventario": inventario,
 		"mapa": mapa,
 		"dm": dm,
+		"map_items": map_items
 	}
 	
 	var path := user_root + partida_rout
@@ -300,6 +303,7 @@ func guardar_partida_provisional(use_debug_game_state_istead_of_normal := false)
 				"inventario": debug["game_state"]["inventario"],
 				"mapa": debug["game_state"]["mapa"],
 				"dm": debug["game_state"]["dm"],
+				"map_items": debug["game_state"]["map_items"],
 			}
 		else:
 			sync_debug_to_current()
@@ -309,6 +313,7 @@ func guardar_partida_provisional(use_debug_game_state_istead_of_normal := false)
 				"inventario": inventario,
 				"mapa": mapa,
 				"dm": dm,
+				"map_items": map_items,
 			}
 		
 		var devpath := user_root + debug_partida_prov_rout
@@ -330,6 +335,7 @@ func guardar_partida_provisional(use_debug_game_state_istead_of_normal := false)
 		"inventario": inventario,
 		"mapa": mapa,
 		"dm": dm,
+		"map_items": map_items,
 	}
 	
 	var path := user_root + partida_prov_rout
@@ -425,9 +431,14 @@ func leer_partida():
 			
 			noche = devpartida.get("noche", noche)
 			safe_code = _asign_array_int(devpartida.get("safe_code", safe_code), SAFE_CODE_SIZE)
-			_asign_recursive_diccionary(devpartida.get("inventario"), inventario)
-			_asign_recursive_diccionary(devpartida.get("mapa"), mapa)
-			_asign_recursive_diccionary(devpartida.get("dm"), dm)
+			if devpartida.has("inventario"):
+				_asign_recursive_diccionary(devpartida.get("inventario"), inventario)
+			if devpartida.has("mapa"):
+				_asign_recursive_diccionary(devpartida.get("mapa"), mapa)
+			if devpartida.has("dm"):
+				_asign_recursive_diccionary(devpartida.get("dm"), dm)
+			if devpartida.has("map_items"):
+				_asign_recursive_diccionary(devpartida.get("map_items"), map_items)
 			
 			sync_debug_to_current()
 			
@@ -457,9 +468,14 @@ func leer_partida():
 	
 	noche = partida.get("noche", noche)
 	safe_code = _asign_array_int(partida.get("safe_code", safe_code), SAFE_CODE_SIZE)
-	_asign_recursive_diccionary(partida.get("inventario"), inventario)
-	_asign_recursive_diccionary(partida.get("mapa"), mapa)
-	_asign_recursive_diccionary(partida.get("dm"), dm)
+	if partida.has("inventario"):
+		_asign_recursive_diccionary(partida.get("inventario"), inventario)
+	if partida.has("mapa"):
+		_asign_recursive_diccionary(partida.get("mapa"), mapa)
+	if partida.has("dm"):
+		_asign_recursive_diccionary(partida.get("dm"), dm)
+	if partida.has("map_items"):
+		_asign_recursive_diccionary(partida.get("map_items"), map_items)
 	
 	print("Partida cargada")
 
@@ -793,7 +809,6 @@ var inventario: Dictionary[String, bool] = {
 	"key": false,
 	"recorder": false,
 	"screwdriver": false,
-	"bateries": false,
 	"pen": false,
 	"files": false,
 	"safe_usb_key": false,
@@ -823,8 +838,15 @@ var dm: Dictionary[String, Estado] = {
 	"foxy": Estado.STANDBY,
 }
 
-var map_objects = {
-	"kitcken_water_bottle": false,
+var map_items = {
+	"kitchen_water_bottle": false,
+	"main_water_bottle": false,
+	"closet_batteries": false,
+	"pas_batteries": false,
+	"arcade_batteries": false,
+	"almacen_batteries": false,
+	"box_toy": false,
+	"almacen_toy": false,
 }
 
 #---Funciones Partida---#
@@ -860,9 +882,25 @@ func create_new_game():
 		inventario[key] = false
 	for key in dm: # no necesito hacer recursividad ni nada raro pues todos los elementos son int
 		dm[key] = Estado.STANDBY
+	for key in map_items: # no necesito hacer recursividad ni nada raro pues todos los elementos son bool
+		map_items[key] = false
 	noche = 1
 	safe_code = [0,0,0,0,0]
-	guardar_partida()
+	guardar_partida() # opcional. Igual lo quito, pero nose
+
+func randomice_map_items():
+	
+	for item in map_items:
+		item = false
+	
+	var number_of_items := randi_range(2, 5)
+	
+	for i in number_of_items:
+		map_items[map_items.keys().pick_random()] = true # tambien está implicito que pueden colisionar varios
+	
+	print("Set items on map:")
+	for key in map_items.keys():
+		print(key, ": ", map_items[key])
 
 
 #---Variables Noche---#
@@ -1182,6 +1220,7 @@ var debug :={
 		"mapa": mapa.duplicate(true),
 		"inventario": inventario.duplicate(true),
 		"dm": dm.duplicate(true),
+		"map_items": map_items.duplicate(true),
 	},
 }
 

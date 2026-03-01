@@ -16,11 +16,11 @@ func night_starts():
 
 func reset():
 	objects = {
-		"water_bottle": 1,
-		"batteries": 2,
+		"water_bottle": 0,
+		"batteries": 0,
 		"door_toy": 0,
 		"left_door_toy": false,
-		"right_door_toy": true,
+		"right_door_toy": false,
 	}
 	drinking = false
 	left_usage = 0
@@ -32,7 +32,7 @@ func _ready():
 	Foxy.movement.connect(_movement_foxy)
 
 
-#batteries
+##batteries
 
 signal recharge_flashlight
 
@@ -47,9 +47,9 @@ func consume_batteries():
 	act_objects.emit()
 	print("sweet succulent double A batteries")
 
-const BATTERY_RECHARGE := 50
+const BATTERY_RECHARGE := 30
 
-#water bottle
+##water bottle
 
 var drinking: bool = false
 
@@ -64,7 +64,7 @@ func consume_water_bottle():
 	_hydrate_from_water_bottle()
 	print("ts is lacking some Guacamole Gamer Fart 9000")
 
-const WATER_STRENGHT := 300
+const WATER_STRENGHT := 200
 const WATERING_TIME := 15.0
 func _hydrate_from_water_bottle():
 	var start := Global.insanity
@@ -82,7 +82,7 @@ func _hydrate_from_water_bottle():
 		func(): drinking = false
 	)
 
-# door toy
+##door toy
 
 func _movement_bonnie(to: String, from: String):
 	if to == "PI" and not from == "PI":

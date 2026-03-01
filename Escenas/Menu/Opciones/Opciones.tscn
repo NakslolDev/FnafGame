@@ -897,12 +897,13 @@ text = "Game State (not recomended, might break things)"
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="Gamestate" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs" unique_id=1852455816 node_paths=PackedStringArray("vbox_mapa", "vbox_invent")]
+[node name="Gamestate" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs" unique_id=1852455816 node_paths=PackedStringArray("vbox_mapa", "vbox_invent", "vbox_map_items")]
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("30_r21sq")
 vbox_mapa = NodePath("MarginContainer_mapa/VBoxContainer")
 vbox_invent = NodePath("MarginContainer_inventory/VBoxContainer")
+vbox_map_items = NodePath("MarginContainer_map_items/VBoxContainer")
 
 [node name="Sync" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=735283896]
 layout_mode = 2
@@ -1009,12 +1010,6 @@ theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Screwdriver"
 
-[node name="CheckBox_bateries" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=752797353]
-layout_mode = 2
-theme = ExtResource("28_t63xu")
-theme_override_constants/h_separation = 25
-text = "Bateries"
-
 [node name="CheckBox_pen" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=1181673619]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
@@ -1107,6 +1102,69 @@ layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Signed in for night 6"
+
+[node name="MapItems" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=2072941293]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
+theme_override_font_sizes/font_size = 25
+text = "Items on map"
+
+[node name="MarginContainer_map_items" type="MarginContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=295677454]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items" unique_id=42146592]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CheckBox_kitchen_water_bottle" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=2112306099]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Kitchen water bottle"
+
+[node name="CheckBox_main_water_bottle" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=1982004481]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Main room water bottle"
+
+[node name="CheckBox_closet_batteries" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=1988080754]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Closet batteries"
+
+[node name="CheckBox_pas_batteries" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=311781540]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Parts and services batteries"
+
+[node name="CheckBox_arcade_batteries" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=1082121797]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Arcade batteries"
+
+[node name="CheckBox_almacen_batteries" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=1458736242]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Warehouse batteries"
+
+[node name="CheckBox_box_toy" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=1513057226]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Lost and found toy"
+
+[node name="CheckBox_almacen_toy" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=81969698]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Warehouse toy"
 
 [node name="Save files" type="Label" parent="Debug_panel/ScrollContainer/General" unique_id=2058974210]
 layout_mode = 2
@@ -1217,7 +1275,6 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_key" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_office_key_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_recorder" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_recorder_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_screwdriver" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_screwdriver_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_bateries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_bateries_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_pen" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_pen_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_files" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_files_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_safe_usb_key" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_usb_key_toggled"]
@@ -1231,6 +1288,14 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_computer_working" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_computer_working_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_computer_failed_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_signed_in" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_signed_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_kitchen_water_bottle" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_kitchen_water_bottle_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_main_water_bottle" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_main_water_bottle_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_closet_batteries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_closet_batteries_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_pas_batteries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_pas_batteries_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_arcade_batteries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_arcade_batteries_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_batteries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_batteries_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_box_toy" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_box_toy_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_toy" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_toy_toggled"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/save_progress" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_save_all_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_config" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_config_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_partida" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_partida_pressed"]
