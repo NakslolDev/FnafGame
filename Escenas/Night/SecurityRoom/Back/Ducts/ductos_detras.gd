@@ -1,7 +1,9 @@
 extends Node2D
 
 var shader_enabled := false
-var focus := 0
+
+enum focus_state {NONE, SOFT, HARD}
+var focus: focus_state = focus_state.NONE
 
 @export var ducto_detras_oscuro: Sprite2D
 @export var foxy: Sprite2D
@@ -25,9 +27,10 @@ func _on_oficina_detras_linterna_activada_rebote() -> void:
 		ducto_detras_oscuro.material.set_shader_parameter("shader_enabled", 0.0)
 
 func act_linerna_focus():
-	if shader_enabled and focus != 0:
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Acted focus back duct: ", focus_state.keys()[focus])
+	if shader_enabled and focus != focus_state.NONE:
 		Foxy.soft_focus_DB = true
-		if focus == 2:
+		if focus == focus_state.HARD:
 			Foxy.hard_focus_DB = true
 		else:
 			Foxy.hard_focus_DB = false
@@ -36,17 +39,17 @@ func act_linerna_focus():
 		Foxy.soft_focus_DB = false
 
 func _on_soft_focus_mouse_entered() -> void:
-	focus = 1
+	focus = focus_state.NONE
 	act_linerna_focus()
 
 func _on_soft_focus_mouse_exited() -> void:
-	focus = 0
+	focus = focus_state.SOFT
 	act_linerna_focus()
 
 func _on_hard_focus_mouse_entered() -> void:
-	focus = 2
+	focus = focus_state.HARD
 	act_linerna_focus()
 
 func _on_hard_focus_mouse_exited() -> void:
-	focus = 1
+	focus = focus_state.SOFT
 	act_linerna_focus()

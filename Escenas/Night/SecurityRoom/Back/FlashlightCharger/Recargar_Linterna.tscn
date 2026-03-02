@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dp1parfdkvu0l"]
 
 [ext_resource type="Script" uid="uid://v6jyxlu5payq" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/recargar_linterna.gd" id="1_8pogo"]
-[ext_resource type="Texture2D" uid="uid://b47b06dnqgtcs" path="res://assets/Placeholders/Linterna_Recargando.png" id="1_b6u2f"]
+[ext_resource type="Texture2D" uid="uid://dis0l2fc60gy" path="res://assets/Placeholders/Linterna_Recargando.png" id="1_b6u2f"]
 [ext_resource type="Script" uid="uid://objf8nej4ubl" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/area_2d_recargar_linterna.gd" id="3_i4dkt"]
-[ext_resource type="AudioStream" uid="uid://buxb4ra3km7r4" path="res://assets/sounds/Linterna Agarrar.mp3" id="4_p40pe"]
-[ext_resource type="AudioStream" uid="uid://00qcrlp14a8c" path="res://assets/sounds/Linterna Encajar.mp3" id="5_2truv"]
+[ext_resource type="AudioStream" uid="uid://mh2in0da3o47" path="res://assets/sounds/Linterna Agarrar.mp3" id="4_p40pe"]
+[ext_resource type="AudioStream" uid="uid://b15n3emnrh5nc" path="res://assets/sounds/Linterna Encajar.mp3" id="5_2truv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4dkt"]
 size = Vector2(208, 400)

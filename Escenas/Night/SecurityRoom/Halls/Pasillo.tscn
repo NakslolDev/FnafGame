@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bkhep68tnnnt4"]
 
 [ext_resource type="Script" uid="uid://cap8j6bhy4log" path="res://Escenas/Night/SecurityRoom/Halls/pasillo.gd" id="1_2ym3s"]
-[ext_resource type="Texture2D" uid="uid://2uodgkciu20t" path="res://assets/Placeholders/Oficina_Fondo_Iluminado.png" id="1_yjku7"]
-[ext_resource type="Texture2D" uid="uid://cqqiipffgaf7w" path="res://assets/Placeholders/Oficina_Fondo_Oscuro.png" id="2_a1yt4"]
-[ext_resource type="Texture2D" uid="uid://d3k0ah58dgnc4" path="res://assets/Placeholders/Bonnie.png" id="3_1db6b"]
+[ext_resource type="Texture2D" uid="uid://dun78gpyyq75v" path="res://assets/Placeholders/Oficina_Fondo_Iluminado.png" id="1_yjku7"]
+[ext_resource type="Texture2D" uid="uid://ca5r8p2d5mxvw" path="res://assets/Placeholders/Oficina_Fondo_Oscuro.png" id="2_a1yt4"]
+[ext_resource type="Texture2D" uid="uid://sejpr02h60n5" path="res://assets/Placeholders/Bonnie.png" id="3_1db6b"]
 [ext_resource type="Shader" uid="uid://cy37sjn6e8y4u" path="res://shaders/Pasillo.gdshader" id="4_2ym3s"]
-[ext_resource type="Texture2D" uid="uid://bq2r0qn2h6fol" path="res://assets/Placeholders/Chica.png" id="4_4b6uj"]
+[ext_resource type="Texture2D" uid="uid://l1s7u736357m" path="res://assets/Placeholders/Chica.png" id="4_4b6uj"]
 [ext_resource type="Script" uid="uid://bh466ev0joavu" path="res://Escenas/Night/SecurityRoom/Halls/oficina_fondo_oscuro.gd" id="4_rgj4y"]
-[ext_resource type="Texture2D" uid="uid://s1cucwt5uhrm" path="res://assets/Placeholders/foxy.png" id="5_0deya"]
+[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://assets/Placeholders/foxy.png" id="5_0deya"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ym3s"]
 shader = ExtResource("4_2ym3s")
@@ -20,13 +20,17 @@ shader_parameter/transparencia = 0.0
 shader_parameter/nivel_transparencia = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1db6b"]
-size = Vector2(1501, 2402)
+size = Vector2(1790, 2402)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b6uj"]
 size = Vector2(424, 1231)
 
-[node name="Pasillo" type="Node2D" unique_id=397326124]
+[node name="Pasillo" type="Node2D" unique_id=397326124 node_paths=PackedStringArray("bonnie", "chica", "foxy", "oficina_fondo_oscuro")]
 script = ExtResource("1_2ym3s")
+bonnie = NodePath("Animatronicos/Bonnie")
+chica = NodePath("Animatronicos/Chica")
+foxy = NodePath("Animatronicos/Foxy")
+oficina_fondo_oscuro = NodePath("OficinaFondoOscuro")
 
 [node name="OficinaFondoIluminado" type="Sprite2D" parent="." unique_id=2054902440]
 scale = Vector2(1.5, 1.5)
@@ -63,7 +67,7 @@ script = ExtResource("4_rgj4y")
 [node name="Soft_focus" type="Area2D" parent="." unique_id=475550323]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Soft_focus" unique_id=886324488]
-position = Vector2(-844.5, 17)
+position = Vector2(-896, 17)
 shape = SubResource("RectangleShape2D_1db6b")
 
 [node name="Hard_focus" type="Area2D" parent="." unique_id=1507935628]

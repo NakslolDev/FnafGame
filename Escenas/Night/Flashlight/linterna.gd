@@ -41,12 +41,14 @@ func _process(_delta):
 func set_linterna(value):
 	linterna_activa_temporal = value
 	if linterna_activa_temporal:
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Flashlight on")
 		linternaPNG.modulate.a = 0.3
 		if Global.linterna_bateria <= linterna_penalty and Global.linterna_bateria > 1: #hace que si no te queda suficiente bateria pa encender, se queda a 1%
 			Global.linterna_bateria = 1
 		else:
 			Global.linterna_bateria -= linterna_penalty # cuanto quita la linterna 
 	else:
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Flashlight off")
 		linternaPNG.modulate.a = 0.0
 
 
@@ -71,7 +73,7 @@ func _input_free() -> bool:
 	for area in get_tree().get_nodes_in_group("interactable"):
 		for overlaping_areas in area.get_overlapping_areas():
 			if str(overlaping_areas).begins_with("MouseHitbox"):
-				print("Input taken: ", area)
+				#print("Input taken: ", area)
 				return false
 	return true
 
