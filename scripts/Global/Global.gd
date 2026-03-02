@@ -5,6 +5,7 @@ extends Node
 
 const text_CSV_name: String = "Text_translated.csv"
 const AI_CSV_name: String = "Night_database.csv"
+const DELIMITER: String = ";"
 
 const user_root: String = "user://"
 const configuration_rout: String = "config.json"
@@ -61,7 +62,7 @@ func get_csv_value_id(csv:String, row_id: String, col_id: String) -> String: # D
 		file.close()
 		return "Something went wrong... (empty CSV)"
 	
-	var header = file.get_csv_line()
+	var header = file.get_csv_line(DELIMITER)
 	var col_index = header.find(col_id)
 	if col_index == -1:
 		file.close()
@@ -69,7 +70,7 @@ func get_csv_value_id(csv:String, row_id: String, col_id: String) -> String: # D
 	
 	# Buscar la fila correspondiente al row_id
 	while not file.eof_reached():
-		var columns = file.get_csv_line()
+		var columns = file.get_csv_line(DELIMITER)
 		if columns.size() == 0:
 			continue
 		

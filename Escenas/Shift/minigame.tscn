@@ -523,6 +523,9 @@ position = Vector2(-408, 744)
 [node name="Computer" parent="YSort" unique_id=145170084 instance=ExtResource("12_axwuc")]
 position = Vector2(-344, 792)
 
+[node name="Table(Pen)" parent="YSort" unique_id=1252168626 instance=ExtResource("12_axwuc")]
+position = Vector2(-382, 822)
+
 [node name="Board" parent="YSort" unique_id=698973282 instance=ExtResource("13_7g4ok")]
 position = Vector2(-600, 480)
 
@@ -1468,6 +1471,15 @@ id = "put_toy"
 exiting = false
 door_toy = 1
 right_door_toy = 2
+
+[node name="Table" type="Node2D" parent="Coliders" unique_id=143340012]
+position = Vector2(-382, 822)
+
+[node name="Pen" parent="Coliders/Table" unique_id=1877223384 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_pen_w_text"
+id = "get_pen"
+pen = 2
 
 [node name="Things_Front_All" type="Node" parent="." unique_id=1029449219]
 

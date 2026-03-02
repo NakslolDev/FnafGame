@@ -64,6 +64,9 @@ func claim_dm_usb(_read):
 func get_screwdriver(_read):
 	Global.inventario["screwdriver"] = true
 
+func get_pen(_read):
+	Global.inventario["pen"] = true
+
 func get_closet_batteries(_read):
 	Items.objects["batteries"] += 1
 	Global.map_items["closet_batteries"] = false

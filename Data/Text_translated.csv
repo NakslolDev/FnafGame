@@ -1,284 +1,289 @@
-id,En,Es,De
-,,,
-Menu,,,
-,,,
-Play_,Play,Jugar,
-Options_,Options,Opciones,
-Exit_,Exit,Salir,
-Continue_,Continue,Continuar,
-Night_,Night,Noche,
-New_game,New Game,Nueva Partida,
-Custom_night,Custom Night,Noche Personalizada,
-Back_,Back,Atrás,
-Ready_,Ready,Listo,
-,,,
-,,,
-Options,,,
-,,,
-Mouse_title,Mouse Options,Opciones de Ratón,
-Mouse_type,Mouse Type: ,Tipo de puntero:,
-Mouse_hl_on,Highlight in cams,Resaltar en cámaras,
-Mouse_hl_off,Don’t highlight in cams,No resaltar en cámaras,
-Mouse_opacity,Mouse Opacity,Opacidad del Ratón,
-Too_little_op,(full opacity while in menu),(Opacidad completa en el menú),
-Sound_title,Sound Options,Opciones de Sonido,
-Sound_master,Master,Maestro,
-Sound_sfx,SFX,Efectos de sonido,
-Sound_music,Music,Musica,
-UI_title,UI Options,Opciones de IU,
-UI_energy_con,Energy consumption,Consumo de Energía,
-UI_energy_cust,Customize energy UI,Customizar IU de Energía,
-UI_flashlight_con,Flashlight Battery,Batería de Linterna,
-UI_flashlight_cust,Customize flashlight UI,Customizar IU de Linterna,
-UI_fade_on,Fade out when not used,Desvanecer al no usar,
-UI_fade_off,Don’t fade out,No desvanecer al no usar,
-UI_fade_time,Fade time: ,Tiempo:,
-UI_fade_speed,Fade speed: ,Velocidad:,
-Language_title,Language,Lenguaje,Sprache
-Audio_En,Audio: English,Audio: Inglés,
-Audio_Es,Audio: Spanish,Audio: Español,
-Language,English,Español,Deutsch
-Misc_title,Misc,Varios,
-Brightness,Brightness,Brillo,
-Switch_doors_on,Switch doors when facing back,Cambiar puertas al mirar detrás,
-Switch_doors_off,Don’t switch doors when facing back,No cambiar puertas al mirar detrás,
-Auto_cam_lights_on,Automatically block cam lights,Bloquear las luces de las camaras,
-Auto_cam_lights_off,Don’t automatically block cam lights,No bloquear las luces de las camaras,
-Flick_down_cams_on,Flick mouse down for cams,Deslizar hacia abajo para camaras,
-Flick_down_cams_off,Don’t flick mouse down for cams,No deslizar hacia abajo para camaras,
-Text_speed,Text speed,Velocidad texto,
-When_dead_night,When dead repeat night,Al morir repetir noche,
-When_dead_shift,When dead repeat shift,Al morir repetir dia,
-When_dead_menu,When dead go to menu,Al morir      ir al menu,
-When_win_shift,When win go to next shift,Al ganar ir al siguiente dia,
-When_win_menu,When win go to menu,Al ganar ir al menu,
-save,Save,Guardar,
-save_and_exit,Save and exit,Guardar y salir,
-exit,Exit,Salir,
-reset,Reset,Restaurar,
-reset_to_default,Reset to default,Por defecto,
-screen,Screen,Pantalla,
-brightpanel,Adjust the brightness,Ajusta el brillo,
-nosee,you should not see this,,
-barelysee,you should barely see this,,
-yessee,you should see this,,
-,,,
-,,,
-Advices,,,
-,,,
-Adv_g_01,"If you use to much energy at once, you will have to restart all in the panel on the back",
-Adv_g_02,"Always keep some spare battery in your flashlight… Otherwise, you will get lost in the dark",
-Adv_g_03,"Turn off the AC for some spare energy. You wont last long though, so use it wisely",
-Adv_g_04,The light in the office is really loud… And annoying,,
-Adv_g_05,Remember to stay hydrated!,,
-Adv_b_01,"Bonnie will always come by the left, but you already knew that, don`t you?"
-Adv_b_02,"I heard bonnie is very patient… One time, he spent an hour in front of a door waiting for it to open",
-Adv_c_01,"Chica will always come by the right, but you already knew that, don`t you?"
-Adv_c_02,Chica likes to wander around without a clear destination. I wonder if she even has one…,,
-Adv_c_03,"If you tun off the lights, maybe there is a chance that she wont bother you",
-Adv_c_04,Chica wont go back when you close the door. Why would she? She seems happy in the warehouse,,
-Adv_fr_01,Freddy does not like being watched on the cams. Specially within light,,
-Adv_fr_02,"Freddy is much noisier than the others. If you stay quiet, you could hear the footsteps",
-Adv_fr_03,"Freddy can and will come both ways, but wont enter the office unless you are not watching",
-Adv_fx_01,"Foxy cant open doors, so he will use the duct system to travel through the place",
-Adv_fx_02,Foxy wont enter any duct with the heater on. It is a shame electricity is so expensive these days,,
-Adv_fx_03,"If you catch foxy in a duct with the heater, he will run to the nearest exit. With a good timing, you can make him go anywhere you want"
-Adv_fx_04,"Foxy can enter the office through the doors, but he will rather enter by the ducts",
-Adv_fx_05,"If you see foxy, flash him with the flashlight for a bit to make him leave,' although he wont exit the duct. That''s the heater''s job!"'
-,,,
-,,,
-Minigame_blackbars,,,
-,,,
-bartxt_enter,GO TO THE OFFICE,,
-bartxt_exit,EXIT THE BUILDING,,
-bartxt_compu,GO TO THE COMPUTER,,
-bartxt_exe,GO TO HELL IDK,,
-,,,
-,,,
-Minigame intro,,,
-,,,
-Night1,Monday,Lunes,
-Night2,Tuesday,Martes,
-Night3,Wednesday,Miércoles,
-Night4,Thursday,Jueves,
-Night5,Friday,Viernes,
-Night6,Saturday,Sábado,
-Night0,This is a bug. Plis report,Esto es un bug,
-,,,
-,,,
-Text_Minigame,,,
-,,,
-,,,
-Rand_obj_01,This is a completely random message,,
-Rand_obj_02,"For some reason, it fills you with determination ",Esto es un mensaje completamente aleatorio
-,,"Por algún motivo, te llena de determinación."
-Chair_01,No need to sit down,,
-,,,
-Exit_m_01,You really need that paycheck,,
-Exit_m6_01,You have come so far. Why throw it all away?,,
-Exit_m6_02,[color=red]It’s not like [abs_shake]YOU [/abs_shake]care at all…,,
-Exit_true_party_n6_01,[color=red][unskipable][abs_shake]What the fuck do you think you are doing right now?,,
-,,,
-Magic_chair_01,This is the [abs_rainbow]MAGIC TEXT CHAIR [/abs_rainbow]of [abs_shake][color=red]eternal doom [/color][/abs_shake]and [abs_wave]absolute boredom [/abs_wave]forever,,
-Magic_chair_02,Prepare to [abs_tornado]SUFFER THE CONSEQUENCES [/abs_tornado]of your [abs_fade]puny little life [/abs_fade]of yours,,
-Magic_chair_03,I am [abs_rainbow]so excited [/abs_rainbow]to meet your [abs_rainbow]MOTHER [/abs_rainbow]in law,,
-Magic_chair_04,[slow]You know what?[/slow],,
-Magic_chair_05,[unskipable][color=red][abs_shake]Fuck yo[skip]u[/unskipable],,
-Magic_chair_06,I mean [abs_tornado][abs_rainbow]BLESS YOU<3,,
-,,,
-Round_table_01,This is a round table,,
-,,,
-Hex_table_01,This is a hexadecagonal table,,
-,,,
-Best_table_01,This is definitely the best table in the whole place,,
-Best_table_02,It has a perfect geometry an positioning to see the show the way the artist intended. No other seat can even compare to its glory,,
-Best_table_03,"Sadly, it looks taken",
-Best_table_04,Taken,,
-Best_table_05,"Oh wait, now it is still taken!",
-Best_table_06,Taken,,
-,,,
-Long_table_01,This is a long table,,
-,,,
-Short_table_01,This is actually a short table,,
-Short_table_02,No is not. Is a long table,,
-,,,
-Scenario_01,"By looking at this, memories start flowing back at you",
-Scenario_02,"Not happy ones, not sad ones. Just memories... ",
-Scenario_03,"Memories that you might wanted to leave behind, but somehow",
-Scenario_04,[slow][unskipable][abs_shake]they always find a way back [/abs_shake][/unskipable][/slow],,
-Scenario_05,[color=red]What are you trying to prove here?,,
-,,,
-Pick_key_01,You picked up the key,,
-Pick_key_02,Good thing you deactivated the cameras first... ,,
-,,,
-Nothing_01,What are you looking for?,,
-,,,
-No_key_01,There is nothing here,,
-,,,
-Safe_too_soon_01,It doesn’t seem you know what you are doing,,
-,,,
-Safe_not_know_01,Looks like you don’t know the safe code. What a shame,,
-Safe_not_know_02,Wrong,,
-,,,
-Safe_know_01,You unlock the safe,,
-,,,
-Safe_give_up_01,"Given the sheer number of possible combinations, you decided to give up",
-Safe_give_up_02,[abs_tornado] Keep gambling [/abs_tornado],"ante la magnitud de posibles combinaciones, decides tirar la toalla"
-,,,
-Loot_safe_01,You begin register the safe,,
-Loot_safe_02,"[color=red]This is why we came here, don’t you think? [/color]",
-Loot_safe_03,"You found some money, an unloaded gun, some ungunned ammo…"
-Loot_safe_04,You also found some classified document in a file,,
-Loot_safe_05,[unskipable]You start reading from the start: “Today’s date is eleven of septe[skip]m[/unskipable],,
-Loot_safe_06,[unskipable]You got the document [/unskipable],,
-,,,
-Keep_looting_01,Are you looking for something else?,,
-Keep_looting_02,You find something else. It is a usb with a note that reads “key”,,
-Keep_looting_03,You decide to take it as well,,
-Keep_looting_04,You got the USB KEY 1,,
-,,,
-Empty_safe_01,There is nothing more of use in here,,
-,,,
-Chickend_safe_01,It looks vandalized. Nothing has survived,,
-,,,
-Check_computer_01,It looks like some sort of computer-like shaped objet,,
-Check_computer_02,"You tried to start it, but it doesn’t ask you for a password. It demands two “UBS authentication keys”",
-Check_computer_03,You don’t have any “key”,,
-,,,
-Check_computer_dm_01,You insert the “UBS authentication key” you found on that weird machine,,
-Check_computer_dm_02,"It is still not enough, because you need two",
-Check_computer_dm_03,One remaining,,
-,,,
-Check_computer_sf_01,You insert the “UBS authentication key” you found on the safe,,
-Check_computer_sf_02,"It is still not enough, because you need two",
-Check_computer_sf_03,One remaining,,
-,,,
-Start_computer_01,You insert both “keys”. Its super effective,,
-Start_computer_02,"There is only one program, but you aren’t able to execute it",
-,,,
-Start_download_01,You decide to compile the program into an UBS of your own,,
-Start_download_02,"It looks like it may take a few hours, as well as some energy",
-Start_download_03,You resume the compilation,,
-,,,
-Start_download_late_01,The compilation of the program would take a couple of hours,,
-Start_download_late_02,But it’s too late for that,,
-Start_download_late_03,It’s too late for that,,
-,,,
-Stop_download_01,You decide to stop the compilation,,
-Stop_download_02,It’s not worth the hassle,,
-Stop_download_03,You stop the compilation,,
-,,,
-Corrupted_computer_01,“The download has been abruptly stopped. Please click here to continue”,,
-Corrupted_computer_02,"You decide not to click, it is too late for that",
-Corrupted_computer_03,You think to yourself that you ought to be more careful with this kind of stuff,,
-,,,
-Get_program_01,“The download is completed. Click here to review the downloading out of five stars!”,,
-Get_program_02,You got the usb,,
-,,,
-Done_computer_01,There is nothing more on this computer,,
-,,,
-sign_in_01,"“If you want to work extra hours tomorrow Saturday, please sign in”",
-sign_in_02,"There is a list with 4 names on in, with 16 empty cells",
-sign_in_03,You decide not to sign in,,
-sign_in_04,[color=red]You [abs_shake]coward[/abs_shake].[/color],,
-sign_in_05,You decide to sign in,,
-,,,
-signed_in_01,You don’t have a rubber,,
-,,,
-Office_door_locked_01,It’s a locked door,,
-Office_door_locked_02,You don’t seem to have the key nor the strength to break in,,
-Office_door_locked_03,[color=red]But you have the urge to do so[/color],,
-Office_door_locked_04,Still locked,,
-,,,
-Office_door_unlocked_01,It is an open door,,
-,,,
-Office_door_unlocking_01,You use the key,,
-,,,
-activate_dm_machine_01,"(Dev here! This is not finished. Plis don’t touch, WILL break things...) It looks like an old arcade machine. It is unplugged.",
-activate_dm_machine_02,"“Warning! If you plug this machine, you may get really boring really lore-filled side quests”",
-activate_dm_machine_03,“Are you sure about what you are doing?”,,
-activate_dm_machine_04,You plugged in the machine,,
-,,,
-,,,
-,,,
-claim_dm_usb_01,You open the case. Inside lays a ubs.,,
-claim_dm_usb_02,You got the USB KEY 2,,
-claim_dm_usb_03,[color=red]I hope you are [abs_shake]happy[/abs_shake],,
-,,,
-,,,
-b_normal_01,It’s bonnie,,
-b_just_kill_01,It’s the glutton boy,,
-b_kill_01,It’s him,,
-b_saved_01,It’s just the bonnie suit,,
-,,,
-c_normal_01,It’s chica,,
-c_just_kill_01,It’s the curious girl,,
-c_kill_01,It’s her,,
-c_saved_01,It’s just the chica suit,,
-,,,
-f_normal_01,It’s freddy,,
-f_just_kill_01,It’s the coward girl,,
-f_kill_01,It’s her,,
-f_saved_01,It’s the freddy suit,,
-,,,
-x_normal_01,It’s foxy,,
-x_just_kill_01,It’s the birthday boy,,
-x_kill_01,[color=red]It’s him,,
-x_saved_01,It’s our favorite suit,,
-,,,
-screwdriver_01,You found a screwdriver,,
-screwdriver_02,[color=yellow]Screwdriver[/color] was added to your [color=yellow]Key Items[/color],,
-,,,
-batteries_01,You found some AA batteries lying arround,,
-batteries_02,[color=yellow]Batteries[/color] was added to your [color=blue]Items[/color],,
-,,,
-water_bottle_01,You found a water bottle,,
-water_bottle_02,It is good to stay hydrated,,
-water_bottle_03,[color=yellow]Water bottle[/color] was added to your [color=blue]Items[/color],,
-,,,
-toy_01,You found a squeeky toy,,
-toy_02,It makes s loud noise when pressed,,
-toy_03,It might be useful somewhere,,
-toy_04,[color=yellow]Squeeky toy[/color] was added to your [color=blue]Items[/color],,
-,,,
-put_toy_01,You putted down the toy,,
+id;En;Es;De
+;;;
+Menu;;;
+;;;
+Play_;Play;Jugar;
+Options_;Options;Opciones;
+Exit_;Exit;Salir;
+Continue_;Continue;Continuar;
+Night_;Night;Noche;
+New_game;New Game;Nueva Partida;
+Custom_night;Custom Night;Noche Personalizada;
+Back_;Back;Atrás;
+Ready_;Ready;Listo;
+;;;
+;;;
+Options;;;
+;;;
+Mouse_title;Mouse Options;Opciones de Ratón;
+Mouse_type;Mouse Type: ;Tipo de puntero:;
+Mouse_hl_on;Highlight in cams;Resaltar en cámaras;
+Mouse_hl_off;Don’t highlight in cams;No resaltar en cámaras;
+Mouse_opacity;Mouse Opacity;Opacidad del Ratón;
+Too_little_op;(full opacity while in menu);(Opacidad completa en el menú);
+Sound_title;Sound Options;Opciones de Sonido;
+Sound_master;Master;Maestro;
+Sound_sfx;SFX;Efectos de sonido;
+Sound_music;Music;Musica;
+UI_title;UI Options;Opciones de IU;
+UI_energy_con;Energy consumption;Consumo de Energía;
+UI_energy_cust;Customize energy UI;Customizar IU de Energía;
+UI_flashlight_con;Flashlight Battery;Batería de Linterna;
+UI_flashlight_cust;Customize flashlight UI;Customizar IU de Linterna;
+UI_fade_on;Fade out when not used;Desvanecer al no usar;
+UI_fade_off;Don’t fade out;No desvanecer al no usar;
+UI_fade_time;Fade time: ;Tiempo:;
+UI_fade_speed;Fade speed: ;Velocidad:;
+Language_title;Language;Lenguaje;Sprache
+Audio_En;Audio: English;Audio: Inglés;
+Audio_Es;Audio: Spanish;Audio: Español;
+Language;English;Español;Deutsch
+Misc_title;Misc;Varios;
+Brightness;Brightness;Brillo;
+Switch_doors_on;Switch doors when facing back;Cambiar puertas al mirar detrás;
+Switch_doors_off;Don’t switch doors when facing back;No cambiar puertas al mirar detrás;
+Auto_cam_lights_on;Automatically block cam lights;Bloquear las luces de las camaras;
+Auto_cam_lights_off;Don’t automatically block cam lights;No bloquear las luces de las camaras;
+Flick_down_cams_on;Flick mouse down for cams;Deslizar hacia abajo para camaras;
+Flick_down_cams_off;Don’t flick mouse down for cams;No deslizar hacia abajo para camaras;
+Text_speed;Text speed;Velocidad texto;
+When_dead_night;When dead repeat night;Al morir repetir noche;
+When_dead_shift;When dead repeat shift;Al morir repetir dia;
+When_dead_menu;When dead go to menu;Al morir ir al menu;
+When_win_shift;When win go to next shift;Al ganar ir al siguiente dia;
+When_win_menu;When win go to menu;Al ganar ir al menu;
+save;Save;Guardar;
+save_and_exit;Save and exit;Guardar y salir;
+exit;Exit;Salir;
+reset;Reset;Restaurar;
+reset_to_default;Reset to default;Por defecto;
+screen;Screen;Pantalla;
+brightpanel;Adjust the brightness;Ajusta el brillo;
+nosee;you should not see this;;
+barelysee;you should barely see this;;
+yessee;you should see this;;
+;;;
+;;;
+Advices;;;
+;;;
+Adv_g_01;If you use to much energy at once, you will break the power!;;
+Adv_g_02;Always keep some spare battery in your flashlight… Otherwise, you might get lost in the dark;;
+Adv_g_03;Turn off the AC for some spare energy. You wont last long though, so use it wisely;;
+Adv_g_04;The light in the office is really loud… And annoying;;
+Adv_g_05;Remember to stay hydrated!;;
+Adv_b_01;Bonnie will always come by the left, but you already knew that, don’t you?;;
+Adv_b_02;I heard bonnie is very patient… One time he spent an hour in front of a door waiting for it to open;;
+Adv_c_01;Chica will always come by the right, but you already knew that, don`t you?;;
+Adv_c_02;Chica likes to wander around without a clear destination. I wonder if she even has one…;;
+Adv_c_03;If you tun off the lights, there is a slight chance that she wont bother you;;
+Adv_c_04;Chica wont go back when you close the door. Why would she? She seems happy in the warehouse;;
+Adv_fr_01;Freddy does not like being watched on the cams. Specially within light;;
+Adv_fr_02;Freddy is much noisier than the others. If you stay quiet, you could hear the footsteps;;
+Adv_fr_03;Freddy can, and will, come both ways, but wont enter the office unless you are not watching;;
+Adv_fx_01;Foxy cant go through doors, so he will use the duct system to travel through the place;;
+Adv_fx_02;Foxy wont enter any duct with the heater on. It is a shame electricity is so expensive these days;;
+Adv_fx_03;If you catch foxy in a duct with the heater, he will run to the nearest exit. With a good timing, you can make him go anywhere you want!;;
+Adv_fx_04;Foxy can enter the office through the doors, but he will rather enter by the ducts;;
+Adv_fx_05;'If you see foxy, flash him with the flashlight for a bit to make him leave, although he wont exit the duct. That''s the heater''s job!';;
+;;;
+;;;
+Minigame_blackbars;;;
+;;;
+bartxt_enter;GO TO THE OFFICE;;
+bartxt_exit;EXIT THE BUILDING;;
+bartxt_compu;GO TO THE COMPUTER;;
+bartxt_exe;GO TO HELL IDK;;
+;;;
+;;;
+Minigame intro;;;
+;;;
+Night1;Monday;Lunes;
+Night2;Tuesday;Martes;
+Night3;Wednesday;Miércoles;
+Night4;Thursday;Jueves;
+Night5;Friday;Viernes;
+Night6;Saturday;Sábado;
+Night0;This is a bug. Plis report;Esto es un bug;
+;;;
+;;;
+Text_Minigame;;;
+;;;
+;;;
+Rand_obj_01;This is a completely random message;Esto es un mensaje completamente aleatorio;
+Rand_obj_02;For some reason, it fills you with [color=yellow]determination ;Por algún motivo, te llena de [color=yellow]determinación;
+;;;
+Chair_01;No need to sit down;;
+;;;
+Exit_m_01;You really need that paycheck;;
+Exit_m6_01;You have come so far. Why throw it all away?;;
+Exit_m6_02;[color=red]It’s not like [abs_shake]YOU [/abs_shake]care at all…;;
+Exit_true_party_n6_01;[color=red][unskipable][abs_shake]What the fuck do you think you are doing right now?;;
+;;;
+Magic_chair_01;This is the [abs_rainbow]MAGIC TEXT CHAIR [/abs_rainbow]of [abs_shake][color=red]eternal doom [/color][/abs_shake]and [abs_wave]absolute boredom [/abs_wave]forever;;
+Magic_chair_02;Prepare to [abs_tornado]SUFFER THE CONSEQUENCES [/abs_tornado]of your [abs_fade]puny little life [/abs_fade]of yours;;
+Magic_chair_03;I am [abs_rainbow]so excited [/abs_rainbow]to meet your [abs_rainbow]MOTHER [/abs_rainbow]in law;;
+Magic_chair_04;[slow]You know what?[/slow];;
+Magic_chair_05;[unskipable][color=red][abs_shake]Fuck yo[skip]u[/unskipable];;
+Magic_chair_06;I mean [abs_tornado][abs_rainbow]BLESS YOU<3;;
+;;;
+Round_table_01;This is a round table;;
+;;;
+Hex_table_01;This is a hexadecagonal table;;
+;;;
+Best_table_01;This is definitely the best table in the whole place;;
+Best_table_02;It has a perfect geometry an positioning to see the show the way the artist intended. No other seat can even compare to its glory;;
+Best_table_03;Sadly, it looks taken;;
+Best_table_04;Taken;;
+Best_table_05;Oh wait, now it is still taken!;;
+Best_table_06;Taken;;
+;;;
+Long_table_01;This is a long table;;
+;;;
+Short_table_01;This is actually a short table;;
+Short_table_02;No is not. Is a long table;;
+;;;
+Scenario_01;By looking at this memories start flowing back at you;;
+Scenario_02;Not happy ones, not sad ones. Just memories...;;
+Scenario_03;Memories that you might wanted to leave behind but somehow;;
+Scenario_04;[slow][unskipable][abs_shake]they always find a way back [/abs_shake][/unskipable][/slow];;
+Scenario_05;[color=red]What are you trying to prove here?;;
+;;;
+Pick_key_01;You picked up the key;;
+Pick_key_02;Good thing you deactivated the cameras first... ;;
+Pick_key_03;[color=yellow]Key[/color] was added to your [color=yellow]Key Items[/color];;
+;;;
+Nothing_01;What are you looking for?;;
+;;;
+No_key_01;There is nothing here;;
+;;;
+Safe_too_soon_01;It doesn’t seem you know what you are doing;;
+;;;
+Safe_not_know_01;Looks like you don’t know the safe code. What a shame;;
+Safe_not_know_02;Wrong;;
+;;;
+Safe_know_01;You unlock the safe;;
+;;;
+Safe_give_up_01;Given the sheer number of possible combinations, you decided to give up;ante la magnitud de posibles combinaciones, decides tirar la toalla;
+Safe_give_up_02;[abs_tornado] Keep gambling [/abs_tornado];;
+;;;
+Loot_safe_01;You begin register the safe;;
+Loot_safe_02;[color=red]This is why we came here, don’t you think?;;
+Loot_safe_03;You found some money, an unloaded gun, some ungunned ammo... ;;
+Loot_safe_04;You also found some classified document in a file;;
+Loot_safe_05;[unskipable]You start reading from the start: “Today’s date is eleven of septe[skip]m[/unskipable];;
+Loot_safe_06;[unskipable][color=yellow]Clasified document[/color] was added to your [color=yellow]Key Items[/color][/unskipable];;
+;;;
+Keep_looting_01;Are you looking for something else?;;
+Keep_looting_02;You find something else. It is a usb with a note that reads “key”;;
+Keep_looting_03;You decide to take it as well;;
+Keep_looting_04;[color=yellow]USB-key A[/color] was added to your [color=yellow]Key Items[/color];;
+;;;
+Empty_safe_01;There is nothing more of use in here;;
+;;;
+Chickend_safe_01;It looks vandalized. Nothing has survived;;
+;;;
+Check_computer_01;It looks like some sort of computer-like shaped objet;;
+Check_computer_02;You tried to start it, but it doesn’t ask you for a password. It demands two “UBS authentication keys”;;
+Check_computer_03;You don’t have any “key”;;
+;;;
+Check_computer_dm_01;You insert the “UBS authentication key” you found on that weird machine;;
+Check_computer_dm_02;It is still not enough, because you need two;;
+Check_computer_dm_03;[color=red]One remaining;;
+;;;
+Check_computer_sf_01;You insert the “UBS authentication key” you found on the safe;;
+Check_computer_sf_02;It is still not enough, because you need two;;
+Check_computer_sf_03;[color=red]One remaining;;
+;;;
+Start_computer_01;You insert both “keys”. Its super effective;;
+Start_computer_02;There is only one program, but you aren’t able to execute it;;
+;;;
+Start_download_01;You decide to compile the program into an UBS of your own;;
+Start_download_02;It looks like it may take a few hours, as well as some energy;;
+Start_download_03;You resume the compilation;;
+;;;
+Start_download_late_01;The compilation of the program would take a couple of hours;;
+Start_download_late_02;But it’s too late for that;;
+Start_download_late_03;It’s too late for that;;
+;;;
+Stop_download_01;You decide to stop the compilation;;
+Stop_download_02;It’s not worth the hassle;;
+Stop_download_03;You stop the compilation;;
+;;;
+Corrupted_computer_01;“The download has been abruptly stopped. Please click here to continue”;;
+Corrupted_computer_02;You decide not to click, it is too late for that;;
+Corrupted_computer_03;You think to yourself that you ought to be more careful with this kind of stuff;;
+;;;
+Get_program_01;“The download is completed. Click here to review the downloading out of five stars!”;;
+Get_program_02;You got the usb;;
+;;;
+Done_computer_01;There is nothing more on this computer;;
+;;;
+sign_in_01;If you want to work extra hours tomorrow Saturday, please sign in;;
+sign_in_02;There is a list with 4 names on in, with 16 empty cells;;
+sign_in_03;You decide not to sign in;;
+sign_in_04;[color=red]You [abs_shake]coward[/abs_shake].;;
+sign_in_05;You decide to sign in;;
+;;;
+signed_in_01;You don’t have a rubber;;
+;;;
+Office_door_locked_01;It’s a locked door;;
+Office_door_locked_02;You don’t seem to have the key nor the strength to break in;;
+Office_door_locked_03;[color=red]But you have the urge to do so;;
+Office_door_locked_04;Still locked;;
+;;;
+Office_door_unlocked_01;It is an open door;;
+;;;
+Office_door_unlocking_01;You use the key;;
+;;;
+activate_dm_machine_01;(Dev here! This is not finished. Plis don’t touch, WILL break things...) It looks like an old arcade machine. It is unplugged.;;
+activate_dm_machine_02;“Warning! If you plug this machine, you may get really boring really lore-filled side quests”;;
+activate_dm_machine_03;“Are you sure about what you are doing?”;;
+activate_dm_machine_04;You plugged in the machine;;
+;;;
+;;;
+;;;
+claim_dm_usb_01;You open the case. Inside lays a ubs.;;
+claim_dm_usb_02;[color=yellow]USB-key B[/color] was added to your [color=yellow]Key Items;;
+claim_dm_usb_03;[color=red]I hope you are [abs_shake]happy;;
+;;;
+;;;
+b_normal_01;It’s bonnie;;
+b_just_kill_01;It’s the glutton boy;;
+b_kill_01;It’s him;;
+b_saved_01;It’s just the bonnie suit;;
+;;;
+c_normal_01;It’s chica;;
+c_just_kill_01;It’s the curious girl;;
+c_kill_01;It’s her;;
+c_saved_01;It’s just the chica suit;;
+;;;
+f_normal_01;It’s freddy;;
+f_just_kill_01;It’s the coward girl;;
+f_kill_01;It’s her;;
+f_saved_01;It’s the freddy suit;;
+;;;
+x_normal_01;It’s foxy;;
+x_just_kill_01;It’s the birthday boy;;
+x_kill_01;[color=red]It’s him;;
+x_saved_01;It’s our favorite suit;;
+;;;
+screwdriver_01;You found a screwdriver;;
+screwdriver_02;[color=yellow]Screwdriver[/color] was added to your [color=yellow]Key Items[/color];;
+;;;
+batteries_01;You found some AA batteries lying arround;;
+batteries_02;[color=yellow]Batteries[/color] was added to your [color=blue]Items[/color];;
+;;;
+water_bottle_01;You found a water bottle;;
+water_bottle_02;It is good to stay hydrated;;
+water_bottle_03;[color=yellow]Water bottle[/color] was added to your [color=blue]Items[/color];;
+;;;
+toy_01;You found a squeeky toy;;
+toy_02;It makes s loud noise when pressed;;
+toy_03;It might be useful somewhere;;
+toy_04;[color=yellow]Squeeky toy[/color] was added to your [color=blue]Items[/color];;
+;;;
+put_toy_01;You putted down the toy;;
+;;;
+get_pen_01;You found a pen on the table;;
+get_pen_02;[color=red]He surely won’t mind;;
+get_pen_03;[color=yellow]Pen[/color] was added to your [color=yellow]Key Items[/color];;

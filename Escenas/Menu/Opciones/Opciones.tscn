@@ -147,6 +147,7 @@ text = "V-sync"
 autowrap_mode = 2
 
 [node name="fps" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1604895835]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
@@ -175,6 +176,7 @@ text = "Fullscreen
 autowrap_mode = 2
 
 [node name="Brightness" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1143555135 node_paths=PackedStringArray("label", "h_slider", "root_node")]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
@@ -204,7 +206,7 @@ step = 0.01
 value = 1.0
 
 [node name="YouShouldSeeThis" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness" unique_id=1241567631 instance=ExtResource("7_64mem")]
-position = Vector2(106, 123.5)
+position = Vector2(126, 122.5)
 
 [node name="Mouse_Sound" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1774242955]
 layout_mode = 2
