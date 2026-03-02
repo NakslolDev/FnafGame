@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cw4xikgcuuitu" path="res://Escenas/Menu/Opciones/scripts/screen.gd" id="3_s8b7i"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="4_okdqg"]
 [ext_resource type="Script" uid="uid://d1x3tqyqdtr4l" path="res://Escenas/Menu/Opciones/scripts/button_mouse.gd" id="5_6fyg2"]
-[ext_resource type="Script" uid="uid://cnhwcya1p6ljm" path="res://Escenas/Menu/Opciones/brightness.gd" id="6_s8b7i"]
+[ext_resource type="Script" uid="uid://cnhwcya1p6ljm" path="res://Escenas/Menu/Opciones/scripts/brightness.gd" id="6_s8b7i"]
 [ext_resource type="Script" uid="uid://yasa6bbnwc3v" path="res://Escenas/Menu/Opciones/scripts/button_mouse_cam.gd" id="6_xbn81"]
 [ext_resource type="PackedScene" uid="uid://22h3fq1pfifb" path="res://Escenas/Menu/Opciones/you_should_see_this/you_should_see_this.tscn" id="7_64mem"]
 [ext_resource type="Script" uid="uid://w6fehj22prqw" path="res://Escenas/Menu/Opciones/scripts/h_slider_mouse.gd" id="7_b8pj5"]
@@ -513,7 +513,19 @@ autowrap_mode = 2
 script = ExtResource("16_3ayvq")
 id = "Language"
 root_node = NodePath("../../../../../../..")
-Deutsch = false
+
+[node name="ButtonAudioLanguage" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language" unique_id=912611875 node_paths=PackedStringArray("root_node")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("3_64mem")
+theme_type_variation = &"FlatButton"
+text = "English"
+autowrap_mode = 2
+script = ExtResource("16_3ayvq")
+audio = true
+id = "Audio"
+root_node = NodePath("../../../../../../..")
 
 [node name="Misc" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1787875783]
 custom_minimum_size = Vector2(310, 0)
@@ -1233,7 +1245,7 @@ puntero = "3"
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options/Time_Slider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options" method="_on_time_slider_value_changed"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options/Speed_Slider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options" method="_on_speed_slider_value_changed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language/Button_Language" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language/Button_Language" method="_on_pressed"]
-[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language/Button_Language" to="Mouse_Custom" method="_on_button_pressed"]
+[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language/ButtonAudioLanguage" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language/ButtonAudioLanguage" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_Switch_Doors" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_Switch_Doors" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_cam_lights" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_cam_lights" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_flick_cams" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_flick_cams" method="_on_pressed"]

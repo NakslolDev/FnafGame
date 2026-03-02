@@ -34,8 +34,9 @@
 [ext_resource type="AudioStream" uid="uid://b8206yf5o5gfw" path="res://assets/sounds/ToySFX/Pop2.ogg" id="30_up7ln"]
 [ext_resource type="AudioStream" uid="uid://cy6b71h3y3f0s" path="res://assets/sounds/ToySFX/Pop3.ogg" id="31_bro3t"]
 [ext_resource type="AudioStream" uid="uid://bpqmc7vohd6gf" path="res://assets/sounds/ToySFX/Pop4.ogg" id="32_ig2k4"]
+[ext_resource type="AudioStream" uid="uid://7tdwrap7126b" path="res://Audios/Scarlet Forest.mp3" id="35_866d1"]
 
-[node name="DirectionalAudio" type="Node2D" unique_id=2054814738 node_paths=PackedStringArray("puerta_izquierda", "puerta_derecha", "left_button_off", "left_button_on", "right_button_off", "right_button_on")]
+[node name="DirectionalAudio" type="Node2D" unique_id=2054814738 node_paths=PackedStringArray("puerta_izquierda", "puerta_derecha", "left_button_off", "left_button_on", "right_button_off", "right_button_on", "vhs_sound")]
 script = ExtResource("1_yh57f")
 puerta_izquierda = NodePath("DoorSounds/Puerta_izquierda")
 puerta_derecha = NodePath("DoorSounds/Puerta_derecha")
@@ -43,6 +44,7 @@ left_button_off = NodePath("DoorButtonSounds/LeftButtonOff")
 left_button_on = NodePath("DoorButtonSounds/LeftButtonOn")
 right_button_off = NodePath("DoorButtonSounds/RightButtonOff")
 right_button_on = NodePath("DoorButtonSounds/RightButtonOn")
+vhs_sound = NodePath("VHSsound")
 
 [node name="DoorSounds" type="Node" parent="." unique_id=1948655175]
 
@@ -329,6 +331,11 @@ metadata/_custom_type_script = "uid://cem83cl7ongg6"
 script = ExtResource("2_yh57f")
 x_position = 4
 concentration = 0.9
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="VHSsound" type="AudioStreamPlayer2D" parent="." unique_id=279056223]
+stream = ExtResource("35_866d1")
+script = ExtResource("2_yh57f")
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [connection signal="timeout" from="FreddyFootsteps/Timer" to="FreddyFootsteps" method="_on_timer_timeout"]

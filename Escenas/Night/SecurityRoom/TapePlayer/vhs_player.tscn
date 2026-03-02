@@ -32,41 +32,15 @@ size = Vector2(28, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_om6ro"]
 size = Vector2(96, 30)
 
-[node name="VHS_Player" type="Node2D" unique_id=588532467 node_paths=PackedStringArray("vhs_colider")]
+[node name="VHS_Player" type="Node2D" unique_id=588532467 node_paths=PackedStringArray("vhs_colider", "timer", "play_on", "pause_on", "stop_on")]
 texture_filter = 1
 script = ExtResource("1_wceyb")
 vhs_colider = NodePath("VHS_colider")
-
-[node name="Audios" type="Node" parent="." unique_id=343145849]
-
-[node name="ScarletForest" type="AudioStreamPlayer" parent="Audios" unique_id=408806103]
-stream = ExtResource("2_vdoh0")
-volume_db = -10.0
-bus = &"Musica"
-
-[node name="Noche1" type="AudioStreamPlayer" parent="Audios" unique_id=1271315348]
-stream = ExtResource("3_j8py7")
-bus = &"SFX"
-
-[node name="Noche2" type="AudioStreamPlayer" parent="Audios" unique_id=1183113604]
-stream = ExtResource("4_suuy0")
-bus = &"SFX"
-
-[node name="Noche3" type="AudioStreamPlayer" parent="Audios" unique_id=345856770]
-stream = ExtResource("5_geslb")
-bus = &"SFX"
-
-[node name="Noche4" type="AudioStreamPlayer" parent="Audios" unique_id=1918577285]
-stream = ExtResource("6_tfrbq")
-bus = &"SFX"
-
-[node name="Noche5" type="AudioStreamPlayer" parent="Audios" unique_id=1091367779]
-stream = ExtResource("7_mfmns")
-bus = &"SFX"
-
-[node name="Noche6" type="AudioStreamPlayer" parent="Audios" unique_id=423721020]
-stream = ExtResource("8_eopg5")
-bus = &"SFX"
+timer = NodePath("Gyro/Timer")
+play_on = NodePath("Play/PlayOn")
+pause_on = NodePath("Pause/PauseOn")
+stop_on = NodePath("Stop/StopOn")
+audio_nights = Array[AudioStream]([ExtResource("2_vdoh0"), ExtResource("3_j8py7"), ExtResource("4_suuy0"), ExtResource("5_geslb"), ExtResource("6_tfrbq"), ExtResource("7_mfmns"), ExtResource("8_eopg5")])
 
 [node name="Body" type="Sprite2D" parent="." unique_id=396815425]
 texture = ExtResource("1_y6yom")

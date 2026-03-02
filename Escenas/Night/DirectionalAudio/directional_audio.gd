@@ -54,3 +54,22 @@ func _on_boton_derecha_button_play(on: bool) -> void:
 		right_button_on.play()
 	else:
 		right_button_off.play()
+
+
+@export var vhs_sound: spacial_audio
+func _on_vhs_player_act_audio(stat: int) -> void:
+	if stat == 0:
+		vhs_sound.stop()
+		vhs_sound.stream_paused = false
+
+	if stat == 1:
+		vhs_sound.stream_paused = true
+
+	if stat == 2:
+		if vhs_sound.stream_paused:
+			vhs_sound.stream_paused = false
+		else:
+			vhs_sound.play()
+
+func _on_vhs_player_change_audio_stream(new: AudioStream) -> void:
+	vhs_sound.stream = new

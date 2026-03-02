@@ -35,6 +35,8 @@ UI_fade_off,Don’t fade out,No desvanecer al no usar,
 UI_fade_time,Fade time: ,Tiempo:,
 UI_fade_speed,Fade speed: ,Velocidad:,
 Language_title,Language,Lenguaje,Sprache
+Audio_En,Audio: English,Audio: Inglés,
+Audio_Es,Audio: Spanish,Audio: Español,
 Language,English,Español,Deutsch
 Misc_title,Misc,Varios,
 Brightness,Brightness,Brillo,
