@@ -337,7 +337,9 @@ metadata/_custom_type_script = "uid://cem83cl7ongg6"
 stream = ExtResource("35_866d1")
 script = ExtResource("2_yh57f")
 x_position = 8
-_custom_degrees = -10
+_custom_degrees = 10
+_lower_db = 3.0
+concentration = 0.5
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [connection signal="timeout" from="FreddyFootsteps/Timer" to="FreddyFootsteps" method="_on_timer_timeout"]

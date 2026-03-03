@@ -30,13 +30,6 @@ func _ready():
 		Chica.door_focus = self
 		Foxy.right_door_focus = self
 
-func _exit_tree() -> void: # elimina la referencia
-	if izquierda:
-		if Bonnie.door_focus == self: Bonnie.door_focus = null
-		if Foxy.left_door_focus == self: Foxy.left_door_focus = null
-	else:
-		if Chica.door_focus == self: Chica.door_focus = null
-		if Foxy.right_door_focus == self: Foxy.right_door_focus = null
 
 func movement(_a = null, _b = null, _c = null, _d = null):
 	if izquierda:

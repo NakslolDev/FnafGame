@@ -9,6 +9,7 @@ var on_cam_up_hitbox := false
 @export var up_cams: Sprite2D
 
 
+
 func _ready():
 	game_over = false
 	camaras.activado = false

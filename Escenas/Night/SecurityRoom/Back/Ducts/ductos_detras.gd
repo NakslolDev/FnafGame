@@ -15,9 +15,6 @@ func _ready():
 	Foxy.movement.connect(movement)
 	Foxy.back_duct_focus = self
 
-func _exit_tree() -> void: # elimina la referencia
-	if Foxy.back_duct_focus == self:
-		Foxy.back_duct_focus = null
 
 func movement(_a = null, _b = null, _c = null, _d = null):
 	if Foxy.room == "Duc8" and Foxy.position == 0:

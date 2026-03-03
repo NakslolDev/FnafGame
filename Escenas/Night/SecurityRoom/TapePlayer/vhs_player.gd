@@ -37,7 +37,7 @@ func change_audio(index: int = -1):
 enum status {OFF, PAUSED, PLAYING}
 func act_status(stat: status):
 	
-	if main_game != null and main_game.tick_stop:
+	if main_game != null and (main_game.camaras_activadas or main_game.tick_stop):
 		return
 	
 	if stat == status.OFF:

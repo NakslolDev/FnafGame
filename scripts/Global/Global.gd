@@ -1122,19 +1122,18 @@ func print_energia_consumption():
 	print(salida)
 
 func set_energia(nombre: String, valor: bool): # En vez de dar el valor directamente, se usa esta función
-	
+
 	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "switch: ", nombre, " - ", valor)
-	
-	if nombre == "General" and valor == false:
+
+	if nombre == "General" and valor == false: # si se desactiva general, se desactivan todas, eso lo controlo aqui. (La otra parte en los switches)
 		for key in energia.keys():
 			if energia[key] != false:
 				energia[key] = false
 		energia_actualizada.emit()
 		actualizar_luces()
 		actualizar_ventilacion()
-		return
-		
-	if energia.has(nombre) and energia[nombre] != valor:
+
+	elif energia.has(nombre) and energia[nombre] != valor:
 		energia[nombre] = valor
 		energia_actualizada.emit()
 		actualizar_ventilacion()

@@ -30,6 +30,7 @@ func _on_on_tick_stop() -> void:
 @export var mouse_custom: Node2D
 @export var camaras_control: Node2D
 @export var camaras: Node2D
+@export var animatronic_map: Node2D
 
 
 var _camaras_activadas: bool
@@ -96,6 +97,7 @@ func _ready():
 	Global.night_starts()
 	
 	_transition_in()
+	animatronic_map.act_first() # ni idea de por que ha de estar aqui pero bueno
 
 
 func _input(event):

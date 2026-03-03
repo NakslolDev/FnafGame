@@ -203,7 +203,7 @@ size = Vector2(1050, 115)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei8qt"]
 size = Vector2(1264.5, 19)
 
-[node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("oficina", "oficina_detras", "freddy_nose", "linterna", "cheats", "transicion", "tick", "esc_timer", "mouse_custom", "camaras_control", "camaras")]
+[node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("oficina", "oficina_detras", "freddy_nose", "linterna", "cheats", "transicion", "tick", "esc_timer", "mouse_custom", "camaras_control", "camaras", "animatronic_map")]
 script = ExtResource("1_ri0qg")
 oficina = NodePath("Oficina")
 oficina_detras = NodePath("Oficina/Oficina_Detras")
@@ -216,6 +216,7 @@ esc_timer = NodePath("Control/ESC_Timer")
 mouse_custom = NodePath("Mouse_Custom")
 camaras_control = NodePath("Camaras_Control")
 camaras = NodePath("Camaras_Control/Camaras")
+animatronic_map = NodePath("True_No_Shader/Animatronic_Map")
 
 [node name="Control" type="Node" parent="." unique_id=1181263599]
 

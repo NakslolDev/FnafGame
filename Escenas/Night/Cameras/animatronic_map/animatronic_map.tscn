@@ -7,9 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bepi0anfi43h" path="res://assets/Placeholders/Camaras/Foxy_Icon.png" id="5_1bthv"]
 [ext_resource type="Texture2D" uid="uid://bq62vigxep5rq" path="res://assets/Placeholders/Camaras/Freddy_Icon.png" id="6_p30fh"]
 
-[node name="Animatronic_Map" type="Node2D" unique_id=1691874444]
+[node name="Animatronic_Map" type="Node2D" unique_id=1691874444 node_paths=PackedStringArray("foxy_icon", "bonnie_icon", "chica_icon", "freddy_icon")]
 texture_filter = 1
 script = ExtResource("1_h6hd8")
+foxy_icon = NodePath("FoxyIcon")
+bonnie_icon = NodePath("BonnieIcon")
+chica_icon = NodePath("ChicaIcon")
+freddy_icon = NodePath("FreddyIcon")
 
 [node name="MinimapaDuctos" type="Sprite2D" parent="." unique_id=526855170]
 position = Vector2(1742, 154)

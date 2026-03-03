@@ -111,12 +111,25 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 
-[node name="Camaras" type="Node2D" unique_id=1932195095 node_paths=PackedStringArray("cams", "alucination_control", "linterna")]
+[node name="Camaras" type="Node2D" unique_id=1932195095 node_paths=PackedStringArray("linterna", "cams", "alucination_control", "area_minimapa", "ruido", "no_energy", "dot", "time", "day", "no_cam_lights", "si_shader", "no_shader", "canvas_layer_shader", "minimapa_botones", "minimapa_ductos", "duct_heat_sprites")]
 texture_filter = 1
 script = ExtResource("1_br1gn")
+linterna = NodePath("Si_Shader/Linterna")
 cams = NodePath("Si_Shader/Cams")
 alucination_control = NodePath("Si_Shader/Cams/Alucination_control")
-linterna = NodePath("Si_Shader/Linterna")
+area_minimapa = NodePath("No_Shader/Area_Minimapa")
+ruido = NodePath("No_Shader/Ruido")
+no_energy = NodePath("Si_Shader/No_energy")
+dot = NodePath("No_Shader/Border/Dot")
+time = NodePath("No_Shader/Border/VBoxContainer/Time")
+day = NodePath("No_Shader/Border/VBoxContainer/Day")
+no_cam_lights = NodePath("No_Shader/NoCamLights")
+si_shader = NodePath("Si_Shader")
+no_shader = NodePath("No_Shader")
+canvas_layer_shader = NodePath("CanvasLayer_Shader")
+minimapa_botones = NodePath("No_Shader/MinimapaBotones")
+minimapa_ductos = NodePath("No_Shader/MinimapaDuctos")
+duct_heat_sprites = [NodePath("No_Shader/MinimapaDuctos/1"), NodePath("No_Shader/MinimapaDuctos/2"), NodePath("No_Shader/MinimapaDuctos/3"), NodePath("No_Shader/MinimapaDuctos/4"), NodePath("No_Shader/MinimapaDuctos/5"), NodePath("No_Shader/MinimapaDuctos/6"), NodePath("No_Shader/MinimapaDuctos/7"), NodePath("No_Shader/MinimapaDuctos/8")]
 
 [node name="Si_Shader" type="CanvasLayer" parent="." unique_id=1468658571]
 layer = 3
@@ -428,11 +441,16 @@ texture = ExtResource("28_2ccee")
 position = Vector2(1279.5, 501.5)
 shape = SubResource("RectangleShape2D_15j7b")
 
-[node name="Border" type="Sprite2D" parent="No_Shader" unique_id=138226563]
+[node name="Border" type="Sprite2D" parent="No_Shader" unique_id=138226563 node_paths=PackedStringArray("dot", "dot_timer", "batery_1", "batery_2", "batery_3")]
 texture_filter = 1
 position = Vector2(960, 540)
 texture = ExtResource("45_0vgwf")
 script = ExtResource("46_3onkb")
+dot = NodePath("Dot")
+dot_timer = NodePath("Dot/Timer")
+batery_1 = NodePath("BateryBase/Batery1")
+batery_2 = NodePath("BateryBase/Batery2")
+batery_3 = NodePath("BateryBase/Batery3")
 
 [node name="Dot" type="Sprite2D" parent="No_Shader/Border" unique_id=892780084]
 texture = ExtResource("46_aeiuf")
@@ -507,8 +525,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="cam_act" from="Si_Shader/Cams" to="No_Shader/Ruido" method="_on_cam_cam_act"]
-[connection signal="mouse_entered" from="No_Shader/Area_Minimapa" to="." method="_on_area_minimapa_mouse_entered"]
-[connection signal="mouse_exited" from="No_Shader/Area_Minimapa" to="." method="_on_area_minimapa_mouse_exited"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="." method="_on_minimapa_botones_cam_act"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="Si_Shader/Cams" method="_on_minimapa_botones_cam_act"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="No_Shader/Ruido" method="_on_minimapa_botones_cam_act"]
