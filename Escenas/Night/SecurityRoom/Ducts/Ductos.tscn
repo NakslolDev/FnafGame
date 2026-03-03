@@ -23,9 +23,11 @@ size = Vector2(1274.04, 2278.78)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fgkh"]
 size = Vector2(507.426, 971.757)
 
-[node name="Ductos" type="Node2D" unique_id=2053998410 node_paths=PackedStringArray("foxy", "ductos_fondo_oscuro")]
+[node name="Ductos" type="Node2D" unique_id=2053998410 node_paths=PackedStringArray("foxy", "soft_focus", "hard_focus", "ductos_fondo_oscuro")]
 script = ExtResource("1_sysxk")
 foxy = NodePath("Foxy")
+soft_focus = NodePath("Soft_focus")
+hard_focus = NodePath("Hard_focus")
 ductos_fondo_oscuro = NodePath("DuctosFondoOscuro")
 
 [node name="DuctosFondoIluminado" type="Sprite2D" parent="." unique_id=106053953]
@@ -64,8 +66,3 @@ scale = Vector2(0.821795, 0.381783)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus" unique_id=2142220010]
 scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_2fgkh")
-
-[connection signal="mouse_entered" from="Soft_focus" to="." method="_on_soft_focus_mouse_entered"]
-[connection signal="mouse_exited" from="Soft_focus" to="." method="_on_soft_focus_mouse_exited"]
-[connection signal="mouse_entered" from="Hard_focus" to="." method="_on_hard_focus_mouse_entered"]
-[connection signal="mouse_exited" from="Hard_focus" to="." method="_on_hard_focus_mouse_exited"]

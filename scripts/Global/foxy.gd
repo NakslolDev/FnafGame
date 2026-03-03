@@ -46,15 +46,16 @@ signal movement(to_pos: int, to_room: String, from_pos: int, from_room: String)
 signal move_back()
 signal flashlight_stunt_over()
 
+#nodos (focus)
+var left_door_focus: Node
+var right_door_focus: Node
+var front_duct_focus: Node
+var back_duct_focus: Node
+
+enum focus_state {NONE, SOFT, HARD} # gracias a la ordenacion del enum, puedo usar la notacion >
+
+
 #info
-var soft_focus_I := false
-var soft_focus_D := false
-var hard_focus_I := false
-var hard_focus_D := false
-var soft_focus_DF := false
-var soft_focus_DB := false
-var hard_focus_DF := false
-var hard_focus_DB := false
 var door_I_closed := false
 var door_I_closed_log := false
 var door_D_closed := false
@@ -126,14 +127,6 @@ func reset():
 	will_stay_on_duct = false
 	
 	# info (a parte de los heaters)
-	soft_focus_I = false
-	soft_focus_D = false
-	hard_focus_I = false
-	hard_focus_D = false
-	soft_focus_DF = false
-	soft_focus_DB = false
-	hard_focus_DF = false
-	hard_focus_DB = false
 	door_I_closed = false
 	door_I_closed_log = false
 	door_D_closed = false
@@ -144,7 +137,7 @@ func tick(): # Cada tick (5 veces por segundo)
 	
 	if AI_level == 0 or room == "office": # si ya estña en la oficina, no se va a mover...
 		return
-	
+
 	if room == "lhall" and position == 0: # este tiempo extra solo devería ocurrir si ya está de por sí en la puerta
 		if door_I_closed:
 			door_I_closed_log = true # Guarda la información
@@ -154,7 +147,7 @@ func tick(): # Cada tick (5 veces por segundo)
 				@warning_ignore("integer_division")
 				tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
 			door_I_closed_log = false
-	
+
 	if room == "lhall" and position == 0: # este tiempo extra solo devería ocurrir si ya está de por sí en la puerta
 		if door_D_closed:
 			door_D_closed_log = true # Guarda la información
@@ -164,31 +157,36 @@ func tick(): # Cada tick (5 veces por segundo)
 				@warning_ignore("integer_division")
 				tick_count = 0 + (AI_level / 2) # en niveles altos te deja 1 segundo
 			door_D_closed_log = false
-	
+
 	if gotcha > 0: # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.
 		if room == "lhall" and position == 0:
-			if soft_focus_I or door_I_closed: # Si le estás mirando con la linterna (por las camaras no se ve...) o tienes la puerta cerrada, le has "mirado".
+			if left_door_focus.get_focus_state() >= focus_state.SOFT or door_I_closed: # Si le estás mirando con la linterna (por las camaras no se ve...) o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
 				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]GOTCHA!")
 		elif room == "rhall" and position == 0:
-			if soft_focus_D or door_D_closed:
+			if right_door_focus.get_focus_state() >= focus_state.SOFT or door_D_closed:
 				gotcha = 0
 				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]GOTCHA!")
 		else: # Gotcha solo devería ser != 0 en la puerta
 			gotcha = 0
 	elif gotcha < 0:
-		gotcha = 0	
-	
+		gotcha = 0
+
 	var tick_count_limit: int # Declara el límite al que tiene que llegar tick count limit antes de moverse
-	
+
 	if position == 0 and (room.begins_with("Duc") or room.ends_with("hall")):
-		if (room == "rhall" and hard_focus_D) or (room == "lhall" and hard_focus_I) or (room == "Duc8" and hard_focus_DB) or (room == "Duc5" and hard_focus_DF):
+
+		if ((room == "rhall" and right_door_focus.get_focus_state() == focus_state.HARD)
+		or (room == "lhall" and left_door_focus.get_focus_state() == focus_state.HARD)
+		or (room == "Duc8" and back_duct_focus.get_focus_state() == focus_state.HARD) 
+		or (room == "Duc5" and front_duct_focus.get_focus_state() == focus_state.HARD)): # es un if muy grande...
 			tick_count = 0
 			tick_focus_count += 1
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]Foxy stalled")
 		else:
 			tick_focus_count = 0
 		tick_count_limit = DOOR_TICK_LIMIT
+
 	elif room.begins_with("Duc") and duct_heater[room.substr(3)]: # no uso duct_heater_memory porque no se actualiza lo suficientemente rápido.
 		tick_count_limit = HEATER_TICK_LIMIT # esto hace que si le das con el heater a foxy siempre salga rapido
 		tick_focus_count = 0
@@ -199,17 +197,17 @@ func tick(): # Cada tick (5 veces por segundo)
 	else:
 		tick_count_limit = GENERAL_TICK_LIMIT
 		tick_focus_count = 0
-	
+
 	if Global.debug["cheats"]["ultra_agresive"] and not room.begins_with("Duc"):
 		tick_count_limit = UA_TICK_LIMIT # no tengo ni idea de como reemplazarlo sin que se rompa, asi que lo cambio aqui
-	
+
 	@warning_ignore("integer_division") # evita que me salte el aviso
 	if tick_focus_count >= 10 + (AI_level / 2) and animacion_go_back == false:
 		emit_signal("move_back")
 		animacion_go_back = true
-	
+
 	tick_count += 1
-	
+
 	if tick_count >= tick_count_limit:
 		tick_count = 0
 		movement_oportunity()
@@ -312,7 +310,11 @@ func move(skip_decision := false): # esta funcion va a ser increiblemente larga.
 	last_room = room
 	
 	# si tiene soft focus en la puerta o ducto, volver
-	if next_room == "office" and ((room == "rhall" and position != 0 and soft_focus_D) or (room == "lhall" and position != 0 and soft_focus_I) or (room == "Duc8" and position == 4 and soft_focus_DB) or (room == "Duc5" and position == 3 and soft_focus_DF)):
+	if next_room == "office" and (
+	(room == "rhall" and right_door_focus.get_focus_state() >= focus_state.SOFT) or
+	(room == "lhall" and left_door_focus.get_focus_state() >= focus_state.SOFT) or
+	(room == "Duc8" and (position == 0 or position == 4) and back_duct_focus.get_focus_state() >= focus_state.SOFT) or
+	(room == "Duc5" and (position == 0 or position == 3) and front_duct_focus.get_focus_state() >= focus_state.SOFT)):
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy soft focus: from ", position, " in ", room)
 		return
 	

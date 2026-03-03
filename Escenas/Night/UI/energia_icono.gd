@@ -53,6 +53,7 @@ func _ready():
 	actualizar_skin()
 
 func _process(delta):
+	if tick_stop: return
 	if energia != Global.energia_consumption["Total"]:
 		energia = Global.energia_consumption["Total"]
 	if obscure == true and Global.fade["Energia"]["Active"]:
@@ -100,3 +101,8 @@ func activar_parte(parte_id: String):
 
 func _on_timer_timeout() -> void:
 	obscure = true
+
+var tick_stop := false
+func _on_main_game_on_tick_stop() -> void:
+	tick_stop = true
+	visible = false

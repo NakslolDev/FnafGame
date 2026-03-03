@@ -521,6 +521,8 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="on_tick_stop" from="." to="Oficina/Ventilation" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="Oficina/Oficina_Detras" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="Oficina/VHS_Player" method="_on_main_game_on_tick_stop"]
+[connection signal="on_tick_stop" from="." to="No_Shader_UI/Linterna_Bateria_Icono" method="_on_main_game_on_tick_stop"]
+[connection signal="on_tick_stop" from="." to="No_Shader_UI/Energia_Icono" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="No_Shader_UI/Lights" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="True_No_Shader/Alucinations" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="Camaras_Control" method="_on_main_game_on_tick_stop"]

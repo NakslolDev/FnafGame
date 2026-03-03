@@ -251,8 +251,11 @@ func _manage_exit_minigame(new: scene):
 
 
 func _manage_night_before_change():
-	if current_scene == scene.CUSTOM_NIGHT:
+	if current_scene == scene.SHIFT:
+		Global.guardar_partida_provisional()
+	elif current_scene == scene.CUSTOM_NIGHT:
 		Global.noche = 0
+		Global.location_key = 0
 	
 	Global.reset_night()
 
@@ -265,10 +268,6 @@ func _manage_6_am():
 		Global.finales["420"] = true
 		Global.guardar_progreso()
 
-
-func _handle_main_game_before_change():
-	if current_scene == scene.SHIFT:
-		Global.guardar_partida_provisional()
 
 const MEDIOCRE_FUNC := "show_mediocre"
 const PARTY_FUNC := "show_party"

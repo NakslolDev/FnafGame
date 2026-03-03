@@ -38,7 +38,9 @@ var door_closed_log := false 	# Es una variable auxiliar. Como door_closed se ac
 var camara: int # En qué camara estás. Sirve para gotcha
 var cam_activa: bool # Si tienes las camaras activadas. Sirbe también para gotcha
 var watching_cam_6_when_i_am_there_and_door_is_open_and_i_am_attempting_to_open_the_safe := false # Se explica sola (I is chica)
-var door_soft_focus := false 	# Controla si estás iluminando su puerta con la linterna. En ese caso, no entrará. También sirve para gotcha.
+
+enum focus_state {NONE, SOFT, HARD}
+var door_focus: Node # Controla si estás iluminando su puerta con la linterna. En ese caso, no entrará. También sirve para gotcha.
 
 
 signal movement(to: int, from: int) # La señal de movimiento. 
@@ -51,7 +53,6 @@ func reset(): # Resetea las variables al principio de la noche
 	position = "S"
 	last_position = "S"
 	door_closed = false
-	door_soft_focus = false
 
 func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 	
@@ -71,10 +72,10 @@ func tick(): # Esta funcion se llama cada tick, 5 veces por segundo
 	
 	if position == "PD": # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.
 		if gotcha > 0:
-			if door_soft_focus or (camara == RIGHT_DOOR_CAM and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
+			if door_focus.get_focus_state() >= focus_state.SOFT or (camara == RIGHT_DOOR_CAM and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
 				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]GOTCHA!")
-		if door_soft_focus: # Comprueva si le has mirado con la linterna
+		if door_focus.get_focus_state() >= focus_state.SOFT: # Comprueva si le has mirado con la linterna
 			gotcha_lights = true
 	else:
 		gotcha_lights = false
@@ -183,7 +184,7 @@ func move():
 		elif position == "4": # De la 4 puede ir a muchos sitios...
 			var rand_go = randi_range(0, 200 + AI_level) # Más o menos un 25% todas, excepto irse a la puerta, que será más probable cuanto más nivel
 			if rand_go > 150:
-				if door_soft_focus: # intentará ir a la puerta. De no poder, por que está la linterna enfocando, se irá a 6
+				if door_focus.get_focus_state() >= focus_state.SOFT: # intentará ir a la puerta. De no poder, por que está la linterna enfocando, se irá a 6
 					position = "6"
 				else:
 					position = "PD"
@@ -200,7 +201,7 @@ func move():
 		elif position == "6":
 			var rand_go = randi_range(1, 150 + AI_level)
 			if rand_go > 100: # intenta ir a la puerta
-				if door_soft_focus:
+				if door_focus.get_focus_state() >= focus_state.SOFT:
 					position = "4" # de no poder, se va a la pos 4
 				else:
 					position = "PD"

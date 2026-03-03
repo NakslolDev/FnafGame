@@ -12,81 +12,67 @@ var focus: focus_state = focus_state.NONE
 
 @export var oficina_fondo_oscuro: Sprite2D
 
+@export var soft_focus: Area2D
+@export var hard_focus: Area2D
+
 func _ready():
-	bonnie.modulate.a = 0.0
-	chica.modulate.a = 0.0
-	foxy.modulate.a = 0.0
+	bonnie.visible = false
+	chica.visible = false
+	foxy.visible = false
 	Bonnie.movement.connect(movement)
 	Chica.movement.connect(movement)
 	Foxy.movement.connect(movement)
+	
+	if izquierda:
+		Bonnie.door_focus = self
+		Foxy.left_door_focus = self
+	else:
+		Chica.door_focus = self
+		Foxy.right_door_focus = self
+
+func _exit_tree() -> void: # elimina la referencia
+	if izquierda:
+		if Bonnie.door_focus == self: Bonnie.door_focus = null
+		if Foxy.left_door_focus == self: Foxy.left_door_focus = null
+	else:
+		if Chica.door_focus == self: Chica.door_focus = null
+		if Foxy.right_door_focus == self: Foxy.right_door_focus = null
 
 func movement(_a = null, _b = null, _c = null, _d = null):
 	if izquierda:
 		if Bonnie.position == "PI":
-			bonnie.modulate.a = 1.0
+			bonnie.visible = true
 		elif Foxy.room == "lhall" and Foxy.position == 0:
-			foxy.modulate.a = 1.0
+			foxy.visible = true
 		else:
-			bonnie.modulate.a = 0.0
-			foxy.modulate.a = 0.0
+			bonnie.visible = false
+			foxy.visible = false
 	else:
 		if Chica.position == "PD":
-			chica.modulate.a = 1.0
+			chica.visible = true
 		elif Foxy.room == "rhall" and Foxy.position == 0:
-			foxy.modulate.a = 1.0
+			foxy.visible = true
 		else:
-			chica.modulate.a = 0.0
-			foxy.modulate.a = 0.0
+			chica.visible = false
+			foxy.visible = false
 
 func _on_linterna_linterna_activada_switch() -> void:
 	shader_enabled = !shader_enabled
-	act_linerna_focus()
 	if shader_enabled:
 		oficina_fondo_oscuro.material.set_shader_parameter("shader_enabled", 1.0)
 	else:
 		oficina_fondo_oscuro.material.set_shader_parameter("shader_enabled", 0.0)
 
+func get_focus_state() -> focus_state: # funcion llamada por los animatronicos
 
-func act_linerna_focus():
-	if izquierda:
-		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Acted focus left door: ", focus_state.keys()[focus])
-		if shader_enabled and focus != focus_state.NONE:
-			Bonnie.door_soft_focus = true
-			Foxy.soft_focus_I = true
-			if focus == focus_state.HARD:
-				Foxy.hard_focus_I = true
-			else:
-				Foxy.hard_focus_I = false
-		else:
-			Foxy.hard_focus_I = false
-			Foxy.soft_focus_I = false
-			Bonnie.door_soft_focus = false
-	else:
-		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Acted focus right door: ", focus_state.keys()[focus])
-		if shader_enabled and focus != focus_state.NONE:
-			Foxy.soft_focus_D = true
-			Chica.door_soft_focus = true
-			if focus == focus_state.HARD:
-				Foxy.hard_focus_D = true
-			else:
-				Foxy.hard_focus_D = false
-		else:
-			Foxy.hard_focus_D = false
-			Foxy.soft_focus_D = false
-			Chica.door_soft_focus = false
+	if not shader_enabled: return focus_state.NONE
 
-func _on_soft_focus_mouse_entered() -> void:
-	focus = focus_state.SOFT
-	act_linerna_focus()
+	for overlaping_areas in hard_focus.get_overlapping_areas():
+		if overlaping_areas.name.begins_with("MouseHitbox"):
+			return focus_state.HARD
 
-func _on_soft_focus_mouse_exited() -> void:
-	focus = focus_state.NONE
-	act_linerna_focus()
+	for overlaping_areas in soft_focus.get_overlapping_areas():
+		if overlaping_areas.name.begins_with("MouseHitbox"):
+			return focus_state.SOFT
 
-func _on_hard_focus_mouse_entered() -> void:
-	focus = focus_state.HARD
-	act_linerna_focus()
-
-func _on_hard_focus_mouse_exited() -> void:
-	focus = focus_state.SOFT
-	act_linerna_focus()
+	return focus_state.NONE

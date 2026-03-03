@@ -23,10 +23,12 @@ size = Vector2(1106, 1106.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cm3ov"]
 size = Vector2(546, 413)
 
-[node name="Ductos_Detras" type="Node2D" unique_id=1399113967 node_paths=PackedStringArray("ducto_detras_oscuro", "foxy")]
+[node name="Ductos_Detras" type="Node2D" unique_id=1399113967 node_paths=PackedStringArray("ducto_detras_oscuro", "foxy", "soft_focus", "hard_focus")]
 script = ExtResource("1_tp3nd")
 ducto_detras_oscuro = NodePath("DuctoDetrasOscuro")
 foxy = NodePath("Foxy")
+soft_focus = NodePath("Soft_focus")
+hard_focus = NodePath("Hard_focus")
 
 [node name="DuctoDetrasIluminado" type="Sprite2D" parent="." unique_id=465259173]
 texture = ExtResource("1_drq1o")
@@ -56,8 +58,3 @@ shape = SubResource("RectangleShape2D_gqlcn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus" unique_id=862204160]
 position = Vector2(0, -318.5)
 shape = SubResource("RectangleShape2D_cm3ov")
-
-[connection signal="mouse_entered" from="Soft_focus" to="." method="_on_soft_focus_mouse_entered"]
-[connection signal="mouse_exited" from="Soft_focus" to="." method="_on_soft_focus_mouse_exited"]
-[connection signal="mouse_entered" from="Hard_focus" to="." method="_on_hard_focus_mouse_entered"]
-[connection signal="mouse_exited" from="Hard_focus" to="." method="_on_hard_focus_mouse_exited"]

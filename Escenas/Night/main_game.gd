@@ -60,19 +60,20 @@ func _enter_tree() -> void: # antes que ready
 
 var save_volume_linear: float
 const TIEMPO_TRANSICION := 5.0
+var tween_trans_in: Tween
 func _transition_in() -> void: # la idea es mejorar esta transicion
 	
 	transicion.modulate.a = 1.0
 	await get_tree().create_timer(0.5).timeout
 	
 	var bus := AudioServer.get_bus_index("Master")
-	var tween := create_tween()
+	tween_trans_in = create_tween()
 	
-	tween.set_parallel() # Hace que todos los tweens internos ocurran al mismo tiempo
-	tween.tween_property(
+	tween_trans_in.set_parallel() # Hace que todos los tweens internos ocurran al mismo tiempo
+	tween_trans_in.tween_property(
 		transicion, "modulate:a", 0.0, TIEMPO_TRANSICION
 	)
-	tween.tween_method(
+	tween_trans_in.tween_method(
 		func(value: float) -> void:
 			AudioServer.set_bus_volume_linear(bus, value),
 		AudioServer.get_bus_volume_linear(bus),
@@ -116,6 +117,7 @@ func _on_esc_timer_timeout():
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "escaped")
 		tick_stop = true
 		on_tick_stop.emit()
+		tween_trans_in.kill()
 		AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), save_volume_linear) # porsia no se ha terminado de reiniciar
 		if Global.noche == 0:
 			scene_handler.trans_to_scene(scene_handler.scene.CUSTOM_NIGHT, QUICK_TRANSITION_TIME)

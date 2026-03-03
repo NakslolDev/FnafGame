@@ -100,6 +100,7 @@ func act_light():
 		Global.set_energia_consumption("Cam_lights", 1)
 		linterna.modulate.a = 0.5
 		Freddy.cam_light = true
+		Bonnie.cam_light = true
 		alucination_control.flashlight(camara_activa)
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "cam light on")
 	
@@ -107,6 +108,7 @@ func act_light():
 		Global.set_energia_consumption("Cam_lights", 0)
 		linterna.modulate.a = 0.0
 		Freddy.cam_light = false
+		Bonnie.cam_light = false
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "cam light off")
 	
 	for cam in cams.cameras:

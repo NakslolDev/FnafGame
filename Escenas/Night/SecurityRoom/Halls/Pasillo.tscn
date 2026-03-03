@@ -25,12 +25,15 @@ size = Vector2(1790, 2402)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b6uj"]
 size = Vector2(424, 1231)
 
-[node name="Pasillo" type="Node2D" unique_id=397326124 node_paths=PackedStringArray("bonnie", "chica", "foxy", "oficina_fondo_oscuro")]
+[node name="Pasillo" type="Node2D" unique_id=397326124 node_paths=PackedStringArray("bonnie", "chica", "foxy", "oficina_fondo_oscuro", "soft_focus", "hard_focus")]
 script = ExtResource("1_2ym3s")
+izquierda = null
 bonnie = NodePath("Animatronicos/Bonnie")
 chica = NodePath("Animatronicos/Chica")
 foxy = NodePath("Animatronicos/Foxy")
 oficina_fondo_oscuro = NodePath("OficinaFondoOscuro")
+soft_focus = NodePath("Soft_focus")
+hard_focus = NodePath("Hard_focus")
 
 [node name="OficinaFondoIluminado" type="Sprite2D" parent="." unique_id=2054902440]
 scale = Vector2(1.5, 1.5)
@@ -75,8 +78,3 @@ shape = SubResource("RectangleShape2D_1db6b")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus" unique_id=499000768]
 position = Vector2(-915, 543.5)
 shape = SubResource("RectangleShape2D_4b6uj")
-
-[connection signal="mouse_entered" from="Soft_focus" to="." method="_on_soft_focus_mouse_entered"]
-[connection signal="mouse_exited" from="Soft_focus" to="." method="_on_soft_focus_mouse_exited"]
-[connection signal="mouse_entered" from="Hard_focus" to="." method="_on_hard_focus_mouse_entered"]
-[connection signal="mouse_exited" from="Hard_focus" to="." method="_on_hard_focus_mouse_exited"]

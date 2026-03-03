@@ -12,6 +12,8 @@ const AI_LIMIT_FOR_EXTRA_BLOCKS_WHEN_NOT_SEEN := 10 # cuando está en la puerta,
 const EXTRA_BLOCKS_WHEN_NOT_SEEN_UNDER_LIMIT := 2
 const EXTRA_BLOCKS_WHEN_NOT_SEEN_OVER_LIMIT := 1
 
+const RESET_TICK_COUNT_WHEN_FLASHED := false # de momento lo dejo en false 
+
 #Constants. You canNOT tweek these
 const LEFT_DOOR_CAM := 11
 
@@ -32,11 +34,14 @@ var last_position := "S"
 
 #info -> información del jugador. Cosas generales
 var camara: int # En qué camara estás. Sirve para gotcha
-var cam_activa: bool # Si tienes las camaras activadas. Sirbe también para gotcha
+var cam_activa: bool # Si tienes las camaras activadas. Sirve también para gotcha
+var cam_light := false
 var door_closed := false # Si la puerta está cerrada
 var door_closed_log := false 	# Es una variable auxiliar. Como door_closed se actualiza en tiempo real, la necesito para mantener esa información.
 								# Su principal funcion es ayudar a que si abres
-var door_soft_focus := false 	# Controla si estás iluminando su puerta con la linterna. En ese caso, no entrará. También sirve para gotcha.
+
+enum focus_state {NONE, SOFT, HARD}
+var door_focus: Node # Controla si estás iluminando su puerta con la linterna. En ese caso, no entrará. También sirve para gotcha.
 
 signal movement(to: int, from: int) # La señal de movimiento. 
 
@@ -48,13 +53,12 @@ func reset(): # Reseta todas las variables al inicio de la noche.
 	position = "S"
 	last_position = "S"
 	door_closed = false
-	door_soft_focus = false
 
 func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada segundo
-	
+
 	if AI_level == 0 or position == "office": # Si está desactivado o si ya está en la oficina, no se va a mover...
 		return
-	
+
 	if position == "PI": # este tiempo extra solo devería ocurrir si ya está de por sí en la puerta
 		if door_closed:
 			door_closed_log = true # Guarda la información
@@ -64,80 +68,102 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 				@warning_ignore("integer_division")
 				tick_count = (AI_level / 2) # en niveles altos te deja 1 segundo
 			door_closed_log = false
-	
+
 	if gotcha > 0: # Gotcha > 0 significa que todavía no le has visto y que sigue bloqueando por ello.
 		if position == "PI":
-			if door_soft_focus or (camara == LEFT_DOOR_CAM and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
+			if door_focus.get_focus_state() >= focus_state.SOFT or (camara == LEFT_DOOR_CAM and cam_activa) or door_closed: # Si le estás mirando con la linterna o por las camaras o tienes la puerta cerrada, le has "mirado".
 				gotcha = 0
 				print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]GOTCHA!")
 		else: # Gotcha solo devería ser != 0 en la puerta
 			gotcha = 0
-	
+
+	if looking_at_me_with_lights():
+		if RESET_TICK_COUNT_WHEN_FLASHED: tick_count = 0
+		return # lo mismo pero en las camaras 
+
 	var tick_count_limit: int # Declara el límite al que tiene que llegar tick count limit antes de moverse
-	
+
 	if Global.debug["cheats"]["ultra_agresive"]: # se intenta mover cada tick con el hack ultra agresive
 		tick_count_limit = UA_TICK_LIMIT
 	elif position != "PI": # si no está en la puerta, se intenta mover cada 40 ticks = 8 segundos
 		tick_count_limit = GENERAL_TICK_LIMIT
 	else: # si está en la puerta, intentará moverse cada 15 ticks = 3 segundos
 		tick_count_limit = DOOR_TICK_LIMIT
-	
+
 	tick_count += 1 # cada tick añade uno a tick count
-	
+
 	if tick_count >= tick_count_limit: # Si llega o supera el límite
 		tick_count = 0 # resetea el contador
 		movement_oportunity() # Y se intenta mover
 
+func looking_at_me_with_lights() -> bool:
+
+	if position == "PI" and door_focus.get_focus_state() == focus_state.HARD:
+		return true
+
+	if not Global.energia["Camaras"] or not cam_activa or not cam_light:
+		return false
+
+	if camara == 1 and position == "S":
+		return true
+	if camara == 2 and (position == "0" or position == "1"):
+		return true
+	if camara == 7 and (position == "2" or position == "3"):
+		return true
+	if camara == 8 and position == "5":
+		return true
+	if camara == 10 and position == "4":
+		return true
+	if camara == 11 and position == "PI":
+		return true
+	return false # si falla todas, false
 
 func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto más nivel de IA, más posibilidades de moverse
-	
-	
+
 	if gotcha > 0: # Si no lo has mirado
 		gotcha -= 1 # Resta 1 al contador
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no (still not seen): from ", position)
 		return
-	
+
 	if lock_movement and position == "PI": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
 		lock_movement = false
 		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se valla antes
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no (locked first try): from ", position)
 			return
-	
-	
+
 	if position != "PI": # Si no está en la puerta
-		if (door_soft_focus and position == "5"): # 5 siempre va a la puerta. Así evito que aparezca de la nada si tienes la linterna apuntando a la puerta
+		if (door_focus.get_focus_state() >= focus_state.SOFT and position == "5"): # 5 siempre va a la puerta. Así evito que aparezca de la nada si tienes la linterna apuntando a la puerta
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no (flashlight on door): from ", position)
 			return
 		if AI_level > randi_range(0, 20): # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
 			move()
 			return
-	
+
 	elif not door_closed: # puerta abierta
 		if AI_level >= randi_range(0, 20): # siempre acierta en nivel 20
 			move()
 			return
-		
+
 		if door_fail_count < 0: # Si no se mueve, comprueva los fallos.
 			door_fail_count = 0 # Primero resetea a 0 en caso de que fuese negativo.
 		door_fail_count += 1 # Añade un intento fallido de entrar 
 		if door_fail_count == MAXIMUM_FAILS_WHEN_DOOR_OPEN: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 4 y no en el siguiente MO es intencional
 			move()
 			return
-	
+
 	else: # puerta cerrada
 		if 50 + AI_level * 2 <= randi_range(0, 100): # AI = 1:~ 50%, AI = 20:~ 90% (de que se quede en la puerta).
 			move()
 			return
-		
+
 		if door_fail_count > 0: # Si no se mueve, comprueva los fallos.
 			door_fail_count = 0 # Primero resetea a 0 en caso de que fuese positivo.
 		door_fail_count -= 1 # Añade un intento fallido de irse 
 		if door_fail_count == -MAXIMUM_FAILS_WHEN_DOOR_CLOSED: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = -10 y no en el siguiente MO sigue siendo intencional
 			move()
 			return
-	
+
 	# Ahora mismo, si abres la puerta, e intenta entrar, pero no lo hace, y vuelves a cerrar, el contador se resetea. De momento lo dejo intencional
-	
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 
 
@@ -152,7 +178,7 @@ func move(): # decide a donde moverse
 		position = str(ipos + 1)
 	
 	elif position == "4":
-		if AI_level > randi_range(0, 20) and not door_soft_focus: # Si la IA es baja o estás mirando a la puerta, se irá al armario. Si no, irá directamente a la puerta
+		if AI_level > randi_range(0, 20) and not door_focus.get_focus_state() >= focus_state.SOFT: # Si la IA es baja o estás mirando a la puerta, se irá al armario. Si no, irá directamente a la puerta
 			position = "PI"
 		else:
 			position = "5"

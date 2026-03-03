@@ -34,7 +34,6 @@ func _process(delta):
 	
 	if obscure == true and Global.fade["Linterna"]["Active"]:
 		modulate.a -= delta / obscure_time_animation
-	#visible = Global.energia["Luces"]
 
 func actualizar_skin():
 	if obscure == false: # hace que se pueda oscurecer
@@ -311,3 +310,7 @@ func _on_pulse_timer_timeout() -> void:
 
 func _on_timer_obscure_timeout() -> void:
 	obscure = true
+
+
+func _on_main_game_on_tick_stop() -> void:
+	visible = false

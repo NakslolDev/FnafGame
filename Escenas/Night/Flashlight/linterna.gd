@@ -72,7 +72,7 @@ func _input(event):
 func _input_free() -> bool:
 	for area in get_tree().get_nodes_in_group("interactable"):
 		for overlaping_areas in area.get_overlapping_areas():
-			if str(overlaping_areas).begins_with("MouseHitbox"):
+			if overlaping_areas.name.begins_with("MouseHitbox"):
 				#print("Input taken: ", area)
 				return false
 	return true
