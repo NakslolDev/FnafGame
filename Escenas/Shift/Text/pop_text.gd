@@ -1,21 +1,24 @@
 extends Control
 
 @export var debuging_text := false
+@export var green_text := false
+
 var id_String: String
 var end_in: Array[int]
 var on := false
 var local_read: int
 
 @export var txt_label: RichTextLabel
+@export var timer: Timer
+@export var minigame: Node
 
 func pop_up(id: String, read: int):
 	local_read = read
 	if end_in != [] and local_read:
 		txt_label.id_num = end_in[local_read-1] #empieza del anterior valor
 	id_String = id
-	$Timer.start()
+	timer.start()
 	show_text()
-
 
 func show_text():
 	print("(PT)  Read: ", local_read, "  End in: ", end_in, "  id_num: ", txt_label.id_num, "  ID: ", id_String)
@@ -26,7 +29,7 @@ func show_text():
 	txt_label.start_print(id_String)
 
 func _input(event: InputEvent) -> void:
-	if txt_label.unskipable:
+	if txt_label.unskipable and txt_label.printing:
 		return
 	if on and event.is_action_pressed("interact"):
 		if txt_label.printing:
@@ -40,6 +43,6 @@ func _on_timer_timeout() -> void:
 
 func exit():
 	on = false
-	$Timer.stop()
+	timer.stop()
 	txt_label.id_num = 0
-	$"../.."._on_finished_text()
+	minigame._on_finished_text()

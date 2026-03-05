@@ -66,7 +66,15 @@ min_alpha = 1.0
 bbcode = "skip"
 metadata/_custom_type_script = "uid://didmeig0mvuse"
 
-[node name="Pop_Text" type="Control" unique_id=188774992 node_paths=PackedStringArray("txt_label")]
+[sub_resource type="RichTextEffect" id="RichTextEffect_7jwmp"]
+script = ExtResource("7_wjrdk")
+speed = 0.0
+separation = 0.0
+min_alpha = 1.0
+bbcode = "silent"
+metadata/_custom_type_script = "uid://didmeig0mvuse"
+
+[node name="Pop_Text" type="Control" unique_id=188774992 node_paths=PackedStringArray("txt_label", "timer")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -76,6 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oalcq")
 txt_label = NodePath("Control/Label_pop_text")
+timer = NodePath("Timer")
 
 [node name="Control" type="Panel" parent="." unique_id=947192679]
 layout_mode = 1
@@ -91,7 +100,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fdo78")
 metadata/_edit_group_ = true
 
-[node name="Label_pop_text" type="RichTextLabel" parent="Control" unique_id=672996077]
+[node name="Label_pop_text" type="RichTextLabel" parent="Control" unique_id=672996077 node_paths=PackedStringArray("pop_text", "timer_per_letter", "audio_stream_player")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.026
@@ -109,8 +118,11 @@ bbcode_enabled = true
 text = "HOLA"
 scroll_active = false
 autowrap_mode = 2
-custom_effects = [SubResource("RichTextEffect_mb5rd"), SubResource("RichTextEffect_wjrdk"), SubResource("RichTextEffect_pyek0"), SubResource("RichTextEffect_io82i"), SubResource("RichTextEffect_1ns3g"), SubResource("RichTextEffect_3ets4"), SubResource("RichTextEffect_lkdkp"), SubResource("RichTextEffect_1ojwq")]
+custom_effects = [SubResource("RichTextEffect_mb5rd"), SubResource("RichTextEffect_wjrdk"), SubResource("RichTextEffect_pyek0"), SubResource("RichTextEffect_io82i"), SubResource("RichTextEffect_1ns3g"), SubResource("RichTextEffect_3ets4"), SubResource("RichTextEffect_lkdkp"), SubResource("RichTextEffect_1ojwq"), SubResource("RichTextEffect_7jwmp")]
 script = ExtResource("3_k80lv")
+pop_text = NodePath("../..")
+timer_per_letter = NodePath("Timer_per_letter")
+audio_stream_player = NodePath("../../AudioStreamPlayer")
 
 [node name="Timer_per_letter" type="Timer" parent="Control/Label_pop_text" unique_id=862050427]
 wait_time = 0.05

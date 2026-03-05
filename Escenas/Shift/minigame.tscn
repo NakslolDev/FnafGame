@@ -623,8 +623,9 @@ left = false
 
 [node name="Shader&else" type="CanvasLayer" parent="." unique_id=964723939]
 
-[node name="Pop_Text" parent="Shader&else" unique_id=1416511614 instance=ExtResource("14_v4577")]
+[node name="Pop_Text" parent="Shader&else" unique_id=1416511614 node_paths=PackedStringArray("minigame") instance=ExtResource("14_v4577")]
 visible = false
+minigame = NodePath("../..")
 
 [node name="Pop_Safe" parent="Shader&else" unique_id=1591497894 instance=ExtResource("15_kqcik")]
 visible = false
@@ -732,6 +733,11 @@ night_4 = false
 night_5 = false
 exiting = false
 
+[node name="Random" parent="Coliders" unique_id=2028459704 instance=ExtResource("24_ly3ag")]
+position = Vector2(-608, 16)
+scale = Vector2(0.05, 0.05)
+id = "Rand_obj"
+
 [node name="Chair" type="Node2D" parent="Coliders" unique_id=451815039]
 position = Vector2(-1016, 832)
 
@@ -749,7 +755,7 @@ exiting = false
 position = Vector2(-523, 681)
 scale = Vector2(1.22257, 1.37796)
 id = "Magic_chair"
-read_end_in = Array[int]([1, 2, 3, 4, 7])
+read_end_in = Array[int]([1, 2, 3, 7])
 
 [node name="Round_tables" type="Node" parent="Coliders" unique_id=1916506610]
 
@@ -993,7 +999,7 @@ position = Vector2(-827, 677)
 script = ExtResource("25_ekm4o")
 metadata/_edit_group_ = true
 
-[node name="Nothing" parent="Coliders/Key_locations/Location_key_4" unique_id=2028459704 instance=ExtResource("24_ly3ag")]
+[node name="Nothing" parent="Coliders/Key_locations/Location_key_4" unique_id=630627216 instance=ExtResource("24_ly3ag")]
 id = "Nothing"
 read_end_in = Array[int]([1])
 night_1 = false
