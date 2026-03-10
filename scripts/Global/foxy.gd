@@ -44,6 +44,7 @@ var true_last_room := "pas"
 
 signal movement(to_pos: int, to_room: String, from_pos: int, from_room: String)
 signal move_back()
+signal cancel_move_back()
 signal flashlight_stunt_over()
 
 #nodos (focus)
@@ -172,6 +173,7 @@ func tick(): # Cada tick (5 veces por segundo)
 	elif gotcha < 0:
 		gotcha = 0
 
+
 	var tick_count_limit: int # Declara el límite al que tiene que llegar tick count limit antes de moverse
 
 	if position == 0 and (room.begins_with("Duc") or room.ends_with("hall")):
@@ -201,10 +203,13 @@ func tick(): # Cada tick (5 veces por segundo)
 	if Global.debug["cheats"]["ultra_agresive"] and not room.begins_with("Duc"):
 		tick_count_limit = UA_TICK_LIMIT # no tengo ni idea de como reemplazarlo sin que se rompa, asi que lo cambio aqui
 
-	@warning_ignore("integer_division") # evita que me salte el aviso
-	if tick_focus_count >= 10 + (AI_level / 2) and animacion_go_back == false:
-		emit_signal("move_back")
+	@warning_ignore("integer_division")
+	if tick_focus_count >= 10 + (AI_level / 2) and not animacion_go_back: # si le miras durante el tiempo suficiente
+		move_back.emit()
 		animacion_go_back = true
+	elif tick_focus_count == 0 and animacion_go_back: # si le dejas de mirar mientras esta en la animacion
+		cancel_move_back.emit()
+		animacion_go_back = false
 
 	tick_count += 1
 

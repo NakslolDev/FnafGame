@@ -6,6 +6,8 @@ var shader_enabled := false
 enum focus_state {NONE, SOFT, HARD}
 var focus: focus_state = focus_state.NONE
 
+var animation_memory := false
+
 @export var bonnie: Sprite2D
 @export var chica: Sprite2D
 @export var foxy: Sprite2D
@@ -33,24 +35,16 @@ func _ready():
 
 func movement(_a = null, _b = null, _c = null, _d = null):
 	if izquierda:
-		if Bonnie.position == "PI":
-			bonnie.visible = true
-		elif Foxy.room == "lhall" and Foxy.position == 0:
-			foxy.visible = true
-		else:
-			bonnie.visible = false
-			foxy.visible = false
+		bonnie.visible = Bonnie.position == "PI"
+		foxy.visible = (Foxy.room == "lhall" and Foxy.position == 0)
 	else:
-		if Chica.position == "PD":
-			chica.visible = true
-		elif Foxy.room == "rhall" and Foxy.position == 0:
-			foxy.visible = true
-		else:
-			chica.visible = false
-			foxy.visible = false
+		chica.visible = Chica.position == "PD"
+		foxy.visible = Foxy.room == "rhall" and Foxy.position == 0
 
-func _on_linterna_linterna_activada_switch() -> void:
-	shader_enabled = !shader_enabled
+
+func _on_linterna_linterna_activada_switch(value: bool, animation: bool) -> void:
+	animation_memory = animation
+	shader_enabled = value
 	if shader_enabled:
 		oficina_fondo_oscuro.material.set_shader_parameter("shader_enabled", 1.0)
 	else:
@@ -58,7 +52,7 @@ func _on_linterna_linterna_activada_switch() -> void:
 
 func get_focus_state() -> focus_state: # funcion llamada por los animatronicos
 
-	if not shader_enabled: return focus_state.NONE
+	if not shader_enabled and not animation_memory: return focus_state.NONE
 
 	for overlaping_areas in hard_focus.get_overlapping_areas():
 		if overlaping_areas.name.begins_with("MouseHitbox"):

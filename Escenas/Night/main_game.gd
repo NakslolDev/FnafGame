@@ -47,7 +47,7 @@ signal alucinations(on: bool)
 func set_camaras_activadas(value):
 	_camaras_activadas = value
 	if value:
-		linterna.cams_up() # linterna
+		linterna.cams_up()
 	freddy_nose.cam_warp = value # Nariz de freddy
 	Bonnie.cam_activa = value
 	Chica.cam_activa = value
@@ -149,44 +149,39 @@ func tick_call():
 		on_tick_stop.emit()
 		game_over(true)
 	
+	handle_jumpscare()
+
+func handle_jumpscare():
+
 	if cheats.invencibility:
-		pass
+		return
 	
-	elif Bonnie.position == "office":
-		if camaras_activadas == true:
+	if Foxy.room == "office": # Foxy tiene preferencia sobre los demas
+		if not camaras_activadas and (oficina.girando == 0 or oficina.girando == 3):
+			jumpscare.emit("Foxy")
+	
+	if Bonnie.position == "office":
+		if camaras_activadas:
 			if bonnie_cam_wait < 50:
 				bonnie_cam_wait += 1
-				return
 			else:
 				camaras_control.toggle_cams()
-		if oficina.girando != 0 and oficina.girando != 3:
-			return
-		emit_signal("jumpscare", "Bonnie")
+		elif (oficina.girando == 0 or oficina.girando == 3):
+			jumpscare.emit("Bonnie")
 	
 	elif Chica.position == "office":
-		if camaras_activadas == true:
+		if camaras_activadas:
 			if chica_cam_wait < 50:
 				chica_cam_wait += 1
-				return
 			else:
 				camaras_control.toggle_cams()
-		if oficina.girando != 0 and oficina.girando != 3:
-			return
-		emit_signal("jumpscare", "Chica")
+		elif (oficina.girando == 0 or oficina.girando == 3):
+			jumpscare.emit("Chica")
 	
 	elif Freddy.position == "office":
-		if camaras_activadas == true:
-			return
-		if oficina.girando != 0: # freddy no te salta mientras miras hacia atras
-			return
-		emit_signal("jumpscare", "Freddy")
-	
-	elif Foxy.room == "office":
-		if camaras_activadas == true:
-			return
-		if oficina.girando != 0 and oficina.girando != 3:
-			return
-		emit_signal("jumpscare", "Foxy")
+		if not camaras_activadas and oficina.girando == 0: # freddy no te salta mientras miras hacia atras
+			jumpscare.emit("Freddy")
+
 
 func _on_jumpscare(_who: String) -> void:
 	tick_stop = true
@@ -194,6 +189,7 @@ func _on_jumpscare(_who: String) -> void:
 	oficina.jumpscare_block = true # la unica diferencia entre tick stop normal y que te hagan jumpscare
 	mouse_custom.override_alpha = true
 	mouse_custom.modulate.a = 0.0
+
 
 func alucinacion_attempt():
 	
@@ -211,7 +207,7 @@ func alucinacion_attempt():
 	
 	if randf() < probability:
 		if not camaras.activado and (Global.energia["Luces"] or randi_range(0, 1) == 1):
-			emit_signal("alucinations", true)
+			alucinations.emit(true)
 			change_tick_rate(cheats.tick_rate * 2)
 			alucinaciones_cooldown = 200 - 180 * ((insanity_clamp - al_max_time_on_insanity) / al_min_time_on_insanity)
 
@@ -235,6 +231,8 @@ func game_over(win: bool):
 		else:
 			scene_handler.change_to_death_scene() # \\
 
+##manage death
+#maybe sould be on scene manager but whatever
 
 func go_to_death_minigame() -> bool:
 	

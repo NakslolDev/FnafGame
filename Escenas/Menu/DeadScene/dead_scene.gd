@@ -8,7 +8,7 @@ var type := 0
 
 @export var timer: Timer
 
-const MINIMUN_TIME := 2.0
+const MINIMUN_TIME := 0.1
 
 var can_trans := false
 

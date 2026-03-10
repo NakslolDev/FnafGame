@@ -27,7 +27,6 @@ size = Vector2(424, 1231)
 
 [node name="Pasillo" type="Node2D" unique_id=397326124 node_paths=PackedStringArray("bonnie", "chica", "foxy", "oficina_fondo_oscuro", "soft_focus", "hard_focus")]
 script = ExtResource("1_2ym3s")
-izquierda = null
 bonnie = NodePath("Animatronicos/Bonnie")
 chica = NodePath("Animatronicos/Chica")
 foxy = NodePath("Animatronicos/Foxy")

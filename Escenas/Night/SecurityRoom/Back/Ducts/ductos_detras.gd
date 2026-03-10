@@ -4,6 +4,8 @@ var shader_enabled := false
 
 enum focus_state {NONE, SOFT, HARD}
 
+var animation_memory := false
+
 @export var ducto_detras_oscuro: Sprite2D
 @export var foxy: Sprite2D
 
@@ -22,8 +24,9 @@ func movement(_a = null, _b = null, _c = null, _d = null):
 	else:
 		foxy.visible = false
 
-func _on_oficina_detras_linterna_activada_rebote() -> void:
-	shader_enabled = !shader_enabled
+func _on_oficina_detras_linterna_activada_rebote(value: bool, animation: bool) -> void:
+	animation_memory = animation
+	shader_enabled = value
 	if shader_enabled:
 		ducto_detras_oscuro.material.set_shader_parameter("shader_enabled", 1.0)
 	else:
@@ -31,7 +34,7 @@ func _on_oficina_detras_linterna_activada_rebote() -> void:
 
 func get_focus_state() -> focus_state: # funcion llamada por los animatronicos
 
-	if not shader_enabled: return focus_state.NONE
+	if not shader_enabled and not animation_memory: return focus_state.NONE
 
 	for overlaping_areas in hard_focus.get_overlapping_areas():
 		if overlaping_areas.name.begins_with("MouseHitbox"):

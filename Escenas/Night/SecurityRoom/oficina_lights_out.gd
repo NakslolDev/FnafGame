@@ -48,8 +48,8 @@ func energia_act():
 	viñeta.visible = !Global.energia["Luces"]
 	ruido.visible = !Global.energia["Luces"]
 
-func _on_linterna_linterna_activada_switch() -> void:
-	shader_enabled = !shader_enabled
+func _on_linterna_linterna_activada_switch(value: bool, _animation: bool) -> void: # animation aqui da igual
+	shader_enabled = value
 	
 	if shader_enabled:
 		material.set_shader_parameter("shader_enabled", 1.0)

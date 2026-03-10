@@ -763,7 +763,7 @@ var fade := {
 	},
 	"Linterna": {
 		"Active": true,
-		"Time": 1.0,
+		"Time": 1.5,
 		"Speed": 2.0
 	}
 }
@@ -780,7 +780,7 @@ var screen := {
 	"vsync": true,
 	"fps": 0,
 	"fullscreen": true,
-	"brightness": 0.2,
+	"brightness": 1.0,
 }
 
 #---Variables Progreso---#

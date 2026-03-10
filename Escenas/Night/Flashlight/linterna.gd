@@ -1,14 +1,14 @@
 extends Node2D
 
-var linterna_activa_temporal := false
+var linterna_activada := false
 
 @export var linterna_discharch_speed := 0.3
 @export var linterna_recharch_speed := 0.4
-@export var linterna_penalty := 10
+@export var linterna_penalty := 5
 var did_click_on := false # funciona como un limiter pero para soltar el click
 var linterna_recargando := false
 var linterna_animacion_count := 0
-signal Linterna_Activada_Switch()
+signal Linterna_Activada_Switch(on: bool, animation: bool)
 signal Linterna_Recargando_Switch()
 
 @export_group("Nodes")
@@ -23,44 +23,47 @@ var tick_rate: float
 
 func _ready():
 	Foxy.move_back.connect(foxy_animacion)
-	set_process(true)
-	# Aseguramos que el nodo ya existe y luego llamamos el setter
-	set_linterna(linterna_activa_temporal)
+	Foxy.cancel_move_back.connect(cancel_foxy_animation)
+	set_linterna(false)
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	
 	global_position = get_global_mouse_position()
 	
-	if Global.linterna_bateria == 0:
-		if linterna_activa_temporal:
-			Linterna_Activada_Switch.emit()
-			linterna_activa_temporal = false
-			linternaPNG.modulate.a = 0.0
+	if Global.linterna_bateria == 0 and linterna_activada:
+		set_linterna(false)
 
 
-func set_linterna(value):
-	linterna_activa_temporal = value
-	if linterna_activa_temporal:
+func set_linterna(value: bool, animation := false):
+	linterna_activada = value
+	Linterna_Activada_Switch.emit(value, linterna_animacion_count != 0)
+	linternaPNG.modulate.a = 0.3 * int(value)
+
+	if animation: # si esta haciendo la animacion
+		return
+
+	if linterna_activada:
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Flashlight on")
-		linternaPNG.modulate.a = 0.3
 		if Global.linterna_bateria <= linterna_penalty and Global.linterna_bateria > 1: #hace que si no te queda suficiente bateria pa encender, se queda a 1%
 			Global.linterna_bateria = 1
 		else:
 			Global.linterna_bateria -= linterna_penalty # cuanto quita la linterna 
 	else:
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Flashlight off")
-		linternaPNG.modulate.a = 0.0
 
 
 func _input(event):
+	
+	if event.is_action_pressed("Shift"):
+		foxy_animacion()
+	
 	if event.is_action_pressed("Click"):
 		if linterna_recargando or father.camaras_activadas or linterna_animacion_count != 0 or father.tick_stop:
 			return
 		if _input_free():
 			linterna_press.play()
 			did_click_on = true
-			set_linterna(!linterna_activa_temporal)
-			Linterna_Activada_Switch.emit()
+			if Global.linterna_bateria != 0: set_linterna(!linterna_activada)
 	
 	if event.is_action_released("Click"):
 		if linterna_recargando or father.camaras_activadas or linterna_animacion_count != 0 or father.tick_stop:
@@ -79,51 +82,55 @@ func _input_free() -> bool:
 
 
 func cams_up():
-	if linterna_activa_temporal:
-		set_linterna(!linterna_activa_temporal)
-		Linterna_Activada_Switch.emit()
-		did_click_on = false
+	if linterna_animacion_count != 0:
+		cancel_foxy_animation()
+	if linterna_activada:
+		set_linterna(false)
+	did_click_on = false
 
 
 func _on_timer_linterna_tic():
-	if linterna_animacion_count == 0:
-		Global.linterna_bateria -= 1
+	#if linterna_animacion_count == 0:
+	Global.linterna_bateria -= 1
 
 func _on_oficina_detras_linterna_recarga_switch_rebote() -> void:
 	linterna_recargando = !linterna_recargando
-	if linterna_activa_temporal:
-		set_linterna(!linterna_activa_temporal)
-		Linterna_Activada_Switch.emit()
+	if linterna_activada:
+		set_linterna(false)
 	Linterna_Recargando_Switch.emit()
 
 func _on_timer_recargar_linterna_tic_recarga() -> void:
 	if Global.energia["Linterna"]:
 		Global.linterna_bateria += 1
 
+##foxy animation
 
-const ITERATIONS_ON_FOXY_ANIMATION := 9
 func foxy_animacion():
-	linterna_animacion(ITERATIONS_ON_FOXY_ANIMATION)
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Flashlight animation")
+	linterna_animacion()
 
-func linterna_animacion(value):
-	linternaPNG.modulate.a = 0.0
-	Linterna_Activada_Switch.emit()
-	linterna_animacion_count = value
+func cancel_foxy_animation():
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Flashlight animation canceled")
+	linterna_animacion_timer.stop()
+	linterna_animacion_count = 0
+	set_linterna(false)
+
+const ANIMATION := true
+const ITERATIONS_ON_FOXY_ANIMATION := 9
+func linterna_animacion():
+	linterna_animacion_count = ITERATIONS_ON_FOXY_ANIMATION
+	set_linterna(false, ANIMATION)
 	linterna_animacion_timer.start(0.3 * 5.0 / tick_rate)
 
 func _on_linterna_animacion_timeout() -> void:
 	linterna_animacion_count -= 1
-	Linterna_Activada_Switch.emit()
-	if linternaPNG.modulate.a > 0.0:
-		linternaPNG.modulate.a = 0.0
-	else:
-		linternaPNG.modulate.a = 0.3
+	set_linterna(!linterna_activada, ANIMATION)
+
 	if linterna_animacion_count > 0:
 		if linterna_animacion_count > 3:
 			linterna_animacion_timer.start((0.1 * (linterna_animacion_count - 2) / 3.0) * 5.0 / tick_rate)
 		elif linterna_animacion_count == 1:
+			Foxy.move_back_to()
 			linterna_animacion_timer.start(0.3 * 5.0 / tick_rate)
 		else:
 			linterna_animacion_timer.start((0.1 * 3.0 / 4.0) * 5.0 / tick_rate)
-		if linterna_animacion_count == 1:
-			Foxy.move_back_to()

@@ -1,7 +1,7 @@
 extends Node2D
 
 signal Girar_Detras(izquierda: bool)
-signal Linterna_Activada_Rebote()
+signal Linterna_Activada_Rebote(value: bool)
 signal Linterna_Recarga_Switch_Rebote()
 signal Detras_Estado(Detras: bool)
 
@@ -20,8 +20,8 @@ func _on_detector_girar_girar(izquierda: bool) -> void:
 	Girar_Detras.emit(izquierda)
 
 
-func _on_linterna_linterna_activada_switch() -> void:
-	Linterna_Activada_Rebote.emit()
+func _on_linterna_linterna_activada_switch(value: bool, animation: bool) -> void:
+	Linterna_Activada_Rebote.emit(value, animation)
 
 
 func _on_recargar_linterna_linterna_recarga_switch() -> void:

@@ -44,6 +44,7 @@ func _on_undo_pressed() -> void:
 
 func _on_reset_pressed() -> void:
 	Global.reset_configuration()
+	Global.aply_screen_configuration()
 	scene_handler.reset_options_scene()
 
 func change_language():
