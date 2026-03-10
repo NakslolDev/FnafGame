@@ -31,7 +31,7 @@ var go_straight := false # this var controls whether foxy will go straight to yo
 # Also, he will roll twice his movement attempt, so he will also be moving faster. When he encounters a dead end, eather getting to position 0 or clashing against a heated duct, it will deactivate
 # Examples of when it activates: when energy breakdown. Maybe more in the future
 
-#64 posiciones posibles... 
+#65 posiciones posibles... 
 #map -> positions per room (0 = s, so I can int)
 #room -> main, arcade, pas, entrance, kitchen, almacen, closet, lhall, rhall, office
 # Duc1, Duc2, Duc3... Duc8
@@ -708,7 +708,7 @@ func decide_entrance(dead_end): # por fin una sencillita
 	else:
 		next_room = "main"
 
-func decide_kitchen(dead_end):
+func decide_kitchen(dead_end): # aunque hay 2 posiciones posibles, siempre intentará ir a Duc6
 	
 	if go_straight:
 		next_room = "Duc6"
@@ -1156,11 +1156,17 @@ func move_entrance():
 func move_kitchen():
 	
 	if next_room == "Duc6":
-		room = next_room
-		position = 2
+		if position == 1:
+			position = 2
+		else:
+			room = next_room
+			position = 2
 	elif next_room == "Duc4":
-		room = next_room
-		position = 4
+		if position == 2:
+			position = 1
+		else:
+			room = next_room
+			position = 4
 	else:
 		pass
 
@@ -1380,7 +1386,7 @@ func move_Duc6():
 			position -= 1
 		else:
 			room = next_room
-			position = 1
+			position = 2
 	elif next_room == "almacen":
 		if position != 4:
 			position += 1

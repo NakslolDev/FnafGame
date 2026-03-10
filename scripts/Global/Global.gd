@@ -480,8 +480,6 @@ func leer_partida():
 	
 	print("Partida cargada")
 
-
-
 func leer_partida_provisional():
 	
 	if debug["game_state"]["override"]:
@@ -504,10 +502,15 @@ func leer_partida_provisional():
 			# Cargar variables
 			
 			noche = devpartida.get("noche", noche)
-			safe_code = devpartida.get("safe_code", safe_code)
-			_asign_recursive_diccionary(devpartida.get("inventario"), inventario)
-			_asign_recursive_diccionary(devpartida.get("mapa"), mapa)
-			_asign_recursive_diccionary(devpartida.get("dm"), dm)
+			safe_code = _asign_array_int(devpartida.get("safe_code", safe_code), SAFE_CODE_SIZE)
+			if devpartida.has("inventario"):
+				_asign_recursive_diccionary(devpartida.get("inventario"), inventario)
+			if devpartida.has("mapa"):
+				_asign_recursive_diccionary(devpartida.get("mapa"), mapa)
+			if devpartida.has("dm"):
+				_asign_recursive_diccionary(devpartida.get("dm"), dm)
+			if devpartida.has("map_items"):
+				_asign_recursive_diccionary(devpartida.get("map_items"), map_items)
 			
 			sync_debug_to_current()
 			
@@ -536,10 +539,15 @@ func leer_partida_provisional():
 	# Cargar variables
 	
 	noche = partida.get("noche", noche)
-	safe_code = partida.get("safe_code", safe_code)
-	_asign_recursive_diccionary(partida.get("inventario"), inventario)
-	_asign_recursive_diccionary(partida.get("mapa"), mapa)
-	_asign_recursive_diccionary(partida.get("dm"), dm)
+	safe_code = _asign_array_int(partida.get("safe_code", safe_code), SAFE_CODE_SIZE)
+	if partida.has("inventario"):
+		_asign_recursive_diccionary(partida.get("inventario"), inventario)
+	if partida.has("mapa"):
+		_asign_recursive_diccionary(partida.get("mapa"), mapa)
+	if partida.has("dm"):
+		_asign_recursive_diccionary(partida.get("dm"), dm)
+	if partida.has("map_items"):
+		_asign_recursive_diccionary(partida.get("map_items"), map_items)
 	
 	print("Partida provisional cargada")
 
@@ -564,6 +572,8 @@ func sync_debug_to_current():
 	_asign_recursive_diccionary(inventario, debug["game_state"]["inventario"])
 	_asign_recursive_diccionary(mapa, debug["game_state"]["mapa"])
 	_asign_recursive_diccionary(dm, debug["game_state"]["dm"])
+
+
 
 func guardar_progreso():
 	if debug["prevent_save"]:
@@ -1233,7 +1243,6 @@ func reset_debug():
 	leer_progreso()
 	leer_partida()
 	eliminar_debug_partida()
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Inventario"):

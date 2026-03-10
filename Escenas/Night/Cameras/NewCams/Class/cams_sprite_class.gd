@@ -79,7 +79,7 @@ func get_max_pos_for_room(room: FXroom) -> int:
 		FXroom.ARCADE: return 4
 		FXroom.PARTS_AND_SERVICES: return 3
 		FXroom.ENTRANCE: return 1
-		FXroom.KITCHEN: return 1
+		FXroom.KITCHEN: return 2
 		FXroom.ALMACEN: return 2
 		FXroom.CLOSET: return 1
 		FXroom.LEFT_HALL: return 2

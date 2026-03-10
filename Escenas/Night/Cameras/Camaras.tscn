@@ -206,7 +206,8 @@ script = ExtResource("2_rbjw8")
 [node name="NoCamLights" type="AudioStreamPlayer" parent="No_Shader" unique_id=1883028061]
 stream = ExtResource("19_ev252")
 
-[node name="Ruido" parent="No_Shader" unique_id=393620595 instance=ExtResource("18_rgdy6")]
+[node name="Ruido" parent="No_Shader" unique_id=393620595 node_paths=PackedStringArray("cam_root") instance=ExtResource("18_rgdy6")]
+cam_root = NodePath("../..")
 
 [node name="Area_Minimapa" type="Area2D" parent="No_Shader" unique_id=129912912]
 

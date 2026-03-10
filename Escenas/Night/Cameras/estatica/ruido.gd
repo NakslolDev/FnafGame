@@ -10,6 +10,7 @@ var override_freddy_static := false
 @export var static_speed: Timer
 @export var static_time: Timer
 @export var _static: AudioStreamPlayer
+@export var cam_root: Node2D
 
 const UP_STATIC_WHEN_CHANGING_CAMS := 0.1
 const UP_STATIC_WHEN_ANIMATRONIC_MOVEMENT := 0.7
@@ -68,5 +69,5 @@ func _on_minimapa_botones_cam_act() -> void:
 func _on_cam_cam_act(freddy: bool, local_from: int, local_to: int, local_extra: int) -> void:
 	if freddy:
 		up_static(UP_STATIC_WHEN_FREDDY_MOVEMENT, FADE_SLOW)
-	elif $"../..".camara_activa == local_from or $"../..".camara_activa == local_to or $"../..".camara_activa == local_extra:
+	elif Global.energia["Camaras"] and (cam_root.camara_activa == local_from or cam_root.camara_activa == local_to or cam_root.camara_activa == local_extra):
 		up_static(UP_STATIC_WHEN_ANIMATRONIC_MOVEMENT, FADE_SLOW)

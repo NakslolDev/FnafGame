@@ -197,6 +197,9 @@ func movement_foxy(to, troom, from, froom):
 	var from_cam: int
 	from_cam = get_cam_from_movement_fx(from, froom)
 	
+	if troom == "Almacen" and froom == "Almacen": # esto es para que no haga ruido (visual) al moverse por el almacen. 
+		return  # la intencion es que este claro cuando entra y cuando saleº  
+	
 	cam_act.emit(false, from_cam, to_cam, 0)
 
 func get_cam_from_movement_fx(pos, room):

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dny4bku1s1acl" path="res://assets/Placeholders/Camaras/Cam5/Chica_5.png" id="4_hd8lo"]
 [ext_resource type="Texture2D" uid="uid://iw3qmdp8txx8" path="res://assets/Placeholders/Camaras/key.png" id="4_px42g"]
 [ext_resource type="Texture2D" uid="uid://f2ab0i214v0y" path="res://assets/Placeholders/Camaras/Cam5/Foxy_5.1.png" id="5_lwc64"]
+[ext_resource type="Texture2D" uid="uid://cwbg6iebetyws" path="res://assets/Placeholders/Camaras/Cam5/Foxy_5.3.png" id="6_c7q1a"]
 [ext_resource type="Texture2D" uid="uid://bpvbyp02sa0my" path="res://assets/Placeholders/Camaras/Cam5/Foxy_5.2.png" id="6_xichk"]
 [ext_resource type="Texture2D" uid="uid://bam064cts7dw3" path="res://assets/Placeholders/Camaras/Cam5/Freddy_5.png" id="7_cg2mc"]
 
@@ -18,6 +19,37 @@ metadata/_custom_type_script = "uid://cd811lhimvfl6"
 texture = ExtResource("2_aojr7")
 script = ExtResource("3_dc1kp")
 light = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyDuc" type="Sprite2D" parent="." unique_id=1115395721]
+texture = ExtResource("6_xichk")
+script = ExtResource("3_dc1kp")
+light = 2
+foxy_room = 14
+foxy_pos = 4
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Freddy" type="Sprite2D" parent="." unique_id=1082504271]
+texture = ExtResource("7_cg2mc")
+script = ExtResource("3_dc1kp")
+light = 2
+freddy = 12
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy1" type="Sprite2D" parent="." unique_id=1347182893]
+texture = ExtResource("6_c7q1a")
+script = ExtResource("3_dc1kp")
+light = 2
+foxy_room = 5
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy2" type="Sprite2D" parent="." unique_id=956323629]
+texture = ExtResource("5_lwc64")
+script = ExtResource("3_dc1kp")
+light = 2
+foxy_room = 5
+foxy_pos = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="Key2" type="Sprite2D" parent="." unique_id=1756220439]
@@ -37,29 +69,6 @@ light = 2
 chica = 4
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Foxy1" type="Sprite2D" parent="." unique_id=956323629]
-texture = ExtResource("5_lwc64")
-script = ExtResource("3_dc1kp")
-light = 2
-foxy_room = 5
-foxy_pos = 1
-metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
-
-[node name="FoxyDuc" type="Sprite2D" parent="." unique_id=1115395721]
-texture = ExtResource("6_xichk")
-script = ExtResource("3_dc1kp")
-light = 2
-foxy_room = 14
-foxy_pos = 4
-metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
-
-[node name="Freddy" type="Sprite2D" parent="." unique_id=1082504271]
-texture = ExtResource("7_cg2mc")
-script = ExtResource("3_dc1kp")
-light = 2
-freddy = 12
-metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
-
 [node name="NoLightSeparator" type="Node" parent="." unique_id=623732045]
 
 [node name="Cam2" type="Sprite2D" parent="." unique_id=558690191]
@@ -67,23 +76,6 @@ self_modulate = Color(0.25275356, 0.25275356, 0.25275356, 1)
 texture = ExtResource("2_aojr7")
 script = ExtResource("3_dc1kp")
 light = 1
-metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
-
-[node name="Chica2" type="Sprite2D" parent="." unique_id=1603924915]
-self_modulate = Color(0.25275356, 0.25275356, 0.25275356, 1)
-texture = ExtResource("4_hd8lo")
-script = ExtResource("3_dc1kp")
-light = 1
-chica = 4
-metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
-
-[node name="Foxy2" type="Sprite2D" parent="." unique_id=1804692728]
-self_modulate = Color(0.25275356, 0.25275356, 0.25275356, 1)
-texture = ExtResource("5_lwc64")
-script = ExtResource("3_dc1kp")
-light = 1
-foxy_room = 5
-foxy_pos = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="FoxyDuc2" type="Sprite2D" parent="." unique_id=567941506]
@@ -101,4 +93,30 @@ texture = ExtResource("7_cg2mc")
 script = ExtResource("3_dc1kp")
 light = 1
 freddy = 12
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy3" type="Sprite2D" parent="." unique_id=1207661164]
+self_modulate = Color(0.25275356, 0.25275356, 0.25275356, 1)
+texture = ExtResource("6_c7q1a")
+script = ExtResource("3_dc1kp")
+light = 1
+foxy_room = 5
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Foxy4" type="Sprite2D" parent="." unique_id=1804692728]
+self_modulate = Color(0.25275356, 0.25275356, 0.25275356, 1)
+texture = ExtResource("5_lwc64")
+script = ExtResource("3_dc1kp")
+light = 1
+foxy_room = 5
+foxy_pos = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Chica2" type="Sprite2D" parent="." unique_id=1603924915]
+self_modulate = Color(0.25275356, 0.25275356, 0.25275356, 1)
+texture = ExtResource("4_hd8lo")
+script = ExtResource("3_dc1kp")
+light = 1
+chica = 4
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"

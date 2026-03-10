@@ -25,7 +25,6 @@ func movement(_a = null, _b = null, _c = null, _d = null):
 @export var ductos_fondo_oscuro: Sprite2D
 
 func _on_linterna_linterna_activada_switch(value: bool, animation: bool) -> void:
-	print("duct linterna act: ", value, ", animation, ", animation)
 	animation_memory = animation
 	shader_enabled = value
 	if shader_enabled:

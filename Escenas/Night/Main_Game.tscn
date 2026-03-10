@@ -230,9 +230,6 @@ one_shot = true
 
 [node name="Cheats" type="Node" parent="." unique_id=1206509325 node_paths=PackedStringArray("tick_label", "batery_label", "time_label", "insanity_label", "animatronic_map_node", "vhs_player")]
 script = ExtResource("2_4erhx")
-get_from_global = false
-see_light_batery = true
-animatronic_map = true
 tick_label = NodePath("../True_No_Shader/Tick_label")
 batery_label = NodePath("../True_No_Shader/VBoxContainer/Batery_Label")
 time_label = NodePath("../True_No_Shader/VBoxContainer/Time_label")

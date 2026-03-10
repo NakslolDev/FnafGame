@@ -1444,7 +1444,7 @@ action = "Custom"
 custom_action = "get_almacen_batteries_w_text"
 id = "batteries"
 exiting = false
-arcade_batteries = 1
+almacen_batteries = 1
 
 [node name="Box" type="Node2D" parent="Coliders" unique_id=1658191473]
 position = Vector2(-1295, 30)
