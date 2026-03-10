@@ -7,13 +7,13 @@
 [node name="YouShouldSeeThis" type="Node2D" unique_id=1241567631]
 
 [node name="1" type="Sprite2D" parent="." unique_id=132521243]
-position = Vector2(-69, -1)
+position = Vector2(-72, -6)
 texture = ExtResource("1_i0vdr")
 region_enabled = true
 region_rect = Rect2(32, 96, 96, 96)
 
 [node name="2" type="Sprite2D" parent="." unique_id=1971914066]
-position = Vector2(68, 0)
+position = Vector2(64, -6)
 texture = ExtResource("1_i0vdr")
 region_enabled = true
 region_rect = Rect2(32, 96, 96, 96)
@@ -28,9 +28,9 @@ text = "You should"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." unique_id=1155854669]
-offset_left = -118.0
+offset_left = -116.0
 offset_top = 47.0
-offset_right = -20.0
+offset_right = -18.0
 offset_bottom = 70.0
 theme = ExtResource("2_aj3wp")
 text = "not see this"
@@ -46,9 +46,9 @@ text = "You should"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="." unique_id=1628766199]
-offset_left = 20.0
+offset_left = 21.0
 offset_top = 48.0
-offset_right = 117.0
+offset_right = 118.0
 offset_bottom = 71.0
 theme = ExtResource("2_aj3wp")
 text = "see this"

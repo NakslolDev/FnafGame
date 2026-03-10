@@ -71,7 +71,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 script = ExtResource("1_k0pte")
-debug = true
 debug_panel = NodePath("Debug_panel")
 
 [node name="FondoNegro" type="Sprite2D" parent="." unique_id=2076492844]
@@ -715,6 +714,7 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
+scroll_vertical = 755
 horizontal_scroll_mode = 0
 
 [node name="General" type="VBoxContainer" parent="Debug_panel/ScrollContainer" unique_id=313878102 node_paths=PackedStringArray("check_box_prevent_save", "check_box_invencibility", "check_box_instant_win", "check_box_timeless", "check_box_ultra_agresive", "check_box_infinite_batery", "check_box_lights_consume", "check_box_animatronic_map", "check_box_see_light_batery", "check_box_see_time_always", "check_box_see_insanity", "check_box_tick_count", "spin_box_max_consumption", "spin_boxt_night_duration", "spin_boxt_tick_rate")]
@@ -911,13 +911,19 @@ text = "Game State (not recomended, might break things)"
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="Gamestate" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs" unique_id=1852455816 node_paths=PackedStringArray("vbox_mapa", "vbox_invent", "vbox_map_items")]
+[node name="Gamestate" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs" unique_id=1852455816 node_paths=PackedStringArray("vbox_mapa", "vbox_invent", "vbox_map_items", "combination", "check_box_override", "spin_box_night", "check_box_force_enter", "check_box_force_exiting", "force_combination")]
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("30_r21sq")
 vbox_mapa = NodePath("MarginContainer_mapa/VBoxContainer")
 vbox_invent = NodePath("MarginContainer_inventory/VBoxContainer")
 vbox_map_items = NodePath("MarginContainer_map_items/VBoxContainer")
+combination = NodePath("Combination")
+check_box_override = NodePath("CheckBox_Override")
+spin_box_night = NodePath("Night/SpinBox_night")
+check_box_force_enter = NodePath("CheckBox_force_enter")
+check_box_force_exiting = NodePath("CheckBox_force_exiting")
+force_combination = NodePath("Force_combination")
 
 [node name="Sync" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=735283896]
 layout_mode = 2
@@ -956,40 +962,60 @@ text = "Night"
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
-text = "Force entering"
+text = "Force entering on shift"
 
 [node name="CheckBox_force_exiting" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=706614334]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
-text = "Force exiting"
+text = "Force exiting on shift"
 
-[node name="Combination" type="HBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=719679237]
-layout_mode = 2
-theme_override_constants/separation = 25
-
-[node name="Force_combination" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=2073134461]
+[node name="Force_combination" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=2073134461]
 custom_minimum_size = Vector2(370, 0)
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Force safe combination"
 
-[node name="SpinBox_comb" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=98039883]
+[node name="Combination" type="HBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=719679237]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="SpinBox_comb_1" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=98039883]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
-min_value = 11111.0
-max_value = 99999.0
-value = 11111.0
+max_value = 9.0
 alignment = 1
 script = ExtResource("29_1pq54")
 
-[node name="inventario" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=154151273]
+[node name="SpinBox_comb_2" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=1726787059]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
-theme_override_colors/font_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
-theme_override_font_sizes/font_size = 25
-text = "(no 0)"
+max_value = 9.0
+alignment = 1
+script = ExtResource("29_1pq54")
+
+[node name="SpinBox_comb_3" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=689698835]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+max_value = 9.0
+alignment = 1
+script = ExtResource("29_1pq54")
+
+[node name="SpinBox_comb_4" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=1956051512]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+max_value = 9.0
+alignment = 1
+script = ExtResource("29_1pq54")
+
+[node name="SpinBox_comb_5" type="SpinBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination" unique_id=1435576210]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+max_value = 9.0
+alignment = 1
+script = ExtResource("29_1pq54")
 
 [node name="inventario" type="Label" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" unique_id=757809806]
 layout_mode = 2
@@ -1196,10 +1222,28 @@ layout_mode = 2
 theme_override_constants/separation = 15
 script = ExtResource("31_et6hj")
 
+[node name="save_game" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=509410297]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+text = "Save game"
+alignment = 0
+
+[node name="force_save_game_debug" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1102088410]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+text = "Force save game to debug state"
+alignment = 0
+
 [node name="save_progress" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1430692547]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Save progress"
+alignment = 0
+
+[node name="force_save_progress_debug" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=2144730995]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+text = "Force save progress to debug state"
 alignment = 0
 
 [node name="delete_config" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1034123337]
@@ -1208,7 +1252,7 @@ theme = ExtResource("28_t63xu")
 text = "Delete configuration save file"
 alignment = 0
 
-[node name="delete_partida" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1876838377]
+[node name="delete_game" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=1876838377]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 text = "Delete current game"
@@ -1284,8 +1328,12 @@ puntero = "3"
 [connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Night/SpinBox_night" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_night_value_changed"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/CheckBox_force_enter" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_force_enter_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/CheckBox_force_exiting" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_force_exiting_toggled"]
-[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/Force_combination" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_force_combination_toggled"]
-[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/SpinBox_comb" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_comb_value_changed"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Force_combination" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_force_combination_toggled"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/SpinBox_comb_1" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_comb_1_value_changed"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/SpinBox_comb_2" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_comb_2_value_changed"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/SpinBox_comb_3" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_comb_3_value_changed"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/SpinBox_comb_4" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_comb_4_value_changed"]
+[connection signal="value_changed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/Combination/SpinBox_comb_5" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_spin_box_comb_5_value_changed"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_key" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_office_key_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_recorder" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_recorder_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer/CheckBox_screwdriver" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_screwdriver_toggled"]
@@ -1310,7 +1358,10 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_batteries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_batteries_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_box_toy" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_box_toy_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_toy" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_toy_toggled"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/save_progress" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_save_all_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/save_game" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_save_game_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/force_save_game_debug" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_force_save_game_debug_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/save_progress" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_save_progress_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/force_save_progress_debug" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_force_save_progress_debug_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_config" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_config_pressed"]
-[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_partida" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_partida_pressed"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_game" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_partida_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_progress" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_progress_pressed"]

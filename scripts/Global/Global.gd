@@ -1,7 +1,7 @@
 extends Node
 
 
-#---Control Variables---#
+##---Control Variables---#
 
 const text_CSV_name: String = "Text_translated.csv"
 const AI_CSV_name: String = "Night_database.csv"
@@ -13,16 +13,15 @@ const partida_rout: String = "partida.json"
 const partida_prov_rout: String = "partida_prov.json"
 const progreso_rout: String = "progreso.json"
 const debug_partida_rout: String = "deb-partida.json"
-const debug_partida_prov_rout: String = "deb-partida_prov.json"
 
 var dead_scene_type := 0
 var killed_by := "none" # bonnie, chica, freddy, foxy. none es cuando no te ha matado nadie
 
 
-#---Control Functions---#
+##---Control Functions---#
 
 
-#-text
+##text
 
 func get_csv_value_int(csv:String, row_index: int, col_index: int): # Devuelve el valor de la casilla indicada del csv por las coordenadas
 	var path := "res://Data/" + csv
@@ -84,7 +83,7 @@ func get_csv_value_id(csv:String, row_id: String, col_id: String) -> String: # D
 	file.close()
 	return "Something went wrong... (id non existant)"
 
-#-File Management
+##File Management
 
 func guardar_configuration():
 	
@@ -232,32 +231,23 @@ func aply_screen_configuration():
 	
 	GlobalWorldEnvironment.environment.adjustment_brightness = screen["brightness"]
 
+# La mayor parte de esto se maneja en scene manager
 
-func guardar_partida(use_debug_game_state_istead_of_normal := false):
+func guardar_partida():
 	
-	if debug["game_state"]["override"]:
+	if debug["debug_mode"]: # si estas en debug mode, usas el archivo de debug, tanto si tienes override como si no
 		
 		var devpartida: Dictionary
 		
-		if use_debug_game_state_istead_of_normal:
-			devpartida = {
-				"noche": debug["game_state"]["night"],
-				"safe_code": debug["game_state"]["combination"],
-				"inventario": debug["game_state"]["inventario"],
-				"mapa": debug["game_state"]["mapa"],
-				"dm": debug["game_state"]["dm"],
-				"map_items": debug["game_state"]["map_items"]
-			}
-		else:
-			sync_debug_to_current()
-			devpartida = {
-				"noche": noche,
-				"safe_code": safe_code,
-				"inventario": inventario,
-				"mapa": mapa,
-				"dm": dm,
-				"map_items": map_items,
-			}
+		sync_debug_to_current()
+		devpartida = {
+			"noche": noche,
+			"safe_code": safe_code,
+			"inventario": inventario,
+			"mapa": mapa,
+			"dm": dm,
+			"map_items": map_items,
+		}
 		
 		var devpath := user_root + debug_partida_rout
 		var devfile := FileAccess.open(devpath, FileAccess.WRITE)
@@ -269,7 +259,7 @@ func guardar_partida(use_debug_game_state_istead_of_normal := false):
 		else:
 			push_warning("Debug partida fallida")
 	
-	if debug["prevent_save"]:
+	if debug["prevent_save"]: # adenmas, si quitas el prevent save, tu partida normal tambien se actualizara
 		return
 	
 	var partida := {
@@ -291,44 +281,7 @@ func guardar_partida(use_debug_game_state_istead_of_normal := false):
 		push_warning("Partida fallida")
 	file.close()
 
-func guardar_partida_provisional(use_debug_game_state_istead_of_normal := false):
-	
-	if debug["game_state"]["override"]:
-		
-		var devpartida: Dictionary
-		
-		if use_debug_game_state_istead_of_normal:
-			devpartida = {
-				"noche": debug["game_state"]["night"],
-				"safe_code": debug["game_state"]["combination"],
-				"inventario": debug["game_state"]["inventario"],
-				"mapa": debug["game_state"]["mapa"],
-				"dm": debug["game_state"]["dm"],
-				"map_items": debug["game_state"]["map_items"],
-			}
-		else:
-			sync_debug_to_current()
-			devpartida = {
-				"noche": noche,
-				"safe_code": safe_code,
-				"inventario": inventario,
-				"mapa": mapa,
-				"dm": dm,
-				"map_items": map_items,
-			}
-		
-		var devpath := user_root + debug_partida_prov_rout
-		var devfile := FileAccess.open(devpath, FileAccess.WRITE)
-		
-		if devfile:
-			devfile.store_string(JSON.stringify(devpartida)) # "\t" = formato legible
-			print("Debug partida guardada")
-			devfile.close()
-		else:
-			push_warning("Debug partida fallida")
-	
-	if debug["prevent_save"]:
-		return
+func guardar_partida_provisional(): # partida provisional no necesita su contraparte debug
 	
 	var partida := {
 		"noche": noche,
@@ -337,6 +290,7 @@ func guardar_partida_provisional(use_debug_game_state_istead_of_normal := false)
 		"mapa": mapa,
 		"dm": dm,
 		"map_items": map_items,
+		"items": Items.objects
 	}
 	
 	var path := user_root + partida_prov_rout
@@ -351,7 +305,7 @@ func guardar_partida_provisional(use_debug_game_state_istead_of_normal := false)
 
 func guardar_death_minigames():
 	
-	if debug["game_state"]["override"]:
+	if debug["debug_mode"]: # si estas en debug mode, usas el archivo de debug, tanto si tienes override como si no
 		
 		var devpath := user_root + debug_partida_rout
 		
@@ -368,8 +322,8 @@ func guardar_death_minigames():
 			push_warning("Error al leer JSON.")
 			return
 		
-		devpartida["dm"] = debug["game_state"]["dm"]
-		devpartida["mapa"]["death_minigames"] = true
+		sync_debug_to_current()
+		devpartida["dm"] = dm
 		
 		devfile = FileAccess.open(devpath, FileAccess.WRITE)
 		
@@ -411,7 +365,7 @@ func guardar_death_minigames():
 
 func leer_partida():
 	
-	if debug["game_state"]["override"]:
+	if debug["debug_mode"]:
 		
 		#-Carga debug-
 		
@@ -482,45 +436,6 @@ func leer_partida():
 
 func leer_partida_provisional():
 	
-	if debug["game_state"]["override"]:
-		
-		#-Carga debug-
-		
-		var devpath := user_root + debug_partida_prov_rout
-		
-		if FileAccess.file_exists(devpath):
-			
-			var devfile = FileAccess.open(devpath, FileAccess.READ)
-			var devtext = devfile.get_as_text()
-			devfile.close()
-			
-			var devpartida = JSON.parse_string(devtext)
-			if devpartida == null:
-				push_warning("Error al leer JSON.")
-				return
-			
-			# Cargar variables
-			
-			noche = devpartida.get("noche", noche)
-			safe_code = _asign_array_int(devpartida.get("safe_code", safe_code), SAFE_CODE_SIZE)
-			if devpartida.has("inventario"):
-				_asign_recursive_diccionary(devpartida.get("inventario"), inventario)
-			if devpartida.has("mapa"):
-				_asign_recursive_diccionary(devpartida.get("mapa"), mapa)
-			if devpartida.has("dm"):
-				_asign_recursive_diccionary(devpartida.get("dm"), dm)
-			if devpartida.has("map_items"):
-				_asign_recursive_diccionary(devpartida.get("map_items"), map_items)
-			
-			sync_debug_to_current()
-			
-			print("Debug partida provisional cargada")
-			return
-		
-		print("No existe el archivo de partida debug. Leyendo partida normal")
-	
-	#--Carga normal--
-	
 	var path := user_root + partida_prov_rout
 	
 	if not FileAccess.file_exists(path):
@@ -548,6 +463,8 @@ func leer_partida_provisional():
 		_asign_recursive_diccionary(partida.get("dm"), dm)
 	if partida.has("map_items"):
 		_asign_recursive_diccionary(partida.get("map_items"), map_items)
+	if partida.has("items"):
+		_asign_recursive_diccionary(partida.get("items"), Items.objects)
 	
 	print("Partida provisional cargada")
 
@@ -573,6 +490,13 @@ func sync_debug_to_current():
 	_asign_recursive_diccionary(mapa, debug["game_state"]["mapa"])
 	_asign_recursive_diccionary(dm, debug["game_state"]["dm"])
 
+func sync_current_to_debug():
+	noche = debug["game_state"]["night"]
+	safe_code = _asign_array_int(debug["game_state"]["combination"], SAFE_CODE_SIZE)
+	_asign_recursive_diccionary(debug["game_state"]["inventario"], inventario)
+	_asign_recursive_diccionary(debug["game_state"]["mapa"], mapa)
+	_asign_recursive_diccionary(debug["game_state"]["dm"], dm)
+
 
 
 func guardar_progreso():
@@ -597,8 +521,18 @@ func guardar_progreso():
 func leer_progreso():
 	var path := user_root + progreso_rout
 	if not FileAccess.file_exists(path):
-		print("No existe el archivo de progreso.")
-		return
+		print("No existe el archivo de progreso... asignando manualmente")
+		custom_night = false
+		var no_finales := {
+			"mediocre": false,
+			"party": false,
+			"bad": false,
+			"true": false,
+			"good": false,
+			"420": false,
+		}
+		_asign_recursive_diccionary(no_finales, finales) # lo hago asi para asegurarme de que si lees el progreso sin haber archivo, significa que no tienes nada desbloqueado...
+		return # Por ejemlo, cuando haces exit debug mode, se tiene que resetear aunque no exista el archivo.
 	
 	var file = FileAccess.open(path, FileAccess.READ)
 	var text = file.get_as_text()
@@ -628,7 +562,7 @@ func existe_algo() -> bool:
 	return FileAccess.file_exists(path_conf) or FileAccess.file_exists(path_game) or FileAccess.file_exists(path_progress)
 
 
-#-misc
+##misc
 
 func _asign_recursive_diccionary(dick_origin: Dictionary, dick_destiny: Dictionary): # Los diccionarios ya funcionan como referencia en GDscrip
 	
@@ -663,7 +597,7 @@ func _asign_array_int(_array: Array, _max_size: int) -> Array[int]:
 	
 	return _new_array
 
-#---Configuration---#
+##---Configuration---#
 
 
 var config_default: Dictionary
@@ -793,7 +727,7 @@ var screen := {
 	"brightness": 1.0,
 }
 
-#---Variables Progreso---#
+##---Variables Progreso---#
 
 
 var custom_night := false
@@ -807,7 +741,7 @@ var finales := {
 	"420": false,
 }
 
-#---Variables Partida---#
+##---Variables Partida---#
 
 var noche := 0 # 1-6, 0 es custom night.
 
@@ -860,26 +794,12 @@ var map_items = {
 	"almacen_toy": false,
 }
 
-#---Funciones Partida---#
+##---Funciones Partida---#
 
 
 func randomize_safe_code():
 	if debug["game_state"]["override"] and debug["game_state"]["force_combination"]:
-		var digits := []
-		for ch in str(debug["game_state"]["combination"]):
-			digits.append(int(ch))
-			if len(digits) == 5:
-				break
-		
-		if len(digits) != 5:
-			push_warning("Safe combination too short...")
-			for i in range(0, 5):
-				Global.safe_code[i] = randi_range(1, 9)
-			print("Safe code set: ", Global.safe_code)
-		
-		else:
-			Global.safe_code = digits
-			print("Safe code override: ", Global.safe_code)
+		return # simplemente no cambia la combinacion
 	else:
 		for i in range(0, 5):
 			Global.safe_code[i] = randi_range(1, 9)
@@ -914,7 +834,7 @@ func randomice_map_items():
 		print(key, ": ", map_items[key])
 
 
-#---Variables Noche---#
+##---Variables Noche---#
 
 
 var custom_night_ai := [0, 0, 0, 0] # bonnie, chica, freddy, foxy
@@ -963,7 +883,7 @@ var energia := { # swithces
 }
 
 
-#---Funciones Noche---#
+##---Funciones Noche---#
 
 
 func reset_night():
@@ -1150,13 +1070,13 @@ func set_energia(nombre: String, valor: bool): # En vez de dar el valor directam
 		actualizar_luces()
 
 
-#---Señales Noche---#
+##---Señales Noche---#
 
 signal Energy_Breakdown # Se manda cuando salta la luz
 signal act_ai_state # Se manda cuando se actualiza la IA de los animatronicos. Normalmente cada hora
 signal energia_actualizada # Se manda cuando cambias un switch
 
-#---Variables Minigame---#
+##---Variables Minigame---#
 
 var m_entering := true
 
@@ -1166,14 +1086,6 @@ var just_death_min := "none" #none, kbonnie, kchica, kfreddy, kfoxy. sbonnie...
 
 func minigame_starts():
 	
-	if just_death_min == "none":
-		if m_entering:
-			leer_partida() # En esta funcion es donde se maneja el debug
-			Items.reset()
-		else:
-			leer_partida_provisional()
-			eliminar_partida_provisional()
-	
 	if debug["game_state"]["override"]: # esto es lo unico de debug que tengo que manejar aqui
 		if debug["game_state"]["force_enter"]:
 			m_entering = true
@@ -1181,7 +1093,6 @@ func minigame_starts():
 			m_entering = false
 	
 	if m_entering:
-		
 		if just_death_min == "none":
 			mapa["safe_opened_by_animatronic"] = false
 			mapa["door_office_open"] = false
@@ -1189,7 +1100,6 @@ func minigame_starts():
 			mapa["computer_working"] = false
 			if noche == 5:
 				randomize_safe_code()
-		
 		mapa["computer_failed"] = false # A partir de aqui se ejecuta siempre al entrar
 	
 	else:
@@ -1197,9 +1107,9 @@ func minigame_starts():
 			mapa["safe_opened_by_animatronic"] = true
 
 
-#---Debug---#
+##---Debug---#
 
-#-Variables
+##Variables
 
 var debug :={
 	"debug_mode": false,
@@ -1236,7 +1146,7 @@ var debug :={
 
 @onready var idle_debug := debug.duplicate(true)
 
-#-Funciones
+##Funciones
 
 func reset_debug():
 	debug = idle_debug.duplicate(true)
@@ -1244,8 +1154,8 @@ func reset_debug():
 	leer_partida()
 	eliminar_debug_partida()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Inventario"):
-		print(Global.inventario)
-		print(Global.mapa)
-		print(Global.dm)
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("Inventario"):
+		#print(Global.inventario)
+		#print(Global.mapa)
+		#print(Global.dm)

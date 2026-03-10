@@ -1420,7 +1420,7 @@ exiting = false
 main_water_bottle = 1
 
 [node name="Arcade" type="Node2D" parent="Coliders" unique_id=1637380954]
-position = Vector2(-827, 677)
+position = Vector2(-1525, 672)
 
 [node name="Batteries" parent="Coliders/Arcade" unique_id=1416039000 instance=ExtResource("24_ly3ag")]
 action = "Custom"

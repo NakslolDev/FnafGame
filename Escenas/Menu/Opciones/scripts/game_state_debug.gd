@@ -5,26 +5,28 @@ var debug := Global.debug
 @export var vbox_mapa: VBoxContainer
 @export var vbox_invent: VBoxContainer
 @export var vbox_map_items: VBoxContainer
+@export var combination: HBoxContainer
+
+@export var check_box_override: CheckBox
+@export var spin_box_night: SpinBox
+@export var check_box_force_enter: CheckBox
+@export var check_box_force_exiting: CheckBox
+@export var force_combination: CheckBox
 
 
 func _ready():
 	sync()
-	_on_force_combination_toggled(debug["game_state"]["force_combination"])
 
 func sync():
 	debug = Global.debug
-	$CheckBox_Override.button_pressed = debug["game_state"]["override"]
-	$Night/SpinBox_night.value = debug["game_state"]["night"]
-	$CheckBox_force_enter.button_pressed = debug["game_state"]["force_enter"]
-	$CheckBox_force_exiting.button_pressed = debug["game_state"]["force_exit"]
-	$Combination/Force_combination.button_pressed = debug["game_state"]["force_combination"]
+	check_box_override.button_pressed = debug["game_state"]["override"]
+	spin_box_night.value = debug["game_state"]["night"]
+	check_box_force_enter.button_pressed = debug["game_state"]["force_enter"]
+	check_box_force_exiting.button_pressed = debug["game_state"]["force_exit"]
+	force_combination.button_pressed = debug["game_state"]["force_combination"]
 	
-	var scomb := ""
-	for d in debug["game_state"]["combination"]:
-		scomb += str(d)
-	$Combination/SpinBox_comb.value = int(scomb)
-	
-	
+	for i in range(5):
+		combination.get_child(i).value = debug["game_state"]["combination"][i]
 	
 	for key in vbox_invent.get_children():
 		var prefix := "CheckBox_"
@@ -46,22 +48,14 @@ func sync():
 		if key_id.begins_with(prefix):
 			key_id = key_id.substr(prefix.length())
 		key.button_pressed = debug["game_state"]["map_items"][key_id]
-	
-
-func sync_map_in():
-	debug = Global.debug
-	debug["game_state"]["night"] = Global.noche
-	for key in Global.mapa:
-		debug["game_state"]["mapa"][key] = Global.mapa[key]
-	for key in Global.inventario:
-		debug["game_state"]["inventario"][key] = Global.inventario[key]
-	sync()
 
 func _on_sync_pressed() -> void:
-	sync_map_in()
+	Global.sync_debug_to_current()
+	sync()
 
 func _on_check_box_override_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["override"] = toggled_on
+
 
 func _on_check_box_force_enter_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["force_enter"] = toggled_on
@@ -74,6 +68,27 @@ func _on_check_box_force_exiting_toggled(toggled_on: bool) -> void:
 	if toggled_on and debug["game_state"]["force_enter"]:
 		debug["game_state"]["force_enter"] = false
 		sync()
+
+
+func _on_force_combination_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["force_combination"] = toggled_on
+
+func _on_spin_box_comb_1_value_changed(value: float) -> void:
+	debug["game_state"]["combination"][0] = value
+
+func _on_spin_box_comb_2_value_changed(value: float) -> void:
+	debug["game_state"]["combination"][1] = value
+
+func _on_spin_box_comb_3_value_changed(value: float) -> void:
+	debug["game_state"]["combination"][2] = value
+
+func _on_spin_box_comb_4_value_changed(value: float) -> void:
+	debug["game_state"]["combination"][3] = value
+
+func _on_spin_box_comb_5_value_changed(value: float) -> void:
+	debug["game_state"]["combination"][4] = value
+
+
 
 func _on_spin_box_night_value_changed(value: float) -> void:
 	debug["game_state"]["night"] = value
@@ -126,17 +141,6 @@ func _on_check_box_computer_failed_toggled(toggled_on: bool) -> void:
 func _on_check_box_signed_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["mapa"]["signed_in"] = toggled_on
 
-
-func _on_force_combination_toggled(toggled_on: bool) -> void:
-	debug["game_state"]["force_combination"] = toggled_on
-	$Combination/SpinBox_comb.visible = toggled_on
-	$Combination/inventario.visible = toggled_on
-
-func _on_spin_box_comb_value_changed(value: float) -> void:
-	var result := []
-	for c in str(value):
-		result.append(int(c))
-	debug["game_state"]["combination"] = result
 
 
 func _on_check_box_kitchen_water_bottle_toggled(toggled_on: bool) -> void:

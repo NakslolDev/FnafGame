@@ -46,9 +46,6 @@ func _ready():
 	Global.aply_screen_configuration()
 
 func _act_current_scene(new: scene):
-	if current_scene == scene.SHIFT:
-		_manage_exit_minigame(new) # aquí va la lógica al salir de una escena, no al entrar a esta
-
 	last_scene = current_scene
 	current_scene = new
 	print("")
@@ -94,11 +91,17 @@ func trans_to_nothing(fade_time: float = transition.DEFAULT_TRANSITION_TIME, hol
 	await  transition.done_fade_out
 	done_fade_out.emit()
 
+func _manage_exit_scenes(new: scene): # aquí va la lógica al salir de una escena, no al entrar a esta
+	match current_scene:
+		scene.SHIFT:
+			_manage_exit_minigame(new)
+
 ##main changers
 
 func change_to_main_menu(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.MAIN_MENU)
 	_manage_main_menu_before_change()
 	_act_current_scene(scene.MAIN_MENU)
 	if current_tree_scene != null: current_tree_scene.queue_free()
@@ -111,6 +114,7 @@ func change_to_main_menu(force: bool = false):
 func change_to_options(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.OPTIONS)
 	_act_current_scene(scene.OPTIONS)
 	if current_tree_scene != null: current_tree_scene.queue_free()
 	await get_tree().process_frame
@@ -121,6 +125,7 @@ func change_to_options(force: bool = false):
 func change_to_custom_night(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.CUSTOM_NIGHT)
 	_act_current_scene(scene.CUSTOM_NIGHT)
 	if current_tree_scene != null: current_tree_scene.queue_free()
 	await get_tree().process_frame
@@ -132,6 +137,7 @@ func change_to_custom_night(force: bool = false):
 func change_to_main_game(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.NIGHT)
 	_manage_night_before_change()
 	_act_current_scene(scene.NIGHT)
 	if current_tree_scene != null: current_tree_scene.queue_free()
@@ -144,6 +150,7 @@ func change_to_main_game(force: bool = false):
 func change_to_shift(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.SHIFT)
 	_manage_minigame_before_change()
 	_act_current_scene(scene.SHIFT)
 	if current_tree_scene != null: current_tree_scene.queue_free()
@@ -156,6 +163,7 @@ func change_to_shift(force: bool = false):
 func change_to_death_minigame(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.DEATH_MINIGAME)
 	_act_current_scene(scene.DEATH_MINIGAME)
 	if current_tree_scene != null: current_tree_scene.queue_free()
 	await get_tree().process_frame
@@ -166,6 +174,7 @@ func change_to_death_minigame(force: bool = false):
 func change_to_death_scene(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.DEATH)
 	_act_current_scene(scene.DEATH)
 	if current_tree_scene != null: current_tree_scene.queue_free()
 	await get_tree().process_frame
@@ -176,6 +185,7 @@ func change_to_death_scene(force: bool = false):
 func change_to_6_am(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.SIX_AM)
 	_act_current_scene(scene.SIX_AM)
 	if current_tree_scene != null: current_tree_scene.queue_free()
 	await get_tree().process_frame
@@ -190,6 +200,7 @@ var ending: end # estas variables se les da valor en las escenas
 func change_to_ending(force: bool = false):
 	if changing_scene and not force: return
 	changing_scene = true
+	_manage_exit_scenes(scene.END)
 	_act_current_scene(scene.END)
 	if current_tree_scene != null: current_tree_scene.queue_free()
 	await get_tree().process_frame
@@ -201,8 +212,7 @@ func change_to_ending(force: bool = false):
 ##managers
 
 func _manage_main_menu_before_change():
-	if current_scene == scene.CUSTOM_NIGHT:
-		Global.leer_partida()
+	Global.leer_partida()
 
 func _manage_main_menu():
 	if last_scene == scene.NULL:
@@ -210,7 +220,8 @@ func _manage_main_menu():
 	transition.fade_out()
 	
 	Global.eliminar_partida_provisional()
-
+	if not Global.debug["debug_mode"]:
+		Global.eliminar_debug_partida()
 
 func _manage_custom_night():
 	transition.fade_out()
@@ -224,6 +235,13 @@ func _manage_minigame_before_change():
 	
 	if current_scene == scene.DEATH_MINIGAME:
 		Global.guardar_death_minigames()
+	else:
+		if Global.m_entering:
+			Global.leer_partida() # En esta funcion es donde se maneja el debug
+			Items.reset()
+		else:
+			Global.eliminar_partida_provisional()
+	
 	Global.minigame_starts()
 
 func _manage_minigame():
@@ -257,6 +275,7 @@ func _manage_night_before_change():
 		Global.noche = 0
 		Global.location_key = 0
 	
+	Global.leer_partida_provisional()
 	Global.reset_night()
 
 func _manage_night():
@@ -309,7 +328,7 @@ func cool_6_am_transition():
 	changing_scene = true
 	
 	if current_scene != scene.NIGHT:
-		push_error("TF you doing, cool 6am transition is for night only")
+		push_error("tf you doing, cool 6am transition is for night only")
 	
 	var new_node: Node = _6_am.instantiate()
 	new_node.everything.modulate.a = 0.0
