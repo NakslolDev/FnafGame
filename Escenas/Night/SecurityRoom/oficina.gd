@@ -1,9 +1,9 @@
 extends Node2D
 
 # mover 240 hacia los lados como máximo
-@export var movimiento_max := 240.0
-@export var movimiento_max_girar := 7000
-@export var VELOCIDAD_CAMERA: float = 300.0
+@export var movimiento_max := 512.0
+@export var turn_speed := 7000
+@export var sprite_displacemeant: float = 3120.0
 var velocidad: float
 signal Movimiento(si: bool)
 signal Girando_Señal(si: bool)
@@ -40,7 +40,7 @@ func _process(delta):
 				target = Vector2(movimiento_max, 0.0)
 			else:
 				target = Vector2(-movimiento_max, 0.0)
-		position = position.move_toward(target, movimiento_max_girar * delta)
+		position = position.move_toward(target, turn_speed * delta)
 		if position == target:
 			giro_input_centro = false
 			_on_detector_girar_izquierda_girar_input()
@@ -56,19 +56,19 @@ func _process(delta):
 	#print("girando: ", girando, " Pos X: ", position.x)
 	if girando == 1:
 		Girando_Señal.emit(true)
-		if position.x == -3120:
+		if position.x == -sprite_displacemeant:
 			girando = 3
 			return
-		var target = Vector2(-3120, 0)
-		position = position.move_toward(target, movimiento_max_girar * delta)
+		var target = Vector2(-sprite_displacemeant, 0)
+		position = position.move_toward(target, turn_speed * delta)
 		
 	if girando == 2:
 		Girando_Señal.emit(true)
-		if position.x == 3120:
+		if position.x == sprite_displacemeant:
 			girando = 3
 			return
-		var target = Vector2(3120, 0)
-		position = position.move_toward(target, movimiento_max_girar * delta)
+		var target = Vector2(sprite_displacemeant, 0)
+		position = position.move_toward(target, turn_speed * delta)
 		
 	if girando == -1 or girando == -2:
 		Girando_Señal.emit(true)
@@ -83,7 +83,7 @@ func _process(delta):
 				_separar_oficina_detras_de_oficina(false)
 		
 		var target = Vector2(0, 0)
-		position = position.move_toward(target, movimiento_max_girar * delta)
+		position = position.move_toward(target, turn_speed * delta)
 	
 	if girando != 0:
 		return
@@ -123,9 +123,9 @@ func _separar_oficina_detras_de_oficina(izquierda: bool):
 	oficina_detras_nodo.global_position = posicion_original
 	
 	if izquierda:
-		position.x = 3120
+		position.x = sprite_displacemeant
 	else:
-		position.x = -3120
+		position.x = -sprite_displacemeant
 	
 	# 2. Reconectar a Oficina
 	get_tree().get_root().remove_child(oficina_detras_nodo)

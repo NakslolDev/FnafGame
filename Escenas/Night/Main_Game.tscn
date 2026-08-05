@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ben1xduwqjx0k" path="res://Escenas/Night/SecurityRoom/Buttons/Boton.tscn" id="10_y2ail"]
 [ext_resource type="PackedScene" uid="uid://cjvr4sjqr5ybo" path="res://Escenas/Night/SecurityRoom/Doors/Puerta.tscn" id="11_e8gno"]
 [ext_resource type="PackedScene" uid="uid://ddgr31vso5rgd" path="res://Escenas/Night/SecurityRoom/Back/Oficina_Detras.tscn" id="12_5xwdc"]
-[ext_resource type="Texture2D" uid="uid://coqihx5segjlr" path="res://assets/Placeholders/Oficina.png" id="13_yfjon"]
+[ext_resource type="Texture2D" uid="uid://dlm2fk1tpxue4" path="res://assets/Renders/Office.png" id="12_u32el"]
 [ext_resource type="PackedScene" uid="uid://br8x1cwdt7tp1" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.tscn" id="14_lctcs"]
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]
@@ -43,8 +43,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33sfd"]
 shader = ExtResource("23_snhey")
-shader_parameter/zoom = 0.1
-shader_parameter/sharpness = 2.0
+shader_parameter/zoom = 0.2
+shader_parameter/sharpness = 1.8
 shader_parameter/direction = Vector2(0, 1)
 shader_parameter/wrapping_mode = 0
 
@@ -239,6 +239,7 @@ vhs_player = NodePath("../Oficina/VHS_Player")
 
 [node name="Oficina" type="Node2D" parent="." unique_id=540360308 node_paths=PackedStringArray("oficina_detras_nodo")]
 script = ExtResource("4_arw1f")
+sprite_displacemeant = 2880.0
 oficina_detras_nodo = NodePath("Oficina_Detras")
 
 [node name="Ventilation" type="Node" parent="Oficina" unique_id=913684193 node_paths=PackedStringArray("ventilation_loop")]
@@ -287,12 +288,14 @@ position = Vector2(0, -1200)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
-[node name="Oficina_Detras" parent="Oficina" unique_id=545016994 instance=ExtResource("12_5xwdc")]
+[node name="Oficina_Detras" parent="Oficina" unique_id=545016994 node_paths=PackedStringArray("oficina") instance=ExtResource("12_5xwdc")]
 position = Vector2(0, -1500)
+oficina = NodePath("..")
 
 [node name="OficinaPNG" type="Sprite2D" parent="Oficina" unique_id=79261122]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("13_yfjon")
+texture = ExtResource("12_u32el")
+region_enabled = true
+region_rect = Rect2(1408, 448, 2944, 2048)
 
 [node name="VHS_Player" parent="Oficina" unique_id=454136740 node_paths=PackedStringArray("main_game") instance=ExtResource("14_lctcs")]
 position = Vector2(259, 120)
@@ -323,7 +326,6 @@ opacidad = 0.7
 puntero = "3"
 
 [node name="CanvasLayer_Shader" type="CanvasLayer" parent="." unique_id=1453401536]
-visible = false
 script = ExtResource("22_cmb4g")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer_Shader" unique_id=357333068]

@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var oficina: Node2D
+
 signal Girar_Detras(izquierda: bool)
 signal Linterna_Activada_Rebote(value: bool)
 signal Linterna_Recarga_Switch_Rebote()
@@ -11,9 +13,9 @@ func _on_detector_girar_izquierda_girar(izquierda: bool) -> void:
 
 	position.y = 0
 	if izquierda:
-		position.x = -3120
+		position.x = -oficina.sprite_displacemeant
 	else:
-		position.x = 3120
+		position.x = oficina.sprite_displacemeant
 
 
 func _on_detector_girar_girar(izquierda: bool) -> void:

@@ -4,7 +4,7 @@ class_name spacial_audio
 const CENTER_COORDS := Vector2.ZERO #Vector2(1080.0/2.0, 1920.0/2.0)
 const DISPLACEMENT := 1080.0
 
-const OFFICE_WITH := 3120.0
+const OFFICE_WITH := 2880.0
 
 var _local_deg
 
