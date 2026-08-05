@@ -1,8 +1,10 @@
 extends Node2D
 
+const NORMAL_ALPHA := 0.15
+
 var rand_pos: Vector2
 var last_pos: Vector2
-var alpha := 0.3
+var alpha := NORMAL_ALPHA
 var fade_speed := 0.4
 var override_freddy_static := false
 
@@ -53,7 +55,7 @@ func up_static(time: float, fast: bool):
 
 func _on_static_time_timeout() -> void:
 	override_freddy_static = false
-	alpha = 0.3
+	alpha = NORMAL_ALPHA
 
 func _on_static_speed_timeout() -> void:
 	while (last_pos - rand_pos).length_squared() < 500:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7r4hvoim6p3q" path="res://Escenas/Night/SecurityRoom/Back/oficina_detras.gd" id="1_eq3uw"]
 [ext_resource type="PackedScene" uid="uid://mxxfro0701lh" path="res://Escenas/Night/Movement/Detector_Girar.tscn" id="4_jrb1r"]
-[ext_resource type="Texture2D" uid="uid://dlm2fk1tpxue4" path="res://assets/Renders/Office.png" id="4_wwlte"]
+[ext_resource type="Texture2D" uid="uid://dlm2fk1tpxue4" path="res://assets/Renders/office/Office.png" id="4_wwlte"]
 [ext_resource type="PackedScene" uid="uid://eq3843walx0w" path="res://Escenas/Night/SecurityRoom/Back/Ducts/Ductos_Detras.tscn" id="5_44ow4"]
 [ext_resource type="PackedScene" uid="uid://dp1parfdkvu0l" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/Recargar_Linterna.tscn" id="6_m6crn"]
 [ext_resource type="PackedScene" uid="uid://bonrb1xrjljf" path="res://Escenas/Night/SecurityRoom/Back/switches/Switch_Energia.tscn" id="7_h5o2t"]

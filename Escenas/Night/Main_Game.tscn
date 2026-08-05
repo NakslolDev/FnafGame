@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ben1xduwqjx0k" path="res://Escenas/Night/SecurityRoom/Buttons/Boton.tscn" id="10_y2ail"]
 [ext_resource type="PackedScene" uid="uid://cjvr4sjqr5ybo" path="res://Escenas/Night/SecurityRoom/Doors/Puerta.tscn" id="11_e8gno"]
 [ext_resource type="PackedScene" uid="uid://ddgr31vso5rgd" path="res://Escenas/Night/SecurityRoom/Back/Oficina_Detras.tscn" id="12_5xwdc"]
-[ext_resource type="Texture2D" uid="uid://dlm2fk1tpxue4" path="res://assets/Renders/Office.png" id="12_u32el"]
+[ext_resource type="Texture2D" uid="uid://dlm2fk1tpxue4" path="res://assets/Renders/office/Office.png" id="12_u32el"]
 [ext_resource type="PackedScene" uid="uid://br8x1cwdt7tp1" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.tscn" id="14_lctcs"]
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]

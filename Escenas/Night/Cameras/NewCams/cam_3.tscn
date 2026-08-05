@@ -1,127 +1,143 @@
 [gd_scene format=3 uid="uid://dy21jonwe8m3w"]
 
 [ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_ksfdc"]
-[ext_resource type="Texture2D" uid="uid://fxqwww0bfktu" path="res://assets/Placeholders/Camaras/Cam3/Cam.png" id="2_itias"]
+[ext_resource type="Texture2D" uid="uid://bm2anqdy5fwlx" path="res://assets/Renders/cameras/Cam3/Cam3BackgroundLight.png" id="2_l2oe1"]
 [ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_as2a8"]
-[ext_resource type="Texture2D" uid="uid://cgu52iabtt0oy" path="res://assets/Placeholders/Camaras/Cam3/Chica_3.1.png" id="4_go3m6"]
-[ext_resource type="Texture2D" uid="uid://ddwg0taft1frb" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.2.png" id="5_wsw8u"]
-[ext_resource type="Texture2D" uid="uid://naguuri1elxs" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.1.png" id="6_btbx0"]
-[ext_resource type="Texture2D" uid="uid://crl4tycg0n47y" path="res://assets/Placeholders/Camaras/Cam3/Foxy_3.3.png" id="7_g3rdw"]
-[ext_resource type="Texture2D" uid="uid://dixwhi276miix" path="res://assets/Placeholders/Camaras/Cam3/Freddy_3.1.png" id="8_0fdoa"]
-[ext_resource type="Texture2D" uid="uid://bwr1rckss5542" path="res://assets/Placeholders/Camaras/Cam3/Freddy_3.2.png" id="9_dynnp"]
+[ext_resource type="Texture2D" uid="uid://b570voo714qrl" path="res://assets/Renders/cameras/Cam3/Cam3BackgroundDark.png" id="4_jh58g"]
+[ext_resource type="Texture2D" uid="uid://fmdsbvh871ru" path="res://assets/Renders/cameras/Cam3/Cam3ChicaLight.png" id="4_vxdhm"]
+[ext_resource type="Texture2D" uid="uid://dkbx3j2sivmqv" path="res://assets/Renders/cameras/Cam3/Cam3FoxyMiddleLight.png" id="5_fkdth"]
+[ext_resource type="Texture2D" uid="uid://dlgwu2artgnds" path="res://assets/Renders/cameras/Cam3/Cam3FoxyVentLight.png" id="6_3583r"]
+[ext_resource type="Texture2D" uid="uid://d107dj04npu54" path="res://assets/Renders/cameras/Cam3/Cam3FoxyEntranceLight.png" id="7_8l0o0"]
+[ext_resource type="Texture2D" uid="uid://b1u1ibg7a58ox" path="res://assets/Renders/cameras/Cam3/Cam3FreddyTLight.png" id="8_g3mhy"]
+[ext_resource type="Texture2D" uid="uid://x6vhf2q5i1yf" path="res://assets/Renders/cameras/Cam3/Cam3FreddyRightLight.png" id="9_lerp6"]
+[ext_resource type="Texture2D" uid="uid://cvbkk71ip08oo" path="res://assets/Renders/cameras/Cam3/Cam3test.png" id="10_mjdk3"]
+[ext_resource type="Texture2D" uid="uid://8uycet83f5db" path="res://assets/Renders/cameras/Cam3/Cam3testLight.png" id="10_rfga0"]
+[ext_resource type="Texture2D" uid="uid://bgbfyktd2tcqx" path="res://assets/Renders/cameras/Cam3/Cam3ChicaDark.png" id="11_vp804"]
+[ext_resource type="Texture2D" uid="uid://tmhpcwkfolyf" path="res://assets/Renders/cameras/Cam3/Cam3FreddyRightDark.png" id="12_rfga0"]
+[ext_resource type="Texture2D" uid="uid://crgauuxgkqyo5" path="res://assets/Renders/cameras/Cam3/Cam3FoxyMiddleDark.png" id="13_l2oe1"]
+[ext_resource type="Texture2D" uid="uid://c3gceg7peda6r" path="res://assets/Renders/cameras/Cam3/Cam3FoxyVentDark.png" id="14_vxdhm"]
+[ext_resource type="Texture2D" uid="uid://56aia0y454jh" path="res://assets/Renders/cameras/Cam3/Cam3FoxyEntranceDark.png" id="15_fkdth"]
+[ext_resource type="Texture2D" uid="uid://fbtkqcmshuc6" path="res://assets/Renders/cameras/Cam3/Cam3FreddyTDark.png" id="16_3583r"]
 
 [node name="Cam3" type="Node2D" unique_id=1954128902]
 script = ExtResource("1_ksfdc")
 cam_number = 3
 metadata/_custom_type_script = "uid://cd811lhimvfl6"
 
-[node name="Cam" type="Sprite2D" parent="." unique_id=642453162]
-texture = ExtResource("2_itias")
+[node name="BackgroundLight" type="Sprite2D" parent="." unique_id=990328622]
+texture = ExtResource("2_l2oe1")
 script = ExtResource("3_as2a8")
 light = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Chica" type="Sprite2D" parent="." unique_id=642037092]
-texture = ExtResource("4_go3m6")
+[node name="ChicaLight" type="Sprite2D" parent="." unique_id=642037092]
+texture = ExtResource("4_vxdhm")
 script = ExtResource("3_as2a8")
 light = 2
 chica = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Foxy3" type="Sprite2D" parent="." unique_id=1931127922]
-texture = ExtResource("5_wsw8u")
+[node name="FoxyMiddleLight" type="Sprite2D" parent="." unique_id=1931127922]
+texture = ExtResource("5_fkdth")
 script = ExtResource("3_as2a8")
 light = 2
 foxy_room = 1
 foxy_pos = 3
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Foxy4" type="Sprite2D" parent="." unique_id=420882877]
-texture = ExtResource("6_btbx0")
+[node name="FoxyVentLight" type="Sprite2D" parent="." unique_id=420882877]
+texture = ExtResource("6_3583r")
 script = ExtResource("3_as2a8")
 light = 2
 foxy_room = 1
 foxy_pos = 4
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Foxy5" type="Sprite2D" parent="." unique_id=977170274]
-texture = ExtResource("7_g3rdw")
+[node name="FoxyEntranceLight" type="Sprite2D" parent="." unique_id=977170274]
+texture = ExtResource("7_8l0o0")
 script = ExtResource("3_as2a8")
 light = 2
 foxy_room = 1
 foxy_pos = 5
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="FreddyT1" type="Sprite2D" parent="." unique_id=991603124]
-texture = ExtResource("8_0fdoa")
+[node name="FreddyTLight" type="Sprite2D" parent="." unique_id=991603124]
+texture = ExtResource("8_g3mhy")
 script = ExtResource("3_as2a8")
 light = 2
 freddy = 3
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Freddy1" type="Sprite2D" parent="." unique_id=1002604472]
-texture = ExtResource("9_dynnp")
+[node name="FreddyRightLight" type="Sprite2D" parent="." unique_id=1002604472]
+texture = ExtResource("9_lerp6")
 script = ExtResource("3_as2a8")
 light = 2
 freddy = 10
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Cam3TestLight" type="Sprite2D" parent="." unique_id=53531278]
+texture = ExtResource("10_rfga0")
+region_rect = Rect2(1280, 640, 4224, 1600)
+script = ExtResource("3_as2a8")
+light = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="NoLightSeparator" type="Node" parent="." unique_id=1543502693]
 
-[node name="Cam2" type="Sprite2D" parent="." unique_id=990328622]
-self_modulate = Color(0.2036809, 0.20368093, 0.2036809, 1)
-texture = ExtResource("2_itias")
+[node name="BackgroundDark" type="Sprite2D" parent="." unique_id=642453162]
+texture = ExtResource("4_jh58g")
 script = ExtResource("3_as2a8")
 light = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Chica2" type="Sprite2D" parent="." unique_id=1903466598]
-self_modulate = Color(0.2036809, 0.20368093, 0.2036809, 1)
-texture = ExtResource("4_go3m6")
+[node name="ChicaDark" type="Sprite2D" parent="." unique_id=1903466598]
+texture = ExtResource("11_vp804")
 script = ExtResource("3_as2a8")
 light = 1
 chica = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Foxy6" type="Sprite2D" parent="." unique_id=306186838]
-self_modulate = Color(0.2036809, 0.20368093, 0.2036809, 1)
-texture = ExtResource("5_wsw8u")
+[node name="FoxyMiddleDark" type="Sprite2D" parent="." unique_id=306186838]
+texture = ExtResource("13_l2oe1")
 script = ExtResource("3_as2a8")
 light = 1
 foxy_room = 1
 foxy_pos = 3
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Foxy7" type="Sprite2D" parent="." unique_id=551326830]
-self_modulate = Color(0.2036809, 0.20368093, 0.2036809, 1)
-texture = ExtResource("6_btbx0")
+[node name="FoxyVentDark" type="Sprite2D" parent="." unique_id=551326830]
+texture = ExtResource("14_vxdhm")
 script = ExtResource("3_as2a8")
 light = 1
 foxy_room = 1
 foxy_pos = 4
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Foxy8" type="Sprite2D" parent="." unique_id=630596211]
-self_modulate = Color(0.2036809, 0.20368093, 0.2036809, 1)
-texture = ExtResource("7_g3rdw")
+[node name="FoxyEntranceDark" type="Sprite2D" parent="." unique_id=630596211]
+texture = ExtResource("15_fkdth")
 script = ExtResource("3_as2a8")
 light = 1
 foxy_room = 1
 foxy_pos = 5
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="FreddyT2" type="Sprite2D" parent="." unique_id=620935458]
-self_modulate = Color(0.2036809, 0.20368093, 0.2036809, 1)
-texture = ExtResource("8_0fdoa")
+[node name="FreddyTDark" type="Sprite2D" parent="." unique_id=620935458]
+texture = ExtResource("16_3583r")
 script = ExtResource("3_as2a8")
 light = 1
 freddy = 3
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Freddy2" type="Sprite2D" parent="." unique_id=1516618729]
-self_modulate = Color(0.2036809, 0.20368093, 0.2036809, 1)
-texture = ExtResource("9_dynnp")
+[node name="FreddyDark" type="Sprite2D" parent="." unique_id=1516618729]
+texture = ExtResource("12_rfga0")
 script = ExtResource("3_as2a8")
 light = 1
 freddy = 10
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="Cam3Test" type="Sprite2D" parent="." unique_id=547653289]
+texture = ExtResource("10_mjdk3")
+region_rect = Rect2(1280, 640, 4224, 1600)
+script = ExtResource("3_as2a8")
+light = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"

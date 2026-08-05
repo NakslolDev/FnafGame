@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://bqtlrt7wib8qs" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_3.png" id="19_xsv31"]
 [ext_resource type="Texture2D" uid="uid://bdwk11dh5uuuu" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_4.png" id="20_0mojl"]
 [ext_resource type="Texture2D" uid="uid://10fngjhmu07a" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_5.png" id="21_b7x0u"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="21_mct35"]
 [ext_resource type="Texture2D" uid="uid://dshdldpmu1xwb" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_6.png" id="22_i3dc4"]
 [ext_resource type="Texture2D" uid="uid://ciqd3k4m81auv" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_7.png" id="23_jjbyy"]
 [ext_resource type="Texture2D" uid="uid://jc2657n2fewe" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_8.png" id="24_yh74e"]
@@ -82,8 +83,8 @@ size = Vector2(95, 65)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkbhl"]
 shader = ExtResource("2_xkbhl")
-shader_parameter/zoom = 0.03
-shader_parameter/sharpness = 2.0
+shader_parameter/zoom = 0.15
+shader_parameter/sharpness = 1.8
 shader_parameter/direction = Vector2(0, 1)
 shader_parameter/wrapping_mode = 0
 
@@ -133,8 +134,11 @@ duct_heat_sprites = [NodePath("No_Shader/MinimapaDuctos/1"), NodePath("No_Shader
 
 [node name="Si_Shader" type="CanvasLayer" parent="." unique_id=1468658571]
 layer = 3
-visible = false
 script = ExtResource("2_rbjw8")
+
+[node name="FondoNegro" type="Sprite2D" parent="Si_Shader" unique_id=943495445]
+position = Vector2(960, 540)
+texture = ExtResource("21_mct35")
 
 [node name="Cams" type="Node2D" parent="Si_Shader" unique_id=1422200098 node_paths=PackedStringArray("camaras_root", "cameras", "alucination_control")]
 position = Vector2(960, 540)
@@ -177,6 +181,7 @@ script = ExtResource("17_oe8ru")
 cams = NodePath("..")
 
 [node name="Linterna" type="Sprite2D" parent="Si_Shader" unique_id=941016490]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("16_tmxn1")
@@ -518,12 +523,14 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ShaderScreen" type="ColorRect" parent="CanvasLayer_Shader" unique_id=480354104]
+visible = false
 material = SubResource("ShaderMaterial_r14dw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="cam_act" from="Si_Shader/Cams" to="No_Shader/Ruido" method="_on_cam_cam_act"]
 [connection signal="cam_act" from="No_Shader/MinimapaBotones" to="." method="_on_minimapa_botones_cam_act"]

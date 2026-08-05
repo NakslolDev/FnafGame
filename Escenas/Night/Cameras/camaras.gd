@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var linterna: Sprite2D
+const LINTERNA_ALPHA := 0.2
 var cam_lights: bool
 
 var camara_activa := 1
@@ -113,7 +114,7 @@ func _on_minimapa_botones_cam_act() -> void:
 func act_light():
 	if cam_lights and Global.energia["Camaras"]:
 		Global.set_energia_consumption("Cam_lights", 1)
-		linterna.modulate.a = 0.5
+		linterna.modulate.a = LINTERNA_ALPHA
 		Freddy.cam_light = true
 		Bonnie.cam_light = true
 		alucination_control.flashlight(camara_activa)
