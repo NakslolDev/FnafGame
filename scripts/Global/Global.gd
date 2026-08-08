@@ -229,6 +229,7 @@ func aply_screen_configuration():
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	
+	#push_warning("no global enviroment...")
 	GlobalWorldEnvironment.environment.adjustment_brightness = screen["brightness"]
 
 # La mayor parte de esto se maneja en scene manager
@@ -1008,8 +1009,9 @@ func set_energia_consumption(nombre: String, valor: int): # En vez de dar el val
 		if mapa["computer_working"]:
 			mapa["computer_failed"] = true
 			set_energia_consumption("Especial", 0)
-		emit_signal("Energy_Breakdown")
+		Energy_Breakdown.emit()
 		actualizar_ventilacion()
+		actualizar_luces()
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "fuse breakdown!")
 
 func consumtion():
@@ -1055,19 +1057,19 @@ func set_energia(nombre: String, valor: bool): # En vez de dar el valor directam
 
 	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "switch: ", nombre, " - ", valor)
 
-	if nombre == "General" and valor == false: # si se desactiva general, se desactivan todas, eso lo controlo aqui. (La otra parte en los switches)
-		for key in energia.keys():
-			if energia[key] != false:
-				energia[key] = false
-		energia_actualizada.emit()
-		actualizar_luces()
-		actualizar_ventilacion()
+	if energia.has(nombre) and energia[nombre] == valor:
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Already there!")
+		return
 
-	elif energia.has(nombre) and energia[nombre] != valor:
+	if nombre == "General" and valor == false: # si se desactiva general, se desactivan todas, eso lo controlo aqui. (La otra parte en los switches)
+		for type in energia:
+			energia[type] = false
+	else:
 		energia[nombre] = valor
-		energia_actualizada.emit()
-		actualizar_ventilacion()
-		actualizar_luces()
+
+	energia_actualizada.emit()
+	actualizar_luces()
+	actualizar_ventilacion()
 
 
 ##---Señales Noche---#

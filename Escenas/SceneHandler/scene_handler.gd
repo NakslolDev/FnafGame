@@ -354,3 +354,8 @@ func cool_6_am_transition():
 	
 	_manage_6_am()
 	changing_scene = false
+
+
+@export var fps: Label
+func _process(_delta: float) -> void:
+	fps.text = "FPS: " + str(Engine.get_frames_per_second())

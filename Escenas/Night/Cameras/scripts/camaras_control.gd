@@ -33,6 +33,7 @@ func _on_area_2d_down_mouse_entered() -> void:
 	if se_puede and not game_over and on_cam_up_hitbox == false and camaras.activado == true:
 		toggle_cams()
 
+signal cams_toggled
 
 func toggle_cams():
 	if game_over:
@@ -50,6 +51,7 @@ func toggle_cams():
 		if Global.energia["Camaras"] == true:
 			Global.set_energia_consumption("Camaras", 1)
 	up_cams.act(root.camaras_activadas)
+	cams_toggled.emit()
 
 func _on_oficina_girando_estado(girando: int) -> void:
 	if girando == 0:

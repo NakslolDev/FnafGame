@@ -3,12 +3,12 @@ shader_type canvas_item;
 /**
  * In relative units now (0-1)
  */
-uniform float zoom = 0.1;
+uniform float zoom = 0.2;
 
 /**
  * Higher values = less distortion in the center
  */
-uniform float sharpness = 2.0;
+uniform float sharpness = 1.8;
 
 /**
  * (1, 0) for horizontal only, (0, 1) for vertical only
@@ -22,7 +22,7 @@ uniform vec2 direction = vec2(0.0, 1.0);
  */
 uniform int wrapping_mode = 0;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
 void fragment() {
     float fB;
@@ -48,7 +48,7 @@ void fragment() {
             // fall-through
         case 1:
             new_uv = clamp(new_uv, vec2(0), vec2(1));
-            COLOR = textureLod(SCREEN_TEXTURE, new_uv, 0.0);
+            COLOR = texture(SCREEN_TEXTURE, new_uv, 0.0);
             break;
     }
 }

@@ -1,33 +1,39 @@
 extends Node2D
 
+@export var camaras: Node2D
+@export var cam_selecter: Sprite2D
+@export var cam_selecter_hl: Sprite2D
+@export var duct_selecter: Sprite2D
+@export var duct_selecter_hl: Sprite2D
+
 var mouse_in := false
 
 func _ready():
-	$DuctSelecterHl.modulate.a = 0.0
-	$CamSelecterHl.modulate.a = 0.0
+	duct_selecter_hl.visible = false
+	cam_selecter_hl.visible = false
 	act_button()
 
 func act_button():
-	if $"../..".ductos:
-		$CamSelecterHl.modulate.a = 0.0
-		$CamSelecter.modulate.a = 0.0
-		$DuctSelecter.modulate.a = 1.0
+	if camaras.ductos:
+		cam_selecter_hl.visible = false
+		cam_selecter.visible = false
+		duct_selecter.visible = true
 		if mouse_in:
-			$DuctSelecterHl.modulate.a = 1.0
+			duct_selecter_hl.visible = true
 		else:
-			$DuctSelecterHl.modulate.a = 0.0
+			duct_selecter_hl.visible = false
 	else:
-		$DuctSelecterHl.modulate.a = 0.0
-		$CamSelecter.modulate.a = 1.0
-		$DuctSelecter.modulate.a = 0.0
+		duct_selecter_hl.visible = false
+		cam_selecter.visible = true
+		duct_selecter.visible = false
 		if mouse_in:
-			$CamSelecterHl.modulate.a = 1.0
+			cam_selecter_hl.visible = true
 		else:
-			$CamSelecterHl.modulate.a = 0.0
+			cam_selecter_hl.visible = false
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		$"../..".ductos = !$"../..".ductos
+		camaras.ductos = !camaras.ductos
 		act_button()
 
 func _on_area_2d_mouse_entered() -> void:

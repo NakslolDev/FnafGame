@@ -714,7 +714,7 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_vertical = 755
+scroll_vertical = 100
 horizontal_scroll_mode = 0
 
 [node name="General" type="VBoxContainer" parent="Debug_panel/ScrollContainer" unique_id=313878102 node_paths=PackedStringArray("check_box_prevent_save", "check_box_invencibility", "check_box_instant_win", "check_box_timeless", "check_box_ultra_agresive", "check_box_infinite_batery", "check_box_lights_consume", "check_box_animatronic_map", "check_box_see_light_batery", "check_box_see_time_always", "check_box_see_insanity", "check_box_tick_count", "spin_box_max_consumption", "spin_boxt_night_duration", "spin_boxt_tick_rate")]

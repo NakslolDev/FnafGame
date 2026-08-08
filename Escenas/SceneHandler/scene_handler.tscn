@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cy1bldlwd82kt" path="res://Escenas/SceneHandler/transicion.gd" id="10_rp7rm"]
 [ext_resource type="Texture2D" uid="uid://cks84aonllq7h" path="res://assets/Placeholders/Camaras/UI/borderlines/Border.png" id="11_rp7rm"]
 
-[node name="SceneHandler" type="Node" unique_id=2101335000 node_paths=PackedStringArray("transition") groups=["scene_handler"]]
+[node name="SceneHandler" type="Node" unique_id=2101335000 node_paths=PackedStringArray("transition", "fps") groups=["scene_handler"]]
 script = ExtResource("1_4md2c")
 transition = NodePath("CanvasLayer/Transition")
 main_game = ExtResource("2_kjkxg")
@@ -26,6 +26,7 @@ custom_night_selecter = ExtResource("7_f0prw")
 dead_scene = ExtResource("8_dvo7o")
 ending_screen = ExtResource("9_vra34")
 _6_am = ExtResource("10_omiqx")
+fps = NodePath("CanvasLayer/FPS")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=271160849]
 layer = 99
@@ -39,3 +40,11 @@ script = ExtResource("10_rp7rm")
 visible = false
 position = Vector2(960, 540)
 texture = ExtResource("11_rp7rm")
+
+[node name="FPS" type="Label" parent="CanvasLayer" unique_id=1127919078]
+offset_right = 178.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 32
+text = "FPS: 5000"
+horizontal_alignment = 1
+vertical_alignment = 1

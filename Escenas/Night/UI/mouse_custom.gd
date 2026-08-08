@@ -10,6 +10,17 @@ var override_alpha := false
 
 @export var mouse_hitbox: Area2D # usado para bloquear la linterna
 
+@export var puntero_custom: Sprite2D
+@export var puntero_custom_2: Sprite2D
+@export var puntero_custom_3: Sprite2D
+@export var puntero_custom_4: Sprite2D
+@export var puntero_custom_5: Sprite2D
+@export var puntero_custom_cam: Sprite2D
+@export var puntero_custom_cam_2: Sprite2D
+@export var puntero_custom_cam_3: Sprite2D
+@export var puntero_custom_cam_4: Sprite2D
+@export var puntero_custom_cam_5: Sprite2D
+
 
 func _ready():
 	
@@ -22,40 +33,40 @@ func _ready():
 	else:
 		puntero = Global.mouse_custom_punt
 	
-	$PunteroCustomCam.modulate.a = 0.0
-	$PunteroCustomCam2.modulate.a = 0.0
-	$PunteroCustomCam3.modulate.a = 0.0
-	$PunteroCustomCam4.modulate.a = 0.0
-	$PunteroCustomCam5.modulate.a = 0.0
-	$PunteroCustom.modulate.a = 0.0
-	$PunteroCustom2.modulate.a = 0.0
-	$PunteroCustom3.modulate.a = 0.0
-	$PunteroCustom4.modulate.a = 0.0
-	$PunteroCustom5.modulate.a = 0.0
+	puntero_custom_cam.modulate.a = 0.0
+	puntero_custom_cam_2.modulate.a = 0.0
+	puntero_custom_cam_3.modulate.a = 0.0
+	puntero_custom_cam_4.modulate.a = 0.0
+	puntero_custom_cam_5.modulate.a = 0.0
+	puntero_custom.modulate.a = 0.0
+	puntero_custom_2.modulate.a = 0.0
+	puntero_custom_3.modulate.a = 0.0
+	puntero_custom_4.modulate.a = 0.0
+	puntero_custom_5.modulate.a = 0.0
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if Global.mouse_cam_see and cams:
 		if puntero == "1":
-			$PunteroCustomCam.modulate.a = 1.0
+			puntero_custom_cam.modulate.a = 1.0
 		if puntero == "2":
-			$PunteroCustomCam2.modulate.a = 1.0
+			puntero_custom_cam_2.modulate.a = 1.0
 		if puntero == "3":
-			$PunteroCustomCam3.modulate.a = 1.0
+			puntero_custom_cam_3.modulate.a = 1.0
 		if puntero == "4":
-			$PunteroCustomCam4.modulate.a = 1.0
+			puntero_custom_cam_4.modulate.a = 1.0
 		if puntero == "5":
-			$PunteroCustomCam5.modulate.a = 1.0
+			puntero_custom_cam_5.modulate.a = 1.0
 	else:
 		if puntero == "1":
-			$PunteroCustom.modulate.a = 1.0
+			puntero_custom.modulate.a = 1.0
 		if puntero == "2":
-			$PunteroCustom2.modulate.a = 1.0
+			puntero_custom_2.modulate.a = 1.0
 		if puntero == "3":
-			$PunteroCustom3.modulate.a = 1.0
+			puntero_custom_3.modulate.a = 1.0
 		if puntero == "4":
-			$PunteroCustom4.modulate.a = 1.0
+			puntero_custom_4.modulate.a = 1.0
 		if puntero == "5":
-			$PunteroCustom5.modulate.a = 1.0
+			puntero_custom_5.modulate.a = 1.0
 
 func _process(_delta):
 	if not override_alpha:

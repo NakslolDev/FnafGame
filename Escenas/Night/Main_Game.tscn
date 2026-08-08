@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]
 [ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://Escenas/Night/SecurityRoom/FreddyPoster/Freddy_nose.tscn" id="18_uce18"]
 [ext_resource type="PackedScene" uid="uid://b5xqa4eh847iv" path="res://Escenas/Night/Flashlight/Linterna.tscn" id="20_ewgm2"]
+[ext_resource type="Script" uid="uid://copgamiotj7w5" path="res://Escenas/Night/RandomScriptsIDC/canvas_layer_hide_with_cams.gd" id="20_xe21u"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="21_vtd2r"]
-[ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://Escenas/Night/RandomScriptsIDC/ready_visible.gd" id="22_cmb4g"]
 [ext_resource type="Shader" uid="uid://dtawjw1d75oyi" path="res://shaders/Persperctive_fnaf.gdshader" id="23_snhey"]
 [ext_resource type="Script" uid="uid://cb6at3lh66cid" path="res://Escenas/Night/RandomScriptsIDC/lights_out.gd" id="24_ao3mo"]
 [ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="25_0pxa1"]
@@ -325,8 +325,10 @@ position = Vector2(0, 1500)
 opacidad = 0.7
 puntero = "3"
 
-[node name="CanvasLayer_Shader" type="CanvasLayer" parent="." unique_id=1453401536]
-script = ExtResource("22_cmb4g")
+[node name="CanvasLayer_Shader" type="CanvasLayer" parent="." unique_id=1453401536 node_paths=PackedStringArray("camaras_control")]
+visible = false
+script = ExtResource("20_xe21u")
+camaras_control = NodePath("../Camaras_Control")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer_Shader" unique_id=357333068]
 material = SubResource("ShaderMaterial_33sfd")
@@ -337,9 +339,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="No_Shader_UI" type="CanvasLayer" parent="." unique_id=597497136]
+[node name="No_Shader_UI" type="CanvasLayer" parent="." unique_id=597497136 node_paths=PackedStringArray("camaras_control")]
 visible = false
-script = ExtResource("22_cmb4g")
+script = ExtResource("20_xe21u")
+camaras_control = NodePath("../Camaras_Control")
 
 [node name="Linterna_Bateria_Icono" parent="No_Shader_UI" unique_id=1311019173 instance=ExtResource("29_wt1mn")]
 position = Vector2(1790, 895)
@@ -416,10 +419,12 @@ volume_db = 3.0
 bus = &"SFX"
 parameters/looping = true
 
-[node name="True_No_Shader" type="CanvasLayer" parent="." unique_id=987376596]
+[node name="True_No_Shader" type="CanvasLayer" parent="." unique_id=987376596 node_paths=PackedStringArray("camaras_control", "color_rect")]
 layer = 4
 visible = false
-script = ExtResource("22_cmb4g")
+script = ExtResource("20_xe21u")
+camaras_control = NodePath("../Camaras_Control")
+color_rect = NodePath("../CanvasLayer_Shader/ColorRect")
 
 [node name="Alucinations" parent="True_No_Shader" unique_id=1831758525 instance=ExtResource("31_bplc8")]
 

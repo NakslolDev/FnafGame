@@ -61,7 +61,6 @@
 [ext_resource type="Texture2D" uid="uid://cxgkiq6r58cmu" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 1.png" id="48_7y4jm"]
 [ext_resource type="Texture2D" uid="uid://df2xvt5tjte2u" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 2.png" id="49_rgdy6"]
 [ext_resource type="Texture2D" uid="uid://btrh4hdjcsev4" path="res://assets/Placeholders/Camaras/UI/borderlines/Batery 3.png" id="50_8i5k1"]
-[ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="60_78nsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vp63"]
 size = Vector2(697, 591)
@@ -88,31 +87,8 @@ shader_parameter/sharpness = 1.8
 shader_parameter/direction = Vector2(0, 1)
 shader_parameter/wrapping_mode = 0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r14dw"]
-shader = ExtResource("60_78nsn")
-shader_parameter/overlay = false
-shader_parameter/scanlines_opacity = 0.10000000475
-shader_parameter/scanlines_width = 0.0010000000475
-shader_parameter/grille_opacity = 0.3
-shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/pixelate = true
-shader_parameter/roll = true
-shader_parameter/roll_speed = 4.0
-shader_parameter/roll_size = 15.0
-shader_parameter/roll_variation = 1.8
-shader_parameter/distort_intensity = 0.0
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.03
-shader_parameter/brightness = 1.4
-shader_parameter/discolor = true
-shader_parameter/warp_amount = 0.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
-
 [node name="Camaras" type="Node2D" unique_id=1932195095 node_paths=PackedStringArray("linterna", "cams", "alucination_control", "area_minimapa", "ruido", "no_energy", "dot", "time", "day", "no_cam_lights", "si_shader", "no_shader", "canvas_layer_shader", "minimapa_botones", "minimapa_ductos", "duct_heat_sprites")]
+visible = false
 texture_filter = 1
 script = ExtResource("1_br1gn")
 linterna = NodePath("Si_Shader/Linterna")
@@ -120,7 +96,7 @@ cams = NodePath("Si_Shader/Cams")
 alucination_control = NodePath("Si_Shader/Cams/Alucination_control")
 area_minimapa = NodePath("No_Shader/Area_Minimapa")
 ruido = NodePath("No_Shader/Ruido")
-no_energy = NodePath("Si_Shader/No_energy")
+no_energy = NodePath("No_Shader/No_energy")
 dot = NodePath("No_Shader/Border/Dot")
 time = NodePath("No_Shader/Border/VBoxContainer/Time")
 day = NodePath("No_Shader/Border/VBoxContainer/Day")
@@ -134,6 +110,7 @@ duct_heat_sprites = [NodePath("No_Shader/MinimapaDuctos/1"), NodePath("No_Shader
 
 [node name="Si_Shader" type="CanvasLayer" parent="." unique_id=1468658571]
 layer = 3
+visible = false
 script = ExtResource("2_rbjw8")
 
 [node name="FondoNegro" type="Sprite2D" parent="Si_Shader" unique_id=943495445]
@@ -147,6 +124,21 @@ camaras_root = NodePath("../..")
 cameras = [NodePath("Cam1"), NodePath("Cam2"), NodePath("Cam3"), NodePath("Cam4"), NodePath("Cam5"), NodePath("Cam6"), NodePath("Cam7"), NodePath("Cam8"), NodePath("Cam9"), NodePath("Cam10"), NodePath("Cam11"), NodePath("Cam12"), NodePath("Cam13")]
 alucination_control = NodePath("Alucination_control")
 velocidad = 200.0
+cams_width = {
+"cam1": 180.0,
+"cam10": 0.0,
+"cam11": 0.0,
+"cam12": 0.0,
+"cam13": 0.0,
+"cam2": 180.0,
+"cam3": 480.0,
+"cam4": 0.0,
+"cam5": 0.0,
+"cam6": 0.0,
+"cam7": 0.0,
+"cam8": 0.0,
+"cam9": 0.0
+}
 period = 20.0
 
 [node name="Cam1" parent="Si_Shader/Cams" unique_id=1208974310 instance=ExtResource("17_r14dw")]
@@ -186,11 +178,16 @@ position = Vector2(960, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("16_tmxn1")
 
-[node name="No_energy" type="Sprite2D" parent="Si_Shader" unique_id=532594012]
+[node name="No_Shader" type="CanvasLayer" parent="." unique_id=1198044016]
+layer = 4
+visible = false
+script = ExtResource("2_rbjw8")
+
+[node name="No_energy" type="Sprite2D" parent="No_Shader" unique_id=532594012]
 position = Vector2(960, 540)
 texture = ExtResource("16_3onkb")
 
-[node name="Label" type="Label" parent="Si_Shader/No_energy" unique_id=1166799265]
+[node name="Label" type="Label" parent="No_Shader/No_energy" unique_id=1166799265]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = -960.0
@@ -202,11 +199,6 @@ theme_override_font_sizes/font_size = 200
 text = "[NO SIGNAL]"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="No_Shader" type="CanvasLayer" parent="." unique_id=1198044016]
-layer = 4
-visible = false
-script = ExtResource("2_rbjw8")
 
 [node name="NoCamLights" type="AudioStreamPlayer" parent="No_Shader" unique_id=1883028061]
 stream = ExtResource("19_ev252")
@@ -220,11 +212,26 @@ cam_root = NodePath("../..")
 position = Vector2(1551.5, 764.5)
 shape = SubResource("RectangleShape2D_5vp63")
 
-[node name="MinimapaBotones" type="Sprite2D" parent="No_Shader" unique_id=1949668120]
+[node name="MinimapaBotones" type="Sprite2D" parent="No_Shader" unique_id=1949668120 node_paths=PackedStringArray("camaras", "flicker_timer", "_1", "_2", "_3", "_4", "_5", "_6", "_7", "_8", "_9", "_10a", "_10b", "_11a", "_11b")]
 texture_filter = 1
 position = Vector2(1571, 783)
 texture = ExtResource("2_af0gv")
 script = ExtResource("3_3rjyj")
+camaras = NodePath("../..")
+flicker_timer = NodePath("Flicker_Timer")
+_1 = NodePath("1")
+_2 = NodePath("2")
+_3 = NodePath("3")
+_4 = NodePath("4")
+_5 = NodePath("5")
+_6 = NodePath("6")
+_7 = NodePath("7")
+_8 = NodePath("8")
+_9 = NodePath("9")
+_10a = NodePath("10A")
+_10b = NodePath("10B")
+_11a = NodePath("11A")
+_11b = NodePath("11B")
 
 [node name="1" type="Sprite2D" parent="No_Shader/MinimapaBotones" unique_id=1159081910]
 texture = ExtResource("3_6sdql")
@@ -347,6 +354,7 @@ shape = SubResource("RectangleShape2D_2ccee")
 wait_time = 0.7
 
 [node name="MinimapaDuctos" type="Sprite2D" parent="No_Shader" unique_id=956653636]
+visible = false
 texture_filter = 1
 position = Vector2(1571, 783)
 texture = ExtResource("16_usepc")
@@ -421,9 +429,14 @@ texture = ExtResource("24_yh74e")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="No_Shader/MinimapaDuctos/Area8" unique_id=1488919308]
 polygon = PackedVector2Array(-248, 246, -248, 231, -239, 231, -239, 210, -224, 210, -224, 222, -27, 222, -27, 216, -12, 216, -12, 222, 183, 222, 183, 246)
 
-[node name="Selecter" type="Node2D" parent="No_Shader" unique_id=1149545250]
+[node name="Selecter" type="Node2D" parent="No_Shader" unique_id=1149545250 node_paths=PackedStringArray("camaras", "cam_selecter", "cam_selecter_hl", "duct_selecter", "duct_selecter_hl")]
 texture_filter = 1
 script = ExtResource("25_15j7b")
+camaras = NodePath("../..")
+cam_selecter = NodePath("CamSelecter")
+cam_selecter_hl = NodePath("CamSelecterHl")
+duct_selecter = NodePath("DuctSelecter")
+duct_selecter_hl = NodePath("DuctSelecterHl")
 
 [node name="CamSelecter" type="Sprite2D" parent="No_Shader/Selecter" unique_id=1006395922]
 position = Vector2(1589, 784)
@@ -515,16 +528,6 @@ script = ExtResource("2_rbjw8")
 
 [node name="ShaderBemd" type="ColorRect" parent="CanvasLayer_Shader" unique_id=296090820]
 material = SubResource("ShaderMaterial_xkbhl")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ShaderScreen" type="ColorRect" parent="CanvasLayer_Shader" unique_id=480354104]
-visible = false
-material = SubResource("ShaderMaterial_r14dw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

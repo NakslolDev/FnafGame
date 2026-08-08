@@ -55,7 +55,7 @@ text = "see this"
 horizontal_alignment = 1
 
 [node name="3" type="Sprite2D" parent="." unique_id=707113224]
-modulate = Color(1, 1, 1, 0.96000004)
+modulate = Color(1, 1, 1, 0.972549)
 position = Vector2(-66.99997, -1.6925888)
 scale = Vector2(7.1109376, 8.086575)
 texture = ExtResource("3_aj3wp")

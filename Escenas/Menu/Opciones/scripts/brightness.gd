@@ -12,6 +12,8 @@ func _ready():
 
 
 func _on_h_slider_value_changed(value: float) -> void:
+	pass
+	#push_warning("no global enviroment...")
 	GlobalWorldEnvironment.environment.adjustment_brightness = value
 
 

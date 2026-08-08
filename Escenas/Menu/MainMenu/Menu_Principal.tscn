@@ -213,9 +213,10 @@ texture = ExtResource("8_r2f8f")
 position = Vector2(0, 2000)
 menu = true
 
-[node name="Freddy nose" parent="." unique_id=1670043740 instance=ExtResource("11_dytxe")]
+[node name="Freddy nose" parent="." unique_id=1670043740 node_paths=PackedStringArray("main_game") instance=ExtResource("11_dytxe")]
 position = Vector2(661, -37)
 scale = Vector2(7.34, 3.165)
+main_game = NodePath("..")
 
 [node name="Stars" type="Node2D" parent="." unique_id=836054293 node_paths=PackedStringArray("white_star_ending", "white_star_2_true_ending", "white_star_3_420")]
 script = ExtResource("12_hoy0e")

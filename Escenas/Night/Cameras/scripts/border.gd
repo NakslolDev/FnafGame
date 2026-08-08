@@ -23,9 +23,8 @@ func set_energia(value: int):
 func _ready():
 	dot_timer.start()
 
-func _process(_delta):
-	if energia != Global.energia_consumption["Total"]:
-		energia = Global.energia_consumption["Total"]
+func _process(_delta: float) -> void:
+	energia = Global.energia_consumption["Total"]
 
 func _on_timer_timeout() -> void:
 	if Global.energia["Camaras"] == false:

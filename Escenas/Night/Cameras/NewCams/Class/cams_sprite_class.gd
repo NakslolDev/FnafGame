@@ -123,6 +123,7 @@ func _check_foxy_room_values():
 
 func actualice():
 	visible = false
+
 	if not active: return
 	
 	if not _bonnie(): return

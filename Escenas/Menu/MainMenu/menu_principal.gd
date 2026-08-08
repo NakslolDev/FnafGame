@@ -1,7 +1,8 @@
 extends Node2D
 
-
 @onready var scene_handler: Node = get_tree().get_first_node_in_group("scene_handler")
+
+var tick_stop := false
 
 func _ready():
 	pass

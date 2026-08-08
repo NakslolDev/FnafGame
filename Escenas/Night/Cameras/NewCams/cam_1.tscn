@@ -1,39 +1,45 @@
 [gd_scene format=3 uid="uid://yp8yfkj58or4"]
 
 [ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_exjtj"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_5gxr1"]
+[ext_resource type="Texture2D" uid="uid://djynwjksinubd" path="res://assets/Renders/cameras/Cam1/Cam1BackgroundLight.png" id="2_eb3qq"]
 [ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="2_ftn7a"]
-[ext_resource type="Texture2D" uid="uid://brghnucatvng4" path="res://assets/Placeholders/Camaras/Cam1/Bonnie_S.png" id="4_aqlm1"]
-[ext_resource type="Texture2D" uid="uid://dlafsha6rv65q" path="res://assets/Placeholders/Camaras/Cam1/Freddy_S.png" id="5_vx7is"]
-[ext_resource type="Texture2D" uid="uid://d4akjbxwv5m7f" path="res://assets/Placeholders/Camaras/Cam1/Chica_S.png" id="6_wlnvh"]
+[ext_resource type="Texture2D" uid="uid://iwh3lm0pryyw" path="res://assets/Renders/cameras/Cam1/Cam1BonnieLight.png" id="4_eb3qq"]
+[ext_resource type="Texture2D" uid="uid://daii7iss87ckb" path="res://assets/Renders/cameras/Cam1/Cam1FreddyLight.png" id="5_s85nw"]
+[ext_resource type="Texture2D" uid="uid://vil0q17hrwml" path="res://assets/Renders/cameras/Cam1/Cam1ChicaLight.png" id="6_ns2g5"]
+[ext_resource type="Texture2D" uid="uid://bhllagflj7qnm" path="res://assets/Renders/cameras/Cam1/Cam1BackgroundDark.png" id="7_s85nw"]
+[ext_resource type="Texture2D" uid="uid://bpl3krs3bcngs" path="res://assets/Renders/cameras/Cam1/Cam1BonnieDark.png" id="8_ns2g5"]
+[ext_resource type="Texture2D" uid="uid://dy4tkb1trfatr" path="res://assets/Renders/cameras/Cam1/Cam1FreddyDark.png" id="9_4tso1"]
+[ext_resource type="Texture2D" uid="uid://dmrr0rfm3tifh" path="res://assets/Renders/cameras/Cam1/Cam1ChicaDark.png" id="10_gkobm"]
 
 [node name="Cam1" type="Node2D" unique_id=1208974310]
 script = ExtResource("1_exjtj")
 cam_number = 1
 metadata/_custom_type_script = "uid://cd811lhimvfl6"
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1125776546]
-texture = ExtResource("2_5gxr1")
+[node name="BackgroundLight" type="Sprite2D" parent="." unique_id=1125776546]
+texture = ExtResource("2_eb3qq")
+region_rect = Rect2(0, 0, 5760, 2880)
 script = ExtResource("2_ftn7a")
 light = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Bonnie" type="Sprite2D" parent="." unique_id=948450749]
-texture = ExtResource("4_aqlm1")
+[node name="BonnieLight" type="Sprite2D" parent="." unique_id=948450749]
+texture = ExtResource("4_eb3qq")
+region_rect = Rect2(0, 0, 5760, 2880)
 script = ExtResource("2_ftn7a")
 light = 2
 bonnie = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Freddy" type="Sprite2D" parent="." unique_id=1609674598]
-texture = ExtResource("5_vx7is")
+[node name="FreddyLight" type="Sprite2D" parent="." unique_id=1609674598]
+texture = ExtResource("5_s85nw")
 script = ExtResource("2_ftn7a")
 light = 2
 freddy = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Chica" type="Sprite2D" parent="." unique_id=1787657951]
-texture = ExtResource("6_wlnvh")
+[node name="ChicaLight" type="Sprite2D" parent="." unique_id=1787657951]
+texture = ExtResource("6_ns2g5")
 script = ExtResource("2_ftn7a")
 light = 2
 chica = 1
@@ -41,32 +47,28 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="NoLightSeparator" type="Node" parent="." unique_id=1902092959]
 
-[node name="Background2" type="Sprite2D" parent="." unique_id=456842850]
-self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
-texture = ExtResource("2_5gxr1")
+[node name="BackgroundDark" type="Sprite2D" parent="." unique_id=456842850]
+texture = ExtResource("7_s85nw")
 script = ExtResource("2_ftn7a")
 light = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Bonnie2" type="Sprite2D" parent="." unique_id=1358103741]
-self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
-texture = ExtResource("4_aqlm1")
+[node name="BonnieDark" type="Sprite2D" parent="." unique_id=1358103741]
+texture = ExtResource("8_ns2g5")
 script = ExtResource("2_ftn7a")
 light = 1
 bonnie = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Freddy2" type="Sprite2D" parent="." unique_id=1726267707]
-self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
-texture = ExtResource("5_vx7is")
+[node name="FreddyDark" type="Sprite2D" parent="." unique_id=1726267707]
+texture = ExtResource("9_4tso1")
 script = ExtResource("2_ftn7a")
 light = 1
 freddy = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
-[node name="Chica2" type="Sprite2D" parent="." unique_id=1201896793]
-self_modulate = Color(0.2382622, 0.2382622, 0.23826218, 1)
-texture = ExtResource("6_wlnvh")
+[node name="ChicaDark" type="Sprite2D" parent="." unique_id=1201896793]
+texture = ExtResource("10_gkobm")
 script = ExtResource("2_ftn7a")
 light = 1
 chica = 1

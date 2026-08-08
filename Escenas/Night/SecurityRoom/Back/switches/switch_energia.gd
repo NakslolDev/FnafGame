@@ -12,16 +12,19 @@ signal Restaurar_General()
 @export var switch_on_sprite: Sprite2D
 @export var office_behind: Node2D
 
-const SILENT := true
+const BREAKDOWN := true
 
 func _ready():
 	Global.Energy_Breakdown.connect(energia_out)
 
-func switch_act(silent: bool = not SILENT):
-	if not silent: tiny_click.play()
+func switch_act(breakdown: bool = not BREAKDOWN):
+	if not breakdown: tiny_click.play()
 
 	switch_on_sprite.visible = switch_on
 	switch_off_sprite.visible = !switch_on
+
+	if breakdown and not controlador == "General":
+		return
 
 	if switch_on and controlador == "General":
 		Restaurar_General.emit() # si se activa general, tengo que ver uno por uno cual se activa, eso lo controlo aqui. (La otra parte en Global)
@@ -33,7 +36,7 @@ func switch_act(silent: bool = not SILENT):
 
 func energia_out():
 	switch_on = false
-	switch_act(SILENT)
+	switch_act(BREAKDOWN) #infinite recursion?
 
 func _on_click():
 	if office_behind.stop_everything == true:

@@ -26,6 +26,9 @@ func _on_ruido_timer_timeout() -> void:
 	last = new
 
 func _process(_delta):
+	if not visible or not shader_enabled:
+		return
+
 	var viewport_size = get_viewport().get_visible_rect().size
 	var mouse = get_viewport().get_mouse_position()
 

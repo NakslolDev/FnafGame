@@ -14,10 +14,20 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfkm6"]
 
-[node name="Mouse_Custom" type="Node2D" unique_id=528246970 node_paths=PackedStringArray("mouse_hitbox")]
+[node name="Mouse_Custom" type="Node2D" unique_id=528246970 node_paths=PackedStringArray("mouse_hitbox", "puntero_custom", "puntero_custom_2", "puntero_custom_3", "puntero_custom_4", "puntero_custom_5", "puntero_custom_cam", "puntero_custom_cam_2", "puntero_custom_cam_3", "puntero_custom_cam_4", "puntero_custom_cam_5")]
 texture_filter = 1
 script = ExtResource("1_pjkeq")
 mouse_hitbox = NodePath("MouseHitbox")
+puntero_custom = NodePath("PunteroCustom")
+puntero_custom_2 = NodePath("PunteroCustom2")
+puntero_custom_3 = NodePath("PunteroCustom3")
+puntero_custom_4 = NodePath("PunteroCustom4")
+puntero_custom_5 = NodePath("PunteroCustom5")
+puntero_custom_cam = NodePath("PunteroCustomCam")
+puntero_custom_cam_2 = NodePath("PunteroCustomCam2")
+puntero_custom_cam_3 = NodePath("PunteroCustomCam3")
+puntero_custom_cam_4 = NodePath("PunteroCustomCam4")
+puntero_custom_cam_5 = NodePath("PunteroCustomCam5")
 
 [node name="PunteroCustom" type="Sprite2D" parent="." unique_id=1315661927]
 texture = ExtResource("2_1ulut")

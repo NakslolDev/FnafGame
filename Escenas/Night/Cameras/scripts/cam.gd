@@ -83,6 +83,7 @@ func _on_minimapa_botones_cam_act() -> void:
 		cam.actualizar_cams()
 
 
+const NO_EXTRA := 0
 
 func movement_freddy(to, tpath, from, fpath):
 	var to_cam: int
@@ -91,7 +92,7 @@ func movement_freddy(to, tpath, from, fpath):
 	var from_cam: int
 	from_cam = get_cam_from_movement_fd(from, fpath)
 	
-	cam_act.emit(true, from_cam, to_cam, 0)
+	cam_act.emit(true, from_cam, to_cam, NO_EXTRA)
 
 func get_cam_from_movement_fd(pos, path):
 	var cam := 0
@@ -129,11 +130,7 @@ func movement_bonnie(to, from):
 	var from_cam: int
 	from_cam = get_cam_from_movement_b(from)
 	
-	var extra := 0
-	if to == "2" or from == "2":
-		extra = 2
-	
-	cam_act.emit(false, from_cam, to_cam, extra)
+	cam_act.emit(false, from_cam, to_cam, NO_EXTRA)
 
 func get_cam_from_movement_b(pos):
 	var cam := 0
@@ -161,7 +158,7 @@ func movement_chica(to, from):
 	var from_cam: int
 	from_cam = get_cam_from_movement_c(from)
 	
-	cam_act.emit(false, from_cam, to_cam, 0)
+	cam_act.emit(false, from_cam, to_cam, NO_EXTRA)
 
 func get_cam_from_movement_c(pos):
 	var cam := 0
@@ -189,7 +186,7 @@ func get_cam_from_movement_c(pos):
 func movement_foxy(to, troom, from, froom):
 	
 	if troom == "almacen" and froom == "almacen": # evito que haya estática cuando foxy se desplaza por almacen. Evita confusion
-		return
+		return # la intencion es que este claro cuando entra y cuando saleº  
 	
 	var to_cam: int
 	to_cam = get_cam_from_movement_fx(to, troom)
@@ -197,10 +194,7 @@ func movement_foxy(to, troom, from, froom):
 	var from_cam: int
 	from_cam = get_cam_from_movement_fx(from, froom)
 	
-	if troom == "Almacen" and froom == "Almacen": # esto es para que no haga ruido (visual) al moverse por el almacen. 
-		return  # la intencion es que este claro cuando entra y cuando saleº  
-	
-	cam_act.emit(false, from_cam, to_cam, 0)
+	cam_act.emit(false, from_cam, to_cam, NO_EXTRA)
 
 func get_cam_from_movement_fx(pos, room):
 	var cam := 0 # en el caso de foxy si que es posible

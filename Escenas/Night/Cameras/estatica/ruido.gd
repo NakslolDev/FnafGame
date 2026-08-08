@@ -28,6 +28,7 @@ func _ready():
 	static_speed.start()
 
 func _process(delta):
+	
 	if Freddy.cam_look_count >= 20 and not override_freddy_static: # es un poco raro, pero hace una comparacion entre lo que le queda a cam count del maximo y el sonido del máximo. Asi, en vez de subir la estática, sube un limite inferior
 		if _static.volume_db + 25 < Freddy.cam_look_count - 20:
 			noise.modulate.a += fade_speed * delta / 3.0
