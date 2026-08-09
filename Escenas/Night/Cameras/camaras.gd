@@ -207,7 +207,7 @@ func act_heater():
 	for i in range(1,9): # 1-8
 		if duct_heater[str(i)]:
 			some = true
-			print("heater ", i, "active")
+			print("heater ", i, " active")
 	if not some: print("no heater active :(")
 	print("")
 	

@@ -216,13 +216,13 @@ func get_cam_from_movement_fx(pos, room):
 		cam = 8
 	elif room == "pas" or (room == "Duc5" and pos == 3):
 		cam = 9
-	elif room == "lhall" and pos == 1:
+	elif (room == "lhall" and pos == 1) or (room == "Duc5" and pos == 1):
 		cam = 10
-	elif (room == "lhall" and pos == 2) or (room == "Duc8" and pos == 2):
+	elif (room == "lhall" and pos == 2):
 		cam = 11
-	elif room == "rhall" and pos == 1:
+	elif (room == "rhall" and pos == 1) or (room == "Duc5" and pos == 5):
 		cam = 12
-	elif (room == "rhall" and pos == 2) or (room == "Duc8" and pos == 6):
+	elif (room == "rhall" and pos == 2):
 		cam = 13
 	
 	return cam

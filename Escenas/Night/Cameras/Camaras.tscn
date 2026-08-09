@@ -25,13 +25,13 @@
 [ext_resource type="Texture2D" uid="uid://bv3m77fkr18l4" path="res://assets/Placeholders/Camaras/UI/Button Highlight/10A.png" id="12_46w8l"]
 [ext_resource type="PackedScene" uid="uid://v50bk1nqvlqr" path="res://Escenas/Night/Cameras/NewCams/cam_9.tscn" id="12_oe8ru"]
 [ext_resource type="Texture2D" uid="uid://brbtbyeyiaq56" path="res://assets/Placeholders/Camaras/UI/Button Highlight/10B.png" id="13_ntgi6"]
-[ext_resource type="PackedScene" uid="uid://va54lymxaq4x" path="res://Escenas/Night/Cameras/NewCams/cam_10.tscn" id="13_s0jpk"]
+[ext_resource type="PackedScene" uid="uid://va54lymxaq4x" path="res://Escenas/Night/Cameras/NewCams/cam_10A.tscn" id="13_s0jpk"]
 [ext_resource type="Texture2D" uid="uid://bty7gt2pakt4m" path="res://assets/Placeholders/Camaras/UI/Button Highlight/11A.png" id="14_2wxea"]
-[ext_resource type="PackedScene" uid="uid://wfyjkae1wov5" path="res://Escenas/Night/Cameras/NewCams/cam_11.tscn" id="14_bju3j"]
+[ext_resource type="PackedScene" uid="uid://wfyjkae1wov5" path="res://Escenas/Night/Cameras/NewCams/cam_10B.tscn" id="14_bju3j"]
 [ext_resource type="Texture2D" uid="uid://2tf8dsnyhpjn" path="res://assets/Placeholders/Camaras/UI/Button Highlight/11B.png" id="15_3d63n"]
-[ext_resource type="PackedScene" uid="uid://ddvkh5eql5g5a" path="res://Escenas/Night/Cameras/NewCams/cam_12.tscn" id="15_gomtu"]
+[ext_resource type="PackedScene" uid="uid://ddvkh5eql5g5a" path="res://Escenas/Night/Cameras/NewCams/cam_11A.tscn" id="15_gomtu"]
 [ext_resource type="Texture2D" uid="uid://cx85hyhbp1k4l" path="res://assets/Placeholders/Camaras/Cam6/Cam.png" id="16_3onkb"]
-[ext_resource type="PackedScene" uid="uid://i24dv7xx0r13" path="res://Escenas/Night/Cameras/NewCams/cam_13.tscn" id="16_kq2nd"]
+[ext_resource type="PackedScene" uid="uid://i24dv7xx0r13" path="res://Escenas/Night/Cameras/NewCams/cam_11B.tscn" id="16_kq2nd"]
 [ext_resource type="Texture2D" uid="uid://bttp7ke2h52qu" path="res://assets/Placeholders/Linterna.png" id="16_tmxn1"]
 [ext_resource type="Texture2D" uid="uid://7ri231ls1otd" path="res://assets/Placeholders/Camaras/UI/Minimapa Ductos.png" id="16_usepc"]
 [ext_resource type="Script" uid="uid://sugqxbfnyp2n" path="res://Escenas/Night/Cameras/alucination_control.gd" id="17_oe8ru"]
@@ -121,23 +121,23 @@ texture = ExtResource("21_mct35")
 position = Vector2(960, 540)
 script = ExtResource("2_upipm")
 camaras_root = NodePath("../..")
-cameras = [NodePath("Cam1"), NodePath("Cam2"), NodePath("Cam3"), NodePath("Cam4"), NodePath("Cam5"), NodePath("Cam6"), NodePath("Cam7"), NodePath("Cam8"), NodePath("Cam9"), NodePath("Cam10"), NodePath("Cam11"), NodePath("Cam12"), NodePath("Cam13")]
+cameras = [NodePath("Cam1"), NodePath("Cam2"), NodePath("Cam3"), NodePath("Cam4"), NodePath("Cam5"), NodePath("Cam6"), NodePath("Cam7"), NodePath("Cam8"), NodePath("Cam9"), NodePath("Cam10A"), NodePath("Cam10B"), NodePath("Cam11A"), NodePath("Cam11B")]
 alucination_control = NodePath("Alucination_control")
 velocidad = 200.0
 cams_width = {
 "cam1": 180.0,
-"cam10": 0.0,
+"cam10": 180.0,
 "cam11": 0.0,
-"cam12": 0.0,
+"cam12": 180.0,
 "cam13": 0.0,
 "cam2": 180.0,
 "cam3": 480.0,
 "cam4": 0.0,
-"cam5": 0.0,
+"cam5": 240.0,
 "cam6": 0.0,
-"cam7": 0.0,
-"cam8": 0.0,
-"cam9": 0.0
+"cam7": 240.0,
+"cam8": 240.0,
+"cam9": 240.0
 }
 period = 20.0
 
@@ -160,13 +160,13 @@ camaras_root = NodePath("../../..")
 
 [node name="Cam9" parent="Si_Shader/Cams" unique_id=1320883646 instance=ExtResource("12_oe8ru")]
 
-[node name="Cam10" parent="Si_Shader/Cams" unique_id=1751710409 instance=ExtResource("13_s0jpk")]
+[node name="Cam10A" parent="Si_Shader/Cams" unique_id=1751710409 instance=ExtResource("13_s0jpk")]
 
-[node name="Cam11" parent="Si_Shader/Cams" unique_id=1081304585 instance=ExtResource("14_bju3j")]
+[node name="Cam10B" parent="Si_Shader/Cams" unique_id=1081304585 instance=ExtResource("14_bju3j")]
 
-[node name="Cam12" parent="Si_Shader/Cams" unique_id=67756757 instance=ExtResource("15_gomtu")]
+[node name="Cam11A" parent="Si_Shader/Cams" unique_id=67756757 instance=ExtResource("15_gomtu")]
 
-[node name="Cam13" parent="Si_Shader/Cams" unique_id=314794619 instance=ExtResource("16_kq2nd")]
+[node name="Cam11B" parent="Si_Shader/Cams" unique_id=314794619 instance=ExtResource("16_kq2nd")]
 
 [node name="Alucination_control" type="Node" parent="Si_Shader/Cams" unique_id=1352561431 node_paths=PackedStringArray("cams")]
 script = ExtResource("17_oe8ru")

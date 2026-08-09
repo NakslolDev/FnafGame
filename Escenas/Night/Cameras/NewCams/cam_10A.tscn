@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://va54lymxaq4x"]
+
+[ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_8wfgv"]
+[ext_resource type="Texture2D" uid="uid://li2hpoaxaerc" path="res://assets/Renders/cameras/Cam10A/Cam10ABackgroundLight.png" id="2_w00nf"]
+[ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_ypjxk"]
+[ext_resource type="Texture2D" uid="uid://cjcsfxwwsea8f" path="res://assets/Renders/cameras/Cam10A/Cam10ABonnieLight.png" id="4_qa13g"]
+[ext_resource type="Texture2D" uid="uid://bm31k4ui40l2n" path="res://assets/Renders/cameras/Cam10A/Cam10AFoxyLight.png" id="5_x87g6"]
+[ext_resource type="Texture2D" uid="uid://dwrm3bs8l5733" path="res://assets/Renders/cameras/Cam10A/Cam10AFoxyDuctLight.png" id="6_o68eg"]
+[ext_resource type="Texture2D" uid="uid://wcoscmujqr61" path="res://assets/Renders/cameras/Cam10A/Cam10AFreddyLight.png" id="7_o6lao"]
+[ext_resource type="Texture2D" uid="uid://b6xbpri1o5tnb" path="res://assets/Renders/cameras/Cam10A/Cam10ABackgroundDark.png" id="8_5876p"]
+[ext_resource type="Texture2D" uid="uid://jrx5cdmhdg8w" path="res://assets/Renders/cameras/Cam10A/Cam10ABackgroundDark(NoOffice).png" id="9_wbmub"]
+[ext_resource type="Texture2D" uid="uid://bnmgisqvx104s" path="res://assets/Renders/cameras/Cam10A/Cam10ABonnieDark.png" id="10_r8s8t"]
+[ext_resource type="Texture2D" uid="uid://p4mayiposqv0" path="res://assets/Renders/cameras/Cam10A/Cam10AFoxyDark.png" id="11_5x23w"]
+[ext_resource type="Texture2D" uid="uid://b76osqxgsllsm" path="res://assets/Renders/cameras/Cam10A/Cam10AFoxyDuctDark.png" id="12_qqp2m"]
+[ext_resource type="Texture2D" uid="uid://b5yknod1shnqn" path="res://assets/Renders/cameras/Cam10A/Cam10AFreddyDark.png" id="13_ihtrk"]
+
+[node name="Cam10A" type="Node2D" unique_id=1751710409]
+script = ExtResource("1_8wfgv")
+cam_number = 10
+metadata/_custom_type_script = "uid://cd811lhimvfl6"
+
+[node name="BackgroundLight" type="Sprite2D" parent="." unique_id=1322088752]
+texture = ExtResource("2_w00nf")
+script = ExtResource("3_ypjxk")
+light = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="BonnieLight" type="Sprite2D" parent="." unique_id=535928171]
+texture = ExtResource("4_qa13g")
+script = ExtResource("3_ypjxk")
+light = 2
+bonnie = 6
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyLight" type="Sprite2D" parent="." unique_id=2144763880]
+texture = ExtResource("5_x87g6")
+script = ExtResource("3_ypjxk")
+light = 2
+foxy_room = 8
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyDuctLight" type="Sprite2D" parent="." unique_id=980235238]
+texture = ExtResource("6_o68eg")
+script = ExtResource("3_ypjxk")
+light = 2
+foxy_room = 13
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FreddyLight" type="Sprite2D" parent="." unique_id=541233879]
+texture = ExtResource("7_o6lao")
+script = ExtResource("3_ypjxk")
+light = 2
+freddy = 8
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="NoLightSeparator" type="Node" parent="." unique_id=355666895]
+
+[node name="BackgroundDark" type="Sprite2D" parent="." unique_id=863322638]
+texture = ExtResource("8_5876p")
+script = ExtResource("3_ypjxk")
+light = 1
+office_light_left = 2
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="BackgroundDark(NoOffice)" type="Sprite2D" parent="." unique_id=95840827]
+texture = ExtResource("9_wbmub")
+script = ExtResource("3_ypjxk")
+light = 1
+office_light_left = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="BonnieDark" type="Sprite2D" parent="." unique_id=1427605614]
+texture = ExtResource("10_r8s8t")
+script = ExtResource("3_ypjxk")
+light = 1
+bonnie = 6
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyDark" type="Sprite2D" parent="." unique_id=2110007247]
+texture = ExtResource("11_5x23w")
+script = ExtResource("3_ypjxk")
+light = 1
+foxy_room = 8
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FoxyDuctDark" type="Sprite2D" parent="." unique_id=276016269]
+texture = ExtResource("12_qqp2m")
+script = ExtResource("3_ypjxk")
+light = 1
+foxy_room = 13
+foxy_pos = 1
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
+
+[node name="FreddyDark" type="Sprite2D" parent="." unique_id=189260780]
+texture = ExtResource("13_ihtrk")
+script = ExtResource("3_ypjxk")
+light = 1
+freddy = 8
+metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"

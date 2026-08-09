@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ben1xduwqjx0k" path="res://Escenas/Night/SecurityRoom/Buttons/Boton.tscn" id="10_y2ail"]
 [ext_resource type="PackedScene" uid="uid://cjvr4sjqr5ybo" path="res://Escenas/Night/SecurityRoom/Doors/Puerta.tscn" id="11_e8gno"]
 [ext_resource type="PackedScene" uid="uid://ddgr31vso5rgd" path="res://Escenas/Night/SecurityRoom/Back/Oficina_Detras.tscn" id="12_5xwdc"]
-[ext_resource type="Texture2D" uid="uid://dlm2fk1tpxue4" path="res://assets/Renders/office/Office.png" id="12_u32el"]
+[ext_resource type="Texture2D" uid="uid://yduq6rfeq6ao" path="res://assets/Renders/office/OfficeLight.png" id="12_u32el"]
 [ext_resource type="PackedScene" uid="uid://br8x1cwdt7tp1" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.tscn" id="14_lctcs"]
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]
@@ -40,6 +40,16 @@
 [ext_resource type="Script" uid="uid://cyeiwifp8oayw" path="res://Escenas/Night/Cameras/scripts/camaras_control.gd" id="45_ba5fs"]
 [ext_resource type="PackedScene" uid="uid://d2hwtk3f7idft" path="res://Escenas/Night/Cameras/Camaras.tscn" id="46_axquf"]
 [ext_resource type="PackedScene" uid="uid://cr7jcxwdqvwwr" path="res://Escenas/Night/DirectionalAudio/directional_audio.tscn" id="47_pi1lr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qb44"]
+shader = ExtResource("26_y2bxh")
+shader_parameter/mouse_pos = Vector2(0, 0)
+shader_parameter/radio = 0.0
+shader_parameter/viewport_size = Vector2(0, 0)
+shader_parameter/fade_range = 380.0
+shader_parameter/shader_enabled = 0.0
+shader_parameter/transparencia = 0.0
+shader_parameter/nivel_transparencia = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33sfd"]
 shader = ExtResource("23_snhey")
@@ -274,14 +284,14 @@ izquierda = false
 [node name="Boton Izquierda" parent="Oficina" unique_id=1413277315 node_paths=PackedStringArray("root") instance=ExtResource("10_y2ail")]
 root = NodePath("../..")
 
-[node name="Puerta Izquierda" parent="Oficina" unique_id=1880143791 instance=ExtResource("11_e8gno")]
-position = Vector2(0, -1200)
-
 [node name="Boton Derecha" parent="Oficina" unique_id=1274667929 node_paths=PackedStringArray("root") instance=ExtResource("10_y2ail")]
 rotation = 3.14159
 scale = Vector2(1, -1)
 root = NodePath("../..")
 boton_izquierda = false
+
+[node name="Puerta Izquierda" parent="Oficina" unique_id=1880143791 instance=ExtResource("11_e8gno")]
+position = Vector2(0, -1200)
 
 [node name="Puerta Derecha" parent="Oficina" unique_id=693856865 instance=ExtResource("11_e8gno")]
 position = Vector2(0, -1200)
@@ -293,6 +303,7 @@ position = Vector2(0, -1500)
 oficina = NodePath("..")
 
 [node name="OficinaPNG" type="Sprite2D" parent="Oficina" unique_id=79261122]
+material = SubResource("ShaderMaterial_5qb44")
 texture = ExtResource("12_u32el")
 region_enabled = true
 region_rect = Rect2(1408, 448, 2944, 2048)
@@ -357,7 +368,6 @@ oficina_lights_out_alpha = NodePath("Oficina_lights_out_Alpha")
 irritating_light = NodePath("Irritating_light")
 
 [node name="Oficina_lights_out_Alpha" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=174580296]
-visible = false
 texture = ExtResource("25_0pxa1")
 
 [node name="RuidoTimer" type="Timer" parent="No_Shader_UI/Lights" unique_id=77940231]
@@ -554,9 +564,9 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina/Oficina_Detras" method="_on_detector_girar_izquierda_girar"]
 [connection signal="ButtonPlay" from="Oficina/Boton Izquierda" to="DirectionalAudio" method="_on_boton_izquierda_button_play"]
 [connection signal="Puerta_Cambio" from="Oficina/Boton Izquierda" to="Oficina/Puerta Izquierda" method="_on_boton_izquierda_puerta_cambio"]
-[connection signal="Sound" from="Oficina/Puerta Izquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
 [connection signal="ButtonPlay" from="Oficina/Boton Derecha" to="DirectionalAudio" method="_on_boton_derecha_button_play"]
 [connection signal="Puerta_Cambio" from="Oficina/Boton Derecha" to="Oficina/Puerta Derecha" method="_on_boton_derecha_puerta_cambio"]
+[connection signal="Sound" from="Oficina/Puerta Izquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
 [connection signal="Sound" from="Oficina/Puerta Derecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]
 [connection signal="Linterna_Recarga_Switch_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_recarga_switch_rebote"]
@@ -566,6 +576,7 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Derecho" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Izquierdo" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Oficina_Detras" method="_on_linterna_linterna_activada_switch"]
+[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/OficinaPNG" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="No_Shader_UI/Lights/Oficina_lights_out" method="_on_linterna_linterna_activada_switch"]
 [connection signal="timeout" from="No_Shader_UI/Lights/RuidoTimer" to="No_Shader_UI/Lights/Oficina_lights_out" method="_on_ruido_timer_timeout"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Bonnie" to="." method="_on_jumpscare_bonnie_jumpscare_end"]

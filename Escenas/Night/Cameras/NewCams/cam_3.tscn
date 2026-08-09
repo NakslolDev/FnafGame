@@ -8,14 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://dkbx3j2sivmqv" path="res://assets/Renders/cameras/Cam3/Cam3FoxyMiddleLight.png" id="5_fkdth"]
 [ext_resource type="Texture2D" uid="uid://dlgwu2artgnds" path="res://assets/Renders/cameras/Cam3/Cam3FoxyVentLight.png" id="6_3583r"]
 [ext_resource type="Texture2D" uid="uid://d107dj04npu54" path="res://assets/Renders/cameras/Cam3/Cam3FoxyEntranceLight.png" id="7_8l0o0"]
-[ext_resource type="Texture2D" uid="uid://b1u1ibg7a58ox" path="res://assets/Renders/cameras/Cam3/Cam3FreddyTLight.png" id="8_g3mhy"]
+[ext_resource type="Texture2D" uid="uid://b1u1ibg7a58ox" path="res://assets/Renders/cameras/Cam3/Cam3FreddyLeftLight.png" id="8_g3mhy"]
 [ext_resource type="Texture2D" uid="uid://x6vhf2q5i1yf" path="res://assets/Renders/cameras/Cam3/Cam3FreddyRightLight.png" id="9_lerp6"]
 [ext_resource type="Texture2D" uid="uid://bgbfyktd2tcqx" path="res://assets/Renders/cameras/Cam3/Cam3ChicaDark.png" id="11_vp804"]
 [ext_resource type="Texture2D" uid="uid://tmhpcwkfolyf" path="res://assets/Renders/cameras/Cam3/Cam3FreddyRightDark.png" id="12_rfga0"]
 [ext_resource type="Texture2D" uid="uid://crgauuxgkqyo5" path="res://assets/Renders/cameras/Cam3/Cam3FoxyMiddleDark.png" id="13_l2oe1"]
 [ext_resource type="Texture2D" uid="uid://c3gceg7peda6r" path="res://assets/Renders/cameras/Cam3/Cam3FoxyVentDark.png" id="14_vxdhm"]
 [ext_resource type="Texture2D" uid="uid://56aia0y454jh" path="res://assets/Renders/cameras/Cam3/Cam3FoxyEntranceDark.png" id="15_fkdth"]
-[ext_resource type="Texture2D" uid="uid://fbtkqcmshuc6" path="res://assets/Renders/cameras/Cam3/Cam3FreddyTDark.png" id="16_3583r"]
+[ext_resource type="Texture2D" uid="uid://fbtkqcmshuc6" path="res://assets/Renders/cameras/Cam3/Cam3FreddyLeftDark.png" id="16_3583r"]
 
 [node name="Cam3" type="Node2D" unique_id=1954128902]
 script = ExtResource("1_ksfdc")

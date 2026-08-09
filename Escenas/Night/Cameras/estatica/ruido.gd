@@ -14,9 +14,9 @@ var override_freddy_static := false
 @export var _static: AudioStreamPlayer
 @export var cam_root: Node2D
 
-const UP_STATIC_WHEN_CHANGING_CAMS := 0.1
-const UP_STATIC_WHEN_ANIMATRONIC_MOVEMENT := 0.7
-const UP_STATIC_WHEN_FREDDY_MOVEMENT := 1.2
+const UP_STATIC_WHEN_CHANGING_CAMS := 0.05
+const UP_STATIC_WHEN_ANIMATRONIC_MOVEMENT := 0.5
+const UP_STATIC_WHEN_FREDDY_MOVEMENT := 1.0
 
 const FADE_FAST := true
 const FADE_SLOW := false

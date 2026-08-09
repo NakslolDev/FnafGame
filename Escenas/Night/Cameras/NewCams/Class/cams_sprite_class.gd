@@ -62,6 +62,7 @@ enum FXroom {
 }
 @export var foxy_room: FXroom = FXroom.PASS
 @export_range(0,7) var foxy_pos: int = 0
+@export var foxy_deactivated: bool_state = bool_state.PASS
 
 func get_min_pos_for_room(room: FXroom) -> int:
 	match room:
@@ -120,31 +121,56 @@ func _check_foxy_room_values():
 @export var key_location: int = 0
 @export var key_match: bool_state = bool_state.PASS
 
+@export_subgroup("office_light", "office_light_")
+@export var office_light_left: bool_state = bool_state.PASS
+@export var office_light_right: bool_state = bool_state.PASS
+
+const SEE_ALL := false
 
 func actualice():
 	visible = false
 
-	if not active: return
-	
-	if not _bonnie(): return
-	if not _chica(): return
-	if not _freddy(): return
-	if not _foxy(): return
-	
+	if not active:
+		push_warning(name + " not active")
+		return
+
+	if not SEE_ALL:
+		if not _bonnie(): return
+		if not _chica(): return
+		if not _freddy(): return
+		if not _foxy(): return
+
 	if not get("night_" + str(Global.noche)): return
-	
+
+	match foxy_deactivated:
+		bool_state.TRUE: 
+			if Foxy.AI_level != 0: return
+		bool_state.FALSE: 
+			if Foxy.AI_level == 0: return
+
 	match light:
 		bool_state.TRUE: 
 			if !Global.energia_consumption["Cam_lights"]: return
 		bool_state.FALSE: 
 			if Global.energia_consumption["Cam_lights"]: return
-	
+
 	match key_match:
 		bool_state.TRUE:
 			if key_location != 0 and key_location != Global.location_key: return
 		bool_state.FALSE:
 			if key_location != 0 and key_location == Global.location_key: return
-	
+
+	match office_light_left:
+		bool_state.TRUE:
+			if not Global.energia["Luces"] or Global.energia_consumption["Puerta_I"]: return
+		bool_state.FALSE:
+			if Global.energia["Luces"] and not Global.energia_consumption["Puerta_I"]: return
+	match office_light_right:
+		bool_state.TRUE:
+			if not Global.energia["Luces"] or Global.energia_consumption["Puerta_D"]: return
+		bool_state.FALSE:
+			if Global.energia["Luces"] and not Global.energia_consumption["Puerta_D"]: return
+
 	visible = true
 
 
