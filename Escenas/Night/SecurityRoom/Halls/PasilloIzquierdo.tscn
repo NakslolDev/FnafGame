@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bkhep68tnnnt4"]
+
+[ext_resource type="Script" uid="uid://cap8j6bhy4log" path="res://Escenas/Night/SecurityRoom/Halls/pasillo.gd" id="1_00vi2"]
+[ext_resource type="Texture2D" uid="uid://vgks6yx7xo1l" path="res://assets/Renders/office/Halls/HallLFlashlight.png" id="2_yr6bs"]
+[ext_resource type="Texture2D" uid="uid://d1cikxv2sgwta" path="res://assets/Renders/office/Halls/HallDark.png" id="3_7uqwi"]
+[ext_resource type="Texture2D" uid="uid://ow26lchwi03e" path="res://assets/Renders/office/Halls/BonnieFlahslight.png" id="4_7uqwi"]
+[ext_resource type="Texture2D" uid="uid://cgap0gxpkphkj" path="res://assets/Renders/office/Halls/BonnieDark.png" id="5_yr6bs"]
+[ext_resource type="Texture2D" uid="uid://bkurjxegq6q0v" path="res://assets/Renders/office/Halls/FoxyLeftFlashlight.png" id="6_yr6bs"]
+[ext_resource type="Texture2D" uid="uid://b4g3ff3wybljt" path="res://assets/Renders/office/Halls/FoxyLeftDark.png" id="7_00vi2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1db6b"]
+size = Vector2(1790, 2402)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b6uj"]
+size = Vector2(416, 932)
+
+[node name="PasilloIzquierdo" type="Node2D" unique_id=397326124 node_paths=PackedStringArray("bonnie", "foxy", "chica", "soft_focus", "hard_focus")]
+script = ExtResource("1_00vi2")
+bonnie = NodePath("Bonnie")
+foxy = NodePath("Foxy")
+chica = NodePath("Chica")
+soft_focus = NodePath("Soft_focus")
+hard_focus = NodePath("Hard_focus")
+
+[node name="Flahslight" type="Sprite2D" parent="." unique_id=2054902440]
+position = Vector2(-1440, 0)
+texture = ExtResource("2_yr6bs")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 2880)
+
+[node name="Dark" type="Sprite2D" parent="." unique_id=1988082537 groups=["FlashlightPNG"]]
+position = Vector2(-1440, 0)
+texture = ExtResource("3_7uqwi")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 2880)
+
+[node name="Bonnie" type="Node2D" parent="." unique_id=1012575135]
+
+[node name="BonnieFlashlight" type="Sprite2D" parent="Bonnie" unique_id=245089459]
+texture = ExtResource("4_7uqwi")
+
+[node name="BonnieDark" type="Sprite2D" parent="Bonnie" unique_id=2029585139 groups=["FlashlightPNG"]]
+texture = ExtResource("5_yr6bs")
+
+[node name="Foxy" type="Node2D" parent="." unique_id=432557747]
+
+[node name="FoxyFlashlight" type="Sprite2D" parent="Foxy" unique_id=1580451574]
+texture = ExtResource("6_yr6bs")
+
+[node name="FoxyDark" type="Sprite2D" parent="Foxy" unique_id=2084032718 groups=["FlashlightPNG"]]
+texture = ExtResource("7_00vi2")
+
+[node name="Chica" type="Node2D" parent="." unique_id=78770447]
+
+[node name="Soft_focus" type="Area2D" parent="." unique_id=475550323]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soft_focus" unique_id=886324488]
+position = Vector2(-1070, 70)
+shape = SubResource("RectangleShape2D_1db6b")
+
+[node name="Hard_focus" type="Area2D" parent="." unique_id=1507935628]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus" unique_id=499000768]
+position = Vector2(-1070, 70)
+shape = SubResource("RectangleShape2D_4b6uj")

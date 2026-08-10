@@ -18,6 +18,8 @@ linterna_release = NodePath("Linterna_Release")
 linterna_animacion_timer = NodePath("linterna_animacion")
 
 [node name="linternaPNG" type="Sprite2D" parent="." unique_id=1369847649]
+modulate = Color(1, 1, 1, 0.05)
+texture_filter = 2
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_b2cok")
 

@@ -3,17 +3,21 @@
 [ext_resource type="Script" uid="uid://d1j05sj38vxq2" path="res://Escenas/Night/main_game.gd" id="1_ri0qg"]
 [ext_resource type="Script" uid="uid://dg87i78j5fghc" path="res://Escenas/Night/RandomScriptsIDC/cheats.gd" id="2_4erhx"]
 [ext_resource type="Script" uid="uid://bqwie24f1rykg" path="res://Escenas/Night/SecurityRoom/oficina.gd" id="4_arw1f"]
+[ext_resource type="Script" uid="uid://cqq50gwurqhfb" path="res://Escenas/Night/flashlight_shader_control.gd" id="4_xe21u"]
 [ext_resource type="Script" uid="uid://blpn7t14i1trt" path="res://Escenas/Night/SecurityRoom/Back/Ventilation/ventilation.gd" id="5_ujq6x"]
 [ext_resource type="AudioStream" uid="uid://6cf4ra3goluv" path="res://assets/sounds/Ventilation_loop.ogg" id="6_hal1v"]
 [ext_resource type="PackedScene" uid="uid://mxxfro0701lh" path="res://Escenas/Night/Movement/Detector_Girar.tscn" id="7_q5fcm"]
-[ext_resource type="PackedScene" uid="uid://bo3fa6mc0i5nu" path="res://Escenas/Night/SecurityRoom/Ducts/Ductos.tscn" id="8_v0aef"]
-[ext_resource type="PackedScene" uid="uid://bkhep68tnnnt4" path="res://Escenas/Night/SecurityRoom/Halls/Pasillo.tscn" id="9_1n26x"]
-[ext_resource type="PackedScene" uid="uid://ben1xduwqjx0k" path="res://Escenas/Night/SecurityRoom/Buttons/Boton.tscn" id="10_y2ail"]
+[ext_resource type="PackedScene" uid="uid://bo3fa6mc0i5nu" path="res://Escenas/Night/SecurityRoom/Ducts/ductos_delante.tscn" id="8_v0aef"]
+[ext_resource type="PackedScene" uid="uid://bkhep68tnnnt4" path="res://Escenas/Night/SecurityRoom/Halls/PasilloIzquierdo.tscn" id="9_1n26x"]
+[ext_resource type="PackedScene" uid="uid://ben1xduwqjx0k" path="res://Escenas/Night/SecurityRoom/Buttons/BotonDerecha.tscn" id="10_y2ail"]
 [ext_resource type="PackedScene" uid="uid://cjvr4sjqr5ybo" path="res://Escenas/Night/SecurityRoom/Doors/Puerta.tscn" id="11_e8gno"]
 [ext_resource type="PackedScene" uid="uid://ddgr31vso5rgd" path="res://Escenas/Night/SecurityRoom/Back/Oficina_Detras.tscn" id="12_5xwdc"]
-[ext_resource type="Texture2D" uid="uid://yduq6rfeq6ao" path="res://assets/Renders/office/OfficeLight.png" id="12_u32el"]
+[ext_resource type="Texture2D" uid="uid://yduq6rfeq6ao" path="res://assets/Renders/office/OfficeDark.png" id="12_u32el"]
+[ext_resource type="Texture2D" uid="uid://cegry2air4fvr" path="res://assets/Renders/office/OfficeFlashlight.png" id="12_xe21u"]
 [ext_resource type="PackedScene" uid="uid://br8x1cwdt7tp1" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.tscn" id="14_lctcs"]
+[ext_resource type="PackedScene" uid="uid://djq5lt74n68hd" path="res://Escenas/Night/SecurityRoom/Halls/PasilloDerecho.tscn" id="14_pd3h4"]
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
+[ext_resource type="PackedScene" uid="uid://q218o01pxf4y" path="res://Escenas/Night/SecurityRoom/Buttons/BotonIzquierda.tscn" id="16_u1au3"]
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]
 [ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://Escenas/Night/SecurityRoom/FreddyPoster/Freddy_nose.tscn" id="18_uce18"]
 [ext_resource type="PackedScene" uid="uid://b5xqa4eh847iv" path="res://Escenas/Night/Flashlight/Linterna.tscn" id="20_ewgm2"]
@@ -29,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://o8o073xrlb54" path="res://Escenas/Night/UI/Energia_Icono.tscn" id="30_6536c"]
 [ext_resource type="PackedScene" uid="uid://c3c06jfj5tb32" path="res://Escenas/Night/alucinations/alucinations.tscn" id="31_bplc8"]
 [ext_resource type="PackedScene" uid="uid://cenm4urvvqglo" path="res://Escenas/Night/alucinations/alucinations_blackout.tscn" id="32_17bge"]
+[ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://Escenas/Night/RandomScriptsIDC/ready_visible.gd" id="33_0nvb3"]
 [ext_resource type="PackedScene" uid="uid://cbjiygcxok8xd" path="res://Escenas/Night/Jumpscare/jumpscare_bonnie.tscn" id="33_jdkrb"]
 [ext_resource type="PackedScene" uid="uid://cbxe832owyn3x" path="res://Escenas/Night/Jumpscare/jumpscare_chica.tscn" id="34_jv4bp"]
 [ext_resource type="PackedScene" uid="uid://yfdfcy54h2iy" path="res://Escenas/Night/Jumpscare/jumpscare_freddy.tscn" id="35_eg2cr"]
@@ -208,10 +213,10 @@ shader_parameter/transparencia = 1.0
 shader_parameter/nivel_transparencia = 0.95
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4c7a"]
-size = Vector2(1050, 115)
+size = Vector2(1920, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei8qt"]
-size = Vector2(1264.5, 19)
+size = Vector2(1264, 19)
 
 [node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("oficina", "oficina_detras", "freddy_nose", "linterna", "cheats", "transicion", "tick", "esc_timer", "mouse_custom", "camaras_control", "camaras", "animatronic_map")]
 script = ExtResource("1_ri0qg")
@@ -240,6 +245,8 @@ one_shot = true
 
 [node name="Cheats" type="Node" parent="." unique_id=1206509325 node_paths=PackedStringArray("tick_label", "batery_label", "time_label", "insanity_label", "animatronic_map_node", "vhs_player")]
 script = ExtResource("2_4erhx")
+get_from_global = false
+infinite_light = true
 tick_label = NodePath("../True_No_Shader/Tick_label")
 batery_label = NodePath("../True_No_Shader/VBoxContainer/Batery_Label")
 time_label = NodePath("../True_No_Shader/VBoxContainer/Time_label")
@@ -251,6 +258,9 @@ vhs_player = NodePath("../Oficina/VHS_Player")
 script = ExtResource("4_arw1f")
 sprite_displacemeant = 2880.0
 oficina_detras_nodo = NodePath("Oficina_Detras")
+
+[node name="FlashlightShaderControl" type="Node" parent="Oficina" unique_id=40346512]
+script = ExtResource("4_xe21u")
 
 [node name="Ventilation" type="Node" parent="Oficina" unique_id=913684193 node_paths=PackedStringArray("ventilation_loop")]
 script = ExtResource("5_ujq6x")
@@ -264,31 +274,46 @@ volume_db = -10.0
 bus = &"SFX"
 parameters/looping = true
 
-[node name="Detector_Girar_Izquierda" parent="Oficina" unique_id=663374591 node_paths=PackedStringArray("oficina") instance=ExtResource("7_q5fcm")]
+[node name="Detector_Girar_Izquierda" parent="Oficina" unique_id=663374591 node_paths=PackedStringArray("oficina", "main_game") instance=ExtResource("7_q5fcm")]
+position = Vector2(-270, 0)
 oficina = NodePath("../..")
+main_game = NodePath("../..")
 
 [node name="Detector_Girar_Derecha" parent="Oficina" unique_id=1317894783 node_paths=PackedStringArray("oficina") instance=ExtResource("7_q5fcm")]
-scale = Vector2(-1, 1)
+position = Vector2(270, 0)
+rotation = -3.1415925
+scale = Vector2(1, -1)
 izquierda = false
 oficina = NodePath("../..")
+
+[node name="OficinaPNG_Flashlight" type="Sprite2D" parent="Oficina" unique_id=1273260907]
+material = SubResource("ShaderMaterial_5qb44")
+texture = ExtResource("12_xe21u")
+region_enabled = true
+region_rect = Rect2(1408, 448, 2944, 1984)
+
+[node name="OficinaPNG_Dark" type="Sprite2D" parent="Oficina" unique_id=414625642 groups=["FlashlightPNG"]]
+material = SubResource("ShaderMaterial_5qb44")
+texture = ExtResource("12_u32el")
+region_enabled = true
+region_rect = Rect2(1408, 448, 2944, 1984)
+
+[node name="Oficina_Detras" parent="Oficina" unique_id=545016994 node_paths=PackedStringArray("oficina") instance=ExtResource("12_5xwdc")]
+position = Vector2(0, -2000)
+oficina = NodePath("..")
 
 [node name="Ductos" parent="Oficina" unique_id=537877836 instance=ExtResource("8_v0aef")]
 
-[node name="Pasillo Derecho" parent="Oficina" unique_id=1420297095 instance=ExtResource("9_1n26x")]
-rotation = -3.14159
-scale = Vector2(1, -1)
-izquierda = false
-
 [node name="Pasillo Izquierdo" parent="Oficina" unique_id=1170505708 instance=ExtResource("9_1n26x")]
 
-[node name="Boton Izquierda" parent="Oficina" unique_id=1413277315 node_paths=PackedStringArray("root") instance=ExtResource("10_y2ail")]
-root = NodePath("../..")
+[node name="PasilloDerecho" parent="Oficina" unique_id=397326124 instance=ExtResource("14_pd3h4")]
 
-[node name="Boton Derecha" parent="Oficina" unique_id=1274667929 node_paths=PackedStringArray("root") instance=ExtResource("10_y2ail")]
-rotation = 3.14159
-scale = Vector2(1, -1)
+[node name="BotonDerecha" parent="Oficina" unique_id=358012948 node_paths=PackedStringArray("root") instance=ExtResource("10_y2ail")]
 root = NodePath("../..")
 boton_izquierda = false
+
+[node name="BotonIzquierda" parent="Oficina" unique_id=1652427933 node_paths=PackedStringArray("root") instance=ExtResource("16_u1au3")]
+root = NodePath("../..")
 
 [node name="Puerta Izquierda" parent="Oficina" unique_id=1880143791 instance=ExtResource("11_e8gno")]
 position = Vector2(0, -1200)
@@ -297,16 +322,6 @@ position = Vector2(0, -1200)
 position = Vector2(0, -1200)
 rotation = 3.14159
 scale = Vector2(1, -1)
-
-[node name="Oficina_Detras" parent="Oficina" unique_id=545016994 node_paths=PackedStringArray("oficina") instance=ExtResource("12_5xwdc")]
-position = Vector2(0, -1500)
-oficina = NodePath("..")
-
-[node name="OficinaPNG" type="Sprite2D" parent="Oficina" unique_id=79261122]
-material = SubResource("ShaderMaterial_5qb44")
-texture = ExtResource("12_u32el")
-region_enabled = true
-region_rect = Rect2(1408, 448, 2944, 2048)
 
 [node name="VHS_Player" parent="Oficina" unique_id=454136740 node_paths=PackedStringArray("main_game") instance=ExtResource("14_lctcs")]
 position = Vector2(259, 120)
@@ -331,6 +346,7 @@ oficina = NodePath("../Oficina")
 
 [node name="Linterna" parent="." unique_id=173084317 instance=ExtResource("20_ewgm2")]
 position = Vector2(0, 1500)
+hide_png = true
 
 [node name="Mouse_Custom" parent="." unique_id=803140717 instance=ExtResource("21_vtd2r")]
 opacidad = 0.7
@@ -356,10 +372,10 @@ script = ExtResource("20_xe21u")
 camaras_control = NodePath("../Camaras_Control")
 
 [node name="Linterna_Bateria_Icono" parent="No_Shader_UI" unique_id=1311019173 instance=ExtResource("29_wt1mn")]
-position = Vector2(1790, 895)
+position = Vector2(1784, 896)
 
 [node name="Energia_Icono" parent="No_Shader_UI" unique_id=1429314295 instance=ExtResource("30_6536c")]
-position = Vector2(130, 915)
+position = Vector2(128, 984)
 
 [node name="Lights" type="Node2D" parent="No_Shader_UI" unique_id=630175932 node_paths=PackedStringArray("oficina_lights_out_alpha", "irritating_light")]
 position = Vector2(960, 540)
@@ -429,12 +445,10 @@ volume_db = 3.0
 bus = &"SFX"
 parameters/looping = true
 
-[node name="True_No_Shader" type="CanvasLayer" parent="." unique_id=987376596 node_paths=PackedStringArray("camaras_control", "color_rect")]
+[node name="True_No_Shader" type="CanvasLayer" parent="." unique_id=987376596]
 layer = 4
 visible = false
-script = ExtResource("20_xe21u")
-camaras_control = NodePath("../Camaras_Control")
-color_rect = NodePath("../CanvasLayer_Shader/ColorRect")
+script = ExtResource("33_0nvb3")
 
 [node name="Alucinations" parent="True_No_Shader" unique_id=1831758525 instance=ExtResource("31_bplc8")]
 
@@ -519,13 +533,13 @@ up_cams = NodePath("../True_No_Shader/UpCams")
 [node name="Area2D_up" type="Area2D" parent="Camaras_Control" unique_id=132864427]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camaras_Control/Area2D_up" unique_id=828581172]
-position = Vector2(960, 1022.5)
+position = Vector2(960, 1061)
 shape = SubResource("RectangleShape2D_a4c7a")
 
 [node name="Area2D_down" type="Area2D" parent="Camaras_Control" unique_id=1417108209]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camaras_Control/Area2D_down" unique_id=718329089]
-position = Vector2(632.25, 1070.5)
+position = Vector2(632, 1070.5)
 shape = SubResource("RectangleShape2D_ei8qt")
 
 [connection signal="alucinations" from="." to="True_No_Shader/Alucinations" method="_on_main_game_alucinations"]
@@ -547,8 +561,6 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="timeout" from="Control/Tick" to="Cheats" method="_on_tick_timeout"]
 [connection signal="timeout" from="Control/ESC_Timer" to="." method="_on_esc_timer_timeout"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Detector_Girar_Izquierda" method="_on_oficina_girando_estado"]
-[connection signal="Girando_Estado" from="Oficina" to="Oficina/Boton Izquierda" method="_on_oficina_girando_estado"]
-[connection signal="Girando_Estado" from="Oficina" to="Oficina/Boton Derecha" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Oficina_Detras" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="DirectionalAudio" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="True_No_Shader/UpCams" method="_on_oficina_girando_estado"]
@@ -562,21 +574,20 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girar_Input" from="Oficina/Detector_Girar_Izquierda" to="Oficina" method="_on_detector_girar_izquierda_girar_input"]
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina" method="_on_detector_girar_izquierda_girar"]
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina/Oficina_Detras" method="_on_detector_girar_izquierda_girar"]
-[connection signal="ButtonPlay" from="Oficina/Boton Izquierda" to="DirectionalAudio" method="_on_boton_izquierda_button_play"]
-[connection signal="Puerta_Cambio" from="Oficina/Boton Izquierda" to="Oficina/Puerta Izquierda" method="_on_boton_izquierda_puerta_cambio"]
-[connection signal="ButtonPlay" from="Oficina/Boton Derecha" to="DirectionalAudio" method="_on_boton_derecha_button_play"]
-[connection signal="Puerta_Cambio" from="Oficina/Boton Derecha" to="Oficina/Puerta Derecha" method="_on_boton_derecha_puerta_cambio"]
-[connection signal="Sound" from="Oficina/Puerta Izquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
-[connection signal="Sound" from="Oficina/Puerta Derecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]
 [connection signal="Linterna_Recarga_Switch_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_recarga_switch_rebote"]
+[connection signal="ButtonPlay" from="Oficina/BotonDerecha" to="DirectionalAudio" method="_on_boton_derecha_button_play"]
+[connection signal="Puerta_Cambio" from="Oficina/BotonDerecha" to="Oficina/Puerta Derecha" method="_on_boton_derecha_puerta_cambio"]
+[connection signal="ButtonPlay" from="Oficina/BotonIzquierda" to="DirectionalAudio" method="_on_boton_izquierda_button_play"]
+[connection signal="Puerta_Cambio" from="Oficina/BotonIzquierda" to="Oficina/Puerta Izquierda" method="_on_boton_izquierda_puerta_cambio"]
+[connection signal="Sound" from="Oficina/Puerta Izquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
+[connection signal="Sound" from="Oficina/Puerta Derecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
 [connection signal="act_audio" from="Oficina/VHS_Player" to="DirectionalAudio" method="_on_vhs_player_act_audio"]
 [connection signal="change_audio_stream" from="Oficina/VHS_Player" to="DirectionalAudio" method="_on_vhs_player_change_audio_stream"]
-[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Ductos" method="_on_linterna_linterna_activada_switch"]
-[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Derecho" method="_on_linterna_linterna_activada_switch"]
-[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Izquierdo" method="_on_linterna_linterna_activada_switch"]
+[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/FlashlightShaderControl" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Oficina_Detras" method="_on_linterna_linterna_activada_switch"]
-[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/OficinaPNG" method="_on_linterna_linterna_activada_switch"]
+[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Ductos" method="_on_linterna_linterna_activada_switch"]
+[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Izquierdo" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="No_Shader_UI/Lights/Oficina_lights_out" method="_on_linterna_linterna_activada_switch"]
 [connection signal="timeout" from="No_Shader_UI/Lights/RuidoTimer" to="No_Shader_UI/Lights/Oficina_lights_out" method="_on_ruido_timer_timeout"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Bonnie" to="." method="_on_jumpscare_bonnie_jumpscare_end"]

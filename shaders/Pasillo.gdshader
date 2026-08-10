@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform vec2 mouse_pos;
-uniform float radio = 0.0;
+uniform float radio = 10.0;
 uniform vec2 viewport_size;
 uniform float fade_range = 380.0;
 uniform float shader_enabled = 0.0;

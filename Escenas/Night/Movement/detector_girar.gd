@@ -6,7 +6,7 @@ var movimiento := false
 var activado := false
 
 @export var oficina: Node2D
-
+@export var main_game: Node2D
 
 signal Girar(izquierda: bool)
 signal Girar_Input
@@ -47,7 +47,7 @@ func _on_area_2d_pre_girar_mouse_entered() -> void:
 func _input(event):
 	if detras or izquierda == false: # el giro por imput solo lo controla el de delante derecha
 		return
-	if event.is_action_pressed("Girarse") and oficina.camaras_activadas == false and $"../..".tick_stop == false: # como a esta parte no pueden acceder los de detras no me preocupo
+	if event.is_action_pressed("Girarse") and oficina.camaras_activadas == false and main_game.tick_stop == false: # como a esta parte no pueden acceder los de detras no me preocupo
 		Girar_Input.emit()
 
 

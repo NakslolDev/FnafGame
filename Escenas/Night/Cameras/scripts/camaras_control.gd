@@ -1,13 +1,13 @@
 extends Node2D
 
-var game_over: bool
-var se_puede: bool
-var on_cam_up_hitbox := false
+var game_over: bool = false
+var se_puede: bool = true
+var up_cams_block := false
+var down_cams_block := false
 
 @export var root: Node2D
 @export var camaras: Node2D
 @export var up_cams: Sprite2D
-
 
 
 func _ready():
@@ -19,19 +19,21 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Space") and se_puede and not game_over:
 		toggle_cams()
 
-func _on_area_2d_up_mouse_entered() -> void:
-	if not Global.misc["Flick_cams"]: return
-	if se_puede and not game_over and camaras.activado == false:
-		toggle_cams()
-		on_cam_up_hitbox = true
-
-func _on_area_2d_up_mouse_exited() -> void:
-	on_cam_up_hitbox = false
-
 func _on_area_2d_down_mouse_entered() -> void:
 	if not Global.misc["Flick_cams"]: return
-	if se_puede and not game_over and on_cam_up_hitbox == false and camaras.activado == true:
+	if camaras.activado and se_puede and not game_over and not up_cams_block:
 		toggle_cams()
+		down_cams_block = true
+
+func _on_area_2d_up_mouse_entered() -> void:
+	if not Global.misc["Flick_cams"]: return
+	if not camaras.activado and se_puede and not game_over and not down_cams_block:
+		toggle_cams()
+		up_cams_block = true
+
+func _on_area_2d_up_mouse_exited() -> void:
+	up_cams_block = false
+	down_cams_block = false
 
 signal cams_toggled
 

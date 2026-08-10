@@ -7,7 +7,6 @@ var shader_enabled := false
 @onready var ruido_child := ruido.get_children()
 @export var ruido_timer: Timer
 
-
 func _ready():
 	Global.energia_actualizada.connect(energia_act)
 	visible = lights.light_out_custom

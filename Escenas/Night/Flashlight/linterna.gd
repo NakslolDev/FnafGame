@@ -2,6 +2,7 @@ extends Node2D
 
 var linterna_activada := false
 
+@export var hide_png: bool = false
 @export var linterna_discharch_speed := 0.3
 @export var linterna_recharch_speed := 0.4
 @export var linterna_penalty := 5
@@ -37,7 +38,7 @@ func _process(_delta: float) -> void:
 func set_linterna(value: bool, animation := false):
 	linterna_activada = value
 	Linterna_Activada_Switch.emit(value, linterna_animacion_count != 0)
-	linternaPNG.modulate.a = 0.3 * int(value)
+	linternaPNG.visible = value and not hide_png
 
 	if animation: # si esta haciendo la animacion
 		return

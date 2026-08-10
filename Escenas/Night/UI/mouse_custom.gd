@@ -33,40 +33,40 @@ func _ready():
 	else:
 		puntero = Global.mouse_custom_punt
 	
-	puntero_custom_cam.modulate.a = 0.0
-	puntero_custom_cam_2.modulate.a = 0.0
-	puntero_custom_cam_3.modulate.a = 0.0
-	puntero_custom_cam_4.modulate.a = 0.0
-	puntero_custom_cam_5.modulate.a = 0.0
-	puntero_custom.modulate.a = 0.0
-	puntero_custom_2.modulate.a = 0.0
-	puntero_custom_3.modulate.a = 0.0
-	puntero_custom_4.modulate.a = 0.0
-	puntero_custom_5.modulate.a = 0.0
+	puntero_custom_cam.visible = false
+	puntero_custom_cam_2.visible = false
+	puntero_custom_cam_3.visible = false
+	puntero_custom_cam_4.visible = false
+	puntero_custom_cam_5.visible = false
+	puntero_custom.visible = false
+	puntero_custom_2.visible = false
+	puntero_custom_3.visible = false
+	puntero_custom_4.visible = false
+	puntero_custom_5.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if Global.mouse_cam_see and cams:
 		if puntero == "1":
-			puntero_custom_cam.modulate.a = 1.0
+			puntero_custom_cam.visible = true
 		if puntero == "2":
-			puntero_custom_cam_2.modulate.a = 1.0
+			puntero_custom_cam_2.visible = true
 		if puntero == "3":
-			puntero_custom_cam_3.modulate.a = 1.0
+			puntero_custom_cam_3.visible = true
 		if puntero == "4":
-			puntero_custom_cam_4.modulate.a = 1.0
+			puntero_custom_cam_4.visible = true
 		if puntero == "5":
-			puntero_custom_cam_5.modulate.a = 1.0
+			puntero_custom_cam_5.visible = true
 	else:
 		if puntero == "1":
-			puntero_custom.modulate.a = 1.0
+			puntero_custom.visible = true
 		if puntero == "2":
-			puntero_custom_2.modulate.a = 1.0
+			puntero_custom_2.visible = true
 		if puntero == "3":
-			puntero_custom_3.modulate.a = 1.0
+			puntero_custom_3.visible = true
 		if puntero == "4":
-			puntero_custom_4.modulate.a = 1.0
+			puntero_custom_4.visible = true
 		if puntero == "5":
-			puntero_custom_5.modulate.a = 1.0
+			puntero_custom_5.visible = true
 
 func _process(_delta):
 	if not override_alpha:

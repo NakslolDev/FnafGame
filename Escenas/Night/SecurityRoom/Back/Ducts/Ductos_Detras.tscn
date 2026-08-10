@@ -1,60 +1,83 @@
 [gd_scene format=3 uid="uid://eq3843walx0w"]
 
-[ext_resource type="Texture2D" uid="uid://c6c6cvtsb8a8y" path="res://assets/Placeholders/Ducto_Detras_Iluminado.png" id="1_drq1o"]
 [ext_resource type="Script" uid="uid://cccc6f8ob4s2y" path="res://Escenas/Night/SecurityRoom/Back/Ducts/ductos_detras.gd" id="1_tp3nd"]
-[ext_resource type="Texture2D" uid="uid://c51kguqmamt0v" path="res://assets/Placeholders/Ducto_Detras_Oscuro.png" id="2_mei6s"]
-[ext_resource type="Texture2D" uid="uid://kd7m01b5rtv4" path="res://assets/Placeholders/foxy.png" id="3_gqlcn"]
-[ext_resource type="Shader" uid="uid://cy37sjn6e8y4u" path="res://shaders/Pasillo.gdshader" id="4_gqlcn"]
-[ext_resource type="Script" uid="uid://s3m41odryu66" path="res://Escenas/Night/SecurityRoom/Ducts/ductos_fondo_oscuro.gd" id="5_cm3ov"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvk6a"]
-shader = ExtResource("4_gqlcn")
-shader_parameter/mouse_pos = Vector2(0, 0)
-shader_parameter/radio = 0.0
-shader_parameter/viewport_size = Vector2(0, 0)
-shader_parameter/fade_range = 380.0
-shader_parameter/shader_enabled = 0.0
-shader_parameter/transparencia = 0.0
-shader_parameter/nivel_transparencia = 0.0
+[ext_resource type="Texture2D" uid="uid://cbx8yhgy3v4ui" path="res://assets/Renders/office/Ducts/DuctsFlashlight.png" id="2_sdvnd"]
+[ext_resource type="Texture2D" uid="uid://bmsinyrejf6wm" path="res://assets/Renders/office/Ducts/DuctsDark.png" id="3_frwqp"]
+[ext_resource type="Texture2D" uid="uid://buwfjv0yjg8gm" path="res://assets/Renders/office/Ducts/FoxyBackFlashlight.png" id="4_6ph06"]
+[ext_resource type="Texture2D" uid="uid://btb1k24ddwag0" path="res://assets/Renders/office/Ducts/FoxyBackDark.png" id="5_huett"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqlcn"]
 size = Vector2(1106, 1106.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cm3ov"]
-size = Vector2(546, 413)
+size = Vector2(413, 280)
 
-[node name="Ductos_Detras" type="Node2D" unique_id=1399113967 node_paths=PackedStringArray("ducto_detras_oscuro", "foxy", "soft_focus", "hard_focus")]
+[node name="Ductos_Detras" type="Node2D" unique_id=1399113967 node_paths=PackedStringArray("foxy", "soft_focus", "hard_focus")]
 script = ExtResource("1_tp3nd")
-ducto_detras_oscuro = NodePath("DuctoDetrasOscuro")
 foxy = NodePath("Foxy")
 soft_focus = NodePath("Soft_focus")
 hard_focus = NodePath("Hard_focus")
 
-[node name="DuctoDetrasIluminado" type="Sprite2D" parent="." unique_id=465259173]
-texture = ExtResource("1_drq1o")
+[node name="DuctLeft_Flashlight" type="Sprite2D" parent="." unique_id=403520661]
+position = Vector2(-704, 0)
+texture = ExtResource("2_sdvnd")
+region_enabled = true
+region_rect = Rect2(4352, 448, 1408, 1984)
 
-[node name="Foxy" type="Sprite2D" parent="." unique_id=283500727]
-position = Vector2(-11, -318)
-scale = Vector2(3.78526, 0.535853)
-texture = ExtResource("3_gqlcn")
+[node name="DuctRight_Flahslight" type="Sprite2D" parent="." unique_id=2132923507]
+position = Vector2(704, 0)
+texture = ExtResource("2_sdvnd")
+region_enabled = true
+region_rect = Rect2(0, 448, 1408, 1984)
 
-[node name="DuctoDetrasOscuro_Alpha" type="Sprite2D" parent="." unique_id=878298794]
-modulate = Color(1, 1, 1, 0.4)
-texture = ExtResource("2_mei6s")
+[node name="DuctLeft_Dark" type="Sprite2D" parent="." unique_id=2011487917 groups=["FlashlightPNG"]]
+position = Vector2(-704, 0)
+texture = ExtResource("3_frwqp")
+region_enabled = true
+region_rect = Rect2(4352, 448, 1408, 1984)
 
-[node name="DuctoDetrasOscuro" type="Sprite2D" parent="." unique_id=804143169]
-material = SubResource("ShaderMaterial_dvk6a")
-texture = ExtResource("2_mei6s")
-script = ExtResource("5_cm3ov")
+[node name="DuctRight_Dark" type="Sprite2D" parent="." unique_id=1474661885 groups=["FlashlightPNG"]]
+position = Vector2(704, 0)
+texture = ExtResource("3_frwqp")
+region_enabled = true
+region_rect = Rect2(0, 448, 1408, 1984)
+
+[node name="Foxy" type="Node2D" parent="." unique_id=943961681]
+
+[node name="FoxyLeft_Flashlight" type="Sprite2D" parent="Foxy" unique_id=1092664831]
+position = Vector2(-704, 0)
+texture = ExtResource("4_6ph06")
+region_enabled = true
+region_rect = Rect2(4352, 448, 1408, 1984)
+
+[node name="FoxyRight_Flahslight" type="Sprite2D" parent="Foxy" unique_id=1215762231]
+position = Vector2(704, 0)
+texture = ExtResource("4_6ph06")
+region_enabled = true
+region_rect = Rect2(0, 448, 1408, 1984)
+
+[node name="FoxyLeft_Dark" type="Sprite2D" parent="Foxy" unique_id=627066166 groups=["FlashlightPNG"]]
+position = Vector2(-704, 0)
+texture = ExtResource("5_huett")
+region_enabled = true
+region_rect = Rect2(4352, 448, 1408, 1984)
+
+[node name="Right_Dark" type="Sprite2D" parent="Foxy" unique_id=1112841530 groups=["FlashlightPNG"]]
+position = Vector2(704, 0)
+texture = ExtResource("5_huett")
+region_enabled = true
+region_rect = Rect2(0, 448, 1408, 1984)
 
 [node name="Soft_focus" type="Area2D" parent="." unique_id=312081233]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Soft_focus" unique_id=187223849]
 position = Vector2(0, -428.25)
 shape = SubResource("RectangleShape2D_gqlcn")
 
 [node name="Hard_focus" type="Area2D" parent="." unique_id=93472002]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus" unique_id=862204160]
-position = Vector2(0, -318.5)
+position = Vector2(-3.5, -391)
 shape = SubResource("RectangleShape2D_cm3ov")

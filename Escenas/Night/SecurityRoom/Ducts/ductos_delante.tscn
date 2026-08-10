@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bo3fa6mc0i5nu"]
+
+[ext_resource type="Script" uid="uid://8nysrngfedn" path="res://Escenas/Night/SecurityRoom/Ducts/ductos.gd" id="1_0rt5k"]
+[ext_resource type="Texture2D" uid="uid://cbx8yhgy3v4ui" path="res://assets/Renders/office/Ducts/DuctsFlashlight.png" id="2_7w72i"]
+[ext_resource type="Texture2D" uid="uid://bmsinyrejf6wm" path="res://assets/Renders/office/Ducts/DuctsDark.png" id="3_87s8e"]
+[ext_resource type="Texture2D" uid="uid://c3c026jy8iqq7" path="res://assets/Renders/office/Ducts/FoxyFrontFlashlight.png" id="4_nfqhr"]
+[ext_resource type="Texture2D" uid="uid://fguol3s6r4nl" path="res://assets/Renders/office/Ducts/FoxyFrontDark.png" id="5_0rt5k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og8rt"]
+size = Vector2(1070.8276, 1974.9458)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fgkh"]
+size = Vector2(257.97214, 429.5634)
+
+[node name="DuctosDelante" type="Node2D" unique_id=2053998410 node_paths=PackedStringArray("foxy", "soft_focus", "hard_focus")]
+script = ExtResource("1_0rt5k")
+foxy = NodePath("Foxy")
+soft_focus = NodePath("Soft_focus")
+hard_focus = NodePath("Hard_focus")
+
+[node name="DuctosFlashlight" type="Sprite2D" parent="." unique_id=106053953]
+texture = ExtResource("2_7w72i")
+region_enabled = true
+region_rect = Rect2(2688, 1088, 384, 704)
+
+[node name="DuctosDark" type="Sprite2D" parent="." unique_id=344084421 groups=["FlashlightPNG"]]
+texture = ExtResource("3_87s8e")
+region_enabled = true
+region_rect = Rect2(2688, 1088, 384, 704)
+
+[node name="Foxy" type="Node2D" parent="." unique_id=1314924921]
+
+[node name="FoxyFlashlight" type="Sprite2D" parent="Foxy" unique_id=700650726]
+texture = ExtResource("4_nfqhr")
+
+[node name="FoxyDark" type="Sprite2D" parent="Foxy" unique_id=1151219030 groups=["FlashlightPNG"]]
+texture = ExtResource("5_0rt5k")
+
+[node name="Soft_focus" type="Area2D" parent="." unique_id=527769337]
+position = Vector2(2, -199)
+scale = Vector2(0.821795, 0.381783)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soft_focus" unique_id=2036631456]
+position = Vector2(0, 31.431519)
+scale = Vector2(0.99999887, 0.9999989)
+shape = SubResource("RectangleShape2D_og8rt")
+
+[node name="Hard_focus" type="Area2D" parent="." unique_id=865826660]
+position = Vector2(2, -199)
+scale = Vector2(0.821795, 0.381783)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus" unique_id=2142220010]
+position = Vector2(0, -41.90863)
+scale = Vector2(0.99999875, 0.9999998)
+shape = SubResource("RectangleShape2D_2fgkh")

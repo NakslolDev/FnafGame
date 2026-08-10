@@ -41,6 +41,8 @@ window/stretch/mode="canvas_items"
 interactable="Area2D interactable on the night sections. It prevents overlaping with the flashlight"
 minigame=""
 scene_handler=""
+FlashlightPNG=""
+OscuridadMascara=""
 
 [input]
 
@@ -131,4 +133,3 @@ Focus={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
-driver/threads/thread_model=2

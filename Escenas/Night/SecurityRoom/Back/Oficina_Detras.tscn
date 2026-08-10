@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://ddgr31vso5rgd"]
 
 [ext_resource type="Script" uid="uid://7r4hvoim6p3q" path="res://Escenas/Night/SecurityRoom/Back/oficina_detras.gd" id="1_eq3uw"]
-[ext_resource type="Texture2D" uid="uid://yduq6rfeq6ao" path="res://assets/Renders/office/OfficeLight.png" id="4_j6h5j"]
+[ext_resource type="Texture2D" uid="uid://yduq6rfeq6ao" path="res://assets/Renders/office/OfficeDark.png" id="4_j6h5j"]
 [ext_resource type="PackedScene" uid="uid://mxxfro0701lh" path="res://Escenas/Night/Movement/Detector_Girar.tscn" id="4_jrb1r"]
 [ext_resource type="PackedScene" uid="uid://eq3843walx0w" path="res://Escenas/Night/SecurityRoom/Back/Ducts/Ductos_Detras.tscn" id="5_44ow4"]
+[ext_resource type="Texture2D" uid="uid://cegry2air4fvr" path="res://assets/Renders/office/OfficeFlashlight.png" id="6_0jgyy"]
 [ext_resource type="PackedScene" uid="uid://dp1parfdkvu0l" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/Recargar_Linterna.tscn" id="6_m6crn"]
 [ext_resource type="PackedScene" uid="uid://bonrb1xrjljf" path="res://Escenas/Night/SecurityRoom/Back/switches/Switch_Energia.tscn" id="7_h5o2t"]
 [ext_resource type="Texture2D" uid="uid://cbigicttaj4sm" path="res://assets/Placeholders/pictograms/Lightning.png" id="8_vt7d0"]
@@ -32,19 +33,31 @@ detras = true
 izquierda = false
 oficina = NodePath("..")
 
-[node name="Ductos_Detras" parent="." unique_id=1865929924 instance=ExtResource("5_44ow4")]
+[node name="OficinaLeft_Flashlight" type="Sprite2D" parent="." unique_id=1431522417]
+position = Vector2(-704, 0)
+texture = ExtResource("6_0jgyy")
+region_enabled = true
+region_rect = Rect2(4352, 448, 1408, 1984)
 
-[node name="OficinaLeft" type="Sprite2D" parent="." unique_id=390484687]
+[node name="OficinaRight_Flahslight" type="Sprite2D" parent="." unique_id=1132565130]
+position = Vector2(704, 0)
+texture = ExtResource("6_0jgyy")
+region_enabled = true
+region_rect = Rect2(0, 448, 1408, 1984)
+
+[node name="OficinaLeft_Dark" type="Sprite2D" parent="." unique_id=1416648626 groups=["FlashlightPNG"]]
 position = Vector2(-704, 0)
 texture = ExtResource("4_j6h5j")
 region_enabled = true
-region_rect = Rect2(4352, 768, 1408, 1408)
+region_rect = Rect2(4352, 448, 1408, 1984)
 
-[node name="OficinaRight" type="Sprite2D" parent="." unique_id=189597387]
+[node name="OficinaRight_Dark" type="Sprite2D" parent="." unique_id=540220759 groups=["FlashlightPNG"]]
 position = Vector2(704, 0)
 texture = ExtResource("4_j6h5j")
 region_enabled = true
-region_rect = Rect2(0, 768, 1408, 1408)
+region_rect = Rect2(0, 448, 1408, 1984)
+
+[node name="Ductos_Detras" parent="." unique_id=1865929924 instance=ExtResource("5_44ow4")]
 
 [node name="Recargar_Linterna" parent="." unique_id=1461783972 node_paths=PackedStringArray("office_behind") instance=ExtResource("6_m6crn")]
 office_behind = NodePath("..")

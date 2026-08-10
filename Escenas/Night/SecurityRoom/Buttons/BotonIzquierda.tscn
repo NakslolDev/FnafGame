@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://q218o01pxf4y"]
+
+[ext_resource type="Script" uid="uid://depuj23yjh7gx" path="res://Escenas/Night/SecurityRoom/Buttons/boton.gd" id="1_ubscd"]
+[ext_resource type="Texture2D" uid="uid://7861sxubpu2t" path="res://assets/Renders/office/Buttons/OnFlashlight.png" id="2_7hd5c"]
+[ext_resource type="Texture2D" uid="uid://badv1ctinddy" path="res://assets/Renders/office/Buttons/OnDark.png" id="3_w8cr4"]
+[ext_resource type="Texture2D" uid="uid://l5cbxm3wgtsw" path="res://assets/Renders/office/Buttons/OffFlashlight.png" id="4_dcc8t"]
+[ext_resource type="Texture2D" uid="uid://cy23canuemhp4" path="res://assets/Renders/office/Buttons/OffDark.png" id="5_0hvkw"]
+[ext_resource type="Script" uid="uid://bb4256acvhna2" path="res://Escenas/Night/SecurityRoom/Buttons/area_boton.gd" id="5_w8cr4"]
+[ext_resource type="Texture2D" uid="uid://bbi5j4ym33hfi" path="res://assets/Renders/office/Buttons/DeactivatedFlashlight.png" id="6_slx8j"]
+[ext_resource type="Texture2D" uid="uid://b4fhjghirihwe" path="res://assets/Renders/office/Buttons/DeactivatedDark.png" id="7_jm5dn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hd5c"]
+size = Vector2(76.75, 101)
+
+[node name="BotonIzquierda" type="Node2D" unique_id=358012948 node_paths=PackedStringArray("verde", "rojo", "no_energia")]
+script = ExtResource("1_ubscd")
+verde = NodePath("Verde")
+rojo = NodePath("Rojo")
+no_energia = NodePath("NoEnergia")
+
+[node name="Verde" type="Node2D" parent="." unique_id=1524314247]
+
+[node name="VerdeFlashlight" type="Sprite2D" parent="Verde" unique_id=1195166401]
+position = Vector2(-1440, 0)
+texture = ExtResource("2_7hd5c")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 2880)
+
+[node name="VerdeDark" type="Sprite2D" parent="Verde" unique_id=673603534 groups=["FlashlightPNG"]]
+position = Vector2(-1440, 0)
+texture = ExtResource("3_w8cr4")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 2880)
+
+[node name="Rojo" type="Node2D" parent="." unique_id=1139848824]
+
+[node name="RojoFlashlight" type="Sprite2D" parent="Rojo" unique_id=1826554364 groups=["OscuridadMascara"]]
+position = Vector2(-1440, 0)
+texture = ExtResource("4_dcc8t")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 2880)
+
+[node name="RojoDark" type="Sprite2D" parent="Rojo" unique_id=1917903842 groups=["FlashlightPNG"]]
+position = Vector2(-1440, 0)
+texture = ExtResource("5_0hvkw")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 2880)
+
+[node name="NoEnergia" type="Node2D" parent="." unique_id=2092625445]
+
+[node name="NoEnergiaFlashlight" type="Sprite2D" parent="NoEnergia" unique_id=1716239006]
+position = Vector2(-1440, 0)
+texture = ExtResource("6_slx8j")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 2880)
+
+[node name="NoEnergiaDark" type="Sprite2D" parent="NoEnergia" unique_id=897465012 groups=["FlashlightPNG"]]
+position = Vector2(-1440, 0)
+texture = ExtResource("7_jm5dn")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 2880)
+
+[node name="AreaBoton" type="Area2D" parent="." unique_id=1004161636 groups=["interactable"]]
+script = ExtResource("5_w8cr4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaBoton" unique_id=906988600]
+position = Vector2(-742.375, 42.5)
+shape = SubResource("RectangleShape2D_7hd5c")
