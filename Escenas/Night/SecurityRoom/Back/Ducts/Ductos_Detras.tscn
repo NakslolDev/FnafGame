@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bmsinyrejf6wm" path="res://assets/Renders/office/Ducts/DuctsDark.png" id="3_frwqp"]
 [ext_resource type="Texture2D" uid="uid://buwfjv0yjg8gm" path="res://assets/Renders/office/Ducts/FoxyBackFlashlight.png" id="4_6ph06"]
 [ext_resource type="Texture2D" uid="uid://btb1k24ddwag0" path="res://assets/Renders/office/Ducts/FoxyBackDark.png" id="5_huett"]
+[ext_resource type="Texture2D" uid="uid://dn03dyrslhqn8" path="res://assets/Renders/office/Ducts/FoxyBackBrighting.png" id="6_e8bct"]
+[ext_resource type="Script" uid="uid://yya23cdyyhfm" path="res://Escenas/Night/RandomScriptsIDC/bright.gd" id="7_vic7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqlcn"]
 size = Vector2(1106, 1106.5)
@@ -62,11 +64,29 @@ texture = ExtResource("5_huett")
 region_enabled = true
 region_rect = Rect2(4352, 448, 1408, 1984)
 
-[node name="Right_Dark" type="Sprite2D" parent="Foxy" unique_id=1112841530 groups=["FlashlightPNG"]]
+[node name="FoxyRight_Dark" type="Sprite2D" parent="Foxy" unique_id=1112841530 groups=["FlashlightPNG"]]
 position = Vector2(704, 0)
 texture = ExtResource("5_huett")
 region_enabled = true
 region_rect = Rect2(0, 448, 1408, 1984)
+
+[node name="FoxyLeft_Brighting" type="Sprite2D" parent="Foxy" unique_id=900752883]
+z_index = 1
+position = Vector2(-704, 0)
+texture = ExtResource("6_e8bct")
+region_enabled = true
+region_rect = Rect2(4352, 448, 1408, 1984)
+script = ExtResource("7_vic7x")
+metadata/_custom_type_script = "uid://yya23cdyyhfm"
+
+[node name="FoxyRight_Brighting" type="Sprite2D" parent="Foxy" unique_id=2747194]
+z_index = 1
+position = Vector2(704, 0)
+texture = ExtResource("6_e8bct")
+region_enabled = true
+region_rect = Rect2(0, 448, 1408, 1984)
+script = ExtResource("7_vic7x")
+metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Soft_focus" type="Area2D" parent="." unique_id=312081233]
 visible = false

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://2g1rebe43ol4"]
+
+[ext_resource type="Script" uid="uid://c5iugl6nl11bv" path="res://Escenas/Night/SecurityRoom/Doors/puerta.gd" id="1_ejpld"]
+[ext_resource type="Script" uid="uid://d1bcrcmsh21pf" path="res://Escenas/Night/SecurityRoom/Doors/animated_door.gd" id="2_mymql"]
+[ext_resource type="Script" uid="uid://be5qcgoggve78" path="res://Escenas/Night/SecurityRoom/Doors/bright_animated_door.gd" id="3_mymql"]
+
+[node name="PuertaIzquierda" type="Node2D" unique_id=718649087 node_paths=PackedStringArray("timer", "animations")]
+script = ExtResource("1_ejpld")
+timer = NodePath("Timer")
+animations = [NodePath("Flashlight"), NodePath("Dark"), NodePath("Darkest")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1448263911]
+wait_time = 0.05
+one_shot = true
+
+[node name="Flashlight" type="AnimatedSprite2D" parent="." unique_id=111458129]
+script = ExtResource("2_mymql")
+frames_file = "res://assets/Renders/office/Door/Left/flahslight/"
+frame_step = 5
+
+[node name="Dark" type="AnimatedSprite2D" parent="." unique_id=64482867 groups=["FlashlightPNG"]]
+script = ExtResource("2_mymql")
+frames_file = "res://assets/Renders/office/Door/Left/dark/"
+frame_step = 5
+
+[node name="Darkest" type="AnimatedSprite2D" parent="." unique_id=2053636661]
+z_index = 2
+script = ExtResource("3_mymql")
+no_chroma = true
+frames_file = "res://assets/Renders/office/Door/Left/dark/"
+frame_step = 5
+metadata/_custom_type_script = "uid://d0q2hem5klm0q"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

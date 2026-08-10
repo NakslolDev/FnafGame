@@ -42,7 +42,7 @@ interactable="Area2D interactable on the night sections. It prevents overlaping 
 minigame=""
 scene_handler=""
 FlashlightPNG=""
-OscuridadMascara=""
+Brillantes=""
 
 [input]
 

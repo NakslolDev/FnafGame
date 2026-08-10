@@ -72,6 +72,8 @@ func actualizar_sprites(audio := true):
 			if audio: ButtonPlay.emit(false)
 	else:
 		no_energia.visible = true
+		verde.visible = false
+		rojo.visible = false
 
 func _on_oficina_girando_estado(girando: int) -> void:
 	local_girando = girando

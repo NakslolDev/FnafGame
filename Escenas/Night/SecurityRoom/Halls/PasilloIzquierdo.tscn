@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cgap0gxpkphkj" path="res://assets/Renders/office/Halls/BonnieDark.png" id="5_yr6bs"]
 [ext_resource type="Texture2D" uid="uid://bkurjxegq6q0v" path="res://assets/Renders/office/Halls/FoxyLeftFlashlight.png" id="6_yr6bs"]
 [ext_resource type="Texture2D" uid="uid://b4g3ff3wybljt" path="res://assets/Renders/office/Halls/FoxyLeftDark.png" id="7_00vi2"]
+[ext_resource type="Texture2D" uid="uid://diiujmiuodlit" path="res://assets/Renders/office/Halls/FoxyLeftBrighting.png" id="8_okk65"]
+[ext_resource type="Script" uid="uid://yya23cdyyhfm" path="res://Escenas/Night/RandomScriptsIDC/bright.gd" id="9_epdgk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1db6b"]
 size = Vector2(1790, 2402)
@@ -49,6 +51,13 @@ texture = ExtResource("6_yr6bs")
 
 [node name="FoxyDark" type="Sprite2D" parent="Foxy" unique_id=2084032718 groups=["FlashlightPNG"]]
 texture = ExtResource("7_00vi2")
+
+[node name="FoxyBrighting" type="Sprite2D" parent="Foxy" unique_id=2116618685]
+z_index = 1
+texture = ExtResource("8_okk65")
+region_rect = Rect2(2688, 1088, 384, 704)
+script = ExtResource("9_epdgk")
+metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Chica" type="Node2D" parent="." unique_id=78770447]
 

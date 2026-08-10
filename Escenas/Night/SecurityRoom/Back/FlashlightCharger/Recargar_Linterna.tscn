@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b15n3emnrh5nc" path="res://assets/sounds/Linterna Encajar.mp3" id="5_2truv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4dkt"]
-size = Vector2(208, 400)
+size = Vector2(279, 469)
 
 [node name="Recargar_Linterna" type="Node2D" unique_id=2017254811 node_paths=PackedStringArray("linterna_recargando", "agarrar", "encajar")]
 script = ExtResource("1_8pogo")
@@ -16,13 +16,14 @@ agarrar = NodePath("Agarrar")
 encajar = NodePath("Encajar")
 
 [node name="LinternaRecargando" type="Sprite2D" parent="." unique_id=2097981898]
+position = Vector2(68, 126)
 texture = ExtResource("1_b6u2f")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1844893614 groups=["interactable"]]
 script = ExtResource("3_i4dkt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1645869425]
-position = Vector2(-475, 13)
+position = Vector2(-401.5, 143.5)
 shape = SubResource("RectangleShape2D_i4dkt")
 
 [node name="Agarrar" type="AudioStreamPlayer" parent="." unique_id=38315301]

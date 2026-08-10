@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://d1j05sj38vxq2" path="res://Escenas/Night/main_game.gd" id="1_ri0qg"]
 [ext_resource type="Script" uid="uid://dg87i78j5fghc" path="res://Escenas/Night/RandomScriptsIDC/cheats.gd" id="2_4erhx"]
 [ext_resource type="Script" uid="uid://bqwie24f1rykg" path="res://Escenas/Night/SecurityRoom/oficina.gd" id="4_arw1f"]
-[ext_resource type="Script" uid="uid://cqq50gwurqhfb" path="res://Escenas/Night/flashlight_shader_control.gd" id="4_xe21u"]
+[ext_resource type="Script" uid="uid://cqq50gwurqhfb" path="res://Escenas/Night/RandomScriptsIDC/flashlight_shader_control.gd" id="4_xe21u"]
 [ext_resource type="Script" uid="uid://blpn7t14i1trt" path="res://Escenas/Night/SecurityRoom/Back/Ventilation/ventilation.gd" id="5_ujq6x"]
 [ext_resource type="AudioStream" uid="uid://6cf4ra3goluv" path="res://assets/sounds/Ventilation_loop.ogg" id="6_hal1v"]
 [ext_resource type="PackedScene" uid="uid://mxxfro0701lh" path="res://Escenas/Night/Movement/Detector_Girar.tscn" id="7_q5fcm"]
 [ext_resource type="PackedScene" uid="uid://bo3fa6mc0i5nu" path="res://Escenas/Night/SecurityRoom/Ducts/ductos_delante.tscn" id="8_v0aef"]
 [ext_resource type="PackedScene" uid="uid://bkhep68tnnnt4" path="res://Escenas/Night/SecurityRoom/Halls/PasilloIzquierdo.tscn" id="9_1n26x"]
 [ext_resource type="PackedScene" uid="uid://ben1xduwqjx0k" path="res://Escenas/Night/SecurityRoom/Buttons/BotonDerecha.tscn" id="10_y2ail"]
-[ext_resource type="PackedScene" uid="uid://cjvr4sjqr5ybo" path="res://Escenas/Night/SecurityRoom/Doors/Puerta.tscn" id="11_e8gno"]
 [ext_resource type="PackedScene" uid="uid://ddgr31vso5rgd" path="res://Escenas/Night/SecurityRoom/Back/Oficina_Detras.tscn" id="12_5xwdc"]
 [ext_resource type="Texture2D" uid="uid://yduq6rfeq6ao" path="res://assets/Renders/office/OfficeDark.png" id="12_u32el"]
 [ext_resource type="Texture2D" uid="uid://cegry2air4fvr" path="res://assets/Renders/office/OfficeFlashlight.png" id="12_xe21u"]
@@ -18,7 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://djq5lt74n68hd" path="res://Escenas/Night/SecurityRoom/Halls/PasilloDerecho.tscn" id="14_pd3h4"]
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
 [ext_resource type="PackedScene" uid="uid://q218o01pxf4y" path="res://Escenas/Night/SecurityRoom/Buttons/BotonIzquierda.tscn" id="16_u1au3"]
+[ext_resource type="PackedScene" uid="uid://2g1rebe43ol4" path="res://Escenas/Night/SecurityRoom/Doors/puerta_izquierda.tscn" id="17_4erhx"]
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]
+[ext_resource type="PackedScene" uid="uid://cmnxslwti0m3s" path="res://Escenas/Night/SecurityRoom/Doors/puerta_derecha.tscn" id="18_4erhx"]
 [ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://Escenas/Night/SecurityRoom/FreddyPoster/Freddy_nose.tscn" id="18_uce18"]
 [ext_resource type="PackedScene" uid="uid://b5xqa4eh847iv" path="res://Escenas/Night/Flashlight/Linterna.tscn" id="20_ewgm2"]
 [ext_resource type="Script" uid="uid://copgamiotj7w5" path="res://Escenas/Night/RandomScriptsIDC/canvas_layer_hide_with_cams.gd" id="20_xe21u"]
@@ -31,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://e3jysadl0hnq" path="res://assets/sounds/Irritating_fluorecent_light_loop.ogg" id="28_imsbu"]
 [ext_resource type="PackedScene" uid="uid://byolv1ohrbema" path="res://Escenas/Night/UI/Linterna_Bateria_Icono.tscn" id="29_wt1mn"]
 [ext_resource type="PackedScene" uid="uid://o8o073xrlb54" path="res://Escenas/Night/UI/Energia_Icono.tscn" id="30_6536c"]
+[ext_resource type="Script" uid="uid://sfv31pf0c2r1" path="res://Escenas/Night/RandomScriptsIDC/canvas_layer_bright_sprites.gd" id="30_ri0qg"]
 [ext_resource type="PackedScene" uid="uid://c3c06jfj5tb32" path="res://Escenas/Night/alucinations/alucinations.tscn" id="31_bplc8"]
 [ext_resource type="PackedScene" uid="uid://cenm4urvvqglo" path="res://Escenas/Night/alucinations/alucinations_blackout.tscn" id="32_17bge"]
 [ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://Escenas/Night/RandomScriptsIDC/ready_visible.gd" id="33_0nvb3"]
@@ -56,19 +58,12 @@ shader_parameter/shader_enabled = 0.0
 shader_parameter/transparencia = 0.0
 shader_parameter/nivel_transparencia = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_33sfd"]
-shader = ExtResource("23_snhey")
-shader_parameter/zoom = 0.2
-shader_parameter/sharpness = 1.8
-shader_parameter/direction = Vector2(0, 1)
-shader_parameter/wrapping_mode = 0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xe21u"]
 shader = ExtResource("26_y2bxh")
 shader_parameter/mouse_pos = Vector2(0, 0)
 shader_parameter/radio = 450.0
 shader_parameter/viewport_size = Vector2(0, 0)
-shader_parameter/fade_range = 50.0
+shader_parameter/fade_range = 150.0
 shader_parameter/shader_enabled = 0.0
 shader_parameter/transparencia = 1.0
 shader_parameter/nivel_transparencia = 1.0
@@ -199,7 +194,7 @@ width = 1920
 height = 1080
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0, 0.8)
+fill_to = Vector2(0, 0.90000004)
 metadata/_snap_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mros8"]
@@ -211,6 +206,20 @@ shader_parameter/fade_range = 500.0
 shader_parameter/shader_enabled = 0.0
 shader_parameter/transparencia = 1.0
 shader_parameter/nivel_transparencia = 0.95
+
+[sub_resource type="Gradient" id="Gradient_ri0qg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5qb44"]
+gradient = SubResource("Gradient_ri0qg")
+width = 2214
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33sfd"]
+shader = ExtResource("23_snhey")
+shader_parameter/zoom = 0.2
+shader_parameter/sharpness = 1.8
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/wrapping_mode = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4c7a"]
 size = Vector2(1920, 38)
@@ -245,8 +254,6 @@ one_shot = true
 
 [node name="Cheats" type="Node" parent="." unique_id=1206509325 node_paths=PackedStringArray("tick_label", "batery_label", "time_label", "insanity_label", "animatronic_map_node", "vhs_player")]
 script = ExtResource("2_4erhx")
-get_from_global = false
-infinite_light = true
 tick_label = NodePath("../True_No_Shader/Tick_label")
 batery_label = NodePath("../True_No_Shader/VBoxContainer/Batery_Label")
 time_label = NodePath("../True_No_Shader/VBoxContainer/Time_label")
@@ -308,20 +315,16 @@ oficina = NodePath("..")
 
 [node name="PasilloDerecho" parent="Oficina" unique_id=397326124 instance=ExtResource("14_pd3h4")]
 
+[node name="BotonIzquierda" parent="Oficina" unique_id=1652427933 node_paths=PackedStringArray("root") instance=ExtResource("16_u1au3")]
+root = NodePath("../..")
+
 [node name="BotonDerecha" parent="Oficina" unique_id=358012948 node_paths=PackedStringArray("root") instance=ExtResource("10_y2ail")]
 root = NodePath("../..")
 boton_izquierda = false
 
-[node name="BotonIzquierda" parent="Oficina" unique_id=1652427933 node_paths=PackedStringArray("root") instance=ExtResource("16_u1au3")]
-root = NodePath("../..")
+[node name="PuertaIzquierda" parent="Oficina" unique_id=718649087 instance=ExtResource("17_4erhx")]
 
-[node name="Puerta Izquierda" parent="Oficina" unique_id=1880143791 instance=ExtResource("11_e8gno")]
-position = Vector2(0, -1200)
-
-[node name="Puerta Derecha" parent="Oficina" unique_id=693856865 instance=ExtResource("11_e8gno")]
-position = Vector2(0, -1200)
-rotation = 3.14159
-scale = Vector2(1, -1)
+[node name="PuertaDerecha" parent="Oficina" unique_id=1174262195 instance=ExtResource("18_4erhx")]
 
 [node name="VHS_Player" parent="Oficina" unique_id=454136740 node_paths=PackedStringArray("main_game") instance=ExtResource("14_lctcs")]
 position = Vector2(259, 120)
@@ -352,6 +355,93 @@ hide_png = true
 opacidad = 0.7
 puntero = "3"
 
+[node name="CanvasLayerDarkness" type="CanvasLayer" parent="." unique_id=1673450552 node_paths=PackedStringArray("camaras_control")]
+layer = 0
+visible = false
+script = ExtResource("20_xe21u")
+camaras_control = NodePath("../Camaras_Control")
+
+[node name="Lights" type="Node2D" parent="CanvasLayerDarkness" unique_id=630175932 node_paths=PackedStringArray("oficina_lights_out_alpha", "irritating_light", "bright_sprites_visibility_control")]
+position = Vector2(960, 540)
+script = ExtResource("24_ao3mo")
+oficina_lights_out_alpha = NodePath("Oficina_lights_out_Alpha")
+irritating_light = NodePath("Irritating_light")
+bright_sprites_visibility_control = NodePath("../../CanvasLayerBrightSprites/VisibilityControl")
+
+[node name="Oficina_lights_out_Alpha" type="Sprite2D" parent="CanvasLayerDarkness/Lights" unique_id=174580296]
+texture = ExtResource("25_0pxa1")
+
+[node name="RuidoTimer" type="Timer" parent="CanvasLayerDarkness/Lights" unique_id=77940231]
+wait_time = 0.05
+
+[node name="Ruido" type="Node2D" parent="CanvasLayerDarkness/Lights" unique_id=2076738744]
+material = SubResource("ShaderMaterial_xe21u")
+scale = Vector2(3, 3)
+
+[node name="Ruido1" type="Sprite2D" parent="CanvasLayerDarkness/Lights/Ruido" unique_id=1660319294]
+material = SubResource("ShaderMaterial_xe21u")
+texture = SubResource("NoiseTexture2D_u32el")
+
+[node name="Ruido2" type="Sprite2D" parent="CanvasLayerDarkness/Lights/Ruido" unique_id=345150706]
+material = SubResource("ShaderMaterial_xe21u")
+texture = SubResource("NoiseTexture2D_u1au3")
+
+[node name="Ruido3" type="Sprite2D" parent="CanvasLayerDarkness/Lights/Ruido" unique_id=917585757]
+material = SubResource("ShaderMaterial_xe21u")
+texture = SubResource("NoiseTexture2D_xe21u")
+
+[node name="Ruido4" type="Sprite2D" parent="CanvasLayerDarkness/Lights/Ruido" unique_id=866052324]
+material = SubResource("ShaderMaterial_xe21u")
+texture = SubResource("NoiseTexture2D_pd3h4")
+
+[node name="Ruido5" type="Sprite2D" parent="CanvasLayerDarkness/Lights/Ruido" unique_id=994945696]
+material = SubResource("ShaderMaterial_xe21u")
+texture = SubResource("NoiseTexture2D_0nvb3")
+
+[node name="Ruido6" type="Sprite2D" parent="CanvasLayerDarkness/Lights/Ruido" unique_id=556371632]
+material = SubResource("ShaderMaterial_xe21u")
+texture = SubResource("NoiseTexture2D_4erhx")
+
+[node name="Ruido7" type="Sprite2D" parent="CanvasLayerDarkness/Lights/Ruido" unique_id=1555904730]
+material = SubResource("ShaderMaterial_xe21u")
+texture = SubResource("NoiseTexture2D_arw1f")
+
+[node name="Ruido8" type="Sprite2D" parent="CanvasLayerDarkness/Lights/Ruido" unique_id=734748453]
+material = SubResource("ShaderMaterial_xe21u")
+texture = SubResource("NoiseTexture2D_hal1v")
+
+[node name="Viñeta" type="Sprite2D" parent="CanvasLayerDarkness/Lights" unique_id=457874713]
+material = SubResource("ShaderMaterial_u32el")
+texture = SubResource("GradientTexture2D_xe21u")
+
+[node name="Oficina_lights_out" type="Sprite2D" parent="CanvasLayerDarkness/Lights" unique_id=616897827 node_paths=PackedStringArray("lights", "viñeta", "ruido", "ruido_timer")]
+material = SubResource("ShaderMaterial_mros8")
+texture = ExtResource("25_0pxa1")
+script = ExtResource("27_60v0j")
+lights = NodePath("..")
+"viñeta" = NodePath("../Viñeta")
+ruido = NodePath("../Ruido")
+ruido_timer = NodePath("../RuidoTimer")
+
+[node name="Irritating_light" type="AudioStreamPlayer" parent="CanvasLayerDarkness/Lights" unique_id=142042597]
+stream = ExtResource("28_imsbu")
+volume_db = 3.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="CanvasLayerBrightSprites" type="CanvasLayer" parent="." unique_id=2130204014 node_paths=PackedStringArray("visibility_control")]
+layer = 0
+script = ExtResource("30_ri0qg")
+visibility_control = NodePath("VisibilityControl")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayerBrightSprites" unique_id=1465954232]
+visible = false
+position = Vector2(960, 540)
+scale = Vector2(1, 1271.9999)
+texture = SubResource("GradientTexture1D_5qb44")
+
+[node name="VisibilityControl" type="Node2D" parent="CanvasLayerBrightSprites" unique_id=922369026]
+
 [node name="CanvasLayer_Shader" type="CanvasLayer" parent="." unique_id=1453401536 node_paths=PackedStringArray("camaras_control")]
 visible = false
 script = ExtResource("20_xe21u")
@@ -376,74 +466,6 @@ position = Vector2(1784, 896)
 
 [node name="Energia_Icono" parent="No_Shader_UI" unique_id=1429314295 instance=ExtResource("30_6536c")]
 position = Vector2(128, 984)
-
-[node name="Lights" type="Node2D" parent="No_Shader_UI" unique_id=630175932 node_paths=PackedStringArray("oficina_lights_out_alpha", "irritating_light")]
-position = Vector2(960, 540)
-script = ExtResource("24_ao3mo")
-oficina_lights_out_alpha = NodePath("Oficina_lights_out_Alpha")
-irritating_light = NodePath("Irritating_light")
-
-[node name="Oficina_lights_out_Alpha" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=174580296]
-texture = ExtResource("25_0pxa1")
-
-[node name="RuidoTimer" type="Timer" parent="No_Shader_UI/Lights" unique_id=77940231]
-wait_time = 0.05
-
-[node name="Ruido" type="Node2D" parent="No_Shader_UI/Lights" unique_id=2076738744]
-material = SubResource("ShaderMaterial_xe21u")
-scale = Vector2(3, 3)
-
-[node name="Ruido1" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=1660319294]
-material = SubResource("ShaderMaterial_xe21u")
-texture = SubResource("NoiseTexture2D_u32el")
-
-[node name="Ruido2" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=345150706]
-material = SubResource("ShaderMaterial_xe21u")
-texture = SubResource("NoiseTexture2D_u1au3")
-
-[node name="Ruido3" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=917585757]
-material = SubResource("ShaderMaterial_xe21u")
-texture = SubResource("NoiseTexture2D_xe21u")
-
-[node name="Ruido4" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=866052324]
-material = SubResource("ShaderMaterial_xe21u")
-texture = SubResource("NoiseTexture2D_pd3h4")
-
-[node name="Ruido5" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=994945696]
-material = SubResource("ShaderMaterial_xe21u")
-texture = SubResource("NoiseTexture2D_0nvb3")
-
-[node name="Ruido6" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=556371632]
-material = SubResource("ShaderMaterial_xe21u")
-texture = SubResource("NoiseTexture2D_4erhx")
-
-[node name="Ruido7" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=1555904730]
-material = SubResource("ShaderMaterial_xe21u")
-texture = SubResource("NoiseTexture2D_arw1f")
-
-[node name="Ruido8" type="Sprite2D" parent="No_Shader_UI/Lights/Ruido" unique_id=734748453]
-material = SubResource("ShaderMaterial_xe21u")
-texture = SubResource("NoiseTexture2D_hal1v")
-
-[node name="Viñeta" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=457874713]
-material = SubResource("ShaderMaterial_u32el")
-texture = SubResource("GradientTexture2D_xe21u")
-
-[node name="Oficina_lights_out" type="Sprite2D" parent="No_Shader_UI/Lights" unique_id=616897827 node_paths=PackedStringArray("lights", "viñeta", "ruido", "ruido_timer")]
-visible = false
-material = SubResource("ShaderMaterial_mros8")
-texture = ExtResource("25_0pxa1")
-script = ExtResource("27_60v0j")
-lights = NodePath("..")
-"viñeta" = NodePath("../Viñeta")
-ruido = NodePath("../Ruido")
-ruido_timer = NodePath("../RuidoTimer")
-
-[node name="Irritating_light" type="AudioStreamPlayer" parent="No_Shader_UI/Lights" unique_id=142042597]
-stream = ExtResource("28_imsbu")
-volume_db = 3.0
-bus = &"SFX"
-parameters/looping = true
 
 [node name="True_No_Shader" type="CanvasLayer" parent="." unique_id=987376596]
 layer = 4
@@ -552,9 +574,9 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="on_tick_stop" from="." to="Oficina/Ventilation" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="Oficina/Oficina_Detras" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="Oficina/VHS_Player" method="_on_main_game_on_tick_stop"]
+[connection signal="on_tick_stop" from="." to="CanvasLayerDarkness/Lights" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="No_Shader_UI/Linterna_Bateria_Icono" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="No_Shader_UI/Energia_Icono" method="_on_main_game_on_tick_stop"]
-[connection signal="on_tick_stop" from="." to="No_Shader_UI/Lights" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="True_No_Shader/Alucinations" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="Camaras_Control" method="_on_main_game_on_tick_stop"]
 [connection signal="timeout" from="Control/Tick" to="." method="_on_tick_timeout"]
@@ -576,20 +598,20 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina/Oficina_Detras" method="_on_detector_girar_izquierda_girar"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]
 [connection signal="Linterna_Recarga_Switch_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_recarga_switch_rebote"]
-[connection signal="ButtonPlay" from="Oficina/BotonDerecha" to="DirectionalAudio" method="_on_boton_derecha_button_play"]
-[connection signal="Puerta_Cambio" from="Oficina/BotonDerecha" to="Oficina/Puerta Derecha" method="_on_boton_derecha_puerta_cambio"]
 [connection signal="ButtonPlay" from="Oficina/BotonIzquierda" to="DirectionalAudio" method="_on_boton_izquierda_button_play"]
-[connection signal="Puerta_Cambio" from="Oficina/BotonIzquierda" to="Oficina/Puerta Izquierda" method="_on_boton_izquierda_puerta_cambio"]
-[connection signal="Sound" from="Oficina/Puerta Izquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
-[connection signal="Sound" from="Oficina/Puerta Derecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
+[connection signal="Puerta_Cambio" from="Oficina/BotonIzquierda" to="Oficina/PuertaIzquierda" method="_on_boton_izquierda_puerta_cambio"]
+[connection signal="ButtonPlay" from="Oficina/BotonDerecha" to="DirectionalAudio" method="_on_boton_derecha_button_play"]
+[connection signal="Puerta_Cambio" from="Oficina/BotonDerecha" to="Oficina/PuertaDerecha" method="_on_boton_derecha_puerta_cambio"]
+[connection signal="Sound" from="Oficina/PuertaIzquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
+[connection signal="Sound" from="Oficina/PuertaDerecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
 [connection signal="act_audio" from="Oficina/VHS_Player" to="DirectionalAudio" method="_on_vhs_player_act_audio"]
 [connection signal="change_audio_stream" from="Oficina/VHS_Player" to="DirectionalAudio" method="_on_vhs_player_change_audio_stream"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/FlashlightShaderControl" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Oficina_Detras" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Ductos" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Izquierdo" method="_on_linterna_linterna_activada_switch"]
-[connection signal="Linterna_Activada_Switch" from="Linterna" to="No_Shader_UI/Lights/Oficina_lights_out" method="_on_linterna_linterna_activada_switch"]
-[connection signal="timeout" from="No_Shader_UI/Lights/RuidoTimer" to="No_Shader_UI/Lights/Oficina_lights_out" method="_on_ruido_timer_timeout"]
+[connection signal="Linterna_Activada_Switch" from="Linterna" to="CanvasLayerDarkness/Lights/Oficina_lights_out" method="_on_linterna_linterna_activada_switch"]
+[connection signal="timeout" from="CanvasLayerDarkness/Lights/RuidoTimer" to="CanvasLayerDarkness/Lights/Oficina_lights_out" method="_on_ruido_timer_timeout"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Bonnie" to="." method="_on_jumpscare_bonnie_jumpscare_end"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Chica" to="." method="_on_jumpscare_chica_jumpscare_end"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Freddy" to="." method="_on_jumpscare_freddy_jumpscare_end"]

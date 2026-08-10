@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://clk07ggsfox88"]
 
 [ext_resource type="Script" uid="uid://4fjcgs6njf0t" path="res://Escenas/Menu/MainMenu/menu_principal.gd" id="1_7cw0h"]
+[ext_resource type="Texture2D" uid="uid://uhacg77rodqx" path="res://assets/Placeholders/Menu_Art.png" id="2_t6ttm"]
 [ext_resource type="Texture2D" uid="uid://d3bokitp67hae" path="res://assets/Placeholders/UI_Menu/Titulo.png" id="3_fq31k"]
 [ext_resource type="Script" uid="uid://ronda45c7s6u" path="res://Escenas/Menu/MainMenu/main_buttons.gd" id="4_djrq7"]
 [ext_resource type="AudioStream" uid="uid://dj67m1ll27oey" path="res://assets/sounds/menu_click.wav" id="5_8x8is"]
@@ -13,16 +14,13 @@
 [ext_resource type="Script" uid="uid://coh84xcfmkrvv" path="res://Escenas/Menu/MainMenu/stars.gd" id="12_hoy0e"]
 [ext_resource type="Texture2D" uid="uid://dflfp1neyqnuf" path="res://assets/Placeholders/white_star.png" id="13_4lh2l"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2kspd"]
-load_path = "res://.godot/imported/Menu_Art.png-2ce95289e9e0f2b534a267740bebaf33.ctex"
-
 [node name="Menu principal" type="Node2D" unique_id=876365489]
 script = ExtResource("1_7cw0h")
 
 [node name="MenuArt" type="Sprite2D" parent="." unique_id=1266682085]
 position = Vector2(-3.71337e-05, 0)
 scale = Vector2(3.00469, 3)
-texture = SubResource("CompressedTexture2D_2kspd")
+texture = ExtResource("2_t6ttm")
 
 [node name="Titulo" type="Sprite2D" parent="." unique_id=735527176]
 texture = ExtResource("3_fq31k")

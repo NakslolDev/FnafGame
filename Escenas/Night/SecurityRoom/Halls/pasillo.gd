@@ -16,8 +16,8 @@ var animation_memory := false
 @export var hard_focus: Area2D
 
 func _ready():
-	bonnie.visible = true
-	chica.visible = true
+	bonnie.visible = false
+	chica.visible = false
 	foxy.visible = false
 	Bonnie.movement.connect(movement)
 	Chica.movement.connect(movement)

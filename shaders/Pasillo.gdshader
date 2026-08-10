@@ -5,7 +5,7 @@ uniform float radio = 10.0;
 uniform vec2 viewport_size;
 uniform float fade_range = 380.0;
 uniform float shader_enabled = 0.0;
-uniform float transparencia = 0.0; // 1.0 = fondo semitransparente, 0.0 = opaco
+uniform float transparencia = 1.0; // 1.0 = fondo semitransparente, 0.0 = opaco
 uniform float nivel_transparencia = 0.0;
 
 void fragment() {

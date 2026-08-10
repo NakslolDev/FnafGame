@@ -12,7 +12,7 @@ var animation_memory := false
 @export var hard_focus: Area2D
 
 func _ready():
-	foxy.visible = true
+	foxy.visible = false
 	Foxy.movement.connect(movement)
 	Foxy.back_duct_focus = self
 
