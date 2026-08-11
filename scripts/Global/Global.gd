@@ -94,8 +94,8 @@ func guardar_configuration():
 		"mouse_custom_op": mouse_custom_op,
 		"mouse_custom_punt": mouse_custom_punt,
 		"mouse_cam_see": mouse_cam_see,
-		"linterna_skin": linterna_skin,
-		"energia_skin": energia_skin,
+		#"linterna_skin": linterna_skin,
+		#"energia_skin": energia_skin,
 		"fade": fade,
 		"misc": misc,
 		"screen": screen,
@@ -141,10 +141,10 @@ func leer_configuration():
 	mouse_custom_op = configuration.get("mouse_custom_op", mouse_custom_op)
 	mouse_custom_punt = configuration.get("mouse_custom_punt", mouse_custom_punt)
 	mouse_cam_see = configuration.get("mouse_cam_see", mouse_cam_see)
-	if configuration.has("linterna_skin"):
-		_asign_recursive_diccionary(configuration.get("linterna_skin"), linterna_skin)
-	if configuration.has("energia_skin"):
-		_asign_recursive_diccionary(configuration.get("energia_skin"), energia_skin)
+	#if configuration.has("linterna_skin"):
+		#_asign_recursive_diccionary(configuration.get("linterna_skin"), linterna_skin)
+	#if configuration.has("energia_skin"):
+		#_asign_recursive_diccionary(configuration.get("energia_skin"), energia_skin)
 	if configuration.has("fade"):
 		_asign_recursive_diccionary(configuration.get("fade"), fade)
 	if configuration.has("misc"):
@@ -174,8 +174,8 @@ func guardar_configuration_default():
 		"mouse_custom_op": mouse_custom_op,
 		"mouse_custom_punt": mouse_custom_punt,
 		"mouse_cam_see": mouse_cam_see,
-		"linterna_skin": linterna_skin.duplicate(true),
-		"energia_skin": energia_skin.duplicate(true),
+		#"linterna_skin": linterna_skin.duplicate(true),
+		#"energia_skin": energia_skin.duplicate(true),
 		"fade": fade.duplicate(true),
 		"misc": misc.duplicate(true),
 		"screen": screen.duplicate(true),
@@ -196,8 +196,8 @@ func reset_configuration():
 	mouse_custom_op = config_default.get("mouse_custom_op", mouse_custom_op)
 	mouse_custom_punt = config_default.get("mouse_custom_punt", mouse_custom_punt)
 	mouse_cam_see = config_default.get("mouse_cam_see", mouse_cam_see)
-	_asign_recursive_diccionary(config_default.get("linterna_skin"), linterna_skin)
-	_asign_recursive_diccionary(config_default.get("energia_skin"), energia_skin)
+	#_asign_recursive_diccionary(config_default.get("linterna_skin"), linterna_skin)
+	#_asign_recursive_diccionary(config_default.get("energia_skin"), energia_skin)
 	_asign_recursive_diccionary(config_default.get("fade"), fade)
 	_asign_recursive_diccionary(config_default.get("misc"), misc)
 	_asign_recursive_diccionary(config_default.get("screen"), screen)
@@ -613,92 +613,94 @@ var mouse_custom_punt := "3"
 var mouse_cam_see := true
 
 # Para la skin de la linterna
-var linterna_skin := {
-	"alpha_general": 1.0,
-	"alpha_base": 1.0,
-	"partes": {
-		"Paleta_A": {
-			"1":  {"alpha": 0.0, "visible": true},
-			"2":  {"alpha": 0.0, "visible": true},
-			"3":  {"alpha": 1.0, "visible": true},
-			"4":  {"alpha": 1.0, "visible": true},
-			"5":  {"alpha": 1.0, "visible": true},
-		},
-		"Paleta_B": {
-			"1":  {"alpha": 1.0, "visible": true},
-			"2":  {"alpha": 1.0, "visible": true},
-			"3":  {"alpha": 0.0, "visible": true},
-			"4":  {"alpha": 0.0, "visible": true},
-			"5":  {"alpha": 0.0, "visible": true},
-		},
-		"Paleta_C": {
-			"1":  {"alpha": 0.5, "visible": true},
-			"2":  {"alpha": 0.5, "visible": true},
-			"3":  {"alpha": 0.5, "visible": true},
-			"4":  {"alpha": 0.5, "visible": true},
-			"5":  {"alpha": 0.5, "visible": true},
-		},
-		"Paleta_D": {
-			"1":  {"alpha": 0.0, "visible": true},
-			"2":  {"alpha": 0.0, "visible": true},
-			"3":  {"alpha": 0.0, "visible": true},
-			"4":  {"alpha": 0.0, "visible": true},
-			"5":  {"alpha": 0.0, "visible": true},
-		},
-		"Paleta_E": {
-			"1":  {"alpha": 0.0, "visible": true},
-			"2":  {"alpha": 0.0, "visible": true},
-			"3":  {"alpha": 0.0, "visible": true},
-			"4":  {"alpha": 0.0, "visible": true},
-			"5":  {"alpha": 0.0, "visible": true},
-		},
-		"Paleta_F": {
-			"1":  {"alpha": 0.0, "visible": true},
-			"2":  {"alpha": 0.0, "visible": true},
-			"3":  {"alpha": 0.0, "visible": true},
-			"4":  {"alpha": 0.0, "visible": true},
-			"5":  {"alpha": 0.0, "visible": true},
-		}
-	}
-}
+# He decidido eliminar esto, pues es una tonteria. La paleta solo una.
+#var linterna_skin := {
+	#"alpha_general": 1.0,
+	#"alpha_base": 1.0,
+	#"partes": {
+		#"Paleta_A": {
+			#"1":  {"alpha": 0.0, "visible": true},
+			#"2":  {"alpha": 0.0, "visible": true},
+			#"3":  {"alpha": 1.0, "visible": true},
+			#"4":  {"alpha": 1.0, "visible": true},
+			#"5":  {"alpha": 1.0, "visible": true},
+		#},
+		#"Paleta_B": {
+			#"1":  {"alpha": 1.0, "visible": true},
+			#"2":  {"alpha": 1.0, "visible": true},
+			#"3":  {"alpha": 0.0, "visible": true},
+			#"4":  {"alpha": 0.0, "visible": true},
+			#"5":  {"alpha": 0.0, "visible": true},
+		#},
+		#"Paleta_C": {
+			#"1":  {"alpha": 0.5, "visible": true},
+			#"2":  {"alpha": 0.5, "visible": true},
+			#"3":  {"alpha": 0.5, "visible": true},
+			#"4":  {"alpha": 0.5, "visible": true},
+			#"5":  {"alpha": 0.5, "visible": true},
+		#},
+		#"Paleta_D": {
+			#"1":  {"alpha": 0.0, "visible": true},
+			#"2":  {"alpha": 0.0, "visible": true},
+			#"3":  {"alpha": 0.0, "visible": true},
+			#"4":  {"alpha": 0.0, "visible": true},
+			#"5":  {"alpha": 0.0, "visible": true},
+		#},
+		#"Paleta_E": {
+			#"1":  {"alpha": 0.0, "visible": true},
+			#"2":  {"alpha": 0.0, "visible": true},
+			#"3":  {"alpha": 0.0, "visible": true},
+			#"4":  {"alpha": 0.0, "visible": true},
+			#"5":  {"alpha": 0.0, "visible": true},
+		#},
+		#"Paleta_F": {
+			#"1":  {"alpha": 0.0, "visible": true},
+			#"2":  {"alpha": 0.0, "visible": true},
+			#"3":  {"alpha": 0.0, "visible": true},
+			#"4":  {"alpha": 0.0, "visible": true},
+			#"5":  {"alpha": 0.0, "visible": true},
+		#}
+	#}
+#}
 
 # Para la skin de la energia
-var energia_skin := {
-	"alpha_general": 1.0,
-	"alpha_base": 1.0,
-	"partes": {
-		"Paleta_A": {
-			"1":  {"alpha": 1.0, "visible": true},
-			"2":  {"alpha": 0.0, "visible": true},
-			"3":  {"alpha": 0.0, "visible": true}
-		},
-		"Paleta_B": {
-			"1":  {"alpha": 0.0, "visible": true},
-			"2":  {"alpha": 1.0, "visible": true},
-			"3":  {"alpha": 0.0, "visible": true}
-		},
-		"Paleta_C": {
-			"1":  {"alpha": 0.0, "visible": true},
-			"2":  {"alpha": 0.0, "visible": true},
-			"3":  {"alpha": 1.0, "visible": true}
-		},
-		"Paleta_D": {
-			"1":  {"alpha": 0.5, "visible": true},
-			"2":  {"alpha": 0.5, "visible": true},
-			"3":  {"alpha": 0.5, "visible": true}
-		},
-		"Paleta_E": {
-			"1":  {"alpha": 0.0, "visible": true},
-			"2":  {"alpha": 0.0, "visible": true},
-			"3":  {"alpha": 0.0, "visible": true}
-		},
-		"Paleta_F": {
-			"1":  {"alpha": 0.0, "visible": true},
-			"2":  {"alpha": 0.0, "visible": true},
-			"3":  {"alpha": 0.0, "visible": true}
-		}
-	}
-}
+# He decidido eliminar esto, pues es una tonteria. La paleta solo una.
+#var energia_skin := {
+	#"alpha_general": 1.0,
+	#"alpha_base": 1.0,
+	#"partes": {
+		#"Paleta_A": {
+			#"1":  {"alpha": 1.0, "visible": true},
+			#"2":  {"alpha": 0.0, "visible": true},
+			#"3":  {"alpha": 0.0, "visible": true}
+		#},
+		#"Paleta_B": {
+			#"1":  {"alpha": 0.0, "visible": true},
+			#"2":  {"alpha": 1.0, "visible": true},
+			#"3":  {"alpha": 0.0, "visible": true}
+		#},
+		#"Paleta_C": {
+			#"1":  {"alpha": 0.0, "visible": true},
+			#"2":  {"alpha": 0.0, "visible": true},
+			#"3":  {"alpha": 1.0, "visible": true}
+		#},
+		#"Paleta_D": {
+			#"1":  {"alpha": 0.5, "visible": true},
+			#"2":  {"alpha": 0.5, "visible": true},
+			#"3":  {"alpha": 0.5, "visible": true}
+		#},
+		#"Paleta_E": {
+			#"1":  {"alpha": 0.0, "visible": true},
+			#"2":  {"alpha": 0.0, "visible": true},
+			#"3":  {"alpha": 0.0, "visible": true}
+		#},
+		#"Paleta_F": {
+			#"1":  {"alpha": 0.0, "visible": true},
+			#"2":  {"alpha": 0.0, "visible": true},
+			#"3":  {"alpha": 0.0, "visible": true}
+		#}
+	#}
+#}
 
 var fade := {
 	"Energia": {

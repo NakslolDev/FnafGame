@@ -2,7 +2,7 @@ extends Node2D
 
 var linterna_activada := false
 
-@export var hide_png: bool = false
+@export var hide_png: bool = true
 @export var linterna_discharch_speed := 0.3
 @export var linterna_recharch_speed := 0.4
 @export var linterna_penalty := 5

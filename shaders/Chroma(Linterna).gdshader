@@ -1,4 +1,5 @@
 shader_type canvas_item;
+render_mode blend_premul_alpha;
 
 uniform vec4 chroma_key : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform float intensity : hint_range(0.0, 1.0) = 0.01;
@@ -58,5 +59,6 @@ void fragment() {
 
 
 	tex.a = alpha;
+	tex.rgb *= alpha; // premultiplicar el color por el nuevo alpha
 	COLOR = tex;
 }

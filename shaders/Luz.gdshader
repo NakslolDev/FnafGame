@@ -1,4 +1,5 @@
 shader_type canvas_item;
+render_mode blend_premul_alpha;
 
 uniform vec2 mouse_pos;
 uniform float radio = 10.0;
@@ -32,5 +33,6 @@ void fragment() {
 	}
 
 	tex.a = alpha;
+	tex.rgb *= alpha; // premultiplicar el color por el nuevo alpha
 	COLOR = tex;
 }

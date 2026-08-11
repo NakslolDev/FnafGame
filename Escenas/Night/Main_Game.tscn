@@ -349,7 +349,6 @@ oficina = NodePath("../Oficina")
 
 [node name="Linterna" parent="." unique_id=173084317 instance=ExtResource("20_ewgm2")]
 position = Vector2(0, 1500)
-hide_png = true
 
 [node name="Mouse_Custom" parent="." unique_id=803140717 instance=ExtResource("21_vtd2r")]
 opacidad = 0.7
@@ -457,14 +456,13 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="No_Shader_UI" type="CanvasLayer" parent="." unique_id=597497136 node_paths=PackedStringArray("camaras_control")]
-visible = false
 script = ExtResource("20_xe21u")
 camaras_control = NodePath("../Camaras_Control")
 
 [node name="Linterna_Bateria_Icono" parent="No_Shader_UI" unique_id=1311019173 instance=ExtResource("29_wt1mn")]
 position = Vector2(1784, 896)
 
-[node name="Energia_Icono" parent="No_Shader_UI" unique_id=1429314295 instance=ExtResource("30_6536c")]
+[node name="Energia_Icono" parent="No_Shader_UI" unique_id=1486649796 instance=ExtResource("30_6536c")]
 position = Vector2(128, 984)
 
 [node name="True_No_Shader" type="CanvasLayer" parent="." unique_id=987376596]
@@ -576,7 +574,6 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="on_tick_stop" from="." to="Oficina/VHS_Player" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="CanvasLayerDarkness/Lights" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="No_Shader_UI/Linterna_Bateria_Icono" method="_on_main_game_on_tick_stop"]
-[connection signal="on_tick_stop" from="." to="No_Shader_UI/Energia_Icono" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="True_No_Shader/Alucinations" method="_on_main_game_on_tick_stop"]
 [connection signal="on_tick_stop" from="." to="Camaras_Control" method="_on_main_game_on_tick_stop"]
 [connection signal="timeout" from="Control/Tick" to="." method="_on_tick_timeout"]
