@@ -293,7 +293,7 @@ scale = Vector2(1, -1)
 izquierda = false
 oficina = NodePath("../..")
 
-[node name="OficinaPNG_Flashlight" type="Sprite2D" parent="Oficina" unique_id=1273260907]
+[node name="OficinaPNG_Flashlight" type="Sprite2D" parent="Oficina" unique_id=1273260907 groups=["LightPNG"]]
 material = SubResource("ShaderMaterial_5qb44")
 texture = ExtResource("12_xe21u")
 region_enabled = true
@@ -327,17 +327,17 @@ boton_izquierda = false
 [node name="PuertaDerecha" parent="Oficina" unique_id=1174262195 instance=ExtResource("18_4erhx")]
 
 [node name="VHS_Player" parent="Oficina" unique_id=454136740 node_paths=PackedStringArray("main_game") instance=ExtResource("14_lctcs")]
-position = Vector2(259, 120)
+position = Vector2(186, 166)
 main_game = NodePath("../..")
 
 [node name="Table_items" type="Node2D" parent="Oficina" unique_id=950471746]
 
 [node name="Battery_items" parent="Oficina/Table_items" unique_id=622084330 node_paths=PackedStringArray("main_game") instance=ExtResource("16_13g5b")]
-position = Vector2(-346, 139)
+position = Vector2(-286, 164)
 main_game = NodePath("../../..")
 
 [node name="WatterBottleItem" parent="Oficina/Table_items" unique_id=18006926 node_paths=PackedStringArray("main_game") instance=ExtResource("17_5sfnd")]
-position = Vector2(-151, 85)
+position = Vector2(-81, 133)
 main_game = NodePath("../../..")
 
 [node name="Freddy nose" parent="Oficina" unique_id=1087430654 node_paths=PackedStringArray("main_game") instance=ExtResource("18_uce18")]

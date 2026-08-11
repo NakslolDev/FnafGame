@@ -20,34 +20,42 @@ foxy = NodePath("Foxy")
 soft_focus = NodePath("Soft_focus")
 hard_focus = NodePath("Hard_focus")
 
-[node name="DuctosFlashlight" type="Sprite2D" parent="." unique_id=106053953]
+[node name="DuctosFlashlight" type="Sprite2D" parent="." unique_id=106053953 groups=["LightPNG"]]
+position = Vector2(0, -208)
 texture = ExtResource("2_7w72i")
 region_enabled = true
-region_rect = Rect2(2688, 1088, 384, 704)
+region_rect = Rect2(2736, 1120, 288, 224)
 
 [node name="DuctosDark" type="Sprite2D" parent="." unique_id=344084421 groups=["FlashlightPNG"]]
+position = Vector2(0, -208)
 texture = ExtResource("3_87s8e")
 region_enabled = true
-region_rect = Rect2(2688, 1088, 384, 704)
+region_rect = Rect2(2736, 1120, 288, 224)
 
 [node name="Foxy" type="Node2D" parent="." unique_id=1314924921]
 
-[node name="FoxyFlashlight" type="Sprite2D" parent="Foxy" unique_id=700650726]
+[node name="FoxyFlashlight" type="Sprite2D" parent="Foxy" unique_id=700650726 groups=["LightPNG"]]
+position = Vector2(0, -200)
 texture = ExtResource("4_nfqhr")
+region_enabled = true
+region_rect = Rect2(2720, 1104, 320, 272)
 
 [node name="FoxyDark" type="Sprite2D" parent="Foxy" unique_id=1151219030 groups=["FlashlightPNG"]]
+position = Vector2(0, -200)
 texture = ExtResource("5_0rt5k")
+region_enabled = true
+region_rect = Rect2(2720, 1104, 320, 272)
 
 [node name="FoxyBrighting" type="Sprite2D" parent="Foxy" unique_id=1055172606]
 z_index = 1
+position = Vector2(0, -200)
 texture = ExtResource("6_fm0sw")
 region_enabled = true
-region_rect = Rect2(2688, 1088, 384, 704)
+region_rect = Rect2(2720, 1104, 320, 272)
 script = ExtResource("7_yky7c")
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Soft_focus" type="Area2D" parent="." unique_id=527769337]
-visible = false
 position = Vector2(2, -199)
 scale = Vector2(0.821795, 0.381783)
 
@@ -57,7 +65,6 @@ scale = Vector2(0.99999887, 0.9999989)
 shape = SubResource("RectangleShape2D_og8rt")
 
 [node name="Hard_focus" type="Area2D" parent="." unique_id=865826660]
-visible = false
 position = Vector2(2, -199)
 scale = Vector2(0.821795, 0.381783)
 

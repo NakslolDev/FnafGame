@@ -23,7 +23,7 @@ no_energia = NodePath("NoEnergia")
 
 [node name="Verde" type="Node2D" parent="." unique_id=1524314247]
 
-[node name="VerdeFlashlight" type="Sprite2D" parent="Verde" unique_id=1195166401]
+[node name="VerdeFlashlight" type="Sprite2D" parent="Verde" unique_id=1195166401 groups=["LightPNG"]]
 position = Vector2(-1440, 0)
 texture = ExtResource("2_7hd5c")
 region_enabled = true
@@ -76,7 +76,7 @@ metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Rojo" type="Node2D" parent="." unique_id=1139848824]
 
-[node name="RojoFlashlight" type="Sprite2D" parent="Rojo" unique_id=1826554364]
+[node name="RojoFlashlight" type="Sprite2D" parent="Rojo" unique_id=1826554364 groups=["LightPNG"]]
 position = Vector2(-1440, 0)
 texture = ExtResource("4_dcc8t")
 region_enabled = true
@@ -129,7 +129,7 @@ metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="NoEnergia" type="Node2D" parent="." unique_id=2092625445]
 
-[node name="NoEnergiaFlashlight" type="Sprite2D" parent="NoEnergia" unique_id=1716239006]
+[node name="NoEnergiaFlashlight" type="Sprite2D" parent="NoEnergia" unique_id=1716239006 groups=["LightPNG"]]
 position = Vector2(-1440, 0)
 texture = ExtResource("6_slx8j")
 region_enabled = true

@@ -1,15 +1,24 @@
 extends Node
 
-const FLASHLIGHT_GROUP_NAME := "FlashlightPNG"
+const DARK_GROUP_NAME := "FlashlightPNG"
+const FLASHLIGHT_GROUP_NAME := "LightPNG"
 const BRILLANTE_GROUP_NAME := "Brillantes"
 const SHADER: Shader = preload("res://shaders/Pasillo.gdshader")
+const SHADER_INVERSO: Shader = preload("res://shaders/Luz.gdshader")
 const BRILLO_SHADER: Shader = preload("res://shaders/Chroma(Linterna).gdshader")
 
 const FLASHLIGHT_SHADER_PARAMETERS := {
 	"radio": 100.0,
 	"fade_range": 300.0,
 	"transparencia": 1.0,
-	"nivel_transparencia": 0.95
+	"nivel_transparencia": 1.0
+}
+
+const LIGHT_SHADER_PARAMETERS := {
+	"radio": 350.0,
+	"fade_range": 100.0,
+	"transparencia": 1.0,
+	"nivel_transparencia": 1.0
 }
 
 const BRILLANTE_SHADER_PARAMETERS := {
@@ -20,12 +29,14 @@ const BRILLANTE_SHADER_PARAMETERS := {
 }
 
 var nodes: Array[Node]
+var nodes_flahslight: Array[Node]
 var nodes_bright: Array[Node]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_tree().physics_frame
-	nodes = get_tree().get_nodes_in_group(FLASHLIGHT_GROUP_NAME)
+	nodes = get_tree().get_nodes_in_group(DARK_GROUP_NAME)
+	nodes_flahslight = get_tree().get_nodes_in_group(FLASHLIGHT_GROUP_NAME)
 	nodes_bright = get_tree().get_nodes_in_group(BRILLANTE_GROUP_NAME)
 
 	for node in nodes:
@@ -34,6 +45,14 @@ func _ready() -> void:
 		node.material.shader = SHADER
 		for key in FLASHLIGHT_SHADER_PARAMETERS.keys():
 			node.material.set_shader_parameter(key, FLASHLIGHT_SHADER_PARAMETERS[key])
+
+	for node in nodes_flahslight:
+		var material := ShaderMaterial.new()
+		node.material = material
+		node.material.shader = SHADER_INVERSO
+		for key in LIGHT_SHADER_PARAMETERS.keys():
+			node.material.set_shader_parameter(key, LIGHT_SHADER_PARAMETERS[key])
+		node.visible = false
 
 	for node in nodes_bright:
 		var material := ShaderMaterial.new()
@@ -53,15 +72,23 @@ func _process(_delta):
 
 	var viewport_size = get_viewport().get_visible_rect().size
 	var mouse = get_viewport().get_mouse_position()
-
 	for node in nodes:
-		if not node.visible: continue
+		if not node.is_visible_in_tree():
+			continue
+		var mat = node.material
+		mat.set_shader_parameter("mouse_pos", mouse)
+		mat.set_shader_parameter("viewport_size", viewport_size)
+
+	for node in nodes_flahslight:
+		if not node.is_visible_in_tree():
+			continue
 		var mat = node.material
 		mat.set_shader_parameter("mouse_pos", mouse)
 		mat.set_shader_parameter("viewport_size", viewport_size)
 
 	for node in nodes_bright:
-		if not node.visible: continue
+		if not node.is_visible_in_tree():
+			continue
 		var mat = node.material
 		mat.set_shader_parameter("mouse_pos", mouse)
 		mat.set_shader_parameter("viewport_size", viewport_size)
@@ -73,6 +100,14 @@ func _on_linterna_linterna_activada_switch(value: bool, _animation: bool) -> voi
 		if shader_enabled:
 			node.material.set_shader_parameter("shader_enabled", 1.0)
 		else:
+			node.material.set_shader_parameter("shader_enabled", 0.0)
+
+	for node in nodes_flahslight:
+		if shader_enabled:
+			node.visible = true
+			node.material.set_shader_parameter("shader_enabled", 1.0)
+		else:
+			node.visible = false
 			node.material.set_shader_parameter("shader_enabled", 0.0)
 
 	for node in nodes_bright:

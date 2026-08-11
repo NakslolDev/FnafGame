@@ -20,83 +20,81 @@ foxy = NodePath("Foxy")
 soft_focus = NodePath("Soft_focus")
 hard_focus = NodePath("Hard_focus")
 
-[node name="DuctLeft_Flashlight" type="Sprite2D" parent="." unique_id=403520661]
-position = Vector2(-704, 0)
+[node name="DuctLeft_Flashlight" type="Sprite2D" parent="." unique_id=403520661 groups=["LightPNG"]]
+position = Vector2(-112, -384)
 texture = ExtResource("2_sdvnd")
 region_enabled = true
-region_rect = Rect2(4352, 448, 1408, 1984)
+region_rect = Rect2(5536, 896, 224, 320)
 
-[node name="DuctRight_Flahslight" type="Sprite2D" parent="." unique_id=2132923507]
-position = Vector2(704, 0)
+[node name="DuctRight_Flahslight" type="Sprite2D" parent="." unique_id=2132923507 groups=["LightPNG"]]
+position = Vector2(112, -384)
 texture = ExtResource("2_sdvnd")
 region_enabled = true
-region_rect = Rect2(0, 448, 1408, 1984)
+region_rect = Rect2(0, 896, 224, 320)
 
 [node name="DuctLeft_Dark" type="Sprite2D" parent="." unique_id=2011487917 groups=["FlashlightPNG"]]
-position = Vector2(-704, 0)
+position = Vector2(-112, -384)
 texture = ExtResource("3_frwqp")
 region_enabled = true
-region_rect = Rect2(4352, 448, 1408, 1984)
+region_rect = Rect2(5536, 896, 224, 320)
 
 [node name="DuctRight_Dark" type="Sprite2D" parent="." unique_id=1474661885 groups=["FlashlightPNG"]]
-position = Vector2(704, 0)
+position = Vector2(112, -384)
 texture = ExtResource("3_frwqp")
 region_enabled = true
-region_rect = Rect2(0, 448, 1408, 1984)
+region_rect = Rect2(0, 896, 224, 320)
 
 [node name="Foxy" type="Node2D" parent="." unique_id=943961681]
 
-[node name="FoxyLeft_Flashlight" type="Sprite2D" parent="Foxy" unique_id=1092664831]
-position = Vector2(-704, 0)
+[node name="FoxyLeft_Flashlight" type="Sprite2D" parent="Foxy" unique_id=1092664831 groups=["LightPNG"]]
+position = Vector2(-176, -384)
 texture = ExtResource("4_6ph06")
 region_enabled = true
-region_rect = Rect2(4352, 448, 1408, 1984)
+region_rect = Rect2(5408, 688, 352, 736)
 
-[node name="FoxyRight_Flahslight" type="Sprite2D" parent="Foxy" unique_id=1215762231]
-position = Vector2(704, 0)
+[node name="FoxyRight_Flahslight" type="Sprite2D" parent="Foxy" unique_id=1215762231 groups=["LightPNG"]]
+position = Vector2(176, -384)
 texture = ExtResource("4_6ph06")
 region_enabled = true
-region_rect = Rect2(0, 448, 1408, 1984)
+region_rect = Rect2(0, 688, 352, 736)
 
 [node name="FoxyLeft_Dark" type="Sprite2D" parent="Foxy" unique_id=627066166 groups=["FlashlightPNG"]]
-position = Vector2(-704, 0)
+position = Vector2(-176, -384)
 texture = ExtResource("5_huett")
 region_enabled = true
-region_rect = Rect2(4352, 448, 1408, 1984)
+region_rect = Rect2(5408, 688, 352, 736)
 
 [node name="FoxyRight_Dark" type="Sprite2D" parent="Foxy" unique_id=1112841530 groups=["FlashlightPNG"]]
-position = Vector2(704, 0)
+position = Vector2(176, -384)
 texture = ExtResource("5_huett")
 region_enabled = true
-region_rect = Rect2(0, 448, 1408, 1984)
+region_rect = Rect2(0, 688, 352, 736)
 
 [node name="FoxyLeft_Brighting" type="Sprite2D" parent="Foxy" unique_id=900752883]
 z_index = 1
-position = Vector2(-704, 0)
+position = Vector2(-176, -384)
 texture = ExtResource("6_e8bct")
 region_enabled = true
-region_rect = Rect2(4352, 448, 1408, 1984)
+region_rect = Rect2(5408, 688, 352, 736)
 script = ExtResource("7_vic7x")
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="FoxyRight_Brighting" type="Sprite2D" parent="Foxy" unique_id=2747194]
 z_index = 1
-position = Vector2(704, 0)
+position = Vector2(176, -384)
 texture = ExtResource("6_e8bct")
 region_enabled = true
-region_rect = Rect2(0, 448, 1408, 1984)
+region_rect = Rect2(0, 688, 352, 736)
 script = ExtResource("7_vic7x")
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Soft_focus" type="Area2D" parent="." unique_id=312081233]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Soft_focus" unique_id=187223849]
 position = Vector2(0, -428.25)
 shape = SubResource("RectangleShape2D_gqlcn")
 
 [node name="Hard_focus" type="Area2D" parent="." unique_id=93472002]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hard_focus" unique_id=862204160]
 position = Vector2(-3.5, -391)

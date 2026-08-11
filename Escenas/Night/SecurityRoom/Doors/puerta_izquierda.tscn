@@ -13,7 +13,7 @@ animations = [NodePath("Flashlight"), NodePath("Dark"), NodePath("Darkest")]
 wait_time = 0.05
 one_shot = true
 
-[node name="Flashlight" type="AnimatedSprite2D" parent="." unique_id=111458129]
+[node name="Flashlight" type="AnimatedSprite2D" parent="." unique_id=111458129 groups=["LightPNG"]]
 script = ExtResource("2_mymql")
 frames_file = "res://assets/Renders/office/Door/Left/flahslight/"
 frame_step = 5

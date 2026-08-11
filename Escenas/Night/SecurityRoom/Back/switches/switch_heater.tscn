@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cbkligrlyfhun"]
+
+[ext_resource type="Script" uid="uid://d3dg3tgsptsdf" path="res://Escenas/Night/SecurityRoom/Back/switches/switch_energia.gd" id="1_t00xd"]
+[ext_resource type="Texture2D" uid="uid://vtol6q3ru4fc" path="res://assets/Renders/office/Switches/OnFlashlight.png" id="2_xo2qt"]
+[ext_resource type="Texture2D" uid="uid://blowtfs6px0k5" path="res://assets/Renders/office/Switches/OnDark.png" id="3_nb7ut"]
+[ext_resource type="Texture2D" uid="uid://cl62nn3ctfyp7" path="res://assets/Renders/office/Switches/OffFlashlight.png" id="4_f6gel"]
+[ext_resource type="Texture2D" uid="uid://bqmrvav16n21a" path="res://assets/Renders/office/Switches/OffDark.png" id="5_iykg0"]
+[ext_resource type="Script" uid="uid://cokefoipy4xrr" path="res://Escenas/Night/SecurityRoom/Back/switches/area_2d_switch.gd" id="6_3535t"]
+[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="7_h80yf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1stgw"]
+size = Vector2(56, 88)
+
+[node name="SwitchHeater" type="Node2D" unique_id=1343769268 node_paths=PackedStringArray("tiny_click", "sprite_on", "sprite_off")]
+script = ExtResource("1_t00xd")
+controlador = "Heater"
+tiny_click = NodePath("Tiny_click")
+sprite_on = NodePath("SpriteOn")
+sprite_off = NodePath("SpriteOff")
+
+[node name="SpriteOn" type="Node2D" parent="." unique_id=1392644534]
+
+[node name="SwitchOnLight" type="Sprite2D" parent="SpriteOn" unique_id=1256529404 groups=["LightPNG"]]
+position = Vector2(440, 144)
+texture = ExtResource("2_xo2qt")
+region_enabled = true
+region_rect = Rect2(400, 1520, 80, 128)
+
+[node name="SwitchOnDark" type="Sprite2D" parent="SpriteOn" unique_id=1257457575 groups=["FlashlightPNG"]]
+position = Vector2(440, 144)
+texture = ExtResource("3_nb7ut")
+region_enabled = true
+region_rect = Rect2(400, 1520, 80, 128)
+
+[node name="SpriteOff" type="Node2D" parent="." unique_id=203028412]
+
+[node name="SwitchOffLight" type="Sprite2D" parent="SpriteOff" unique_id=1748084555 groups=["LightPNG"]]
+position = Vector2(440, 144)
+texture = ExtResource("4_f6gel")
+region_enabled = true
+region_rect = Rect2(400, 1520, 80, 128)
+
+[node name="SwitchOffDark" type="Sprite2D" parent="SpriteOff" unique_id=1100873976 groups=["FlashlightPNG"]]
+position = Vector2(440, 144)
+texture = ExtResource("5_iykg0")
+region_enabled = true
+region_rect = Rect2(400, 1520, 80, 128)
+
+[node name="Area2D_Switch" type="Area2D" parent="." unique_id=469377938]
+script = ExtResource("6_3535t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Switch" unique_id=1674483091]
+position = Vector2(436, 148)
+shape = SubResource("RectangleShape2D_1stgw")
+
+[node name="Tiny_click" type="AudioStreamPlayer" parent="." unique_id=1786343915]
+stream = ExtResource("7_h80yf")
+volume_db = 5.0
+bus = &"SFX"

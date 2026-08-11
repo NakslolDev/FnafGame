@@ -25,42 +25,56 @@ chica = NodePath("Chica")
 soft_focus = NodePath("Soft_focus")
 hard_focus = NodePath("Hard_focus")
 
-[node name="Flahslight" type="Sprite2D" parent="." unique_id=2054902440]
-position = Vector2(1440, 0)
+[node name="Flahslight" type="Sprite2D" parent="." unique_id=2054902440 groups=["LightPNG"]]
+position = Vector2(1072, 80)
 texture = ExtResource("2_ai56g")
 region_enabled = true
-region_rect = Rect2(2880, 0, 2880, 2880)
+region_rect = Rect2(3712, 1024, 480, 992)
 
 [node name="Dark" type="Sprite2D" parent="." unique_id=1988082537 groups=["FlashlightPNG"]]
-position = Vector2(1440, 0)
+position = Vector2(1072, 80)
 texture = ExtResource("3_e7sic")
 region_enabled = true
-region_rect = Rect2(2880, 0, 2880, 2880)
+region_rect = Rect2(3712, 1024, 480, 992)
 
 [node name="Bonnie" type="Node2D" parent="." unique_id=1012575135]
 
 [node name="Foxy" type="Node2D" parent="." unique_id=432557747]
 
-[node name="FoxyFlashlight" type="Sprite2D" parent="Foxy" unique_id=1580451574]
+[node name="FoxyFlashlight" type="Sprite2D" parent="Foxy" unique_id=1580451574 groups=["LightPNG"]]
+position = Vector2(1064, 64)
 texture = ExtResource("4_d782w")
+region_enabled = true
+region_rect = Rect2(3664, 1008, 560, 992)
 
 [node name="FoxyDark" type="Sprite2D" parent="Foxy" unique_id=2084032718 groups=["FlashlightPNG"]]
+position = Vector2(1064, 64)
 texture = ExtResource("5_ai56g")
+region_enabled = true
+region_rect = Rect2(3664, 1008, 560, 992)
 
 [node name="FoxyBrighting" type="Sprite2D" parent="Foxy" unique_id=35714346]
 z_index = 1
+position = Vector2(1064, 64)
 texture = ExtResource("6_5e7ck")
-region_rect = Rect2(2688, 1088, 384, 704)
+region_enabled = true
+region_rect = Rect2(3664, 1008, 560, 992)
 script = ExtResource("7_g2h13")
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Chica" type="Node2D" parent="." unique_id=78770447]
 
-[node name="ChicaFlashlight" type="Sprite2D" parent="Chica" unique_id=1453318585]
+[node name="ChicaFlashlight" type="Sprite2D" parent="Chica" unique_id=1453318585 groups=["LightPNG"]]
+position = Vector2(1064, 64)
 texture = ExtResource("6_e7sic")
+region_enabled = true
+region_rect = Rect2(3664, 1008, 560, 992)
 
 [node name="ChicaDark" type="Sprite2D" parent="Chica" unique_id=394267556 groups=["FlashlightPNG"]]
+position = Vector2(1064, 64)
 texture = ExtResource("7_5e7ck")
+region_enabled = true
+region_rect = Rect2(3664, 1008, 560, 992)
 
 [node name="Soft_focus" type="Area2D" parent="." unique_id=475550323]
 

@@ -37,11 +37,11 @@
 texture_filter = 1
 script = ExtResource("1_2i02j")
 
-[node name="Base" type="Sprite2D" parent="." unique_id=2095545895]
+[node name="Base" type="Sprite2D" parent="." unique_id=2095545895 groups=["LightPNG"]]
 position = Vector2(-817, -386)
 texture = ExtResource("1_y28de")
 
-[node name="Paleta_A" type="Node2D" parent="." unique_id=1617092339]
+[node name="Paleta_A" type="Node2D" parent="." unique_id=1617092339 groups=["LightPNG"]]
 position = Vector2(-817, -386)
 
 [node name="1" type="Sprite2D" parent="Paleta_A" unique_id=1597576019]
@@ -59,7 +59,7 @@ texture = ExtResource("5_weg5g")
 [node name="5" type="Sprite2D" parent="Paleta_A" unique_id=1848180978]
 texture = ExtResource("6_l08kp")
 
-[node name="Paleta_B" type="Node2D" parent="." unique_id=2004929565]
+[node name="Paleta_B" type="Node2D" parent="." unique_id=2004929565 groups=["LightPNG"]]
 position = Vector2(-817, -386)
 
 [node name="1" type="Sprite2D" parent="Paleta_B" unique_id=1280732807]
@@ -77,7 +77,7 @@ texture = ExtResource("10_bb6wu")
 [node name="5" type="Sprite2D" parent="Paleta_B" unique_id=603247234]
 texture = ExtResource("11_lqsck")
 
-[node name="Paleta_C" type="Node2D" parent="." unique_id=739425699]
+[node name="Paleta_C" type="Node2D" parent="." unique_id=739425699 groups=["LightPNG"]]
 position = Vector2(-817, -386)
 
 [node name="1" type="Sprite2D" parent="Paleta_C" unique_id=1712122731]
@@ -95,7 +95,7 @@ texture = ExtResource("15_56h8p")
 [node name="5" type="Sprite2D" parent="Paleta_C" unique_id=1032802428]
 texture = ExtResource("16_m4puw")
 
-[node name="Paleta_D" type="Node2D" parent="." unique_id=1066160896]
+[node name="Paleta_D" type="Node2D" parent="." unique_id=1066160896 groups=["LightPNG"]]
 position = Vector2(-817, -386)
 
 [node name="1" type="Sprite2D" parent="Paleta_D" unique_id=1129003419]
@@ -113,7 +113,7 @@ texture = ExtResource("20_ia3p1")
 [node name="5" type="Sprite2D" parent="Paleta_D" unique_id=8307208]
 texture = ExtResource("21_n16nh")
 
-[node name="Paleta_E" type="Node2D" parent="." unique_id=45504668]
+[node name="Paleta_E" type="Node2D" parent="." unique_id=45504668 groups=["LightPNG"]]
 position = Vector2(-817, -386)
 
 [node name="1" type="Sprite2D" parent="Paleta_E" unique_id=1877912031]
@@ -131,7 +131,7 @@ texture = ExtResource("25_3ruj4")
 [node name="5" type="Sprite2D" parent="Paleta_E" unique_id=1315344391]
 texture = ExtResource("26_536du")
 
-[node name="Paleta_F" type="Node2D" parent="." unique_id=1907373863]
+[node name="Paleta_F" type="Node2D" parent="." unique_id=1907373863 groups=["LightPNG"]]
 position = Vector2(-817, -386)
 
 [node name="1" type="Sprite2D" parent="Paleta_F" unique_id=965091087]

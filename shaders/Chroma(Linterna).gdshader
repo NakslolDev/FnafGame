@@ -12,8 +12,8 @@ uniform float shader_enabled = 0.0;
 uniform float transparencia = 1.0;
 uniform float nivel_transparencia = 0.0;
 
-
 void fragment() {
+
 	vec4 tex = texture(TEXTURE, UV);
 
 	// =========================

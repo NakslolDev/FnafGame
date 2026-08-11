@@ -2,7 +2,7 @@ extends Node2D
 
 signal Linterna_Recarga_Switch()
 
-@export var linterna_recargando: Sprite2D
+@export var linterna_recargando: Node2D
 @export var agarrar: AudioStreamPlayer
 @export var encajar: AudioStreamPlayer
 @export var office_behind: Node2D

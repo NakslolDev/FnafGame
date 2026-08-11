@@ -8,20 +8,21 @@ var controlador: String = "General"
 signal Restaurar_General()
 
 @export var tiny_click: AudioStreamPlayer
-@export var switch_off_sprite: Sprite2D
-@export var switch_on_sprite: Sprite2D
+@export var sprite_on: Node2D
+@export var sprite_off: Node2D
 @export var office_behind: Node2D
 
 const BREAKDOWN := true
 
 func _ready():
 	Global.Energy_Breakdown.connect(energia_out)
+	switch_act(BREAKDOWN)
 
 func switch_act(breakdown: bool = not BREAKDOWN):
 	if not breakdown: tiny_click.play()
 
-	switch_on_sprite.visible = switch_on
-	switch_off_sprite.visible = !switch_on
+	sprite_on.visible = switch_on
+	sprite_off.visible = !switch_on
 
 	if breakdown and not controlador == "General":
 		return
@@ -36,7 +37,7 @@ func switch_act(breakdown: bool = not BREAKDOWN):
 
 func energia_out():
 	switch_on = false
-	switch_act(BREAKDOWN) #infinite recursion?
+	switch_act(BREAKDOWN)
 
 func _on_click():
 	if office_behind.stop_everything == true:
@@ -45,5 +46,5 @@ func _on_click():
 	switch_act()
 
 
-func _on_switch_energia_1_restaurar_general() -> void:
+func _on_switch_general_restaurar_general() -> void:
 	Global.set_energia(controlador, switch_on)
