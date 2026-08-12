@@ -1,7 +1,6 @@
 extends Node2D
 
 signal Puerta_Cambio(puerta_activada: bool)
-signal ButtonPlay(on: bool)
 
 @export var root: Node2D
 
@@ -24,10 +23,12 @@ func _ready():
 
 func energia_act():
 	actualizar_sprites(NO_AUDIO)
-	stuck_door = false
 	if puerta_activada and not Global.energia["Puertas"]:
 		puerta_activada = false
-		Puerta_Cambio.emit(puerta_activada)
+		if not stuck_door:
+			Puerta_Cambio.emit(puerta_activada)
+	if not Global.energia["Puertas"]:
+		stuck_door = false
 
 func _on_click():
 	if root.camaras_activadas or root.tick_stop:
@@ -38,7 +39,7 @@ func _on_click():
 	puerta_activada = !puerta_activada
 	actualizar_sprites()
 	if not stuck_door: Puerta_Cambio.emit(puerta_activada)
-	if not puerta_activada and randi_range(0,50) == 0 and Global.noche != 1 and Global.noche != 2 and Global.noche != 3: # no quiero que suceda en las primeras noches, pues tengo intención de        
+	if not puerta_activada and randi_range(0,50) == 0 and (Global.noche > 3 or Global.noche == 0): # no quiero que suceda en las primeras noches, pues tengo intención de        
 		stuck_door = true # decir en la primera noche que las puertas se pueden atascar, pero que no suceda hasta la noche 4...
 
 
@@ -62,14 +63,9 @@ func _input(event):
 func actualizar_sprites(audio := true):
 	if Global.energia["General"] and Global.energia["Puertas"]:
 		no_energia.visible = false
-		if puerta_activada:
-			rojo.visible = false
-			verde.visible = true
-			if audio: ButtonPlay.emit(true)
-		else:
-			rojo.visible = true
-			verde.visible = false
-			if audio: ButtonPlay.emit(false)
+		rojo.visible = !puerta_activada
+		verde.visible = puerta_activada
+		if audio: DirectionalAudioBus.button.emit(boton_izquierda, puerta_activada)
 	else:
 		no_energia.visible = true
 		verde.visible = false

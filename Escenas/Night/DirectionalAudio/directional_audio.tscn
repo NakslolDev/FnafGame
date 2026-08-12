@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cduq7owpa8xgc" path="res://Escenas/Night/DirectionalAudio/duct_sounds.gd" id="7_1lyji"]
 [ext_resource type="AudioStream" uid="uid://bskefd83uvx33" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-1.ogg" id="8_t0g7s"]
 [ext_resource type="AudioStream" uid="uid://b1vkws6jkxruv" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-2.ogg" id="9_0we8q"]
+[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="10_dg7u0"]
 [ext_resource type="AudioStream" uid="uid://bcsfaxpoymmci" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-3.ogg" id="10_r3yas"]
 [ext_resource type="AudioStream" uid="uid://ctyh1rmdhdyfd" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-4.ogg" id="11_vcnm0"]
 [ext_resource type="AudioStream" uid="uid://bxl7xf1rprovx" path="res://assets/sounds/Foxy sounds/running-on-metal-segmented-5.ogg" id="12_ppax3"]
@@ -35,8 +36,10 @@
 [ext_resource type="AudioStream" uid="uid://cy6b71h3y3f0s" path="res://assets/sounds/ToySFX/Pop3.ogg" id="31_bro3t"]
 [ext_resource type="AudioStream" uid="uid://bpqmc7vohd6gf" path="res://assets/sounds/ToySFX/Pop4.ogg" id="32_ig2k4"]
 [ext_resource type="AudioStream" uid="uid://wuxmltxlpiok" path="res://Audios/Scarlet Forest.mp3" id="35_866d1"]
+[ext_resource type="AudioStream" uid="uid://mh2in0da3o47" path="res://assets/sounds/Linterna Agarrar.mp3" id="36_ljxjf"]
+[ext_resource type="AudioStream" uid="uid://b15n3emnrh5nc" path="res://assets/sounds/Linterna Encajar.mp3" id="37_dg7u0"]
 
-[node name="DirectionalAudio" type="Node2D" unique_id=2054814738 node_paths=PackedStringArray("puerta_izquierda", "puerta_derecha", "left_button_off", "left_button_on", "right_button_off", "right_button_on", "vhs_sound")]
+[node name="DirectionalAudio" type="Node2D" unique_id=2054814738 node_paths=PackedStringArray("puerta_izquierda", "puerta_derecha", "left_button_off", "left_button_on", "right_button_off", "right_button_on", "vhs_sound", "agarrar", "encajar", "general", "ventilation", "puertas", "flashlight", "cameras", "heater", "luces")]
 script = ExtResource("1_yh57f")
 puerta_izquierda = NodePath("DoorSounds/Puerta_izquierda")
 puerta_derecha = NodePath("DoorSounds/Puerta_derecha")
@@ -45,6 +48,15 @@ left_button_on = NodePath("DoorButtonSounds/LeftButtonOn")
 right_button_off = NodePath("DoorButtonSounds/RightButtonOff")
 right_button_on = NodePath("DoorButtonSounds/RightButtonOn")
 vhs_sound = NodePath("VHSsound")
+agarrar = NodePath("FlashlightSounds/Agarrar")
+encajar = NodePath("FlashlightSounds/Encajar")
+general = NodePath("Switches/General")
+ventilation = NodePath("Switches/Ventilation")
+puertas = NodePath("Switches/Puertas")
+flashlight = NodePath("Switches/Flashlight")
+cameras = NodePath("Switches/Cameras")
+heater = NodePath("Switches/Heater")
+luces = NodePath("Switches/Luces")
 
 [node name="DoorSounds" type="Node" parent="." unique_id=1948655175]
 
@@ -55,7 +67,7 @@ volume_db = 10.0
 max_distance = 5000.0
 bus = &"SFX"
 script = ExtResource("2_yh57f")
-x_position = 1
+x_position = 2
 _volume = 10.0
 _lower_db = 2.0
 concentration = 0.75
@@ -68,7 +80,7 @@ volume_db = 10.0
 max_distance = 5000.0
 bus = &"SFX"
 script = ExtResource("2_yh57f")
-x_position = 4
+x_position = 5
 _volume = 10.0
 _lower_db = 2.0
 concentration = 0.75
@@ -125,7 +137,7 @@ volume_db = -15.0
 max_distance = 5000.0
 bus = &"SFX"
 script = ExtResource("2_yh57f")
-x_position = 1
+x_position = 2
 concentration = 0.9
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
@@ -136,8 +148,95 @@ volume_db = -15.0
 max_distance = 5000.0
 bus = &"SFX"
 script = ExtResource("2_yh57f")
-x_position = 4
+x_position = 5
 concentration = 0.9
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="FlashlightSounds" type="Node" parent="." unique_id=498637281]
+
+[node name="Agarrar" type="AudioStreamPlayer2D" parent="FlashlightSounds" unique_id=1775926979]
+stream = ExtResource("36_ljxjf")
+volume_db = -4.0
+bus = &"SFX"
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 170.0
+concentration = 0.75
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Encajar" type="AudioStreamPlayer2D" parent="FlashlightSounds" unique_id=1607121091]
+stream = ExtResource("37_dg7u0")
+volume_db = -8.0
+bus = &"SFX"
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 170.0
+concentration = 0.75
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Switches" type="Node" parent="." unique_id=211595883]
+
+[node name="General" type="AudioStreamPlayer2D" parent="Switches" unique_id=437304667]
+stream = ExtResource("10_dg7u0")
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 178.0
+_volume = 5.0
+concentration = 0.8
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Ventilation" type="AudioStreamPlayer2D" parent="Switches" unique_id=1562647744]
+stream = ExtResource("10_dg7u0")
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 180.0
+_volume = 5.0
+concentration = 0.8
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Puertas" type="AudioStreamPlayer2D" parent="Switches" unique_id=1431557986]
+stream = ExtResource("10_dg7u0")
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 182.0
+_volume = 5.0
+concentration = 0.8
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Flashlight" type="AudioStreamPlayer2D" parent="Switches" unique_id=220929124]
+stream = ExtResource("10_dg7u0")
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 184.0
+_volume = 5.0
+concentration = 0.8
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Cameras" type="AudioStreamPlayer2D" parent="Switches" unique_id=1868599236]
+stream = ExtResource("10_dg7u0")
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 186.0
+_volume = 5.0
+concentration = 0.8
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Heater" type="AudioStreamPlayer2D" parent="Switches" unique_id=518513473]
+stream = ExtResource("10_dg7u0")
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 188.0
+_volume = 5.0
+concentration = 0.8
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="Luces" type="AudioStreamPlayer2D" parent="Switches" unique_id=371164989]
+stream = ExtResource("10_dg7u0")
+script = ExtResource("2_yh57f")
+x_position = 8
+_custom_degrees = 190.0
+_volume = 5.0
+concentration = 0.8
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [node name="DuctSounds" type="Node" parent="." unique_id=273894641 node_paths=PackedStringArray("crawling_sounds")]
@@ -323,13 +422,13 @@ pop_sounds = Array[AudioStream]([ExtResource("29_cpmoq"), ExtResource("30_up7ln"
 [node name="Left" type="AudioStreamPlayer2D" parent="ToySound" unique_id=1491593716]
 stream = ExtResource("18_d2xl7")
 script = ExtResource("2_yh57f")
-x_position = 1
+x_position = 2
 concentration = 0.9
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [node name="Right" type="AudioStreamPlayer2D" parent="ToySound" unique_id=1645205466]
 script = ExtResource("2_yh57f")
-x_position = 4
+x_position = 5
 concentration = 0.9
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
@@ -337,7 +436,6 @@ metadata/_custom_type_script = "uid://cem83cl7ongg6"
 stream = ExtResource("35_866d1")
 script = ExtResource("2_yh57f")
 x_position = 8
-_custom_degrees = 10
 _lower_db = 3.0
 concentration = 0.5
 metadata/_custom_type_script = "uid://cem83cl7ongg6"

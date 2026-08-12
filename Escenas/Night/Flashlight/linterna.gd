@@ -55,9 +55,6 @@ func set_linterna(value: bool, animation := false):
 
 func _input(event):
 	
-	if event.is_action_pressed("Shift"):
-		foxy_animacion()
-	
 	if event.is_action_pressed("Click"):
 		if linterna_recargando or father.camaras_activadas or linterna_animacion_count != 0 or father.tick_stop:
 			return

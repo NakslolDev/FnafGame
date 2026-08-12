@@ -3,7 +3,7 @@ extends Node2D
 @export var timer: Timer
 @export var animations: Array[AnimatedSprite2D]
 
-signal Sound()
+@export var izquierda: bool = true
 
 func _ready():
 	Global.set_energia_consumption("Puerta_I", 0)
@@ -53,4 +53,4 @@ func play_puerta():
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	Sound.emit()
+	DirectionalAudioBus.puerta.emit(izquierda)

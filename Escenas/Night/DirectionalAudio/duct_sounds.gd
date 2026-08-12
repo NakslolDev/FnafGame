@@ -2,7 +2,6 @@ extends Node
 
 @export var crawling_sounds: Array[spacial_audio]
 
-
 var playing := false
 var last := 0
 var volume: int

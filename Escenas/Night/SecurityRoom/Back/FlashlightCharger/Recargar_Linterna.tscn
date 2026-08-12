@@ -1,31 +1,21 @@
 [gd_scene format=3 uid="uid://dp1parfdkvu0l"]
 
 [ext_resource type="Script" uid="uid://v6jyxlu5payq" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/recargar_linterna.gd" id="1_8pogo"]
-[ext_resource type="Texture2D" uid="uid://cxuqjpbml8b0x" path="res://assets/Renders/office/Flashlight/FlashlightFlashlight.png" id="2_ca7vn"]
+[ext_resource type="Texture2D" uid="uid://px2exwiq3lca" path="res://assets/Renders/office/Flashlight/FlashlightDark.png" id="2_12qnk"]
 [ext_resource type="Script" uid="uid://objf8nej4ubl" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/area_2d_recargar_linterna.gd" id="3_i4dkt"]
-[ext_resource type="AudioStream" uid="uid://mh2in0da3o47" path="res://assets/sounds/Linterna Agarrar.mp3" id="4_p40pe"]
-[ext_resource type="AudioStream" uid="uid://b15n3emnrh5nc" path="res://assets/sounds/Linterna Encajar.mp3" id="5_2truv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4dkt"]
 size = Vector2(279, 469)
 
-[node name="Recargar_Linterna" type="Node2D" unique_id=2017254811 node_paths=PackedStringArray("linterna_recargando", "agarrar", "encajar")]
+[node name="Recargar_Linterna" type="Node2D" unique_id=2017254811 node_paths=PackedStringArray("linterna_recargando")]
 script = ExtResource("1_8pogo")
 linterna_recargando = NodePath("Sprite")
-agarrar = NodePath("Agarrar")
-encajar = NodePath("Encajar")
 
 [node name="Sprite" type="Node2D" parent="." unique_id=1709892393]
 
-[node name="LinternaRecargandoLight" type="Sprite2D" parent="Sprite" unique_id=2097981898 groups=["LightPNG"]]
-position = Vector2(-328, 152)
-texture = ExtResource("2_ca7vn")
-region_enabled = true
-region_rect = Rect2(5360, 1392, 144, 400)
-
 [node name="LinternaRecargandoDark" type="Sprite2D" parent="Sprite" unique_id=1751804319 groups=["FlashlightPNG"]]
 position = Vector2(-328, 152)
-texture = ExtResource("2_ca7vn")
+texture = ExtResource("2_12qnk")
 region_enabled = true
 region_rect = Rect2(5360, 1392, 144, 400)
 
@@ -35,13 +25,3 @@ script = ExtResource("3_i4dkt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1645869425]
 position = Vector2(-317, 139)
 shape = SubResource("RectangleShape2D_i4dkt")
-
-[node name="Agarrar" type="AudioStreamPlayer" parent="." unique_id=38315301]
-stream = ExtResource("4_p40pe")
-volume_db = -4.0
-bus = &"SFX"
-
-[node name="Encajar" type="AudioStreamPlayer" parent="." unique_id=320896310]
-stream = ExtResource("5_2truv")
-volume_db = -8.0
-bus = &"SFX"

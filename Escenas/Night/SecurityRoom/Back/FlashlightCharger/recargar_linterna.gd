@@ -33,14 +33,10 @@ func _ready():
 func _on_click():
 	if office_behind.stop_everything == true:
 		return
-	emit_signal("Linterna_Recarga_Switch")
+	Linterna_Recarga_Switch.emit()
 	recargando = !recargando
-	if recargando:
-		linterna_recargando.visible = true
-		encajar.play()
-	else:
-		linterna_recargando.visible = false
-		agarrar.play()
+	linterna_recargando.visible = recargando
+	DirectionalAudioBus.encajar_linterna.emit(recargando)
 
 func _input(event):
 	if detras:

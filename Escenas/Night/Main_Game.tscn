@@ -325,9 +325,9 @@ boton_izquierda = false
 [node name="PuertaIzquierda" parent="Oficina" unique_id=718649087 instance=ExtResource("17_4erhx")]
 
 [node name="PuertaDerecha" parent="Oficina" unique_id=1174262195 instance=ExtResource("18_4erhx")]
+izquierda = false
 
 [node name="VHS_Player" parent="Oficina" unique_id=454136740 node_paths=PackedStringArray("main_game") instance=ExtResource("14_lctcs")]
-position = Vector2(186, 166)
 main_game = NodePath("../..")
 
 [node name="Table_items" type="Node2D" parent="Oficina" unique_id=950471746]
@@ -341,7 +341,7 @@ position = Vector2(-81, 133)
 main_game = NodePath("../../..")
 
 [node name="Freddy nose" parent="Oficina" unique_id=1087430654 node_paths=PackedStringArray("main_game") instance=ExtResource("18_uce18")]
-position = Vector2(-298, -170)
+position = Vector2(-264, -160)
 main_game = NodePath("../..")
 
 [node name="DirectionalAudio" parent="." unique_id=2054814738 node_paths=PackedStringArray("oficina") instance=ExtResource("47_pi1lr")]
@@ -581,7 +581,8 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="timeout" from="Control/ESC_Timer" to="." method="_on_esc_timer_timeout"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Detector_Girar_Izquierda" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Oficina_Detras" method="_on_oficina_girando_estado"]
-[connection signal="Girando_Estado" from="Oficina" to="DirectionalAudio" method="_on_oficina_girando_estado"]
+[connection signal="Girando_Estado" from="Oficina" to="Oficina/BotonIzquierda" method="_on_oficina_girando_estado"]
+[connection signal="Girando_Estado" from="Oficina" to="Oficina/BotonDerecha" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="True_No_Shader/UpCams" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Camaras_Control" method="_on_oficina_girando_estado"]
 [connection signal="Girar_Input_Permitido" from="Oficina" to="Oficina/Detector_Girar_Izquierda" method="_on_oficina_girar_input_permitido"]
@@ -595,14 +596,8 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina/Oficina_Detras" method="_on_detector_girar_izquierda_girar"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]
 [connection signal="Linterna_Recarga_Switch_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_recarga_switch_rebote"]
-[connection signal="ButtonPlay" from="Oficina/BotonIzquierda" to="DirectionalAudio" method="_on_boton_izquierda_button_play"]
 [connection signal="Puerta_Cambio" from="Oficina/BotonIzquierda" to="Oficina/PuertaIzquierda" method="_on_boton_izquierda_puerta_cambio"]
-[connection signal="ButtonPlay" from="Oficina/BotonDerecha" to="DirectionalAudio" method="_on_boton_derecha_button_play"]
 [connection signal="Puerta_Cambio" from="Oficina/BotonDerecha" to="Oficina/PuertaDerecha" method="_on_boton_derecha_puerta_cambio"]
-[connection signal="Sound" from="Oficina/PuertaIzquierda" to="DirectionalAudio" method="_on_puerta_izquierda_sound"]
-[connection signal="Sound" from="Oficina/PuertaDerecha" to="DirectionalAudio" method="_on_puerta_derecha_sound"]
-[connection signal="act_audio" from="Oficina/VHS_Player" to="DirectionalAudio" method="_on_vhs_player_act_audio"]
-[connection signal="change_audio_stream" from="Oficina/VHS_Player" to="DirectionalAudio" method="_on_vhs_player_change_audio_stream"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/FlashlightShaderControl" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Oficina_Detras" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Ductos" method="_on_linterna_linterna_activada_switch"]

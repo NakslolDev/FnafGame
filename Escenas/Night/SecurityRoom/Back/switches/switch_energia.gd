@@ -19,7 +19,7 @@ func _ready():
 	switch_act(BREAKDOWN)
 
 func switch_act(breakdown: bool = not BREAKDOWN):
-	if not breakdown: tiny_click.play()
+	if not breakdown: DirectionalAudioBus.switch.emit(controlador)#tiny_click.play()
 
 	sprite_on.visible = switch_on
 	sprite_off.visible = !switch_on

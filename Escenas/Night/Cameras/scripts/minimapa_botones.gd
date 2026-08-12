@@ -35,7 +35,7 @@ func _input(event: InputEvent) -> void:
 		cambiar_cam_teclas(false, true, false, false)
 	if event.is_action_pressed("Girarse"):
 		cambiar_cam_teclas(false, false, true, false)
-	if event.is_action_pressed("W"):
+	if event.is_action_pressed("CamUpSelect"):
 		cambiar_cam_teclas(true, false, false, false)
 
 func cambiar_cam_teclas(w: bool, a: bool, s: bool, d: bool):
@@ -169,45 +169,45 @@ func act_buttons():
 	Freddy.camara = camaras.camara_activa
 	if get_node_or_null(".") == null:
 		return
-	_1.modulate.a = 0.0
-	_2.modulate.a = 0.0
-	_3.modulate.a = 0.0
-	_4.modulate.a = 0.0
-	_5.modulate.a = 0.0
-	_6.modulate.a = 0.0
-	_7.modulate.a = 0.0
-	_8.modulate.a = 0.0
-	_9.modulate.a = 0.0
-	_10a.modulate.a = 0.0
-	_10b.modulate.a = 0.0
-	_11a.modulate.a = 0.0
-	_11b.modulate.a = 0.0
+	_1.visible = false
+	_2.visible = false
+	_3.visible = false
+	_4.visible = false
+	_5.visible = false
+	_6.visible = false
+	_7.visible = false
+	_8.visible = false
+	_9.visible = false
+	_10a.visible = false
+	_10b.visible = false
+	_11a.visible = false
+	_11b.visible = false
 	if (camaras.camara_activa == 1 and flicker_on) or mouse_on == 1:
-		_1.modulate.a = 1.0
+		_1.visible = true
 	if (camaras.camara_activa == 2 and flicker_on) or mouse_on == 2:
-		_2.modulate.a = 1.0
+		_2.visible = true
 	if (camaras.camara_activa == 3 and flicker_on) or mouse_on == 3:
-		_3.modulate.a = 1.0
+		_3.visible = true
 	if (camaras.camara_activa == 4 and flicker_on) or mouse_on == 4:
-		_4.modulate.a = 1.0
+		_4.visible = true
 	if (camaras.camara_activa == 5 and flicker_on) or mouse_on == 5:
-		_5.modulate.a = 1.0
+		_5.visible = true
 	if (camaras.camara_activa == 6 and flicker_on) or mouse_on == 6:
-		_6.modulate.a = 1.0
+		_6.visible = true
 	if (camaras.camara_activa == 7 and flicker_on) or mouse_on == 7:
-		_7.modulate.a = 1.0
+		_7.visible = true
 	if (camaras.camara_activa == 8 and flicker_on) or mouse_on == 8:
-		_8.modulate.a = 1.0
+		_8.visible = true
 	if (camaras.camara_activa == 9 and flicker_on) or mouse_on == 9:
-		_9.modulate.a = 1.0
+		_9.visible = true
 	if (camaras.camara_activa == 10 and flicker_on) or mouse_on == 10:
-		_10a.modulate.a = 1.0
+		_10a.visible = true
 	if (camaras.camara_activa == 11 and flicker_on) or mouse_on == 11:
-		_10b.modulate.a = 1.0
+		_10b.visible = true
 	if (camaras.camara_activa == 12 and flicker_on) or mouse_on == 12:
-		_11a.modulate.a = 1.0
+		_11a.visible = true
 	if (camaras.camara_activa == 13 and flicker_on) or mouse_on == 13:
-		_11b.modulate.a = 1.0
+		_11b.visible = true
 
 func _on_flicker_timer_timeout() -> void:
 	flicker_on = !flicker_on
