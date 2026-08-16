@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://dffqin4cl711n"]
 
 [ext_resource type="Script" uid="uid://dbkepsongl7ai" path="res://Escenas/Shift/Safe/pop_safe.gd" id="1_1prpf"]
-[ext_resource type="Texture2D" uid="uid://bat2k5kbg8hvt" path="res://icon.svg" id="1_07x42"]
 [ext_resource type="Script" uid="uid://cxhguxdkxfqan" path="res://Escenas/Shift/Safe/safe_wheel.gd" id="2_86dor"]
+[ext_resource type="Texture2D" uid="uid://bhu1q0tdyfm8o" path="res://assets/minijuego assets/SafeWheel/SafeWheel.png" id="2_c54t7"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="3_86dor"]
-[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="4_pqxct"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1prpf"]
-size = Vector2(448, 448)
+[ext_resource type="AudioStream" uid="uid://dhy6tu40x7wtj" path="res://assets/sounds/possible_safe_sound_1.mp3" id="4_c54t7"]
 
 [node name="pop_safe" type="Node2D" unique_id=1623339115]
 texture_filter = 1
@@ -15,23 +12,24 @@ script = ExtResource("1_1prpf")
 
 [node name="Safe" type="Node2D" parent="." unique_id=1488284344]
 
-[node name="Wheel" type="Sprite2D" parent="Safe" unique_id=1458813703]
-position = Vector2(1.5258789e-05, 1.5258789e-05)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("1_07x42")
+[node name="Wheel" type="Sprite2D" parent="Safe" unique_id=1458813703 node_paths=PackedStringArray("audio_stream_player")]
+scale = Vector2(5, 5)
+texture = ExtResource("2_c54t7")
 script = ExtResource("2_86dor")
+cap_speed = 75
+audio_stream_player = NodePath("../Sounds/AudioStreamPlayer")
 
 [node name="Interact_mouse_colision" type="Area2D" parent="Safe/Wheel" unique_id=346945265]
 scale = Vector2(0.28571427, 0.28571427)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Safe/Wheel/Interact_mouse_colision" unique_id=1024266975]
-shape = SubResource("RectangleShape2D_1prpf")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Safe/Wheel/Interact_mouse_colision" unique_id=630100933]
+polygon = PackedVector2Array(-151.20001, -72.8, -134.40001, -95.200005, -84.00001, -61.600006, -56.000004, -84.00001, -11.200001, -100.8, -11.200001, -168.00002, 11.200001, -168.00002, 11.200001, -100.8, 56.000004, -84.00001, 78.40001, -61.600006, 134.40001, -95.200005, 151.20001, -72.8, 95.200005, -39.200005, 100.8, 0, 95.200005, 39.200005, 151.20001, 67.200005, 134.40001, 89.600006, 78.40001, 61.600006, 56.000004, 84.00001, 11.200001, 100.8, 11.200001, 162.40001, -11.200001, 162.40001, -11.200001, 100.8, -56.000004, 84.00001, -78.40001, 61.600006, -134.40001, 95.200005, -151.20001, 67.200005, -95.200005, 39.200005, -106.40001, 0, -95.200005, -39.200005)
 
 [node name="Sounds" type="Node" parent="Safe" unique_id=1829446074]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Safe/Sounds" unique_id=1365064564]
-stream = ExtResource("4_pqxct")
-volume_db = 24.0
+stream = ExtResource("4_c54t7")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="Mouse_Custom" parent="." unique_id=683053710 instance=ExtResource("3_86dor")]

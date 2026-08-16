@@ -1,0 +1,65 @@
+Noche 1:
+Tienes dos puertas a ambos lados. Las cierras con los botones para impedir el paso a cualquiera.
+Tambien tienes una linterna para poder ver mejor en las puertas. Si miras hacia atras, podrás ver a la izquierda una caja para recargar la linterna.
+Tambien verás a la derecha unos switches. Estos controlan la energía de los sistemas. Si usas más de tres cosas a la vez, estos se desactivarán y tendras que volver a activarlos.
+De izquierda a derecha: 
+General, controla toda la energía
+Ventilación, consume, pero si la apagas, empezarás a alucinar
+Puertas. A veces estas se atascan, y puedes reiniciarlas quitando y poniendo su energia
+Recargador de linternas.
+Camaras.
+Calentador.
+Luz. Esta última no consume, pero es molesta y no te deja oir bien
+Si miras hacia adelante, puedes abrir las camaras. Con el boton de la esquina izquierda, cambias al modo del calentador
+Por ultimo, bonnie se desplaza por la izquierda y chica por la derecha. Buena suerte.
+
+Noche 2:
+Si exploras por el mapa, puedes encontrar objetos que te dan una pequeña ayuda durante la noche. Dependiendo de si lo he implementado ya, estarán en los placeholders de godot, o se verán por sitios varios.
+A Freddy no le gusta que le miren, especialmente con luz. Además, al moverse, causará interferencias-
+
+Noche 3:
+Foxy no puede atravesar puertas, por lo que usara los conductos de ventilación. Puedes activar el calentador para expulsarle de estos o impedir su paso. Tambien se vera repelido por la luz de la linterna.
+
+Noche 4:
+Si no quieres intentar conseguir el final verdadero, puedes dejar de escuchar estas grabaciones. Tienes que encontrar una llave que ha aparecido en algun lugar del establecimiento. Parece que abre una puerta en el almacén, camara 6.
+
+Noche 5:
+Para abrir la caja fuerte, tienes que conseguir la combinación. Por suerte, chica la conoce, asi que si dejas la puerta abierta y consigues que entre, podrás escuchar la combinación de 5 digitos
+
+Noche 6:
+Si abres la caja fuerte, encontrarás dentro un usb, entre otras cosas. Usa ese usb para encender el ordenador de al lado. De momento, con completar la noche y salir es suficiente. 
+
+
+---ENGLISH---
+
+Night 1:
+You have two doors on either side. Close them using the buttons to prevent anyone from passing through.
+You also have a flashlight to see the doors better. If you look behind you, you’ll see a charging station for the flashlight on the left.
+You’ll also see some switches on the right. These control the power to the systems. If you use more than three things at once, these will turn off and you’ll have to turn them back on.
+From left to right:
+General—controls all power
+Ventilation—uses power, but if you turn it off, you’ll start hallucinating
+Doors—sometimes these get stuck, and you can reset them by turning their power off and on
+Flashlight charger
+Cameras
+Heater.
+Light. This one doesn’t consume power, but it’s annoying and prevents you from hearing well
+If you look straight ahead, you can open the cameras. Use the button in the left corner to switch to heater mode
+Finally, Bonnie moves on the left and Chica on the right. Good luck.
+
+Night 2:
+If you explore the map, you can find items that give you a little help during the night. Depending on whether I’ve implemented them yet, they’ll be in the Godot placeholders or will appear in various locations.
+Freddy doesn’t like being watched, especially in the light. Also, when he moves, he’ll cause interference— 
+
+Night 3:
+Foxy can't go through doors, so he'll use the ventilation ducts. You can turn on the heater to force him out of them or block his path. He'll also be repelled by the light from the flashlight.
+
+Night 4:
+If you don’t want to try to reach the true ending, you can stop listening to these recordings. You have to find a key that has appeared somewhere in the building. It seems to open a door in the storage room, room 6.
+
+Night 5:
+To open the safe, you need to find the combination. Luckily, the girl knows it, so if you leave the door open and get her to come in, you’ll be able to hear the 5-digit combination.
+
+Night 6:
+If you open the safe, you’ll find a USB drive inside, among other things. Use that USB drive to turn on the computer next to it. For now, just getting through the night and getting out is enough.
+	

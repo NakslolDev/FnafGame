@@ -14,4 +14,5 @@ signal vhs_change_audio_stream(new: AudioStream)
 @warning_ignore("unused_signal")
 signal encajar_linterna(on: bool)
 
+@warning_ignore("unused_signal")
 signal switch(control: String)

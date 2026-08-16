@@ -19,49 +19,49 @@ region_enabled = true
 region_rect = Rect2(32, 96, 96, 96)
 
 [node name="Label" type="Label" parent="." unique_id=1490956965]
-offset_left = -118.0
-offset_top = -65.0
-offset_right = -21.0
-offset_bottom = -42.0
+offset_left = -112.0
+offset_top = -64.0
+offset_right = -15.0
+offset_bottom = -41.0
 theme = ExtResource("2_aj3wp")
 text = "You should"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." unique_id=1155854669]
-offset_left = -116.0
-offset_top = 47.0
-offset_right = -18.0
-offset_bottom = 70.0
+offset_left = -120.0
+offset_top = 48.0
+offset_right = -9.0
+offset_bottom = 71.0
 theme = ExtResource("2_aj3wp")
-text = "not see this"
+text = "not read this"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="." unique_id=34931792]
-offset_left = 20.0
-offset_top = -65.0
-offset_right = 117.0
-offset_bottom = -42.0
+offset_left = 16.0
+offset_top = -64.0
+offset_right = 113.0
+offset_bottom = -41.0
 theme = ExtResource("2_aj3wp")
 text = "You should"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="." unique_id=1628766199]
-offset_left = 21.0
+offset_left = 16.0
 offset_top = 48.0
-offset_right = 118.0
+offset_right = 113.0
 offset_bottom = 71.0
 theme = ExtResource("2_aj3wp")
-text = "see this"
+text = "read this"
 horizontal_alignment = 1
 
 [node name="3" type="Sprite2D" parent="." unique_id=707113224]
 modulate = Color(1, 1, 1, 0.972549)
-position = Vector2(-66.99997, -1.6925888)
+position = Vector2(-64, 0)
 scale = Vector2(7.1109376, 8.086575)
 texture = ExtResource("3_aj3wp")
 
 [node name="4" type="Sprite2D" parent="." unique_id=563383053]
 modulate = Color(1, 1, 1, 0.90000004)
-position = Vector2(68.000015, -1)
+position = Vector2(64, 0)
 scale = Vector2(7.1109376, 8.086575)
 texture = ExtResource("3_aj3wp")

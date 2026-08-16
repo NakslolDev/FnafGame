@@ -8,22 +8,28 @@ var scarlet_forest := false
 
 @export var normal: Node2D
 @export var play: Node2D
+@export var message: Node2D
+@export var darkest: BrightSprite
+
+@export var new_message: Timer
+const TIMER_LONG := 5.0
+const TIMER_SHORT := 0.5
 
 @export_category("Audios")
-@export var audio_nights: Array[AudioStream]
+@export var audio_nights_en: Array[AudioStream]
+@export var audio_nights_es: Array[AudioStream]
 
 func _ready():
 	vhs_colider.add_to_group("interactable")
-	change_audio()
+	new_message.start(TIMER_LONG)
+	call_deferred("change_audio", Global.noche)
 
-func change_audio(index: int = -1):
+func change_audio(index: int):
 	
 	var new_audio: AudioStream
 	
-	if index == -1:
-		new_audio = audio_nights[Global.noche]
-	else:
-		push_warning("There is still not any audio for this")
+	if Global.audio_language == "En": new_audio = audio_nights_en[index]
+	elif Global.audio_language == "Es": new_audio = audio_nights_es[index]
 	
 	DirectionalAudioBus.vhs_change_audio_stream.emit(new_audio)
 	act_status(status.OFF)
@@ -35,9 +41,12 @@ func act_status(stat: status):
 		return
 
 	if stat == status.PLAYING:
+		new_message.stop()
+		message.visible = false
 		play.visible = true
 		normal.visible = false
 		playing = true
+
 
 	else:
 		play.visible = false
@@ -61,3 +70,10 @@ func _on_play_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx
 
 func _on_main_game_on_tick_stop() -> void:
 		DirectionalAudioBus.vhs_act_audio.emit(status.OFF)
+
+
+func _on_new_message_timeout() -> void:
+	#darkest.modulate.a = 1.0 - float(Global.energia["Luces"])
+	message.visible = !message.visible
+	#normal.visible = !message.visible
+	new_message.start(TIMER_SHORT)

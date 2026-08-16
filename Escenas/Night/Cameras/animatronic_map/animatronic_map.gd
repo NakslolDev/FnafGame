@@ -22,21 +22,21 @@ func act_first():
 
 func act_activated():
 	if Bonnie.AI_level == 0: 
-		bonnie_icon.modulate.a = 0.0
+		bonnie_icon.visible = false
 	else:
-		bonnie_icon.modulate.a = 1.0
+		bonnie_icon.visible = true
 	if Chica.AI_level == 0: 
-		chica_icon.modulate.a = 0.0
+		chica_icon.visible = false
 	else:
-		chica_icon.modulate.a = 1.0
+		chica_icon.visible = true
 	if Freddy.AI_level == 0: 
-		freddy_icon.modulate.a = 0.0
+		freddy_icon.visible = false
 	else:
-		freddy_icon.modulate.a = 1.0
+		freddy_icon.visible = true
 	if Foxy.AI_level == 0: 
-		foxy_icon.modulate.a = 0.0
+		foxy_icon.visible = false
 	else:
-		foxy_icon.modulate.a = 1.0
+		foxy_icon.visible = true
 
 func movement_bonnie(to: String, _b = null):
 	if to == "S":

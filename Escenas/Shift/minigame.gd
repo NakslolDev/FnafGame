@@ -185,7 +185,11 @@ func begin():
 func _on_shift_completed_done() -> void:
 	manage_end_shift()
 
-func manage_end_shift():
+const FORCE_EXIT := true
+func _on_shift_completed_done_and_exit() -> void:
+	manage_end_shift(FORCE_EXIT)
+
+func manage_end_shift(force_exit := false):
 	
 	scene_handler.fleing = false # no devería ser problema, pero no molesta
 	
@@ -206,7 +210,7 @@ func manage_end_shift():
 		scene_handler.trans_to_scene(scene_handler.scene.END)
 
 	else:
-		if Global.misc["When_win_go_to"] == "shift":
+		if Global.misc["When_win_go_to"] == "shift" and not force_exit:
 			scene_handler.trans_to_scene(scene_handler.scene.SHIFT)
 		else:
 			scene_handler.trans_to_scene(scene_handler.scene.MAIN_MENU)

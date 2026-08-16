@@ -29,25 +29,27 @@ func get_csv_value_int(csv:String, row_index: int, col_index: int): # Devuelve e
 	if file == null:
 		push_warning("No se pudo abrir el archivo CSV: " + path)
 		return null
-	
+
 	var table: Array = []
 	while not file.eof_reached():
 		var line = file.get_line().strip_edges()
 		if line != "":
 			table.append(line.split(",")) # Cada línea → Array de strings
 	file.close()
-	
+
 	# Ajustamos porque el csv usa índices desde 1, pero en arrays es desde 0
 	var r = row_index - 1
 	var c = col_index - 1
-	
+
 	if r < 0 or r >= table.size():
 		return null
 	if c < 0 or c >= table[r].size():
 		return null
-	
+
 	var cell = table[r][c].strip_edges()
-	return cell if cell != "" else null
+
+	if cell != "": return int(cell)
+	else: return null
 
 func get_csv_value_id(csv:String, row_id: String, col_id: String) -> String: # Devuelve el valor de la casilla indicada del csv por las ids
 	var path := "res://Data/" + csv
@@ -750,7 +752,7 @@ var noche := 0 # 1-6, 0 es custom night.
 
 const SAFE_CODE_SIZE := 5
 var safe_code: Array[int] = [2, 7, 3, 5, 3] # el codigo en orden de la caja
-var location_key := 3
+var location_key := 0
 
 
 var inventario: Dictionary[String, bool] = {
@@ -760,7 +762,7 @@ var inventario: Dictionary[String, bool] = {
 	"pen": false,
 	"files": false,
 	"safe_usb_key": false,
-	"dm_usb_key": false,
+	"dm_usb_key": true,
 	"exe": false,
 }
 
@@ -908,7 +910,7 @@ func night_starts():
 		return
 	
 	if noche >= 4 and not inventario["key"]:
-		location_key = randi_range(1,3)
+		location_key = randi_range(1,4)
 	
 	mapa["computer_failed"] = false
 	if mapa["computer_working"]:
@@ -944,21 +946,37 @@ func act_animatronic_ai(hour: int):
 	
 	var bonnie_new_ai = get_night_info("bonnie", noche, hour)
 	if bonnie_new_ai != null:
-		Bonnie.AI_level = bonnie_new_ai
+		if hour != 0 and Bonnie.AI_level == 0 and bonnie_new_ai > 0:
+			Bonnie.AI_level = bonnie_new_ai
+			Bonnie.move()
+		else:
+			Bonnie.AI_level = bonnie_new_ai
 	
 	var chica_new_ai = get_night_info("chica", noche, hour)
 	if chica_new_ai != null:
-		Chica.AI_level = chica_new_ai
+		if hour != 0 and Chica.AI_level == 0 and chica_new_ai > 0:
+			Chica.AI_level = chica_new_ai
+			Chica.move()
+		else:
+			Chica.AI_level = chica_new_ai
 	
 	var freddy_new_ai = get_night_info("freddy", noche, hour)
 	if freddy_new_ai != null:
-		Freddy.AI_level = freddy_new_ai
+		if hour != 0 and Freddy.AI_level == 0 and freddy_new_ai > 0:
+			Freddy.AI_level = freddy_new_ai
+			Freddy.move()
+		else:
+			Freddy.AI_level = freddy_new_ai
 	
 	var foxy_new_ai = get_night_info("foxy", noche, hour)
 	if foxy_new_ai != null:
-		Foxy.AI_level = foxy_new_ai
+		if hour != 0 and Foxy.AI_level == 0 and foxy_new_ai > 0:
+			Foxy.AI_level = foxy_new_ai
+			Foxy.move()
+		else:
+			Foxy.AI_level = foxy_new_ai
 	
-	emit_signal("act_ai_state")
+	act_ai_state.emit()
 
 
 func tick():

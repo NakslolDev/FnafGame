@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dvknwrukdlaf2" path="res://assets/sounds/Foxy sounds/Foxy_04.wav" id="21_dg83l"]
 [ext_resource type="AudioStream" uid="uid://brmn04w4d4hr3" path="res://assets/sounds/Foxy sounds/Foxy_05.wav" id="22_ir08u"]
 [ext_resource type="Script" uid="uid://cenq3mn74wqdr" path="res://Escenas/Night/Cameras/NewCams/cam_6/safe_sounds.gd" id="23_5qyln"]
-[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="24_cqrhh"]
+[ext_resource type="AudioStream" uid="uid://dhy6tu40x7wtj" path="res://assets/sounds/possible_safe_sound_1.mp3" id="25_pfqwi"]
 
 [node name="Cam6" type="Node2D" unique_id=433915285 node_paths=PackedStringArray("chica_sounds", "foxy_sounds", "safe_sounds")]
 script = ExtResource("1_wpinl")
@@ -167,8 +167,8 @@ safe_tick = NodePath("safe_tick")
 [node name="Timer" type="Timer" parent="Safe_sounds" unique_id=1456946209]
 
 [node name="safe_tick" type="AudioStreamPlayer" parent="Safe_sounds" unique_id=1768223536]
-stream = ExtResource("24_cqrhh")
-volume_db = 20.0
+stream = ExtResource("25_pfqwi")
+volume_db = -15.0
 bus = &"Cam 6 Sounds"
 
 [connection signal="timeout" from="Chica_sounds/change" to="Chica_sounds" method="_on_change_timeout"]

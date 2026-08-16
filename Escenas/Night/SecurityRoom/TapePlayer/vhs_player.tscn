@@ -2,16 +2,26 @@
 
 [ext_resource type="Script" uid="uid://b3t2dg6m53hs0" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.gd" id="1_wceyb"]
 [ext_resource type="AudioStream" uid="uid://wuxmltxlpiok" path="res://Audios/Scarlet Forest.mp3" id="2_vdoh0"]
-[ext_resource type="AudioStream" uid="uid://btowcovrp5i2a" path="res://assets/sounds/VHS/Noche_1.wav" id="3_j8py7"]
-[ext_resource type="AudioStream" uid="uid://dkgx3svjuntra" path="res://assets/sounds/VHS/Noche_2.wav" id="4_suuy0"]
-[ext_resource type="AudioStream" uid="uid://xf0hd8s6yvdr" path="res://assets/sounds/VHS/Noche_3.wav" id="5_geslb"]
-[ext_resource type="AudioStream" uid="uid://dwektcoebts6y" path="res://assets/sounds/VHS/Noche_4.wav" id="6_tfrbq"]
-[ext_resource type="AudioStream" uid="uid://d0oxqsohcw5mg" path="res://assets/sounds/VHS/Noche_5.wav" id="7_mfmns"]
-[ext_resource type="AudioStream" uid="uid://cnaqrnnkuq210" path="res://assets/sounds/VHS/Noche_6.wav" id="8_eopg5"]
+[ext_resource type="AudioStream" uid="uid://b200m2wdrj0dx" path="res://assets/sounds/VHS/Noche1EN.mp3" id="3_7cpwv"]
+[ext_resource type="AudioStream" uid="uid://b0rfbb1alturu" path="res://assets/sounds/VHS/Noche2EN.mp3" id="4_om6ro"]
+[ext_resource type="AudioStream" uid="uid://crotho5mgn8us" path="res://assets/sounds/VHS/Noche3EN.mp3" id="5_evohr"]
+[ext_resource type="AudioStream" uid="uid://dpt6supdehsrw" path="res://assets/sounds/VHS/Noche4EN.mp3" id="6_32h2q"]
+[ext_resource type="AudioStream" uid="uid://cyq6nnfxa4tgn" path="res://assets/sounds/VHS/Noche5EN.mp3" id="7_sppmi"]
+[ext_resource type="AudioStream" uid="uid://fi25hrji2cjh" path="res://assets/sounds/VHS/Noche6EN.mp3" id="8_2ayxf"]
 [ext_resource type="Texture2D" uid="uid://bl22umv57hc84" path="res://assets/Renders/office/VHS/VHSFlashlight.png" id="9_66qfm"]
+[ext_resource type="AudioStream" uid="uid://bxbfhim52au2u" path="res://assets/sounds/VHS/Noche1ES.mp3" id="9_mv3o7"]
 [ext_resource type="Texture2D" uid="uid://bhkltoojpnj76" path="res://assets/Renders/office/VHS/VHSDark.png" id="10_5epyg"]
+[ext_resource type="AudioStream" uid="uid://tmyiemrmujst" path="res://assets/sounds/VHS/Noche2ES.mp3" id="10_8xsj7"]
+[ext_resource type="AudioStream" uid="uid://bx5ko1lbvaj5l" path="res://assets/sounds/VHS/Noche3ES.mp3" id="11_1looo"]
 [ext_resource type="Texture2D" uid="uid://pgo4oifwemkn" path="res://assets/Renders/office/VHS/VHSPressedFlashlight.png" id="11_52uco"]
+[ext_resource type="AudioStream" uid="uid://ch4yyvdky6gpi" path="res://assets/sounds/VHS/Noche4ES.mp3" id="12_dh43c"]
 [ext_resource type="Texture2D" uid="uid://dbu06n6nv0tgn" path="res://assets/Renders/office/VHS/VHSPressedDark.png" id="12_u4m1q"]
+[ext_resource type="AudioStream" uid="uid://b8p4m0fchne0j" path="res://assets/sounds/VHS/Noche5ES.mp3" id="13_2ig51"]
+[ext_resource type="AudioStream" uid="uid://dbgw3w2y6kjdq" path="res://assets/sounds/VHS/Noche6ES.mp3" id="14_oj4up"]
+[ext_resource type="Texture2D" uid="uid://bf1re5pvom25y" path="res://assets/Renders/office/VHS/VHSNewMessageFlahslight.png" id="15_32h2q"]
+[ext_resource type="Texture2D" uid="uid://8be5dwawcy8h" path="res://assets/Renders/office/VHS/VHSNewMessageDark.png" id="16_sppmi"]
+[ext_resource type="Texture2D" uid="uid://3oc1b85dc2n5" path="res://assets/Renders/office/VHS/VHSNewMessageDarkest.png" id="17_2ayxf"]
+[ext_resource type="Script" uid="uid://yya23cdyyhfm" path="res://Escenas/Night/RandomScriptsIDC/bright.gd" id="18_sppmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vf6cd"]
 size = Vector2(32, 31)
@@ -22,13 +32,17 @@ size = Vector2(56, 31)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_om6ro"]
 size = Vector2(96, 31)
 
-[node name="VHS_Player" type="Node2D" unique_id=588532467 node_paths=PackedStringArray("vhs_colider", "normal", "play")]
+[node name="VHS_Player" type="Node2D" unique_id=588532467 node_paths=PackedStringArray("vhs_colider", "normal", "play", "message", "darkest", "new_message")]
 texture_filter = 1
 script = ExtResource("1_wceyb")
 vhs_colider = NodePath("VHS_colider")
 normal = NodePath("Normal")
 play = NodePath("Play")
-audio_nights = Array[AudioStream]([ExtResource("2_vdoh0"), ExtResource("3_j8py7"), ExtResource("4_suuy0"), ExtResource("5_geslb"), ExtResource("6_tfrbq"), ExtResource("7_mfmns"), ExtResource("8_eopg5")])
+message = NodePath("Message")
+darkest = NodePath("Message/Darkest")
+new_message = NodePath("NewMessage")
+audio_nights_en = Array[AudioStream]([ExtResource("2_vdoh0"), ExtResource("3_7cpwv"), ExtResource("4_om6ro"), ExtResource("5_evohr"), ExtResource("6_32h2q"), ExtResource("7_sppmi"), ExtResource("8_2ayxf")])
+audio_nights_es = Array[AudioStream]([ExtResource("2_vdoh0"), ExtResource("9_mv3o7"), ExtResource("10_8xsj7"), ExtResource("11_1looo"), ExtResource("12_dh43c"), ExtResource("13_2ig51"), ExtResource("14_oj4up")])
 
 [node name="Normal" type="Node2D" parent="." unique_id=350139093]
 
@@ -43,6 +57,29 @@ position = Vector2(368, 160)
 texture = ExtResource("10_5epyg")
 region_enabled = true
 region_rect = Rect2(2752, 1232, 992, 736)
+
+[node name="Message" type="Node2D" parent="." unique_id=1810447059]
+visible = false
+
+[node name="Flashlight" type="Sprite2D" parent="Message" unique_id=1395383510 groups=["LightPNG"]]
+position = Vector2(320, 204)
+texture = ExtResource("15_32h2q")
+region_enabled = true
+region_rect = Rect2(3176, 1632, 48, 24)
+
+[node name="Dark" type="Sprite2D" parent="Message" unique_id=321381208 groups=["FlashlightPNG"]]
+position = Vector2(320, 204)
+texture = ExtResource("16_sppmi")
+region_enabled = true
+region_rect = Rect2(3176, 1632, 48, 24)
+
+[node name="Darkest" type="Sprite2D" parent="Message" unique_id=106523766]
+position = Vector2(320, 204)
+texture = ExtResource("17_2ayxf")
+region_enabled = true
+region_rect = Rect2(3176, 1632, 48, 24)
+script = ExtResource("18_sppmi")
+metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Play" type="Node2D" parent="." unique_id=666340898]
 
@@ -76,5 +113,8 @@ shape = SubResource("RectangleShape2D_srkak")
 position = Vector2(352, 200.5)
 shape = SubResource("RectangleShape2D_om6ro")
 
+[node name="NewMessage" type="Timer" parent="." unique_id=868291365]
+
 [connection signal="input_event" from="Play_Area2D" to="." method="_on_play_area_2d_input_event"]
 [connection signal="input_event" from="Stop_Area2D" to="." method="_on_stop_area_2d_input_event"]
+[connection signal="timeout" from="NewMessage" to="." method="_on_new_message_timeout"]

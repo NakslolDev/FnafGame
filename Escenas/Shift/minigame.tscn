@@ -150,6 +150,9 @@ size = Vector2(2, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx56r"]
 size = Vector2(2, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5xp7"]
+size = Vector2(24, 14)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26wog"]
 size = Vector2(22, 10)
 
@@ -260,7 +263,6 @@ Walls = [NodePath("WallMain"), NodePath("WallWarehouse"), NodePath("WallPAS"), N
 
 [node name="Character_Minigame" parent="YSort" unique_id=1051262395 instance=ExtResource("8_w4bkp")]
 position = Vector2(-1020, 399)
-speed = 100.0
 run_mult = 5.0
 
 [node name="WallMain" type="Node2D" parent="YSort" unique_id=693646244]
@@ -388,7 +390,6 @@ shape = SubResource("RectangleShape2D_bx56r")
 one_way_collision = true
 
 [node name="WallSecretOffice" type="Node2D" parent="YSort" unique_id=568365689]
-visible = false
 texture_filter = 1
 position = Vector2(-496, 736)
 
@@ -517,8 +518,19 @@ position = Vector2(-641, 542)
 [node name="Posible_key_1" parent="YSort" unique_id=1704121610 instance=ExtResource("12_axwuc")]
 position = Vector2(-1378, 357)
 
-[node name="Safe" parent="YSort" unique_id=1328562962 instance=ExtResource("12_axwuc")]
+[node name="Safe" type="StaticBody2D" parent="YSort" unique_id=1328562962]
+texture_filter = 1
 position = Vector2(-408, 744)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Safe" unique_id=1286330739]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_u5xp7")
+
+[node name="Icon" type="Sprite2D" parent="YSort/Safe" unique_id=1665098722]
+position = Vector2(0, -17)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(336, 0, 32, 32)
 
 [node name="Computer" parent="YSort" unique_id=145170084 instance=ExtResource("12_axwuc")]
 position = Vector2(-344, 792)
@@ -1032,7 +1044,7 @@ entering = false
 key = 2
 
 [node name="Safe" type="Node2D" parent="Coliders" unique_id=252907210]
-position = Vector2(-408, 744)
+position = Vector2(-408, 736)
 
 [node name="Safe_pop_up" parent="Coliders/Safe" unique_id=1540664346 instance=ExtResource("24_ly3ag")]
 action = "Safe"
@@ -1535,6 +1547,7 @@ texture = ExtResource("3_u5xp7")
 
 [connection signal="done" from="Shader&else/Transicion" to="." method="_on_intro_done"]
 [connection signal="done" from="Shader&else/Shift_completed" to="." method="_on_shift_completed_done"]
+[connection signal="done_and_exit" from="Shader&else/Shift_completed" to="." method="_on_shift_completed_done_and_exit"]
 [connection signal="timeout" from="Shader&else/Shift_completed/Timer" to="Shader&else/Shift_completed" method="_on_timer_timeout"]
 [connection signal="timeout" from="Shader&else/Shift_completed/TimerSkip" to="Shader&else/Shift_completed" method="_on_timer_skip_timeout"]
 [connection signal="timeout" from="ESC_Timer" to="." method="_on_esc_timer_timeout"]

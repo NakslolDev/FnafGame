@@ -36,7 +36,6 @@ light = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="Key3" type="Sprite2D" parent="." unique_id=91587992]
-visible = false
 position = Vector2(-730.15625, 400.4375)
 scale = Vector2(0.13710004, 0.15750015)
 texture = ExtResource("4_t6ev5")

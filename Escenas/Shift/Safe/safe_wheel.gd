@@ -6,6 +6,8 @@ extends Sprite2D
 @export var cap_speed := 200 # es sin cap_speed
 @export var inicial_return_speed := 0
 
+@export var audio_stream_player: AudioStreamPlayer
+
 
 var mouse_in := false
 var mouse_pressed := false
@@ -22,6 +24,9 @@ var vel_extra: float
 
 var num_comb: int
 var combination = []
+
+const aceleration: float = 1.0
+var velocity: float = 0.0
 
 func _process(delta: float):
 	
@@ -44,16 +49,20 @@ func _process(delta: float):
 		
 		if next_deg > rotation_degrees or allow_going_back: # evita que vuelva hacia atras y pone un limite de velocidad
 			if next_deg - rotation_degrees > cap_speed * delta and cap_speed != 0:
-				rotation_degrees += cap_speed * delta
+				if velocity < 1.0: velocity += aceleration * delta
+				rotation_degrees += cap_speed * delta * velocity
 			elif - next_deg + rotation_degrees > cap_speed * delta and cap_speed != 0:
-				rotation_degrees -= cap_speed * delta
+				if velocity > -1.0: velocity -= aceleration * delta 
+				rotation_degrees += cap_speed * delta * velocity
 			else:
 				rotation_degrees = next_deg
+				velocity = 0.0
 		
 		if rotation_degrees > (num_comb + 1) * 36:
 			@warning_ignore("narrowing_conversion")
 			num_comb = rotation_degrees / 36
-			$"../Sounds/AudioStreamPlayer".play()
+			audio_stream_player.pitch_scale = randf_range(0.95, 1.05)
+			audio_stream_player.play()
 		
 		vel_extra = 0
 
@@ -62,7 +71,7 @@ func _process(delta: float):
 		while rotation_degrees > 360 and not return_all_rotations:
 			rotation_degrees -= 360
 		
-		vel_extra += delta * 2
+		vel_extra += delta
 		
 		rotation_degrees -= inicial_return_speed * delta + vel_extra
 		
@@ -75,6 +84,8 @@ func _process(delta: float):
 					$"../../Auto-exit_timer".start()
 		
 		rot_in = rotation_degrees
+
+		velocity = 0.0
 
 func calcular_grados(pos, center) -> float:
 	var grad

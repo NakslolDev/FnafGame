@@ -7,6 +7,7 @@ const MINIMUM_DURATION := 4.0
 const DURATION_HOLD := 8.0
 
 signal done
+signal done_and_exit
 
 var can_skip := false
 
@@ -28,6 +29,9 @@ func _input(event):
 	if not visible or not can_skip:
 		return
 	
-	if event.is_action_pressed("Click") or event.is_action_pressed("interact") or event.is_action_pressed("Esc"):
+	if event.is_action_pressed("Click") or event.is_action_pressed("interact"):
 		timer.stop()
 		done.emit()
+	if event.is_action_pressed("Esc"):
+		timer.stop()
+		done_and_exit.emit()
