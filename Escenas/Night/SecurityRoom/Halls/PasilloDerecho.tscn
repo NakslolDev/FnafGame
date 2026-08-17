@@ -60,6 +60,7 @@ texture = ExtResource("6_5e7ck")
 region_enabled = true
 region_rect = Rect2(3664, 1008, 560, 992)
 script = ExtResource("7_g2h13")
+long_rad = true
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Chica" type="Node2D" parent="." unique_id=78770447]

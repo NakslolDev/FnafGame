@@ -29,6 +29,7 @@ script = ExtResource("3_rjmbb")
 no_chroma = true
 frames_file = "res://assets/Renders/office/Door/Right/dark/"
 frame_step = 5
+short_rad = true
 metadata/_custom_type_script = "uid://d0q2hem5klm0q"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

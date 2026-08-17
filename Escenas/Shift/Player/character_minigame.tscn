@@ -194,9 +194,12 @@ sprite_frames = SubResource("SpriteFrames_cpux7")
 animation = &"F"
 frame_progress = 0.660151
 
-[node name="Legs" type="Node2D" parent="." unique_id=2032418714]
+[node name="Legs" type="Node2D" parent="." unique_id=2032418714 node_paths=PackedStringArray("timer", "character_minigame", "skins")]
 position = Vector2(0, -5)
 script = ExtResource("4_10j8s")
+timer = NodePath("Timer")
+character_minigame = NodePath("..")
+skins = NodePath("../Skins")
 
 [node name="Timer" type="Timer" parent="Legs" unique_id=880649715]
 one_shot = true

@@ -44,10 +44,10 @@ func _ready():
 	vhs_player.scarlet_forest = bosque_escarlata
 	
 	if not see_light_batery: batery_label.visible = false
-	
 
 func get_global_values():
 	if not get_from_global:
+		push_warning("Manual cheats active")
 		return
 	for key in Global.debug["cheats"]:
 		set(key, Global.debug["cheats"][key])

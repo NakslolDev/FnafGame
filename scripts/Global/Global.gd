@@ -1181,3 +1181,8 @@ func reset_debug():
 		#print(Global.inventario)
 		#print(Global.mapa)
 		#print(Global.dm)
+
+##Warnings
+
+func _ready():
+	push_warning("dm_usb_key active by default")

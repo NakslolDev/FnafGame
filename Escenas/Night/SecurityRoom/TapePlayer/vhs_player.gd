@@ -12,7 +12,7 @@ var scarlet_forest := false
 @export var darkest: BrightSprite
 
 @export var new_message: Timer
-const TIMER_LONG := 5.0
+const TIMER_LONG := 4.0
 const TIMER_SHORT := 0.5
 
 @export_category("Audios")
@@ -21,7 +21,6 @@ const TIMER_SHORT := 0.5
 
 func _ready():
 	vhs_colider.add_to_group("interactable")
-	new_message.start(TIMER_LONG)
 	call_deferred("change_audio", Global.noche)
 
 func change_audio(index: int):
@@ -33,6 +32,7 @@ func change_audio(index: int):
 	
 	DirectionalAudioBus.vhs_change_audio_stream.emit(new_audio)
 	act_status(status.OFF)
+	new_message.start(TIMER_LONG)
 
 enum status {OFF, PAUSED, PLAYING}
 func act_status(stat: status):
@@ -40,9 +40,11 @@ func act_status(stat: status):
 	if main_game != null and (main_game.camaras_activadas or main_game.tick_stop):
 		return
 
-	if stat == status.PLAYING:
+	if not new_message.is_stopped():
 		new_message.stop()
 		message.visible = false
+
+	if stat == status.PLAYING:
 		play.visible = true
 		normal.visible = false
 		playing = true

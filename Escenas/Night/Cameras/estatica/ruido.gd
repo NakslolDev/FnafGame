@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var still := false
+
 const NORMAL_ALPHA := 0.15
 
 var rand_pos: Vector2
@@ -26,6 +28,7 @@ const FADE_SLOW_SPEED := 0.4
 
 func _ready():
 	static_speed.start()
+	if still: push_warning("No noise")
 
 func _process(delta):
 	
@@ -59,6 +62,7 @@ func _on_static_time_timeout() -> void:
 	alpha = NORMAL_ALPHA
 
 func _on_static_speed_timeout() -> void:
+	if still: return
 	while (last_pos - rand_pos).length_squared() < 500:
 		rand_pos.x = randf_range(480, 1440)
 		rand_pos.y = randf_range(270, 810)

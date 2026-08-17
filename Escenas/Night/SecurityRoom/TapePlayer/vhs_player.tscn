@@ -50,13 +50,13 @@ audio_nights_es = Array[AudioStream]([ExtResource("2_vdoh0"), ExtResource("9_mv3
 position = Vector2(368, 160)
 texture = ExtResource("9_66qfm")
 region_enabled = true
-region_rect = Rect2(2752, 1232, 992, 736)
+region_rect = Rect2(2936, 1312, 624, 576)
 
 [node name="Dark" type="Sprite2D" parent="Normal" unique_id=1063278564 groups=["FlashlightPNG"]]
 position = Vector2(368, 160)
 texture = ExtResource("10_5epyg")
 region_enabled = true
-region_rect = Rect2(2752, 1232, 992, 736)
+region_rect = Rect2(2936, 1312, 624, 576)
 
 [node name="Message" type="Node2D" parent="." unique_id=1810447059]
 visible = false
@@ -87,13 +87,13 @@ metadata/_custom_type_script = "uid://yya23cdyyhfm"
 position = Vector2(368, 160)
 texture = ExtResource("11_52uco")
 region_enabled = true
-region_rect = Rect2(2752, 1232, 992, 736)
+region_rect = Rect2(2936, 1312, 624, 576)
 
 [node name="Dark" type="Sprite2D" parent="Play" unique_id=1720914467 groups=["FlashlightPNG"]]
 position = Vector2(368, 160)
 texture = ExtResource("12_u4m1q")
 region_enabled = true
-region_rect = Rect2(2752, 1232, 992, 736)
+region_rect = Rect2(2936, 1312, 624, 576)
 
 [node name="Play_Area2D" type="Area2D" parent="." unique_id=67750893]
 

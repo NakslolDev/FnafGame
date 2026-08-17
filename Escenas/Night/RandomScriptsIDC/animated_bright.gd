@@ -1,6 +1,9 @@
 extends AnimatedSprite2D
 class_name BrightAnimatedSprite
 
+@export var short_rad := false
+@export var long_rad := false
+
 const GROUP_NAME := "Brillantes"
 const CANVAS_LAYER_OFFSET := Vector2(960.0, 540.0)
 

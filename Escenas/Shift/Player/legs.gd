@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var timer: Timer = $Timer
+@export var timer: Timer
+@export var character_minigame: CharacterBody2D
+@export var skins: Node2D
 
 var time: float
 var distance: int
@@ -10,12 +12,12 @@ var waking: bool
 var colided := false
 
 func _ready():
-	distance = $"..".step
-	time = 1.0 / $"..".speed
+	distance = character_minigame.step
+	time = 1.0 / character_minigame.speed
 
 func _physics_process(_delta):
 	get_direction_s(Input.is_action_pressed("W"), Input.is_action_pressed("A"), Input.is_action_pressed("S"), Input.is_action_pressed("D")) # inportante la diferencia de event e Input. event es solo el primer frame. Input es constante
-	$"../Skins".act_animation(waking, direction_s, colided)
+	skins.act_animation(waking, direction_s, colided)
 
 func get_direction_s(w: bool, a: bool, s: bool, d: bool):
 	if ((w != s) != (a != d)): # != es xor. Permite el paso si solo una tecla está siendo presionada o 3 (2 opuestas, se cancelas)
@@ -53,7 +55,7 @@ func _on_timer_timeout():
 
 func move_step():
 	
-	if $"..".freeze:
+	if character_minigame.freeze:
 		return
 	
 	var dir := Vector2.ZERO
@@ -77,7 +79,7 @@ func move_step():
 	# movimiento deseado
 	var motion = dir * distance
 	if Input.is_action_pressed("Shift"):
-		motion *= $"..".run_mult
+		motion *= character_minigame.run_mult
 	
 	if dir.x != 0.0 and dir.y != 0.0:  # Frenamos movimiento diagonal
 		if Input.is_action_pressed("Shift"):

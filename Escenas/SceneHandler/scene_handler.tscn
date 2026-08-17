@@ -42,6 +42,7 @@ position = Vector2(960, 540)
 texture = ExtResource("11_rp7rm")
 
 [node name="FPS" type="Label" parent="CanvasLayer" unique_id=1127919078]
+visible = false
 offset_right = 178.0
 offset_bottom = 55.0
 theme_override_font_sizes/font_size = 32

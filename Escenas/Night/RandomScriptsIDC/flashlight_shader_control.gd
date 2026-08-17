@@ -12,29 +12,31 @@ const SHADER_UI: Shader = preload("res://shaders/UILuz.gdshader")
 const FLASHLIGHT_SHADER_PARAMETERS := {
 	"radio": 100.0,
 	"fade_range": 300.0,
-	"transparencia": 0.0,
-	"nivel_transparencia": 1.0
 }
 
 const LIGHT_SHADER_PARAMETERS := {
 	"radio": 350.0,
 	"fade_range": 100.0,
-	"transparencia": 0.0,
-	"nivel_transparencia": 1.0
 }
 
 const BRILLANTE_SHADER_PARAMETERS := {
 	"radio": 150.0,
 	"fade_range": 350.0,
-	"transparencia": 1.0,
-	"nivel_transparencia": 0.95
+}
+
+const BRILLANTE_SHORT_SHADER_PARAMETERS := {
+	"radio": 100.0,
+	"fade_range": 150.0,
+}
+
+const BRILLANTE_LONG_SHADER_PARAMETERS := {
+	"radio": 200.0,
+	"fade_range": 400.0,
 }
 
 const UI_SHADER_PARAMETERS := {
 	"radio": 75.0,
 	"fade_range": 400.0,
-	"transparencia": 0.0,
-	"nivel_transparencia": 1.0
 }
 
 var nodes: Array[Node]
@@ -72,8 +74,15 @@ func _ready() -> void:
 			node.material.shader = SHADER
 		else:
 			node.material.shader = BRILLO_SHADER
-		for key in BRILLANTE_SHADER_PARAMETERS.keys():
-			node.material.set_shader_parameter(key, BRILLANTE_SHADER_PARAMETERS[key])
+		if node.short_rad:
+			for key in BRILLANTE_SHORT_SHADER_PARAMETERS.keys():
+				node.material.set_shader_parameter(key, BRILLANTE_SHORT_SHADER_PARAMETERS[key])
+		elif node.long_rad:
+			for key in BRILLANTE_LONG_SHADER_PARAMETERS.keys():
+				node.material.set_shader_parameter(key, BRILLANTE_LONG_SHADER_PARAMETERS[key])
+		else:
+			for key in BRILLANTE_SHADER_PARAMETERS.keys():
+				node.material.set_shader_parameter(key, BRILLANTE_SHADER_PARAMETERS[key])
 
 	for node in nodes_ui:
 		var material := ShaderMaterial.new()

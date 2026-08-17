@@ -10,9 +10,6 @@ uniform vec2 viewport_size;
 uniform float fade_range = 380.0;
 uniform float shader_enabled = 0.0;
 
-uniform float transparencia = 1.0;
-uniform float nivel_transparencia = 0.0;
-
 void fragment() {
 
 	vec4 tex = texture(TEXTURE, UV);
@@ -28,17 +25,7 @@ void fragment() {
 		discard;
 	}
 
-
-	// =========================
-	// TRANSPARENCIA
-	// =========================
-
 	float alpha = tex.a;
-
-	if (transparencia >= 0.5) {
-		alpha *= nivel_transparencia;
-	}
-
 
 	// =========================
 	// LINTERNA

@@ -37,6 +37,7 @@ region_rect = Rect2(0, 0, 2880, 2880)
 
 [node name="VerdeBright" type="Sprite2D" parent="Verde" unique_id=1183773263]
 visible = false
+z_index = -1
 position = Vector2(-1440, 0)
 texture = ExtResource("4_0hvkw")
 region_enabled = true
@@ -46,32 +47,35 @@ metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="VerdeBrightBack" type="Sprite2D" parent="Verde" unique_id=1916598760]
 visible = false
-z_index = -1
+z_index = -2
 position = Vector2(1440, 0)
 texture = ExtResource("4_0hvkw")
 region_enabled = true
 region_rect = Rect2(2880, 0, 2880, 2880)
 script = ExtResource("5_slx8j")
+long_rad = true
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="VerdeBrightBackBackLeft" type="Sprite2D" parent="Verde" unique_id=2063625069]
 visible = false
-z_index = -1
+z_index = -2
 position = Vector2(-3584, 0)
 texture = ExtResource("4_0hvkw")
 region_enabled = true
 region_rect = Rect2(4352, 0, 1408, 2880)
 script = ExtResource("5_slx8j")
+long_rad = true
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="VerdeBrightBackBackRight" type="Sprite2D" parent="Verde" unique_id=275260613]
 visible = false
-z_index = -1
+z_index = -2
 position = Vector2(3584, 0)
 texture = ExtResource("4_0hvkw")
 region_enabled = true
 region_rect = Rect2(0, 0, 1408, 2880)
 script = ExtResource("5_slx8j")
+long_rad = true
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="Rojo" type="Node2D" parent="." unique_id=1139848824]
@@ -90,6 +94,7 @@ region_rect = Rect2(0, 0, 2880, 2880)
 
 [node name="RojoBright" type="Sprite2D" parent="Rojo" unique_id=727209653]
 visible = false
+z_index = -1
 position = Vector2(-1440, 0)
 texture = ExtResource("8_0hvkw")
 region_enabled = true
@@ -99,32 +104,35 @@ metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="RojoBrightBack" type="Sprite2D" parent="Rojo" unique_id=803540750]
 visible = false
-z_index = -1
+z_index = -2
 position = Vector2(1440, 0)
 texture = ExtResource("8_0hvkw")
 region_enabled = true
 region_rect = Rect2(2880, 0, 2880, 2880)
 script = ExtResource("5_slx8j")
+long_rad = true
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="RojoBrightBackBackLeft" type="Sprite2D" parent="Rojo" unique_id=1132749249]
 visible = false
-z_index = -1
+z_index = -2
 position = Vector2(-3584, 0)
 texture = ExtResource("8_0hvkw")
 region_enabled = true
 region_rect = Rect2(4352, 0, 1408, 2880)
 script = ExtResource("5_slx8j")
+long_rad = true
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="RojoBrightBackBackRight" type="Sprite2D" parent="Rojo" unique_id=1975132330]
 visible = false
-z_index = -1
+z_index = -2
 position = Vector2(3584, 0)
 texture = ExtResource("8_0hvkw")
 region_enabled = true
 region_rect = Rect2(0, 0, 1408, 2880)
 script = ExtResource("5_slx8j")
+long_rad = true
 metadata/_custom_type_script = "uid://yya23cdyyhfm"
 
 [node name="NoEnergia" type="Node2D" parent="." unique_id=2092625445]

@@ -5,8 +5,6 @@ uniform float radio = 10.0;
 uniform vec2 viewport_size;
 uniform float fade_range = 380.0;
 uniform float shader_enabled = 0.0;
-uniform float transparencia = 0.0;
-uniform float nivel_transparencia = 0.0;
 uniform bool active = false;
 
 void fragment() {
@@ -14,10 +12,6 @@ void fragment() {
 
 	// COLOR ya contiene el modulate del Sprite2D
 	COLOR = tex * COLOR;
-
-	if (transparencia >= 0.5) {
-		COLOR.a *= nivel_transparencia;
-	}
 
 	if (active) {
 		if (shader_enabled < 0.5) {

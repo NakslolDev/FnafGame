@@ -63,9 +63,9 @@ shader = ExtResource("26_y2bxh")
 shader_parameter/mouse_pos = Vector2(0, 0)
 shader_parameter/radio = 450.0
 shader_parameter/viewport_size = Vector2(0, 0)
-shader_parameter/fade_range = 150.0
+shader_parameter/fade_range = 200.0
 shader_parameter/shader_enabled = 0.0
-shader_parameter/transparencia = 1.0
+shader_parameter/transparencia = 0.0
 shader_parameter/nivel_transparencia = 1.0
 
 [sub_resource type="Gradient" id="Gradient_mros8"]
@@ -179,9 +179,9 @@ shader = ExtResource("26_y2bxh")
 shader_parameter/mouse_pos = Vector2(0, 0)
 shader_parameter/radio = 0.0
 shader_parameter/viewport_size = Vector2(0, 0)
-shader_parameter/fade_range = 400.0
+shader_parameter/fade_range = 200.0
 shader_parameter/shader_enabled = 0.0
-shader_parameter/transparencia = 1.0
+shader_parameter/transparencia = 0.0
 shader_parameter/nivel_transparencia = 1.0
 
 [sub_resource type="Gradient" id="Gradient_u32el"]
@@ -435,6 +435,7 @@ visibility_control = NodePath("VisibilityControl")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayerBrightSprites" unique_id=1465954232]
 visible = false
+z_index = -99
 position = Vector2(960, 540)
 scale = Vector2(1, 1271.9999)
 texture = SubResource("GradientTexture1D_5qb44")
