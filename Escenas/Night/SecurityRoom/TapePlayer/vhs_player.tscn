@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://br8x1cwdt7tp1"]
 
 [ext_resource type="Script" uid="uid://b3t2dg6m53hs0" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.gd" id="1_wceyb"]
-[ext_resource type="AudioStream" uid="uid://wuxmltxlpiok" path="res://Audios/Scarlet Forest.mp3" id="2_vdoh0"]
+[ext_resource type="AudioStream" uid="uid://7tdwrap7126b" path="res://Audios/Scarlet Forest.mp3" id="2_vdoh0"]
 [ext_resource type="AudioStream" uid="uid://b200m2wdrj0dx" path="res://assets/sounds/VHS/Noche1EN.mp3" id="3_7cpwv"]
 [ext_resource type="AudioStream" uid="uid://b0rfbb1alturu" path="res://assets/sounds/VHS/Noche2EN.mp3" id="4_om6ro"]
 [ext_resource type="AudioStream" uid="uid://crotho5mgn8us" path="res://assets/sounds/VHS/Noche3EN.mp3" id="5_evohr"]

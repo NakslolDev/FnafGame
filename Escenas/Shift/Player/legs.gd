@@ -4,6 +4,8 @@ extends Node2D
 @export var character_minigame: CharacterBody2D
 @export var skins: Node2D
 
+@export var flashlight: Node2D
+
 var time: float
 var distance: int
 
@@ -14,6 +16,11 @@ var colided := false
 func _ready():
 	distance = character_minigame.step
 	time = 1.0 / character_minigame.speed
+	if Global.m_entering:
+		flashlight.rotation = atan2(-Vector2.DOWN.y, -Vector2.DOWN.x)
+		set_flashlight(Vector2.DOWN)
+	else:
+		flashlight.visible = false
 
 func _physics_process(_delta):
 	get_direction_s(Input.is_action_pressed("W"), Input.is_action_pressed("A"), Input.is_action_pressed("S"), Input.is_action_pressed("D")) # inportante la diferencia de event e Input. event es solo el primer frame. Input es constante
@@ -32,6 +39,7 @@ func get_direction_s(w: bool, a: bool, s: bool, d: bool):
 	waking = false
 	if ((w != s) or (a != d)):
 		waking = true
+		set_flashlight(Vector2(int(d) - int(a), int(s) - int(w)).normalized())
 
 func _input(event):
 	if not (event.is_action_pressed("D") or event.is_action_pressed("A") or event.is_action_pressed("W") or event.is_action_pressed("S")):
@@ -114,3 +122,26 @@ func move_step():
 	
 	else:
 		colided = false  # movimiento realizado, no hay choque
+
+const FLASHLIGHT_DISPLACEMENT := 6.0
+const FLASHLIGHT_SMOOTHNESS := 15.0
+
+var flashlight_target_rotation := 0.0
+
+func set_flashlight(direction: Vector2):
+	if not flashlight.visible: return
+	flashlight_target_rotation = atan2(-direction.y, -direction.x)
+
+const FLASHLIGHT_CENTER := Vector2(0.0, -26.667)
+const FLASHLIGHT_CENTERED_CENTER := Vector2(0.0, 20)
+@export var flashlight_lights: Array[PointLight2D]
+@export var flashlight_centered: PointLight2D
+func _process(delta):
+	if character_minigame.freeze or not flashlight.visible:
+		return
+	var weight := 1.0 - exp(-FLASHLIGHT_SMOOTHNESS * delta)
+	flashlight.rotation = lerp_angle(flashlight.rotation, flashlight_target_rotation, weight)
+	for light in flashlight_lights: light.offset = FLASHLIGHT_CENTER.rotated(-flashlight.rotation)
+	flashlight_centered.offset = FLASHLIGHT_CENTERED_CENTER.rotated(-flashlight.rotation)
+	for light in flashlight_lights: light.position = FLASHLIGHT_CENTER.rotated(-flashlight.rotation) * -0.3
+	flashlight_centered.position = FLASHLIGHT_CENTERED_CENTER.rotated(-flashlight.rotation) * -0.3

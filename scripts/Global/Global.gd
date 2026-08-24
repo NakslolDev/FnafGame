@@ -239,28 +239,7 @@ func aply_screen_configuration():
 func guardar_partida():
 	
 	if debug["debug_mode"]: # si estas en debug mode, usas el archivo de debug, tanto si tienes override como si no
-		
-		var devpartida: Dictionary
-		
-		sync_debug_to_current()
-		devpartida = {
-			"noche": noche,
-			"safe_code": safe_code,
-			"inventario": inventario,
-			"mapa": mapa,
-			"dm": dm,
-			"map_items": map_items,
-		}
-		
-		var devpath := user_root + debug_partida_rout
-		var devfile := FileAccess.open(devpath, FileAccess.WRITE)
-		
-		if devfile:
-			devfile.store_string(JSON.stringify(devpartida)) # "\t" = formato legible
-			print("Debug partida guardada")
-			devfile.close()
-		else:
-			push_warning("Debug partida fallida")
+		guardar_partida_debug()
 	
 	if debug["prevent_save"]: # adenmas, si quitas el prevent save, tu partida normal tambien se actualizara
 		return
@@ -365,6 +344,29 @@ func guardar_death_minigames():
 	else:
 		print("Partida fallida")
 	file.close()
+
+func guardar_partida_debug():
+	var devpartida: Dictionary
+
+	sync_debug_to_current()
+	devpartida = {
+		"noche": noche,
+		"safe_code": safe_code,
+		"inventario": inventario,
+		"mapa": mapa,
+		"dm": dm,
+		"map_items": map_items,
+	}
+
+	var devpath := user_root + debug_partida_rout
+	var devfile := FileAccess.open(devpath, FileAccess.WRITE)
+
+	if devfile:
+		devfile.store_string(JSON.stringify(devpartida)) # "\t" = formato legible
+		print("Debug partida guardada")
+		devfile.close()
+	else:
+		push_warning("Debug partida fallida")
 
 func leer_partida():
 	
@@ -492,6 +494,7 @@ func sync_debug_to_current():
 	_asign_recursive_diccionary(inventario, debug["game_state"]["inventario"])
 	_asign_recursive_diccionary(mapa, debug["game_state"]["mapa"])
 	_asign_recursive_diccionary(dm, debug["game_state"]["dm"])
+	_asign_recursive_diccionary(map_items, debug["game_state"]["map_items"])
 
 func sync_current_to_debug():
 	noche = debug["game_state"]["night"]
@@ -499,6 +502,7 @@ func sync_current_to_debug():
 	_asign_recursive_diccionary(debug["game_state"]["inventario"], inventario)
 	_asign_recursive_diccionary(debug["game_state"]["mapa"], mapa)
 	_asign_recursive_diccionary(debug["game_state"]["dm"], dm)
+	_asign_recursive_diccionary(debug["game_state"]["map_items"], map_items)
 
 
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://djq5lt74n68hd"]
 
 [ext_resource type="Script" uid="uid://cap8j6bhy4log" path="res://Escenas/Night/SecurityRoom/Halls/pasillo.gd" id="1_d782w"]
-[ext_resource type="Texture2D" uid="uid://vgks6yx7xo1l" path="res://assets/Renders/office/Halls/HallLFlashlight.png" id="2_ai56g"]
-[ext_resource type="Texture2D" uid="uid://d1cikxv2sgwta" path="res://assets/Renders/office/Halls/HallDark.png" id="3_e7sic"]
+[ext_resource type="Texture2D" uid="uid://kedneqvvxvoi" path="res://assets/Renders/office/Halls/HallLFlashlight.png" id="2_ai56g"]
+[ext_resource type="Texture2D" uid="uid://e274bm7yax8n" path="res://assets/Renders/office/Halls/HallDark.png" id="3_e7sic"]
 [ext_resource type="Texture2D" uid="uid://ci3jg65mtb505" path="res://assets/Renders/office/Halls/FoxyRightFlashlight.png" id="4_d782w"]
 [ext_resource type="Texture2D" uid="uid://r4jr3qrlpfyn" path="res://assets/Renders/office/Halls/FoxyRightDark.png" id="5_ai56g"]
 [ext_resource type="Texture2D" uid="uid://5s7klglhn1hv" path="res://assets/Renders/office/Halls/FoxyRightBrighting.png" id="6_5e7ck"]

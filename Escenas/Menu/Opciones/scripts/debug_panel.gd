@@ -2,11 +2,6 @@ extends Panel
 
 signal button_hide
 
-func _input(event):
-	if visible and event.is_action_released("Esc"):
-		_on_close_pressed()
-
-
 @export var general: VBoxContainer
 @export var gamestate: VBoxContainer
 
@@ -25,3 +20,8 @@ func _on_close_pressed() -> void:
 	visible = false
 	if Global.debug["game_state"]["override"]:
 		Global.sync_current_to_debug()
+		Global.guardar_partida_debug()
+
+func _input(event):
+	if visible and event.is_action_released("Esc"):
+		_on_close_pressed()

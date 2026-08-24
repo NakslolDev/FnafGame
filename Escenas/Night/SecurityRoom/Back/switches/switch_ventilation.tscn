@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cl62nn3ctfyp7" path="res://assets/Renders/office/Switches/OffFlashlight.png" id="4_57atu"]
 [ext_resource type="Texture2D" uid="uid://bqmrvav16n21a" path="res://assets/Renders/office/Switches/OffDark.png" id="5_6xghs"]
 [ext_resource type="Script" uid="uid://cokefoipy4xrr" path="res://Escenas/Night/SecurityRoom/Back/switches/area_2d_switch.gd" id="6_caa7j"]
-[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="7_cxagg"]
+[ext_resource type="AudioStream" uid="uid://dvatoo5krcu4s" path="res://assets/sounds/Tiny click.wav" id="7_cxagg"]
 
 [sub_resource type="Gradient" id="Gradient_tiyvs"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)

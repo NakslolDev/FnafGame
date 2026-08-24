@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://b2tcax23fufxq"]
 
 [ext_resource type="Script" uid="uid://cd811lhimvfl6" path="res://Escenas/Night/Cameras/NewCams/Class/cam_base.gd" id="1_funtx"]
-[ext_resource type="Texture2D" uid="uid://bdxg62onvux4k" path="res://assets/Renders/cameras/Cam4/Cam4BackgroundLight.png" id="2_iv487"]
+[ext_resource type="Texture2D" uid="uid://b7tbpa3nglt8x" path="res://assets/Renders/cameras/Cam4/Cam4BackgroundLight.png" id="2_iv487"]
 [ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_0txya"]
-[ext_resource type="Texture2D" uid="uid://b57gigao800a5" path="res://assets/Renders/cameras/Cam4/Cam4FoxyLight(BG).png" id="4_kav4d"]
-[ext_resource type="Texture2D" uid="uid://ul8lfsx5sh43" path="res://assets/Renders/cameras/Cam4/Cam4FreddyLight.png" id="5_hdphw"]
-[ext_resource type="Texture2D" uid="uid://drq2aq2xkixx5" path="res://assets/Renders/cameras/Cam4/Cam4ChicaLight.png" id="6_yrou7"]
-[ext_resource type="Texture2D" uid="uid://d0ne2fi2k30w6" path="res://assets/Renders/cameras/Cam4/Cam4BackgroundDark.png" id="8_iddit"]
-[ext_resource type="Texture2D" uid="uid://ig3e6m264fkv" path="res://assets/Renders/cameras/Cam4/Cam4FoxyDark(BG).png" id="9_mhsjo"]
-[ext_resource type="Texture2D" uid="uid://18kmahe376cf" path="res://assets/Renders/cameras/Cam4/Cam4FreddyDark.png" id="10_ty4kc"]
-[ext_resource type="Texture2D" uid="uid://chn8ve75k13y1" path="res://assets/Renders/cameras/Cam4/Cam4ChicaDark.png" id="11_s0cus"]
+[ext_resource type="Texture2D" uid="uid://daf06vca7jb78" path="res://assets/Renders/cameras/Cam4/Cam4FoxyLight(BG).png" id="4_kav4d"]
+[ext_resource type="Texture2D" uid="uid://2p4r5iy0vq1f" path="res://assets/Renders/cameras/Cam4/Cam4FreddyLight.png" id="5_hdphw"]
+[ext_resource type="Texture2D" uid="uid://cpiw38goc7yb6" path="res://assets/Renders/cameras/Cam4/Cam4ChicaLight.png" id="6_yrou7"]
+[ext_resource type="Texture2D" uid="uid://dpgph3iljiol1" path="res://assets/Renders/cameras/Cam4/Cam4BackgroundDark.png" id="8_iddit"]
+[ext_resource type="Texture2D" uid="uid://csjok22na83p2" path="res://assets/Renders/cameras/Cam4/Cam4FoxyDark(BG).png" id="9_mhsjo"]
+[ext_resource type="Texture2D" uid="uid://diqx1jqvhhrf8" path="res://assets/Renders/cameras/Cam4/Cam4FreddyDark.png" id="10_ty4kc"]
+[ext_resource type="Texture2D" uid="uid://6ffy6s6q2nsj" path="res://assets/Renders/cameras/Cam4/Cam4ChicaDark.png" id="11_s0cus"]
 
 [node name="Cam4" type="Node2D" unique_id=309052662]
 script = ExtResource("1_funtx")

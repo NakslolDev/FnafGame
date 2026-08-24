@@ -3,177 +3,20 @@
 [ext_resource type="Script" uid="uid://de7uh84b4365x" path="res://Escenas/Shift/Player/character_minigame.gd" id="1_5ryae"]
 [ext_resource type="Script" uid="uid://cfxrs5edynyr" path="res://Escenas/Shift/Player/skins.gd" id="2_10j8s"]
 [ext_resource type="Script" uid="uid://b7iv4c1uc27g7" path="res://Escenas/Shift/Player/legs.gd" id="4_10j8s"]
-[ext_resource type="Texture2D" uid="uid://dp13mjs62dded" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
+[ext_resource type="Texture2D" uid="uid://drveqxiljlmpt" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
+[ext_resource type="Texture2D" uid="uid://dd7q81m5jdk3t" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best_NormalMap.png" id="4_vgfk3"]
+[ext_resource type="Script" uid="uid://c345mkw2lho17" path="res://Escenas/Shift/Player/animated_sprite_2d.gd" id="5_s1qns"]
+[ext_resource type="Texture2D" uid="uid://c07lwpqngc7hy" path="res://assets/minijuego assets/Lights/Flashlight.png" id="6_s1qns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10j8s"]
 size = Vector2(12, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eens2"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(32, 0, 16, 32)
+[sub_resource type="CanvasTexture" id="CanvasTexture_g4v7s"]
+diffuse_texture = ExtResource("4_fxfjq")
+normal_texture = ExtResource("4_vgfk3")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tnlmp"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(32, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_crnsg"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0npu2"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(32, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hq8i7"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s5qnc"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(0, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7jmet"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0m4p"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(0, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fu5w7"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b16a6"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(16, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ph357"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2btl1"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(16, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_genng"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hnx1m"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(48, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxcsr"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bplxp"]
-atlas = ExtResource("4_fxfjq")
-region = Rect2(48, 64, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cpux7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eens2")
-}],
-"loop": 1,
-"name": &"B",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tnlmp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_crnsg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0npu2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_crnsg")
-}],
-"loop": 1,
-"name": &"B_Waking",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hq8i7")
-}],
-"loop": 1,
-"name": &"F",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s5qnc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7jmet")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0m4p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7jmet")
-}],
-"loop": 1,
-"name": &"F_Waking",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fu5w7")
-}],
-"loop": 1,
-"name": &"L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b16a6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ph357")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2btl1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ph357")
-}],
-"loop": 1,
-"name": &"L_Waking",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_genng")
-}],
-"loop": 1,
-"name": &"R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hnx1m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxcsr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bplxp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxcsr")
-}],
-"loop": 1,
-"name": &"R_Waking",
-"speed": 5.0
-}]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g4v7s"]
+polygon = PackedVector2Array(3, 8, 3, 11, -3, 11, -3, 8)
 
 [node name="Character_Minigame" type="CharacterBody2D" unique_id=2075604743]
 texture_filter = 1
@@ -182,31 +25,101 @@ script = ExtResource("1_5ryae")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=417798725]
 shape = SubResource("RectangleShape2D_10j8s")
 
-[node name="Skins" type="Node2D" parent="." unique_id=1936935563 node_paths=PackedStringArray("root", "animation")]
+[node name="Skins" type="Node2D" parent="." unique_id=1936935563 node_paths=PackedStringArray("root", "sprite_2d")]
 position = Vector2(0, -5)
 script = ExtResource("2_10j8s")
 root = NodePath("..")
-animation = NodePath("Unnamed_Guard")
+sprite_2d = NodePath("Sprite2D")
 
-[node name="Unnamed_Guard" type="AnimatedSprite2D" parent="Skins" unique_id=669519696]
+[node name="Sprite2D" type="Sprite2D" parent="Skins" unique_id=1023025925 node_paths=PackedStringArray("timer")]
+light_mask = 2
 position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_cpux7")
-animation = &"F"
-frame_progress = 0.660151
+texture = SubResource("CanvasTexture_g4v7s")
+hframes = 4
+vframes = 3
+script = ExtResource("5_s1qns")
+timer = NodePath("Timer")
 
-[node name="Legs" type="Node2D" parent="." unique_id=2032418714 node_paths=PackedStringArray("timer", "character_minigame", "skins")]
+[node name="Timer" type="Timer" parent="Skins/Sprite2D" unique_id=1793694028]
+wait_time = 0.2
+one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Skins/Sprite2D" unique_id=1325267818]
+show_behind_parent = true
+position = Vector2(0, 5)
+occluder = SubResource("OccluderPolygon2D_g4v7s")
+occluder_light_mask = 2
+
+[node name="FlashlightContainer" type="Node2D" parent="Skins/Sprite2D" unique_id=221731233]
+position = Vector2(0, 5)
+
+[node name="Flashlight" type="PointLight2D" parent="Skins/Sprite2D/FlashlightContainer" unique_id=1111479557]
+position = Vector2(0, 8)
+scale = Vector2(0.3, 0.3)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = ExtResource("6_s1qns")
+offset = Vector2(0, -26.667)
+
+[node name="FlashlightFloor" type="PointLight2D" parent="Skins/Sprite2D/FlashlightContainer" unique_id=1466540977]
+position = Vector2(0, 8)
+scale = Vector2(0.3, 0.3)
+energy = 0.5
+range_item_cull_mask = 16
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+shadow_item_cull_mask = 0
+texture = ExtResource("6_s1qns")
+offset = Vector2(0, -26.667)
+
+[node name="FlashlightCentered" type="PointLight2D" parent="Skins/Sprite2D/FlashlightContainer" unique_id=1941846498]
+position = Vector2(0, -6)
+scale = Vector2(0.3, 0.3)
+energy = 0.5
+range_item_cull_mask = 8
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = ExtResource("6_s1qns")
+offset = Vector2(0, 20)
+
+[node name="FlashlightWalls" type="PointLight2D" parent="Skins/Sprite2D/FlashlightContainer" unique_id=1207515336]
+position = Vector2(0, 8)
+scale = Vector2(0.3, 0.3)
+energy = 0.5
+range_item_cull_mask = 4
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+shadow_item_cull_mask = 4
+texture = ExtResource("6_s1qns")
+offset = Vector2(0, -26.667)
+
+[node name="PlayerFlashlight" type="PointLight2D" parent="Skins/Sprite2D/FlashlightContainer" unique_id=2134278584]
+position = Vector2(-21, 0)
+scale = Vector2(0.3, 0.3)
+energy = 0.5
+range_item_cull_mask = 2
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = ExtResource("6_s1qns")
+offset = Vector2(70, 0)
+
+[node name="Legs" type="Node2D" parent="." unique_id=2032418714 node_paths=PackedStringArray("timer", "character_minigame", "skins", "flashlight", "flashlight_lights", "flashlight_centered")]
 position = Vector2(0, -5)
 script = ExtResource("4_10j8s")
 timer = NodePath("Timer")
 character_minigame = NodePath("..")
 skins = NodePath("../Skins")
+flashlight = NodePath("../Skins/Sprite2D/FlashlightContainer")
+flashlight_lights = [NodePath("../Skins/Sprite2D/FlashlightContainer/Flashlight"), NodePath("../Skins/Sprite2D/FlashlightContainer/FlashlightWalls"), NodePath("../Skins/Sprite2D/FlashlightContainer/FlashlightFloor")]
+flashlight_centered = NodePath("../Skins/Sprite2D/FlashlightContainer/FlashlightCentered")
 
 [node name="Timer" type="Timer" parent="Legs" unique_id=880649715]
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=89072915]
-position = Vector2(0, -5)
-enabled = false
-zoom = Vector2(4, 4)
-
+[connection signal="timeout" from="Skins/Sprite2D/Timer" to="Skins/Sprite2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="Legs/Timer" to="Legs" method="_on_timer_timeout"]

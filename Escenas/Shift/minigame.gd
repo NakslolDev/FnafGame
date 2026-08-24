@@ -17,6 +17,7 @@ var safing := false
 @export var transicion: Node
 @export var shiftCompleted: Node
 @export var camera: Node
+@export var lights: Node2D
 
 @export var spawn_points: Node
 @onready var posiciones_inicio := { # si get child da problemas, usar find_child. No lo uso ya pues es más caro
@@ -27,6 +28,8 @@ var safing := false
 	"freddy": spawn_points.get_child(4).position,
 	"foxy": spawn_points.get_child(5).position,
 }
+
+signal act_sprites
 
 func _enter_tree() -> void:
 	add_to_group("minigame")
@@ -45,7 +48,10 @@ func _ready():
 	connect_signals_recursively(coliders_node)
 	
 	if Global.m_entering == false:
-		camera.black_foreground.visible = false
+		#camera.black_foreground.visible = false
+		lights.exiting()
+	else:
+		lights.entering()
 	
 	act_interact()
 
@@ -119,6 +125,7 @@ func _on_done_safing(not_automatic: bool, read: int, combination := []):
 		_on_interacted_text("Safe_give_up", [1], read)
 	act_interact() # Actualiza los nodos que controlan los coliders de forma manual
 	act_active(coliders_node) # Actualiza recursivamente los propios coliders
+	act_sprites.emit()
 
 func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	
@@ -139,6 +146,7 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	
 	act_interact()
 	act_active(coliders_node)
+	act_sprites.emit()
 
 func act_interact():
 	for child in manual_act_nodes:

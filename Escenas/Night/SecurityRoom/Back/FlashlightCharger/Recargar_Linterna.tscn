@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dp1parfdkvu0l"]
 
 [ext_resource type="Script" uid="uid://v6jyxlu5payq" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/recargar_linterna.gd" id="1_8pogo"]
-[ext_resource type="Texture2D" uid="uid://px2exwiq3lca" path="res://assets/Renders/office/Flashlight/FlashlightDark.png" id="2_12qnk"]
+[ext_resource type="Texture2D" uid="uid://d1sgnh3os7ucp" path="res://assets/Renders/office/Flashlight/FlashlightDark.png" id="2_12qnk"]
 [ext_resource type="Script" uid="uid://objf8nej4ubl" path="res://Escenas/Night/SecurityRoom/Back/FlashlightCharger/area_2d_recargar_linterna.gd" id="3_i4dkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4dkt"]

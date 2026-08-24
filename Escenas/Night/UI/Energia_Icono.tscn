@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://o8o073xrlb54"]
 
 [ext_resource type="Script" uid="uid://buo05pdr8jp5k" path="res://Escenas/Night/UI/energia_icono.gd" id="1_w60gr"]
-[ext_resource type="Texture2D" uid="uid://bkgtma4ajypyk" path="res://assets/Placeholders/UI_Juego/Energia/Base.png" id="2_sq720"]
-[ext_resource type="Texture2D" uid="uid://cdqvnwctcsahy" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 1/1.png" id="3_56hmi"]
-[ext_resource type="Texture2D" uid="uid://6b3t37fa7mnb" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 2/2.png" id="7_ruyal"]
-[ext_resource type="Texture2D" uid="uid://sjj247it378t" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/1.png" id="9_ym467"]
-[ext_resource type="Texture2D" uid="uid://cddrmvqgp4hr2" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/2.png" id="10_m6umj"]
-[ext_resource type="Texture2D" uid="uid://bni62dsuyxmi" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/3.png" id="11_7pob8"]
-[ext_resource type="Texture2D" uid="uid://c0xgc1t2h4it8" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 5/3.png" id="17_djisy"]
+[ext_resource type="Texture2D" uid="uid://5bndnw23mvci" path="res://assets/Placeholders/UI_Juego/Energia/Base.png" id="2_sq720"]
+[ext_resource type="Texture2D" uid="uid://cjg02bwuuf17u" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 1/1.png" id="3_56hmi"]
+[ext_resource type="Texture2D" uid="uid://c27dkbtujxw2r" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 2/2.png" id="7_ruyal"]
+[ext_resource type="Texture2D" uid="uid://c3bb7gsfaeyep" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/1.png" id="9_ym467"]
+[ext_resource type="Texture2D" uid="uid://fj8bh12lghay" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/2.png" id="10_m6umj"]
+[ext_resource type="Texture2D" uid="uid://dbg1rqnb6jd25" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 3/3.png" id="11_7pob8"]
+[ext_resource type="Texture2D" uid="uid://c2a1x4axkjxr6" path="res://assets/Placeholders/UI_Juego/Energia/Paleta 5/3.png" id="17_djisy"]
 
 [node name="Energia_Icono" type="Node2D" unique_id=1486649796 node_paths=PackedStringArray("timer_obscure", "partes")]
 texture_filter = 1

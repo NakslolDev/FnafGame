@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://blowtfs6px0k5" path="res://assets/Renders/office/Switches/OnDark.png" id="3_n5yr4"]
 [ext_resource type="Script" uid="uid://cokefoipy4xrr" path="res://Escenas/Night/SecurityRoom/Back/switches/area_2d_switch.gd" id="4_jnh6h"]
 [ext_resource type="Texture2D" uid="uid://bqmrvav16n21a" path="res://assets/Renders/office/Switches/OffDark.png" id="5_jnh6h"]
-[ext_resource type="AudioStream" uid="uid://c1yxuawekmanq" path="res://assets/sounds/Tiny click.wav" id="5_t3bbh"]
+[ext_resource type="AudioStream" uid="uid://dvatoo5krcu4s" path="res://assets/sounds/Tiny click.wav" id="5_t3bbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1stgw"]
 size = Vector2(64.5, 99)

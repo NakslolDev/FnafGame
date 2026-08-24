@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bv54uvsb4g8u4" path="res://Escenas/Menu/Opciones/Opciones.tscn" id="6_omiqx"]
 [ext_resource type="PackedScene" uid="uid://bybkv3vaq6qlk" path="res://Escenas/Menu/CN/custom_night_selecter.tscn" id="7_f0prw"]
 [ext_resource type="PackedScene" uid="uid://b3kiul1ga6m3q" path="res://Escenas/Menu/DeadScene/Dead_Scene.tscn" id="8_dvo7o"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="9_8ft8s"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="9_8ft8s"]
 [ext_resource type="PackedScene" uid="uid://c43ghhrjlh56n" path="res://Escenas/Menu/endings/ending_screen.tscn" id="9_vra34"]
 [ext_resource type="PackedScene" uid="uid://ckov56uah4qup" path="res://Escenas/Night/6Am/6_am.tscn" id="10_omiqx"]
 [ext_resource type="Script" uid="uid://cy1bldlwd82kt" path="res://Escenas/SceneHandler/transicion.gd" id="10_rp7rm"]
-[ext_resource type="Texture2D" uid="uid://cks84aonllq7h" path="res://assets/Placeholders/Camaras/UI/borderlines/Border.png" id="11_rp7rm"]
+[ext_resource type="Texture2D" uid="uid://qp424mvppayp" path="res://assets/Placeholders/Camaras/UI/borderlines/Border.png" id="11_rp7rm"]
 
 [node name="SceneHandler" type="Node" unique_id=2101335000 node_paths=PackedStringArray("transition", "fps") groups=["scene_handler"]]
 script = ExtResource("1_4md2c")
