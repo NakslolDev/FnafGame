@@ -28,7 +28,7 @@ light = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="Key2" type="Sprite2D" parent="." unique_id=1756220439]
-position = Vector2(-326.5, -38.000004)
+position = Vector2(-813, -80)
 scale = Vector2(0.13599999, 0.15428573)
 texture = ExtResource("4_px42g")
 script = ExtResource("3_dc1kp")
@@ -78,12 +78,14 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="NoLightSeparator" type="Node" parent="." unique_id=623732045]
 
 [node name="BackgroundDark" type="Sprite2D" parent="." unique_id=558690191]
+visible = false
 texture = ExtResource("10_uome3")
 script = ExtResource("3_dc1kp")
 light = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="FoxyDucDark" type="Sprite2D" parent="." unique_id=567941506]
+visible = false
 texture = ExtResource("11_c1hkh")
 script = ExtResource("3_dc1kp")
 light = 1
@@ -92,6 +94,7 @@ foxy_pos = 4
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="FreddyDark" type="Sprite2D" parent="." unique_id=1813464335]
+visible = false
 texture = ExtResource("12_5svv6")
 script = ExtResource("3_dc1kp")
 light = 1
@@ -99,6 +102,7 @@ freddy = 12
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="FoxyLeftDark" type="Sprite2D" parent="." unique_id=1207661164]
+visible = false
 texture = ExtResource("13_tf5n5")
 script = ExtResource("3_dc1kp")
 light = 1
@@ -107,6 +111,7 @@ foxy_pos = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="FoxyRightDark" type="Sprite2D" parent="." unique_id=1804692728]
+visible = false
 texture = ExtResource("14_ct2nb")
 script = ExtResource("3_dc1kp")
 light = 1
@@ -115,6 +120,7 @@ foxy_pos = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="ChicaDark" type="Sprite2D" parent="." unique_id=1603924915]
+visible = false
 texture = ExtResource("15_6sgjo")
 script = ExtResource("3_dc1kp")
 light = 1

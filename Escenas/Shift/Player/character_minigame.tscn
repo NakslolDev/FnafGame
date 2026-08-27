@@ -48,7 +48,7 @@ one_shot = true
 show_behind_parent = true
 position = Vector2(0, 5)
 occluder = SubResource("OccluderPolygon2D_g4v7s")
-occluder_light_mask = 2
+occluder_light_mask = 18
 
 [node name="FlashlightContainer" type="Node2D" parent="Skins/Sprite2D" unique_id=221731233]
 position = Vector2(0, 5)
@@ -67,11 +67,11 @@ offset = Vector2(0, -26.667)
 position = Vector2(0, 8)
 scale = Vector2(0.3, 0.3)
 energy = 0.5
-range_item_cull_mask = 16
+range_item_cull_mask = 32
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 4.0
-shadow_item_cull_mask = 0
+shadow_item_cull_mask = 32
 texture = ExtResource("6_s1qns")
 offset = Vector2(0, -26.667)
 

@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://Escenas/Shift/M_objets/objetos.gd" id="1_et5i7"]
 [ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_nyist"]
+[ext_resource type="Texture2D" uid="uid://ctwgdk38urjnj" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="3_jcmxm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lm10a"]
 polygon = PackedVector2Array(14, -43, 14, 34, -14, 34, -14, -43)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lm10a"]
+diffuse_texture = ExtResource("2_nyist")
+normal_texture = ExtResource("3_jcmxm")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5vk6"]
 texture = ExtResource("2_nyist")
@@ -84,6 +89,13 @@ occluder_light_mask = 16
 
 [node name="Mesa_L" type="Sprite2D" parent="." unique_id=950039007]
 texture = ExtResource("2_nyist")
+region_enabled = true
+region_rect = Rect2(128, 32, 48, 96)
+
+[node name="Mesa_LLight" type="Sprite2D" parent="." unique_id=145437056]
+modulate = Color(1, 1, 1, 0.4)
+light_mask = 8
+texture = SubResource("CanvasTexture_lm10a")
 region_enabled = true
 region_rect = Rect2(128, 32, 48, 96)
 

@@ -2,6 +2,7 @@ extends Sprite2D
 class_name DinamicSprites
 
 @export_group("Nights")
+@export var night_0 := true
 @export var night_1 := true
 @export var night_2 := true
 @export var night_3 := true

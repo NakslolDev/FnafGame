@@ -36,9 +36,11 @@ light = 2
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="Key3" type="Sprite2D" parent="." unique_id=91587992]
-position = Vector2(-730.15625, 400.4375)
+position = Vector2(-568, 223)
 scale = Vector2(0.13710004, 0.15750015)
 texture = ExtResource("4_t6ev5")
+region_enabled = true
+region_rect = Rect2(288, 0, 337, 350)
 script = ExtResource("3_c1vjx")
 light = 2
 key_location = 3

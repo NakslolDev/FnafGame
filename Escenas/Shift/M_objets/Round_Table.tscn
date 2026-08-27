@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dgaswnmhe5s0i" path="res://Escenas/Shift/M_objets/objetos.gd" id="1_r5vk6"]
 [ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_tqpfq"]
+[ext_resource type="Texture2D" uid="uid://ctwgdk38urjnj" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="3_uvdvn"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vvvo0"]
 polygon = PackedVector2Array(14, -19, 14, 6, -15, 6, -15, -19)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_w4bkp"]
+diffuse_texture = ExtResource("2_tqpfq")
+normal_texture = ExtResource("3_uvdvn")
 
 [node name="Round_Table" type="StaticBody2D" unique_id=1607000410 node_paths=PackedStringArray("objects")]
 texture_filter = 1
@@ -23,6 +28,13 @@ occluder_light_mask = 16
 
 [node name="Mesa_R" type="Sprite2D" parent="." unique_id=350712160]
 texture = ExtResource("2_tqpfq")
+region_enabled = true
+region_rect = Rect2(128, 0, 32, 32)
+
+[node name="Mesa_RLight" type="Sprite2D" parent="." unique_id=1824772243]
+modulate = Color(1, 1, 1, 0.4)
+light_mask = 8
+texture = SubResource("CanvasTexture_w4bkp")
 region_enabled = true
 region_rect = Rect2(128, 0, 32, 32)
 

@@ -144,6 +144,8 @@ CamUpSelect={
 2d_render/layer_3="Walls"
 2d_render/layer_4="CenteredFlashlight"
 2d_render/layer_5="Floor"
+2d_render/layer_6="FloorFlashlight"
+2d_render/layer_7="SunShadow"
 
 [rendering]
 

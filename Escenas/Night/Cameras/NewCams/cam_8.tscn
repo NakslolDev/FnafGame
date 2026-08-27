@@ -38,12 +38,14 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 [node name="NoLightSeparator" type="Node" parent="." unique_id=634076013]
 
 [node name="BackgroundDark" type="Sprite2D" parent="." unique_id=699017572]
+visible = false
 texture = ExtResource("6_u0dc5")
 script = ExtResource("3_inhg1")
 light = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="FoxyDark" type="Sprite2D" parent="." unique_id=686426224]
+visible = false
 texture = ExtResource("7_0l2uw")
 script = ExtResource("3_inhg1")
 light = 1
@@ -52,6 +54,7 @@ foxy_pos = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
 [node name="BonnieDark" type="Sprite2D" parent="." unique_id=1714662988]
+visible = false
 texture = ExtResource("8_vholc")
 script = ExtResource("3_inhg1")
 light = 1

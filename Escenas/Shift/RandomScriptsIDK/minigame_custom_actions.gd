@@ -48,9 +48,8 @@ func get_program(_read):
 	Global.mapa["computer_working"] = false
 
 
-func sign_in(read):
-	if read == 1:
-		Global.mapa["signed_in"] = true
+func sign_in(_read):
+	Global.mapa["signed_in"] = true
 
 
 func activate_dm_machine(read):
