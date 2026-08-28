@@ -18,9 +18,11 @@ normal_texture = ExtResource("4_vgfk3")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g4v7s"]
 polygon = PackedVector2Array(3, 8, 3, 11, -3, 11, -3, 8)
 
-[node name="Character_Minigame" type="CharacterBody2D" unique_id=2075604743]
+[node name="Character_Minigame" type="CharacterBody2D" unique_id=2075604743 node_paths=PackedStringArray("skins", "light_occluder_2d_escenario")]
 texture_filter = 1
 script = ExtResource("1_5ryae")
+skins = NodePath("Skins")
+light_occluder_2d_escenario = NodePath("Skins/Sprite2D/LightOccluder2DEscenario")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=417798725]
 shape = SubResource("RectangleShape2D_10j8s")
@@ -45,10 +47,14 @@ wait_time = 0.2
 one_shot = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Skins/Sprite2D" unique_id=1325267818]
-show_behind_parent = true
 position = Vector2(0, 5)
 occluder = SubResource("OccluderPolygon2D_g4v7s")
 occluder_light_mask = 18
+
+[node name="LightOccluder2DEscenario" type="LightOccluder2D" parent="Skins/Sprite2D" unique_id=1439727416]
+position = Vector2(0, 5)
+occluder = SubResource("OccluderPolygon2D_g4v7s")
+occluder_light_mask = 256
 
 [node name="FlashlightContainer" type="Node2D" parent="Skins/Sprite2D" unique_id=221731233]
 position = Vector2(0, 5)
@@ -57,9 +63,11 @@ position = Vector2(0, 5)
 position = Vector2(0, 8)
 scale = Vector2(0.3, 0.3)
 energy = 0.5
+range_item_cull_mask = 897
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 2.0
+shadow_item_cull_mask = 513
 texture = ExtResource("6_s1qns")
 offset = Vector2(0, -26.667)
 
