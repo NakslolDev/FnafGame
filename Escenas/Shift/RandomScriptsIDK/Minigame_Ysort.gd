@@ -26,6 +26,7 @@ func _ready():
 			wall.self_modulate.a = 0.0
 
 		if check_for_visibility:
+			push_warning("Checking for visibility")
 			check_layer_3(wall)
 
 
