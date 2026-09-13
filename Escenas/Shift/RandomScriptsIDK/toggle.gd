@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var upper: LightOccluder2D
-@export var down: LightOccluder2D
+@export var upper: Node2D
+@export var down: Node2D
 @export var player: CharacterBody2D
 
 func _process(_delta: float) -> void:

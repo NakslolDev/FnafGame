@@ -149,6 +149,7 @@ CamUpSelect={
 2d_render/layer_8="Escenario"
 2d_render/layer_9="EscenarioFloor"
 2d_render/layer_10="EscenarioFloorNoFlashlight"
+2d_render/layer_11="FullBrightness"
 
 [rendering]
 

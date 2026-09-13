@@ -42,13 +42,16 @@ func entrance():
 		return
 	time.visible = true
 	
-	var minutes: int = randi_range(2, 9)
+	var minutes: int
+	if Global.noche == 3: minutes = 58
+	else: minutes =  40 + randi_range(0, 12)
+
 	var seconds: int = randi_range(0, 52)
-	
+
 	for i in range(7):
 		if i == 4 and entering_trans:
 			start_fade()
-		time.text = "23:5" + str(minutes) + ":" + str(seconds+i).pad_zeros(2)
+		time.text = "23:" + str(minutes) + ":" + str(seconds+i).pad_zeros(2)
 		await get_tree().create_timer(1.0).timeout
 
 

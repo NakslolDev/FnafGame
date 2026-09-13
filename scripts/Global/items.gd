@@ -6,8 +6,9 @@ var objects = {
 	"water_bottle": 0, # consumible
 	"batteries": 0, # consumible
 	"door_toy": 0,
-	"left_door_toy": false,
-	"right_door_toy": false,
+	"left_door_toy": true,
+	"right_door_toy": true,
+	"pas_toy": true
 }
 
 func night_starts():
@@ -19,8 +20,9 @@ func reset():
 		"water_bottle": 0,
 		"batteries": 0,
 		"door_toy": 0,
-		"left_door_toy": false,
-		"right_door_toy": false,
+		"left_door_toy": true,
+		"right_door_toy": true,
+		"pas_toy": true
 	}
 	drinking = false
 	left_usage = 0
@@ -97,7 +99,8 @@ func _movement_foxy(to_pos: int, to_room: String, from_pos: int, from_room: Stri
 		_press_toy_left()
 	elif to_pos == 0 and to_room == "rhall" and not (from_pos == 0 and from_room == "rhall"):
 		_press_toy_right()
-
+	elif to_pos == 1 and to_room == "pas" and not (from_pos == 1 and from_room == "rhall"):
+		_press_toy_pas()
 
 signal left_toy_squeek
 var left_usage := 0
@@ -126,6 +129,20 @@ func _press_toy_right():
 
 	right_usage += 1
 	right_toy_squeek.emit()
+
+signal pas_toy_squeek
+var pas_usage := 0
+func _press_toy_pas():
+	if not objects["pas_toy"]: return
+	
+	if _probability_of_break(pas_usage):
+		objects["pas_toy"] = false
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "PAS toy broke :(")
+	else:
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "PAS toy squeeck")
+
+	pas_usage += 1
+	pas_toy_squeek.emit()
 
 
 func _probability_of_break(use: int) -> bool: # esta formula la he conseguido despues de bastante prueba y error. Al final es extremadamente sencilla, pero bueno

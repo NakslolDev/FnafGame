@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://dbibmbqy84et8" path="res://assets/Placeholders/Camaras/UI/Minimapa Ductos.png" id="16_usepc"]
 [ext_resource type="Script" uid="uid://sugqxbfnyp2n" path="res://Escenas/Night/Cameras/alucination_control.gd" id="17_oe8ru"]
 [ext_resource type="PackedScene" uid="uid://yp8yfkj58or4" path="res://Escenas/Night/Cameras/NewCams/cam_1.tscn" id="17_r14dw"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="17_rgdy6"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/fonts/I-pixel-u.ttf" id="17_rgdy6"]
 [ext_resource type="Texture2D" uid="uid://t3tmcrkaa7ky" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_1.png" id="17_vcu2v"]
 [ext_resource type="Texture2D" uid="uid://crcwc7sf2jy3d" path="res://assets/Placeholders/Camaras/UI/Heater/Duct_Heater_2.png" id="18_5lr1q"]
 [ext_resource type="PackedScene" uid="uid://dr75h62c7rj4b" path="res://Escenas/Night/Cameras/estatica/ruido.tscn" id="18_rgdy6"]

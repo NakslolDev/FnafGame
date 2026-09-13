@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://tlwpejxgfme7"]
 
 [ext_resource type="Script" uid="uid://msy3vbqedlcu" path="res://Escenas/Shift/Text/pop_text.gd" id="1_oalcq"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="2_fdo78"]
+[ext_resource type="FontFile" uid="uid://cjb206tj6bjqg" path="res://assets/fonts/nostalgia-pixel.ttf" id="2_7jwmp"]
 [ext_resource type="Script" uid="uid://bnkb6vqkeiy7j" path="res://Escenas/Shift/Text/label_pop_text.gd" id="3_k80lv"]
 [ext_resource type="Script" uid="uid://saxavtp52pba" path="res://scripts/tools & others/Effects/rainbow.gd" id="3_qiqv6"]
 [ext_resource type="Script" uid="uid://byiv8sg0sc7sy" path="res://scripts/tools & others/Effects/wave.gd" id="3_urwka"]
@@ -74,6 +74,14 @@ min_alpha = 1.0
 bbcode = "silent"
 metadata/_custom_type_script = "uid://didmeig0mvuse"
 
+[sub_resource type="RichTextEffect" id="RichTextEffect_6tn1i"]
+script = ExtResource("7_wjrdk")
+speed = 0.0
+separation = 0.0
+min_alpha = 1.0
+bbcode = "uniform"
+metadata/_custom_type_script = "uid://didmeig0mvuse"
+
 [node name="Pop_Text" type="Control" unique_id=188774992 node_paths=PackedStringArray("txt_label", "timer")]
 texture_filter = 1
 layout_mode = 3
@@ -91,10 +99,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 384.0
+offset_left = 392.0
 offset_top = 640.0
-offset_right = -384.0
-offset_bottom = -160.0
+offset_right = -392.0
+offset_bottom = -204.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fdo78")
@@ -107,18 +115,19 @@ anchor_left = 0.026
 anchor_top = 0.125
 anchor_right = 0.974
 anchor_bottom = 0.875
-offset_left = 10.048
-offset_right = -10.0481
-offset_bottom = -3.05176e-05
+offset_left = 22.312008
+offset_top = 9.4999695
+offset_right = -22.312195
+offset_bottom = -9.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_fdo78")
-theme_override_font_sizes/normal_font_size = 45
+theme_override_fonts/normal_font = ExtResource("2_7jwmp")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "HOLA"
+text = "I saw more electronics in the suits themselves, except for the new freddy suit, so there should be further firmware in there."
 scroll_active = false
 autowrap_mode = 2
-custom_effects = [SubResource("RichTextEffect_mb5rd"), SubResource("RichTextEffect_wjrdk"), SubResource("RichTextEffect_pyek0"), SubResource("RichTextEffect_io82i"), SubResource("RichTextEffect_1ns3g"), SubResource("RichTextEffect_3ets4"), SubResource("RichTextEffect_lkdkp"), SubResource("RichTextEffect_1ojwq"), SubResource("RichTextEffect_7jwmp")]
+custom_effects = [SubResource("RichTextEffect_mb5rd"), SubResource("RichTextEffect_wjrdk"), SubResource("RichTextEffect_pyek0"), SubResource("RichTextEffect_io82i"), SubResource("RichTextEffect_1ns3g"), SubResource("RichTextEffect_3ets4"), SubResource("RichTextEffect_lkdkp"), SubResource("RichTextEffect_1ojwq"), SubResource("RichTextEffect_7jwmp"), SubResource("RichTextEffect_6tn1i")]
 script = ExtResource("3_k80lv")
 pop_text = NodePath("../..")
 timer_per_letter = NodePath("Timer_per_letter")

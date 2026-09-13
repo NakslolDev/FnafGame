@@ -74,11 +74,12 @@ func printing_letters():
 		
 		return
 	
-	
 	var mult := 1.0/Global.minigame_text_speed_mult
 	if slow:
 		mult = 3
-	if _text.substr(0, letter).ends_with("."):
+	if find_opend(new_text, "uniform"):
+		timer_per_letter.start(NO_PAUSE*mult)
+	elif _text.substr(0, letter).ends_with("."):
 		timer_per_letter.start(LONG_PAUSE*mult)
 	elif _text.substr(0, letter).ends_with("?"):
 		timer_per_letter.start(LONG_PAUSE*mult)

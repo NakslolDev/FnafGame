@@ -1,5 +1,11 @@
-extends Sprite2D
-class_name DinamicSprites
+extends Node2D
+
+@export_group("id")
+@export var need_id: Array[String] = []
+@export var exclude_id: Array[String] = []
+@export var need_beggining_id: Array[String] = []
+@export var exclude_beggining_id: Array[String] = []
+var always_inactive: bool = false
 
 @export_group("Nights")
 @export var night_0 := true
@@ -46,6 +52,7 @@ enum Condition{Omit, Need, Exclude}
 @export var computer_working: Condition = Condition.Omit
 @export var computer_failed: Condition = Condition.Omit
 @export var signed_in: Condition = Condition.Omit
+@export var backstage_opend: Condition = Condition.Omit
 
 @export_group("Map Items")
 @export var kitchen_water_bottle: Condition = Condition.Omit
@@ -63,6 +70,7 @@ enum Condition{Omit, Need, Exclude}
 @export var door_toy: Condition = Condition.Omit
 @export var left_door_toy: Condition = Condition.Omit
 @export var right_door_toy: Condition = Condition.Omit
+@export var pas_toy: Condition = Condition.Omit
 
 
 @export_group("Death_minigame_state")
@@ -75,10 +83,14 @@ enum dmState{Omit, None, Complete, Saved}
 @onready var minigame: Node = get_tree().get_first_node_in_group("minigame") # curioso, pero bueno, funciona
 
 func _ready():
+	check_beggining_active()
 	check_active()
 	minigame.act_sprites.connect(check_active)
 
 func check_active():
+	
+	if always_inactive:
+		return
 	
 	visible = true
 	
@@ -153,4 +165,27 @@ func check_active():
 			return
 		if value == Condition.Exclude and Items.objects[_key]:
 			visible = false
+			return
+	
+	for _key in need_id:
+		if not _key in Global.id_dialogs:
+			visible = false
+			return
+	
+	for _key in exclude_id:
+		if _key in Global.id_dialogs:
+			visible = false
+			return
+
+func check_beggining_active():
+	for _key in need_beggining_id:
+		if not _key in Global.id_dialogs:
+			visible = false
+			always_inactive = true
+			return
+	
+	for _key in exclude_beggining_id:
+		if _key in Global.id_dialogs:
+			visible = false
+			always_inactive = true
 			return

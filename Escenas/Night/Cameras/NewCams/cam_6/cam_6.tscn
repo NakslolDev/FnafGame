@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://yopxiejtgcef" path="res://Escenas/Night/Cameras/NewCams/cam_6/cam_6.gd" id="1_wpinl"]
 [ext_resource type="Texture2D" uid="uid://ch5lwuekvvg5p" path="res://assets/Placeholders/Camaras/Cam6/Cam.png" id="2_4v5yx"]
 [ext_resource type="Script" uid="uid://cw0ys6ob6fe4e" path="res://Escenas/Night/Cameras/NewCams/Class/cams_sprite_class.gd" id="3_4v5yx"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="3_5qyln"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/fonts/I-pixel-u.ttf" id="3_5qyln"]
 [ext_resource type="Script" uid="uid://cg0n8myh17u8d" path="res://Escenas/Night/Cameras/NewCams/cam_6/chica_sounds.gd" id="4_wpinl"]
 [ext_resource type="AudioStream" uid="uid://b2vido0ltrjb8" path="res://assets/sounds/Chica sounds/Searching_01.wav" id="5_eion3"]
 [ext_resource type="AudioStream" uid="uid://y2wnvkf78oo3" path="res://assets/sounds/Chica sounds/Searching_02.wav" id="6_hqtiy"]

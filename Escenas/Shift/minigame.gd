@@ -129,6 +129,12 @@ func _on_done_safing(not_automatic: bool, read: int, combination := []):
 
 func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	
+	if action == "just_act":
+		act_active(coliders_node)
+		act_sprites.emit()
+		act_interact()
+		return
+	
 	if reading or safing or transitioning:
 		return
 	
@@ -144,9 +150,9 @@ func on_action(action: String, read: int): # Aquí van las acciónes comunes
 	else:
 		custom_action.do_custom_action(action, read) # Tengo un nodo a parte para las acciones custom, para organizar
 	
-	act_interact()
 	act_active(coliders_node)
 	act_sprites.emit()
+	act_interact()
 
 func act_interact():
 	for child in manual_act_nodes:

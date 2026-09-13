@@ -4,7 +4,7 @@ extends Node
 
 
 func do_custom_action(action: String, read: int):
-	print("HELLLO: ", action)
+	print("Do custom action: ", action)
 	if action.ends_with("_w_text"):
 		action = action.substr(0, action.length() - "_w_text".length())
 	action = action.to_lower()
@@ -105,3 +105,7 @@ func put_left_toy(_read):
 func put_right_toy(_read):
 	Items.objects["door_toy"] -= 1
 	Items.objects["right_door_toy"] = true
+
+func put_pas_toy(_read):
+	Items.objects["door_toy"] -= 1
+	Items.objects["pas_toy"] = true

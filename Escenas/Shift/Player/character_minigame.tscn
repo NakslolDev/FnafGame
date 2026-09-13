@@ -52,6 +52,7 @@ occluder = SubResource("OccluderPolygon2D_g4v7s")
 occluder_light_mask = 18
 
 [node name="LightOccluder2DEscenario" type="LightOccluder2D" parent="Skins/Sprite2D" unique_id=1439727416]
+visible = false
 position = Vector2(0, 5)
 occluder = SubResource("OccluderPolygon2D_g4v7s")
 occluder_light_mask = 256

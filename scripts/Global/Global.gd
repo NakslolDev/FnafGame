@@ -250,7 +250,8 @@ func guardar_partida():
 		"inventario": inventario,
 		"mapa": mapa,
 		"dm": dm,
-		"map_items": map_items
+		"map_items": map_items,
+		"id_dialogs": id_dialogs
 	}
 	
 	var path := user_root + partida_rout
@@ -272,6 +273,7 @@ func guardar_partida_provisional(): # partida provisional no necesita su contrap
 		"mapa": mapa,
 		"dm": dm,
 		"map_items": map_items,
+		"id_dialogs": id_dialogs,
 		"items": Items.objects
 	}
 	
@@ -356,6 +358,7 @@ func guardar_partida_debug():
 		"mapa": mapa,
 		"dm": dm,
 		"map_items": map_items,
+		"id_dialogs": id_dialogs
 	}
 
 	var devpath := user_root + debug_partida_rout
@@ -399,6 +402,8 @@ func leer_partida():
 				_asign_recursive_diccionary(devpartida.get("dm"), dm)
 			if devpartida.has("map_items"):
 				_asign_recursive_diccionary(devpartida.get("map_items"), map_items)
+			if devpartida.has("id_dialogs"):
+				id_dialogs = devpartida.get("id_dialogs").duplicate()
 			
 			sync_debug_to_current()
 			
@@ -436,6 +441,8 @@ func leer_partida():
 		_asign_recursive_diccionary(partida.get("dm"), dm)
 	if partida.has("map_items"):
 		_asign_recursive_diccionary(partida.get("map_items"), map_items)
+	if partida.has("id_dialogs"):
+		id_dialogs = partida.get("id_dialogs").duplicate()
 	
 	print("Partida cargada")
 
@@ -468,6 +475,8 @@ func leer_partida_provisional():
 		_asign_recursive_diccionary(partida.get("dm"), dm)
 	if partida.has("map_items"):
 		_asign_recursive_diccionary(partida.get("map_items"), map_items)
+	if partida.has("id_dialogs"):
+		id_dialogs = partida.get("id_dialogs").duplicate()
 	if partida.has("items"):
 		_asign_recursive_diccionary(partida.get("items"), Items.objects)
 	
@@ -487,6 +496,34 @@ func eliminar_debug_partida():
 	var path := user_root + debug_partida_rout
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
+
+func eliminar_dialogos():
+	
+	var path := user_root + partida_rout
+	
+	if not FileAccess.file_exists(path):
+		print("No existe el archivo de partida.")
+		return
+	
+	var file = FileAccess.open(path, FileAccess.READ)
+	var text = file.get_as_text()
+	file.close()
+	
+	var partida = JSON.parse_string(text) # Cargamos los archivos de partida
+	if partida == null:
+		print("Error al leer JSON.")
+		return
+	
+	partida["id_dialogs"] = []
+	
+	file = FileAccess.open(path, FileAccess.WRITE)
+	
+	if file:
+		file.store_string(JSON.stringify(partida)) # "\t" = formato legible
+		print("Partida guardada")
+	else:
+		print("Partida fallida")
+	file.close()
 
 func sync_debug_to_current():
 	debug["game_state"]["night"] = noche
@@ -618,96 +655,6 @@ var mouse_custom_op := 1.0
 var mouse_custom_punt := "3"
 var mouse_cam_see := true
 
-# Para la skin de la linterna
-# He decidido eliminar esto, pues es una tonteria. La paleta solo una.
-#var linterna_skin := {
-	#"alpha_general": 1.0,
-	#"alpha_base": 1.0,
-	#"partes": {
-		#"Paleta_A": {
-			#"1":  {"alpha": 0.0, "visible": true},
-			#"2":  {"alpha": 0.0, "visible": true},
-			#"3":  {"alpha": 1.0, "visible": true},
-			#"4":  {"alpha": 1.0, "visible": true},
-			#"5":  {"alpha": 1.0, "visible": true},
-		#},
-		#"Paleta_B": {
-			#"1":  {"alpha": 1.0, "visible": true},
-			#"2":  {"alpha": 1.0, "visible": true},
-			#"3":  {"alpha": 0.0, "visible": true},
-			#"4":  {"alpha": 0.0, "visible": true},
-			#"5":  {"alpha": 0.0, "visible": true},
-		#},
-		#"Paleta_C": {
-			#"1":  {"alpha": 0.5, "visible": true},
-			#"2":  {"alpha": 0.5, "visible": true},
-			#"3":  {"alpha": 0.5, "visible": true},
-			#"4":  {"alpha": 0.5, "visible": true},
-			#"5":  {"alpha": 0.5, "visible": true},
-		#},
-		#"Paleta_D": {
-			#"1":  {"alpha": 0.0, "visible": true},
-			#"2":  {"alpha": 0.0, "visible": true},
-			#"3":  {"alpha": 0.0, "visible": true},
-			#"4":  {"alpha": 0.0, "visible": true},
-			#"5":  {"alpha": 0.0, "visible": true},
-		#},
-		#"Paleta_E": {
-			#"1":  {"alpha": 0.0, "visible": true},
-			#"2":  {"alpha": 0.0, "visible": true},
-			#"3":  {"alpha": 0.0, "visible": true},
-			#"4":  {"alpha": 0.0, "visible": true},
-			#"5":  {"alpha": 0.0, "visible": true},
-		#},
-		#"Paleta_F": {
-			#"1":  {"alpha": 0.0, "visible": true},
-			#"2":  {"alpha": 0.0, "visible": true},
-			#"3":  {"alpha": 0.0, "visible": true},
-			#"4":  {"alpha": 0.0, "visible": true},
-			#"5":  {"alpha": 0.0, "visible": true},
-		#}
-	#}
-#}
-
-# Para la skin de la energia
-# He decidido eliminar esto, pues es una tonteria. La paleta solo una.
-#var energia_skin := {
-	#"alpha_general": 1.0,
-	#"alpha_base": 1.0,
-	#"partes": {
-		#"Paleta_A": {
-			#"1":  {"alpha": 1.0, "visible": true},
-			#"2":  {"alpha": 0.0, "visible": true},
-			#"3":  {"alpha": 0.0, "visible": true}
-		#},
-		#"Paleta_B": {
-			#"1":  {"alpha": 0.0, "visible": true},
-			#"2":  {"alpha": 1.0, "visible": true},
-			#"3":  {"alpha": 0.0, "visible": true}
-		#},
-		#"Paleta_C": {
-			#"1":  {"alpha": 0.0, "visible": true},
-			#"2":  {"alpha": 0.0, "visible": true},
-			#"3":  {"alpha": 1.0, "visible": true}
-		#},
-		#"Paleta_D": {
-			#"1":  {"alpha": 0.5, "visible": true},
-			#"2":  {"alpha": 0.5, "visible": true},
-			#"3":  {"alpha": 0.5, "visible": true}
-		#},
-		#"Paleta_E": {
-			#"1":  {"alpha": 0.0, "visible": true},
-			#"2":  {"alpha": 0.0, "visible": true},
-			#"3":  {"alpha": 0.0, "visible": true}
-		#},
-		#"Paleta_F": {
-			#"1":  {"alpha": 0.0, "visible": true},
-			#"2":  {"alpha": 0.0, "visible": true},
-			#"3":  {"alpha": 0.0, "visible": true}
-		#}
-	#}
-#}
-
 var fade := {
 	"Energia": {
 		"Active": true,
@@ -780,6 +727,7 @@ var mapa: Dictionary[String, bool] = {
 	"computer_working": false,
 	"computer_failed": false,
 	"signed_in": false,
+	"backstage_opend": false,
 }
 
 
@@ -802,6 +750,8 @@ var map_items = {
 	"box_toy": false,
 	"almacen_toy": false,
 }
+
+var id_dialogs: Array = []
 
 ##---Funciones Partida---#
 

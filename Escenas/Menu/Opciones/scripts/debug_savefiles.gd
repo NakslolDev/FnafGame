@@ -1,7 +1,10 @@
 extends VBoxContainer
 
 func _on_save_game_pressed() -> void:
+	var safe_save: bool = Global.debug["prevent_save"]
+	Global.debug["prevent_save"] = false
 	Global.guardar_partida()
+	Global.debug["prevent_save"] = safe_save
 
 func _on_force_save_game_debug_pressed() -> void:
 	var safe_save: bool = Global.debug["prevent_save"]
@@ -11,7 +14,10 @@ func _on_force_save_game_debug_pressed() -> void:
 	Global.debug["prevent_save"] = safe_save
 
 func _on_save_progress_pressed() -> void:
+	var safe_save: bool = Global.debug["prevent_save"]
+	Global.debug["prevent_save"] = false
 	Global.guardar_progreso()
+	Global.debug["prevent_save"] = safe_save
 
 func _on_force_save_progress_debug_pressed() -> void:
 	var safe_save: bool = Global.debug["prevent_save"]
@@ -28,3 +34,6 @@ func _on_delete_partida_pressed() -> void:
 
 func _on_delete_progress_pressed() -> void:
 	Global.eliminar_progreso()
+
+func _on_delete_dialogs_pressed() -> void:
+	Global.eliminar_dialogos()

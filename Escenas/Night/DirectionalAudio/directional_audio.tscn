@@ -412,10 +412,11 @@ x_position = 7
 concentration = 0.8
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
-[node name="ToySound" type="Node" parent="." unique_id=1550202519 node_paths=PackedStringArray("left", "right")]
+[node name="ToySound" type="Node" parent="." unique_id=1550202519 node_paths=PackedStringArray("left", "right", "pas")]
 script = ExtResource("17_t0g7s")
 left = NodePath("Left")
 right = NodePath("Right")
+pas = NodePath("PAS")
 toy_sounds = Array[AudioStream]([ExtResource("18_d2xl7"), ExtResource("19_7hmdq"), ExtResource("20_07bc2"), ExtResource("21_866d1"), ExtResource("22_yqa2m"), ExtResource("23_ljxjf"), ExtResource("24_dg7u0"), ExtResource("25_qy4f5"), ExtResource("26_k7hqg"), ExtResource("27_blfdf"), ExtResource("28_0mw7q")])
 pop_sounds = Array[AudioStream]([ExtResource("29_cpmoq"), ExtResource("30_up7ln"), ExtResource("31_bro3t"), ExtResource("32_ig2k4")])
 
@@ -430,6 +431,12 @@ metadata/_custom_type_script = "uid://cem83cl7ongg6"
 script = ExtResource("2_yh57f")
 x_position = 5
 concentration = 0.9
+metadata/_custom_type_script = "uid://cem83cl7ongg6"
+
+[node name="PAS" type="AudioStreamPlayer2D" parent="ToySound" unique_id=1687650400]
+script = ExtResource("2_yh57f")
+_volume = -15.0
+concentration = 0.6
 metadata/_custom_type_script = "uid://cem83cl7ongg6"
 
 [node name="VHSsound" type="AudioStreamPlayer2D" parent="." unique_id=279056223]

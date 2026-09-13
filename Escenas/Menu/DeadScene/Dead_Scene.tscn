@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dngangnlmq38i" path="res://Escenas/Menu/DeadScene/dead_scene.gd" id="1_jo435"]
 [ext_resource type="Texture2D" uid="uid://d3265mxv31r2w" path="res://assets/Placeholders/Freddy.png" id="2_xvp0x"]
 [ext_resource type="Texture2D" uid="uid://bvnykk64cpapv" path="res://assets/Placeholders/Fan_PNG.png" id="3_ctmg2"]
-[ext_resource type="FontFile" uid="uid://duqp40quebv2t" path="res://assets/CooperBits.ttf" id="3_x3aip"]
+[ext_resource type="FontFile" uid="uid://duqp40quebv2t" path="res://assets/fonts/CooperBits.ttf" id="3_x3aip"]
 [ext_resource type="Texture2D" uid="uid://bq2r0qn2h6fol" path="res://assets/Placeholders/Chica.png" id="3_xxx2t"]
 [ext_resource type="Texture2D" uid="uid://s1cucwt5uhrm" path="res://assets/Placeholders/foxy.png" id="4_jo435"]
 [ext_resource type="Texture2D" uid="uid://d3k0ah58dgnc4" path="res://assets/Placeholders/Bonnie.png" id="5_ctmg2"]

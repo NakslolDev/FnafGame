@@ -1221,6 +1221,13 @@ layout_mode = 2
 theme_override_constants/separation = 15
 script = ExtResource("31_et6hj")
 
+[node name="delete_dialogs" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=314992987]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+text = "Delete all stored dialogs
+"
+alignment = 0
+
 [node name="save_game" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" unique_id=509410297]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
@@ -1357,6 +1364,7 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_batteries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_batteries_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_box_toy" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_box_toy_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_toy" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_toy_toggled"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_dialogs" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_dialogs_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/save_game" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_save_game_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/force_save_game_debug" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_force_save_game_debug_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/save_progress" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_save_progress_pressed"]

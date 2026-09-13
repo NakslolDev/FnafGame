@@ -2,6 +2,7 @@ extends Node
 
 @export var left: spacial_audio
 @export var right: spacial_audio
+@export var pas: spacial_audio
 
 @export var toy_sounds: Array[AudioStream]
 @export var pop_sounds: Array[AudioStream]
@@ -9,10 +10,12 @@ extends Node
 
 const LEFT_NAME := "left_door_toy"
 const RIGHT_NAME := "right_door_toy"
+const PAS_NAME := "pas_toy"
 
 func _ready() -> void:
 	Items.left_toy_squeek.connect(_left)
 	Items.right_toy_squeek.connect(_right)
+	Items.pas_toy_squeek.connect(_pas)
 
 # make all sounds
 
@@ -51,3 +54,19 @@ func _right():
 	right.change_volume()
 	
 	right.play()
+
+func _pas():
+	if Items.objects[PAS_NAME]:
+		pas.stream = toy_sounds.pick_random()
+		if randi_range(0,999) == 0:
+			pas.stream = easter_egg_sounds.pick_random() 
+	else:
+		pas.stream = pop_sounds.pick_random()
+	
+	pas._volume = -10.0
+	if Global.energia["Luces"]:
+		pas._volume -= 5.0
+	
+	pas.change_volume()
+	
+	pas.play()

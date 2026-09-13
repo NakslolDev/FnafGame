@@ -42,7 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://c56tf6s3thtjw" path="res://Escenas/Night/Jumpscare/jumpscare_foxy.tscn" id="36_bfel1"]
 [ext_resource type="Texture2D" uid="uid://beajaurpxnglx" path="res://assets/Placeholders/UI_Juego/Up_Cams.png" id="37_1av5k"]
 [ext_resource type="Script" uid="uid://cupgjt3ibvlcl" path="res://Escenas/Night/Cameras/scripts/up_cams.gd" id="38_ewhsk"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/I-pixel-u.ttf" id="39_hfq1x"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/fonts/I-pixel-u.ttf" id="39_hfq1x"]
 [ext_resource type="PackedScene" uid="uid://bq8slaploxj1p" path="res://Escenas/Night/Cameras/animatronic_map/animatronic_map.tscn" id="40_di46t"]
 [ext_resource type="Script" uid="uid://cyeiwifp8oayw" path="res://Escenas/Night/Cameras/scripts/camaras_control.gd" id="45_ba5fs"]
 [ext_resource type="PackedScene" uid="uid://d2hwtk3f7idft" path="res://Escenas/Night/Cameras/Camaras.tscn" id="46_axquf"]
@@ -311,7 +311,7 @@ oficina = NodePath("..")
 
 [node name="Ductos" parent="Oficina" unique_id=537877836 instance=ExtResource("8_v0aef")]
 
-[node name="Pasillo Izquierdo" parent="Oficina" unique_id=1170505708 instance=ExtResource("9_1n26x")]
+[node name="PasilloIzquierdo" parent="Oficina" unique_id=1170505708 instance=ExtResource("9_1n26x")]
 
 [node name="PasilloDerecho" parent="Oficina" unique_id=397326124 instance=ExtResource("14_pd3h4")]
 
@@ -602,7 +602,7 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/FlashlightShaderControl" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Oficina_Detras" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Ductos" method="_on_linterna_linterna_activada_switch"]
-[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Pasillo Izquierdo" method="_on_linterna_linterna_activada_switch"]
+[connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/PasilloIzquierdo" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="CanvasLayerDarkness/Lights/Oficina_lights_out" method="_on_linterna_linterna_activada_switch"]
 [connection signal="timeout" from="CanvasLayerDarkness/Lights/RuidoTimer" to="CanvasLayerDarkness/Lights/Oficina_lights_out" method="_on_ruido_timer_timeout"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Bonnie" to="." method="_on_jumpscare_bonnie_jumpscare_end"]

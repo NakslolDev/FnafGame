@@ -1,21 +1,7 @@
-extends Area2D
-
-@export_enum("Custom", "Text", "Begin_night", "Exit_pizza", "Safe")
-var action := "Text"
-
-@export_placeholder("'_w_text' for text + action")
-var custom_action: String
-
-@export var id := ""
-var player_in := false
-var active
-
-@export var read_end_in: Array[int]
-
-var read := 0
+extends Sprite2D
+class_name DinamicSprites
 
 @export_group("id")
-@export var save_id: Array[String] = []
 @export var need_id: Array[String] = []
 @export var exclude_id: Array[String] = []
 @export var need_beggining_id: Array[String] = []
@@ -97,33 +83,31 @@ enum dmState{Omit, None, Complete, Saved}
 
 @onready var minigame: Node = get_tree().get_first_node_in_group("minigame") # curioso, pero bueno, funciona
 
-signal do_action(action: String, read: int)
-signal send_id_to_text(id: String, end_in: Array[int], read: int)
-
 func _ready():
 	check_beggining_active()
 	check_active()
+	minigame.act_sprites.connect(check_active)
 
 func check_active():
 	
 	if always_inactive:
 		return
 	
-	active = true
+	visible = true
 	
 	if Global.noche == -1:
 		return
 	
 	if not get("night_" + str(Global.noche)):
-		active = false
+		visible = false
 		return
 	
 	if not (Global.m_entering and entering) and not (!Global.m_entering and exiting):
-		active = false
+		visible = false
 		return
 	
 	if not get(Global.just_death_min):
-		active = false
+		visible = false
 		return
 	
 	for _key in Global.inventario: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -131,10 +115,10 @@ func check_active():
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == Condition.Need and not Global.inventario[_key]:
-			active = false
+			visible = false
 			return
 		if value == Condition.Exclude and Global.inventario[_key]:
-			active = false
+			visible = false
 			return
 	
 	for _key in Global.mapa: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -142,10 +126,10 @@ func check_active():
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == Condition.Need and not Global.mapa[_key]:
-			active = false
+			visible = false
 			return
 		if value == Condition.Exclude and Global.mapa[_key]:
-			active = false
+			visible = false
 			return
 	
 	for _key in Global.dm: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -153,13 +137,13 @@ func check_active():
 		if value == dmState.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == dmState.None and Global.dm[_key] != Global.Estado.STANDBY:
-			active = false
+			visible = false
 			return
 		if value == dmState.Complete and Global.dm[_key] != Global.Estado.COMPLETADO:
-			active = false
+			visible = false
 			return
 		if value == dmState.Saved and Global.dm[_key] != Global.Estado.SALVADO:
-			active = false
+			visible = false
 			return
 	
 	for _key in Global.map_items: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -167,10 +151,10 @@ func check_active():
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == Condition.Need and not Global.map_items[_key]:
-			active = false
+			visible = false
 			return
 		if value == Condition.Exclude and Global.map_items[_key]:
-			active = false
+			visible = false
 			return
 	
 	for _key in Items.objects: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -178,69 +162,31 @@ func check_active():
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == Condition.Need and not Items.objects[_key]:
-			active = false
+			visible = false
 			return
 		if value == Condition.Exclude and Items.objects[_key]:
-			active = false
+			visible = false
 			return
 	
 	for _key in need_id:
 		if not _key in Global.id_dialogs:
-			active = false
+			visible = false
 			return
 	
 	for _key in exclude_id:
 		if _key in Global.id_dialogs:
-			active = false
+			visible = false
 			return
 
 func check_beggining_active():
 	for _key in need_beggining_id:
 		if not _key in Global.id_dialogs:
-			active = false
+			visible = false
 			always_inactive = true
 			return
 	
 	for _key in exclude_beggining_id:
 		if _key in Global.id_dialogs:
-			active = false
+			visible = false
 			always_inactive = true
 			return
-
-func _on_body_entered(body: Node2D) -> void:
-	if str(body).begins_with("Character_Minigame"):
-		player_in = true
-
-func _on_body_exited(body: Node2D) -> void:
-	if str(body).begins_with("Character_Minigame"):
-		player_in = false
-
-func _input(event):
-	
-	if not (event.is_action_pressed("interact") and player_in) or not active:
-		return
-	
-	if minigame.reading or minigame.safing or minigame.transitioning: #uso otro if para que no quede tan largo
-		return
-	
-	print("Read: ", read, "  End in: ", read_end_in)
-	
-	if action == "Custom":
-		action = custom_action
-	
-	if action == "Text":
-		send_id_to_text.emit(id, read_end_in, read)
-	else:
-		do_action.emit(action, read)
-		if action.ends_with("w_text"):
-			send_id_to_text.emit(id, read_end_in, read)
-	if read < read_end_in.size():
-		read += 1
-	
-	if not save_id.is_empty():
-		for _key in save_id:
-			if not _key in Global.id_dialogs:
-				print("HELOO")
-				Global.id_dialogs.append(_key)
-		print("BAZINGA")
-		do_action.emit("just_act", read)
