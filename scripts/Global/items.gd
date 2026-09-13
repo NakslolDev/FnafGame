@@ -33,6 +33,7 @@ func _ready():
 	Chica.movement.connect(_movement_chica)
 	Foxy.movement.connect(_movement_foxy)
 
+	push_warning("All toys activated by default")
 
 ##batteries
 

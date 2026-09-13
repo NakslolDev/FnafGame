@@ -2,44 +2,44 @@
 
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://Escenas/Shift/minigame.gd" id="1_xv0fq"]
 [ext_resource type="Script" uid="uid://op64ky6ob2qy" path="res://Escenas/Shift/RandomScriptsIDK/minigame_custom_actions.gd" id="2_wna5r"]
-[ext_resource type="Texture2D" uid="uid://dqs4bst1s7y3y" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
+[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
 [ext_resource type="Script" uid="uid://bvas38t5dvubq" path="res://Escenas/Shift/RandomScriptsIDK/black_background.gd" id="4_vs41v"]
-[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
 [ext_resource type="TileSet" uid="uid://ba1v7xwtblihb" path="res://Resources (tres)/Raw_colitions.tres" id="6_yq6rm"]
 [ext_resource type="Script" uid="uid://30pn34qdajtn" path="res://Escenas/Shift/RandomScriptsIDK/lifter.gd" id="7_8lcin"]
 [ext_resource type="Script" uid="uid://b3wb85sp3oy4u" path="res://Escenas/Shift/Classes/dynamic_collision.gd" id="7_axwuc"]
-[ext_resource type="Script" uid="uid://cck4qkhapri2y" path="res://Escenas/Shift/RandomScriptsIDK/minigame_Ysort.gd" id="7_pwkhe"]
+[ext_resource type="Script" uid="uid://cck4qkhapri2y" path="res://Escenas/Shift/RandomScriptsIDK/Minigame_Ysort.gd" id="7_pwkhe"]
 [ext_resource type="PackedScene" uid="uid://cumryt3pxo2wv" path="res://Escenas/Shift/Player/character_minigame.tscn" id="8_w4bkp"]
 [ext_resource type="PackedScene" uid="uid://bo828jywsimiy" path="res://Escenas/Shift/M_objets/chair.tscn" id="9_o8hhc"]
 [ext_resource type="PackedScene" uid="uid://bj026rljnlsdo" path="res://Escenas/Shift/M_objets/Round_Table.tscn" id="10_8lcin"]
 [ext_resource type="Script" uid="uid://cj01ym730u7hy" path="res://Escenas/Shift/RandomScriptsIDK/toggle.gd" id="10_w4bkp"]
 [ext_resource type="PackedScene" uid="uid://b11fiquxgu4wa" path="res://Escenas/Shift/M_objets/long_table.tscn" id="11_w3343"]
 [ext_resource type="PackedScene" uid="uid://dkw61scyyeb22" path="res://Escenas/Shift/M_objets/placeholder.tscn" id="12_axwuc"]
-[ext_resource type="Texture2D" uid="uid://0plph23qdqex" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
+[ext_resource type="Texture2D" uid="uid://c6dq54nbl5xpo" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://Escenas/Shift/Text/pop_text.tscn" id="14_v4577"]
 [ext_resource type="Script" uid="uid://mw8cj301gokj" path="res://Escenas/Shift/Classes/general_visibility.gd" id="14_w3343"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://Escenas/Shift/Safe/pop_safe.tscn" id="15_kqcik"]
-[ext_resource type="Texture2D" uid="uid://ctwgdk38urjnj" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="15_pwkhe"]
+[ext_resource type="Texture2D" uid="uid://d1okntnsqbfnm" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="15_pwkhe"]
 [ext_resource type="Script" uid="uid://cuyy21g5e4qyh" path="res://Escenas/Shift/Classes/dynamic_sprites.gd" id="15_vs41v"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://Escenas/Shift/BlackBars/black_bars.tscn" id="16_3hrc1"]
 [ext_resource type="Script" uid="uid://hrj5r1dkwlwl" path="res://Escenas/Shift/RandomScriptsIDK/intro_minigame.gd" id="17_b7ymr"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
 [ext_resource type="Script" uid="uid://bhhidquafhs23" path="res://Escenas/Shift/RandomScriptsIDK/front_of_flashlight.gd" id="18_pwkhe"]
-[ext_resource type="Texture2D" uid="uid://c07lwpqngc7hy" path="res://assets/minijuego assets/Lights/Flashlight.png" id="19_pwkhe"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/fonts/I-pixel-u.ttf" id="19_ur7tl"]
+[ext_resource type="Texture2D" uid="uid://brf0nlemffj2u" path="res://assets/minijuego assets/Lights/Flashlight.png" id="19_pwkhe"]
+[ext_resource type="FontFile" uid="uid://cpbxl6cd0tphk" path="res://assets/fonts/I-pixel-u.ttf" id="19_ur7tl"]
 [ext_resource type="Script" uid="uid://okkqwaugqcim" path="res://Escenas/Shift/RandomScriptsIDK/daylable_transition.gd" id="20_y4nle"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="21_cgfeb"]
 [ext_resource type="Script" uid="uid://dybfd3q13udjj" path="res://Escenas/Shift/RandomScriptsIDK/shift_completed.gd" id="22_pu8a6"]
-[ext_resource type="Texture2D" uid="uid://cfg2lp4aa8tme" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
+[ext_resource type="Texture2D" uid="uid://crqrn4aglues7" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
 [ext_resource type="PackedScene" uid="uid://djqjqcxkcwu8s" path="res://Escenas/Shift/M_objets/_interact_colider.tscn" id="24_ly3ag"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://Escenas/Shift/M_objets/location_key.gd" id="25_ekm4o"]
-[ext_resource type="Texture2D" uid="uid://c4oa3dapevuly" path="res://assets/minijuego assets/White.png" id="25_v4577"]
+[ext_resource type="Texture2D" uid="uid://kxm04q67wv3u" path="res://assets/minijuego assets/White.png" id="25_v4577"]
 [ext_resource type="Script" uid="uid://b0ae5x6mpdh2h" path="res://Escenas/Shift/RandomScriptsIDK/DM_machine_noise.gd" id="26_7g4ok"]
 [ext_resource type="Script" uid="uid://dculdecv7rjo" path="res://Escenas/Shift/RandomScriptsIDK/secret_room_hitbox.gd" id="26_42vnu"]
-[ext_resource type="AudioStream" uid="uid://bm5aun5dl67in" path="res://assets/sounds/old-radio-noise.ogg" id="26_kqcik"]
+[ext_resource type="AudioStream" uid="uid://dfgv4ixx8xuwr" path="res://assets/sounds/old-radio-noise.ogg" id="26_kqcik"]
 [ext_resource type="Script" uid="uid://dpnbshirm7aw" path="res://Escenas/Shift/RandomScriptsIDK/camera_minigame.gd" id="27_l74w5"]
 [ext_resource type="Script" uid="uid://cahecp3m72lyo" path="res://Escenas/Shift/RandomScriptsIDK/lights.gd" id="30_xk4e4"]
-[ext_resource type="Texture2D" uid="uid://cvgpsiwmtdk5m" path="res://assets/Placeholders/Linterna.png" id="31_xk4e4"]
+[ext_resource type="Texture2D" uid="uid://bttp7ke2h52qu" path="res://assets/Placeholders/Linterna.png" id="31_xk4e4"]
 [ext_resource type="Script" uid="uid://b6r6sd5hfks6y" path="res://Escenas/Shift/RandomScriptsIDK/entrance_cealing.gd" id="34_o8hhc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpa5o"]
@@ -347,6 +347,18 @@ texture = ExtResource("5_xk4e4")
 [sub_resource type="TileSet" id="TileSet_qqbrj"]
 sources/0 = SubResource("TileSetAtlasSource_qqbrj")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qb44"]
+size = Vector2(48, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btuj4"]
+size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a86qg"]
+size = Vector2(56, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4b75"]
+size = Vector2(9, 16)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_jcmxm"]
 diffuse_texture = ExtResource("5_xk4e4")
 normal_texture = ExtResource("15_pwkhe")
@@ -521,7 +533,7 @@ shader_parameter/overlay = false
 shader_parameter/scanlines_opacity = 0.4
 shader_parameter/scanlines_width = 0.25
 shader_parameter/grille_opacity = 0.3
-shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/resolution = Vector2(1280, 960)
 shader_parameter/pixelate = true
 shader_parameter/roll = false
 shader_parameter/roll_speed = 8.0
@@ -531,10 +543,10 @@ shader_parameter/distort_intensity = 0.05
 shader_parameter/noise_opacity = 0.4
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.00500004773750006
+shader_parameter/aberration = 0.0050000477375000685
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = true
-shader_parameter/warp_amount = 0.9470000449825
+shader_parameter/warp_amount = 0.800000038
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 1.0
 shader_parameter/vignette_opacity = 0.665
@@ -736,7 +748,7 @@ shadow_item_cull_mask = 15
 [node name="Sun" type="Node2D" parent="Lights" unique_id=395143471]
 
 [node name="Sun" type="PointLight2D" parent="Lights/Sun" unique_id=758872549]
-position = Vector2(-1288, -28)
+position = Vector2(-1288, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 399
@@ -747,7 +759,7 @@ shadow_item_cull_mask = 324
 texture = ExtResource("31_xk4e4")
 
 [node name="Sun2" type="PointLight2D" parent="Lights/Sun" unique_id=1269841328]
-position = Vector2(-1144, -28)
+position = Vector2(-1144, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 399
@@ -758,7 +770,7 @@ shadow_item_cull_mask = 324
 texture = ExtResource("31_xk4e4")
 
 [node name="Sun3" type="PointLight2D" parent="Lights/Sun" unique_id=1573146111]
-position = Vector2(-1000, -28)
+position = Vector2(-1000, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 399
@@ -769,7 +781,7 @@ shadow_item_cull_mask = 324
 texture = ExtResource("31_xk4e4")
 
 [node name="Sun4" type="PointLight2D" parent="Lights/Sun" unique_id=1810828269]
-position = Vector2(-856, -28)
+position = Vector2(-856, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 399
@@ -780,7 +792,7 @@ shadow_item_cull_mask = 324
 texture = ExtResource("31_xk4e4")
 
 [node name="Sun5" type="PointLight2D" parent="Lights/Sun" unique_id=1984463744]
-position = Vector2(-712, -28)
+position = Vector2(-712, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 399
@@ -791,7 +803,7 @@ shadow_item_cull_mask = 324
 texture = ExtResource("31_xk4e4")
 
 [node name="Sun6" type="PointLight2D" parent="Lights/Sun" unique_id=405710463]
-position = Vector2(-544, -28)
+position = Vector2(-544, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 399
@@ -802,7 +814,7 @@ shadow_item_cull_mask = 324
 texture = ExtResource("31_xk4e4")
 
 [node name="SunFloor" type="PointLight2D" parent="Lights/Sun" unique_id=350658920]
-position = Vector2(-1288, -28)
+position = Vector2(-1288, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 16
@@ -813,7 +825,7 @@ shadow_item_cull_mask = 16
 texture = ExtResource("31_xk4e4")
 
 [node name="SunFloor2" type="PointLight2D" parent="Lights/Sun" unique_id=1915700672]
-position = Vector2(-1144, -28)
+position = Vector2(-1144, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 16
@@ -824,7 +836,7 @@ shadow_item_cull_mask = 16
 texture = ExtResource("31_xk4e4")
 
 [node name="SunFloor3" type="PointLight2D" parent="Lights/Sun" unique_id=1927160806]
-position = Vector2(-1000, -28)
+position = Vector2(-1000, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 16
@@ -835,7 +847,7 @@ shadow_item_cull_mask = 16
 texture = ExtResource("31_xk4e4")
 
 [node name="SunFloor4" type="PointLight2D" parent="Lights/Sun" unique_id=1481997212]
-position = Vector2(-856, -28)
+position = Vector2(-856, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 16
@@ -846,7 +858,7 @@ shadow_item_cull_mask = 16
 texture = ExtResource("31_xk4e4")
 
 [node name="SunFloor5" type="PointLight2D" parent="Lights/Sun" unique_id=142611939]
-position = Vector2(-712, -28)
+position = Vector2(-712, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 16
@@ -857,7 +869,7 @@ shadow_item_cull_mask = 16
 texture = ExtResource("31_xk4e4")
 
 [node name="SunFloor6" type="PointLight2D" parent="Lights/Sun" unique_id=954982046]
-position = Vector2(-544, -28)
+position = Vector2(-544, -26)
 color = Color(1, 0.8112086, 0.71932274, 1)
 energy = 0.1
 range_item_cull_mask = 16
@@ -1304,7 +1316,7 @@ Walls = [NodePath("Main/WallMain"), NodePath("Bathrooms/WallBathroomGirls"), Nod
 nodes = [NodePath("Entrance"), NodePath("Main"), NodePath("Bathrooms"), NodePath("Arcade"), NodePath("Kitchen"), NodePath("PAS"), NodePath("Warehouse"), NodePath("SecretOffice"), NodePath("Closet"), NodePath("LHall"), NodePath("RHall"), NodePath("SecurityRoom")]
 
 [node name="Character_Minigame" parent="YSort" unique_id=1051262395 instance=ExtResource("8_w4bkp")]
-position = Vector2(-888, 528)
+position = Vector2(-661, 65)
 
 [node name="Main" type="Node" parent="YSort" unique_id=1029633376]
 
@@ -1559,6 +1571,107 @@ position = Vector2(40, 0)
 texture = ExtResource("5_xk4e4")
 region_enabled = true
 region_rect = Rect2(304, 48, 16, 32)
+
+[node name="ReadingCorner" type="StaticBody2D" parent="YSort/Main" unique_id=1317518363]
+position = Vector2(-608, 16)
+
+[node name="CollitionLeft" type="CollisionShape2D" parent="YSort/Main/ReadingCorner" unique_id=1508335940]
+position = Vector2(-104, 4)
+shape = SubResource("RectangleShape2D_5qb44")
+
+[node name="CollitionTable" type="CollisionShape2D" parent="YSort/Main/ReadingCorner" unique_id=1739814929]
+position = Vector2(-68, 5)
+shape = SubResource("RectangleShape2D_btuj4")
+
+[node name="CollitionCornerUp" type="CollisionShape2D" parent="YSort/Main/ReadingCorner" unique_id=1468352800]
+position = Vector2(-28, 4)
+shape = SubResource("RectangleShape2D_a86qg")
+
+[node name="CollitionCornerDown" type="CollisionShape2D" parent="YSort/Main/ReadingCorner" unique_id=816129099]
+position = Vector2(-4.5, 16)
+shape = SubResource("RectangleShape2D_s4b75")
+
+[node name="Seat1" type="Sprite2D" parent="YSort/Main/ReadingCorner" unique_id=480739932]
+position = Vector2(-104, 0)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(112, 432, 48, 16)
+
+[node name="Seat2Left" type="Sprite2D" parent="YSort/Main/ReadingCorner" unique_id=2115695805]
+position = Vector2(-36, 0)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(112, 432, 40, 16)
+
+[node name="Seat2Corner" type="Sprite2D" parent="YSort/Main/ReadingCorner" unique_id=1235231675]
+position = Vector2(-8, 8)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(160, 432, 16, 32)
+
+[node name="Table" type="Sprite2D" parent="YSort/Main/ReadingCorner" unique_id=1812600466]
+position = Vector2(-68, 2)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(144, 448, 16, 16)
+
+[node name="Books" type="Sprite2D" parent="YSort/Main/ReadingCorner/Table" unique_id=804865433]
+position = Vector2(-3, -5)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(128, 448, 16, 16)
+
+[node name="NewspaperDay1" type="Sprite2D" parent="YSort/Main/ReadingCorner/Table" unique_id=1529156009]
+position = Vector2(3, 1)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(112, 448, 16, 16)
+script = ExtResource("15_vs41v")
+night_2 = false
+night_3 = false
+night_4 = false
+night_5 = false
+night_6 = false
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
+[node name="NewspaperDay2" type="Sprite2D" parent="YSort/Main/ReadingCorner/Table" unique_id=1095357840]
+position = Vector2(3, 1)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(112, 464, 16, 16)
+script = ExtResource("15_vs41v")
+night_1 = false
+night_3 = false
+night_4 = false
+night_5 = false
+night_6 = false
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
+[node name="NewspaperDay3" type="Sprite2D" parent="YSort/Main/ReadingCorner/Table" unique_id=340990624]
+position = Vector2(3, 1)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(128, 464, 16, 16)
+script = ExtResource("15_vs41v")
+night_1 = false
+night_2 = false
+night_4 = false
+night_5 = false
+night_6 = false
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
+[node name="NewspaperDay4" type="Sprite2D" parent="YSort/Main/ReadingCorner/Table" unique_id=2020315044]
+position = Vector2(3, 1)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(112, 464, 16, 16)
+script = ExtResource("15_vs41v")
+night_1 = false
+night_2 = false
+night_3 = false
+night_5 = false
+night_6 = false
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
 
 [node name="EscenarioMiddle" type="Node2D" parent="YSort/Main" unique_id=455701923]
 position = Vector2(-1000, 352)
@@ -3162,12 +3275,43 @@ region_rect = Rect2(256, 288, 32, 16)
 [node name="DariusCards" type="Node2D" parent="YSort/PAS/Table" unique_id=765246611]
 position = Vector2(-10, -7)
 
-[node name="DinamicSprites" type="Sprite2D" parent="YSort/PAS/Table/DariusCards" unique_id=1481150798]
-position = Vector2(-1, 0)
+[node name="Day1" type="Sprite2D" parent="YSort/PAS/Table/DariusCards" unique_id=1481150798]
+position = Vector2(-2, -1)
 texture = ExtResource("5_xk4e4")
 region_enabled = true
 region_rect = Rect2(208, 144, 16, 16)
 script = ExtResource("15_vs41v")
+night_2 = false
+night_3 = false
+night_4 = false
+night_5 = false
+night_6 = false
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
+[node name="Day2" type="Sprite2D" parent="YSort/PAS/Table/DariusCards" unique_id=1132329545]
+position = Vector2(1, -1)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(224, 144, 16, 16)
+script = ExtResource("15_vs41v")
+night_1 = false
+night_3 = false
+night_4 = false
+night_5 = false
+night_6 = false
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
+[node name="Day3" type="Sprite2D" parent="YSort/PAS/Table/DariusCards" unique_id=1768106839]
+position = Vector2(-3, -1)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(208, 160, 16, 16)
+script = ExtResource("15_vs41v")
+night_1 = false
+night_2 = false
+night_4 = false
+night_5 = false
+night_6 = false
 metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
 
 [node name="TableMechanic" type="StaticBody2D" parent="YSort/PAS" unique_id=636401332]
@@ -4167,6 +4311,19 @@ texture = ExtResource("5_xk4e4")
 region_enabled = true
 region_rect = Rect2(160, 128, 16, 32)
 
+[node name="RestrictedManual" type="Sprite2D" parent="YSort/SecurityRoom/Table" unique_id=556914153]
+position = Vector2(-29, -5)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(224, 192, 16, 16)
+script = ExtResource("15_vs41v")
+night_1 = false
+night_2 = false
+night_4 = false
+night_5 = false
+night_6 = false
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
 [node name="Shader&else" type="CanvasLayer" parent="." unique_id=964723939]
 
 [node name="Pop_Text" parent="Shader&else" unique_id=1416511614 node_paths=PackedStringArray("minigame") instance=ExtResource("14_v4577")]
@@ -4280,23 +4437,10 @@ night_5 = false
 exiting = false
 
 [node name="Random" parent="Coliders" unique_id=2028459704 instance=ExtResource("24_ly3ag")]
-position = Vector2(-608, 16)
+position = Vector2(-1392, 16)
 scale = Vector2(0.05, 0.05)
 id = "Rand_obj"
 read_end_in = Array[int]([2])
-
-[node name="Chair" type="Node2D" parent="Coliders" unique_id=451815039]
-position = Vector2(-1000, 836)
-
-[node name="Chair_Deactivated" parent="Coliders/Chair" unique_id=769581691 instance=ExtResource("24_ly3ag")]
-scale = Vector2(1, 0.8)
-id = "Chair"
-entering = false
-
-[node name="Chair" parent="Coliders/Chair" unique_id=715738754 instance=ExtResource("24_ly3ag")]
-scale = Vector2(1, 0.8)
-action = "Begin_night"
-exiting = false
 
 [node name="Magic_Text_Chair" parent="Coliders" unique_id=1801326614 instance=ExtResource("24_ly3ag")]
 position = Vector2(-524, 680)
@@ -4460,6 +4604,27 @@ scale = Vector2(7.999592, 0.39964703)
 id = "Scenario"
 read_end_in = Array[int]([4])
 
+[node name="ReadingCorner" type="Node2D" parent="Coliders/Main" unique_id=318647427]
+position = Vector2(-608, 16)
+
+[node name="Table" type="Node2D" parent="Coliders/Main/ReadingCorner" unique_id=1779071395]
+position = Vector2(-68, 5)
+
+[node name="Day1" parent="Coliders/Main/ReadingCorner/Table" unique_id=127315849 instance=ExtResource("24_ly3ag")]
+scale = Vector2(0.8, 0.8)
+id = "newspaper_day1"
+night_2 = false
+night_3 = false
+night_4 = false
+night_5 = false
+night_6 = false
+
+[node name="Present" parent="Coliders/Main/ReadingCorner/Table" unique_id=1173198012 instance=ExtResource("24_ly3ag")]
+scale = Vector2(0.8, 0.8)
+id = "reading_corner_table"
+save_id = Array[String](["newspaper_introduction"])
+exclude_id = Array[String](["newspaper_introduction"])
+
 [node name="Key_locations" type="Node" parent="Coliders" unique_id=827395008]
 
 [node name="Location_key_1" type="Node2D" parent="Coliders/Key_locations" unique_id=476470755]
@@ -4610,138 +4775,6 @@ night_3 = false
 entering = false
 key = 2
 
-[node name="Safe" type="Node2D" parent="Coliders" unique_id=252907210]
-position = Vector2(-408, 736)
-
-[node name="Safe_pop_up" parent="Coliders/Safe" unique_id=1540664346 instance=ExtResource("24_ly3ag")]
-action = "Safe"
-safe_open = 2
-safe_opened_by_animatronic = 2
-
-[node name="Safe_internal_organs" parent="Coliders/Safe" unique_id=1939143494 instance=ExtResource("24_ly3ag")]
-action = "Custom"
-custom_action = "Loot_safe_w_text"
-id = "Loot_safe"
-files = 2
-safe_usb_key = 2
-safe_open = 1
-safe_opened_by_animatronic = 2
-
-[node name="Safe_more_organs" parent="Coliders/Safe" unique_id=1876349003 instance=ExtResource("24_ly3ag")]
-action = "Custom"
-custom_action = "Keep_looting_safe_w_text"
-id = "Keep_looting"
-files = 1
-safe_usb_key = 2
-safe_open = 1
-safe_opened_by_animatronic = 2
-
-[node name="Safe_unsafe" parent="Coliders/Safe" unique_id=822747879 instance=ExtResource("24_ly3ag")]
-id = "Empty_safe"
-files = 1
-safe_usb_key = 1
-safe_open = 1
-safe_opened_by_animatronic = 2
-
-[node name="Chickend_safe" parent="Coliders/Safe" unique_id=1706677351 instance=ExtResource("24_ly3ag")]
-id = "Chickend_safe"
-safe_open = 2
-safe_opened_by_animatronic = 1
-
-[node name="Computer" type="Node2D" parent="Coliders" unique_id=2084639701]
-position = Vector2(-344, 792)
-
-[node name="Check_computer" parent="Coliders/Computer" unique_id=21669871 instance=ExtResource("24_ly3ag")]
-id = "Check_computer"
-read_end_in = Array[int]([2])
-computer_on = 2
-computer_working = 2
-computer_failed = 2
-
-[node name="Check_computer_safe_key" parent="Coliders/Computer" unique_id=834641254 instance=ExtResource("24_ly3ag")]
-id = "Check_computer_sf"
-read_end_in = Array[int]([2])
-safe_usb_key = 1
-dm_usb_key = 2
-computer_on = 2
-computer_working = 2
-computer_failed = 2
-
-[node name="Check_computer_dm_key" parent="Coliders/Computer" unique_id=227509519 instance=ExtResource("24_ly3ag")]
-id = "Check_computer_dm"
-read_end_in = Array[int]([2])
-safe_usb_key = 2
-dm_usb_key = 1
-computer_on = 2
-computer_working = 2
-computer_failed = 2
-
-[node name="Start_computer" parent="Coliders/Computer" unique_id=693911108 instance=ExtResource("24_ly3ag")]
-action = "Custom"
-custom_action = "Start_computer_w_text"
-id = "Start_computer"
-safe_usb_key = 1
-dm_usb_key = 1
-computer_on = 2
-computer_working = 2
-computer_failed = 2
-
-[node name="Start_download" parent="Coliders/Computer" unique_id=227286994 instance=ExtResource("24_ly3ag")]
-action = "Custom"
-custom_action = "Start_download_w_text"
-id = "Start_download"
-read_end_in = Array[int]([2])
-exiting = false
-exe = 2
-computer_on = 1
-computer_working = 2
-computer_failed = 2
-
-[node name="Start_download_on_exit" parent="Coliders/Computer" unique_id=1166206275 instance=ExtResource("24_ly3ag")]
-id = "Start_download_late"
-read_end_in = Array[int]([2])
-entering = false
-exe = 2
-computer_on = 1
-computer_working = 2
-computer_failed = 2
-
-[node name="Stop_download" parent="Coliders/Computer" unique_id=47659972 instance=ExtResource("24_ly3ag")]
-action = "Custom"
-custom_action = "Stop_download_w_text"
-id = "Stop_download"
-read_end_in = Array[int]([2])
-exiting = false
-exe = 2
-computer_on = 1
-computer_working = 1
-computer_failed = 2
-
-[node name="Corrupted_computer" parent="Coliders/Computer" unique_id=1127489474 instance=ExtResource("24_ly3ag")]
-id = "Corrupted_computer"
-read_end_in = Array[int]([2])
-entering = false
-exe = 2
-computer_on = 1
-computer_working = 1
-computer_failed = 1
-
-[node name="Get_program" parent="Coliders/Computer" unique_id=199027687 instance=ExtResource("24_ly3ag")]
-action = "Custom"
-custom_action = "Get_program_w_text"
-id = "Get_program"
-entering = false
-exe = 2
-computer_on = 1
-computer_working = 1
-computer_failed = 2
-
-[node name="Done_computer" parent="Coliders/Computer" unique_id=589766337 instance=ExtResource("24_ly3ag")]
-id = "Done_computer"
-entering = false
-exe = 1
-computer_on = 1
-
 [node name="Corkboard" type="Node2D" parent="Coliders" unique_id=1812106641]
 position = Vector2(-504, 480)
 
@@ -4781,7 +4814,7 @@ night_6 = false
 [node name="Dia4" parent="Coliders/Corkboard" unique_id=1141216126 instance=ExtResource("24_ly3ag")]
 position = Vector2(0, -4)
 id = "corkboard_day4"
-read_end_in = Array[int]([1, 4])
+read_end_in = Array[int]([3, 6])
 night_0 = false
 night_1 = false
 night_2 = false
@@ -4848,30 +4881,6 @@ night_2 = false
 night_3 = false
 night_4 = false
 night_5 = false
-
-[node name="Office_dor" type="Node2D" parent="Coliders" unique_id=1742613841]
-position = Vector2(-504, 800)
-
-[node name="Door_office_locked" parent="Coliders/Office_dor" unique_id=521720661 instance=ExtResource("24_ly3ag")]
-position = Vector2(0, 7.6293945e-06)
-scale = Vector2(1, 1.6)
-id = "Office_door_locked"
-read_end_in = Array[int]([3])
-key = 2
-door_office_open = 2
-
-[node name="Door_office_unlocking" parent="Coliders/Office_dor" unique_id=515769252 instance=ExtResource("24_ly3ag")]
-scale = Vector2(1, 1.6)
-action = "Custom"
-custom_action = "Open_door_w_text"
-id = "Office_door_unlocking"
-key = 1
-door_office_open = 2
-
-[node name="Door_office_unlocked" parent="Coliders/Office_dor" unique_id=2070584378 instance=ExtResource("24_ly3ag")]
-scale = Vector2(1, 1.6)
-id = "Office_door_unlocked"
-door_office_open = 1
 
 [node name="DM_machine" type="Node2D" parent="Coliders" unique_id=139272068]
 position = Vector2(-1152, 504)
@@ -5134,8 +5143,17 @@ night_6 = false
 
 [node name="Day2" parent="Coliders/PAS/DariusCards" unique_id=1611931147 instance=ExtResource("24_ly3ag")]
 id = "darius_card_2"
+night_0 = false
 night_1 = false
 night_3 = false
+night_4 = false
+night_5 = false
+night_6 = false
+
+[node name="Day3" parent="Coliders/PAS/DariusCards" unique_id=596023398 instance=ExtResource("24_ly3ag")]
+id = "darius_card_3"
+night_1 = false
+night_2 = false
 night_4 = false
 night_5 = false
 night_6 = false
@@ -5228,15 +5246,201 @@ exiting = false
 door_toy = 1
 pas_toy = 2
 
-[node name="Table" type="Node2D" parent="Coliders" unique_id=143340012]
+[node name="SecretOffice" type="Node" parent="Coliders" unique_id=1955274506]
+
+[node name="Safe" type="Node2D" parent="Coliders/SecretOffice" unique_id=252907210]
+position = Vector2(-408, 736)
+
+[node name="Safe_pop_up" parent="Coliders/SecretOffice/Safe" unique_id=1540664346 instance=ExtResource("24_ly3ag")]
+action = "Safe"
+safe_open = 2
+safe_opened_by_animatronic = 2
+
+[node name="Safe_internal_organs" parent="Coliders/SecretOffice/Safe" unique_id=1939143494 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "Loot_safe_w_text"
+id = "Loot_safe"
+files = 2
+safe_usb_key = 2
+safe_open = 1
+safe_opened_by_animatronic = 2
+
+[node name="Safe_more_organs" parent="Coliders/SecretOffice/Safe" unique_id=1876349003 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "Keep_looting_safe_w_text"
+id = "Keep_looting"
+files = 1
+safe_usb_key = 2
+safe_open = 1
+safe_opened_by_animatronic = 2
+
+[node name="Safe_unsafe" parent="Coliders/SecretOffice/Safe" unique_id=822747879 instance=ExtResource("24_ly3ag")]
+id = "Empty_safe"
+files = 1
+safe_usb_key = 1
+safe_open = 1
+safe_opened_by_animatronic = 2
+
+[node name="Chickend_safe" parent="Coliders/SecretOffice/Safe" unique_id=1706677351 instance=ExtResource("24_ly3ag")]
+id = "Chickend_safe"
+safe_open = 2
+safe_opened_by_animatronic = 1
+
+[node name="Computer" type="Node2D" parent="Coliders/SecretOffice" unique_id=2084639701]
+position = Vector2(-344, 792)
+
+[node name="Check_computer" parent="Coliders/SecretOffice/Computer" unique_id=21669871 instance=ExtResource("24_ly3ag")]
+id = "Check_computer"
+read_end_in = Array[int]([2])
+computer_on = 2
+computer_working = 2
+computer_failed = 2
+
+[node name="Check_computer_safe_key" parent="Coliders/SecretOffice/Computer" unique_id=834641254 instance=ExtResource("24_ly3ag")]
+id = "Check_computer_sf"
+read_end_in = Array[int]([2])
+safe_usb_key = 1
+dm_usb_key = 2
+computer_on = 2
+computer_working = 2
+computer_failed = 2
+
+[node name="Check_computer_dm_key" parent="Coliders/SecretOffice/Computer" unique_id=227509519 instance=ExtResource("24_ly3ag")]
+id = "Check_computer_dm"
+read_end_in = Array[int]([2])
+safe_usb_key = 2
+dm_usb_key = 1
+computer_on = 2
+computer_working = 2
+computer_failed = 2
+
+[node name="Start_computer" parent="Coliders/SecretOffice/Computer" unique_id=693911108 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "Start_computer_w_text"
+id = "Start_computer"
+safe_usb_key = 1
+dm_usb_key = 1
+computer_on = 2
+computer_working = 2
+computer_failed = 2
+
+[node name="Start_download" parent="Coliders/SecretOffice/Computer" unique_id=227286994 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "Start_download_w_text"
+id = "Start_download"
+read_end_in = Array[int]([2])
+exiting = false
+exe = 2
+computer_on = 1
+computer_working = 2
+computer_failed = 2
+
+[node name="Start_download_on_exit" parent="Coliders/SecretOffice/Computer" unique_id=1166206275 instance=ExtResource("24_ly3ag")]
+id = "Start_download_late"
+read_end_in = Array[int]([2])
+entering = false
+exe = 2
+computer_on = 1
+computer_working = 2
+computer_failed = 2
+
+[node name="Stop_download" parent="Coliders/SecretOffice/Computer" unique_id=47659972 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "Stop_download_w_text"
+id = "Stop_download"
+read_end_in = Array[int]([2])
+exiting = false
+exe = 2
+computer_on = 1
+computer_working = 1
+computer_failed = 2
+
+[node name="Corrupted_computer" parent="Coliders/SecretOffice/Computer" unique_id=1127489474 instance=ExtResource("24_ly3ag")]
+id = "Corrupted_computer"
+read_end_in = Array[int]([2])
+entering = false
+exe = 2
+computer_on = 1
+computer_working = 1
+computer_failed = 1
+
+[node name="Get_program" parent="Coliders/SecretOffice/Computer" unique_id=199027687 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "Get_program_w_text"
+id = "Get_program"
+entering = false
+exe = 2
+computer_on = 1
+computer_working = 1
+computer_failed = 2
+
+[node name="Done_computer" parent="Coliders/SecretOffice/Computer" unique_id=589766337 instance=ExtResource("24_ly3ag")]
+id = "Done_computer"
+entering = false
+exe = 1
+computer_on = 1
+
+[node name="Table" type="Node2D" parent="Coliders/SecretOffice" unique_id=143340012]
 position = Vector2(-382, 822)
 
-[node name="Pen" parent="Coliders/Table" unique_id=1877223384 instance=ExtResource("24_ly3ag")]
+[node name="Pen" parent="Coliders/SecretOffice/Table" unique_id=1877223384 instance=ExtResource("24_ly3ag")]
 position = Vector2(-18, -6)
 action = "Custom"
 custom_action = "get_pen_w_text"
 id = "get_pen"
 pen = 2
+
+[node name="Office_dor" type="Node2D" parent="Coliders/SecretOffice" unique_id=1742613841]
+position = Vector2(-504, 800)
+
+[node name="Door_office_locked" parent="Coliders/SecretOffice/Office_dor" unique_id=521720661 instance=ExtResource("24_ly3ag")]
+position = Vector2(0, 7.6293945e-06)
+scale = Vector2(1, 1.6)
+id = "Office_door_locked"
+read_end_in = Array[int]([3])
+key = 2
+door_office_open = 2
+
+[node name="Door_office_unlocking" parent="Coliders/SecretOffice/Office_dor" unique_id=515769252 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1, 1.6)
+action = "Custom"
+custom_action = "Open_door_w_text"
+id = "Office_door_unlocking"
+key = 1
+door_office_open = 2
+
+[node name="Door_office_unlocked" parent="Coliders/SecretOffice/Office_dor" unique_id=2070584378 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1, 1.6)
+id = "Office_door_unlocked"
+door_office_open = 1
+
+[node name="SecurityRoom" type="Node" parent="Coliders" unique_id=716393321]
+
+[node name="Chair" type="Node2D" parent="Coliders/SecurityRoom" unique_id=451815039]
+position = Vector2(-1000, 836)
+
+[node name="Chair_Deactivated" parent="Coliders/SecurityRoom/Chair" unique_id=769581691 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1, 0.8)
+id = "Chair"
+entering = false
+
+[node name="Chair" parent="Coliders/SecurityRoom/Chair" unique_id=715738754 instance=ExtResource("24_ly3ag")]
+scale = Vector2(1, 0.8)
+action = "Begin_night"
+exiting = false
+
+[node name="Table" type="Node2D" parent="Coliders/SecurityRoom" unique_id=809475029]
+position = Vector2(-1000, 804)
+
+[node name="Random" parent="Coliders/SecurityRoom/Table" unique_id=1486378442 instance=ExtResource("24_ly3ag")]
+position = Vector2(-29, 6.000002)
+id = "restricted_mode_tutorial"
+read_end_in = Array[int]([3])
+night_1 = false
+night_2 = false
+night_4 = false
+night_5 = false
+night_6 = false
 
 [node name="Things_Front_All" type="Node" parent="." unique_id=1029449219]
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://22h3fq1pfifb"]
 
-[ext_resource type="Texture2D" uid="uid://cjkajetbgtinr" path="res://assets/Placeholders/icono.jpg" id="1_i0vdr"]
+[ext_resource type="Texture2D" uid="uid://b16pwx8pexs6e" path="res://assets/Placeholders/icono.jpg" id="1_i0vdr"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="2_aj3wp"]
-[ext_resource type="Texture2D" uid="uid://dqs4bst1s7y3y" path="res://assets/minijuego assets/Black.png" id="3_aj3wp"]
+[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://assets/minijuego assets/Black.png" id="3_aj3wp"]
 
 [node name="YouShouldSeeThis" type="Node2D" unique_id=1241567631]
 

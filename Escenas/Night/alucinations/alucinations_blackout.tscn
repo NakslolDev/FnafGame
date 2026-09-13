@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cenm4urvvqglo"]
 
 [ext_resource type="Script" uid="uid://y7tlkeoaa43y" path="res://Escenas/Night/alucinations/alucinations_blackout.gd" id="1_uy2rd"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="2_o7obg"]
-[ext_resource type="Texture2D" uid="uid://b7bsc47wiv45j" path="res://assets/Placeholders/circle gradient.png" id="3_o7obg"]
-[ext_resource type="Texture2D" uid="uid://bq2r0qn2h6fol" path="res://assets/Placeholders/Chica.png" id="4_cygb2"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_o7obg"]
+[ext_resource type="Texture2D" uid="uid://2aut06srbiug" path="res://assets/Placeholders/circle gradient.png" id="3_o7obg"]
+[ext_resource type="Texture2D" uid="uid://l1s7u736357m" path="res://assets/Placeholders/Chica.png" id="4_cygb2"]
 
 [node name="Alucinations_blackout" type="Node2D" unique_id=424864022]
 script = ExtResource("1_uy2rd")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bo828jywsimiy"]
 
-[ext_resource type="Texture2D" uid="uid://ctwgdk38urjnj" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="2_ols3s"]
-[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_saqaj"]
+[ext_resource type="Texture2D" uid="uid://d1okntnsqbfnm" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="2_ols3s"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="2_saqaj"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_w4bkp"]
 diffuse_texture = ExtResource("2_saqaj")

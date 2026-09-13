@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmc1g8wl35gb0"]
 
-[ext_resource type="Texture2D" uid="uid://ci4npkdotpvya" path="res://icon.svg" id="1_jb1py"]
+[ext_resource type="Texture2D" uid="uid://bat2k5kbg8hvt" path="res://icon.svg" id="1_jb1py"]
 
 [node name="placeholder" type="Node2D" unique_id=958771419]
 texture_filter = 1

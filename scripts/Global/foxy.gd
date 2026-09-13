@@ -177,7 +177,7 @@ func tick(): # Cada tick (5 veces por segundo)
 	var tick_count_limit: int # Declara el límite al que tiene que llegar tick count limit antes de moverse
 
 	if position == 0 and (room.begins_with("Duc") or room.ends_with("hall")):
-
+		print("I am in ", position, " in ", room)
 		if ((room == "rhall" and right_door_focus.get_focus_state() == focus_state.HARD)
 		or (room == "lhall" and left_door_focus.get_focus_state() == focus_state.HARD)
 		or (room == "Duc8" and back_duct_focus.get_focus_state() == focus_state.HARD) 

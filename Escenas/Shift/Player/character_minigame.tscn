@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://de7uh84b4365x" path="res://Escenas/Shift/Player/character_minigame.gd" id="1_5ryae"]
 [ext_resource type="Script" uid="uid://cfxrs5edynyr" path="res://Escenas/Shift/Player/skins.gd" id="2_10j8s"]
 [ext_resource type="Script" uid="uid://b7iv4c1uc27g7" path="res://Escenas/Shift/Player/legs.gd" id="4_10j8s"]
-[ext_resource type="Texture2D" uid="uid://drveqxiljlmpt" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
-[ext_resource type="Texture2D" uid="uid://dd7q81m5jdk3t" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best_NormalMap.png" id="4_vgfk3"]
+[ext_resource type="Texture2D" uid="uid://dp13mjs62dded" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best.png" id="4_fxfjq"]
+[ext_resource type="Texture2D" uid="uid://4tcaxkqpnlqy" path="res://assets/minijuego assets/Unnamed_Guard/Guard_Best_NormalMap.png" id="4_vgfk3"]
 [ext_resource type="Script" uid="uid://c345mkw2lho17" path="res://Escenas/Shift/Player/animated_sprite_2d.gd" id="5_s1qns"]
-[ext_resource type="Texture2D" uid="uid://c07lwpqngc7hy" path="res://assets/minijuego assets/Lights/Flashlight.png" id="6_s1qns"]
+[ext_resource type="Texture2D" uid="uid://brf0nlemffj2u" path="res://assets/minijuego assets/Lights/Flashlight.png" id="6_s1qns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10j8s"]
 size = Vector2(12, 6)

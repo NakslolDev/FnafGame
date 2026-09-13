@@ -46,7 +46,9 @@ func _on_linterna_linterna_activada_switch(value: bool, animation: bool) -> void
 
 func get_focus_state() -> focus_state: # funcion llamada por los animatronicos
 
-	if not flashlight_on and not animation_memory: return focus_state.NONE
+	if not flashlight_on and not animation_memory:
+		print("I am door left? ", izquierda, " And flashlight is ", flashlight_on, "with animation memory = ", animation_memory)
+		return focus_state.NONE
 
 	for overlaping_areas in hard_focus.get_overlapping_areas():
 		if overlaping_areas.name.begins_with("MouseHitbox"):
