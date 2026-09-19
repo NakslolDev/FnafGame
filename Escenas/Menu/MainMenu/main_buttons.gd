@@ -12,6 +12,7 @@ var hard_selected := 0
 
 @export var play_seleccion: Sprite2D
 @export var options_seleccion: Sprite2D
+@export var extras_seleccion: Sprite2D
 @export var exit_seleccion: Sprite2D
 
 @export var menu_click: AudioStreamPlayer
@@ -21,16 +22,19 @@ func _ready():
 
 func act_selected():
 	
-	play_seleccion.modulate.a = 0.0
-	options_seleccion.modulate.a = 0.0
-	exit_seleccion.modulate.a = 0.0
+	play_seleccion.visible = false
+	options_seleccion.visible = false
+	extras_seleccion.visible = false
+	exit_seleccion.visible = false
 	
 	if selected == 1:
-		play_seleccion.modulate.a = 1.0
+		play_seleccion.visible = true
 	if selected == 2:
-		options_seleccion.modulate.a = 1.0
+		options_seleccion.visible = true
 	if selected == 3:
-		exit_seleccion.modulate.a = 1.0
+		extras_seleccion.visible = true
+	if selected == 4:
+		exit_seleccion.visible = true
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Enter") or event.is_action_pressed("Space"):
@@ -39,6 +43,8 @@ func _input(event: InputEvent) -> void:
 		elif selected == 2:
 			options()
 		elif selected == 3:
+			extras()
+		elif selected == 4:
 			exit()
 	
 	if event.is_action_pressed("Click"):
@@ -47,10 +53,15 @@ func _input(event: InputEvent) -> void:
 		elif hard_selected == 2:
 			options()
 		elif hard_selected == 3:
+			extras()
+		elif hard_selected == 4:
 			exit()
 	
 	if event.is_action_pressed("Esc"):
-		exit()
+		if alpha_message.visible:
+			alpha_message.visible = false
+		else:
+			exit()
 
 func play():
 	set_process_input(false)
@@ -60,6 +71,10 @@ func play():
 
 func options():
 	menu_principal.options()
+
+@export var alpha_message: Panel
+func extras():
+	alpha_message.visible = true
 
 func exit():
 	get_tree().quit()
@@ -86,13 +101,24 @@ func _on_options_mouse_exited() -> void:
 	if selected == 2:
 		hard_selected = 0
 
-func _on_exit_mouse_entered() -> void:
+func _on_extras_mouse_entered() -> void:
 	hard_selected = 3
 	if selected != 3:
 		selected = 3
 		menu_click.play()
 		act_selected()
 
-func _on_exit_mouse_exited() -> void:
+func _on_extras_mouse_exited() -> void:
 	if selected == 3:
+		hard_selected = 0
+
+func _on_exit_mouse_entered() -> void:
+	hard_selected = 4
+	if selected != 4:
+		selected = 4
+		menu_click.play()
+		act_selected()
+
+func _on_exit_mouse_exited() -> void:
+	if selected == 4:
 		hard_selected = 0

@@ -2,44 +2,44 @@
 
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://Escenas/Shift/minigame.gd" id="1_xv0fq"]
 [ext_resource type="Script" uid="uid://op64ky6ob2qy" path="res://Escenas/Shift/RandomScriptsIDK/minigame_custom_actions.gd" id="2_wna5r"]
-[ext_resource type="Texture2D" uid="uid://dqs4bst1s7y3y" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
+[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
 [ext_resource type="Script" uid="uid://bvas38t5dvubq" path="res://Escenas/Shift/RandomScriptsIDK/black_background.gd" id="4_vs41v"]
-[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
 [ext_resource type="TileSet" uid="uid://ba1v7xwtblihb" path="res://Resources (tres)/Raw_colitions.tres" id="6_yq6rm"]
 [ext_resource type="Script" uid="uid://30pn34qdajtn" path="res://Escenas/Shift/RandomScriptsIDK/lifter.gd" id="7_8lcin"]
 [ext_resource type="Script" uid="uid://b3wb85sp3oy4u" path="res://Escenas/Shift/Classes/dynamic_collision.gd" id="7_axwuc"]
-[ext_resource type="Script" uid="uid://cck4qkhapri2y" path="res://Escenas/Shift/RandomScriptsIDK/minigame_Ysort.gd" id="7_pwkhe"]
+[ext_resource type="Script" uid="uid://cck4qkhapri2y" path="res://Escenas/Shift/RandomScriptsIDK/Minigame_Ysort.gd" id="7_pwkhe"]
 [ext_resource type="PackedScene" uid="uid://cumryt3pxo2wv" path="res://Escenas/Shift/Player/character_minigame.tscn" id="8_w4bkp"]
 [ext_resource type="PackedScene" uid="uid://bo828jywsimiy" path="res://Escenas/Shift/M_objets/chair.tscn" id="9_o8hhc"]
 [ext_resource type="PackedScene" uid="uid://bj026rljnlsdo" path="res://Escenas/Shift/M_objets/Round_Table.tscn" id="10_8lcin"]
 [ext_resource type="Script" uid="uid://cj01ym730u7hy" path="res://Escenas/Shift/RandomScriptsIDK/toggle.gd" id="10_w4bkp"]
 [ext_resource type="PackedScene" uid="uid://b11fiquxgu4wa" path="res://Escenas/Shift/M_objets/long_table.tscn" id="11_w3343"]
 [ext_resource type="PackedScene" uid="uid://dkw61scyyeb22" path="res://Escenas/Shift/M_objets/placeholder.tscn" id="12_axwuc"]
-[ext_resource type="Texture2D" uid="uid://0plph23qdqex" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
+[ext_resource type="Texture2D" uid="uid://c6dq54nbl5xpo" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://Escenas/Shift/Text/pop_text.tscn" id="14_v4577"]
 [ext_resource type="Script" uid="uid://mw8cj301gokj" path="res://Escenas/Shift/Classes/general_visibility.gd" id="14_w3343"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://Escenas/Shift/Safe/pop_safe.tscn" id="15_kqcik"]
-[ext_resource type="Texture2D" uid="uid://ctwgdk38urjnj" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="15_pwkhe"]
+[ext_resource type="Texture2D" uid="uid://d1okntnsqbfnm" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="15_pwkhe"]
 [ext_resource type="Script" uid="uid://cuyy21g5e4qyh" path="res://Escenas/Shift/Classes/dynamic_sprites.gd" id="15_vs41v"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://Escenas/Shift/BlackBars/black_bars.tscn" id="16_3hrc1"]
 [ext_resource type="Script" uid="uid://hrj5r1dkwlwl" path="res://Escenas/Shift/RandomScriptsIDK/intro_minigame.gd" id="17_b7ymr"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
 [ext_resource type="Script" uid="uid://bhhidquafhs23" path="res://Escenas/Shift/RandomScriptsIDK/front_of_flashlight.gd" id="18_pwkhe"]
-[ext_resource type="Texture2D" uid="uid://c07lwpqngc7hy" path="res://assets/minijuego assets/Lights/Flashlight.png" id="19_pwkhe"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/fonts/I-pixel-u.ttf" id="19_ur7tl"]
+[ext_resource type="Texture2D" uid="uid://brf0nlemffj2u" path="res://assets/minijuego assets/Lights/Flashlight.png" id="19_pwkhe"]
+[ext_resource type="FontFile" uid="uid://cpbxl6cd0tphk" path="res://assets/fonts/I-pixel-u.ttf" id="19_ur7tl"]
 [ext_resource type="Script" uid="uid://okkqwaugqcim" path="res://Escenas/Shift/RandomScriptsIDK/daylable_transition.gd" id="20_y4nle"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="21_cgfeb"]
 [ext_resource type="Script" uid="uid://dybfd3q13udjj" path="res://Escenas/Shift/RandomScriptsIDK/shift_completed.gd" id="22_pu8a6"]
-[ext_resource type="Texture2D" uid="uid://cfg2lp4aa8tme" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
+[ext_resource type="Texture2D" uid="uid://crqrn4aglues7" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
 [ext_resource type="PackedScene" uid="uid://djqjqcxkcwu8s" path="res://Escenas/Shift/M_objets/_interact_colider.tscn" id="24_ly3ag"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://Escenas/Shift/M_objets/location_key.gd" id="25_ekm4o"]
-[ext_resource type="Texture2D" uid="uid://c4oa3dapevuly" path="res://assets/minijuego assets/White.png" id="25_v4577"]
+[ext_resource type="Texture2D" uid="uid://kxm04q67wv3u" path="res://assets/minijuego assets/White.png" id="25_v4577"]
 [ext_resource type="Script" uid="uid://b0ae5x6mpdh2h" path="res://Escenas/Shift/RandomScriptsIDK/DM_machine_noise.gd" id="26_7g4ok"]
 [ext_resource type="Script" uid="uid://dculdecv7rjo" path="res://Escenas/Shift/RandomScriptsIDK/secret_room_hitbox.gd" id="26_42vnu"]
-[ext_resource type="AudioStream" uid="uid://bm5aun5dl67in" path="res://assets/sounds/old-radio-noise.ogg" id="26_kqcik"]
+[ext_resource type="AudioStream" uid="uid://dfgv4ixx8xuwr" path="res://assets/sounds/old-radio-noise.ogg" id="26_kqcik"]
 [ext_resource type="Script" uid="uid://dpnbshirm7aw" path="res://Escenas/Shift/RandomScriptsIDK/camera_minigame.gd" id="27_l74w5"]
 [ext_resource type="Script" uid="uid://cahecp3m72lyo" path="res://Escenas/Shift/RandomScriptsIDK/lights.gd" id="30_xk4e4"]
-[ext_resource type="Texture2D" uid="uid://cvgpsiwmtdk5m" path="res://assets/Placeholders/Linterna.png" id="31_xk4e4"]
+[ext_resource type="Texture2D" uid="uid://bttp7ke2h52qu" path="res://assets/Placeholders/Linterna.png" id="31_xk4e4"]
 [ext_resource type="Script" uid="uid://b6r6sd5hfks6y" path="res://Escenas/Shift/RandomScriptsIDK/entrance_cealing.gd" id="34_o8hhc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpa5o"]
@@ -553,7 +553,6 @@ shader_parameter/vignette_opacity = 0.665
 
 [node name="Minigame" type="Node" unique_id=1354298531 node_paths=PackedStringArray("manual_act_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe", "transicion", "shiftCompleted", "camera", "lights", "spawn_points", "esc_timer") groups=["minigame"]]
 script = ExtResource("1_xv0fq")
-custom_pos = true
 manual_act_nodes = [NodePath("Things_Front_All/Secret_room_hitbox"), NodePath("Coliders/Key_locations"), NodePath("YSort/PAS/DM_machine/Screen/Noise")]
 custom_action = NodePath("CustomActions")
 coliders_node = NodePath("Coliders")
@@ -1316,7 +1315,7 @@ Walls = [NodePath("Main/WallMain"), NodePath("Bathrooms/WallBathroomGirls"), Nod
 nodes = [NodePath("Entrance"), NodePath("Main"), NodePath("Bathrooms"), NodePath("Arcade"), NodePath("Kitchen"), NodePath("PAS"), NodePath("Warehouse"), NodePath("SecretOffice"), NodePath("Closet"), NodePath("LHall"), NodePath("RHall"), NodePath("SecurityRoom")]
 
 [node name="Character_Minigame" parent="YSort" unique_id=1051262395 instance=ExtResource("8_w4bkp")]
-position = Vector2(-661, 65)
+position = Vector2(-544, 24)
 
 [node name="Main" type="Node" parent="YSort" unique_id=1029633376]
 
@@ -1669,8 +1668,6 @@ script = ExtResource("15_vs41v")
 night_1 = false
 night_2 = false
 night_3 = false
-night_5 = false
-night_6 = false
 metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
 
 [node name="EscenarioMiddle" type="Node2D" parent="YSort/Main" unique_id=455701923]
@@ -4436,7 +4433,21 @@ night_4 = false
 night_5 = false
 exiting = false
 
-[node name="Random" parent="Coliders" unique_id=2028459704 instance=ExtResource("24_ly3ag")]
+[node name="Test" parent="Coliders/Exit" unique_id=2028459704 instance=ExtResource("24_ly3ag")]
+position = Vector2(0, 40)
+scale = Vector2(4.885829, 0.9397677)
+activate = "Auto"
+id = "temporal_intro_phonecall"
+read_end_in = Array[int]([17])
+night_0 = false
+night_2 = false
+night_3 = false
+night_4 = false
+night_5 = false
+night_6 = false
+exiting = false
+
+[node name="Random" parent="Coliders" unique_id=2049862232 instance=ExtResource("24_ly3ag")]
 position = Vector2(-1392, 16)
 scale = Vector2(0.05, 0.05)
 id = "Rand_obj"
@@ -4632,11 +4643,42 @@ night_6 = false
 [node name="Day3" parent="Coliders/Main/ReadingCorner/Table" unique_id=1942790846 instance=ExtResource("24_ly3ag")]
 scale = Vector2(0.8, 0.8)
 id = "newspaper_day3"
+night_0 = false
 night_1 = false
 night_3 = false
 night_4 = false
 night_5 = false
 night_6 = false
+
+[node name="Day4" parent="Coliders/Main/ReadingCorner/Table" unique_id=147350311 instance=ExtResource("24_ly3ag")]
+scale = Vector2(0.8, 0.8)
+id = "newspaper_day4"
+night_0 = false
+night_1 = false
+night_2 = false
+night_3 = false
+night_5 = false
+night_6 = false
+
+[node name="Day5" parent="Coliders/Main/ReadingCorner/Table" unique_id=339765262 instance=ExtResource("24_ly3ag")]
+scale = Vector2(0.8, 0.8)
+id = "newspaper_day5"
+night_0 = false
+night_1 = false
+night_2 = false
+night_3 = false
+night_4 = false
+night_6 = false
+
+[node name="Day6" parent="Coliders/Main/ReadingCorner/Table" unique_id=1236421094 instance=ExtResource("24_ly3ag")]
+scale = Vector2(0.8, 0.8)
+id = "newspaper_day6"
+night_0 = false
+night_1 = false
+night_2 = false
+night_3 = false
+night_4 = false
+night_5 = false
 
 [node name="Present" parent="Coliders/Main/ReadingCorner/Table" unique_id=1173198012 instance=ExtResource("24_ly3ag")]
 scale = Vector2(0.8, 0.8)

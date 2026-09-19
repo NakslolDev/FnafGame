@@ -514,6 +514,7 @@ autowrap_mode = 2
 script = ExtResource("16_3ayvq")
 id = "Language"
 root_node = NodePath("../../../../../../..")
+Spanish = false
 
 [node name="ButtonAudioLanguage" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language" unique_id=912611875 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(200, 0)
@@ -527,6 +528,7 @@ script = ExtResource("16_3ayvq")
 audio = true
 id = "Audio"
 root_node = NodePath("../../../../../../..")
+Spanish = false
 
 [node name="Misc" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1787875783]
 custom_minimum_size = Vector2(310, 0)
@@ -753,10 +755,7 @@ alignment = 0
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
-text = "Prevent game from saving
-
-(if activated, the game will go back to its orignal
-state when debug is turned of / quit the game)"
+text = "Safe mode"
 
 [node name="Unlock_cn" type="Button" parent="Debug_panel/ScrollContainer/General" unique_id=1341799003]
 layout_mode = 2

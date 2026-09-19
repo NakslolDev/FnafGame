@@ -14,6 +14,21 @@
 [ext_resource type="Script" uid="uid://coh84xcfmkrvv" path="res://Escenas/Menu/MainMenu/stars.gd" id="12_hoy0e"]
 [ext_resource type="Texture2D" uid="uid://dflfp1neyqnuf" path="res://assets/Placeholders/white_star.png" id="13_4lh2l"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qb44"]
+bg_color = Color(0, 0, 0, 0.85400003)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.68042517, 0.33959317, 0.56688774, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6ttm"]
+
 [node name="Menu principal" type="Node2D" unique_id=876365489]
 script = ExtResource("1_7cw0h")
 
@@ -27,7 +42,7 @@ texture = ExtResource("3_fq31k")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1271747179]
 
-[node name="Main_buttons" type="VBoxContainer" parent="." unique_id=1866653682 node_paths=PackedStringArray("menu_principal", "play_buttons", "play_seleccion", "options_seleccion", "exit_seleccion", "menu_click")]
+[node name="Main_buttons" type="VBoxContainer" parent="." unique_id=1866653682 node_paths=PackedStringArray("menu_principal", "play_buttons", "play_seleccion", "options_seleccion", "extras_seleccion", "exit_seleccion", "menu_click", "alpha_message")]
 texture_filter = 1
 offset_left = -772.0
 offset_top = 98.0
@@ -39,8 +54,10 @@ menu_principal = NodePath("..")
 play_buttons = NodePath("../Play_Buttons")
 play_seleccion = NodePath("Play/Seleccion")
 options_seleccion = NodePath("Options/Seleccion")
+extras_seleccion = NodePath("Extras/Seleccion")
 exit_seleccion = NodePath("Exit/Seleccion")
 menu_click = NodePath("Menu_Click")
+alpha_message = NodePath("../AlphaMessage")
 
 [node name="Menu_Click" type="AudioStreamPlayer" parent="Main_buttons" unique_id=1441345403]
 stream = ExtResource("5_8x8is")
@@ -78,6 +95,23 @@ id = "Options_"
 root_node = NodePath("../../..")
 
 [node name="Seleccion" type="Sprite2D" parent="Main_buttons/Options" unique_id=40723599]
+texture_filter = 1
+position = Vector2(-30, 25)
+texture = ExtResource("8_r2f8f")
+
+[node name="Extras" type="HBoxContainer" parent="Main_buttons" unique_id=2075945499]
+layout_mode = 2
+
+[node name="Extras_label" type="Label" parent="Main_buttons/Extras" unique_id=2062966414 node_paths=PackedStringArray("root_node")]
+layout_mode = 2
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 60
+text = "Extras"
+script = ExtResource("7_xpa1m")
+id = "Extras_"
+root_node = NodePath("../../..")
+
+[node name="Seleccion" type="Sprite2D" parent="Main_buttons/Extras" unique_id=431138673]
 texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("8_r2f8f")
@@ -207,10 +241,6 @@ texture_filter = 1
 position = Vector2(-30, 25)
 texture = ExtResource("8_r2f8f")
 
-[node name="Mouse_Custom" parent="." unique_id=1329559837 instance=ExtResource("10_te3yv")]
-position = Vector2(0, 2000)
-menu = true
-
 [node name="Freddy nose" parent="." unique_id=1670043740 node_paths=PackedStringArray("main_game") instance=ExtResource("11_dytxe")]
 position = Vector2(661, -37)
 scale = Vector2(7.34, 3.165)
@@ -237,10 +267,178 @@ position = Vector2(-225, -350)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("13_4lh2l")
 
+[node name="AlphaMessage" type="Panel" parent="." unique_id=460645297]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -832.0
+offset_top = -448.0
+offset_right = 832.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5qb44")
+
+[node name="Input_eater" type="Panel" parent="AlphaMessage" unique_id=1716466335]
+layout_mode = 0
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 1792.0
+offset_bottom = 992.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_t6ttm")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AlphaMessage" unique_id=1174764030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = -24.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AlphaMessage/ScrollContainer" unique_id=2027821634]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 60
+
+[node name="Title" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1201157213]
+layout_mode = 2
+theme = ExtResource("6_b3nup")
+theme_override_font_sizes/font_size = 75
+text = "Alpha version a.10.8"
+horizontal_alignment = 1
+
+[node name="Wellcome" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=178039017]
+custom_maximum_size = Vector2(1536, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 48
+text = "Wellcome to the alpha version. As of right now, the game is in a playable but uncompleted state. Things to notice:"
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="Tutorial" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1274392795]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "Most of the tutorial come from a combination of the phone calls, prenight minigame dialogs, and  your own ability to experiment, deduce, figure out, etc... 
+There are also game over tips, that explain more meta mechanics that wouldn't make sense for anyone to know."
+autowrap_mode = 3
+
+[node name="Lighting" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1290561881]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "The 2d lighting system is not really prepared for a top down view game. I have tried my best, and I think it looks good"
+autowrap_mode = 3
+
+[node name="Assets" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1064371109]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "All of the 3D moddels are not final. I created them to mimic the final moddels in terms of visibility, animatronic positioning and lighting. "
+autowrap_mode = 3
+
+[node name="PhoneCalls" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1964561151]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "The phone calls are not final and are subject to change. Thus, I used a voice reader. It is bad, but it gets the job done. For the final version, I will have them dubbed by a real person."
+autowrap_mode = 3
+
+[node name="Debug" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1797672231]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "There is a debug menu in options. Entering the konami code will enable debug (up up down down left right left right).
+In there, you can activate cheats and modify your save file.
+If you keep save mode on, your save file will come back to its original state once you exit debug mode. However, safe mode does not protect you from modifying directly the save files, so be careful."
+autowrap_mode = 3
+
+[node name="Name" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1543243718]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "Note that I dont have a name for the game yet...
+Any suggestions are wellcome."
+autowrap_mode = 3
+
+[node name="Spanish" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1084529781]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "The game is not translated to spanish yet. So right now, the game is on English only. "
+autowrap_mode = 3
+
+[node name="Endings" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1205010303]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "Thre are 5 endings to this game, but only 4 are available right now. And they are only endscreens, without any cinematic. I plan on making cinematics for the 3 main endings."
+autowrap_mode = 3
+
+[node name="DMMachine" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1792568276]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "The broken arcade machine activates the death minigames. Right now, there isn't any of them, so activating it will probably break things.
+I also added this warning in the prenight minigame as well."
+autowrap_mode = 3
+
+[node name="GodotInteracts" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1174419184]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "Godot icons are placeholders for interactables that dont have any sprite yet, so try interacting with them."
+autowrap_mode = 3
+
+[node name="Mouse_Custom" parent="." unique_id=1329559837 instance=ExtResource("10_te3yv")]
+position = Vector2(0, 2000)
+menu = true
+
 [connection signal="mouse_entered" from="Main_buttons/Play" to="Main_buttons" method="_on_play_mouse_entered"]
 [connection signal="mouse_exited" from="Main_buttons/Play" to="Main_buttons" method="_on_play_mouse_exited"]
 [connection signal="mouse_entered" from="Main_buttons/Options" to="Main_buttons" method="_on_options_mouse_entered"]
 [connection signal="mouse_exited" from="Main_buttons/Options" to="Main_buttons" method="_on_options_mouse_exited"]
+[connection signal="mouse_entered" from="Main_buttons/Extras" to="Main_buttons" method="_on_extras_mouse_entered"]
+[connection signal="mouse_exited" from="Main_buttons/Extras" to="Main_buttons" method="_on_extras_mouse_exited"]
 [connection signal="mouse_entered" from="Main_buttons/Exit" to="Main_buttons" method="_on_exit_mouse_entered"]
 [connection signal="mouse_exited" from="Main_buttons/Exit" to="Main_buttons" method="_on_exit_mouse_exited"]
 [connection signal="mouse_entered" from="Play_Buttons/Continue" to="Play_Buttons" method="_on_continue_mouse_entered"]

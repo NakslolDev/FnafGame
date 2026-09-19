@@ -1,5 +1,8 @@
 extends Area2D
 
+@export_enum("Manual", "Auto", "Auto_on_exit")
+var activate := "Manual"
+
 @export_enum("Custom", "Text", "Begin_night", "Exit_pizza", "Safe")
 var action := "Text"
 
@@ -210,16 +213,22 @@ func check_beggining_active():
 func _on_body_entered(body: Node2D) -> void:
 	if str(body).begins_with("Character_Minigame"):
 		player_in = true
+		if activate == "Auto":
+			_do_action()
 
 func _on_body_exited(body: Node2D) -> void:
 	if str(body).begins_with("Character_Minigame"):
 		player_in = false
+		if activate == "Auto_on_exit":
+			_do_action()
 
 func _input(event):
-	
-	if not (event.is_action_pressed("interact") and player_in) or not active:
+	if not (event.is_action_pressed("interact") and player_in) or not active or not activate == "Manual":
 		return
-	
+	_do_action()
+
+func _do_action():
+
 	if minigame.reading or minigame.safing or minigame.transitioning: #uso otro if para que no quede tan largo
 		return
 	

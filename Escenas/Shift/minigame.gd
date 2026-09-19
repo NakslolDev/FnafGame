@@ -43,6 +43,7 @@ func _ready():
 		player.freeze = true
 	
 	if not custom_pos:
+		push_warning("Custom position active")
 		locate_char(Global.m_entering, Global.just_death_min)
 	
 	connect_signals_recursively(coliders_node)

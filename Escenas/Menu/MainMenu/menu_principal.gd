@@ -21,3 +21,7 @@ func options():
 
 func get_text(id: String):
 	return Global.get_csv_value_id(Global.text_CSV_name, id, Global.language)
+
+
+func _on_extras_mouse_entered() -> void:
+	pass # Replace with function body.

@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b3t2dg6m53hs0" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.gd" id="1_wceyb"]
 [ext_resource type="AudioStream" uid="uid://wuxmltxlpiok" path="res://Audios/Scarlet Forest.mp3" id="2_vdoh0"]
-[ext_resource type="AudioStream" uid="uid://b200m2wdrj0dx" path="res://assets/sounds/VHS/Noche1EN.mp3" id="3_7cpwv"]
-[ext_resource type="AudioStream" uid="uid://b0rfbb1alturu" path="res://assets/sounds/VHS/Noche2EN.mp3" id="4_om6ro"]
-[ext_resource type="AudioStream" uid="uid://crotho5mgn8us" path="res://assets/sounds/VHS/Noche3EN.mp3" id="5_evohr"]
-[ext_resource type="AudioStream" uid="uid://dpt6supdehsrw" path="res://assets/sounds/VHS/Noche4EN.mp3" id="6_32h2q"]
-[ext_resource type="AudioStream" uid="uid://cyq6nnfxa4tgn" path="res://assets/sounds/VHS/Noche5EN.mp3" id="7_sppmi"]
-[ext_resource type="AudioStream" uid="uid://fi25hrji2cjh" path="res://assets/sounds/VHS/Noche6EN.mp3" id="8_2ayxf"]
+[ext_resource type="AudioStream" uid="uid://xyb74wr0hlly" path="res://assets/sounds/VHS/En0001.mp3" id="3_sppmi"]
+[ext_resource type="AudioStream" uid="uid://ce8nhsohunx2l" path="res://assets/sounds/VHS/En0002.mp3" id="4_2ayxf"]
+[ext_resource type="AudioStream" uid="uid://bueemeo7ppt7w" path="res://assets/sounds/VHS/En0003.mp3" id="5_mv3o7"]
+[ext_resource type="AudioStream" uid="uid://ccgbo8p3kwju3" path="res://assets/sounds/VHS/En0004.mp3" id="6_8xsj7"]
+[ext_resource type="AudioStream" uid="uid://cce6ajqs1kl1v" path="res://assets/sounds/VHS/En0005.mp3" id="7_1looo"]
+[ext_resource type="AudioStream" uid="uid://cm7l370vlt1ln" path="res://assets/sounds/ToySFX/toy5.ogg" id="8_sppmi"]
 [ext_resource type="Texture2D" uid="uid://bl22umv57hc84" path="res://assets/Renders/office/VHS/VHSFlashlight.png" id="9_66qfm"]
 [ext_resource type="AudioStream" uid="uid://bxbfhim52au2u" path="res://assets/sounds/VHS/Noche1ES.mp3" id="9_mv3o7"]
 [ext_resource type="Texture2D" uid="uid://bhkltoojpnj76" path="res://assets/Renders/office/VHS/VHSDark.png" id="10_5epyg"]
@@ -41,7 +41,7 @@ play = NodePath("Play")
 message = NodePath("Message")
 darkest = NodePath("Message/Darkest")
 new_message = NodePath("NewMessage")
-audio_nights_en = Array[AudioStream]([ExtResource("2_vdoh0"), ExtResource("3_7cpwv"), ExtResource("4_om6ro"), ExtResource("5_evohr"), ExtResource("6_32h2q"), ExtResource("7_sppmi"), ExtResource("8_2ayxf")])
+audio_nights_en = Array[AudioStream]([ExtResource("2_vdoh0"), ExtResource("3_sppmi"), ExtResource("4_2ayxf"), ExtResource("5_mv3o7"), ExtResource("6_8xsj7"), ExtResource("7_1looo"), ExtResource("8_sppmi")])
 audio_nights_es = Array[AudioStream]([ExtResource("2_vdoh0"), ExtResource("9_mv3o7"), ExtResource("10_8xsj7"), ExtResource("11_1looo"), ExtResource("12_dh43c"), ExtResource("13_2ig51"), ExtResource("14_oj4up")])
 
 [node name="Normal" type="Node2D" parent="." unique_id=350139093]

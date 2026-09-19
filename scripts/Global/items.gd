@@ -6,9 +6,9 @@ var objects = {
 	"water_bottle": 0, # consumible
 	"batteries": 0, # consumible
 	"door_toy": 0,
-	"left_door_toy": true,
-	"right_door_toy": true,
-	"pas_toy": true
+	"left_door_toy": false,
+	"right_door_toy": false,
+	"pas_toy": false
 }
 
 func night_starts():
@@ -20,9 +20,9 @@ func reset():
 		"water_bottle": 0,
 		"batteries": 0,
 		"door_toy": 0,
-		"left_door_toy": true,
-		"right_door_toy": true,
-		"pas_toy": true
+		"left_door_toy": false,
+		"right_door_toy": false,
+		"pas_toy": false
 	}
 	drinking = false
 	left_usage = 0
@@ -33,7 +33,7 @@ func _ready():
 	Chica.movement.connect(_movement_chica)
 	Foxy.movement.connect(_movement_foxy)
 
-	push_warning("All toys activated by default")
+	#push_warning("All toys activated by default")
 
 ##batteries
 
