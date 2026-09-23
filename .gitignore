@@ -2,6 +2,7 @@
 .godot/
 .import/
 .export/
+.Exports/
 .godot/mono/
 *.import
 
