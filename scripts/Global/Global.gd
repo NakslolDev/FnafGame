@@ -679,6 +679,7 @@ var misc := {
 var screen := {
 	"vsync": true,
 	"fps": 0,
+	"show_fps": false,
 	"fullscreen": true,
 	"brightness": 1.0,
 }

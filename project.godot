@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Fnaf [Nombre Provisional]"
+config/name="The Curse Given Upon Birth"
 run/main_scene="uid://b5m4l3jyq8cco"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"

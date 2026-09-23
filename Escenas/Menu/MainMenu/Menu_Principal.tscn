@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4fjcgs6njf0t" path="res://Escenas/Menu/MainMenu/menu_principal.gd" id="1_7cw0h"]
 [ext_resource type="Texture2D" uid="uid://uhacg77rodqx" path="res://assets/Placeholders/Menu_Art.png" id="2_t6ttm"]
-[ext_resource type="Texture2D" uid="uid://d3bokitp67hae" path="res://assets/Placeholders/UI_Menu/Titulo.png" id="3_fq31k"]
+[ext_resource type="FontFile" uid="uid://dw4qfwnak1fvs" path="res://assets/fonts/CooperBits.ttf" id="3_t6ttm"]
 [ext_resource type="Script" uid="uid://ronda45c7s6u" path="res://Escenas/Menu/MainMenu/main_buttons.gd" id="4_djrq7"]
 [ext_resource type="AudioStream" uid="uid://dj67m1ll27oey" path="res://assets/sounds/menu_click.wav" id="5_8x8is"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="6_b3nup"]
@@ -37,8 +37,26 @@ position = Vector2(-3.71337e-05, 0)
 scale = Vector2(3.00469, 3)
 texture = ExtResource("2_t6ttm")
 
-[node name="Titulo" type="Sprite2D" parent="." unique_id=735527176]
-texture = ExtResource("3_fq31k")
+[node name="Titulo" type="Label" parent="." unique_id=1142512438]
+offset_left = -872.0
+offset_top = -448.0
+offset_right = 121.0
+offset_bottom = -72.0
+theme_override_fonts/font = ExtResource("3_t6ttm")
+theme_override_font_sizes/font_size = 80
+text = "The Curse Given
+Upon Birth"
+
+[node name="Disclamer" type="Label" parent="." unique_id=1684879184]
+modulate = Color(1, 1, 1, 0.5)
+offset_left = 24.0
+offset_top = 496.0
+offset_right = 944.0
+offset_bottom = 531.0
+theme_override_fonts/font = ExtResource("3_t6ttm")
+theme_override_font_sizes/font_size = 32
+text = "Art from Piggie2023, I use it as a placeholder"
+horizontal_alignment = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1271747179]
 
@@ -247,6 +265,7 @@ scale = Vector2(7.34, 3.165)
 main_game = NodePath("..")
 
 [node name="Stars" type="Node2D" parent="." unique_id=836054293 node_paths=PackedStringArray("white_star_ending", "white_star_2_true_ending", "white_star_3_420")]
+position = Vector2(16, 128)
 script = ExtResource("12_hoy0e")
 white_star_ending = NodePath("WhiteStar_ending")
 white_star_2_true_ending = NodePath("WhiteStar2_true_ending")
@@ -268,6 +287,7 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("13_4lh2l")
 
 [node name="AlphaMessage" type="Panel" parent="." unique_id=460645297]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -310,7 +330,7 @@ theme_override_constants/separation = 60
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 75
-text = "Alpha version a.10.8"
+text = "Alpha version 0.10.8"
 horizontal_alignment = 1
 
 [node name="Wellcome" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=178039017]
@@ -335,26 +355,6 @@ text = "Most of the tutorial come from a combination of the phone calls, prenigh
 There are also game over tips, that explain more meta mechanics that wouldn't make sense for anyone to know."
 autowrap_mode = 3
 
-[node name="Lighting" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1290561881]
-custom_maximum_size = Vector2(1400, -1)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("6_b3nup")
-theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
-theme_override_font_sizes/font_size = 40
-text = "The 2d lighting system is not really prepared for a top down view game. I have tried my best, and I think it looks good"
-autowrap_mode = 3
-
-[node name="Assets" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1064371109]
-custom_maximum_size = Vector2(1400, -1)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("6_b3nup")
-theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
-theme_override_font_sizes/font_size = 40
-text = "All of the 3D moddels are not final. I created them to mimic the final moddels in terms of visibility, animatronic positioning and lighting. "
-autowrap_mode = 3
-
 [node name="PhoneCalls" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1964561151]
 custom_maximum_size = Vector2(1400, -1)
 layout_mode = 2
@@ -363,6 +363,16 @@ theme = ExtResource("6_b3nup")
 theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 theme_override_font_sizes/font_size = 40
 text = "The phone calls are not final and are subject to change. Thus, I used a voice reader. It is bad, but it gets the job done. For the final version, I will have them dubbed by a real person."
+autowrap_mode = 3
+
+[node name="Screamers" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1052438857]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "Things like screamers are not implemented yet, since it would be a waste to animate them just to change them again for the final version."
 autowrap_mode = 3
 
 [node name="Debug" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1797672231]
@@ -377,15 +387,49 @@ In there, you can activate cheats and modify your save file.
 If you keep save mode on, your save file will come back to its original state once you exit debug mode. However, safe mode does not protect you from modifying directly the save files, so be careful."
 autowrap_mode = 3
 
-[node name="Name" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1543243718]
+[node name="Logs" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1362699447]
 custom_maximum_size = Vector2(1400, -1)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("6_b3nup")
 theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 theme_override_font_sizes/font_size = 40
-text = "Note that I dont have a name for the game yet...
-Any suggestions are wellcome."
+text = "If you are playing a console version, you will see the prints on the console.
+If you are playing another version, you can see the logs here:
+Linux: .local/share/godot/app_userdata/The Curse Given Upon Birth/logs
+Windows: \\AppData\\Roaming\\Godot\\app_userdata\\The Curse Given Upon Birth\\logs
+If you have any bug to report, you can include this logs, so I can see what is happening."
+autowrap_mode = 3
+
+[node name="DMMachine" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1792568276]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "The broken arcade machine activates the death minigames. Right now, there isn't any of them, so activating it will probably break things.
+I also added this warning in the prenight minigame as well."
+autowrap_mode = 3
+
+[node name="Assets" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1064371109]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "All of the 3D moddels are not final. I created them to mimic the final moddels in terms of visibility, animatronic positioning and lighting. "
+autowrap_mode = 3
+
+[node name="Lighting" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1290561881]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "The 2d lighting system is not really prepared for a top down view game. I have tried my best, and I think it looks good"
 autowrap_mode = 3
 
 [node name="Spanish" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1084529781]
@@ -405,18 +449,8 @@ size_flags_horizontal = 4
 theme = ExtResource("6_b3nup")
 theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 theme_override_font_sizes/font_size = 40
-text = "Thre are 5 endings to this game, but only 4 are available right now. And they are only endscreens, without any cinematic. I plan on making cinematics for the 3 main endings."
-autowrap_mode = 3
-
-[node name="DMMachine" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1792568276]
-custom_maximum_size = Vector2(1400, -1)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("6_b3nup")
-theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
-theme_override_font_sizes/font_size = 40
-text = "The broken arcade machine activates the death minigames. Right now, there isn't any of them, so activating it will probably break things.
-I also added this warning in the prenight minigame as well."
+text = "Thre are 5 endings to this game, but only 4 are available right now. And they are only endscreens, without any cinematic. I plan on making cinematics for the 3 main endings.
+Also, in these three endings, there will be a monologue of one of the characters in which some part of the story will be explained."
 autowrap_mode = 3
 
 [node name="GodotInteracts" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1174419184]

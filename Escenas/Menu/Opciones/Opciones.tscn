@@ -174,6 +174,12 @@ text = "Fullscreen
 "
 autowrap_mode = 2
 
+[node name="ShowFPS" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1041857384]
+layout_mode = 2
+theme = ExtResource("3_64mem")
+text = "Show FPS"
+autowrap_mode = 2
+
 [node name="Brightness" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" unique_id=1143555135 node_paths=PackedStringArray("label", "h_slider", "root_node")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
@@ -1279,6 +1285,7 @@ puntero = "3"
 [connection signal="drag_ended" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/fps/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_h_slider_drag_ended"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/fps/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Fullscreen" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/ShowFPS" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen" method="_on_show_fps_pressed"]
 [connection signal="drag_ended" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness" method="_on_h_slider_drag_ended"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Screen/Brightness" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Mouse/Button_mouse_type" method="_on_pressed"]

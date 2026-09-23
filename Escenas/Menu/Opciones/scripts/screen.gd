@@ -63,3 +63,7 @@ func _on_h_slider_drag_ended(value_changed: bool) -> void:
 	
 	Global.screen["fps"] = fps_value
 	Global.aply_screen_configuration()
+
+
+func _on_show_fps_pressed() -> void:
+	Global.screen["show_fps"] = !Global.screen["show_fps"]

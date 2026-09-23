@@ -358,4 +358,8 @@ func cool_6_am_transition():
 
 @export var fps: Label
 func _process(_delta: float) -> void:
-	fps.text = "FPS: " + str(Engine.get_frames_per_second())
+	if Global.screen["show_fps"]:
+		if fps.visible == false: fps.visible = true
+		fps.text = "FPS: " + str(Engine.get_frames_per_second())
+	else:
+		fps.visible = false
