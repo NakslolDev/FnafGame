@@ -3,10 +3,13 @@
 This story happens in a northen state of the United States of America. Maybe Nebada, but who knows.
 Week the game takes place: 5-11 of November of 1990
 
-The festival is on November 11. It is a big event, and people around the state.
+The festival is on the second sunday of November, on the capital of the state. It is the biggest event there, and people around the state go there to celebrate it.
+
+The pizzería is located on the side of the road, between a couple of towns. It is the only pizzería nearby.
 
 William Afton is the protagonist. He wasn't very rich, middle class.
-William is inteligent and manipulative. He is emotional, but he knows how to keep a [fachada].
+William is inteligent and manipulative. He is emotional, but he knows how to keep a fachade.
+William's specialty lays on programming, robotics and electronics.
 William was born in 1946, so he is 31 in 1978, and 44 in 1990.
 William's daughter, Elisabeth, is born in 1978, November 11.
 
@@ -15,6 +18,7 @@ Michael is son of William, but he abandoned him at birth. Although his mother wa
 Michael started working as a police officer. Soon ascended to detective, as he inhereted a lot of his father's inteligence.
 
 Henry Emily was an old classmate of William from highschool. He wasn't millioner, but didn't lack money. Currently they were not particulary close, business up front, but they knew each other.
+Henry knows about economy and related. Also has some knowledge on programming, but lacks any electronic and robotic skill.
 Henry doesn't find value in anything, only money. Not even human life. Although William knows Henry as really distant and greedy when it comes to money, he doesn't know such extreme.
 Henry's son, Gregory, is born in 1981, December 25.
 
@@ -24,6 +28,10 @@ Henry's son, Gregory, is born in 1981, December 25.
 
 [Gfreddy] is very shy and fearful.
 [Gfreddy] in the endtest.7.13.c presents body dismorphia, since the endtest.7.13.c is not a fully working endo, and the [freddy] suit, as it lacks any electronic component, does not belong to her. Since [freddy] is a boy and [Gfreddy] is a girl, you could see that character as trans. First, [Gfreddy] is not trans. Second, [Gfreddy] in the endtest.7.13.c could be seen as a trans representation/metaphore, as a girl in a boy's body. Not the intended interpretation, but a valid interpretation.
+
+The animatronics can fully move at night. When morning comes, they gradually loose movility. Through the first hours of morning, they can still move, but slowly and cant bite, so they become less of a threat. By afternoon, they are at complete mercy of the endo's own program.
+
+The documents Henry keeps on his safe relate the incidents on the pizzería. However, they do not incriminate William directly. The camera footage of the incident that he keeps with those documents does incrimiante William.
 
 -----Events-----
 
@@ -48,11 +56,11 @@ William starts working on automaticed endoskelletons to be inside the suits. He 
 
 --1986--
 
-First working endoskelletons. endtest.7.13.c. William makes public the endoskelletons project. The expectations grow mssively. William leave it intact as he started to use lighter materials for the final vertions.
+First working endoskelletons, the endtest.7.13.c. William makes public the endoskelletons project. The expectations grow mssively. William leave it intact as he started to use lighter materials for the final vertions.
 
 --1987--
 
-November 8:
+November 11:
 Grand showcase of the new animatronics. All of the tables had to be storaged on the backstage just to fit all of the people. Various journalist from different newspapers are there. Everything goes perfectly.
 That night, William comes home late. He finds Elisabeth lying on the floor, lifeless. He doesn't even know what happend.
 The medics are able to barely revive her, but she's put in a deep coma. They are sure that Elisabeth will never wake up.
@@ -84,17 +92,125 @@ After a month of search for the four kids, it was canceled, as it was not giving
 Michael Smith, against the police's request, dedicates to investigate the dissapearence of the four children by his own. He focused on the pizzería, as he was highly suspicious about William. Against all of his efforts, he wasn't able to manipulate Michael.
 This scared William, as for the first time, he wasn't in control of someone, and that someone was coming for him. And so, he dissapeared. William removed any trace of his old life, and he stood in a relatively far away town, although in the same state. Around a 1-2 hours of driving time.
 
-As there was a lack of evidence, and the main suspect was nowhere to be found, Michael's investigation came to a halt. He focused on gathering any other evidence and finding William. But since he didn't count with the law enforcement's help, could't get any official orders, and so he didn't get any results.
+As there was a lack of evidence, and the main suspect was nowhere to be found (since without evidence a search for him couldn't be ordered), Michael's investigation came to a halt. He focused on gathering any other evidence and finding William. But since he didn't count with the law enforcement's help, could't get any search orders, and so he didn't get any results.
 
 Soon, William found [Intro phone guy], and use him to stay on his aparment rent free. Although [Intro phone guy] was not very happy about this.
 
+Henry took over the pizzería. However, time had to pass until it would be able to be reopened.
+
+
 --1990-- (Year of the game)
 
+Henry finds out about William's murders through the camera footage of that day. He stored it and other related information he recomplied inside a safe in his office.
+Henry also finds out about somebody investigating the pizzería. However, he didnt know who, as Michael was avtively hiding his identiy. He figured out that if the truth about the dissapearence of the children was in fact related to the pizzería, it will have to be closed down forever. So he hired security guards to make sure nobody stays inside nor tries to break in. They acted more as a deturrent, actually. He also checked their backgrounds to be sure it wasn't related to the police.
+
+Henry noticed that the animatronics were haunted. He figured out their behaviour. This was a problem for him, since they were dangerous. However, he couldnt just throw out the main atraction of the pizzería. So he started a project to "delete" the corrupted program, and just leave the functioning animatronics. To help him with the handleing of the robots, he published a job offert for a mechanic to handle the animatronic's maintenence, but nobody seem to fit the qualifications. Michael saw it as an oportunity, so he started studying robotics. He learned really fast, as he inhereted his father's talent.
+
+Since both the [foxy] suit and its endo were badly damange, and he didnt have any knowledge on electronics to the heights of William, he used the endtest.7.13.c and constructed the freddy suit. He made of this change a rebranding of the franquice, to [despegarse] from what happend on '87, by changeing the name from [Foxy] pizza world to [Freddy] pizza palace, and removing any reference of [foxy]. The [freddy] suit, however, was much more rudimentary, as it had none electronics, and the desing was worst overall.
+
+Henry had the old actors rehired. However, when they putted on the suits, they got really sick. Headaches, tireness, and barfing. The [freddy] suit had a different issue. The actor inside suffered from a heat stroke, since the suit was porly desing and didnt have temperature in mind.
+Thus, Henry decided to go all in with the endos.
+
+The restaurant reopend somewhere on October. He found security guards quickly, but no mechanic. It wasn't nearly as successful as it was under William's management, but people were going.
+Mostly since there wasn't any other pizzería nearby. It only opened on the afternoon, to cut down costs. Usually, it is opend all days of the week.
+
+William heard about the pizzeria's reopening. He knew Henry had evidence incriminating him, but that he would not give them to the police. However, until no evidence was left, William couldn't rest. So, knowing Henry wouldn't go to the place at night, he manipulated [Intro phone guy] into getting the night shift for him.
+
+After a while, Michael found himself ready for the mechanic's job. He built himself a fake identity, as "Darius J. R." (The J stands for Junior). Since Henry was desperate, he didnt mind the lack of solid background, as Michael could convince him, and all of the more important stuff were there (falsificated).
 
 
-.....
+October 28:
+The guard that had the night shift dies, killed by the animatronics. Since Henry had anticipated something like this could happen, he had someone dispose of the body and clean the place. That guy was Jose Fernandez, an inmigrant that didn't know the languaje nor have any money. This way, it was easy for him to buy his silence.
+When the other two guards noticed his dissapearence, they reported it to the police, and left the job.
 
-November 5 Monday:
-November 6, etc
+Michael suspects something is going on (apart from the investigation).
+
+New guards were hired. Jane Fitzgerald took the morning turn, and Michael took the afternoon.
+Henry explained everything to Jane, and then comanded her to explain it to the night guard. So, Jane left audiotapes all of the nights for the nightguard to listen. However, he did not listen to any. These tapes are what [YOU] would get to listen every night. In this tapes, Jane explained all of the systems of the security room, as well as things that happend to her.
+
+With the excuse of maintinence, Henry gets Michael to get information of the animatronics. With it, he builds a code that tries to delete the children's soul from the animatronic. However, that code only manages to delete everything, rendering the animatronic useless. He leaves that code in the computer, just in case.
 
 
+November 1:
+The night guard gets killed by the animatronics. As last time, Jose takes care of cleaning everything.
+
+On that morning, Jane explains in the tape how she broke into Henry's office, and found the safe she could not open, and old newspaper relating the 4 dissapearences of the children. However, Henry enters the pizzeria and catches her, although she thinks she got out in time. 
+
+
+November 2:
+Jane is put into the night turn. That same night, she dies, killed by [foxy].
+Michael is changed to the morning turn.
+That day, Henry stays for the afternoon turn. A new guard is later employed for the afternoon turn.
+
+
+November 4:
+[Intro phone guy] finally manages to get the job as a night guard. As William told him (or manipulated him to do), [Intro phone guy] told Henry he was the one going to do the job, but leave William to actually do it.
+
+
+***Mediocre ending and party ending not included***
+***in game, you can actually make some actions later. This is the intended way***
+
+November 5, Monday:
+William goes to work at the pizzería as a night guard. However, it is actually [YOU] who does it.
+[YOU] actually listen to Jane's recordings.
+Henry keeps ordering Michael to run tests on the animatronics.
+The police find out that the 3 people that have dissapeared all worked the night shift at the pizzería.
+--Once [Gfreddy] is killed--
+[freddy] breaks down mid show, and Michael has to go to fix it. Since it is too heavy, the backstage door, that has been stuck for a long time, has to be open and make operative again.
+[freddy], when nobody is there tries to break the suit, leaving it very damaged and out of service.
+
+
+November 6, Tuesday:
+Henry gives to the police the camera footage outside the pizzería. In them, Jose can bee seen dragging the bodies out, and so he is arrested.
+To try to save the place's public image, he anounces free pizza for next day, Wednesday.
+
+
+November 7, Wednesday:
+William, before entering the pizzería, he tampers with the electrical outage.
+A lot of people come to the free pizza day. However, thanks to William's action, the energy cuts out. People run out in panic. In the chaos, Henry loose a key to his office.
+Henry blames the incident on a prankster, trying to scare people out.
+--Once [Gfreddy] is killed--
+***Experimental, not sure yet***
+On the energy breakdown, the door controler breaks. Michael makes a temporal fix connecting it to the [doors] switch. 
+
+
+November 8, Thursday:
+Through the night, [YOU] find that key, and gain access to Henry's office.
+Jose confeses. He says he dumped the bodies on the nearby river. Police retrieve the bodies, and perform the autopsy on Jane's, since it is in the best state.
+
+
+November 9, Friday:
+By leaving the office's door open through the night. Jane mentioned that [chica] may know the code. Indeed, chica opens the safe, and takes everything. By listening to the cameras, or using a tape recorder (***not sure yet***), [YOU] learn the code.
+However, [YOU] cant take it from [chica], since she ate them. And [YOU] dont have enough time to dismount it, as Michael is on its way.
+
+Michael finds the office door open, and the safe empty. He disarms the [chica] suit, takes everythig out, and puts her back together. He gets to take pictures of everything, but before he could see the videotape, he sees Henry arriving from the distance, so he puts everything back. Since he wasnt sure of the contents of the videotape, and the documents didn't reveal the killer, only that it happend, he wanted to continue with the investigation.
+
+In Jose's trial, since nobody entered the pizzería, and suicide was discarded with the autopsy, Jose was found guilty and send to prison for life.
+
+
+November 10, Saturday:
+Since the festival was coming, this day was set as an extra day for people to gain some more money. Since enough people signed in, including William and Michael, the pizzeria would open that Saturday. It would be closed down on sunday.
+
+--Bad ending--
+[YOU] come in, open the safe, take all of the documents, and leave. (You can do the night shift, but doesn't change anything)
+When Michael comes in, he finds the safe open but the documents nowhere to be found. He though Henry discovered him, and so he ended the investigation there.
+He handed the police all of the evidence, and it was enough to detain Henry and charge him with encoubriment. The pizzería closed down forever, and William lived peacefully.
+
+--"Good" ending--
+[YOU] open the safe, and take the fisical key for Henry's computer. You start to compile Henry's program to shut down the animatronics.
+At the end of the night, when the program has already compiled, [YOU] take it and free/kill [bonnie], [chica] and [freddy].
+When you try to do so with [foxy] however, he is not in the [foxy] suit, and comes to you from behind.
+William panics and enters the [foxy] suit. However, he gets terribly sick and falls to the ground, barely able to move. [Foxy] crawls inside with William, crushing and kill him.
+
+
+
+----"Secret" ending----
+(This one happens when [YOU] never kill [bbonnie], [gchica] and [gfreddy])
+Foxy discovers something is banishing them. He fugures out the order, but not what is the condition. So he just tells them to stay away from the office.
+
+On [chica]'s turn, she just stays away while foxy and freddy attack you (easy night). She then enters the office and kills you (thus saving her). (Cool cinematic of her slowly charging up a bite of '87)
+
+On [freddy]'s turn, she stays away, and you have to watch her to slowly make her come to you. When she enters the office (no cinematic of that, since you are in the cams when that happens) she chokess you to death.
+
+On [foxy]'s turn, he gets the [puppet], and makes it attack you. You have a bossfight night against the [puppet]. When Xam (maybe 6, maybe 5) its batteries run off, on a cinematic. [foxy] uses that distraction to backstab (maybe literal, maybe not) you (since he doesn't know the condition to trigger the death minigames). Thus, taking you to the foxy minigame. But before you can not kill him, he breaks the link, and "kills" you.
+When breaking the link, it is unsure if the undoes of the murderes stay (meaning we dont know whether [bonnie], [chica] and [freddy] are still around. I'll decide that later)
