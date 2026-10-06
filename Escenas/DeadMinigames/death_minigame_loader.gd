@@ -2,6 +2,8 @@ extends Node
 
 @onready var scene_handler: Node = get_tree().get_first_node_in_group("scene_handler")
 
+@export var minigames: Array[PackedScene]
+
 @onready var animatronic := Global.killed_by
 
 func _ready() -> void:

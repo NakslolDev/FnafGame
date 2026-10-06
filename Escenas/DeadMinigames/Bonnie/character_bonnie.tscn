@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b3blfwyeu6h43"]
+
+[ext_resource type="Script" uid="uid://cjqb4ybyak13v" path="res://Escenas/DeadMinigames/Bonnie/character_bonnie.gd" id="1_p6rik"]
+[ext_resource type="Texture2D" uid="uid://bh33olvuatkq5" path="res://assets/minijuego assets/DMTextureAtlas/MinigameTextureAtlas.png" id="1_uuo0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(6, 11)
+
+[node name="CharacterBonnie" type="CharacterBody2D" unique_id=1596486510]
+script = ExtResource("1_p6rik")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=532616739]
+texture = ExtResource("1_uuo0k")
+region_enabled = true
+region_rect = Rect2(48, 0, 8, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1741231039]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_g4v7s")

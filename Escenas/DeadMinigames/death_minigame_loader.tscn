@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://c8ii2utfbiuaa"]
 
 [ext_resource type="Script" uid="uid://duhwlbghb2f4l" path="res://Escenas/DeadMinigames/death_minigame_loader.gd" id="1_82wdj"]
+[ext_resource type="PackedScene" uid="uid://dq8qw5d3wribl" path="res://Escenas/DeadMinigames/Bonnie/bonnie_minigame.tscn" id="2_tpoi8"]
 
 [node name="Death_minigame_loader" type="Node" unique_id=634696383]
 script = ExtResource("1_82wdj")
+minigames = Array[PackedScene]([ExtResource("2_tpoi8")])
 
 [node name="Label" type="Label" parent="." unique_id=590118051]
 offset_left = 623.0
