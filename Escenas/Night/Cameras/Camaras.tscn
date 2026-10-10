@@ -180,6 +180,7 @@ texture = ExtResource("16_tmxn1")
 
 [node name="No_Shader" type="CanvasLayer" parent="." unique_id=1198044016]
 layer = 4
+visible = false
 script = ExtResource("2_rbjw8")
 
 [node name="No_energy" type="Sprite2D" parent="No_Shader" unique_id=532594012]

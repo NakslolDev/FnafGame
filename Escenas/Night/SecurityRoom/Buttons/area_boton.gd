@@ -1,6 +1,7 @@
 extends Area2D
 
 func _ready():
+	visible = true
 	add_to_group("interactable")
 
 func _input_event(_viewport, event, _shape_idx):

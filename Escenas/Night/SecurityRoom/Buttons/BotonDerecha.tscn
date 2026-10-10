@@ -150,7 +150,6 @@ region_enabled = true
 region_rect = Rect2(2880, 0, 2880, 2880)
 
 [node name="AreaBoton" type="Area2D" parent="." unique_id=1004161636 groups=["interactable"]]
-visible = false
 script = ExtResource("5_tdjsq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBoton" unique_id=995394532]

@@ -4614,6 +4614,15 @@ position = Vector2(16.000061, -16)
 scale = Vector2(7.999592, 0.39964703)
 id = "Scenario"
 read_end_in = Array[int]([4])
+night_0 = false
+night_1 = false
+night_2 = false
+night_3 = false
+night_4 = false
+night_5 = false
+night_6 = false
+entering = false
+exiting = false
 
 [node name="ReadingCorner" type="Node2D" parent="Coliders/Main" unique_id=318647427]
 position = Vector2(-608, 16)
