@@ -59,6 +59,7 @@ text = "Game
 Over"
 
 [node name="Advice" type="Label" parent="." unique_id=1362521330]
+custom_maximum_size = Vector2(960, -1)
 offset_left = -913.0
 offset_top = 346.0
 offset_right = -43.0

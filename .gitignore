@@ -3,6 +3,7 @@
 .import/
 .export/
 .Exports/
+.Exports/Linux/
 .godot/mono/
 *.import
 
