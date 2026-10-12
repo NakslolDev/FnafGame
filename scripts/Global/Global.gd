@@ -34,7 +34,7 @@ func get_csv_value_int(csv:String, row_index: int, col_index: int): # Devuelve e
 	while not file.eof_reached():
 		var line = file.get_line().strip_edges()
 		if line != "":
-			table.append(line.split(",")) # Cada línea → Array de strings
+			table.append(line.split(DELIMITER)) # Cada línea → Array de strings
 	file.close()
 
 	# Ajustamos porque el csv usa índices desde 1, pero en arrays es desde 0
@@ -875,7 +875,7 @@ func night_starts():
 func get_night_info(animatronic: String, night: int, time: int):
 	var row: int
 	var column := 2 + (night - 1) * 6 + time
-	const CSV_name: String = "Night_database.csv"
+	const CSV_name: String = AI_CSV_name
 	
 	if animatronic == "bonnie":
 		row = 2
@@ -886,10 +886,11 @@ func get_night_info(animatronic: String, night: int, time: int):
 	elif animatronic == "foxy":
 		row = 5
 	
+	print("animatronic ", animatronic, " to AI level of ", get_csv_value_int(CSV_name, row, column))
 	return get_csv_value_int(CSV_name, row, column)
 
 func act_animatronic_ai(hour: int):
-	
+	print("Act animatronic AI")
 	if noche == 0:
 		if hour != 0:
 			return
@@ -897,7 +898,7 @@ func act_animatronic_ai(hour: int):
 		Chica.AI_level = custom_night_ai[1]
 		Freddy.AI_level = custom_night_ai[2]
 		Foxy.AI_level = custom_night_ai[3]
-		
+		return
 	
 	var bonnie_new_ai = get_night_info("bonnie", noche, hour)
 	if bonnie_new_ai != null:
@@ -932,6 +933,7 @@ func act_animatronic_ai(hour: int):
 			Foxy.AI_level = foxy_new_ai
 	
 	act_ai_state.emit()
+	print("animatronic AI Acted successfully")
 
 
 func tick():

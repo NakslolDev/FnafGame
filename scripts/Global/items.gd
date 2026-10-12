@@ -89,33 +89,33 @@ func _hydrate_from_water_bottle():
 
 func _movement_bonnie(to: String, from: String):
 	if to == "PI" and not from == "PI":
-		_press_toy_left()
-		Bonnie.fast_move()
+		var pressed: bool = _press_toy_left() # <- bad practice, but this is the easiest way rn
+		if pressed: Bonnie.fast_move()
 
 func _movement_chica(to: String, from: String):
 	if to == "PD" and not from == "PD":
-		_press_toy_right()
-		Chica.fast_move()
+		var pressed: bool = _press_toy_right()
+		if pressed: Chica.fast_move()
 
 func _movement_foxy(to_pos: int, to_room: String, from_pos: int, from_room: String):
 	if to_pos == 0 and to_room == "lhall" and not (from_pos == 0 and from_room == "lhall"):
+		var pressed: bool = _press_toy_left()
 		_press_toy_left()
-		_press_toy_left()
-		Foxy.fast_move()
+		if pressed: Foxy.fast_move()
 	elif to_pos == 0 and to_room == "rhall" and not (from_pos == 0 and from_room == "rhall"):
+		var pressed: bool = _press_toy_right()
 		_press_toy_right()
-		_press_toy_right()
-		Foxy.fast_move()
+		if pressed: Foxy.fast_move()
 	elif to_pos == 1 and to_room == "pas" and not (from_pos == 1 and from_room == "rhall"):
+		var pressed: bool = _press_toy_pas()
 		_press_toy_pas()
-		_press_toy_pas()
-		Foxy.fast_move()
+		if pressed: Foxy.fast_move()
 	#This is intentional, since foxy would try to break it on purpose
 
 signal left_toy_squeek
 var left_usage := 0
-func _press_toy_left():
-	if not objects["left_door_toy"]: return
+func _press_toy_left() -> bool:
+	if not objects["left_door_toy"]: return false
 	
 	if _probability_of_break(left_usage):
 		objects["left_door_toy"] = false
@@ -125,11 +125,12 @@ func _press_toy_left():
 	
 	left_usage += 1
 	left_toy_squeek.emit()
+	return true
 
 signal right_toy_squeek
 var right_usage := 0
-func _press_toy_right():
-	if not objects["right_door_toy"]: return
+func _press_toy_right() -> bool:
+	if not objects["right_door_toy"]: return false
 	
 	if _probability_of_break(right_usage):
 		objects["right_door_toy"] = false
@@ -139,11 +140,12 @@ func _press_toy_right():
 
 	right_usage += 1
 	right_toy_squeek.emit()
+	return true
 
 signal pas_toy_squeek
 var pas_usage := 0
-func _press_toy_pas():
-	if not objects["pas_toy"]: return
+func _press_toy_pas() -> bool:
+	if not objects["pas_toy"]: return false
 
 	if _probability_of_break(pas_usage):
 		objects["pas_toy"] = false
@@ -153,6 +155,7 @@ func _press_toy_pas():
 
 	pas_usage += 1
 	pas_toy_squeek.emit()
+	return true
 
 
 func _probability_of_break(use: int) -> bool: # esta formula la he conseguido despues de bastante prueba y error. Al final es extremadamente sencilla, pero bueno

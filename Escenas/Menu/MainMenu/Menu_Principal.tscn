@@ -330,17 +330,17 @@ theme_override_constants/separation = 60
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 75
-text = "Alpha version 0.10.8"
+text = "Alpha version 0.11.2"
 horizontal_alignment = 1
 
-[node name="Wellcome" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=178039017]
+[node name="Welcome" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=178039017]
 custom_maximum_size = Vector2(1536, -1)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("6_b3nup")
 theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 theme_override_font_sizes/font_size = 48
-text = "Wellcome to the alpha version. As of right now, the game is in a playable but uncompleted state. Things to notice:"
+text = "Welcome to the alpha version. As of right now, the game is in a playable but uncompleted state. Things to notice:"
 horizontal_alignment = 3
 autowrap_mode = 3
 
@@ -439,7 +439,7 @@ size_flags_horizontal = 4
 theme = ExtResource("6_b3nup")
 theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 theme_override_font_sizes/font_size = 40
-text = "The game is not translated to spanish yet. So right now, the game is on English only. "
+text = "The phone calls is not translated to spanish yet. Maybe I will add subtitles idk"
 autowrap_mode = 3
 
 [node name="Endings" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1205010303]

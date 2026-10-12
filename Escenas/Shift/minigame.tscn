@@ -1315,7 +1315,7 @@ Walls = [NodePath("Main/WallMain"), NodePath("Bathrooms/WallBathroomGirls"), Nod
 nodes = [NodePath("Entrance"), NodePath("Main"), NodePath("Bathrooms"), NodePath("Arcade"), NodePath("Kitchen"), NodePath("PAS"), NodePath("Warehouse"), NodePath("SecretOffice"), NodePath("Closet"), NodePath("LHall"), NodePath("RHall"), NodePath("SecurityRoom")]
 
 [node name="Character_Minigame" parent="YSort" unique_id=1051262395 instance=ExtResource("8_w4bkp")]
-position = Vector2(-893, 551)
+position = Vector2(-1032, 864)
 
 [node name="Main" type="Node" parent="YSort" unique_id=1029633376]
 
@@ -5506,10 +5506,31 @@ exiting = false
 [node name="Table" type="Node2D" parent="Coliders/SecurityRoom" unique_id=809475029]
 position = Vector2(-1000, 804)
 
-[node name="Random" parent="Coliders/SecurityRoom/Table" unique_id=1486378442 instance=ExtResource("24_ly3ag")]
-position = Vector2(-29, 6.000002)
+[node name="Restricted_mode" parent="Coliders/SecurityRoom/Table" unique_id=1486378442 instance=ExtResource("24_ly3ag")]
+position = Vector2(-29, 6)
 id = "restricted_mode_tutorial"
+night_1 = false
+night_2 = false
+night_4 = false
+night_5 = false
+night_6 = false
+
+[node name="Restricted_note" parent="Coliders/SecurityRoom/Table" unique_id=1870679905 instance=ExtResource("24_ly3ag")]
+position = Vector2(-29, 6)
+id = "restricted_mode_note"
 read_end_in = Array[int]([3])
+exclude_id = Array[String](["darius_introduction"])
+night_1 = false
+night_2 = false
+night_4 = false
+night_5 = false
+night_6 = false
+
+[node name="Restricted_note_darius" parent="Coliders/SecurityRoom/Table" unique_id=1389585928 instance=ExtResource("24_ly3ag")]
+position = Vector2(-29, 6)
+id = "restricted_mode_mechanic_note"
+read_end_in = Array[int]([4])
+need_id = Array[String](["darius_introduction"])
 night_1 = false
 night_2 = false
 night_4 = false
