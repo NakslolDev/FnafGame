@@ -130,25 +130,24 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 		if AI_level >= randi_range(0, 20): # Siempre acierta a nivel 20
 			move()
 			return
-		else:
-			door_fail_count += 1
 		if door_fail_count == MAXIMUM_FAILS_WHEN_DOOR_OPEN: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 5 y no en el siguiente MO es intencional
 			move()
 			return
+		door_fail_count += 1
+
 	else:
 		if randi_range(0, 20 + AI_level) < 30: # en niveles bajos salga más rapido aun. Casi siempre. En altos ~75%
 			move()
 			return
-		else:
-			door_fail_count += 1
 		if door_fail_count == MAXIMUM_FAILS_WHEN_DOOR_CLOSED: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 5 y no en el siguiente MO es intencional
 			move()
 			return
+		door_fail_count += 1
 	
 	# en este caso, door_fail_count funciona en paralelo tanto si tienes la puerta abierta como cerrada...
 	
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
-	
+
 
 func move():
 	
@@ -241,3 +240,8 @@ func move():
 		movement.emit(position, last_position) # Envía la señal de que se ha movido
 	else:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement hitted but stayed still: from ", position)
+
+func fast_move():
+	gotcha = 0
+	lock_movement = false
+	door_fail_count = MAXIMUM_FAILS_WHEN_DOOR_OPEN - 1 # un fallo maximo

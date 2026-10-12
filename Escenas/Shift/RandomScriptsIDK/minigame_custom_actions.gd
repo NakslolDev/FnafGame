@@ -19,6 +19,10 @@ func do_custom_action(action: String, read: int):
 
 #--Actions--
 
+func exit_pizza(_read):
+	await get_tree().physics_frame
+	father.exit()
+
 func pick_key(_read):
 	Global.inventario["key"] = true
 

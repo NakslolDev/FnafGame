@@ -90,18 +90,27 @@ func _hydrate_from_water_bottle():
 func _movement_bonnie(to: String, from: String):
 	if to == "PI" and not from == "PI":
 		_press_toy_left()
+		Bonnie.fast_move()
 
 func _movement_chica(to: String, from: String):
 	if to == "PD" and not from == "PD":
 		_press_toy_right()
+		Chica.fast_move()
 
 func _movement_foxy(to_pos: int, to_room: String, from_pos: int, from_room: String):
 	if to_pos == 0 and to_room == "lhall" and not (from_pos == 0 and from_room == "lhall"):
 		_press_toy_left()
+		_press_toy_left()
+		Foxy.fast_move()
 	elif to_pos == 0 and to_room == "rhall" and not (from_pos == 0 and from_room == "rhall"):
 		_press_toy_right()
+		_press_toy_right()
+		Foxy.fast_move()
 	elif to_pos == 1 and to_room == "pas" and not (from_pos == 1 and from_room == "rhall"):
 		_press_toy_pas()
+		_press_toy_pas()
+		Foxy.fast_move()
+	#This is intentional, since foxy would try to break it on purpose
 
 signal left_toy_squeek
 var left_usage := 0
@@ -135,7 +144,7 @@ signal pas_toy_squeek
 var pas_usage := 0
 func _press_toy_pas():
 	if not objects["pas_toy"]: return
-	
+
 	if _probability_of_break(pas_usage):
 		objects["pas_toy"] = false
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "PAS toy broke :(")

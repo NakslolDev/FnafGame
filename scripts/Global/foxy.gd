@@ -7,7 +7,7 @@ const HEATER_TICK_LIMIT := 5
 const DOOR_TICK_LIMIT := 20
 const UA_TICK_LIMIT := 1
 
-const BLOCKS_WHEN_NOT_SEEN_ON_DOORS := 2
+const BLOCKS_WHEN_NOT_SEEN_ON_DOORS := 1
 
 const FLASHLIGHT_STUNT_ON_DUCTS := 3
 const FLASHLIGHT_STUNT_ON_DOORS := 2
@@ -296,7 +296,7 @@ func _manage_doors() -> bool:
 func _manage_lock_movement() -> bool:
 	var lock := false
 	if lock_movement == true:
-		if position == 0 and (room.begins_with("Duc") or room.ends_with("hall")): # comprueva que acaba de llegar a las entradas de la oficina. Si lo paras, si que se vuelve
+		if (room.begins_with("Duc") or room.ends_with("hall")) and position == 0: # comprueba que acaba de llegar a las entradas de la oficina. Si lo paras, si que se vuelve
 			if (room == "lhall" and not door_I_closed) or (room == "rhall" and not door_D_closed) or room.begins_with("Duc"):
 				lock = true
 				if gotcha > 0:
@@ -405,6 +405,9 @@ func energy_breakdown():
 	
 	decide_next_room()
 
+func fast_move():
+	gotcha = 0
+	lock_movement = false
 
 # check es: solo cambia de decisión si ves un ducto que ha cambiado
 func decide_next_room(check: bool = false): # si no hay un dead end, no puede volver a la habitacion anterior

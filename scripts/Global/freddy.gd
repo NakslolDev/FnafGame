@@ -3,6 +3,7 @@ extends Node
 #Constants (or other things). You can tweek these
 const GENERAL_TICK_LIMIT := 30 # la cantidad de ticks para un oportunity movement
 const DOOR_TICK_LIMIT := 15
+const CHANGING_DOORS_TICK_LIMIT := 20
 const UA_TICK_LIMIT := 1
 
 const WITHOUT_CAM_OPEND := false # mayor claridad
@@ -18,6 +19,7 @@ var door_fail_count: int
 var cam_look_count: int
 var path_to_take: int # esta variable determina que comportamiento va a tomar freddy
 var puerta_attack: bool
+var changing_doors: bool # controla si esta cambiando de puerta. De estar haciendolo, se movera mas rapido
 
 #Path 0 -> S, 0, T1, T2, office
 #Path 1 -> 1, 2, 3, PI
@@ -56,6 +58,7 @@ func reset():
 	camara = 1
 	cam_activa = false
 	cam_light = false
+	changing_doors = false
 
 
 func tick():
@@ -106,6 +109,8 @@ func tick():
 		tick_count_limit = UA_TICK_LIMIT
 	elif position != "PI" and position != "PD":
 		tick_count_limit = GENERAL_TICK_LIMIT
+	elif changing_doors:
+		tick_count_limit = CHANGING_DOORS_TICK_LIMIT
 	else:
 		tick_count_limit = DOOR_TICK_LIMIT
 	
@@ -151,24 +156,28 @@ func looking_at_me(cam_open_required := true):
 	return false # si falla todas, false
 
 func movement_oportunity():
-	
+
+	if changing_doors:
+		move()
+		return
+
 	if lock_movement:
 		if position == "PI" or position == "PD": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
 			puerta_attack = false 
 			lock_movement = false
 			return
-	
+
 	if path_to_take == 0:
 		path_to_take = randi_range(1,2)
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]PATH DECIDED: ", path_to_take)
-	
+
 	if (path_to_take == 1 and position != "PI") or (path_to_take == 2 and position != "PD"):
 		door_fail_count = 0
 		puerta_attack = false
 		if AI_level > randi_range(0, 20):
 			move()
 			return
-	
+
 	else:
 		if AI_level > randi_range(0, 20):
 			puerta_attack = true
@@ -183,20 +192,21 @@ func movement_oportunity():
 		
 		elif puerta_attack: # si la puerta está cerrada pero te está atacando
 				door_fail_count += 1
-	
-	
+
+
 	if puerta_attack:
-		if door_fail_count * AI_level / 5.0 > randi_range(0, 5000):
+		if ((position == "PI" and door_I_closed) or (position == "PD" and door_D_closed)) and door_fail_count * AI_level > randi_range(0, 400): #Tengo en desmos la grafica de probabilidad y media
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy gave up: from ", position)
 			puerta_attack = false
 			if path_to_take == 1:
 				path_to_take = 2
 			else:
 				path_to_take = 1 
+			changing_doors = true
 			move() # siempre se va cuando se da por vencido
 			return
-	
-	
+
+
 	if position == "PD" or position == "PI" and puerta_attack:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement door atack: from ", position)
 	else:
@@ -302,6 +312,8 @@ func move_back():
 	puerta_attack = false
 	last_position = position
 	last_path = path
+	changing_doors = false
+	
 	var ipos = int(position)
 	
 	if position == "T1":

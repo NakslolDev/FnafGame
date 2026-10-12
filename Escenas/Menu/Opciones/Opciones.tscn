@@ -520,7 +520,6 @@ autowrap_mode = 2
 script = ExtResource("16_3ayvq")
 id = "Language"
 root_node = NodePath("../../../../../../..")
-Spanish = false
 
 [node name="ButtonAudioLanguage" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/Language" unique_id=912611875 node_paths=PackedStringArray("root_node")]
 custom_minimum_size = Vector2(200, 0)
@@ -534,7 +533,6 @@ script = ExtResource("16_3ayvq")
 audio = true
 id = "Audio"
 root_node = NodePath("../../../../../../..")
-Spanish = false
 
 [node name="Misc" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1787875783]
 custom_minimum_size = Vector2(310, 0)

@@ -213,13 +213,13 @@ func check_beggining_active():
 func _on_body_entered(body: Node2D) -> void:
 	if str(body).begins_with("Character_Minigame"):
 		player_in = true
-		if activate == "Auto":
+		if active and activate == "Auto":
 			_do_action()
 
 func _on_body_exited(body: Node2D) -> void:
 	if str(body).begins_with("Character_Minigame"):
 		player_in = false
-		if activate == "Auto_on_exit":
+		if active and activate == "Auto_on_exit":
 			_do_action()
 
 func _input(event):

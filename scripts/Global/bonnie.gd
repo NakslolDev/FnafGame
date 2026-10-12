@@ -59,7 +59,7 @@ func tick(): # Esta función se llama cada tick. Por defecto, son 5 veces cada s
 	if AI_level == 0 or position == "office": # Si está desactivado o si ya está en la oficina, no se va a mover...
 		return
 
-	if position == "PI": # este tiempo extra solo devería ocurrir si ya está de por sí en la puerta
+	if position == "PI": # este tiempo extra solo debería ocurrir si ya está de por sí en la puerta
 		if door_closed:
 			door_closed_log = true # Guarda la información
 		elif door_closed_log: # Solo se activa el primer tick después de que abrir la puerta.
@@ -127,7 +127,7 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 
 	if lock_movement and position == "PI": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
 		lock_movement = false
-		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se valla antes
+		if not door_closed: # puerta abierta. Si la puerta está cerrada, si que intentará moverse. Esto es en pos del jugador, para que se vaya antes
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no (locked first try): from ", position)
 			return
 
@@ -146,10 +146,10 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 
 		if door_fail_count < 0: # Si no se mueve, comprueva los fallos.
 			door_fail_count = 0 # Primero resetea a 0 en caso de que fuese negativo.
-		door_fail_count += 1 # Añade un intento fallido de entrar 
 		if door_fail_count == MAXIMUM_FAILS_WHEN_DOOR_OPEN: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = 4 y no en el siguiente MO es intencional
 			move()
 			return
+		door_fail_count += 1 # Añade un intento fallido de entrar
 
 	else: # puerta cerrada
 		if 50 + AI_level * 2 <= randi_range(0, 100): # AI = 1:~ 50%, AI = 20:~ 90% (de que se quede en la puerta).
@@ -158,12 +158,12 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 
 		if door_fail_count > 0: # Si no se mueve, comprueva los fallos.
 			door_fail_count = 0 # Primero resetea a 0 en caso de que fuese positivo.
-		door_fail_count -= 1 # Añade un intento fallido de irse 
 		if door_fail_count == -MAXIMUM_FAILS_WHEN_DOOR_CLOSED: # tope de fallos en la puerta. Que salte justo cuando door_fail_count = -10 y no en el siguiente MO sigue siendo intencional
 			move()
 			return
-
+		door_fail_count -= 1 # Añade un intento fallido de irse 
 	# Ahora mismo, si abres la puerta, e intenta entrar, pero no lo hace, y vuelves a cerrar, el contador se resetea. De momento lo dejo intencional
+
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 
 
@@ -215,3 +215,8 @@ func move(): # decide a donde moverse
 		movement.emit(position, last_position) # Envía la señal de que se ha movido
 	else:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement hitted but stayed still: from ", position)
+
+func fast_move():
+	gotcha = 0
+	lock_movement = false
+	door_fail_count = MAXIMUM_FAILS_WHEN_DOOR_OPEN - 1 # un fallo maximo
