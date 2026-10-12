@@ -44,7 +44,7 @@ metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 texture = ExtResource("6_o68eg")
 script = ExtResource("3_ypjxk")
 light = 2
-foxy_room = 13
+foxy_room = 15
 foxy_pos = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 
@@ -95,7 +95,7 @@ visible = false
 texture = ExtResource("12_qqp2m")
 script = ExtResource("3_ypjxk")
 light = 1
-foxy_room = 13
+foxy_room = 15
 foxy_pos = 1
 metadata/_custom_type_script = "uid://cw0ys6ob6fe4e"
 

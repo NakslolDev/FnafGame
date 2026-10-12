@@ -533,6 +533,7 @@ script = ExtResource("16_3ayvq")
 audio = true
 id = "Audio"
 root_node = NodePath("../../../../../../..")
+Spanish = false
 
 [node name="Misc" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=1787875783]
 custom_minimum_size = Vector2(310, 0)
@@ -1068,13 +1069,13 @@ text = "Files"
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
-text = "safe USB-Key"
+text = "Endo adapter"
 
 [node name="CheckBox_dm_usb_key" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=1363025901]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
-text = "death minigames USB-Key"
+text = "Knows computer password"
 
 [node name="CheckBox_exe" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_inventory/VBoxContainer" unique_id=425404157]
 layout_mode = 2
