@@ -6,14 +6,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(6, 11)
 
-[node name="CharacterBonnie" type="CharacterBody2D" unique_id=1596486510]
+[node name="CharacterBonnie" type="CharacterBody2D" unique_id=1596486510 node_paths=PackedStringArray("sprite_2d", "timer")]
 script = ExtResource("1_p6rik")
+sprite_2d = NodePath("Sprite2D")
+timer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=532616739]
 texture = ExtResource("1_uuo0k")
+hframes = 4
+frame = 2
 region_enabled = true
-region_rect = Rect2(48, 0, 8, 16)
+region_rect = Rect2(40, 0, 32, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1741231039]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Timer" type="Timer" parent="." unique_id=782254695]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

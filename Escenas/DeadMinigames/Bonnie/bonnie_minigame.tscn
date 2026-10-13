@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dq8qw5d3wribl"]
 
+[ext_resource type="Script" uid="uid://cmpu54f2rghx8" path="res://Escenas/DeadMinigames/Bonnie/bonnie_minigame.gd" id="1_l24k0"]
 [ext_resource type="Texture2D" uid="uid://bh33olvuatkq5" path="res://assets/minijuego assets/DMTextureAtlas/MinigameTextureAtlas.png" id="1_uxs23"]
 [ext_resource type="PackedScene" uid="uid://b3blfwyeu6h43" path="res://Escenas/DeadMinigames/Bonnie/character_bonnie.tscn" id="2_rfxnn"]
 
@@ -16,20 +17,54 @@ tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rfxnn")
 
-[node name="BonnieMinigame" type="Node2D" unique_id=1704585867]
+[node name="BonnieMinigame" type="Node" unique_id=181634768 node_paths=PackedStringArray("candy", "pw")]
+script = ExtResource("1_l24k0")
+candy = NodePath("CanvasLayer/Combo/Candy")
+pw = NodePath("CanvasLayer/PowerUp/Pw")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1171626945]
-tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAD///z/AAAAAAAAAAD///v/AAAAAAAAAAD///r/AAAAAAAAAAD///n/AAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAAFAPn/AAAAAAAAAAAGAPn/AAAAAAAAAAAHAPn/AAAAAAAAAAAIAPn/AAAAAAAAAAAJAPn/AAAAAAAAAAAKAPn/AAAAAAAAAAALAPn/AAAAAAAAAAAMAPn/AAAAAAAAAAANAPn/AAAAAAAAAAAOAPn/AAAAAAAAAAAPAPn/AAAAAAAAAAAQAPn/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_g4v7s")
-
-[node name="Timer" type="Timer" parent="." unique_id=2095786247]
-wait_time = 0.1
-autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=911614774]
 position = Vector2(64, -12)
 zoom = Vector2(15, 15)
 
-[node name="CharacterBonnie" parent="." unique_id=1596486510 node_paths=PackedStringArray("tick") instance=ExtResource("2_rfxnn")]
+[node name="CharacterBonnie" parent="." unique_id=1596486510 node_paths=PackedStringArray("spawns") instance=ExtResource("2_rfxnn")]
 position = Vector2(78, -29)
-tick = NodePath("../Timer")
+spawns = [NodePath("../Spawners/Stage1")]
+
+[node name="Spawners" type="Node" parent="." unique_id=556027207]
+
+[node name="Stage1" type="Node2D" parent="Spawners" unique_id=621703099]
+position = Vector2(112, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=224763038]
+scale = Vector2(15, 15)
+transform = Transform2D(15, 0, 0, 15, 0, 0)
+
+[node name="Combo" type="Sprite2D" parent="CanvasLayer" unique_id=964154160]
+position = Vector2(16.533333, 8)
+texture = ExtResource("1_uxs23")
+region_enabled = true
+region_rect = Rect2(88, 0, 16, 16)
+
+[node name="Candy" type="Sprite2D" parent="CanvasLayer/Combo" unique_id=1814348975]
+texture = ExtResource("1_uxs23")
+hframes = 2
+vframes = 2
+region_enabled = true
+region_rect = Rect2(72, 0, 16, 16)
+
+[node name="PowerUp" type="Sprite2D" parent="CanvasLayer" unique_id=922659682]
+position = Vector2(111.46667, 8)
+texture = ExtResource("1_uxs23")
+region_enabled = true
+region_rect = Rect2(88, 16, 16, 16)
+
+[node name="Pw" type="Sprite2D" parent="CanvasLayer/PowerUp" unique_id=1610836956]
+texture = ExtResource("1_uxs23")
+hframes = 2
+vframes = 2
+region_enabled = true
+region_rect = Rect2(72, 16, 16, 16)
