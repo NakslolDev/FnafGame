@@ -10,8 +10,8 @@ var full_position: Vector2
 @export var sprite_2d: Sprite2D
 @export var timer: Timer
 
-func _ready() -> void:
-	_locate_to(spawns[0])
+enum Pow {NONE, SPEED, JUMP, MAGNET, MORE}
+var power: Pow = Pow.NONE
 
 func _physics_process(delta: float) -> void:
 	var last_position: Vector2 = position
@@ -21,16 +21,19 @@ func _physics_process(delta: float) -> void:
 		velocity += GRAVITY * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("W") and is_on_floor():
+	if not stunned and (Input.is_action_just_pressed("W") or Input.is_action_just_pressed("Space")) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		if power == Pow.JUMP: velocity.y *= 1.35
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("A", "D")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if not stunned: 
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		if power == Pow.SPEED: velocity.x *= 1.5
 
 	move_and_slide()
 	full_position = position
@@ -45,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	elif direction == 0 and timer.is_stopped() and is_on_floor():
 		sprite_2d.frame = 2
 
-func _locate_to(pos):
+func locate_to(pos):
 	if pos is Node2D:
 		pos = pos.position
 	if not pos is Vector2:
@@ -57,3 +60,35 @@ func _locate_to(pos):
 func _on_timer_timeout() -> void:
 	if is_on_floor() and not Input.get_axis("A", "D"):
 		sprite_2d.frame = 2
+
+
+func stop_momentum():
+	velocity = Vector2.ZERO
+
+
+func _on_laser_hitbox_area_entered(_area: Area2D) -> void:
+	stun()
+
+@export var timer_shake: Timer
+@export var timer_stun: Timer
+var stunned: bool = false
+func stun():
+	stop_momentum()
+	stunned = true
+	timer_stun.start()
+	timer_shake.start()
+
+func _on_stun_timeout() -> void:
+	stunned = false
+	timer_shake.stop()
+
+const SHAKE := 1.25
+var shake_left: bool = false
+func _on_timer_shake_timeout() -> void:
+	if stunned:
+		if shake_left:
+			position.x = round(position.x - SHAKE)
+		else:
+			position.x = round(position.x + SHAKE)
+		full_position.x = position.x
+		shake_left = !shake_left

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c65kuxf7iq1ik"]
+
+[ext_resource type="Script" uid="uid://5kuswwcjh315" path="res://Escenas/DeadMinigames/Bonnie/laser.gd" id="1_ny2bn"]
+[ext_resource type="Texture2D" uid="uid://bh33olvuatkq5" path="res://assets/minijuego assets/DMTextureAtlas/MinigameTextureAtlas.png" id="2_gphro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(1, 4)
+
+[node name="Laser" type="Node2D" unique_id=475227337]
+script = ExtResource("1_ny2bn")
+
+[node name="TimerMove" type="Timer" parent="." unique_id=731945898]
+wait_time = 0.15
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=861903709]
+z_index = -1
+texture = ExtResource("2_gphro")
+region_enabled = true
+region_rect = Rect2(67, 34, 1, 4)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1419876057]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1855527567]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[connection signal="timeout" from="TimerMove" to="." method="_on_timer_move_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

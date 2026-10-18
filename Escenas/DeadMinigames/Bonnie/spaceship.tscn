@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dbp4ohcv2rq53"]
+
+[ext_resource type="Script" uid="uid://bglltq3jyuacw" path="res://Escenas/DeadMinigames/Bonnie/spaceship.gd" id="1_ywac0"]
+[ext_resource type="PackedScene" uid="uid://c65kuxf7iq1ik" path="res://Escenas/DeadMinigames/Bonnie/laser.tscn" id="2_31bco"]
+[ext_resource type="Texture2D" uid="uid://bh33olvuatkq5" path="res://assets/minijuego assets/DMTextureAtlas/MinigameTextureAtlas.png" id="2_75jpx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75jpx"]
+size = Vector2(16, 16)
+
+[node name="Spaceship" type="Node2D" unique_id=227343657 node_paths=PackedStringArray("timer_move", "stun", "laser_positions_left", "laser_positions_right", "timer_shot")]
+script = ExtResource("1_ywac0")
+laser_blueprint = ExtResource("2_31bco")
+timer_move = NodePath("TimerMove")
+stun = NodePath("Stun")
+laser_positions_left = [NodePath("Laser4"), NodePath("Laser5")]
+laser_positions_right = [NodePath("Laser1"), NodePath("Laser2")]
+timer_shot = NodePath("Shot")
+
+[node name="TimerMove" type="Timer" parent="." unique_id=363494689]
+wait_time = 0.5
+
+[node name="Stun" type="Timer" parent="." unique_id=390713194]
+wait_time = 3.0
+one_shot = true
+
+[node name="Shot" type="Timer" parent="." unique_id=1432917509]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2060050713]
+texture = ExtResource("2_75jpx")
+region_enabled = true
+region_rect = Rect2(48, 32, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=186454550]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=503201022]
+shape = SubResource("RectangleShape2D_75jpx")
+
+[node name="Laser1" type="Node2D" parent="." unique_id=442986583]
+position = Vector2(7.5, 2)
+
+[node name="Laser2" type="Node2D" parent="." unique_id=1492838782]
+position = Vector2(5.5, 2)
+
+[node name="Laser4" type="Node2D" parent="." unique_id=514230244]
+position = Vector2(-5.5, 2)
+
+[node name="Laser5" type="Node2D" parent="." unique_id=938293346]
+position = Vector2(-7.5, 2)
+
+[connection signal="timeout" from="TimerMove" to="." method="_on_timer_move_timeout"]
+[connection signal="timeout" from="Stun" to="." method="_on_stun_timeout"]
+[connection signal="timeout" from="Shot" to="." method="_on_timer_shot_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

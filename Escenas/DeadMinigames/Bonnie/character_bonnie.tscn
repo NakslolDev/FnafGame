@@ -6,10 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(6, 11)
 
-[node name="CharacterBonnie" type="CharacterBody2D" unique_id=1596486510 node_paths=PackedStringArray("sprite_2d", "timer")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(4, 8)
+
+[node name="CharacterBonnie" type="CharacterBody2D" unique_id=1596486510 node_paths=PackedStringArray("sprite_2d", "timer", "timer_shake", "timer_stun")]
+collision_layer = 7
 script = ExtResource("1_p6rik")
 sprite_2d = NodePath("Sprite2D")
 timer = NodePath("Timer")
+timer_shake = NodePath("TimerShake")
+timer_stun = NodePath("Stun")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=532616739]
 texture = ExtResource("1_uuo0k")
@@ -26,4 +32,22 @@ shape = SubResource("RectangleShape2D_g4v7s")
 wait_time = 0.2
 one_shot = true
 
+[node name="LaserHitbox" type="Area2D" parent="." unique_id=351084811]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHitbox" unique_id=1432394083]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="Stun" type="Timer" parent="." unique_id=193406562]
+wait_time = 2.0
+one_shot = true
+
+[node name="TimerShake" type="Timer" parent="." unique_id=1207356431]
+wait_time = 0.25
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="LaserHitbox" to="." method="_on_laser_hitbox_area_entered"]
+[connection signal="timeout" from="Stun" to="." method="_on_stun_timeout"]
+[connection signal="timeout" from="TimerShake" to="." method="_on_timer_shake_timeout"]

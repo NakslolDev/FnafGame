@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://cmpu54f2rghx8" path="res://Escenas/DeadMinigames/Bonnie/bonnie_minigame.gd" id="1_l24k0"]
 [ext_resource type="Texture2D" uid="uid://bh33olvuatkq5" path="res://assets/minijuego assets/DMTextureAtlas/MinigameTextureAtlas.png" id="1_uxs23"]
 [ext_resource type="PackedScene" uid="uid://b3blfwyeu6h43" path="res://Escenas/DeadMinigames/Bonnie/character_bonnie.tscn" id="2_rfxnn"]
+[ext_resource type="PackedScene" uid="uid://bt3oc2a6ercxt" path="res://Escenas/DeadMinigames/Bonnie/points_label.tscn" id="3_fxv5q"]
+[ext_resource type="PackedScene" uid="uid://c73h7bagqkhs3" path="res://Escenas/DeadMinigames/Bonnie/item.tscn" id="4_0rub7"]
+[ext_resource type="Script" uid="uid://bmg7qr0ctsmkr" path="res://Escenas/DeadMinigames/Bonnie/follow_me.gd" id="6_fxv5q"]
+[ext_resource type="PackedScene" uid="uid://dbp4ohcv2rq53" path="res://Escenas/DeadMinigames/Bonnie/spaceship.tscn" id="7_lejun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfxnn"]
 texture = ExtResource("1_uxs23")
@@ -11,33 +15,171 @@ texture_region_size = Vector2i(8, 8)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rfxnn")
 
-[node name="BonnieMinigame" type="Node" unique_id=181634768 node_paths=PackedStringArray("candy", "pw")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(8, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+
+[node name="BonnieMinigame" type="Node" unique_id=181634768 node_paths=PackedStringArray("character_bonnie", "spaceship", "follow_me", "block", "camera_centers", "camera_2d", "spawners", "stage1_candy_spawn", "stage2_candy_spawn", "candy_timer", "power_up_life", "candy_combo_life", "combo_glass", "power_glass", "candy", "pw")]
 script = ExtResource("1_l24k0")
+character_bonnie = NodePath("CharacterBonnie")
+spaceship = NodePath("Spaceship")
+item_scene = ExtResource("4_0rub7")
+label_points_scene = ExtResource("3_fxv5q")
+follow_me = [NodePath("FollowMe/FollowMeStage1"), NodePath("FollowMe/FollowMeStage2")]
+block = [NodePath("Block/Stage1"), NodePath("Block/Stage2")]
+camera_centers = [NodePath("CameraCenters/Stage1"), NodePath("CameraCenters/Stage2"), NodePath("CameraCenters/Stage3")]
+camera_2d = NodePath("Camera2D")
+spawners = [NodePath("Spawners/Stage1"), NodePath("Spawners/Stage2"), NodePath("Spawners/Stage3")]
+stage1_candy_spawn = [NodePath("CandySpawners/Stage1/Left"), NodePath("CandySpawners/Stage1/Right")]
+stage2_candy_spawn = [NodePath("CandySpawners/Stage2/Left"), NodePath("CandySpawners/Stage2/Right")]
+candy_timer = NodePath("CandyTimer")
+power_up_life = NodePath("CanvasLayer/PowerUp/PowerUpLife")
+candy_combo_life = NodePath("CanvasLayer/Combo/CandyComboLife")
+combo_glass = NodePath("CanvasLayer/Combo/Glass")
+power_glass = NodePath("CanvasLayer/PowerUp/Glass")
 candy = NodePath("CanvasLayer/Combo/Candy")
 pw = NodePath("CanvasLayer/PowerUp/Pw")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1171626945]
-tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAD///z/AAAAAAAAAAD///v/AAAAAAAAAAD///r/AAAAAAAAAAD///n/AAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAAFAPn/AAAAAAAAAAAGAPn/AAAAAAAAAAAHAPn/AAAAAAAAAAAIAPn/AAAAAAAAAAAJAPn/AAAAAAAAAAAKAPn/AAAAAAAAAAALAPn/AAAAAAAAAAAMAPn/AAAAAAAAAAANAPn/AAAAAAAAAAAOAPn/AAAAAAAAAAAPAPn/AAAAAAAAAAAQAPn/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAQAPn/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD///j/AAAAAAAAAAAAAPj/AAAAAAAAAAABAPj/AAAAAAAAAAACAPj/AAAAAAAAAAADAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAHAPj/AAAAAAAAAAAIAPj/AAAAAAAAAAAJAPj/AAAAAAAAAAAKAPj/AAAAAAAAAAALAPj/AAAAAAAAAAAMAPj/AAAAAAAAAAANAPj/AAAAAAAAAAAOAPj/AAAAAAAAAAAPAPj/AAAAAAAAAAAQAPj/AAAAAAAAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAD9//3/AAAAAAAAAAD9//z/AAAAAAAAAAD9//v/AAAAAAAAAAD9//r/AAAAAAAAAAD9//n/AAAAAAAAAAD9//j/AAAAAAAAAAD+//j/AAAAAAAAAAD+/wEAAAAAAAAAAAD8/wIAAAABAAAAAAD7/wIAAAABAAAAAAD6/wIAAAABAAAAAAD5/wIAAAABAAAAAAD4/wIAAAABAAAAAAD3/wIAAAABAAAAAAD2/wIAAAABAAAAAAD1/wIAAAABAAAAAAD0/wIAAAABAAAAAADz/wIAAAABAAAAAADy/wIAAAABAAAAAADx/wIAAAABAAAAAADx/wEAAAABAAAAAADy/wEAAAABAAAAAADz/wEAAAABAAAAAAD0/wEAAAABAAAAAAD1/wEAAAABAAAAAAD2/wEAAAABAAAAAAD3/wEAAAABAAAAAAD4/wEAAAABAAAAAAD5/wEAAAABAAAAAAD6/wEAAAABAAAAAAD7/wEAAAABAAAAAAD8/wEAAAABAAAAAADw/wEAAAABAAAAAADv/wEAAAABAAAAAADu/wEAAAABAAAAAADt/wEAAAABAAAAAADs/wEAAAABAAAAAADr/wEAAAABAAAAAADq/wEAAAABAAAAAADr/wIAAAABAAAAAADs/wIAAAABAAAAAADt/wIAAAABAAAAAADu/wIAAAABAAAAAADv/wIAAAABAAAAAADw/wIAAAABAAAAAADq/wIAAAABAAAAAADq/wAAAAABAAAAAADq////AAABAAAAAADq//7/AAABAAAAAADq//3/AAABAAAAAADq//z/AAABAAAAAADq//v/AAABAAAAAADq//r/AAABAAAAAADq//n/AAABAAAAAADq//j/AAABAAAAAADr//j/AAABAAAAAADs//j/AAABAAAAAADt//j/AAABAAAAAADu//j/AAABAAAAAADv//j/AAABAAAAAADw//j/AAABAAAAAADx//j/AAABAAAAAADy//j/AAABAAAAAADz//j/AAABAAAAAAD0//j/AAABAAAAAAD1//j/AAABAAAAAAD2//j/AAABAAAAAAD3//j/AAABAAAAAAD4//j/AAABAAAAAAD5//j/AAABAAAAAAD6//j/AAABAAAAAAD7//j/AAABAAAAAAD8//j/AAABAAAAAADp/wIAAAAAAAAAAADo/wIAAAAAAAAAAADn/wIAAAAAAAAAAADm/wIAAAAAAAAAAADl/wIAAAAAAAAAAADk/wIAAAAAAAAAAADj/wIAAAAAAAAAAADi/wIAAAAAAAAAAADh/wIAAAAAAAAAAADg/wIAAAAAAAAAAADf/wIAAAAAAAAAAADe/wIAAAAAAAAAAADd/wIAAAAAAAAAAADc/wIAAAAAAAAAAADb/wIAAAAAAAAAAADa/wIAAAAAAAAAAADZ/wIAAAAAAAAAAADZ/wEAAAAAAAAAAADZ/wAAAAAAAAAAAADZ////AAAAAAAAAADZ//7/AAAAAAAAAADZ//3/AAAAAAAAAADZ//z/AAAAAAAAAADZ//v/AAAAAAAAAADZ//r/AAAAAAAAAADZ//n/AAAAAAAAAADp/wEAAAAAAAAAAADo/wEAAAAAAAAAAADn/wEAAAAAAAAAAADm/wEAAAAAAAAAAADl/wEAAAAAAAAAAADk/wEAAAAAAAAAAADj/wEAAAAAAAAAAADi/wEAAAAAAAAAAADh/wEAAAAAAAAAAADg/wEAAAAAAAAAAADf/wEAAAAAAAAAAADe/wEAAAAAAAAAAADd/wEAAAAAAAAAAADc/wEAAAAAAAAAAADb/wEAAAAAAAAAAADa/wEAAAAAAAAAAADZ//j/AAAAAAAAAADa//j/AAAAAAAAAADb//j/AAAAAAAAAADc//j/AAAAAAAAAADd//j/AAAAAAAAAADe//j/AAAAAAAAAADf//j/AAAAAAAAAADg//j/AAAAAAAAAADh//j/AAAAAAAAAADi//j/AAAAAAAAAADj//j/AAAAAAAAAADk//j/AAAAAAAAAADl//j/AAAAAAAAAADm//j/AAAAAAAAAADn//j/AAAAAAAAAADo//j/AAAAAAAAAADp//j/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_g4v7s")
 
+[node name="Block" type="Node" parent="." unique_id=1022632286]
+
+[node name="Stage1" type="StaticBody2D" parent="Block" unique_id=332566960]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block/Stage1" unique_id=1188833160]
+position = Vector2(-4, -24)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Stage2" type="StaticBody2D" parent="Block" unique_id=183150152]
+position = Vector2(-152, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block/Stage2" unique_id=371419060]
+position = Vector2(-4, -24)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Continue" type="Node" parent="." unique_id=1813060858]
+
+[node name="Stage1" type="Area2D" parent="Continue" unique_id=905204857]
+position = Vector2(-8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Continue/Stage1" unique_id=1825388094]
+position = Vector2(-4, -24)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Stage2" type="Area2D" parent="Continue" unique_id=642838345]
+position = Vector2(-160, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Continue/Stage2" unique_id=1284328699]
+position = Vector2(-4, -24)
+shape = SubResource("RectangleShape2D_g4v7s")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=911614774]
-position = Vector2(64, -12)
+position = Vector2(-88, -12)
 zoom = Vector2(15, 15)
 
+[node name="CameraCenters" type="Node" parent="." unique_id=1797481562]
+
+[node name="Stage1" type="Node2D" parent="CameraCenters" unique_id=2089156819]
+position = Vector2(64, -12)
+
+[node name="Stage2" type="Node2D" parent="CameraCenters" unique_id=636084786]
+position = Vector2(-88, -12)
+
+[node name="Stage3" type="Node2D" parent="CameraCenters" unique_id=486219332]
+position = Vector2(-240, -12)
+
+[node name="FollowMe" type="Node" parent="." unique_id=165114231]
+
+[node name="FollowMeStage1" type="Sprite2D" parent="FollowMe" unique_id=134146877]
+visible = false
+position = Vector2(12, -16)
+texture = ExtResource("1_uxs23")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+script = ExtResource("6_fxv5q")
+
+[node name="Timer" type="Timer" parent="FollowMe/FollowMeStage1" unique_id=1835313977]
+wait_time = 0.1
+autostart = true
+
+[node name="FollowMeStage2" type="Sprite2D" parent="FollowMe" unique_id=764761598]
+visible = false
+position = Vector2(-140, -16)
+texture = ExtResource("1_uxs23")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+script = ExtResource("6_fxv5q")
+
+[node name="Timer" type="Timer" parent="FollowMe/FollowMeStage2" unique_id=670799602]
+wait_time = 0.1
+autostart = true
+
+[node name="Foxy" type="Sprite2D" parent="." unique_id=1711992088]
+visible = false
+position = Vector2(12, -16)
+texture = ExtResource("1_uxs23")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 32)
+
+[node name="Chica" type="Sprite2D" parent="." unique_id=981913481]
+position = Vector2(32, -16)
+texture = ExtResource("1_uxs23")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 32)
+
 [node name="CharacterBonnie" parent="." unique_id=1596486510 node_paths=PackedStringArray("spawns") instance=ExtResource("2_rfxnn")]
-position = Vector2(78, -29)
+position = Vector2(104, -4)
 spawns = [NodePath("../Spawners/Stage1")]
+
+[node name="Spaceship" parent="." unique_id=227343657 node_paths=PackedStringArray("character", "limit_left", "limit_right") instance=ExtResource("7_lejun")]
+position = Vector2(-96, -38)
+character = NodePath("../CharacterBonnie")
+limit_left = NodePath("../CandySpawners/Stage2/Left")
+limit_right = NodePath("../CandySpawners/Stage2/Right")
 
 [node name="Spawners" type="Node" parent="." unique_id=556027207]
 
 [node name="Stage1" type="Node2D" parent="Spawners" unique_id=621703099]
 position = Vector2(112, 4)
+
+[node name="Stage2" type="Node2D" parent="Spawners" unique_id=437988315]
+position = Vector2(-44, 4)
+
+[node name="Stage3" type="Node2D" parent="Spawners" unique_id=1619042435]
+position = Vector2(-188, 4)
+
+[node name="CandySpawners" type="Node" parent="." unique_id=1024019070]
+
+[node name="Stage1" type="Node" parent="CandySpawners" unique_id=1995063524]
+
+[node name="Left" type="Node2D" parent="CandySpawners/Stage1" unique_id=823635053]
+position = Vector2(44, -52)
+
+[node name="Right" type="Node2D" parent="CandySpawners/Stage1" unique_id=1971201750]
+position = Vector2(112, -52)
+
+[node name="Stage2" type="Node" parent="CandySpawners" unique_id=1837462895]
+
+[node name="Left" type="Node2D" parent="CandySpawners/Stage2" unique_id=32179984]
+position = Vector2(-128, -52)
+
+[node name="Right" type="Node2D" parent="CandySpawners/Stage2" unique_id=994995111]
+position = Vector2(-48, -52)
+
+[node name="CandyTimer" type="Timer" parent="." unique_id=1129866084]
+wait_time = 2.0
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=224763038]
 scale = Vector2(15, 15)
@@ -56,6 +198,16 @@ vframes = 2
 region_enabled = true
 region_rect = Rect2(72, 0, 16, 16)
 
+[node name="Glass" type="Sprite2D" parent="CanvasLayer/Combo" unique_id=1712266813]
+texture = ExtResource("1_uxs23")
+vframes = 4
+region_enabled = true
+region_rect = Rect2(104, 0, 16, 32)
+
+[node name="CandyComboLife" type="Timer" parent="CanvasLayer/Combo" unique_id=576903772]
+wait_time = 2.5
+one_shot = true
+
 [node name="PowerUp" type="Sprite2D" parent="CanvasLayer" unique_id=922659682]
 position = Vector2(111.46667, 8)
 texture = ExtResource("1_uxs23")
@@ -68,3 +220,27 @@ hframes = 2
 vframes = 2
 region_enabled = true
 region_rect = Rect2(72, 16, 16, 16)
+
+[node name="Glass" type="Sprite2D" parent="CanvasLayer/PowerUp" unique_id=2060455774]
+texture = ExtResource("1_uxs23")
+vframes = 4
+region_enabled = true
+region_rect = Rect2(104, 0, 16, 32)
+
+[node name="PowerUpLife" type="Timer" parent="CanvasLayer/PowerUp" unique_id=553124450]
+wait_time = 4.0
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=95094498]
+visible = false
+material = SubResource("ShaderMaterial_g4v7s")
+offset_right = 128.0
+offset_bottom = 72.0
+
+[connection signal="body_entered" from="Continue/Stage1" to="." method="_on_stage_1_body_entered"]
+[connection signal="body_entered" from="Continue/Stage2" to="." method="_on_stage_2_body_entered"]
+[connection signal="timeout" from="FollowMe/FollowMeStage1/Timer" to="FollowMe/FollowMeStage1" method="_on_timer_timeout"]
+[connection signal="timeout" from="FollowMe/FollowMeStage2/Timer" to="FollowMe/FollowMeStage2" method="_on_timer_timeout"]
+[connection signal="timeout" from="CandyTimer" to="." method="_on_candy_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Combo/CandyComboLife" to="." method="_on_candy_combo_life_timeout"]
+[connection signal="timeout" from="CanvasLayer/PowerUp/PowerUpLife" to="." method="_on_power_up_life_timeout"]

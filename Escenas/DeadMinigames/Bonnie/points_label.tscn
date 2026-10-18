@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bt3oc2a6ercxt"]
+
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/fonts/I-pixel-u.ttf" id="1_y44nl"]
+[ext_resource type="Script" uid="uid://cv8uvcc4caagu" path="res://Escenas/DeadMinigames/Bonnie/points_label.gd" id="2_8pyuv"]
+
+[node name="PointsLabel" type="Node2D" unique_id=92326659 node_paths=PackedStringArray("kill_timer", "label")]
+modulate = Color(1, 0.5370987, 0.5370987, 1)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_8pyuv")
+kill_timer = NodePath("KillTimer")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=1802697735]
+offset_left = -108.0
+offset_top = -44.0
+offset_right = 108.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("1_y44nl")
+theme_override_font_sizes/font_size = 8
+text = "+350 Combo!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillTimer" type="Timer" parent="." unique_id=1387184688]
+wait_time = 2.0
+
+[node name="ColorTimer" type="Timer" parent="." unique_id=227628894]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]
+[connection signal="timeout" from="ColorTimer" to="." method="_on_color_timer_timeout"]
