@@ -265,8 +265,8 @@ func _manage_exit_minigame(new: scene):
 		Global.noche += 1
 		Global.randomice_map_items() # importante llamar a esto antes de guardar partida, pues la idea es que no puedes salir y volver a entrar para tener otra loot table
 		# Además, es a posta que solamente aparezcan en la segunda noche... Aunque igual lo cambio (añadir la función a Global.create_new_game)
+		if Global.inventario["key"]: Global.location_key = 0
 		Global.guardar_partida()
-
 
 func _manage_night_before_change():
 	if current_scene == scene.SHIFT:

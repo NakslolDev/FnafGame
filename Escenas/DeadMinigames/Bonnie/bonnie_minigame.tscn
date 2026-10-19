@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c73h7bagqkhs3" path="res://Escenas/DeadMinigames/Bonnie/item.tscn" id="4_0rub7"]
 [ext_resource type="Script" uid="uid://bmg7qr0ctsmkr" path="res://Escenas/DeadMinigames/Bonnie/follow_me.gd" id="6_fxv5q"]
 [ext_resource type="PackedScene" uid="uid://dbp4ohcv2rq53" path="res://Escenas/DeadMinigames/Bonnie/spaceship.tscn" id="7_lejun"]
+[ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="8_7vy2a"]
+[ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://Escenas/Night/RandomScriptsIDC/ready_visible.gd" id="8_sm7o3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfxnn"]
 texture = ExtResource("1_uxs23")
@@ -26,7 +28,29 @@ sources/0 = SubResource("TileSetAtlasSource_rfxnn")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(8, 64)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm7o3"]
+shader = ExtResource("8_7vy2a")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1280, 960)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 4.0
+shader_parameter/roll_size = 0.50000002375
+shader_parameter/roll_variation = 5.0
+shader_parameter/distort_intensity = 0.010000000475
+shader_parameter/noise_opacity = 1.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.01000004797499998
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.2830000134425
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.665
 
 [node name="BonnieMinigame" type="Node" unique_id=181634768 node_paths=PackedStringArray("character_bonnie", "spaceship", "follow_me", "block", "camera_centers", "camera_2d", "spawners", "stage1_candy_spawn", "stage2_candy_spawn", "candy_timer", "power_up_life", "candy_combo_life", "combo_glass", "power_glass", "candy", "pw")]
 script = ExtResource("1_l24k0")
@@ -126,7 +150,6 @@ wait_time = 0.1
 autostart = true
 
 [node name="Foxy" type="Sprite2D" parent="." unique_id=1711992088]
-visible = false
 position = Vector2(12, -16)
 texture = ExtResource("1_uxs23")
 region_enabled = true
@@ -182,11 +205,13 @@ wait_time = 2.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=224763038]
+visible = false
 scale = Vector2(15, 15)
 transform = Transform2D(15, 0, 0, 15, 0, 0)
+script = ExtResource("8_sm7o3")
 
 [node name="Combo" type="Sprite2D" parent="CanvasLayer" unique_id=964154160]
-position = Vector2(16.533333, 8)
+position = Vector2(22.933332, 8)
 texture = ExtResource("1_uxs23")
 region_enabled = true
 region_rect = Rect2(88, 0, 16, 16)
@@ -209,7 +234,7 @@ wait_time = 2.5
 one_shot = true
 
 [node name="PowerUp" type="Sprite2D" parent="CanvasLayer" unique_id=922659682]
-position = Vector2(111.46667, 8)
+position = Vector2(105.066666, 8)
 texture = ExtResource("1_uxs23")
 region_enabled = true
 region_rect = Rect2(88, 16, 16, 16)
@@ -228,14 +253,19 @@ region_enabled = true
 region_rect = Rect2(104, 0, 16, 32)
 
 [node name="PowerUpLife" type="Timer" parent="CanvasLayer/PowerUp" unique_id=553124450]
-wait_time = 4.0
+wait_time = 6.0
 one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=95094498]
-visible = false
-material = SubResource("ShaderMaterial_g4v7s")
-offset_right = 128.0
-offset_bottom = 72.0
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1860270330]
+material = SubResource("ShaderMaterial_sm7o3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1792.0
+offset_bottom = -1008.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="body_entered" from="Continue/Stage1" to="." method="_on_stage_1_body_entered"]
 [connection signal="body_entered" from="Continue/Stage2" to="." method="_on_stage_2_body_entered"]

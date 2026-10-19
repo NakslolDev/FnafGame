@@ -30,6 +30,7 @@ var will_stay_on_duct := false
 var go_straight := false # this var controls whether foxy will go straight to you. How this works is when it is activated, it will go to a predetermined room for each room
 # Also, he will roll twice his movement attempt, so he will also be moving faster. When he encounters a dead end, eather getting to position 0 or clashing against a heated duct, it will deactivate
 # Examples of when it activates: when energy breakdown. Maybe more in the future
+var move_fail_count := 0
 
 #65 posiciones posibles... 
 #map -> positions per room (0 = s, so I can int)
@@ -124,6 +125,7 @@ func reset():
 	last_room = "pas"
 	last_position = 0
 	door_fail_count = 0
+	move_fail_count = 0
 	enter_duct_when_closed_failed = 0
 	will_stay_on_duct = false
 	
@@ -225,9 +227,16 @@ func movement_oportunity(): # He particionado mucho el codigo para que este mas 
 	
 	var movement_hit := false
 	
-	if AI_level > randi_range(0, 20): # probabilidad de moverse
+	var damp_ai: int = 0
+	if move_fail_count == 0:
+		damp_ai = -5
+	else:
+		damp_ai = 2 * (door_fail_count - 1)
+	damp_ai *= Global.experimental["ai_normalizer"]
+	
+	if AI_level + damp_ai > randi_range(0, 20): # probabilidad de moverse
 		movement_hit = true
-	elif go_straight and AI_level > randi_range(0, 20): # literalmente una segunda oportunidad
+	elif go_straight and AI_level + damp_ai > randi_range(0, 20): # literalmente una segunda oportunidad
 		movement_hit = true
 	
 	if room.begins_with("Duc"):
@@ -242,8 +251,10 @@ func movement_oportunity(): # He particionado mucho el codigo para que este mas 
 		movement_hit = false
 	
 	if movement_hit:
+		move_fail_count = 0
 		move()
 	else:
+		move_fail_count += 1
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=FA8150]Foxy movement no: from ", position, " in ", room)
 
 func _manage_flashlight_stunt() -> bool:
@@ -351,6 +362,7 @@ func move(skip_decision := false): # esta funcion va a ser increiblemente larga.
 
 func move_back_to():
 	
+	move_fail_count = 1 #para no retrasar tanto, al igual que con freddy
 	last_position = position
 	last_room = room
 	
@@ -483,12 +495,13 @@ func check_ducts() -> bool:
 		if duct_heater_memory["7"]["on"] != duct_heater["7"]:
 			duct_heater_memory["7"]["on"] = duct_heater["7"]
 			duct_act = true
-	if (room == "closet" and position == 1) or (room == "lhall" and position == 2) or (room == "rhall" and position == 2) or (room == "almacen" and position == 2) or room == "Duc8":
+	if (room == "closet" and position == 1) or (room == "lhall" and position == 2) or (room == "rhall" and position == 2) or (room == "almacen") or room == "Duc8":
 		duct_heater_memory["8"]["time"] = 0
 		if duct_heater_memory["8"]["on"] != duct_heater["8"]:
 			duct_heater_memory["8"]["on"] = duct_heater["8"]
 			duct_act = true
-	
+	#almacen, aunque tenga 2 posiciones, puede detectar por todo el ducto 8. Esto es para que retroceda más fácilmente, ya que no se le ve en esa cámara
+
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (foxy) - ", "[color=B5623F]Did foxy learn something new?: ", duct_act)
 	return duct_act
 

@@ -115,7 +115,7 @@ func _on_done_safing(not_automatic: bool, read: int, combination := []):
 	pop_safe.visible = false
 	player.freeze = false
 	if Global.noche != 6:
-		_on_interacted_text("Safe_too_soon", [], 0)
+		_on_interacted_text("Safe_too_soon", [2], read)
 		return # evita cualquier cosa
 	if not not_automatic != false: # llamo al texto manualmente, pues no es con un interact
 		if combination == Global.safe_code:

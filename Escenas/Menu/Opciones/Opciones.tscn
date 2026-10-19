@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv54uvsb4g8u4"]
 
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://Escenas/Menu/Opciones/opciones.gd" id="1_k0pte"]
-[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
+[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="3_64mem"]
 [ext_resource type="Script" uid="uid://cw4xikgcuuitu" path="res://Escenas/Menu/Opciones/scripts/screen.gd" id="3_s8b7i"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="4_okdqg"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://bh6vae5cm5pt0" path="res://Escenas/Menu/Opciones/scripts/debug_menu.gd" id="24_gc1n0"]
 [ext_resource type="Script" uid="uid://dnse04uiexae2" path="res://Escenas/Menu/Opciones/scripts/button_translate_language.gd" id="25_7k58l"]
 [ext_resource type="Script" uid="uid://dxx02db84wdrr" path="res://Escenas/Menu/Opciones/scripts/debug_panel.gd" id="26_1dkiy"]
+[ext_resource type="Script" uid="uid://qg1veige4p0q" path="res://Escenas/Menu/Opciones/button_ai_normal.gd" id="27_okdqg"]
 [ext_resource type="Script" uid="uid://8kmrqndwl8b7" path="res://Escenas/Menu/Opciones/scripts/debug_options.gd" id="27_wa1uf"]
 [ext_resource type="Theme" uid="uid://dq5xvu5jxq2yc" path="res://Resources (tres)/debug_options.tres" id="28_t63xu"]
 [ext_resource type="Script" uid="uid://d2aahotjgr6rd" path="res://Escenas/Menu/Opciones/scripts/debug_menu_control.gd" id="29_1pq54"]
@@ -639,6 +640,34 @@ theme = ExtResource("3_64mem")
 text = "debug"
 script = ExtResource("24_gc1n0")
 opciones = NodePath("../../../../../..")
+
+[node name="Experimental" type="VBoxContainer" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer" unique_id=2092092841]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+theme_override_constants/separation = 42
+
+[node name="Experimental" type="Label" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental" unique_id=1678237236 node_paths=PackedStringArray("root_node")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("3_64mem")
+theme_type_variation = &"HeaderLarge"
+text = "Experimental"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("4_okdqg")
+id = "Experimental_label"
+root_node = NodePath("../../../../../..")
+
+[node name="Button_AINormal" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental" unique_id=552437246 node_paths=PackedStringArray("root_node")]
+layout_mode = 2
+theme = ExtResource("3_64mem")
+text = "Switch key doors when facing back"
+autowrap_mode = 2
+script = ExtResource("27_okdqg")
+id_off = "AI_normalizer_none"
+id_normal = "AI_normalizer_normal"
+id_hard = "AI_normalizer_hard"
+root_node = NodePath("../../../../../..")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Accesibilidad/Panel/VBoxContainer" unique_id=472748266]
 layout_mode = 2
@@ -1310,6 +1339,7 @@ puntero = "3"
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_when_win" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Button_when_win" method="_on_pressed"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed/Label" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Debug_menu" to="Debug_panel" method="_on_debug_menu_pressed"]
+[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental/Button_AINormal" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental/Button_AINormal" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Save_exit" to="." method="_on_save_exit_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Exit" to="." method="_on_exit_pressed"]

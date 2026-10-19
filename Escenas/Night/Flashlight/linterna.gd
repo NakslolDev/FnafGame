@@ -69,6 +69,9 @@ func _input(event):
 		if did_click_on:
 			linterna_release.play()
 			did_click_on = false
+	
+	if event.is_action_pressed("Esc"):
+		linterna_animacion()
 
 func _input_free() -> bool:
 	for area in get_tree().get_nodes_in_group("interactable"):

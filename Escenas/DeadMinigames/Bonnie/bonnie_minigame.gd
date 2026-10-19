@@ -220,6 +220,10 @@ func stop_stage():
 	spaceship.stop_shoot()
 	kill_all.emit()
 	candy_timer.stop()
+	if combo_life != PHASES:
+		candy_combo_life.stop()
+		combo_life = PHASES
+		combo_glass.frame = 0
 	for me in follow_me: me.visible = true
 	for wall in block:
 		wall.set_collision_layer_value(1,false)

@@ -684,6 +684,11 @@ var screen := {
 	"brightness": 1.0,
 }
 
+var experimental := {
+	"ai_normalizer": 0,
+	"task": false,
+}
+
 ##---Variables Progreso---#
 
 
@@ -762,7 +767,7 @@ func randomize_safe_code():
 		return # simplemente no cambia la combinacion
 	else:
 		for i in range(0, 5):
-			Global.safe_code[i] = randi_range(1, 9)
+			Global.safe_code[i] = min(randi_range(1, 9),randi_range(1, 9)) # Hago el minimo para fomentar numeros pequeños, lo que facilita conseguir el código en la noche 5
 		print("Safe code set: ", Global.safe_code)
 
 func create_new_game():
@@ -780,15 +785,34 @@ func create_new_game():
 	guardar_partida() # opcional. Igual lo quito, pero nose
 
 func randomice_map_items():
-	
+
 	for item in map_items:
 		item = false
-	
-	var number_of_items := randi_range(2, 5)
+
+	var number_of_items: int = randi_range(2, 3)
+	if noche >= 4: number_of_items += 1
+
+	var consumable_items: Array[String]
+	for key in map_items.keys():
+		if key.ends_with("batteries") or key.ends_with("water_bottle"):
+			consumable_items.append(key)
 	
 	for i in number_of_items:
-		map_items[map_items.keys().pick_random()] = true # tambien está implicito que pueden colisionar varios
-	
+		map_items[consumable_items.pick_random()] = true # tambien está implicito que pueden colisionar varios
+
+
+	var toy_items: Array[String]
+	for key in map_items.keys():
+		if key.ends_with("toy"):
+			toy_items.append(key)
+
+	if noche >= 4: map_items[toy_items.pick_random()] = true # tambien está implicito que pueden colisionar varios
+
+	#var screws_items: Array[String]
+	#for key in map_items.keys():
+		#if key.ends_with("screw"):
+			#screws_items.append(key)
+
 	print("Set items on map:")
 	for key in map_items.keys():
 		print(key, ": ", map_items[key])

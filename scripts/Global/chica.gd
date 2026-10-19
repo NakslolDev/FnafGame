@@ -26,6 +26,7 @@ var gotcha_lights := false # indica si la has visto con la linterna especificame
 var lock_movement := false # Se vuelve true cuando llega a la puerta, y bloquea una vez su intento de movimiento. Está por debajo de gotcha.
 var door_fail_count := 0 	# Cuenta la cantidad de veces que no se ha movido. Está por debajo de lock movement.
 							# en el caso de chica, le da igual si tienes la puerta abierta o cerrada, se moverá igual (excepto a donde)
+var move_fail_count := 0
 
 #S, 1, 2, 3, 4, 5, 6, PD, Office
 var position = "S"
@@ -50,6 +51,7 @@ func reset(): # Resetea las variables al principio de la noche
 	gotcha = 0
 	lock_movement = false
 	door_fail_count = 0
+	move_fail_count = 0
 	position = "S"
 	last_position = "S"
 	door_closed = false
@@ -122,7 +124,15 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 	
 	if position != "PD":
 		door_fail_count = 0
-		if AI_level > randi_range(0, 20) or always_do: # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
+		
+		var damp_ai: int = 0
+		if move_fail_count == 0:
+			damp_ai = -5
+		else:
+			damp_ai = 2 * (door_fail_count - 1)
+		damp_ai *= Global.experimental["ai_normalizer"]
+		
+		if AI_level + damp_ai > randi_range(0, 20) or always_do: # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
 			move()
 			return
 	
@@ -146,6 +156,7 @@ func movement_oportunity(always_do := false): # always_do hace que se mueva sin 
 	
 	# en este caso, door_fail_count funciona en paralelo tanto si tienes la puerta abierta como cerrada...
 	
+	move_fail_count += 1
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (chica) - ", "[color=yellow]Chica movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 
 
@@ -155,6 +166,8 @@ func move():
 	# Normalmente: 									position = 1, last position = S
 	# Justo antes de moverse, cuando entra en move: position = 1, last position = 1, true last = S
 	# Despues de moverse: 							position = 2, last position = 1
+	
+	move_fail_count = 0
 	
 	var true_last = last_position 
 	last_position = position

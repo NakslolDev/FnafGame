@@ -42,7 +42,7 @@ func _validate():
 		Items.objects[object_name] = maximun
 
 func _input(event: InputEvent) -> void:
-	if main_game.tick_stop:
+	if main_game.tick_stop or main_game.camaras_activadas:
 		return
 	
 	if not event.is_action_pressed("Click") or not _is_mouse_over():

@@ -27,6 +27,7 @@ var gotcha := 0 # gotcha indica si le has visto cuando está en la puerta. Asi p
 var lock_movement := false # Se vuelve true cuando llega a la puerta, y bloquea una vez su intento de movimiento. Está por debajo de gotcha.
 var door_fail_count := 0 	# Cuenta la cantidad de veces que no se ha movido. Está por debajo de lock movement.
 							# uso el positivo para intentos de entrar y el negativo para intentos de irse.
+var move_fail_count := 0
 
 #S, 0, 1, 2, 3, 4, PI, 5, office
 var position := "S"
@@ -50,6 +51,7 @@ func reset(): # Reseta todas las variables al inicio de la noche.
 	gotcha = 0
 	lock_movement = false
 	door_fail_count = 0
+	move_fail_count = 0
 	position = "S"
 	last_position = "S"
 	door_closed = false
@@ -135,7 +137,15 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 		if (door_focus.get_focus_state() >= focus_state.SOFT and position == "5"): # 5 siempre va a la puerta. Así evito que aparezca de la nada si tienes la linterna apuntando a la puerta
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no (flashlight on door): from ", position)
 			return
-		if AI_level > randi_range(0, 20): # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
+		
+		var damp_ai: int = 0
+		if move_fail_count == 0:
+			damp_ai = -5
+		else:
+			damp_ai = 2 * (door_fail_count - 1)
+		damp_ai *= Global.experimental["ai_normalizer"]
+		
+		if AI_level + damp_ai > randi_range(0,20): # es intencionalmente 21 posibles, para que siempre quepa la posibilidad de que falle
 			move()
 			return
 
@@ -164,11 +174,13 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 		door_fail_count -= 1 # Añade un intento fallido de irse 
 	# Ahora mismo, si abres la puerta, e intenta entrar, pero no lo hace, y vuelves a cerrar, el contador se resetea. De momento lo dejo intencional
 
+	move_fail_count += 1
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (bonnie) - ", "[color=cyan]Bonnie movement no: from ", position) # si llega hasta aquí es que no ha conseguido moverse
 
 
 func move(): # decide a donde moverse
-	
+
+	move_fail_count = 0
 	var ipos = int(position) # la posicion es un string, ya que puede ser S (escenario), PI (puerta izquierda) o office (oficina), por lo que la transformo en un numero a otra variable para poder comparar numericamente
 	last_position = position # poniendolo aqui en vez de al final consigo que se mantenga fiel mientras no se mueve
 	

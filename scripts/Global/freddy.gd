@@ -19,8 +19,8 @@ var door_fail_count: int
 var cam_look_count: int
 var path_to_take: int # esta variable determina que comportamiento va a tomar freddy
 var puerta_attack: bool
-var changing_doors: bool # controla si esta cambiando de puerta. De estar haciendolo, se movera mas rapido
-
+var changing_doors: bool # controla si e<sta cambiando de puerta. De estar haciendolo, se movera mas rapido
+var move_fail_count: int = 0
 #Path 0 -> S, 0, T1, T2, office
 #Path 1 -> 1, 2, 3, PI
 #Path 2 -> 1, 2, 3, 4, PD
@@ -45,6 +45,7 @@ func reset():
 	tick_count = 0
 	lock_movement = false
 	door_fail_count = 0
+	move_fail_count = 0
 	cam_look_count = 0
 	path_to_take = 0
 	puerta_attack = false
@@ -174,7 +175,15 @@ func movement_oportunity():
 	if (path_to_take == 1 and position != "PI") or (path_to_take == 2 and position != "PD"):
 		door_fail_count = 0
 		puerta_attack = false
-		if AI_level > randi_range(0, 20):
+		
+		var damp_ai: int = 0
+		if move_fail_count == 0:
+			damp_ai = -5
+		else:
+			damp_ai = 2 * (door_fail_count - 1)
+		damp_ai *= Global.experimental["ai_normalizer"]
+		
+		if AI_level + damp_ai > randi_range(0, 20):
 			move()
 			return
 
@@ -207,6 +216,7 @@ func movement_oportunity():
 			return
 
 
+	move_fail_count += 1
 	if position == "PD" or position == "PI" and puerta_attack:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement door atack: from ", position)
 	else:
@@ -215,6 +225,7 @@ func movement_oportunity():
 
 func move():
 	
+	move_fail_count = 0
 	seen = false
 	
 	last_position = position
@@ -308,6 +319,7 @@ func move():
 
 func move_back():
 	
+	move_fail_count = 1 # lo hago 1 para no relentizar tanto...
 	tick_count = 0
 	puerta_attack = false
 	last_position = position
