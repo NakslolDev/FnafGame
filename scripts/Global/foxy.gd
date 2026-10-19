@@ -229,7 +229,7 @@ func movement_oportunity(): # He particionado mucho el codigo para que este mas 
 	
 	var damp_ai: int = 0
 	if move_fail_count == 0:
-		damp_ai = -5
+		damp_ai = -3
 	else:
 		damp_ai = 2 * (door_fail_count - 1)
 	damp_ai *= Global.experimental["ai_normalizer"]
