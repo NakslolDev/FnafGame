@@ -17,14 +17,14 @@ var override_freddy_static := false
 @export var cam_root: Node2D
 
 const UP_STATIC_WHEN_CHANGING_CAMS := 0.05
-const UP_STATIC_WHEN_ANIMATRONIC_MOVEMENT := 0.5
-const UP_STATIC_WHEN_FREDDY_MOVEMENT := 1.0
+const UP_STATIC_WHEN_ANIMATRONIC_MOVEMENT := 0.25
+const UP_STATIC_WHEN_FREDDY_MOVEMENT := 0.75
 
 const FADE_FAST := true
 const FADE_SLOW := false
 
-const FADE_FAST_SPEED := 0.8
-const FADE_SLOW_SPEED := 0.4
+const FADE_FAST_SPEED := 0.9
+const FADE_SLOW_SPEED := 0.6
 
 func _ready():
 	static_speed.start()
