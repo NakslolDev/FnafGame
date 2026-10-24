@@ -4,6 +4,38 @@
 resource_name = "Reverb"
 room_size = 0.3
 
+[sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_nek2g"]
+resource_name = "BandPassFilter"
+cutoff_hz = 1300.0
+resonance = 0.75
+db = 2
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_nek2g"]
+resource_name = "Distortion"
+pre_gain = 15.0
+keep_hf_hz = 10000.0
+drive = 0.3
+post_gain = -15.0
+
+[sub_resource type="AudioEffectEQ21" id="AudioEffectEQ21_nek2g"]
+resource_name = "EQ21"
+band_db/22_hz = -60.0
+band_db/32_hz = -60.0
+band_db/44_hz = -60.0
+band_db/63_hz = -48.8
+band_db/90_hz = -29.5
+band_db/125_hz = -20.9
+band_db/175_hz = -9.2
+band_db/1400_hz = -6.1
+band_db/2000_hz = -13.1
+band_db/2800_hz = -19.9
+band_db/4000_hz = -27.5
+band_db/5600_hz = -44.5
+band_db/8000_hz = -60.0
+band_db/11000_hz = -60.0
+band_db/16000_hz = -60.0
+band_db/22000_hz = -60.0
+
 [resource]
 bus/1/name = &"SFX"
 bus/1/solo = false
@@ -37,3 +69,15 @@ bus/5/volume_db = 0.0
 bus/5/send = &"SFX"
 bus/5/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/5/effect/0/enabled = true
+bus/6/name = &"Phone"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"SFX"
+bus/6/effect/0/effect = SubResource("AudioEffectBandPassFilter_nek2g")
+bus/6/effect/0/enabled = true
+bus/6/effect/1/effect = SubResource("AudioEffectDistortion_nek2g")
+bus/6/effect/1/enabled = true
+bus/6/effect/2/effect = SubResource("AudioEffectEQ21_nek2g")
+bus/6/effect/2/enabled = true

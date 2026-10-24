@@ -553,6 +553,7 @@ shader_parameter/vignette_opacity = 0.665
 
 [node name="Minigame" type="Node" unique_id=1354298531 node_paths=PackedStringArray("manual_act_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe", "transicion", "shiftCompleted", "camera", "lights", "spawn_points", "esc_timer") groups=["minigame"]]
 script = ExtResource("1_xv0fq")
+custom_pos = true
 manual_act_nodes = [NodePath("Things_Front_All/Secret_room_hitbox"), NodePath("Coliders/Key_locations"), NodePath("YSort/PAS/DM_machine/Screen/Noise")]
 custom_action = NodePath("CustomActions")
 coliders_node = NodePath("Coliders")
@@ -1315,7 +1316,7 @@ Walls = [NodePath("Main/WallMain"), NodePath("Bathrooms/WallBathroomGirls"), Nod
 nodes = [NodePath("Entrance"), NodePath("Main"), NodePath("Bathrooms"), NodePath("Arcade"), NodePath("Kitchen"), NodePath("PAS"), NodePath("Warehouse"), NodePath("SecretOffice"), NodePath("Closet"), NodePath("LHall"), NodePath("RHall"), NodePath("SecurityRoom")]
 
 [node name="Character_Minigame" parent="YSort" unique_id=1051262395 instance=ExtResource("8_w4bkp")]
-position = Vector2(-546, 806)
+position = Vector2(-976, 856)
 
 [node name="Main" type="Node" parent="YSort" unique_id=1029633376]
 

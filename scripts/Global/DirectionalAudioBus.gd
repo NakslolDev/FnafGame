@@ -5,6 +5,8 @@ signal puerta(izquierda: bool)
 
 @warning_ignore("unused_signal")
 signal button(izquierda: bool, on: bool)
+@warning_ignore("unused_signal")
+signal button_failed(izquierda: bool)
 
 @warning_ignore("unused_signal")
 signal vhs_act_audio(stat: int)

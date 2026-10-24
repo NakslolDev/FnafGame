@@ -425,7 +425,6 @@ ruido_timer = NodePath("../RuidoTimer")
 
 [node name="Irritating_light" type="AudioStreamPlayer" parent="CanvasLayerDarkness/Lights" unique_id=142042597]
 stream = ExtResource("28_imsbu")
-volume_db = 3.0
 bus = &"SFX"
 parameters/looping = true
 

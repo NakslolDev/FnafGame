@@ -9,6 +9,7 @@ signal Puerta_Cambio(puerta_activada: bool)
 @export var no_energia: Node2D
 
 @export var boton_izquierda := true
+@export var break_down_possible := false
 var puerta_activada := false
 var mouse_entered := false
 var local_girando: int
@@ -35,13 +36,15 @@ func _on_click():
 		return
 	if not Global.energia["Puertas"]:
 		return
-	
+
+	if break_down_possible and not puerta_activada and not stuck_door and randi_range(0,50) == 0 and (Global.noche > 3 or Global.noche == 0): # no quiero que suceda en las primeras noches, pues tengo intención de        
+		stuck_door = true # decir en la primera noche que las puertas se pueden atascar, pero que no suceda hasta la noche 4...
+		DirectionalAudioBus.button_failed.emit(boton_izquierda)
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "left door: ", boton_izquierda, " broke down!")
+
 	puerta_activada = !puerta_activada
 	actualizar_sprites()
 	if not stuck_door: Puerta_Cambio.emit(puerta_activada)
-	if not puerta_activada and randi_range(0,50) == 0 and (Global.noche > 3 or Global.noche == 0): # no quiero que suceda en las primeras noches, pues tengo intención de        
-		stuck_door = true # decir en la primera noche que las puertas se pueden atascar, pero que no suceda hasta la noche 4...
-
 
 func _input(event):
 	if boton_izquierda:

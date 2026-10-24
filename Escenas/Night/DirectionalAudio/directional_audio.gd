@@ -7,6 +7,7 @@ func _ready() -> void:
 	
 	DirectionalAudioBus.puerta.connect(_puerta_sound)
 	DirectionalAudioBus.button.connect(_button_sound)
+	DirectionalAudioBus.button_failed.connect(_button_failed)
 	DirectionalAudioBus.vhs_act_audio.connect(_vhs_player_act_audio)
 	DirectionalAudioBus.vhs_change_audio_stream.connect(_vhs_player_change_audio_stream)
 	DirectionalAudioBus.encajar_linterna.connect(_encajar_linterna)
@@ -47,7 +48,6 @@ func _puerta_sound(izquierda: bool) -> void:
 @export var left_button_on: spacial_audio
 @export var right_button_off: spacial_audio
 @export var right_button_on: spacial_audio
-
 func _button_sound(izquierda: bool, on: bool) -> void:
 	if izquierda:
 		if on: left_button_on.play()
@@ -55,6 +55,13 @@ func _button_sound(izquierda: bool, on: bool) -> void:
 	else:
 		if on: right_button_on.play()
 		else: right_button_off.play()
+
+@export var left_button_fail: spacial_audio
+@export var right_button_fail: spacial_audio
+func _button_failed(izquierda: bool) -> void:
+	if izquierda: left_button_fail.play()
+	else: right_button_fail.play()
+
 
 @export var vhs_sound: spacial_audio
 func _vhs_player_act_audio(stat: int) -> void:

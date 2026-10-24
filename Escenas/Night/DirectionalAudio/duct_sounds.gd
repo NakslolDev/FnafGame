@@ -4,7 +4,7 @@ extends Node
 
 var playing := false
 var last := 0
-var volume: int
+var volume: float
 
 func _ready():
 	Foxy.movement.connect(_movement_foxy)
@@ -57,7 +57,7 @@ func control_volume(pos, room):
 	elif room == "Duc8":
 		volume = -15 - abs(4 - pos) * 5
 	if Global.energia["Luces"]:
-		volume -= 5
+		volume -= 2.5
 	#print("Volumen = ", volume)
 
 func aply_volume():
