@@ -9,6 +9,9 @@ extends Node
 @export var camera_centers: Array[Node2D]
 @export var camera_2d: Camera2D
 @export var spawners: Array[Node2D]
+@export var foxys: Array[Sprite2D]
+@export var fuse_item: CharacterBody2D
+var fuse_item_spawned := false
 
 @export var stage1_candy_spawn: Array[Node2D]
 @export var stage2_candy_spawn: Array[Node2D]
@@ -63,6 +66,7 @@ func stage_1_start():
 	for me in follow_me: me.visible = false
 	for wall in block:
 		wall.set_collision_layer_value(1,true)
+	for fox in foxys: fox.reset()
 	camera_2d.global_position = camera_centers[0].global_position
 
 func stage_2_start():
@@ -82,6 +86,7 @@ func stage_2_start():
 	for me in follow_me: me.visible = false
 	for wall in block:
 		wall.set_collision_layer_value(1,true)
+	for fox in foxys: fox.reset()
 	camera_2d.global_position = camera_centers[1].global_position
 
 func stage_3_start():
@@ -92,8 +97,8 @@ func stage_3_start():
 	for me in follow_me: me.visible = false
 	for wall in block:
 		wall.set_collision_layer_value(1,true)
+	for fox in foxys: fox.reset()
 	camera_2d.global_position = camera_centers[2].global_position
-
 
 
 func set_candy():
@@ -119,6 +124,11 @@ func set_pow():
 
 
 func spawn_item():
+	if not fuse_item_spawned and stage == 2 and points >= 1000:
+		fuse_item.locate_to(Vector2(randf_range(stage2_candy_spawn[0].position.x, stage2_candy_spawn[1].position.x),randf_range(stage2_candy_spawn[0].position.y, stage2_candy_spawn[1].position.y)))
+		fuse_item_spawned = true
+		return
+	
 	var item = item_scene.instantiate()
 	add_child(item)
 
@@ -205,28 +215,44 @@ func _on_candy_timer_timeout() -> void:
 	if power == Pow.MORE: time = time/1.5
 	candy_timer.start(time)
 
+const MAX_HEIGHT := -44.0
 func point_label(points_: int, pos: Vector2, combo_: bool):
 	if combo_: await get_tree().create_timer(randf_range(0.25,0.75)).timeout
 	var label: Node2D = label_points_scene.instantiate()
-	label.set_pos(pos + Vector2(randf_range(-10.0,10.0),randf_range(-10.0,10.0)))
+	var pos_label: Vector2 = pos + Vector2(randf_range(-10.0,10.0),randf_range(-10.0,10.0))
+	if pos_label.y < MAX_HEIGHT: pos_label.y = MAX_HEIGHT
+	label.set_pos(pos_label)
 	var text = "+" + str(points_)
 	if combo_: text += " Combo!"
 	label.set_text(text)
 	add_child(label)
 	label.start_death_timer(randf_range(1.0,2.0))
 
+func _on_fuse_item_collected(pos: Vector2) -> void:
+	Global.dm_unlocks["fuse"] = true
+	var label: Node2D = label_points_scene.instantiate()
+	var pos_label: Vector2 = pos + Vector2(randf_range(-10.0,10.0),randf_range(-10.0,10.0))
+	if pos_label.y < MAX_HEIGHT: pos_label.y = MAX_HEIGHT
+	label.set_pos(pos_label)
+	var text = "@■■■■$item:id:#1281"
+	label.set_text(text)
+	add_child(label)
+	label.start_death_timer(5.0)
+
+
 
 func stop_stage():
 	spaceship.stop_shoot()
 	kill_all.emit()
 	candy_timer.stop()
-	if combo_life != PHASES:
+	if combo != Candy.NONE and combo_life != PHASES:
 		candy_combo_life.stop()
 		combo_life = PHASES
 		combo_glass.frame = 0
 	for me in follow_me: me.visible = true
 	for wall in block:
 		wall.set_collision_layer_value(1,false)
+	for fox in foxys: fox.start_walk()
 
 
 func _on_stage_1_body_entered(body: Node2D) -> void:
@@ -240,6 +266,7 @@ func _on_stage_2_body_entered(body: Node2D) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Click"):
 		stop_stage()
+		return
 		await get_tree().physics_frame
 		match stage:
 			1: stage_2_start()

@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bt3oc2a6ercxt" path="res://Escenas/DeadMinigames/Bonnie/points_label.tscn" id="3_fxv5q"]
 [ext_resource type="PackedScene" uid="uid://c73h7bagqkhs3" path="res://Escenas/DeadMinigames/Bonnie/item.tscn" id="4_0rub7"]
 [ext_resource type="Script" uid="uid://bmg7qr0ctsmkr" path="res://Escenas/DeadMinigames/Bonnie/follow_me.gd" id="6_fxv5q"]
+[ext_resource type="Script" uid="uid://32ypvsfyoa5n" path="res://Escenas/DeadMinigames/Bonnie/animatronic_animation.gd" id="6_ubryv"]
 [ext_resource type="PackedScene" uid="uid://dbp4ohcv2rq53" path="res://Escenas/DeadMinigames/Bonnie/spaceship.tscn" id="7_lejun"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="8_7vy2a"]
 [ext_resource type="Script" uid="uid://yv0ffka70hvu" path="res://Escenas/Night/RandomScriptsIDC/ready_visible.gd" id="8_sm7o3"]
+[ext_resource type="Script" uid="uid://b4fl3aexbln1i" path="res://Escenas/DeadMinigames/Bonnie/fuse_item.gd" id="11_dk3c0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfxnn"]
 texture = ExtResource("1_uxs23")
@@ -31,16 +33,16 @@ size = Vector2(8, 64)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sm7o3"]
 shader = ExtResource("8_7vy2a")
 shader_parameter/overlay = false
-shader_parameter/scanlines_opacity = 0.4
-shader_parameter/scanlines_width = 0.25
-shader_parameter/grille_opacity = 0.3
-shader_parameter/resolution = Vector2(1280, 960)
+shader_parameter/scanlines_opacity = 1.0
+shader_parameter/scanlines_width = 0.5
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(320, 240)
 shader_parameter/pixelate = true
 shader_parameter/roll = false
 shader_parameter/roll_speed = 4.0
 shader_parameter/roll_size = 0.50000002375
 shader_parameter/roll_variation = 5.0
-shader_parameter/distort_intensity = 0.010000000475
+shader_parameter/distort_intensity = 0.0050000002375
 shader_parameter/noise_opacity = 1.0
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.06
@@ -52,7 +54,16 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.665
 
-[node name="BonnieMinigame" type="Node" unique_id=181634768 node_paths=PackedStringArray("character_bonnie", "spaceship", "follow_me", "block", "camera_centers", "camera_2d", "spawners", "stage1_candy_spawn", "stage2_candy_spawn", "candy_timer", "power_up_life", "candy_combo_life", "combo_glass", "power_glass", "candy", "pw")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84yb4"]
+size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ll6m"]
+size = Vector2(32, 32)
+
+[node name="BonnieMinigame" type="Node" unique_id=181634768 node_paths=PackedStringArray("character_bonnie", "spaceship", "follow_me", "block", "camera_centers", "camera_2d", "spawners", "foxys", "fuse_item", "stage1_candy_spawn", "stage2_candy_spawn", "candy_timer", "power_up_life", "candy_combo_life", "combo_glass", "power_glass", "candy", "pw")]
 script = ExtResource("1_l24k0")
 character_bonnie = NodePath("CharacterBonnie")
 spaceship = NodePath("Spaceship")
@@ -63,6 +74,8 @@ block = [NodePath("Block/Stage1"), NodePath("Block/Stage2")]
 camera_centers = [NodePath("CameraCenters/Stage1"), NodePath("CameraCenters/Stage2"), NodePath("CameraCenters/Stage3")]
 camera_2d = NodePath("Camera2D")
 spawners = [NodePath("Spawners/Stage1"), NodePath("Spawners/Stage2"), NodePath("Spawners/Stage3")]
+foxys = [NodePath("FoxyStage1"), NodePath("FoxyStage2")]
+fuse_item = NodePath("FuseItem")
 stage1_candy_spawn = [NodePath("CandySpawners/Stage1/Left"), NodePath("CandySpawners/Stage1/Right")]
 stage2_candy_spawn = [NodePath("CandySpawners/Stage2/Left"), NodePath("CandySpawners/Stage2/Right")]
 candy_timer = NodePath("CandyTimer")
@@ -149,17 +162,46 @@ script = ExtResource("6_fxv5q")
 wait_time = 0.1
 autostart = true
 
-[node name="Foxy" type="Sprite2D" parent="." unique_id=1711992088]
+[node name="FoxyStage1" type="Sprite2D" parent="." unique_id=1711992088 node_paths=PackedStringArray("timer")]
 position = Vector2(12, -16)
 texture = ExtResource("1_uxs23")
+vframes = 4
 region_enabled = true
-region_rect = Rect2(0, 16, 16, 32)
+region_rect = Rect2(0, 16, 16, 128)
+script = ExtResource("6_ubryv")
+timer = NodePath("Timer")
+normal_time = 0.75
+flip = false
 
-[node name="Chica" type="Sprite2D" parent="." unique_id=981913481]
+[node name="Timer" type="Timer" parent="FoxyStage1" unique_id=1033973187]
+wait_time = 0.75
+
+[node name="Chica" type="Sprite2D" parent="." unique_id=981913481 node_paths=PackedStringArray("timer")]
 position = Vector2(32, -16)
 texture = ExtResource("1_uxs23")
+vframes = 2
+frame = 1
 region_enabled = true
-region_rect = Rect2(16, 16, 16, 32)
+region_rect = Rect2(16, 16, 16, 64)
+script = ExtResource("6_ubryv")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Chica" unique_id=166046463]
+wait_time = 0.5
+
+[node name="FoxyStage2" type="Sprite2D" parent="." unique_id=1437951400 node_paths=PackedStringArray("timer")]
+position = Vector2(-140, -8)
+texture = ExtResource("1_uxs23")
+vframes = 4
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 128)
+script = ExtResource("6_ubryv")
+timer = NodePath("Timer")
+normal_time = 0.75
+flip = false
+
+[node name="Timer" type="Timer" parent="FoxyStage2" unique_id=659622887]
+wait_time = 0.75
 
 [node name="CharacterBonnie" parent="." unique_id=1596486510 node_paths=PackedStringArray("spawns") instance=ExtResource("2_rfxnn")]
 position = Vector2(104, -4)
@@ -267,6 +309,36 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="FuseItem" type="CharacterBody2D" parent="." unique_id=483059159 node_paths=PackedStringArray("area_2d_magnet", "player")]
+position = Vector2(-172, -68)
+collision_layer = 0
+script = ExtResource("11_dk3c0")
+area_2d_magnet = NodePath("Area2DMagnet")
+player = NodePath("../CharacterBonnie")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="FuseItem" unique_id=507217070]
+texture = ExtResource("1_uxs23")
+region_enabled = true
+region_rect = Rect2(72, 32, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FuseItem" unique_id=1107179137]
+shape = SubResource("RectangleShape2D_84yb4")
+
+[node name="Area2DPickup" type="Area2D" parent="FuseItem" unique_id=1168437523]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FuseItem/Area2DPickup" unique_id=2027859323]
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="Area2DMagnet" type="Area2D" parent="FuseItem" unique_id=1363498922]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FuseItem/Area2DMagnet" unique_id=1212904433]
+shape = SubResource("RectangleShape2D_5ll6m")
+
 [connection signal="body_entered" from="Continue/Stage1" to="." method="_on_stage_1_body_entered"]
 [connection signal="body_entered" from="Continue/Stage2" to="." method="_on_stage_2_body_entered"]
 [connection signal="timeout" from="FollowMe/FollowMeStage1/Timer" to="FollowMe/FollowMeStage1" method="_on_timer_timeout"]
@@ -274,3 +346,5 @@ mouse_filter = 2
 [connection signal="timeout" from="CandyTimer" to="." method="_on_candy_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Combo/CandyComboLife" to="." method="_on_candy_combo_life_timeout"]
 [connection signal="timeout" from="CanvasLayer/PowerUp/PowerUpLife" to="." method="_on_power_up_life_timeout"]
+[connection signal="collected" from="FuseItem" to="." method="_on_fuse_item_collected"]
+[connection signal="body_entered" from="FuseItem/Area2DPickup" to="FuseItem" method="_on_area_2d_body_entered"]

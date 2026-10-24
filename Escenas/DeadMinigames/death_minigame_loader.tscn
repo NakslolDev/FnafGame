@@ -16,10 +16,3 @@ theme_override_font_sizes/font_size = 50
 text = "ENTER: Complete
 Space: Save
 Esc: Cancel"
-
-[node name="Label2" type="Label" parent="." unique_id=136868094]
-offset_left = 541.0
-offset_top = 168.0
-offset_right = 1209.0
-offset_bottom = 381.0
-theme_override_font_sizes/font_size = 50

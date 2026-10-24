@@ -250,6 +250,7 @@ func guardar_partida():
 		"inventario": inventario,
 		"mapa": mapa,
 		"dm": dm,
+		"dm_unlocks": dm_unlocks,
 		"map_items": map_items,
 		"id_dialogs": id_dialogs
 	}
@@ -266,12 +267,11 @@ func guardar_partida():
 
 func guardar_partida_provisional(): # partida provisional no necesita su contraparte debug
 	
-	var partida := {
+	var partida := { #como todo lo relacionado con los dm se maneja a parte de que mueras o no, no lo meto...
 		"noche": noche,
 		"safe_code": safe_code,
 		"inventario": inventario,
 		"mapa": mapa,
-		"dm": dm,
 		"map_items": map_items,
 		"id_dialogs": id_dialogs,
 		"items": Items.objects
@@ -308,6 +308,7 @@ func guardar_death_minigames():
 		
 		sync_debug_to_current()
 		devpartida["dm"] = dm
+		devpartida["dm_unlocks"] = dm_unlocks
 		
 		devfile = FileAccess.open(devpath, FileAccess.WRITE)
 		
@@ -337,6 +338,7 @@ func guardar_death_minigames():
 		return
 	
 	partida["dm"] = dm
+	partida["dm_unlocks"] = dm_unlocks
 	
 	file = FileAccess.open(path, FileAccess.WRITE)
 	
@@ -357,6 +359,7 @@ func guardar_partida_debug():
 		"inventario": inventario,
 		"mapa": mapa,
 		"dm": dm,
+		"dm_unlocks": dm_unlocks,
 		"map_items": map_items,
 		"id_dialogs": id_dialogs
 	}
@@ -400,6 +403,8 @@ func leer_partida():
 				_asign_recursive_diccionary(devpartida.get("mapa"), mapa)
 			if devpartida.has("dm"):
 				_asign_recursive_diccionary(devpartida.get("dm"), dm)
+			if devpartida.has("dm_unlocks"):
+				_asign_recursive_diccionary(devpartida.get("dm_unlocks"), dm_unlocks)
 			if devpartida.has("map_items"):
 				_asign_recursive_diccionary(devpartida.get("map_items"), map_items)
 			if devpartida.has("id_dialogs"):
@@ -439,6 +444,8 @@ func leer_partida():
 		_asign_recursive_diccionary(partida.get("mapa"), mapa)
 	if partida.has("dm"):
 		_asign_recursive_diccionary(partida.get("dm"), dm)
+	if partida.has("dm_unlocks"):
+		_asign_recursive_diccionary(partida.get("dm_unlocks"), dm_unlocks)
 	if partida.has("map_items"):
 		_asign_recursive_diccionary(partida.get("map_items"), map_items)
 	if partida.has("id_dialogs"):
@@ -471,8 +478,6 @@ func leer_partida_provisional():
 		_asign_recursive_diccionary(partida.get("inventario"), inventario)
 	if partida.has("mapa"):
 		_asign_recursive_diccionary(partida.get("mapa"), mapa)
-	if partida.has("dm"):
-		_asign_recursive_diccionary(partida.get("dm"), dm)
 	if partida.has("map_items"):
 		_asign_recursive_diccionary(partida.get("map_items"), map_items)
 	if partida.has("id_dialogs"):
@@ -744,6 +749,11 @@ var dm: Dictionary[String, Estado] = {
 	"chica": Estado.STANDBY,
 	"freddy": Estado.STANDBY,
 	"foxy": Estado.STANDBY,
+}
+
+var dm_unlocks: Dictionary[String, bool] = {
+	"fuse": false,
+	"music_box": false,
 }
 
 var map_items = {

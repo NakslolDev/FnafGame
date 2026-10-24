@@ -3,14 +3,27 @@ extends Node
 @onready var scene_handler: Node = get_tree().get_first_node_in_group("scene_handler")
 
 @export var minigames: Array[PackedScene]
+var minigame_scene: Node
 
 @onready var animatronic := Global.killed_by
 
 func _ready() -> void:
+	animatronic = "bonnie"
 	print("Current anim: ", animatronic)
 	print("Enter -> complete | Space -> Save | Esc to exit")
+	load_minigame()
 
+func load_minigame():
+	match animatronic:
+		"bonnie":
+			minigame_scene = minigames[0].instantiate()
+			add_child(minigame_scene)
+		_:
+			autocomplete = true
+
+@export var autocomplete := false
 func _input(event: InputEvent) -> void:
+	if not autocomplete: return
 	var decision: Global.Estado
 	if event.is_action_pressed("Enter"):
 		decision = Global.Estado.COMPLETADO
