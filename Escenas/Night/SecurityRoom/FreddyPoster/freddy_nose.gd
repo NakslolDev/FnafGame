@@ -11,6 +11,7 @@ func _process(delta):
 		doit.pitch_scale -= 0.2 * delta
 
 func _on_click():
+	if not Global.input_ready: return
 	if main_game.tick_stop:
 		return
 	if cam_warp:

@@ -45,6 +45,7 @@ func _on_area_2d_pre_girar_mouse_entered() -> void:
 		activado = true
 
 func _input(event):
+	if not Global.input_ready: return
 	if detras or izquierda == false: # el giro por imput solo lo controla el de delante derecha
 		return
 	if event.is_action_pressed("Girarse") and oficina.camaras_activadas == false and main_game.tick_stop == false: # como a esta parte no pueden acceder los de detras no me preocupo

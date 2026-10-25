@@ -32,6 +32,7 @@ func energia_act():
 		stuck_door = false
 
 func _on_click():
+	if not Global.input_ready: return
 	if root.camaras_activadas or root.tick_stop:
 		return
 	if not Global.energia["Puertas"]:
@@ -47,6 +48,7 @@ func _on_click():
 	if not stuck_door: Puerta_Cambio.emit(puerta_activada)
 
 func _input(event):
+	if not Global.input_ready: return
 	if boton_izquierda:
 		if local_girando == 3 and Global.misc["Switch_Doors_Back"]:
 			if event.is_action_pressed("Puerta_Derecha"):

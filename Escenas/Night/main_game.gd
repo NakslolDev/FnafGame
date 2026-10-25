@@ -99,6 +99,9 @@ func _ready():
 	_transition_in()
 	animatronic_map.act_first() # ni idea de por que ha de estar aqui pero bueno
 
+	await get_tree().physics_frame
+	Global.input_ready = true
+
 
 func _input(event):
 	#if event.is_action_pressed("W"):

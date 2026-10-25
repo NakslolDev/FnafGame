@@ -830,6 +830,7 @@ func randomice_map_items():
 
 ##---Variables Noche---#
 
+var input_ready := false
 
 var custom_night_ai := [0, 0, 0, 0] # bonnie, chica, freddy, foxy
 
@@ -887,6 +888,7 @@ func reset_night():
 	time_minute = 0
 	tick_count = 0
 	linterna_bateria = 100
+	input_ready = false
 	for key in energia:
 		set_energia(key, true)
 	act_animatronic_ai(time_hour)
@@ -900,6 +902,7 @@ func night_starts():
 	
 	if noche >= 4 and not inventario["key"]:
 		location_key = randi_range(1,4)
+	else: location_key = 0
 	
 	mapa["computer_failed"] = false
 	if mapa["computer_working"]:

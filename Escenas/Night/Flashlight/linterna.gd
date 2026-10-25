@@ -55,6 +55,8 @@ func set_linterna(value: bool, animation := false):
 
 func _input(event):
 	
+	if not Global.input_ready: return
+	
 	if event.is_action_pressed("Click"):
 		if linterna_recargando or father.camaras_activadas or linterna_animacion_count != 0 or father.tick_stop:
 			return
@@ -62,16 +64,16 @@ func _input(event):
 			linterna_press.play()
 			did_click_on = true
 			if Global.linterna_bateria != 0: set_linterna(!linterna_activada)
-	
+
 	if event.is_action_released("Click"):
 		if linterna_recargando or father.camaras_activadas or linterna_animacion_count != 0 or father.tick_stop:
 			return
 		if did_click_on:
 			linterna_release.play()
 			did_click_on = false
-	
-	if event.is_action_pressed("Esc"):
-		linterna_animacion()
+
+	#if event.is_action_pressed("Esc"):
+		#linterna_animacion()
 
 func _input_free() -> bool:
 	for area in get_tree().get_nodes_in_group("interactable"):

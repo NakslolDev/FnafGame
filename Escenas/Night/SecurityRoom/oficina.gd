@@ -24,6 +24,8 @@ var jumpscare_block := false
 
 func _process(delta):
 	
+	if not Global.input_ready: return
+	
 	if jumpscare_block:
 		return
 	

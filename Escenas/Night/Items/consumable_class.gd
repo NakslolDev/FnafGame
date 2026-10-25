@@ -42,6 +42,7 @@ func _validate():
 		Items.objects[object_name] = maximun
 
 func _input(event: InputEvent) -> void:
+	if not Global.input_ready: return
 	if main_game.tick_stop or main_game.camaras_activadas:
 		return
 	

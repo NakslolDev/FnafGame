@@ -2,17 +2,28 @@
 
 [ext_resource type="Script" uid="uid://d1j05sj38vxq2" path="res://Escenas/Night/main_game.gd" id="1_ri0qg"]
 [ext_resource type="Script" uid="uid://dg87i78j5fghc" path="res://Escenas/Night/RandomScriptsIDC/cheats.gd" id="2_4erhx"]
+[ext_resource type="Script" uid="uid://crpvftflwk4o" path="res://Escenas/Night/ambient.gd" id="3_yfjon"]
 [ext_resource type="Script" uid="uid://bqwie24f1rykg" path="res://Escenas/Night/SecurityRoom/oficina.gd" id="4_arw1f"]
+[ext_resource type="AudioStream" uid="uid://bslkr1umu3lqv" path="res://assets/sounds/ambient/deepnest_be_like.mp3" id="4_lctcs"]
 [ext_resource type="Script" uid="uid://cqq50gwurqhfb" path="res://Escenas/Night/RandomScriptsIDC/flashlight_shader_control.gd" id="4_xe21u"]
+[ext_resource type="AudioStream" uid="uid://bh4a0gwq3ffro" path="res://assets/sounds/ambient/deep_ambient.mp3" id="5_pukf3"]
 [ext_resource type="Script" uid="uid://blpn7t14i1trt" path="res://Escenas/Night/SecurityRoom/Back/Ventilation/ventilation.gd" id="5_ujq6x"]
+[ext_resource type="AudioStream" uid="uid://6r4rm58ymk8y" path="res://assets/sounds/ambient/fallout.mp3" id="6_13g5b"]
 [ext_resource type="AudioStream" uid="uid://6cf4ra3goluv" path="res://assets/sounds/Ventilation_loop.ogg" id="6_hal1v"]
+[ext_resource type="AudioStream" uid="uid://8ol2n24wuh1q" path="res://assets/sounds/ambient/high_ambient.mp3" id="7_5sfnd"]
 [ext_resource type="PackedScene" uid="uid://mxxfro0701lh" path="res://Escenas/Night/Movement/Detector_Girar.tscn" id="7_q5fcm"]
+[ext_resource type="AudioStream" uid="uid://b0pfgl471rcd3" path="res://assets/sounds/ambient/high_pitch.mp3" id="8_uce18"]
 [ext_resource type="PackedScene" uid="uid://bo3fa6mc0i5nu" path="res://Escenas/Night/SecurityRoom/Ducts/ductos_delante.tscn" id="8_v0aef"]
 [ext_resource type="PackedScene" uid="uid://bkhep68tnnnt4" path="res://Escenas/Night/SecurityRoom/Halls/PasilloIzquierdo.tscn" id="9_1n26x"]
+[ext_resource type="AudioStream" uid="uid://c5pj857sm8egw" path="res://assets/sounds/ambient/high_pitch_texture.mp3" id="9_1ufiy"]
+[ext_resource type="AudioStream" uid="uid://cdfrf1gv5m2d5" path="res://assets/sounds/ambient/low_ambient.mp3" id="10_ewgm2"]
 [ext_resource type="PackedScene" uid="uid://ben1xduwqjx0k" path="res://Escenas/Night/SecurityRoom/Buttons/BotonDerecha.tscn" id="10_y2ail"]
+[ext_resource type="AudioStream" uid="uid://boir7ag8qbpvm" path="res://assets/sounds/ambient/metal_grindin.mp3" id="11_vtd2r"]
 [ext_resource type="PackedScene" uid="uid://ddgr31vso5rgd" path="res://Escenas/Night/SecurityRoom/Back/Oficina_Detras.tscn" id="12_5xwdc"]
+[ext_resource type="AudioStream" uid="uid://ys0pfupk10vk" path="res://assets/sounds/ambient/strange-noises.mp3" id="12_cmb4g"]
 [ext_resource type="Texture2D" uid="uid://yduq6rfeq6ao" path="res://assets/Renders/office/OfficeDark.png" id="12_u32el"]
 [ext_resource type="Texture2D" uid="uid://cegry2air4fvr" path="res://assets/Renders/office/OfficeFlashlight.png" id="12_xe21u"]
+[ext_resource type="AudioStream" uid="uid://bbbahph72sdql" path="res://assets/sounds/ambient/strange_ambient.mp3" id="13_snhey"]
 [ext_resource type="PackedScene" uid="uid://br8x1cwdt7tp1" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.tscn" id="14_lctcs"]
 [ext_resource type="PackedScene" uid="uid://djq5lt74n68hd" path="res://Escenas/Night/SecurityRoom/Halls/PasilloDerecho.tscn" id="14_pd3h4"]
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
@@ -260,6 +271,62 @@ time_label = NodePath("../True_No_Shader/VBoxContainer/Time_label")
 insanity_label = NodePath("../True_No_Shader/VBoxContainer/Insanity_label")
 animatronic_map_node = NodePath("../True_No_Shader/Animatronic_Map")
 vhs_player = NodePath("../Oficina/VHS_Player")
+
+[node name="Ambient" type="Node" parent="." unique_id=537988541 node_paths=PackedStringArray("all", "deepnest_be_like", "deep_ambient", "fallout", "high_ambient", "high_pitch", "high_pitch_texture", "low_ambient", "metal_grindin", "strange_noises", "strange_ambient")]
+script = ExtResource("3_yfjon")
+all = [NodePath("DeepnestBeLike"), NodePath("DeepAmbient"), NodePath("Fallout"), NodePath("HighAmbient"), NodePath("HighPitch"), NodePath("HighPitchTexture"), NodePath("LowAmbient"), NodePath("MetalGrindin"), NodePath("StrangeNoises"), NodePath("StrangeAmbient")]
+deepnest_be_like = NodePath("DeepnestBeLike")
+deep_ambient = NodePath("DeepAmbient")
+fallout = NodePath("Fallout")
+high_ambient = NodePath("HighAmbient")
+high_pitch = NodePath("HighPitch")
+high_pitch_texture = NodePath("HighPitchTexture")
+low_ambient = NodePath("LowAmbient")
+metal_grindin = NodePath("MetalGrindin")
+strange_noises = NodePath("StrangeNoises")
+strange_ambient = NodePath("StrangeAmbient")
+
+[node name="DeepnestBeLike" type="AudioStreamPlayer" parent="Ambient" unique_id=1960755105]
+stream = ExtResource("4_lctcs")
+bus = &"Ambient"
+
+[node name="DeepAmbient" type="AudioStreamPlayer" parent="Ambient" unique_id=1928681320]
+stream = ExtResource("5_pukf3")
+bus = &"Ambient"
+
+[node name="Fallout" type="AudioStreamPlayer" parent="Ambient" unique_id=1636469744]
+stream = ExtResource("6_13g5b")
+bus = &"Ambient"
+
+[node name="HighAmbient" type="AudioStreamPlayer" parent="Ambient" unique_id=104000422]
+stream = ExtResource("7_5sfnd")
+bus = &"Ambient"
+
+[node name="HighPitch" type="AudioStreamPlayer" parent="Ambient" unique_id=222272955]
+stream = ExtResource("8_uce18")
+bus = &"Ambient"
+
+[node name="HighPitchTexture" type="AudioStreamPlayer" parent="Ambient" unique_id=620209321]
+stream = ExtResource("9_1ufiy")
+bus = &"Ambient"
+
+[node name="LowAmbient" type="AudioStreamPlayer" parent="Ambient" unique_id=1915798778]
+stream = ExtResource("10_ewgm2")
+volume_db = -20.0
+bus = &"Ambient"
+parameters/looping = true
+
+[node name="MetalGrindin" type="AudioStreamPlayer" parent="Ambient" unique_id=298304528]
+stream = ExtResource("11_vtd2r")
+bus = &"Ambient"
+
+[node name="StrangeNoises" type="AudioStreamPlayer" parent="Ambient" unique_id=1866797121]
+stream = ExtResource("12_cmb4g")
+bus = &"Ambient"
+
+[node name="StrangeAmbient" type="AudioStreamPlayer" parent="Ambient" unique_id=1245880442]
+stream = ExtResource("13_snhey")
+bus = &"Ambient"
 
 [node name="Oficina" type="Node2D" parent="." unique_id=540360308 node_paths=PackedStringArray("oficina_detras_nodo")]
 script = ExtResource("4_arw1f")
