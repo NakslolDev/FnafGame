@@ -46,6 +46,7 @@ func _ready():
 		locate_char(Global.m_entering, Global.just_death_min)
 	else:
 		push_warning("Custom position active")
+		camera.locate()
 	
 	connect_signals_recursively(coliders_node)
 	
@@ -70,6 +71,7 @@ func connect_signals_recursively(node: Node): #De esta forma conecta todo lo de 
 ##char
 
 func locate_char(entrance: bool, animatronic: String):
+	const lift := 8
 	if animatronic == "none":
 		if entrance:
 			player.position = posiciones_inicio["entrar"]
@@ -77,10 +79,13 @@ func locate_char(entrance: bool, animatronic: String):
 			player.position = posiciones_inicio["salir"]
 	elif animatronic.ends_with("bonnie"): # tanto kbonnie como sbonnie van al mismo sitio. Lo mismo aplica para los demas
 		player.position = posiciones_inicio["bonnie"]
+		player.set_height(lift)
 	elif animatronic.ends_with("chica"):
 		player.position = posiciones_inicio["chica"]
+		player.set_height(lift)
 	elif animatronic.ends_with("freddy"):
 		player.position = posiciones_inicio["freddy"]
+		player.set_height(lift)
 	elif animatronic.ends_with("foxy"):
 		player.position = posiciones_inicio["foxy"]
 	camera.locate()

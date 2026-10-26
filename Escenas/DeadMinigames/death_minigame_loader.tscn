@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://duhwlbghb2f4l" path="res://Escenas/DeadMinigames/death_minigame_loader.gd" id="1_82wdj"]
 [ext_resource type="PackedScene" uid="uid://dq8qw5d3wribl" path="res://Escenas/DeadMinigames/Bonnie/bonnie_minigame.tscn" id="2_tpoi8"]
+[ext_resource type="Texture2D" uid="uid://eg2q2u0qm7rf" path="res://assets/minijuego assets/LoadingCircle.png" id="3_t5ld2"]
+[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/fonts/I-pixel-u.ttf" id="4_bufbh"]
+[ext_resource type="Script" uid="uid://dfrfxe7u0jf6c" path="res://Escenas/DeadMinigames/texture_progress_bar.gd" id="4_nuiny"]
 
 [node name="Death_minigame_loader" type="Node" unique_id=634696383]
 script = ExtResource("1_82wdj")
 minigames = Array[PackedScene]([ExtResource("2_tpoi8")])
 
-[node name="Label" type="Label" parent="." unique_id=590118051]
+[node name="Exit" type="CanvasLayer" parent="." unique_id=1806254134]
+layer = 2
+
+[node name="Label" type="Label" parent="Exit" unique_id=590118051]
+visible = false
 offset_left = 623.0
 offset_top = 576.0
 offset_right = 1291.0
@@ -16,3 +23,35 @@ theme_override_font_sizes/font_size = 50
 text = "ENTER: Complete
 Space: Save
 Esc: Cancel"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Exit" unique_id=1136114705 node_paths=PackedStringArray("death_minigame_loader", "timer")]
+offset_left = 1800.0
+offset_top = 16.0
+offset_right = 1900.0
+offset_bottom = 116.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+fill_mode = 4
+texture_progress = ExtResource("3_t5ld2")
+script = ExtResource("4_nuiny")
+death_minigame_loader = NodePath("../..")
+timer = NodePath("Timer")
+
+[node name="Label" type="Label" parent="Exit/TextureProgressBar" unique_id=565607997]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -3.0
+offset_right = 104.0
+offset_bottom = 98.0
+theme_override_constants/paragraph_spacing = -15
+theme_override_fonts/font = ExtResource("4_bufbh")
+theme_override_font_sizes/font_size = 32
+text = "Esc:
+Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Exit/TextureProgressBar" unique_id=2131584638]
+wait_time = 3.0
+one_shot = true

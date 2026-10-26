@@ -1171,6 +1171,7 @@ func reset_debug():
 	eliminar_debug_partida()
 
 #func _input(event: InputEvent) -> void:
+	#push_warning("i -> inventario")
 	#if event.is_action_pressed("Inventario"):
 		#print(Global.inventario)
 		#print(Global.mapa)

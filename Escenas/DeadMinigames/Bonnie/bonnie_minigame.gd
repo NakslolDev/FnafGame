@@ -10,8 +10,10 @@ extends Node
 @export var camera_2d: Camera2D
 @export var spawners: Array[Node2D]
 @export var foxys: Array[Sprite2D]
+@export var foxy_stage_3: Sprite2D
 @export var fuse_item: CharacterBody2D
 var fuse_item_spawned := false
+var fuse_item_collected := false
 
 @export var stage1_candy_spawn: Array[Node2D]
 @export var stage2_candy_spawn: Array[Node2D]
@@ -99,6 +101,7 @@ func stage_3_start():
 		wall.set_collision_layer_value(1,true)
 	for fox in foxys: fox.reset()
 	camera_2d.global_position = camera_centers[2].global_position
+	foxy_stage_3.go()
 
 
 func set_candy():
@@ -229,7 +232,7 @@ func point_label(points_: int, pos: Vector2, combo_: bool):
 	label.start_death_timer(randf_range(1.0,2.0))
 
 func _on_fuse_item_collected(pos: Vector2) -> void:
-	Global.dm_unlocks["fuse"] = true
+	fuse_item_collected = true
 	var label: Node2D = label_points_scene.instantiate()
 	var pos_label: Vector2 = pos + Vector2(randf_range(-10.0,10.0),randf_range(-10.0,10.0))
 	if pos_label.y < MAX_HEIGHT: pos_label.y = MAX_HEIGHT
@@ -266,8 +269,15 @@ func _on_stage_2_body_entered(body: Node2D) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Click"):
 		stop_stage()
-		return
+		#return
 		await get_tree().physics_frame
 		match stage:
 			1: stage_2_start()
 			2: stage_3_start()
+
+func end_minigame():
+	Global.dm_unlocks["fuse"] = fuse_item_collected
+	get_parent().complete()
+
+func _on_foxy_stage_3_dead() -> void:
+	end_minigame()

@@ -7,14 +7,11 @@ extends Camera2D
 @export var radius := 2.0
 @export var speed := 5.0
 
-@export var chat_gpt := false
-
 func locate(): # No hago _ready porque he de esperar a que se coloque el personaje donde toca
-	position = player.position
+	global_position = player.global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	if player.position.x < position.x - radius:
 		position.x -= delta * speed * absf(player.position.x - (position.x - radius))
 	if player.position.x > position.x + radius:

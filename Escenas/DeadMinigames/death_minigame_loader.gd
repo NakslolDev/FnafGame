@@ -8,6 +8,7 @@ var minigame_scene: Node
 @onready var animatronic := Global.killed_by
 
 func _ready() -> void:
+	push_warning("Bonnie dm hard coded")
 	animatronic = "bonnie"
 	print("Current anim: ", animatronic)
 	print("Enter -> complete | Space -> Save | Esc to exit")
@@ -37,6 +38,11 @@ func _input(event: InputEvent) -> void:
 	exit(decision)
 	print(event, " | ", decision)
 
+func complete():
+	exit(Global.Estado.COMPLETADO)
+
+func escape():
+	exit(Global.Estado.STANDBY)
 
 func exit(decision: Global.Estado):
 	

@@ -14,6 +14,7 @@ const DURATION := 3.0
 signal done
 
 func _ready():
+
 	if not Global.just_death_min == "none":
 		visible = false
 		return
