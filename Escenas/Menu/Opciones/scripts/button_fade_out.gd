@@ -10,6 +10,3 @@ func _ready():
 		text = root_node.get_text(id_on)
 	else:
 		text = root_node.get_text(id_off)
-
-func _on_pressed() -> void:
-	pass

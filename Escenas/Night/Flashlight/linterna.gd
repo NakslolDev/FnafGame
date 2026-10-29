@@ -34,7 +34,6 @@ func _process(_delta: float) -> void:
 	if Global.linterna_bateria == 0 and linterna_activada:
 		set_linterna(false)
 
-
 func set_linterna(value: bool, animation := false):
 	linterna_activada = value
 	Linterna_Activada_Switch.emit(value, linterna_animacion_count != 0)
@@ -45,6 +44,7 @@ func set_linterna(value: bool, animation := false):
 
 	if linterna_activada:
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Flashlight on")
+
 		if Global.linterna_bateria <= linterna_penalty and Global.linterna_bateria > 1: #hace que si no te queda suficiente bateria pa encender, se queda a 1%
 			Global.linterna_bateria = 1
 		else:

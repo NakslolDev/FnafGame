@@ -26,6 +26,7 @@ func reset():
 		"right_door_toy": false,
 		"pas_toy": false,
 		"fuse": 0,
+		"installed_fuse": 0,
 	}
 	drinking = false
 	left_usage = 0

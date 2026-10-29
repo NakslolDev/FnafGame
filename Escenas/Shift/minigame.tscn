@@ -2,44 +2,44 @@
 
 [ext_resource type="Script" uid="uid://db7cmbg1qxpfq" path="res://Escenas/Shift/minigame.gd" id="1_xv0fq"]
 [ext_resource type="Script" uid="uid://op64ky6ob2qy" path="res://Escenas/Shift/RandomScriptsIDK/minigame_custom_actions.gd" id="2_wna5r"]
-[ext_resource type="Texture2D" uid="uid://dqs4bst1s7y3y" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
+[ext_resource type="Texture2D" uid="uid://b77x5wv3t0yy0" path="res://assets/minijuego assets/Black.png" id="3_u5xp7"]
 [ext_resource type="Script" uid="uid://bvas38t5dvubq" path="res://Escenas/Shift/RandomScriptsIDK/black_background.gd" id="4_vs41v"]
-[ext_resource type="Texture2D" uid="uid://cfjssoffb70h6" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
+[ext_resource type="Texture2D" uid="uid://btlucej5h8a0q" path="res://assets/minijuego assets/TextureAtlas/TextureAtlas.png" id="5_xk4e4"]
 [ext_resource type="TileSet" uid="uid://ba1v7xwtblihb" path="res://Resources (tres)/Raw_colitions.tres" id="6_yq6rm"]
 [ext_resource type="Script" uid="uid://30pn34qdajtn" path="res://Escenas/Shift/RandomScriptsIDK/lifter.gd" id="7_8lcin"]
 [ext_resource type="Script" uid="uid://b3wb85sp3oy4u" path="res://Escenas/Shift/Classes/dynamic_collision.gd" id="7_axwuc"]
-[ext_resource type="Script" uid="uid://cck4qkhapri2y" path="res://Escenas/Shift/RandomScriptsIDK/minigame_Ysort.gd" id="7_pwkhe"]
+[ext_resource type="Script" uid="uid://cck4qkhapri2y" path="res://Escenas/Shift/RandomScriptsIDK/Minigame_Ysort.gd" id="7_pwkhe"]
 [ext_resource type="PackedScene" uid="uid://cumryt3pxo2wv" path="res://Escenas/Shift/Player/character_minigame.tscn" id="8_w4bkp"]
 [ext_resource type="PackedScene" uid="uid://bo828jywsimiy" path="res://Escenas/Shift/M_objets/chair.tscn" id="9_o8hhc"]
 [ext_resource type="PackedScene" uid="uid://bj026rljnlsdo" path="res://Escenas/Shift/M_objets/Round_Table.tscn" id="10_8lcin"]
 [ext_resource type="Script" uid="uid://cj01ym730u7hy" path="res://Escenas/Shift/RandomScriptsIDK/toggle.gd" id="10_w4bkp"]
 [ext_resource type="PackedScene" uid="uid://b11fiquxgu4wa" path="res://Escenas/Shift/M_objets/long_table.tscn" id="11_w3343"]
 [ext_resource type="PackedScene" uid="uid://dkw61scyyeb22" path="res://Escenas/Shift/M_objets/placeholder.tscn" id="12_axwuc"]
-[ext_resource type="Texture2D" uid="uid://0plph23qdqex" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
+[ext_resource type="Texture2D" uid="uid://c6dq54nbl5xpo" path="res://assets/minijuego assets/animatronics/animatronics.png" id="14_q3h4n"]
 [ext_resource type="PackedScene" uid="uid://tlwpejxgfme7" path="res://Escenas/Shift/Text/pop_text.tscn" id="14_v4577"]
 [ext_resource type="Script" uid="uid://mw8cj301gokj" path="res://Escenas/Shift/Classes/general_visibility.gd" id="14_w3343"]
 [ext_resource type="PackedScene" uid="uid://dffqin4cl711n" path="res://Escenas/Shift/Safe/pop_safe.tscn" id="15_kqcik"]
-[ext_resource type="Texture2D" uid="uid://ctwgdk38urjnj" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="15_pwkhe"]
+[ext_resource type="Texture2D" uid="uid://d1okntnsqbfnm" path="res://assets/minijuego assets/TextureAtlas/TextureAtlasNormalMap.png" id="15_pwkhe"]
 [ext_resource type="Script" uid="uid://cuyy21g5e4qyh" path="res://Escenas/Shift/Classes/dynamic_sprites.gd" id="15_vs41v"]
 [ext_resource type="PackedScene" uid="uid://cy4q5pbjdsj20" path="res://Escenas/Shift/BlackBars/black_bars.tscn" id="16_3hrc1"]
 [ext_resource type="Script" uid="uid://hrj5r1dkwlwl" path="res://Escenas/Shift/RandomScriptsIDK/intro_minigame.gd" id="17_b7ymr"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="18_cqyrf"]
 [ext_resource type="Script" uid="uid://bhhidquafhs23" path="res://Escenas/Shift/RandomScriptsIDK/front_of_flashlight.gd" id="18_pwkhe"]
-[ext_resource type="Texture2D" uid="uid://c07lwpqngc7hy" path="res://assets/minijuego assets/Lights/Flashlight.png" id="19_pwkhe"]
-[ext_resource type="FontFile" uid="uid://bym37wdrs86t8" path="res://assets/fonts/I-pixel-u.ttf" id="19_ur7tl"]
+[ext_resource type="Texture2D" uid="uid://brf0nlemffj2u" path="res://assets/minijuego assets/Lights/Flashlight.png" id="19_pwkhe"]
+[ext_resource type="FontFile" uid="uid://cpbxl6cd0tphk" path="res://assets/fonts/I-pixel-u.ttf" id="19_ur7tl"]
 [ext_resource type="Script" uid="uid://okkqwaugqcim" path="res://Escenas/Shift/RandomScriptsIDK/daylable_transition.gd" id="20_y4nle"]
 [ext_resource type="Shader" uid="uid://ben6q0kkumjx2" path="res://shaders/retroTV.gdshader" id="21_cgfeb"]
 [ext_resource type="Script" uid="uid://dybfd3q13udjj" path="res://Escenas/Shift/RandomScriptsIDK/shift_completed.gd" id="22_pu8a6"]
-[ext_resource type="Texture2D" uid="uid://cfg2lp4aa8tme" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
+[ext_resource type="Texture2D" uid="uid://crqrn4aglues7" path="res://assets/Placeholders/shift_completed.jpeg" id="23_bu3ml"]
 [ext_resource type="PackedScene" uid="uid://djqjqcxkcwu8s" path="res://Escenas/Shift/M_objets/_interact_colider.tscn" id="24_ly3ag"]
 [ext_resource type="Script" uid="uid://bdi4veaw547tn" path="res://Escenas/Shift/M_objets/location_key.gd" id="25_ekm4o"]
-[ext_resource type="Texture2D" uid="uid://c4oa3dapevuly" path="res://assets/minijuego assets/White.png" id="25_v4577"]
+[ext_resource type="Texture2D" uid="uid://kxm04q67wv3u" path="res://assets/minijuego assets/White.png" id="25_v4577"]
 [ext_resource type="Script" uid="uid://b0ae5x6mpdh2h" path="res://Escenas/Shift/RandomScriptsIDK/DM_machine_noise.gd" id="26_7g4ok"]
 [ext_resource type="Script" uid="uid://dculdecv7rjo" path="res://Escenas/Shift/RandomScriptsIDK/secret_room_hitbox.gd" id="26_42vnu"]
-[ext_resource type="AudioStream" uid="uid://bm5aun5dl67in" path="res://assets/sounds/old-radio-noise.ogg" id="26_kqcik"]
+[ext_resource type="AudioStream" uid="uid://dfgv4ixx8xuwr" path="res://assets/sounds/old-radio-noise.ogg" id="26_kqcik"]
 [ext_resource type="Script" uid="uid://dpnbshirm7aw" path="res://Escenas/Shift/RandomScriptsIDK/camera_minigame.gd" id="27_l74w5"]
 [ext_resource type="Script" uid="uid://cahecp3m72lyo" path="res://Escenas/Shift/RandomScriptsIDK/lights.gd" id="30_xk4e4"]
-[ext_resource type="Texture2D" uid="uid://cvgpsiwmtdk5m" path="res://assets/Placeholders/Linterna.png" id="31_xk4e4"]
+[ext_resource type="Texture2D" uid="uid://bttp7ke2h52qu" path="res://assets/Placeholders/Linterna.png" id="31_xk4e4"]
 [ext_resource type="Script" uid="uid://b6r6sd5hfks6y" path="res://Escenas/Shift/RandomScriptsIDK/entrance_cealing.gd" id="34_o8hhc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpa5o"]
@@ -2496,6 +2496,15 @@ script = ExtResource("15_vs41v")
 arcade_batteries = 1
 metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
 
+[node name="Fuse" type="Sprite2D" parent="YSort/Arcade/PrizeCornerDown" unique_id=287266599]
+position = Vector2(-56, -94)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(176, 64, 16, 16)
+script = ExtResource("15_vs41v")
+arcade_fuse = 1
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Arcade/PrizeCornerDown" unique_id=1275769416]
 position = Vector2(-48, -24)
 polygon = PackedVector2Array(0, -80, 0, 16, 48, 16, 48, 32, -17, 32, -17, -80)
@@ -3375,6 +3384,15 @@ script = ExtResource("15_vs41v")
 pas_batteries = 1
 metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
 
+[node name="Fuse" type="Sprite2D" parent="YSort/PAS/TableMechanic" unique_id=798097166]
+position = Vector2(-28, -15)
+texture = ExtResource("5_xk4e4")
+region_enabled = true
+region_rect = Rect2(176, 64, 16, 16)
+script = ExtResource("15_vs41v")
+pas_fuse = 1
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
 [node name="Toolbox" type="Sprite2D" parent="YSort/PAS/TableMechanic" unique_id=1072100402]
 position = Vector2(-4, -16)
 texture = ExtResource("5_xk4e4")
@@ -4077,13 +4095,23 @@ texture = ExtResource("5_xk4e4")
 region_enabled = true
 region_rect = Rect2(336, 144, 16, 16)
 
-[node name="DinamicSprites" type="Sprite2D" parent="YSort/Closet/Estante3" unique_id=215132024]
+[node name="Batteries" type="Sprite2D" parent="YSort/Closet/Estante3" unique_id=215132024]
 position = Vector2(6, -8)
 texture = ExtResource("5_xk4e4")
 region_enabled = true
 region_rect = Rect2(176, 16, 16, 16)
 script = ExtResource("15_vs41v")
 closet_batteries = 1
+metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
+
+[node name="Fuse" type="Sprite2D" parent="YSort/Closet/Estante3" unique_id=739560813]
+position = Vector2(5, -6)
+texture = ExtResource("5_xk4e4")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(176, 64, 16, 16)
+script = ExtResource("15_vs41v")
+closet_fuse = 1
 metadata/_custom_type_script = "uid://cuyy21g5e4qyh"
 
 [node name="Panel2" type="Sprite2D" parent="YSort/Closet/Estante3" unique_id=313449149]
@@ -4467,15 +4495,6 @@ read_end_in = Array[int]([1, 2, 3, 7])
 
 [node name="Main" type="Node" parent="Coliders" unique_id=1114039979]
 
-[node name="Water" parent="Coliders/Main" unique_id=151793368 instance=ExtResource("24_ly3ag")]
-position = Vector2(-1083.9999, 144)
-scale = Vector2(1.7, 1.8)
-action = "Custom"
-custom_action = "get_main_water_w_text"
-id = "water_bottle"
-exiting = false
-main_water_bottle = 1
-
 [node name="Round_tables" type="Node2D" parent="Coliders/Main" unique_id=1529822377]
 
 [node name="Round_table" parent="Coliders/Main/Round_tables" unique_id=292234658 instance=ExtResource("24_ly3ag")]
@@ -4701,6 +4720,15 @@ scale = Vector2(0.8, 0.8)
 id = "reading_corner_table"
 save_id = Array[String](["newspaper_introduction"])
 exclude_id = Array[String](["newspaper_introduction"])
+
+[node name="Water" parent="Coliders/Main" unique_id=151793368 instance=ExtResource("24_ly3ag")]
+position = Vector2(-1083, 145)
+scale = Vector2(1.7, 1.8)
+action = "Custom"
+custom_action = "get_main_water_w_text"
+id = "water_bottle"
+exiting = false
+main_water_bottle = 1
 
 [node name="Key_locations" type="Node" parent="Coliders" unique_id=827395008]
 
@@ -5162,6 +5190,14 @@ custom_action = "get_closet_batteries_w_text"
 id = "batteries"
 closet_batteries = 1
 
+[node name="Fuse" parent="Coliders/Armario" unique_id=802476565 instance=ExtResource("24_ly3ag")]
+position = Vector2(60, -24)
+action = "Custom"
+custom_action = "get_almacen_fuse_w_text"
+id = "fuse"
+exiting = false
+almacen_fuse = 1
+
 [node name="PAS" type="Node" parent="Coliders" unique_id=905322186]
 
 [node name="Batteries" parent="Coliders/PAS" unique_id=1979556136 instance=ExtResource("24_ly3ag")]
@@ -5173,11 +5209,18 @@ exiting = false
 pas_batteries = 1
 
 [node name="Screwdriver" parent="Coliders/PAS" unique_id=1064303173 instance=ExtResource("24_ly3ag")]
-position = Vector2(-1152, 683)
+position = Vector2(-1136, 670)
 action = "Custom"
 custom_action = "get_screwdriver_w_text"
 id = "screwdriver"
 screwdriver = 2
+
+[node name="Fuse" parent="Coliders/PAS" unique_id=976281641 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_almacen_fuse_w_text"
+id = "fuse"
+exiting = false
+almacen_fuse = 1
 
 [node name="Boxes" type="Node2D" parent="Coliders/PAS" unique_id=755727976]
 position = Vector2(-836, 548)
@@ -5261,6 +5304,14 @@ custom_action = "get_arcade_batteries_w_text"
 id = "batteries"
 exiting = false
 arcade_batteries = 1
+
+[node name="Fuse" parent="Coliders/Arcade" unique_id=73240312 instance=ExtResource("24_ly3ag")]
+position = Vector2(13, -48)
+action = "Custom"
+custom_action = "get_almacen_fuse_w_text"
+id = "fuse"
+exiting = false
+almacen_fuse = 1
 
 [node name="AlmacenToy" type="Node2D" parent="Coliders" unique_id=1126483468]
 position = Vector2(-692, 684)

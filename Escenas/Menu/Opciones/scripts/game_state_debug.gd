@@ -47,7 +47,7 @@ func sync():
 		var key_id := key.name
 		if key_id.begins_with(prefix):
 			key_id = key_id.substr(prefix.length())
-		key.button_pressed = debug["game_state"]["map_items"][key_id]
+			key.button_pressed = debug["game_state"]["map_items"][key_id]
 
 func _on_sync_pressed() -> void:
 	Global.sync_debug_to_current()
@@ -166,3 +166,24 @@ func _on_check_box_box_toy_toggled(toggled_on: bool) -> void:
 
 func _on_check_box_almacen_toy_toggled(toggled_on: bool) -> void:
 	debug["game_state"]["map_items"]["almacen_toy"] = toggled_on
+
+func _on_check_box_closet_fuse_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["closet_fuse"] = toggled_on
+
+func _on_check_box_pas_fuse_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["pas_fuse"] = toggled_on
+
+func _on_check_box_arcade_fuse_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["arcade_fuse"] = toggled_on
+
+func _on_check_box_almacen_fuse_toggled(toggled_on: bool) -> void:
+	debug["game_state"]["map_items"]["almacen_fuse"] = toggled_on
+
+func _on_random_items_pressed() -> void:
+	Global.randomice_map_items()
+	for key in vbox_map_items.get_children():
+		var prefix := "CheckBox_"
+		var key_id := key.name
+		if key_id.begins_with(prefix):
+			key_id = key_id.substr(prefix.length())
+			key.button_pressed = debug["game_state"]["map_items"][key_id]

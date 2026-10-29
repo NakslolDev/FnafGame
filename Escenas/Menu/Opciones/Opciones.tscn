@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv54uvsb4g8u4"]
 
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://Escenas/Menu/Opciones/opciones.gd" id="1_k0pte"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="3_64mem"]
 [ext_resource type="Script" uid="uid://cw4xikgcuuitu" path="res://Escenas/Menu/Opciones/scripts/screen.gd" id="3_s8b7i"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="4_okdqg"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://dxx02db84wdrr" path="res://Escenas/Menu/Opciones/scripts/debug_panel.gd" id="26_1dkiy"]
 [ext_resource type="Script" uid="uid://qg1veige4p0q" path="res://Escenas/Menu/Opciones/button_ai_normal.gd" id="27_okdqg"]
 [ext_resource type="Script" uid="uid://8kmrqndwl8b7" path="res://Escenas/Menu/Opciones/scripts/debug_options.gd" id="27_wa1uf"]
+[ext_resource type="Script" uid="uid://de5y4kfkue3l8" path="res://Escenas/Menu/Opciones/button_fuses.gd" id="28_6fyg2"]
 [ext_resource type="Theme" uid="uid://dq5xvu5jxq2yc" path="res://Resources (tres)/debug_options.tres" id="28_t63xu"]
 [ext_resource type="Script" uid="uid://d2aahotjgr6rd" path="res://Escenas/Menu/Opciones/scripts/debug_menu_control.gd" id="29_1pq54"]
 [ext_resource type="Script" uid="uid://cbem84bjsjy3p" path="res://Escenas/Menu/Opciones/scripts/game_state_debug.gd" id="30_r21sq"]
@@ -669,6 +670,16 @@ id_normal = "AI_normalizer_normal"
 id_hard = "AI_normalizer_hard"
 root_node = NodePath("../../../../../..")
 
+[node name="Button_Fuses" type="Button" parent="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental" unique_id=609684535 node_paths=PackedStringArray("root_node")]
+layout_mode = 2
+theme = ExtResource("3_64mem")
+text = "Fuses"
+autowrap_mode = 2
+script = ExtResource("28_6fyg2")
+id_on = "fuses_option_on"
+id_off = "fuses_option_off"
+root_node = NodePath("../../../../../..")
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="Accesibilidad/Panel/VBoxContainer" unique_id=472748266]
 layout_mode = 2
 theme_override_constants/separation = -55
@@ -1190,6 +1201,12 @@ theme_override_constants/margin_left = 25
 layout_mode = 2
 theme_override_constants/separation = 15
 
+[node name="random_items" type="Button" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=711094351]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+text = "Reroll items on map"
+alignment = 0
+
 [node name="CheckBox_kitchen_water_bottle" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=2112306099]
 layout_mode = 2
 theme = ExtResource("28_t63xu")
@@ -1237,6 +1254,30 @@ layout_mode = 2
 theme = ExtResource("28_t63xu")
 theme_override_constants/h_separation = 25
 text = "Warehouse toy"
+
+[node name="CheckBox_closet_fuse" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=2961369]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Closet fuse"
+
+[node name="CheckBox_pas_fuse" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=67943782]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Parts and services fuse"
+
+[node name="CheckBox_arcade_fuse" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=1690867967]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Arcade fuse"
+
+[node name="CheckBox_almacen_fuse" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer" unique_id=1722819035]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Warehouse fuse"
 
 [node name="Save files" type="Label" parent="Debug_panel/ScrollContainer/General" unique_id=2058974210]
 layout_mode = 2
@@ -1326,7 +1367,6 @@ puntero = "3"
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Music_Volume/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Mouse_Sound/Sound/Music_Volume/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Button_UI_type" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Button_UI_type" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Button_UI_type" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options" method="_on_button_ui_type_pressed"]
-[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Button_Fade_Out" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Button_Fade_Out" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Button_Fade_Out" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options" method="_on_button_fade_out_pressed"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options/Time_Slider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options" method="_on_time_slider_value_changed"]
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options/Speed_Slider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/UI_Languaje/UI/Fade_Out_Options" method="_on_speed_slider_value_changed"]
@@ -1340,6 +1380,7 @@ puntero = "3"
 [connection signal="value_changed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed/HSlider" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Text_Speed/Label" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Misc/Debug_menu" to="Debug_panel" method="_on_debug_menu_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental/Button_AINormal" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental/Button_AINormal" method="_on_pressed"]
+[connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental/Button_Fuses" to="Accesibilidad/Panel/VBoxContainer/HBoxContainer/Experimental/Button_Fuses" method="_on_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Save_exit" to="." method="_on_save_exit_pressed"]
 [connection signal="pressed" from="Accesibilidad/Panel/VBoxContainer/HBoxContainer2/Exit" to="." method="_on_exit_pressed"]
@@ -1391,6 +1432,7 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_computer_working" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_computer_working_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_computer_failed" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_computer_failed_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_mapa/VBoxContainer/CheckBox_signed_in" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_signed_toggled"]
+[connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/random_items" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_random_items_pressed"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_kitchen_water_bottle" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_kitchen_water_bottle_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_main_water_bottle" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_main_water_bottle_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_closet_batteries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_closet_batteries_toggled"]
@@ -1399,6 +1441,10 @@ puntero = "3"
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_batteries" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_batteries_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_box_toy" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_box_toy_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_toy" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_toy_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_closet_fuse" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_closet_fuse_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_pas_fuse" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_pas_fuse_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_arcade_fuse" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_arcade_fuse_toggled"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate/MarginContainer_map_items/VBoxContainer/CheckBox_almacen_fuse" to="Debug_panel/ScrollContainer/General/MarginContainer_gs/Gamestate" method="_on_check_box_almacen_fuse_toggled"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/delete_dialogs" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_delete_dialogs_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/save_game" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_save_game_pressed"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement/force_save_game_debug" to="Debug_panel/ScrollContainer/General/MarginContainer_savefiles/FileManagement" method="_on_force_save_game_debug_pressed"]

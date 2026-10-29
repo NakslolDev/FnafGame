@@ -691,6 +691,7 @@ var screen := {
 
 var experimental := {
 	"ai_normalizer": 0,
+	"fuses": false,
 	"task": false,
 }
 
@@ -800,8 +801,8 @@ func create_new_game():
 
 func randomice_map_items():
 
-	for item in map_items:
-		item = false
+	for item in map_items.keys():
+		map_items[item] = false
 
 	var number_of_items: int = randi_range(2, 3)
 	if noche >= 4: number_of_items += 1
@@ -815,17 +816,18 @@ func randomice_map_items():
 		map_items[consumable_items.pick_random()] = true # tambien está implicito que pueden colisionar varios
 
 
-	var fuse_items: Array[String]
-	for key in map_items.keys():
-		if key.ends_with("fuse"):
-			fuse_items.append(key)
-	var number_of_fuses: int = 4 - number_of_items
-	if noche >= 4: number_of_fuses += 1
+	if dm_unlocks["fuse"] or experimental["fuses"]:
+		var fuse_items: Array[String]
+		for key in map_items.keys():
+			if key.ends_with("fuse"):
+				fuse_items.append(key)
+		var number_of_fuses: int = 4 - number_of_items
+		if noche >= 4: number_of_fuses += 1
 
-	for i in number_of_fuses:
-		var fuse: String = fuse_items.pick_random()
-		map_items[fuse] = true
-		map_items[fuse.substr(0,fuse.length()-4) + "batteries"] = false # reemplaza la batería de ese lugar (de haber)
+		for i in number_of_fuses:
+			var fuse: String = fuse_items.pick_random()
+			map_items[fuse] = true
+			map_items[fuse.substr(0,fuse.length()-4) + "batteries"] = false # reemplaza la batería de ese lugar (de haber)
 
 
 	var toy_items: Array[String]
@@ -844,6 +846,8 @@ func randomice_map_items():
 	print("Set items on map:")
 	for key in map_items.keys():
 		print(key, ": ", map_items[key])
+
+	_asign_recursive_diccionary(map_items, debug["game_state"]["map_items"])
 
 
 ##---Variables Noche---#
@@ -1038,13 +1042,20 @@ func set_energia_consumption(nombre: String, valor: int): # En vez de dar el val
 	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "consumption acted: ", energia_consumption["Total"])
 	
 	if energia_consumption["Total"] > energia_consumption["Max"]:
+		
+		if Items.objects["installed_fuse"] > 0 and energia["Ventilacion"]:
+			Items.objects["installed_fuse"] -= 1
+			set_energia("Ventilacion", false)
+			print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "fuse breakdown!")
+			return
+		
 		if mapa["computer_working"]:
 			mapa["computer_failed"] = true
 			set_energia_consumption("Especial", 0)
 		Energy_Breakdown.emit()
 		actualizar_ventilacion()
 		actualizar_luces()
-		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "fuse breakdown!")
+		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "general breakdown!")
 
 func consumtion():
 	energia_consumption["Total"] = 0
@@ -1070,13 +1081,13 @@ func actualizar_ventilacion():
 		return
 	if energia["Ventilacion"] and energia["General"]:
 		Global.set_energia_consumption("Ventilacion", 1)
-	elif not energia["Ventilacion"] or not energia["General"]:
+	else:
 		Global.set_energia_consumption("Ventilacion", 0)
 
 func actualizar_luces():
 	if energia["Luces"]:
 		Global.set_energia_consumption("Luces", 1)
-	elif energia["Luces"] == false:
+	else:
 		Global.set_energia_consumption("Luces", 0)
 
 func print_energia_consumption():
