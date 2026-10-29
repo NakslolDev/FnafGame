@@ -468,6 +468,7 @@ stream = ExtResource("38_dg7u0")
 bus = &"Phone"
 script = ExtResource("2_yh57f")
 x_position = 8
+_volume = -5.0
 _lower_db = 3.0
 concentration = 0.5
 metadata/_custom_type_script = "uid://cem83cl7ongg6"

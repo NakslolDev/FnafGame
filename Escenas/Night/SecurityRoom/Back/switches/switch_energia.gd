@@ -16,7 +16,14 @@ const BREAKDOWN := true
 
 func _ready():
 	Global.Energy_Breakdown.connect(energia_out)
+	Global.Fuse_Breakdown.connect(fuse_out)
 	switch_act(BREAKDOWN)
+
+func fuse_out(nombre: String):
+	if nombre != controlador:
+		return
+	switch_on = false
+	switch_act(BREAKDOWN) # con BREAKDOWN no suena el click y solo actualiza los sprites
 
 func switch_act(breakdown: bool = not BREAKDOWN):
 	if not breakdown: DirectionalAudioBus.switch.emit(controlador) #tiny_click.play()

@@ -14,7 +14,7 @@ enum pos {CENTER, SOFT_LEFT, LEFT, FAR_LEFT, SOFT_RIGHT, RIGHT, FAR_RIGHT, BEHIN
 @export var _custom_degrees: float = 0.0
 
 @export var _volume: float = 0.0
-@export var _lower_db: float = 5.0
+@export var _lower_db: float = 5.0 
 
 @export_range(0.0, 1.0) var concentration: float = 1.0
 

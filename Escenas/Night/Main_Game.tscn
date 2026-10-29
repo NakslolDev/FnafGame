@@ -416,7 +416,7 @@ oficina = NodePath("../Oficina")
 
 [node name="Linterna" parent="." unique_id=173084317 instance=ExtResource("20_ewgm2")]
 position = Vector2(0, 1500)
-linterna_penalty = 1
+linterna_penalty = 2
 
 [node name="Mouse_Custom" parent="." unique_id=803140717 instance=ExtResource("21_vtd2r")]
 opacidad = 0.7

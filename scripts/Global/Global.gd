@@ -1026,98 +1026,116 @@ func tick():
 		time_hour = 0
 
 
-func set_energia_consumption(nombre: String, valor: int): # En vez de dar el valor directamente, se usa esta función
-	if nombre == "Heater" or nombre == "Especial":
-		if energia_consumption.has(nombre):
-			energia_consumption[nombre] = valor
-	else:
-		if energia_consumption.has(nombre):
-			if valor == 0:
-				energia_consumption[nombre] = false
-			elif valor == 1:
-				energia_consumption[nombre] = true
-	
-	consumtion()
-	
-	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "consumption acted: ", energia_consumption["Total"])
-	
-	if energia_consumption["Total"] > energia_consumption["Max"]:
-		
-		if Items.objects["installed_fuse"] > 0 and energia["Ventilacion"]:
-			Items.objects["installed_fuse"] -= 1
-			set_energia("Ventilacion", false)
-			print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "fuse breakdown!")
-			return
-		
-		if mapa["computer_working"]:
-			mapa["computer_failed"] = true
-			set_energia_consumption("Especial", 0)
-		Energy_Breakdown.emit()
-		actualizar_ventilacion()
-		actualizar_luces()
-		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "general breakdown!")
+##---Energía---#
+#Claude AI refactored this code. It was a whole mess with a ton of bugs. I will check and modify it tho.
 
-func consumtion():
-	energia_consumption["Total"] = 0
-	if energia_consumption["Ventilacion"]:
-		energia_consumption["Total"] += 1
-	if energia_consumption["Puerta_I"]:
-		energia_consumption["Total"] += 1
-	if energia_consumption["Luces"] and energia_consumption["Lights_Consume"]:
-		energia_consumption["Total"] += 1
-	if energia_consumption["Cam_lights"]:
-		energia_consumption["Total"] += 1
-	if energia_consumption["Puerta_D"]:
-		energia_consumption["Total"] += 1
-	if energia_consumption["Linterna_Rec"]:
-		energia_consumption["Total"] += 1
-	if energia_consumption["Camaras"]:
-		energia_consumption["Total"] += 1
-	energia_consumption["Total"] += energia_consumption["Heater"]
-	energia_consumption["Total"] += energia_consumption["Especial"]
+# Consumidores que suman 1 cuando están activos. "Luces", "Heater" y "Especial" se tratan aparte.
+const CONSUMIDORES_SIMPLES := ["Ventilacion", "Puerta_I", "Puerta_D", "Cam_lights", "Linterna_Rec", "Camaras"]
 
-func actualizar_ventilacion():
-	if energia["Ventilacion"] == energia_consumption["Ventilacion"] and not (energia["Ventilacion"] and not energia["General"]):
+func _log_energia(mensaje: String):
+	print(time_hour, ":", str(time_minute).pad_zeros(2), " - ", mensaje)
+
+# --- API pública (la que usan los demás scripts) ---
+
+func set_energia(nombre: String, valor: bool): # Cambia un switch
+	if not energia.has(nombre):
 		return
-	if energia["Ventilacion"] and energia["General"]:
-		Global.set_energia_consumption("Ventilacion", 1)
-	else:
-		Global.set_energia_consumption("Ventilacion", 0)
-
-func actualizar_luces():
-	if energia["Luces"]:
-		Global.set_energia_consumption("Luces", 1)
-	else:
-		Global.set_energia_consumption("Luces", 0)
-
-func print_energia_consumption():
-	var salida := "\n--- Estado de energía ---\n"
-	for clave in energia_consumption.keys():
-		salida += "%s: %s\n" % [clave, str(energia_consumption[clave])]
-	print(salida)
-
-func set_energia(nombre: String, valor: bool): # En vez de dar el valor directamente, se usa esta función
-
-	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "switch: ", nombre, " - ", valor)
-
-	if energia.has(nombre) and energia[nombre] == valor:
-		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Already there!")
+	if energia[nombre] == valor:
+		_log_energia("switch %s ya estaba en %s" % [nombre, valor])
 		return
 
-	if nombre == "General" and valor == false: # si se desactiva general, se desactivan todas, eso lo controlo aqui. (La otra parte en los switches)
-		for type in energia:
-			energia[type] = false
+	_log_energia("switch: %s - %s" % [nombre, valor])
+
+	if nombre == "General" and not valor: # Si se apaga General, se apagan todos
+		for tipo in energia:
+			energia[tipo] = false
 	else:
 		energia[nombre] = valor
 
+	_recalcular_energia()
 	energia_actualizada.emit()
-	actualizar_luces()
-	actualizar_ventilacion()
 
+func set_energia_consumption(nombre: String, valor: int): # Cambia lo que consume un elemento
+	if not energia_consumption.has(nombre) or nombre == "Max" or nombre == "Total":
+		return
+
+	if nombre == "Heater" or nombre == "Especial":
+		energia_consumption[nombre] = valor
+	else:
+		energia_consumption[nombre] = (valor != 0)
+
+	_recalcular_energia()
+
+func consumtion(): # Solo calcula el total, no toca nada más
+	var total := 0
+	for clave in CONSUMIDORES_SIMPLES:
+		if energia_consumption[clave]:
+			total += 1
+	if energia_consumption["Luces"] and energia_consumption["Lights_Consume"]:
+		total += 1
+	total += energia_consumption["Heater"]
+	total += energia_consumption["Especial"]
+	energia_consumption["Total"] = total
+
+# --- Lógica interna (única fuente de verdad) ---
+
+func _sincronizar_consumo_con_switches():
+	# La ventilación y las luces consumen solo si su switch está activo y hay General
+	energia_consumption["Ventilacion"] = energia["Ventilacion"] and energia["General"]
+	energia_consumption["Luces"] = energia["Luces"] and energia["General"]
+	consumtion()
+
+func _sobrecargado() -> bool:
+	return energia_consumption["Total"] > energia_consumption["Max"]
+
+func _recalcular_energia():
+	var fusible_saltado := false
+	var apagon := false
+
+	_sincronizar_consumo_con_switches()
+
+	# Si General ya está apagado no hay nada que proteger
+	if energia["General"] and _sobrecargado():
+
+		# 1. Intentar salvar la situación con un fusible (solo si de verdad basta con apagar la ventilación)
+		if _fusible_puede_salvar():
+			Items.objects["installed_fuse"] -= 1
+			energia["Ventilacion"] = false
+			fusible_saltado = true
+			_sincronizar_consumo_con_switches()
+			_log_energia("fuse breakdown!")
+
+		# 2. Si sigue sobrecargado, apagón general
+		if _sobrecargado():
+			apagon = true
+			if mapa["computer_working"]:
+				mapa["computer_failed"] = true
+				energia_consumption["Especial"] = 0
+			for tipo in energia:
+				energia[tipo] = false
+			_sincronizar_consumo_con_switches()
+			_log_energia("general breakdown!")
+
+	_log_energia("consumption acted: %s" % energia_consumption["Total"])
+
+	# Las señales se mandan al final, cuando el estado ya es coherente
+	if fusible_saltado and not apagon:
+		Fuse_Breakdown.emit("Ventilacion")
+	if apagon:
+		Energy_Breakdown.emit()
+	if fusible_saltado or apagon:
+		energia_actualizada.emit()
+
+func _fusible_puede_salvar() -> bool:
+	return Items.objects["installed_fuse"] > 0 \
+		and energia["Ventilacion"] \
+		and energia_consumption["Ventilacion"] \
+		and energia_consumption["Total"] - 1 <= energia_consumption["Max"]
 
 ##---Señales Noche---#
 
-signal Energy_Breakdown # Se manda cuando salta la luz
+signal Energy_Breakdown # Se manda cuando salta la luz (apagón general)
+signal Fuse_Breakdown(nombre: String) # Se manda cuando un fusible salta y apaga un solo switch
 signal act_ai_state # Se manda cuando se actualiza la IA de los animatronicos. Normalmente cada hora
 signal energia_actualizada # Se manda cuando cambias un switch
 

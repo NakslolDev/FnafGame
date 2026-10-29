@@ -5193,10 +5193,10 @@ closet_batteries = 1
 [node name="Fuse" parent="Coliders/Armario" unique_id=802476565 instance=ExtResource("24_ly3ag")]
 position = Vector2(60, -24)
 action = "Custom"
-custom_action = "get_almacen_fuse_w_text"
+custom_action = "get_closet_fuse_w_text"
 id = "fuse"
 exiting = false
-almacen_fuse = 1
+closet_fuse = 1
 
 [node name="PAS" type="Node" parent="Coliders" unique_id=905322186]
 
@@ -5209,18 +5209,19 @@ exiting = false
 pas_batteries = 1
 
 [node name="Screwdriver" parent="Coliders/PAS" unique_id=1064303173 instance=ExtResource("24_ly3ag")]
-position = Vector2(-1136, 670)
+position = Vector2(-1148, 670)
 action = "Custom"
 custom_action = "get_screwdriver_w_text"
 id = "screwdriver"
 screwdriver = 2
 
 [node name="Fuse" parent="Coliders/PAS" unique_id=976281641 instance=ExtResource("24_ly3ag")]
+position = Vector2(-1136, 670)
 action = "Custom"
-custom_action = "get_almacen_fuse_w_text"
+custom_action = "get_pas_fuse_w_text"
 id = "fuse"
 exiting = false
-almacen_fuse = 1
+pas_fuse = 1
 
 [node name="Boxes" type="Node2D" parent="Coliders/PAS" unique_id=755727976]
 position = Vector2(-836, 548)
@@ -5308,10 +5309,10 @@ arcade_batteries = 1
 [node name="Fuse" parent="Coliders/Arcade" unique_id=73240312 instance=ExtResource("24_ly3ag")]
 position = Vector2(13, -48)
 action = "Custom"
-custom_action = "get_almacen_fuse_w_text"
+custom_action = "get_arcade_fuse_w_text"
 id = "fuse"
 exiting = false
-almacen_fuse = 1
+arcade_fuse = 1
 
 [node name="AlmacenToy" type="Node2D" parent="Coliders" unique_id=1126483468]
 position = Vector2(-692, 684)
