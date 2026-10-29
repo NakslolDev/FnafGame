@@ -64,6 +64,10 @@ enum Condition{Omit, Need, Exclude}
 @export var almacen_batteries: Condition = Condition.Omit
 @export var box_toy: Condition = Condition.Omit
 @export var almacen_toy: Condition = Condition.Omit
+@export var closet_fuse: Condition = Condition.Omit
+@export var pas_fuse: Condition = Condition.Omit
+@export var arcade_fuse: Condition = Condition.Omit
+@export var almacen_fuse: Condition = Condition.Omit
 
 @export_group("Items")
 @export var water_bottle: Condition = Condition.Omit
@@ -72,6 +76,8 @@ enum Condition{Omit, Need, Exclude}
 @export var left_door_toy: Condition = Condition.Omit
 @export var right_door_toy: Condition = Condition.Omit
 @export var pas_toy: Condition = Condition.Omit
+@export var fuse: Condition = Condition.Omit
+@export var installed_fuse: Condition = Condition.Omit
 
 
 @export_group("Death_minigame_state")

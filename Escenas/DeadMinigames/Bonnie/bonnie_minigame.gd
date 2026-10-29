@@ -95,6 +95,7 @@ func stage_3_start():
 	spaceship.stop()
 	character_bonnie.locate_to(spawners[2])
 	character_bonnie.stop_momentum()
+	character_bonnie.limit_movement = true
 	stage = 3
 	for me in follow_me: me.visible = false
 	for wall in block:

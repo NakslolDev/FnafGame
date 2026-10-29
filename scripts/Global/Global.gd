@@ -756,7 +756,7 @@ var dm_unlocks: Dictionary[String, bool] = {
 	"music_box": false,
 }
 
-var map_items = {
+var map_items = { # es importante la notación "lugar_item"
 	"kitchen_water_bottle": false,
 	"main_water_bottle": false,
 	"closet_batteries": false,
@@ -765,6 +765,10 @@ var map_items = {
 	"almacen_batteries": false,
 	"box_toy": false,
 	"almacen_toy": false,
+	"pas_fuse": false,
+	"almacen_fuse": false,
+	"closet_fuse": false,
+	"arcade_fuse": false,
 }
 
 var id_dialogs: Array = []
@@ -811,17 +815,31 @@ func randomice_map_items():
 		map_items[consumable_items.pick_random()] = true # tambien está implicito que pueden colisionar varios
 
 
+	var fuse_items: Array[String]
+	for key in map_items.keys():
+		if key.ends_with("fuse"):
+			fuse_items.append(key)
+	var number_of_fuses: int = 4 - number_of_items
+	if noche >= 4: number_of_fuses += 1
+
+	for i in number_of_fuses:
+		var fuse: String = fuse_items.pick_random()
+		map_items[fuse] = true
+		map_items[fuse.substr(0,fuse.length()-4) + "batteries"] = false # reemplaza la batería de ese lugar (de haber)
+
+
 	var toy_items: Array[String]
 	for key in map_items.keys():
 		if key.ends_with("toy"):
 			toy_items.append(key)
 
-	if noche >= 4: map_items[toy_items.pick_random()] = true # tambien está implicito que pueden colisionar varios
+	if noche >= 4: map_items[toy_items.pick_random()] = true
 
 	#var screws_items: Array[String]
 	#for key in map_items.keys():
 		#if key.ends_with("screw"):
 			#screws_items.append(key)
+
 
 	print("Set items on map:")
 	for key in map_items.keys():
@@ -1180,4 +1198,10 @@ func reset_debug():
 ##Warnings
 
 func _ready():
-	push_warning("dm_usb_key active by default")
+	push_warning("Beware of current state:
+	Password known active by default
+	Custom position on minigame might be active
+	I to go to death minigame
+	Bonnie dm hard coded
+	Bonnie click to skip
+	")

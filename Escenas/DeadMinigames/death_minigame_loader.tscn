@@ -25,10 +25,10 @@ Space: Save
 Esc: Cancel"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Exit" unique_id=1136114705 node_paths=PackedStringArray("death_minigame_loader", "timer")]
-offset_left = 1800.0
-offset_top = 16.0
-offset_right = 1900.0
-offset_bottom = 116.0
+offset_left = 1784.0
+offset_top = 32.0
+offset_right = 1884.0
+offset_bottom = 132.0
 max_value = 1.0
 step = 0.01
 value = 1.0

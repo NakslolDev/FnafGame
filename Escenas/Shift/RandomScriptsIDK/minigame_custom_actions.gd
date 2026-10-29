@@ -73,15 +73,12 @@ func get_pen(_read):
 func get_closet_batteries(_read):
 	Items.objects["batteries"] += 1
 	Global.map_items["closet_batteries"] = false
-
 func get_pas_batteries(_read):
 	Items.objects["batteries"] += 1
 	Global.map_items["pas_batteries"] = false
-
 func get_arcade_batteries(_read):
 	Items.objects["batteries"] += 1
 	Global.map_items["arcade_batteries"] = false
-
 func get_almacen_batteries(_read):
 	Items.objects["batteries"] += 1
 	Global.map_items["almacen_batteries"] = false
@@ -89,7 +86,6 @@ func get_almacen_batteries(_read):
 func get_kitchen_water(_read):
 	Items.objects["water_bottle"] += 1
 	Global.map_items["kitchen_water_bottle"] = false
-
 func get_main_water(_read):
 	Items.objects["water_bottle"] += 1
 	Global.map_items["main_water_bottle"] = false
@@ -97,7 +93,6 @@ func get_main_water(_read):
 func get_box_toy(_read):
 	Items.objects["door_toy"] += 1
 	Global.map_items["box_toy"] = false
-
 func get_almacen_toy(_read):
 	Items.objects["door_toy"] += 1
 	Global.map_items["almacen_toy"] = false
@@ -105,11 +100,26 @@ func get_almacen_toy(_read):
 func put_left_toy(_read):
 	Items.objects["door_toy"] -= 1
 	Items.objects["left_door_toy"] = true
-
 func put_right_toy(_read):
 	Items.objects["door_toy"] -= 1
 	Items.objects["right_door_toy"] = true
-
 func put_pas_toy(_read):
 	Items.objects["door_toy"] -= 1
 	Items.objects["pas_toy"] = true
+
+func get_closet_fuse(_read):
+	Items.objects["fuse"] += 1
+	Global.map_items["closet_fuse"] = false
+func get_pas_fuse(_read):
+	Items.objects["fuse"] += 1
+	Global.map_items["pas_fuse"] = false
+func get_arcade_fuse(_read):
+	Items.objects["fuse"] += 1
+	Global.map_items["arcade_fuse"] = false
+func get_almacen_fuse(_read):
+	Items.objects["fuse"] += 1
+	Global.map_items["almacen_fuse"] = false
+
+func put_fuses(_read):
+	Items.objects["installed_fuse"] += Items.objects["fuse"]
+	Items.objects["fuse"] = 0

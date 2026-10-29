@@ -530,9 +530,9 @@ size = Vector2(5, 14)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_au55v"]
 shader = ExtResource("21_cgfeb")
 shader_parameter/overlay = false
-shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_opacity = 0.0
 shader_parameter/scanlines_width = 0.25
-shader_parameter/grille_opacity = 0.3
+shader_parameter/grille_opacity = 0.0
 shader_parameter/resolution = Vector2(1280, 960)
 shader_parameter/pixelate = true
 shader_parameter/roll = false
@@ -543,7 +543,7 @@ shader_parameter/distort_intensity = 0.05
 shader_parameter/noise_opacity = 0.4
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.00500004773750006
+shader_parameter/aberration = 4.7499999933364734e-08
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = true
 shader_parameter/warp_amount = 0.800000038
@@ -553,6 +553,7 @@ shader_parameter/vignette_opacity = 0.665
 
 [node name="Minigame" type="Node" unique_id=1354298531 node_paths=PackedStringArray("manual_act_nodes", "custom_action", "coliders_node", "player", "pop_text", "pop_safe", "transicion", "shiftCompleted", "camera", "lights", "spawn_points", "esc_timer") groups=["minigame"]]
 script = ExtResource("1_xv0fq")
+custom_pos = true
 manual_act_nodes = [NodePath("Things_Front_All/Secret_room_hitbox"), NodePath("Coliders/Key_locations"), NodePath("YSort/PAS/DM_machine/Screen/Noise")]
 custom_action = NodePath("CustomActions")
 coliders_node = NodePath("Coliders")
@@ -3697,8 +3698,11 @@ one_way_collision = true
 [node name="Magic_Text_Chair" parent="YSort/Warehouse" unique_id=2000448098 instance=ExtResource("9_o8hhc")]
 position = Vector2(-524, 684)
 
-[node name="Almacen" parent="YSort/Warehouse" unique_id=1737562455 instance=ExtResource("12_axwuc")]
-position = Vector2(-650, 708)
+[node name="AlmacenToy" parent="YSort/Warehouse" unique_id=1737562455 instance=ExtResource("12_axwuc")]
+position = Vector2(-692, 684)
+
+[node name="AlmacenBatteries" parent="YSort/Warehouse" unique_id=1920583707 instance=ExtResource("12_axwuc")]
+position = Vector2(-656, 684)
 
 [node name="SecretOffice" type="Node" parent="YSort" unique_id=1081907851]
 
@@ -5258,22 +5262,32 @@ id = "batteries"
 exiting = false
 arcade_batteries = 1
 
-[node name="Almacen" type="Node2D" parent="Coliders" unique_id=1126483468]
-position = Vector2(-650, 708)
+[node name="AlmacenToy" type="Node2D" parent="Coliders" unique_id=1126483468]
+position = Vector2(-692, 684)
 
-[node name="Toy" parent="Coliders/Almacen" unique_id=2117488053 instance=ExtResource("24_ly3ag")]
+[node name="Toy" parent="Coliders/AlmacenToy" unique_id=2117488053 instance=ExtResource("24_ly3ag")]
 action = "Custom"
 custom_action = "get_almacen_toy_w_text"
 id = "toy"
 exiting = false
 almacen_toy = 1
 
-[node name="Batteries" parent="Coliders/Almacen" unique_id=1413157519 instance=ExtResource("24_ly3ag")]
+[node name="AlmacenBatteries" type="Node2D" parent="Coliders" unique_id=1158180051]
+position = Vector2(-656, 684)
+
+[node name="Batteries" parent="Coliders/AlmacenBatteries" unique_id=1413157519 instance=ExtResource("24_ly3ag")]
 action = "Custom"
 custom_action = "get_almacen_batteries_w_text"
 id = "batteries"
 exiting = false
 almacen_batteries = 1
+
+[node name="Fuse" parent="Coliders/AlmacenBatteries" unique_id=1116745911 instance=ExtResource("24_ly3ag")]
+action = "Custom"
+custom_action = "get_almacen_fuse_w_text"
+id = "fuse"
+exiting = false
+almacen_fuse = 1
 
 [node name="Box" type="Node2D" parent="Coliders" unique_id=1658191473]
 position = Vector2(-1296, 24)
@@ -5543,6 +5557,23 @@ night_2 = false
 night_4 = false
 night_5 = false
 night_6 = false
+
+[node name="Back" type="Node2D" parent="Coliders/SecurityRoom" unique_id=1056164383]
+position = Vector2(-1000, 880)
+
+[node name="PutFuseNoScrewdriver" parent="Coliders/SecurityRoom/Back" unique_id=230738245 instance=ExtResource("24_ly3ag")]
+scale = Vector2(4, 1)
+id = "put_fuse_no_screwdriver"
+screwdriver = 2
+fuse = 1
+
+[node name="PutFuse" parent="Coliders/SecurityRoom/Back" unique_id=696683398 instance=ExtResource("24_ly3ag")]
+scale = Vector2(4, 1)
+action = "Custom"
+custom_action = "put_fuses_w_text"
+id = "put_fuse"
+screwdriver = 1
+fuse = 1
 
 [node name="Things_Front_All" type="Node" parent="." unique_id=1029449219]
 

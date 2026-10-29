@@ -8,7 +8,9 @@ var objects = {
 	"door_toy": 0,
 	"left_door_toy": false,
 	"right_door_toy": false,
-	"pas_toy": false
+	"pas_toy": false,
+	"fuse": 0,
+	"installed_fuse": 0,
 }
 
 func night_starts():
@@ -22,7 +24,8 @@ func reset():
 		"door_toy": 0,
 		"left_door_toy": false,
 		"right_door_toy": false,
-		"pas_toy": false
+		"pas_toy": false,
+		"fuse": 0,
 	}
 	drinking = false
 	left_usage = 0

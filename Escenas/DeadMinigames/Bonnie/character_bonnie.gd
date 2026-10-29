@@ -12,6 +12,7 @@ var full_position: Vector2
 
 enum Pow {NONE, SPEED, JUMP, MAGNET, MORE}
 var power: Pow = Pow.NONE
+var limit_movement: bool = false
 
 func _physics_process(delta: float) -> void:
 	var last_position: Vector2 = position
@@ -21,7 +22,7 @@ func _physics_process(delta: float) -> void:
 		velocity += GRAVITY * delta
 
 	# Handle jump.
-	if not stunned and (Input.is_action_just_pressed("W") or Input.is_action_just_pressed("Space")) and is_on_floor():
+	if not (stunned or limit_movement) and (Input.is_action_just_pressed("W") or Input.is_action_just_pressed("Space")) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		if power == Pow.JUMP: velocity.y *= 1.35
 
@@ -34,6 +35,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		if power == Pow.SPEED: velocity.x *= 1.5
+	if limit_movement:
+		velocity.x *= 0.5
 
 	move_and_slide()
 	full_position = position
