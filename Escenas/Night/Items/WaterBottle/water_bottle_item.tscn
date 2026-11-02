@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://df8kv2d84k3ft"]
 
 [ext_resource type="Script" uid="uid://clbiysx00lfmc" path="res://Escenas/Night/Items/consumable_class.gd" id="1_rw4yx"]
-[ext_resource type="Texture2D" uid="uid://dufbm6ui6d53r" path="res://assets/Placeholders/Hidratation.png" id="2_t6bk8"]
+[ext_resource type="Texture2D" uid="uid://icpst4p3e5di" path="res://assets/Placeholders/Hidratation.png" id="2_t6bk8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wx6p"]
 radius = 34.839684

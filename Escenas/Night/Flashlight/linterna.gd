@@ -45,6 +45,7 @@ func set_linterna(value: bool, animation := false):
 	if linterna_activada:
 		print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Flashlight on")
 
+		if Global.noche == 1 and Global.linterna_bateria <= 15: return
 		if Global.linterna_bateria <= linterna_penalty and Global.linterna_bateria > 1: #hace que si no te queda suficiente bateria pa encender, se queda a 1%
 			Global.linterna_bateria = 1
 		else:
@@ -94,6 +95,7 @@ func cams_up():
 
 func _on_timer_linterna_tic():
 	#if linterna_animacion_count == 0:
+	if Global.noche == 1 and Global.linterna_bateria <= 15: return
 	Global.linterna_bateria -= 1
 
 func _on_oficina_detras_linterna_recarga_switch_rebote() -> void:

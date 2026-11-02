@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cccc6f8ob4s2y" path="res://Escenas/Night/SecurityRoom/Back/Ducts/ductos_detras.gd" id="1_tp3nd"]
 [ext_resource type="Texture2D" uid="uid://cbx8yhgy3v4ui" path="res://assets/Renders/office/Ducts/DuctsFlashlight.png" id="2_sdvnd"]
-[ext_resource type="Texture2D" uid="uid://bmsinyrejf6wm" path="res://assets/Renders/office/Ducts/DuctsDark.png" id="3_frwqp"]
+[ext_resource type="Texture2D" uid="uid://cgce10okpyhmr" path="res://assets/Renders/office/Ducts/DuctsDark.png" id="3_frwqp"]
 [ext_resource type="Texture2D" uid="uid://buwfjv0yjg8gm" path="res://assets/Renders/office/Ducts/FoxyBackFlashlight.png" id="4_6ph06"]
 [ext_resource type="Texture2D" uid="uid://btb1k24ddwag0" path="res://assets/Renders/office/Ducts/FoxyBackDark.png" id="5_huett"]
 [ext_resource type="Texture2D" uid="uid://dn03dyrslhqn8" path="res://assets/Renders/office/Ducts/FoxyBackBrighting.png" id="6_e8bct"]

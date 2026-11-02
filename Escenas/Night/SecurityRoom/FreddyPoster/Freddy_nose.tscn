@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwknywae55ths" path="res://Escenas/Night/SecurityRoom/FreddyPoster/freddy_nose.gd" id="1_7d28s"]
 [ext_resource type="Script" uid="uid://bhe04ndodnnqu" path="res://Escenas/Night/SecurityRoom/FreddyPoster/area_freddy_nose.gd" id="2_pkh7b"]
-[ext_resource type="AudioStream" uid="uid://cq5nf4qns57la" path="res://assets/sounds/fnaf-12-3-freddys-nose-sound.mp3" id="3_pfrhf"]
+[ext_resource type="AudioStream" uid="uid://csdnya6vol0ma" path="res://assets/sounds/fnaf-12-3-freddys-nose-sound.mp3" id="3_pfrhf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8x2bo"]
 radius = 19.0
