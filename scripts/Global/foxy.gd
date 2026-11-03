@@ -14,7 +14,7 @@ const FLASHLIGHT_STUNT_ON_DOORS := 2
 
 const TIME_THAT_FOXY_REMEMBERS := 3
 
-const MAX_FAILED_ATT_ON_GIVING_UP_A_DUCT := 7
+const MAX_FAILED_ATT_ON_GIVING_UP_A_DUCT := 5
 
 var AI_level: int # No voy a volver a comentar lo que ya he comentado en bonnie y en chica...
 var tick_count := 0
