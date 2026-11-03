@@ -267,14 +267,14 @@ func _on_stage_2_body_entered(body: Node2D) -> void:
 	if body == character_bonnie:
 		stage_3_start()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Click"):
-		stop_stage()
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("Click"):
+		#stop_stage()
 		#return
-		await get_tree().physics_frame
-		match stage:
-			1: stage_2_start()
-			2: stage_3_start()
+		#await get_tree().physics_frame
+		#match stage:
+			#1: stage_2_start()
+			#2: stage_3_start()
 
 func end_minigame():
 	Global.dm_unlocks["fuse"] = fuse_item_collected

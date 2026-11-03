@@ -23,6 +23,7 @@ func _on_on_tick_stop() -> void:
 @export var linterna: Node2D
 @export var cheats: Node
 @export var transicion: Node
+@export var ambient: Node
 #control:
 @export var tick: Timer
 @export var esc_timer: Timer
@@ -195,19 +196,18 @@ func _on_jumpscare(_who: String) -> void:
 
 
 func alucinacion_attempt():
-	
 	if alucinaciones_cooldown > 0:
 		alucinaciones_cooldown -= 1
 		return
-	
+
 	if Global.insanity < al_max_time_on_insanity:
 		return
-	
+
 	var insanity_clamp = clamp(Global.insanity, al_max_time_on_insanity, al_min_time_on_insanity)
-	
+
 	var T = al_max_time_mid - float(insanity_clamp - al_max_time_on_insanity) * ((al_max_time_mid - al_min_time_mid) / (al_min_time_on_insanity - al_max_time_on_insanity)) # no se muy bien como funciona, pero funciona
 	var probability =  1.0 / (T * 5.0) # 5 chequeos por segund
-	
+
 	if randf() < probability:
 		if not camaras.activado and (Global.energia["Luces"] or randi_range(0, 1) == 1):
 			alucinations.emit(true)

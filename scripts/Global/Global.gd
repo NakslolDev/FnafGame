@@ -1229,8 +1229,8 @@ func reset_debug():
 func _ready():
 	push_warning("Beware of current state:
 	Password known active by default
-	Custom position on minigame might be active
-	I to go to death minigame
-	Bonnie dm hard coded
-	Bonnie click to skip
-	")
+	Custom position on minigame might be active"
+	#I to go to death minigame
+	#Bonnie dm hard coded
+	#Bonnie click to skip
+	)

@@ -364,6 +364,6 @@ func _process(_delta: float) -> void:
 	else:
 		fps.visible = false
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Inventario"):
-		change_to_death_minigame(true)
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("Inventario"):
+		#change_to_death_minigame(true)

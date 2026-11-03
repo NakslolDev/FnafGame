@@ -238,7 +238,7 @@ size = Vector2(1920, 38)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei8qt"]
 size = Vector2(1264, 19)
 
-[node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("oficina", "oficina_detras", "freddy_nose", "linterna", "cheats", "transicion", "tick", "esc_timer", "mouse_custom", "camaras_control", "camaras", "animatronic_map")]
+[node name="Main_Game" type="Node2D" unique_id=651405160 node_paths=PackedStringArray("oficina", "oficina_detras", "freddy_nose", "linterna", "cheats", "transicion", "ambient", "tick", "esc_timer", "mouse_custom", "camaras_control", "camaras", "animatronic_map")]
 script = ExtResource("1_ri0qg")
 oficina = NodePath("Oficina")
 oficina_detras = NodePath("Oficina/Oficina_Detras")
@@ -246,6 +246,7 @@ freddy_nose = NodePath("Oficina/Freddy nose")
 linterna = NodePath("Linterna")
 cheats = NodePath("Cheats")
 transicion = NodePath("True_No_Shader/Transicion")
+ambient = NodePath("Ambient")
 tick = NodePath("Control/Tick")
 esc_timer = NodePath("Control/ESC_Timer")
 mouse_custom = NodePath("Mouse_Custom")
@@ -300,6 +301,7 @@ bus = &"Ambient"
 
 [node name="HighAmbient" type="AudioStreamPlayer" parent="Ambient" unique_id=104000422]
 stream = ExtResource("7_5sfnd")
+volume_db = -15.0
 bus = &"Ambient"
 
 [node name="HighPitch" type="AudioStreamPlayer" parent="Ambient" unique_id=222272955]
@@ -318,6 +320,8 @@ parameters/looping = true
 
 [node name="MetalGrindin" type="AudioStreamPlayer" parent="Ambient" unique_id=298304528]
 stream = ExtResource("11_vtd2r")
+volume_db = -10.0
+pitch_scale = 0.85
 bus = &"Ambient"
 
 [node name="StrangeNoises" type="AudioStreamPlayer" parent="Ambient" unique_id=1866797121]
@@ -416,7 +420,6 @@ oficina = NodePath("../Oficina")
 
 [node name="Linterna" parent="." unique_id=173084317 instance=ExtResource("20_ewgm2")]
 position = Vector2(0, 1500)
-linterna_penalty = 2
 
 [node name="Mouse_Custom" parent="." unique_id=803140717 instance=ExtResource("21_vtd2r")]
 opacidad = 0.7
@@ -646,6 +649,7 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="on_tick_stop" from="." to="Camaras_Control" method="_on_main_game_on_tick_stop"]
 [connection signal="timeout" from="Control/Tick" to="." method="_on_tick_timeout"]
 [connection signal="timeout" from="Control/Tick" to="Cheats" method="_on_tick_timeout"]
+[connection signal="timeout" from="Control/Tick" to="Ambient" method="_on_tick_timeout"]
 [connection signal="timeout" from="Control/ESC_Timer" to="." method="_on_esc_timer_timeout"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Detector_Girar_Izquierda" method="_on_oficina_girando_estado"]
 [connection signal="Girando_Estado" from="Oficina" to="Oficina/Oficina_Detras" method="_on_oficina_girando_estado"]

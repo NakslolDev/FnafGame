@@ -8,7 +8,7 @@ var minigame_scene: Node
 @onready var animatronic := Global.killed_by
 
 func _ready() -> void:
-	animatronic = "bonnie"
+	#animatronic = "bonnie"
 	print("Current anim: ", animatronic)
 	print("Enter -> complete | Space -> Save | Esc to exit")
 	load_minigame()

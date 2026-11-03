@@ -94,7 +94,6 @@ func cams_up():
 
 
 func _on_timer_linterna_tic():
-	#if linterna_animacion_count == 0:
 	if Global.noche == 1 and Global.linterna_bateria <= 15: return
 	Global.linterna_bateria -= 1
 
