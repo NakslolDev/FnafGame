@@ -11,7 +11,7 @@ func locate(): # No hago _ready porque he de esperar a que se coloque el persona
 	global_position = player.global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if player.position.x < position.x - radius:
 		position.x -= delta * speed * absf(player.position.x - (position.x - radius))
 	if player.position.x > position.x + radius:

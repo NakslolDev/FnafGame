@@ -1,21 +1,15 @@
 extends Node2D
 
-@export var timer: Timer
 @export var character_minigame: CharacterBody2D
 @export var skins: Node2D
 
 @export var flashlight: Node2D
-
-var time: float
-var distance: int
 
 var direction_s: String # solamente para skin
 var waking: bool
 var colided := false
 
 func _ready():
-	distance = character_minigame.step
-	time = 1.0 / character_minigame.speed
 	if Global.m_entering:
 		flashlight.rotation = atan2(-Vector2.DOWN.y, -Vector2.DOWN.x)
 		set_flashlight(Vector2.DOWN)
@@ -23,7 +17,8 @@ func _ready():
 		flashlight.visible = false
 
 func _physics_process(_delta):
-	get_direction_s(Input.is_action_pressed("W"), Input.is_action_pressed("A"), Input.is_action_pressed("S"), Input.is_action_pressed("D")) # inportante la diferencia de event e Input. event es solo el primer frame. Input es constante
+	get_direction_s(Input.is_action_pressed("W"), Input.is_action_pressed("A"), Input.is_action_pressed("S"), Input.is_action_pressed("D")) # importante la diferencia de event e Input. event es solo el primer frame. Input es constante
+	move_step()
 	skins.act_animation(waking, direction_s, colided)
 
 func get_direction_s(w: bool, a: bool, s: bool, d: bool):
@@ -41,87 +36,41 @@ func get_direction_s(w: bool, a: bool, s: bool, d: bool):
 		waking = true
 		set_flashlight(Vector2(int(d) - int(a), int(s) - int(w)).normalized())
 
-func _input(event):
-	if not (event.is_action_pressed("D") or event.is_action_pressed("A") or event.is_action_pressed("W") or event.is_action_pressed("S")):
-		return
-	
-	if timer.is_stopped():
-		move_step()
-		timer.start(time)
-		
-
-func _on_timer_timeout():
-	if not (Input.is_action_pressed("A") or Input.is_action_pressed("D") or Input.is_action_pressed("S") or Input.is_action_pressed("W")):
-		timer.stop()
-	else:
-		if Input.is_action_pressed("Shift"):
-			timer.start(time/1.0)
-		else:
-			timer.start(time)
-		move_step()
-
-
 func move_step():
-	
-	if character_minigame.freeze:
+	if character_minigame.freeze or character_minigame == null:
+		if character_minigame:
+			character_minigame.velocity = Vector2.ZERO
+		colided = false
 		return
-	
-	var dir := Vector2.ZERO
-	
-	if Input.is_action_pressed("D"):
-		dir.x += 1
-	if Input.is_action_pressed("A"):
-		dir.x += -1
-	if Input.is_action_pressed("W"):
-		dir.y += -1
-	if Input.is_action_pressed("S"):
-		dir.y += 1
-	
+
+	# Sin normalizar: en diagonal el vector mide 1.41
+	var dir := Vector2(Input.get_axis("A", "D"), Input.get_axis("W", "S"))
+
 	if dir == Vector2.ZERO:
+		character_minigame.velocity = Vector2.ZERO
+		character_minigame.move_and_slide()
+		colided = false
 		return
-	
-	var parent = get_parent() as CharacterBody2D
-	if parent == null:
-		return
-	
-	# movimiento deseado
-	var motion = dir * distance
-	if Input.is_action_pressed("Shift"):
-		motion *= character_minigame.run_mult
-	
-	if dir.x != 0.0 and dir.y != 0.0:  # Frenamos movimiento diagonal
-		if Input.is_action_pressed("Shift"):
-			motion *= 0.8 # Esta redondeada hacia arriba un poco
+
+	var running := Input.is_action_pressed("Shift")
+
+	var speed_now: float = character_minigame.speed
+	if running:
+		speed_now *= character_minigame.run_mult
+
+	var velocity_target := dir * speed_now
+
+	if dir.x != 0.0 and dir.y != 0.0: # Frenamos movimiento diagonal
+		if running:
+			velocity_target *= 0.8 # Esta redondeada hacia arriba un poco
 		else:
-			motion *= 0.9
-	
-	# Intentar movimiento completo
-	var collision = parent.move_and_collide(motion)
-	if collision:
-		# Si hay choque → probar ejes por separado
-		# probar eje X
-		var collision_x = parent.move_and_collide(Vector2(dir.x * distance, 0))
-		# probar eje Y
-		var collision_y = parent.move_and_collide(Vector2(0, dir.y * distance))
-		
-		if dir.x != 0 and dir.y != 0:
-			if collision_x and collision_y:
-				colided = true
-			else:
-				colided = false
-		elif dir.x != 0:
-			if collision_x:
-				colided = true
-			else:
-				colided = false
-		elif dir.y != 0:
-			if collision_y:
-				colided = true
-			else:
-				colided = false
-	
-	else:
-		colided = false  # movimiento realizado, no hay choque
+			velocity_target *= 0.9
+
+	character_minigame.velocity = velocity_target
+	character_minigame.move_and_slide()
+
+	# "colided" solo si te frenas casi del todo (choque frontal), no al deslizar
+	colided = character_minigame.get_real_velocity().length() < velocity_target.length() * 0.2
 
 const FLASHLIGHT_DISPLACEMENT := 6.0
 const FLASHLIGHT_SMOOTHNESS := 15.0

@@ -1,10 +1,8 @@
 extends CharacterBody2D
 
-@export var speed := 100.0
+@export var speed := 50.0
 @export var run_mult := 1.5
-@export var step := 1
 var freeze := false
-
 
 @export var skins: Node2D
 @export var light_occluder_2d_escenario: LightOccluder2D

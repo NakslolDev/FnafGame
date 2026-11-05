@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://clk07ggsfox88"]
 
 [ext_resource type="Script" uid="uid://4fjcgs6njf0t" path="res://Escenas/Menu/MainMenu/menu_principal.gd" id="1_7cw0h"]
-[ext_resource type="Texture2D" uid="uid://bsyefkek8cum8" path="res://assets/Placeholders/Menu_Art.png" id="2_t6ttm"]
-[ext_resource type="FontFile" uid="uid://duqp40quebv2t" path="res://assets/fonts/CooperBits.ttf" id="3_t6ttm"]
+[ext_resource type="Texture2D" uid="uid://uhacg77rodqx" path="res://assets/Placeholders/Menu_Art.png" id="2_t6ttm"]
+[ext_resource type="FontFile" uid="uid://dw4qfwnak1fvs" path="res://assets/fonts/CooperBits.ttf" id="3_t6ttm"]
 [ext_resource type="Script" uid="uid://ronda45c7s6u" path="res://Escenas/Menu/MainMenu/main_buttons.gd" id="4_djrq7"]
-[ext_resource type="AudioStream" uid="uid://bjvedqrixaul0" path="res://assets/sounds/menu_click.wav" id="5_8x8is"]
+[ext_resource type="AudioStream" uid="uid://dj67m1ll27oey" path="res://assets/sounds/menu_click.wav" id="5_8x8is"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="6_b3nup"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="7_xpa1m"]
-[ext_resource type="Texture2D" uid="uid://cakbtkd5v3bat" path="res://assets/Placeholders/UI_Menu/Seleccion.png" id="8_r2f8f"]
+[ext_resource type="Texture2D" uid="uid://cq2ibop5ggmho" path="res://assets/Placeholders/UI_Menu/Seleccion.png" id="8_r2f8f"]
 [ext_resource type="Script" uid="uid://c4kfoj04ln6g8" path="res://Escenas/Menu/MainMenu/play_buttons.gd" id="9_8aeey"]
 [ext_resource type="PackedScene" uid="uid://dufmutqorrh6m" path="res://Escenas/Night/UI/Mouse_Custom.tscn" id="10_te3yv"]
 [ext_resource type="PackedScene" uid="uid://djyh30hl0gveq" path="res://Escenas/Night/SecurityRoom/FreddyPoster/Freddy_nose.tscn" id="11_dytxe"]
 [ext_resource type="Script" uid="uid://coh84xcfmkrvv" path="res://Escenas/Menu/MainMenu/stars.gd" id="12_hoy0e"]
-[ext_resource type="Texture2D" uid="uid://bcowwykqilax5" path="res://assets/Placeholders/white_star.png" id="13_4lh2l"]
+[ext_resource type="Texture2D" uid="uid://dflfp1neyqnuf" path="res://assets/Placeholders/white_star.png" id="13_4lh2l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qb44"]
 bg_color = Color(0, 0, 0, 0.85400003)
@@ -330,7 +330,7 @@ theme_override_constants/separation = 60
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 75
-text = "Alpha version 0.11.2"
+text = "Alpha version 0.12.1"
 horizontal_alignment = 1
 
 [node name="Welcome" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=178039017]
@@ -344,6 +344,22 @@ text = "Welcome to the alpha version. As of right now, the game is in a playable
 horizontal_alignment = 3
 autowrap_mode = 3
 
+[node name="Experimental" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1291341367]
+custom_maximum_size = Vector2(1400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_b3nup")
+theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+theme_override_font_sizes/font_size = 40
+text = "Experimental features are aviable now! They are planned to be implemented into the game as a regular feature.  There are 2 at this moment:
+
+-AI normalicer makes so the animatronic movement is more spread out, so it is harder for ayone to rush to your office, or stay still for a long period of time. As a result, it also makes AI level of 20 easier (i'll probably change that).
+
+-The fuses break when you overconsume, only deactivating the ventilation instead of the whole system.  Activating this option will only make fuses be able to spawn, so you will have to get to the next night. If you already have fuses, deactivating this option will not make them dissapear. You can reroll your item pool to fix this
+(debug -> game state -> sync -> reroll items -> save game to debug state -> exit debug)
+"
+autowrap_mode = 3
+
 [node name="Tutorial" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1274392795]
 custom_maximum_size = Vector2(1400, -1)
 layout_mode = 2
@@ -352,7 +368,7 @@ theme = ExtResource("6_b3nup")
 theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 theme_override_font_sizes/font_size = 40
 text = "Most of the tutorial come from a combination of the phone calls, prenight minigame dialogs, and  your own ability to experiment, deduce, figure out, etc... 
-There are also game over tips, that explain more meta mechanics that wouldn't make sense for anyone to know."
+There are also game over tips, that explain more meta mechanics that wouldn't make sense for any character to know."
 autowrap_mode = 3
 
 [node name="PhoneCalls" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=1964561151]

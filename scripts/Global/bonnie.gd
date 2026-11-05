@@ -1,12 +1,12 @@
 extends Node
 
 #Constants (or other things). You can tweek these
-const GENERAL_TICK_LIMIT := 40 # la cantidad de ticks para un oportunity movement
+const GENERAL_TICK_LIMIT := 30 # la cantidad de ticks para un oportunity movement
 const DOOR_TICK_LIMIT := 20
 const UA_TICK_LIMIT := 1
 
 const MAXIMUM_FAILS_WHEN_DOOR_OPEN := 3
-const MAXIMUM_FAILS_WHEN_DOOR_CLOSED := 8
+const MAXIMUM_FAILS_WHEN_DOOR_CLOSED := 6
 
 const AI_LIMIT_FOR_EXTRA_BLOCKS_WHEN_NOT_SEEN := 10 # cuando está en la puerta, pero no le has visto, bloquea su movimiento más veces...
 const EXTRA_BLOCKS_WHEN_NOT_SEEN_UNDER_LIMIT := 2
@@ -162,7 +162,7 @@ func movement_oportunity(): # Decide si se va a mover. Por regla general, cuanto
 		door_fail_count += 1 # Añade un intento fallido de entrar
 
 	else: # puerta cerrada
-		if 50 + AI_level * 2 <= randi_range(0, 100): # AI = 1:~ 50%, AI = 20:~ 90% (de que se quede en la puerta).
+		if 40 + AI_level * 2 <= randi_range(0, 100): # AI = 0:~ 40%, AI = 20:~ 80% (de que se quede en la puerta).
 			move()
 			return
 
