@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://qve0ojqmp6et"]
+
+[ext_resource type="Script" uid="uid://bx25l8yr7wo03" path="res://Escenas/DeadMinigames/Chica/character_chica.gd" id="1_qsn1c"]
+[ext_resource type="Texture2D" uid="uid://bh33olvuatkq5" path="res://assets/minijuego assets/DMTextureAtlas/MinigameTextureAtlas.png" id="2_iq1fj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(6, 3)
+
+[node name="CharacterChica" type="CharacterBody2D" unique_id=1596486510 node_paths=PackedStringArray("sprite_2d", "timer")]
+collision_layer = 7
+script = ExtResource("1_qsn1c")
+sprite_2d = NodePath("Sprite2D")
+timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=532616739]
+position = Vector2(0, -1)
+texture = ExtResource("2_iq1fj")
+vframes = 3
+region_enabled = true
+region_rect = Rect2(128, 0, 8, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1741231039]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Timer" type="Timer" parent="." unique_id=1100432849]
+wait_time = 0.15
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

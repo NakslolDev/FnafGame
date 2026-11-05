@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 15.0
 const JUMP_VELOCITY = -35.0
 const GRAVITY := Vector2(0.0, 30.0)
+const DELTA_FIX := 60
 
 var full_position: Vector2
 
@@ -31,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("A", "D")
 	if not stunned: 
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = direction * SPEED * delta * DELTA_FIX
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		if power == Pow.SPEED: velocity.x *= 1.5
