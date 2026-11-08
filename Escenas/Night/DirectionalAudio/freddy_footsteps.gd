@@ -5,6 +5,7 @@ extends Node
 @export var izquierda: spacial_audio
 @export var derecha: spacial_audio
 
+const SILENT_WHEN_ENTERING_OFFICE := false
 
 var bool_izquierda: bool
 var freddy_far: bool
@@ -14,7 +15,8 @@ var count := 0
 func _ready():
 	Freddy.movement.connect(_movement_freddy)
 
-func _movement_freddy(pos, path, fpos, fpath): # DE MOMENTO TAMBIEN SE ESCUCHA CUANDO TE ENTRA EN LA OFICINA. SUENA IGUAL QUE CUANDO SE VA... NO SE SI DEJARLO
+func _movement_freddy(pos, path, fpos, fpath):
+	if SILENT_WHEN_ENTERING_OFFICE and pos == "office": return
 	if path == 1 or fpath == 1:
 		bool_izquierda = true
 		if pos == "PI" or fpos == "PI":
@@ -58,6 +60,7 @@ func _on_timer_timeout() -> void:
 			db_volume -= 20.0
 			freddy_general()
 		else:
+			timer.start(1.0)
 			return
 	else:
 		if not Freddy.door_D_closed and not Global.energia["Luces"]:
@@ -70,6 +73,7 @@ func _on_timer_timeout() -> void:
 			db_volume -= 20.0
 			freddy_general()
 		else:
+			timer.start(1.0)
 			return
 	
 	timer.start(1.0)
@@ -89,4 +93,4 @@ func freddy_derecha():
 func freddy_general():
 	general.volume_db = db_volume - 5
 	general.play()
-	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "freddy footsteps: ", db_volume, " db")
+	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "freddy footsteps: ", db_volume - 5, " db")

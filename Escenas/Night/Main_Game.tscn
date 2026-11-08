@@ -26,8 +26,13 @@
 [ext_resource type="AudioStream" uid="uid://bbbahph72sdql" path="res://assets/sounds/ambient/strange_ambient.mp3" id="13_snhey"]
 [ext_resource type="PackedScene" uid="uid://br8x1cwdt7tp1" path="res://Escenas/Night/SecurityRoom/TapePlayer/vhs_player.tscn" id="14_lctcs"]
 [ext_resource type="PackedScene" uid="uid://djq5lt74n68hd" path="res://Escenas/Night/SecurityRoom/Halls/PasilloDerecho.tscn" id="14_pd3h4"]
+[ext_resource type="AudioStream" uid="uid://cfvy2j211m1yb" path="res://assets/sounds/ambient/someone_at_the_door.mp3" id="14_pukf3"]
+[ext_resource type="AudioStream" uid="uid://b3114nufeg5ta" path="res://assets/sounds/ambient/soul1.mp3" id="15_5sfnd"]
+[ext_resource type="AudioStream" uid="uid://clvwuldpfnppg" path="res://assets/sounds/ambient/commotion.mp3" id="15_uce18"]
 [ext_resource type="PackedScene" uid="uid://bmwn0qi6enr06" path="res://Escenas/Night/Items/Battery/battery_items.tscn" id="16_13g5b"]
 [ext_resource type="PackedScene" uid="uid://q218o01pxf4y" path="res://Escenas/Night/SecurityRoom/Buttons/BotonIzquierda.tscn" id="16_u1au3"]
+[ext_resource type="AudioStream" uid="uid://cpr58mk3j73q7" path="res://assets/sounds/ambient/soul2.mp3" id="16_uce18"]
+[ext_resource type="AudioStream" uid="uid://de2ecfbqlxbrl" path="res://assets/sounds/ambient/soul_main.mp3" id="17_1ufiy"]
 [ext_resource type="PackedScene" uid="uid://2g1rebe43ol4" path="res://Escenas/Night/SecurityRoom/Doors/puerta_izquierda.tscn" id="17_4erhx"]
 [ext_resource type="PackedScene" uid="uid://df8kv2d84k3ft" path="res://Escenas/Night/Items/WaterBottle/water_bottle_item.tscn" id="17_5sfnd"]
 [ext_resource type="PackedScene" uid="uid://cmnxslwti0m3s" path="res://Escenas/Night/SecurityRoom/Doors/puerta_derecha.tscn" id="18_4erhx"]
@@ -273,9 +278,8 @@ insanity_label = NodePath("../True_No_Shader/VBoxContainer/Insanity_label")
 animatronic_map_node = NodePath("../True_No_Shader/Animatronic_Map")
 vhs_player = NodePath("../Oficina/VHS_Player")
 
-[node name="Ambient" type="Node" parent="." unique_id=537988541 node_paths=PackedStringArray("all", "deepnest_be_like", "deep_ambient", "fallout", "high_ambient", "high_pitch", "high_pitch_texture", "low_ambient", "metal_grindin", "strange_noises", "strange_ambient")]
+[node name="Ambient" type="Node" parent="." unique_id=537988541 node_paths=PackedStringArray("deepnest_be_like", "deep_ambient", "fallout", "high_ambient", "high_pitch", "high_pitch_texture", "low_ambient", "metal_grindin", "strange_noises", "strange_ambient", "someone_at_the_door", "commotion", "soul_1", "soul_2", "soul_main", "pasillo_izquierdo", "pasillo_derecho")]
 script = ExtResource("3_yfjon")
-all = [NodePath("DeepnestBeLike"), NodePath("DeepAmbient"), NodePath("Fallout"), NodePath("HighAmbient"), NodePath("HighPitch"), NodePath("HighPitchTexture"), NodePath("LowAmbient"), NodePath("MetalGrindin"), NodePath("StrangeNoises"), NodePath("StrangeAmbient")]
 deepnest_be_like = NodePath("DeepnestBeLike")
 deep_ambient = NodePath("DeepAmbient")
 fallout = NodePath("Fallout")
@@ -286,6 +290,13 @@ low_ambient = NodePath("LowAmbient")
 metal_grindin = NodePath("MetalGrindin")
 strange_noises = NodePath("StrangeNoises")
 strange_ambient = NodePath("StrangeAmbient")
+someone_at_the_door = NodePath("SomeoneAtTheDoor")
+commotion = NodePath("Commotion")
+soul_1 = NodePath("Souls/Soul1")
+soul_2 = NodePath("Souls/Soul2")
+soul_main = NodePath("Souls/SoulMain")
+pasillo_izquierdo = NodePath("../Oficina/PasilloIzquierdo")
+pasillo_derecho = NodePath("../Oficina/PasilloDerecho")
 
 [node name="DeepnestBeLike" type="AudioStreamPlayer" parent="Ambient" unique_id=1960755105]
 stream = ExtResource("4_lctcs")
@@ -331,6 +342,26 @@ bus = &"Ambient"
 [node name="StrangeAmbient" type="AudioStreamPlayer" parent="Ambient" unique_id=1245880442]
 stream = ExtResource("13_snhey")
 bus = &"Ambient"
+
+[node name="SomeoneAtTheDoor" type="AudioStreamPlayer" parent="Ambient" unique_id=4709882]
+stream = ExtResource("14_pukf3")
+volume_db = -10.0
+
+[node name="Commotion" type="AudioStreamPlayer" parent="Ambient" unique_id=832840625]
+stream = ExtResource("15_uce18")
+volume_db = -10.0
+
+[node name="Souls" type="Node" parent="Ambient" unique_id=2141028485]
+
+[node name="Soul1" type="AudioStreamPlayer" parent="Ambient/Souls" unique_id=234040470]
+stream = ExtResource("15_5sfnd")
+
+[node name="Soul2" type="AudioStreamPlayer" parent="Ambient/Souls" unique_id=428980776]
+stream = ExtResource("16_uce18")
+
+[node name="SoulMain" type="AudioStreamPlayer" parent="Ambient/Souls" unique_id=1950420605]
+stream = ExtResource("17_1ufiy")
+volume_db = -35.0
 
 [node name="Oficina" type="Node2D" parent="." unique_id=540360308 node_paths=PackedStringArray("oficina_detras_nodo")]
 script = ExtResource("4_arw1f")
@@ -668,8 +699,11 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="Girar" from="Oficina/Detector_Girar_Derecha" to="Oficina/Oficina_Detras" method="_on_detector_girar_izquierda_girar"]
 [connection signal="Girar_Detras" from="Oficina/Oficina_Detras" to="Oficina" method="_on_oficina_detras_girar_detras"]
 [connection signal="Linterna_Recarga_Switch_Rebote" from="Oficina/Oficina_Detras" to="Linterna" method="_on_oficina_detras_linterna_recarga_switch_rebote"]
+[connection signal="hard_focus_mouse_enter" from="Oficina/PasilloIzquierdo" to="Ambient" method="_on_pasillo_izquierdo_hard_focus_mouse_enter"]
+[connection signal="hard_focus_mouse_enter" from="Oficina/PasilloDerecho" to="Ambient" method="_on_pasillo_derecho_hard_focus_mouse_enter"]
 [connection signal="Puerta_Cambio" from="Oficina/BotonIzquierda" to="Oficina/PuertaIzquierda" method="_on_boton_izquierda_puerta_cambio"]
 [connection signal="Puerta_Cambio" from="Oficina/BotonDerecha" to="Oficina/PuertaDerecha" method="_on_boton_derecha_puerta_cambio"]
+[connection signal="Linterna_Activada_Switch" from="Linterna" to="Ambient" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/FlashlightShaderControl" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Oficina_Detras" method="_on_linterna_linterna_activada_switch"]
 [connection signal="Linterna_Activada_Switch" from="Linterna" to="Oficina/Ductos" method="_on_linterna_linterna_activada_switch"]
@@ -682,6 +716,7 @@ shape = SubResource("RectangleShape2D_ei8qt")
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Freddy" to="." method="_on_jumpscare_freddy_jumpscare_end"]
 [connection signal="jumpscare_end" from="True_No_Shader/Jumpscare_Foxy" to="." method="_on_jumpscare_foxy_jumpscare_end"]
 [connection signal="timeout" from="True_No_Shader/UpCams/Timer" to="True_No_Shader/UpCams" method="_on_timer_timeout"]
+[connection signal="cam_action" from="Camaras_Control/Camaras" to="Ambient" method="_on_camaras_cam_action"]
 [connection signal="mouse_entered" from="Camaras_Control/Area2D_up" to="Camaras_Control" method="_on_area_2d_up_mouse_entered"]
 [connection signal="mouse_exited" from="Camaras_Control/Area2D_up" to="Camaras_Control" method="_on_area_2d_up_mouse_exited"]
 [connection signal="mouse_entered" from="Camaras_Control/Area2D_down" to="Camaras_Control" method="_on_area_2d_down_mouse_entered"]

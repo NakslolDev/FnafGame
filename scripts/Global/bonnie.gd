@@ -1,7 +1,7 @@
 extends Node
 
 #Constants (or other things). You can tweek these
-const GENERAL_TICK_LIMIT := 30 # la cantidad de ticks para un oportunity movement
+const GENERAL_TICK_LIMIT := 35 # la cantidad de ticks para un oportunity movement
 const DOOR_TICK_LIMIT := 20
 const UA_TICK_LIMIT := 1
 

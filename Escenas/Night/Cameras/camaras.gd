@@ -25,6 +25,7 @@ var camara_activa := 1
 @export var minimapa_botones: Sprite2D
 @export var minimapa_ductos: Sprite2D
 
+signal cam_action(int, bool)
 
 var _hora := 0
 var hora: int:
@@ -92,6 +93,7 @@ func _input(event):
 		if camara_activa != 6 and Global.energia["Camaras"] == true and (Global.energia_consumption["Total"] < Global.energia_consumption["Max"] or not Global.misc["Auto_cam_lights"]):
 			cam_lights = true # si abres las camaras con el raton en el minimapa, te deja iluminar una vez cuando no deveria
 			act_light() # lo voy a dejar, pues ni idea de como solucionarlo y como la luz no te puede joder el sistema, pues como que da igual...
+			cam_action.emit(camara_activa, cam_lights)
 		else:
 			no_cam_lights.play()
 			return

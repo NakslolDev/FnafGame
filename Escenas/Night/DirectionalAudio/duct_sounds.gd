@@ -56,8 +56,8 @@ func control_volume(pos, room):
 			volume = -15 - abs(3 - pos) * 5 # -15, -20, -25, etc
 	elif room == "Duc8":
 		volume = -15 - abs(4 - pos) * 5
-	if Global.energia["Luces"]:
-		volume -= 2.5
+	#if Global.energia["Luces"]:
+		#volume -= 1
 	#print("Volumen = ", volume)
 
 func aply_volume():

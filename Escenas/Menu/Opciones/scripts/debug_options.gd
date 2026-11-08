@@ -7,6 +7,7 @@ func _ready():
 
 @export_group("nodes")
 @export var check_box_prevent_save: CheckBox
+@export var check_box_auto_items: CheckBox
 @export var check_box_invencibility: CheckBox
 @export var check_box_instant_win: CheckBox
 @export var check_box_timeless: CheckBox
@@ -26,7 +27,8 @@ func _ready():
 func sync():
 	debug = Global.debug
 	check_box_prevent_save.button_pressed = debug["prevent_save"]
-	
+
+	check_box_auto_items.button_pressed = debug["cheats"]["auto_items"]
 	check_box_invencibility.button_pressed = debug["cheats"]["invencibility"]
 	check_box_instant_win.button_pressed = debug["cheats"]["instawin"]
 	check_box_timeless.button_pressed = debug["cheats"]["timeless"]
@@ -45,6 +47,9 @@ func sync():
 
 func _on_check_box_prevsafe_toggled(toggled_on: bool) -> void:
 	debug["prevent_save"] = toggled_on
+
+func _on_check_box_auto_items_toggled(toggled_on: bool) -> void:
+	debug["cheats"]["auto_items"] = toggled_on
 
 func _on_check_box_invencibility_toggled(toggled_on: bool) -> void:
 	debug["cheats"]["invencibility"] = toggled_on

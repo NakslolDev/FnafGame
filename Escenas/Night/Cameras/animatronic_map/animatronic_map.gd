@@ -90,6 +90,8 @@ func movement_freddy(to_pos: String, to_path: int, _c = null, _d = null):
 			freddy_icon.position = Vector2(1758.0, 170.0)
 		elif to_pos == "office":
 			freddy_icon.position = Vector2(1732.0, 250.0)
+		else:
+			push_error("Posicion desconocida de freddy en path 0")
 	elif to_path == 1:
 		if to_pos == "1":
 			freddy_icon.position = Vector2(1648.0, 135.0)
@@ -99,6 +101,8 @@ func movement_freddy(to_pos: String, to_path: int, _c = null, _d = null):
 			freddy_icon.position = Vector2(1674.0, 170.0)
 		elif to_pos == "PI":
 			freddy_icon.position = Vector2(1666.0, 257.0)
+		else:
+			push_error("Posicion desconocida de freddy en path 0")
 	elif to_path == 2:
 		if to_pos == "1":
 			freddy_icon.position = Vector2(1825.0, 60.0)
@@ -110,6 +114,11 @@ func movement_freddy(to_pos: String, to_path: int, _c = null, _d = null):
 			freddy_icon.position = Vector2(1790.0, 169.0)
 		elif to_pos == "PD":
 			freddy_icon.position = Vector2(1774.0, 241.0)
+		else:
+			push_error("Posicion desconocida de freddy en path 2")
+	else:
+		push_error("Path desconocido")
+
 
 func movement_foxy(to_pos: int, to_room: String, _c = null, _d = null):
 	#room -> 0 (nowhere), main, arcade, pas, entrance, kitchen, almacen, closet, lhall, rhall, office

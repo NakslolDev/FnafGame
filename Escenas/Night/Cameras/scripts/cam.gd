@@ -26,9 +26,6 @@ func _conect_cams_signals():
 		cam_act.connect(cam._on_cam_cam_act)
 
 
-func act_cam(cam: int):
-	cam_act.emit(false, 0, 0, cam)
-
 @export var cams_width: Dictionary = {
 	"cam1": 0.0,
 	"cam2": 0.0,
@@ -77,7 +74,7 @@ func _process(delta: float) -> void:
 
 func _on_minimapa_botones_cam_act() -> void:
 	print(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - ", "Cam changed: ", camaras_root.camara_activa)
-	
+	camaras_root.cam_action.emit(camaras_root.camara_activa, camaras_root.cam_lights)
 	for cam in cameras:
 		cam.visible = camaras_root.camara_activa == cam.cam_number
 		cam.actualizar_cams()

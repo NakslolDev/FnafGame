@@ -1027,7 +1027,7 @@ func tick():
 
 
 ##---Energía---#
-#Claude AI refactored this code. It was a whole mess with a ton of bugs. I will check and modify it tho.
+#Claude AI refactored this code. It was a whole mess with a ton of bugs. I checked and modify it tho.
 
 # Consumidores que suman 1 cuando están activos. "Luces", "Heater" y "Especial" se tratan aparte.
 const CONSUMIDORES_SIMPLES := ["Ventilacion", "Puerta_I", "Puerta_D", "Cam_lights", "Linterna_Rec", "Camaras"]
@@ -1178,6 +1178,7 @@ var debug :={
 	"debug_mode": false,
 	"prevent_save": false,
 	"cheats": {
+		"auto_items": false,
 		"invencibility": false,
 		"instawin": false,
 		"timeless": false,
@@ -1228,8 +1229,8 @@ func reset_debug():
 
 func _ready():
 	push_warning("Beware of current state:
-	Password known active by default
-	Custom position on minigame might be active"
+	Password known active by default"
+	#Custom position on minigame might be active
 	#I to go to death minigame
 	#Bonnie dm hard coded
 	#Bonnie click to skip

@@ -8,9 +8,11 @@ const UA_TICK_LIMIT := 1
 
 const WITHOUT_CAM_OPEND := false # mayor claridad
 
+const WATCH_TICH_WITH_LIGHTS := 10
 const WATCH_TICK_FIRST_LIMIT := 20
 const WATCH_TICK_SECOND_LIMIT := 30
 
+const CHANGE_DOORS_ONLY_WHEN_DOOR_CLOSED := true
 
 var AI_level: int # No voy a volver a comentar lo que ya he comentado en bonnie y en chica...
 var tick_count: int
@@ -19,7 +21,7 @@ var door_fail_count: int
 var cam_look_count: int
 var path_to_take: int # esta variable determina que comportamiento va a tomar freddy
 var puerta_attack: bool
-var changing_doors: bool # controla si e<sta cambiando de puerta. De estar haciendolo, se movera mas rapido
+var changing_doors: bool # controla si esta cambiando de puerta. De estar haciendolo, se movera mas rapido
 var move_fail_count: int = 0
 #Path 0 -> S, 0, T1, T2, office
 #Path 1 -> 1, 2, 3, PI
@@ -60,6 +62,7 @@ func reset():
 	cam_activa = false
 	cam_light = false
 	changing_doors = false
+	seen = false
 
 
 func tick():
@@ -77,8 +80,10 @@ func tick():
 			cam_look_count += 1
 		
 		if cam_light:
-			if cam_look_count < WATCH_TICK_FIRST_LIMIT:
-				cam_look_count = WATCH_TICK_FIRST_LIMIT
+			@warning_ignore("integer_division")
+			var ai_idk: int = (20 - AI_level) / 2
+			if cam_look_count < WATCH_TICH_WITH_LIGHTS + ai_idk:
+				cam_look_count = WATCH_TICH_WITH_LIGHTS + ai_idk
 			tick_count = 0 # le resetea los ticks...
 		else: # solo evita que avance el tick count, no lo resetea
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy stop tick count: from ", position)
@@ -108,12 +113,12 @@ func tick():
 	
 	if Global.debug["cheats"]["ultra_agresive"] or puerta_attack:
 		tick_count_limit = UA_TICK_LIMIT
-	elif position != "PI" and position != "PD":
-		tick_count_limit = GENERAL_TICK_LIMIT
 	elif changing_doors:
 		tick_count_limit = CHANGING_DOORS_TICK_LIMIT
-	else:
+	elif position == "PI" or position == "PD":
 		tick_count_limit = DOOR_TICK_LIMIT
+	else:
+		tick_count_limit = GENERAL_TICK_LIMIT
 	
 	tick_count += 1
 	
@@ -122,14 +127,14 @@ func tick():
 		movement_oportunity()
 
 func looking_at_me(cam_open_required := true):
-	
+
 	if not Global.energia["Camaras"]:
 		seen = false
-		return
-	
+		return false
+
 	if not cam_activa and cam_open_required:
 		return false
-	
+
 	if camara == 1 and position == "S":
 		return true
 	if camara == 2 and position == "1" and path == 1:
@@ -158,19 +163,19 @@ func looking_at_me(cam_open_required := true):
 
 func movement_oportunity():
 
+	if path_to_take == 0:
+		path_to_take = randi_range(1,2)
+		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]PATH DECIDED: ", path_to_take)
+
 	if changing_doors:
 		move()
 		return
 
 	if lock_movement:
-		if position == "PI" or position == "PD": # comprueva que acaba de llegar a la puerta. Si lo paras, si que se vuelve
+		if position == "PI" or position == "PD":
 			puerta_attack = false 
 			lock_movement = false
 			return
-
-	if path_to_take == 0:
-		path_to_take = randi_range(1,2)
-		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]PATH DECIDED: ", path_to_take)
 
 	if (path_to_take == 1 and position != "PI") or (path_to_take == 2 and position != "PD"):
 		door_fail_count = 0
@@ -180,7 +185,7 @@ func movement_oportunity():
 		if move_fail_count == 0:
 			damp_ai = -5
 		else:
-			damp_ai = 2 * (door_fail_count - 1)
+			damp_ai = 2 * (move_fail_count - 1)
 		damp_ai *= Global.experimental["ai_normalizer"]
 		
 		if AI_level + damp_ai > randi_range(0, 20):
@@ -204,7 +209,10 @@ func movement_oportunity():
 
 
 	if puerta_attack:
-		if ((position == "PI" and door_I_closed) or (position == "PD" and door_D_closed)) and door_fail_count * AI_level > randi_range(0, 400): #Tengo en desmos la grafica de probabilidad y media
+		if (((position == "PI" and (door_I_closed or not CHANGE_DOORS_ONLY_WHEN_DOOR_CLOSED))
+			or (position == "PD" and (door_D_closed or not CHANGE_DOORS_ONLY_WHEN_DOOR_CLOSED)))
+			and door_fail_count * AI_level > randi_range(0, 400) #Tengo en desmos la grafica de probabilidad y media
+		):
 			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy gave up: from ", position)
 			puerta_attack = false
 			if path_to_take == 1:
@@ -217,15 +225,18 @@ func movement_oportunity():
 
 
 	move_fail_count += 1
-	if position == "PD" or position == "PI" and puerta_attack:
+	if (position == "PD" or position == "PI") and puerta_attack:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement door atack: from ", position)
 	else:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement no: from ", position)
 
 
 func move():
-	
+
+	if path_to_take == 0: path_to_take = randi_range(1,2) # en principio no deberia de entrar nunca aqui, pero bueno
+
 	move_fail_count = 0
+	door_fail_count = 0
 	seen = false
 	
 	last_position = position
@@ -257,9 +268,9 @@ func move():
 		else:
 			position = "4"
 		path = path_to_take # path to take es o 1 o 2. Es el camino al que se dirige
-	
-	elif position.is_valid_int(): # esto comprueva si está en una posicion numerica.
-		
+
+	elif position.is_valid_int(): # esto comprueba si está en una posicion numerica.
+
 		if path == path_to_take: # si está en el camino correcto, avanza
 			if path == 1:
 				if position == "3":
@@ -271,24 +282,27 @@ func move():
 					position = "PD"
 				else:
 					position = str(int(position) + 1)
-		
+
 		else: # si está en el camino incorrecto
 			if path == 1:
 				if position == "3":
 					position = "T2"
 					path = 0
+				elif position == "1":
+					position = "T1"
+					path = 0
 				else:
-					position = str(int(position) + 1)
+					position = str(int(position) - 1)
 			else: # path 2
 				if position == "4":
 					position = "T2"
 					path = 0
-				elif position == "1": # es más rápido
+				elif position == "1":
 					position = "T1"
 					path = 0
 				else:
-					position = str(int(position) + 1)
-	
+					position = str(int(position) - 1)
+
 	elif position == "PI":
 		if path_to_take == path:
 			position = "office"
@@ -302,13 +316,16 @@ func move():
 			path = 0
 		else:
 			position = "4"
-	
+
+	#cambios despues de moverse
+
 	if position == "T2":
 		if randi_range(0, 1) == 1:
 			path_to_take = 0 # 50% de resetear el camino cuando está en T2, lo que significa 25% de posibilidades de volver a la misma puerta
 	
-	if position == "PI":
+	if position == "PI" or position == "PD":
 		lock_movement = true # bloquea el primer intento siempre
+		changing_doors = false
 	
 	if position != last_position or path != last_path:
 		print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement yes: from ", last_position, " in ", last_path, " to ", position, " in ", path)
@@ -318,13 +335,13 @@ func move():
 
 
 func move_back():
-	
 	move_fail_count = 1 # lo hago 1 para no relentizar tanto...
 	tick_count = 0
 	puerta_attack = false
 	last_position = position
 	last_path = path
 	changing_doors = false
+	lock_movement = false
 	
 	var ipos = int(position)
 	
@@ -344,6 +361,7 @@ func move_back():
 			path_to_take = path # resetea el path to take para que vaya directo a la puerta
 	
 	elif position == "T2":
+		if path_to_take == 0: path_to_take = randi_range(1,2)
 		if path_to_take == 1:
 			position = "3"
 			path = 1
@@ -353,8 +371,26 @@ func move_back():
 	
 	elif position == "PD":
 		position = "4"
+		path_to_take = path
 	elif position == "PI":
 		position = "3"
+		path_to_take = path
 	
 	print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy movement back: from ", last_position, " in ", last_path, " to ", position, " in ", path)
 	movement.emit(position, path, last_position, last_path)
+
+	if position.is_valid_int() and not position == "0": # cambiar de camino
+		var chance := 0
+		if path == 1:
+			if position == "3":
+				chance = 3
+			else:
+				chance = 7 - 2 * ipos
+		if path == 2:
+			if position == "4":
+				chance = 3
+			else:
+				chance = 7 - 2 * ipos
+		if chance > randi_range(0,10):
+			path_to_take = 1 if path == 2 else 2
+			print_rich(Global.time_hour, ":", str(Global.time_minute).pad_zeros(2), " - (freddy) - ", "[color=967B63]Freddy will take ", path_to_take, " path (1=left, 2=right. Im lazy ok?)")

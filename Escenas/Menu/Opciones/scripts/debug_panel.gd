@@ -4,9 +4,13 @@ signal button_hide
 
 @export var general: VBoxContainer
 @export var gamestate: VBoxContainer
+@export var scroll_container: ScrollContainer
 
+func _ready() -> void:
+	visible = false
 
 func _on_debug_menu_pressed() -> void:
+	scroll_container.scroll_vertical = 0
 	visible = true
 	general.sync()
 	gamestate.sync()

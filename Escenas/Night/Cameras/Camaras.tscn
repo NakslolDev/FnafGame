@@ -110,6 +110,7 @@ duct_heat_sprites = [NodePath("No_Shader/MinimapaDuctos/1"), NodePath("No_Shader
 
 [node name="Si_Shader" type="CanvasLayer" parent="." unique_id=1468658571]
 layer = 3
+visible = false
 script = ExtResource("2_rbjw8")
 
 [node name="FondoNegro" type="Sprite2D" parent="Si_Shader" unique_id=943495445]

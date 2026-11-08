@@ -5460,7 +5460,6 @@ computer_working = 2
 computer_failed = 2
 
 [node name="No_adapter" parent="Coliders/SecretOffice/Computer" unique_id=475018020 instance=ExtResource("24_ly3ag")]
-action = "Custom"
 id = "Computer_no_adapter"
 read_end_in = Array[int]([2])
 safe_usb_key = 2
@@ -5654,6 +5653,14 @@ custom_action = "put_fuses_w_text"
 id = "put_fuse"
 screwdriver = 1
 fuse = 1
+
+[node name="AutoItems" parent="Coliders/SecurityRoom" unique_id=1279251376 instance=ExtResource("24_ly3ag")]
+position = Vector2(-1000.00006, 836)
+scale = Vector2(5.461, 4.5)
+activate = "Auto"
+action = "Custom"
+custom_action = "auto_items"
+exiting = false
 
 [node name="Things_Front_All" type="Node" parent="." unique_id=1029449219]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv54uvsb4g8u4"]
 
 [ext_resource type="Script" uid="uid://clr3a6k7vmrdt" path="res://Escenas/Menu/Opciones/opciones.gd" id="1_k0pte"]
-[ext_resource type="Texture2D" uid="uid://b34ck2uq1o4e7" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
+[ext_resource type="Texture2D" uid="uid://3tywp340yrc" path="res://assets/Placeholders/Fondo_Negro.png" id="2_s8b7i"]
 [ext_resource type="Theme" uid="uid://csldtlxeupwtr" path="res://Resources (tres)/Opciones.tres" id="3_64mem"]
 [ext_resource type="Script" uid="uid://cw4xikgcuuitu" path="res://Escenas/Menu/Opciones/scripts/screen.gd" id="3_s8b7i"]
 [ext_resource type="Script" uid="uid://bwnhwdlarfme0" path="res://Escenas/Menu/Opciones/scripts/label_idiom.gd" id="4_okdqg"]
@@ -730,8 +730,7 @@ script = ExtResource("25_7k58l")
 id = "reset_to_default"
 root_node = NodePath("../../../../..")
 
-[node name="Debug_panel" type="Panel" parent="." unique_id=311943914 node_paths=PackedStringArray("general", "gamestate")]
-visible = false
+[node name="Debug_panel" type="Panel" parent="." unique_id=311943914 node_paths=PackedStringArray("general", "gamestate", "scroll_container")]
 layout_mode = 0
 offset_left = 560.0
 offset_top = 50.0
@@ -741,6 +740,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ndx3k")
 script = ExtResource("26_1dkiy")
 general = NodePath("ScrollContainer/General")
 gamestate = NodePath("ScrollContainer/General/MarginContainer_gs/Gamestate")
+scroll_container = NodePath("ScrollContainer")
 
 [node name="Input_eater" type="Panel" parent="Debug_panel" unique_id=207256109]
 layout_mode = 0
@@ -761,14 +761,16 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
+scroll_vertical = 490
 horizontal_scroll_mode = 0
 
-[node name="General" type="VBoxContainer" parent="Debug_panel/ScrollContainer" unique_id=313878102 node_paths=PackedStringArray("check_box_prevent_save", "check_box_invencibility", "check_box_instant_win", "check_box_timeless", "check_box_ultra_agresive", "check_box_infinite_batery", "check_box_lights_consume", "check_box_animatronic_map", "check_box_see_light_batery", "check_box_see_time_always", "check_box_see_insanity", "check_box_tick_count", "spin_box_max_consumption", "spin_boxt_night_duration", "spin_boxt_tick_rate")]
+[node name="General" type="VBoxContainer" parent="Debug_panel/ScrollContainer" unique_id=313878102 node_paths=PackedStringArray("check_box_prevent_save", "check_box_auto_items", "check_box_invencibility", "check_box_instant_win", "check_box_timeless", "check_box_ultra_agresive", "check_box_infinite_batery", "check_box_lights_consume", "check_box_animatronic_map", "check_box_see_light_batery", "check_box_see_time_always", "check_box_see_insanity", "check_box_tick_count", "spin_box_max_consumption", "spin_boxt_night_duration", "spin_boxt_tick_rate")]
 custom_minimum_size = Vector2(720, 900)
 layout_mode = 2
 theme_override_constants/separation = 40
 script = ExtResource("27_wa1uf")
 check_box_prevent_save = NodePath("CheckBox_prevent_save")
+check_box_auto_items = NodePath("MarginContainer_cheats/Cheats/CheckBox_auto_items")
 check_box_invencibility = NodePath("MarginContainer_cheats/Cheats/CheckBox_Invencibility")
 check_box_instant_win = NodePath("MarginContainer_cheats/Cheats/CheckBox_Instant_win")
 check_box_timeless = NodePath("MarginContainer_cheats/Cheats/CheckBox_Timeless")
@@ -822,6 +824,12 @@ theme_override_constants/margin_left = 25
 [node name="Cheats" type="VBoxContainer" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats" unique_id=1202765531]
 layout_mode = 2
 theme_override_constants/separation = 15
+
+[node name="CheckBox_auto_items" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1687296798]
+layout_mode = 2
+theme = ExtResource("28_t63xu")
+theme_override_constants/h_separation = 25
+text = "Auto collect items"
 
 [node name="CheckBox_Invencibility" type="CheckBox" parent="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats" unique_id=1043586838]
 layout_mode = 2
@@ -1391,6 +1399,7 @@ puntero = "3"
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/Close" to="Debug_panel" method="_on_close_pressed"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/CheckBox_prevent_save" to="Debug_panel/ScrollContainer/General" method="_on_check_box_prevsafe_toggled"]
 [connection signal="pressed" from="Debug_panel/ScrollContainer/General/Unlock_cn" to="Debug_panel/ScrollContainer/General" method="_on_unlock_cn_pressed"]
+[connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_auto_items" to="Debug_panel/ScrollContainer/General" method="_on_check_box_auto_items_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_Invencibility" to="Debug_panel/ScrollContainer/General" method="_on_check_box_invencibility_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_Instant_win" to="Debug_panel/ScrollContainer/General" method="_on_check_box_instant_win_toggled"]
 [connection signal="toggled" from="Debug_panel/ScrollContainer/General/MarginContainer_cheats/Cheats/CheckBox_Timeless" to="Debug_panel/ScrollContainer/General" method="_on_check_box_timeless_toggled"]

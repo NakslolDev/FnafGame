@@ -14,6 +14,7 @@ var animation_memory := false
 
 @export var soft_focus: Area2D
 @export var hard_focus: Area2D
+signal hard_focus_mouse_enter
 
 func _ready():
 	bonnie.visible = false
@@ -44,11 +45,12 @@ func _on_linterna_linterna_activada_switch(value: bool, animation: bool) -> void
 	animation_memory = animation
 	flashlight_on = value
 
-func get_focus_state() -> focus_state: # funcion llamada por los animatronicos
+func get_focus_state(ignore_flashlight: bool = false) -> focus_state: # funcion llamada por los animatronicos
 
-	if not flashlight_on and not animation_memory:
-		#print("I am door left? ", izquierda, " And flashlight is ", flashlight_on, "with animation memory = ", animation_memory)
-		return focus_state.NONE
+	if not ignore_flashlight:
+		if (not flashlight_on) and not animation_memory:
+			#print("I am door left? ", izquierda, " And flashlight is ", flashlight_on, "with animation memory = ", animation_memory)
+			return focus_state.NONE
 
 	for overlaping_areas in hard_focus.get_overlapping_areas():
 		if overlaping_areas.name.begins_with("MouseHitbox"):
@@ -59,3 +61,8 @@ func get_focus_state() -> focus_state: # funcion llamada por los animatronicos
 			return focus_state.SOFT
 
 	return focus_state.NONE
+
+func _on_hard_focus_area_entered(area: Area2D) -> void:
+	if not flashlight_on: return
+	if area.name.begins_with("MouseHitbox"):
+		hard_focus_mouse_enter.emit()

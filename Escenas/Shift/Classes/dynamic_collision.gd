@@ -7,6 +7,7 @@ class_name DinamicColition
 @export var need_beggining_id: Array[String] = []
 @export var exclude_beggining_id: Array[String] = []
 var always_inactive: bool = false
+var should_disable: bool = false
 
 @export_group("Nights")
 @export var night_0 := true
@@ -95,25 +96,27 @@ func _ready():
 	minigame.act_sprites.connect(check_active)
 
 func check_active():
-	
-	if always_inactive:
-		return
-	
-	disabled = false
-	
+	if always_inactive: return
+	run_check()
+	call_deferred("sync_disable")
+
+func run_check():
+
+	should_disable = false
+
 	if Global.noche == -1:
 		return
 	
 	if not get("night_" + str(Global.noche)):
-		disabled = true
+		should_disable = true
 		return
 	
 	if not (Global.m_entering and entering) and not (!Global.m_entering and exiting):
-		disabled = true
+		should_disable = true
 		return
 	
 	if not get(Global.just_death_min):
-		disabled = true
+		should_disable = true
 		return
 	
 	for _key in Global.inventario: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -121,10 +124,10 @@ func check_active():
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == Condition.Need and not Global.inventario[_key]:
-			disabled = true
+			should_disable = true
 			return
 		if value == Condition.Exclude and Global.inventario[_key]:
-			disabled = true
+			should_disable = true
 			return
 	
 	for _key in Global.mapa: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -132,10 +135,10 @@ func check_active():
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == Condition.Need and not Global.mapa[_key]:
-			disabled = true
+			should_disable = true
 			return
 		if value == Condition.Exclude and Global.mapa[_key]:
-			disabled = true
+			should_disable = true
 			return
 	
 	for _key in Global.dm: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -143,13 +146,13 @@ func check_active():
 		if value == dmState.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == dmState.None and Global.dm[_key] != Global.Estado.STANDBY:
-			disabled = true
+			should_disable = true
 			return
 		if value == dmState.Complete and Global.dm[_key] != Global.Estado.COMPLETADO:
-			disabled = true
+			should_disable = true
 			return
 		if value == dmState.Saved and Global.dm[_key] != Global.Estado.SALVADO:
-			disabled = true
+			should_disable = true
 			return
 	
 	for _key in Global.map_items: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -157,10 +160,10 @@ func check_active():
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == Condition.Need and not Global.map_items[_key]:
-			disabled = true
+			should_disable = true
 			return
 		if value == Condition.Exclude and Global.map_items[_key]:
-			disabled = true
+			should_disable = true
 			return
 	
 	for _key in Items.objects: # Recorre todo el inventario. Si encuentra una discordancia, no va a estar activo
@@ -168,31 +171,39 @@ func check_active():
 		if value == Condition.Omit: # sobra, pero para que quede más limpio
 			continue
 		if value == Condition.Need and not Items.objects[_key]:
-			disabled = true
+			should_disable = true
 			return
 		if value == Condition.Exclude and Items.objects[_key]:
-			disabled = true
+			should_disable = true
 			return
 	
 	for _key in need_id:
 		if not _key in Global.id_dialogs:
-			disabled = true
+			should_disable = true
 			return
 	
 	for _key in exclude_id:
 		if _key in Global.id_dialogs:
-			disabled = true
+			should_disable = true
 			return
 
 func check_beggining_active():
+	run_beggining_check()
+	call_deferred("sync_disable")
+
+func run_beggining_check():
 	for _key in need_beggining_id:
 		if not _key in Global.id_dialogs:
-			disabled = true
+			should_disable = true
 			always_inactive = true
 			return
 	
 	for _key in exclude_beggining_id:
 		if _key in Global.id_dialogs:
-			disabled = true
+			should_disable = true
 			always_inactive = true
 			return
+
+
+func sync_disable():
+	disabled = should_disable

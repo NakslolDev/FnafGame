@@ -12,6 +12,8 @@ func _ready() -> void:
 	DirectionalAudioBus.vhs_change_audio_stream.connect(_vhs_player_change_audio_stream)
 	DirectionalAudioBus.encajar_linterna.connect(_encajar_linterna)
 	DirectionalAudioBus.switch.connect(_switch_click)
+	Global.Energy_Breakdown.connect(electric_breakdown_play)
+	Global.Fuse_Breakdown.connect(fuse_breakdown_play)
 
 func _append_sounds_recursively(father: Node = self):
 	for node in father.get_children():
@@ -112,3 +114,11 @@ func _switch_click(controlador: String):
 			heater.play()
 		"Luces":
 			luces.play()
+
+@export var electric_breakdown: spacial_audio
+func electric_breakdown_play():
+	electric_breakdown.play()
+
+@export var fuse_breakdown: spacial_audio
+func fuse_breakdown_play(_switch):
+	fuse_breakdown.play()

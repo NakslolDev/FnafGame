@@ -19,6 +19,22 @@ func do_custom_action(action: String, read: int):
 
 #--Actions--
 
+func auto_items(_readd):
+	if not Global.debug["cheats"]["auto_items"]: return
+
+	for key in Global.map_items.keys():
+		if not Global.map_items[key]: continue
+
+		if key.ends_with("batteries"):
+			Items.objects["batteries"] += 1
+		if key.ends_with("water_bottle"):
+			Items.objects["water_bottle"] += 1
+		if key.ends_with("fuse"):
+			Items.objects["installed_fuse"] += 1
+		if key.ends_with("toy"):
+			Items.objects["right_door_toy"] = true
+		Global.map_items[key] = false
+
 func exit_pizza(_read):
 	await get_tree().physics_frame
 	father.exit()
