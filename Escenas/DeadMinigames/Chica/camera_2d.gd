@@ -1,7 +1,7 @@
 extends Camera2D
 
-const VERTICAL_SIZE := 112
-const HORIZONTAL_SIZE := 200
+const VERTICAL_SIZE := 120
+const HORIZONTAL_SIZE := 120
 
 @export var character_chica: CharacterBody2D
 
@@ -17,6 +17,7 @@ var block_signal := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	blackground.visible = true
+	position = Vector2.ZERO
 
 
 func _on_down_body_entered(body: Node2D) -> void:

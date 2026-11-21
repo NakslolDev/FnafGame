@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var super_speed := false
+
 const FRAMES_ANIMATION := 2
 const HALT_ADD := 2
 const SPEED := 2
@@ -12,12 +14,14 @@ var halt: bool = true
 
 var limit_movement: bool = false
 
+func _ready() -> void:
+	if super_speed:
+		timer.wait_time = 0.05
+
 func tick() -> void:
 	var direction := Input.get_vector("A", "D", "W", "S")
 	direction = _unnormalice(direction)
 
-	#position += direction * SPEED
-	#velocity = direction * SPEED * 60
 	if not move_and_collide(direction * SPEED, true):
 		position += direction * SPEED
 	elif not move_and_collide(Vector2(direction.x, 0.0) * SPEED, true):
