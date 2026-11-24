@@ -325,7 +325,7 @@ bus = &"Ambient"
 
 [node name="LowAmbient" type="AudioStreamPlayer" parent="Ambient" unique_id=1915798778]
 stream = ExtResource("10_ewgm2")
-volume_db = -20.0
+volume_db = -25.0
 bus = &"Ambient"
 parameters/looping = true
 

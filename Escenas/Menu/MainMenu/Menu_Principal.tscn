@@ -44,8 +44,8 @@ offset_right = 121.0
 offset_bottom = -72.0
 theme_override_fonts/font = ExtResource("3_t6ttm")
 theme_override_font_sizes/font_size = 80
-text = "The Curse Given
-Upon Birth"
+text = "The Crooked
+Stare"
 
 [node name="Disclamer" type="Label" parent="." unique_id=1684879184]
 modulate = Color(1, 1, 1, 0.5)
@@ -265,24 +265,24 @@ scale = Vector2(7.34, 3.165)
 main_game = NodePath("..")
 
 [node name="Stars" type="Node2D" parent="." unique_id=836054293 node_paths=PackedStringArray("white_star_ending", "white_star_2_true_ending", "white_star_3_420")]
-position = Vector2(16, 128)
+position = Vector2(-480, -296)
 script = ExtResource("12_hoy0e")
 white_star_ending = NodePath("WhiteStar_ending")
 white_star_2_true_ending = NodePath("WhiteStar2_true_ending")
 white_star_3_420 = NodePath("WhiteStar3_420")
 
 [node name="WhiteStar_ending" type="Sprite2D" parent="Stars" unique_id=2135906411]
-position = Vector2(-300, -440)
+position = Vector2(-65, -25)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("13_4lh2l")
 
 [node name="WhiteStar2_true_ending" type="Sprite2D" parent="Stars" unique_id=265690490]
-position = Vector2(-150, -440)
+position = Vector2(65, -25)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("13_4lh2l")
 
 [node name="WhiteStar3_420" type="Sprite2D" parent="Stars" unique_id=2066705247]
-position = Vector2(-225, -350)
+position = Vector2(0, 45)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("13_4lh2l")
 
@@ -330,7 +330,7 @@ theme_override_constants/separation = 60
 layout_mode = 2
 theme = ExtResource("6_b3nup")
 theme_override_font_sizes/font_size = 75
-text = "Alpha version 0.12.1"
+text = "Alpha version 0.12.3"
 horizontal_alignment = 1
 
 [node name="Welcome" type="Label" parent="AlphaMessage/ScrollContainer/VBoxContainer" unique_id=178039017]
@@ -353,7 +353,7 @@ theme_override_colors/font_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 theme_override_font_sizes/font_size = 40
 text = "Experimental features are aviable now! They are planned to be implemented into the game as a regular feature.  There are 2 at this moment:
 
--AI normalicer makes so the animatronic movement is more spread out, so it is harder for ayone to rush to your office, or stay still for a long period of time. As a result, it also makes AI level of 20 easier (i'll probably change that).
+-AI normalicer makes so the animatronic movement is more spread out, so it is harder for ayone to rush to your office, or stay still for a long period of time. As a result, it also makes AI level of 20 easier (i'll probably change that). I tested it seems to work fine, so its on by default.
 
 -The fuses break when you overconsume, only deactivating the ventilation instead of the whole system.  Activating this option will only make fuses be able to spawn, so you will have to get to the next night. If you already have fuses, deactivating this option will not make them dissapear. You can reroll your item pool to fix this
 (debug -> game state -> sync -> reroll items -> save game to debug state -> exit debug)

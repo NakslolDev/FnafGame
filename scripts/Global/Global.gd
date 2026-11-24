@@ -690,7 +690,7 @@ var screen := {
 }
 
 var experimental := {
-	"ai_normalizer": 0,
+	"ai_normalizer": 1,
 	"fuses": false,
 	"task": false,
 }
