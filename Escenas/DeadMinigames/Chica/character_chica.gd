@@ -69,6 +69,7 @@ func skin():
 		sprite_2d.frame = 0 if sprite_2d.frame == jump_frame else jump_frame
 		frame_counter = 0
 
+signal teleported
 
 func locate_to(pos):
 	if pos is Node2D:
@@ -76,6 +77,7 @@ func locate_to(pos):
 	if not pos is Vector2:
 		push_error("Not a valid position: ", pos)
 	global_position = pos
+	teleported.emit()
 
 func locate_x(pos):
 	if pos is Node2D:
@@ -83,6 +85,7 @@ func locate_x(pos):
 	if not pos is Vector2:
 		push_error("Not a valid position: ", pos)
 	global_position.x = pos.x
+	teleported.emit()
 
 func locate_y(pos):
 	if pos is Node2D:
@@ -90,3 +93,4 @@ func locate_y(pos):
 	if not pos is Vector2:
 		push_error("Not a valid position: ", pos)
 	global_position.y = pos.y
+	teleported.emit()
